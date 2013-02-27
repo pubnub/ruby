@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22Lorem%20ipsum%20dolor%20sit%20amet,%20consectetur%20adipiscing%20elit.%20Morbi%20posuere%20arcu%20at%20arcu%20iaculis%20non%20faucibus%20nisl%20gravida.%20Duis%20ac%20enim%20tortor.%20Vestibulum%20euismod%20lobortis%20mauris,%20id%20hendrerit%20tellus%20sagittis%20sit%20amet.%20Curabitur%20accumsan%20sem%20quis%20metus%20mollis%20sed%20tristique%20enim%20mollis.%20Pellentesque%20eu%20est%20arcu,%20sit%20amet%20laoreet%20odio.%20Etiam%20hendrerit%20facilisis%20aliquam.%20Vivamus%20mollis%20mauris%20vitae%20purus%20placerat%20dictum.%20Vivamus%20nulla%20nunc,%20sagittis%20in%20scelerisque%20sed,%20ullamcorper%20volutpat%20diam.%20Duis%20et%20quam%20risus,%20at%20viverra%20nunc.Proin%20in%20eros%20velit,%20vitae%20porttitor%20justo.%20Fusce%20lobortis%20lacus%20vel%20odio%20viverra%20luctus.%20Nam%20vestibulum%20pellentesque%20ornare.%20Vivamus%20orci%20metus,%20convallis%20congue%20laoreet%20eget,%20faucibus%20nec%20magna.%20Curabitur%20ut%20tellus%20eu%20dolor%20imperdiet%20molestie%20sit%20amet%20quis%20tortor.%20Nam%20convallis%20turpis%20eu%20velit%20pulvinar%20vulputate.%20Donec%20mauris%20mauris,%20rhoncus%20id%20suscipit%20eget,%20porttitor%20id%20velit.%20Mauris%20luctus%20aliquet%20neque%20sit%20amet%20accumsan.%20Phasellus%20iaculis%20sapien%20nec%20nibh%20sodales%20vitae%20pulvinar%20urna%20fringilla.%20Vivamus%20id%20dolor%20lorem,%20et%20ultricies%20velit.Curabitur%20gravida%20pretium%20volutpat.%20Proin%20aliquet%20lacinia%20elit,%20ac%20interdum%20urna%20aliquet%20ut.%20Morbi%20et%20ipsum%20magna.%20Aliquam%20varius,%20arcu%20eget%20pulvinar%20condimentum,%20enim%20tellus%20eleifend%20quam,%20eget%20malesuada%20sapien%20metus%20sed%20massa.%20Cras%20aliquam%20consectetur%20libero,%20eu%20dictum%20ipsum%20adipiscing%20sed.%20Morbi%20nunc%20orci,%20gravida%20dictum%20ultricies%20eget,%20euismod%20ac%20elit.%20Proin%20sed%20eros%20eget%20lacus%20posuere%20malesuada%20ut%20non%20nibh.%20Nunc%20id%20metus%20velit.%20Phasellus%20varius%20venenatis%20accumsan.%20Cras%20molestie%20diam%20ut%20quam%20porta%20vitae%20mattis%20lorem%20sagittis.%20Donec%20consectetur%20urna%20at%20dui%20consequat%20laoreet.%20Integer%20accumsan%20accumsan%20vestibulum.%20In%20eleifend%20malesuada%20purus,%20eu%20interdum%20nulla%20pretium%20varius.%20Vestibulum%20a%20lacus%20risus,%20ac%20rutrum%20nisl.%20Quisque%20dictum%20nulla%20vitae%20odio%20consequat%20sed%20ultricies%20dui%20mattis.Maecenas%20quis%20ligula%20tortor,%20quis%20consequat%20augue.%20Aliquam%20malesuada%20ornare%20magna%20sit%20amet%20aliquam.%20Suspendisse%20eu%20augue%20eget%20mauris%20sodales%20blandit.%20Mauris%20eget%20odio%20ut%20mauris%20suscipit%20consequat.%20Donec%20mi%20risus,%20condimentum%20vestibulum%20commodo%20et,%20eleifend%20at%20diam.%20Duis%20facilisis%20risus%20in%20quam%20sagittis%20posuere.%20Suspendisse%20pulvinar%20mauris%20nec%20purus%20volutpat%20eget%20vestibulum%20orci%20mollis.%20In%20sodales%20mauris%20et%20purus%20dapibus%20mollis.%20Cras%20eget%20nulla%20tortor,%20a%20lacinia%20nulla.%20Nam%20vitae%20velit%20felis.%20Quisque%20eu%20consectetur%20quam.%20In%20hac%20habitasse%20platea%20dictumst.%20Donec%20sem%20lorem,%20accumsan%20id%20ullamcorper%20in,%20porta%20in%20massa.Nam%20sollicitudin%20ligula%20vel%20erat%20mattis%20congue%20lacinia%20orci%20ornare.%20Aliquam%20bibendum%20urna%20adipiscing%20quam%20porttitor%20faucibus.%20Cum%20sociis%20natoque%20penatibus%20et%20magnis%20dis%20parturient%20montes,%20nascetur%20ridiculus%20mus.%20Nullam%20vel%20mattis%20leo.%20In%20tincidunt%20vehicula%20felis%20ac%20pretium.%20Integer%20porttitor,%20neque%20sit%20amet%20sodales%20accumsan,%20elit%20nulla%20lobortis%20purus,%20sed%20dapibus%20justo%20tortor%20sit%20amet%20mauris.%20Duis%20mi%20leo,%20dapibus%20quis%20tempus%20nec,%20mollis%20nec%20nisl.%20Pellentesque%20habitant%20morbi%20tristique%20senectus%20et%20netus%20et%20malesuada%20fames%20ac%20turpis%20egestas.%20Cras%20congue%20aliquam%20sem,%20nec%20luctus%20nibh%20imperdiet%20nec.%20Curabitur%20convallis,%20velit%20non%20vulputate%20tempus,%20lorem%20urna%20fermentum%20nibh,%20et%20iaculis%20enim%20ligula%20quis%20tellus.%20%22
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      !binary "RGF0ZQ==":
+      - !binary |-
+        V2VkLCAyNyBGZWIgMjAxMyAwNTo0OTo1NiBHTVQ=
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        dGV4dC9qYXZhc2NyaXB0OyBjaGFyc2V0PSJVVEYtOCI=
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        NDM=
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        bm8tY2FjaGU=
+      !binary "QWNjZXNzLUNvbnRyb2wtQWxsb3ctT3JpZ2lu":
+      - !binary |-
+        Kg==
+      !binary "QWNjZXNzLUNvbnRyb2wtQWxsb3ctTWV0aG9kcw==":
+      - !binary |-
+        R0VU
+      !binary "UG4tVHQ=":
+      - !binary |-
+        MTM2MTk0NDE5NjcwNTM4MzQ=
+    body:
+      encoding: US-ASCII
+      string: ! '[0,"Message Too Large","13619441967053834"]'
+    http_version: 
+  recorded_at: Wed, 27 Feb 2013 05:49:56 GMT
+recorded_with: VCR 2.2.4
