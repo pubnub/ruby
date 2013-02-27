@@ -1,5 +1,5 @@
 02-27-13
-. fixed bug on looping when receving a 400 (msg size too large)
+. correct handling of publish msg size too large server response
 
 02-26-13
 . errors logged to /tmp/pubnubError.log by default

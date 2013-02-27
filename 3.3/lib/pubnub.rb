@@ -293,11 +293,30 @@ class Pubnub
         }
 
         req.callback {
-          if checkForBadJSON(req) == true
-            logAndRetryBadJSON(is_reactor_running, req, request)
+
+          if %w(subscribe presence).include?(request.operation)
+            if (checkForBadJSON(req) == true && request.operation == "subscribe")
+              logAndRetryBadJSON(is_reactor_running, req, request)
+            else
+              processGoodResponse(is_reactor_running, req, request)
+            end
           else
-            processGoodResponse(is_reactor_running, req, request)
+            if req.response_header.http_status.to_i != SUCCESS_RESPONSE
+
+              begin
+                server_response = Yajl.load(req.response)
+                request.callback.call(server_response)
+              rescue => e
+                request.callback.call([0, "Bad server response: #{req.response_header.http_status.to_i}"])
+              ensure
+                EM.stop unless is_reactor_running
+              end
+
+              else
+                processGoodResponse(is_reactor_running, req, request)
+              end
           end
+
         }
 
       rescue EventMachine::ConnectionError, RuntimeError => e # RuntimeError for catching "EventMachine not initialized"
