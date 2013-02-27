@@ -336,24 +336,26 @@ class Pubnub
 
   def logAndRetryGeneralError(is_reactor_running, req, request)
     errMsg = "#{Time.now}: Network connectivity issue while attempting to reach #{request.url}"
-    logError(errMsg)
+    logError(errMsg, request.url)
     retryRequest(is_reactor_running, req, request, TIMEOUT_GENERAL_ERROR)
   end
 
   def logAndRetryBadJSON(is_reactor_running, req, request)
     errMsg = "#{Time.now}: Retrying from bad JSON: #{req.response.to_s}"
-    logError(errMsg)
+    logError(errMsg, request.url)
     retryRequest(is_reactor_running, req, request, TIMEOUT_BAD_JSON_RESPONSE)
   end
 
   def logAndRetryBadResponseCode(is_reactor_running, req, request)
     errMsg = "#{Time.now}: Retrying from bad server response code: (#{req.response_header.http_status.to_i}) #{req.response.to_s}"
-    logError(errMsg)
+    logError(errMsg, request.url)
     retryRequest(is_reactor_running, req, request, TIMEOUT_BAD_RESPONSE_CODE)
   end
 
-  def logError(errMsg)
-    PUBNUB_LOGGER.debug(errMsg)
+  def logError(errMsg, url)
+    PUBNUB_LOGGER.debug("url: #{url}")
+    PUBNUB_LOGGER.debug("#{errMsg}")
+    PUBNUB_LOGGER.debug("")
   end
 
   def retryRequest(is_reactor_running, req, request, delay)
