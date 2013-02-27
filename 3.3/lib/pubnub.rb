@@ -29,6 +29,7 @@ require 'active_support/core_ext/object/blank'
 class Pubnub
 
   SUCCESS_RESPONSE = 200
+  MSG_TOO_LARGE_RESPONSE = 400
 
   TIMEOUT_BAD_RESPONSE_CODE = 1
   TIMEOUT_BAD_JSON_RESPONSE = 0.5
@@ -320,7 +321,11 @@ class Pubnub
   def processGoodResponse(is_reactor_running, req, request)
 
     if (req.response_header.http_status.to_i != SUCCESS_RESPONSE)
-      logAndRetryBadResponseCode(is_reactor_running, req, request)
+
+      unless (req.response_header.http_status.to_i == MSG_TOO_LARGE_RESPONSE)
+        logAndRetryBadResponseCode(is_reactor_running, req, request)
+      end
+
     else
 
       request.package_response!(req.response)
