@@ -4,7 +4,7 @@ Pubnub - http://github/pubnub/pubnub-api
 ##### YOU MUST HAVE A PUBNUB ACCOUNT TO USE THE API.
 ##### http://www.pubnub.com/account
 
-## PubNub 3.3 Real-time Cloud Push API - RUBY
+## PubNub 3.3 Real-time Cloud Push API - RUBY (gem version 3.3.0.5)
 
 www.pubnub.com - PubNub Real-time Push Service in the Cloud. 
 http://www.pubnub.com/blog/ruby-push-api
