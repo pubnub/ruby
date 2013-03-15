@@ -9,28 +9,34 @@ Pubnub - http://github/pubnub/pubnub-api
 www.pubnub.com - PubNub Real-time Push Service in the Cloud. 
 http://www.pubnub.com/blog/ruby-push-api
 
-PubNub is a Massively Scalable Real-time Service for Web and Mobile Games.
+PubNub is a Real-time Network for Mobile App, Web Apps for pushing updates
+and enabling real-time notifications and even games!
 This is a cloud-based service for broadcasting Real-time messages
 to thousands of web and mobile clients simultaneously.
 
-# Pubnub 3.3 for Ruby is a complete rewrite, and is NOT compatible with earlier versions of Pubnub Ruby Client.
+# PubNub 3.3 for Ruby is a complete rewrite, 
+and is NOT compatible with earlier versions of Pubnub Ruby Client.
+
 ### Usage Examples
+
 Examine the tests in spec/lib/* for many different scenarios! Specifically, *_integration. But here is a small sample:
 
-### Require it!
+### Require PubNub GEM
 
 ```ruby
-require 'pubnub' # or require 'pubnub-ruby' if you installed pubnub-ruby (they are now identical gems)
+require 'pubnub'
 ```
 
-### Instantiate a new PN Object
+### Instantiate a new PubNub Object
 
 ```ruby
-    pn = Pubnub.new(:publish_key => @publish_key, # publish_key only required if publishing.
-        :subscribe_key => @subscribe_key,         # required
-        :secret_key => @secret_key,               # optional, if used, message signing is enabled
-        :cipher_key => @cipher_key,               # optional, if used, encryption is enabled
-        :ssl => @ssl_enabled)                     # true or default is false 
+pn = Pubnub.new(
+    :publish_key   => @publish_key,   # publish_key only required if publishing.
+    :subscribe_key => @subscribe_key, # required
+    :secret_key    => @secret_key,    # optional, if used, message signing is enabled
+    :cipher_key    => @cipher_key,    # optional, if used, encryption is enabled
+    :ssl           => @ssl_enabled    # true or default is false
+)
 ```
 
 ### Publish
