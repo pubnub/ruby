@@ -1,3 +1,7 @@
+03-21-13
+. use system-specific temp dir
+. explicitly require json -- needed for non-rails applications
+
 02-27-13
 . correct handling of publish msg size too large server response
 
