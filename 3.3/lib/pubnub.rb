@@ -38,7 +38,7 @@ class Pubnub
   TIMEOUT_SUBSCRIBE = 310
   TIMEOUT_NON_SUBSCRIBE = 5
 
-  PUBNUB_LOGGER = Logger.new("/tmp/pubnubError.log")
+  PUBNUB_LOGGER = Logger.new("#{Dir.tmpdir}/pubnubError.log", 10, 10000000)
   PUBNUB_LOGGER.level = Logger::DEBUG
 
   class PresenceError < RuntimeError;
