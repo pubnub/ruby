@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
   s.add_dependency "em-http-request"
   s.add_dependency "uuid", "~> 2.3.5"
   s.add_dependency "yajl-ruby"
+  s.add_dependency "json"
 
 
 end
