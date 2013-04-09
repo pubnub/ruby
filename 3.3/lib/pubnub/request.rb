@@ -1,4 +1,8 @@
+require 'pubnub/configuration.rb'
+
 module Pubnub
+  extend Configuration
+
   class Request
     attr_accessor :ssl, :channel, :callback, :cipher_key, :subscribe_key, :secret_key, :operation, :message, :publish_key
 
@@ -6,47 +10,24 @@ module Pubnub
       options.each do |k,v|
         instance_variable_set(:"@#{k}", v)
       end
-      @secret_key = options[:secret_key] || '0'
-      @timetoken = options[:timetoken] || '0'
-
-      set_origin(options)
-      set_channel(options)
-      set_callback(options)
+      @secret_key = options[:secret_key] || Configuration::DEFAULT_SECRET_KEY
+      @timetoken  = options[:timetoken] || Configuration::DEFAULT_TIMETOKEN
       set_cipher_key(options, self.cipher_key)
       set_message(options, self.cipher_key)
       set_publish_key(options, self.publish_key)
       set_subscribe_key(options, self.subscribe_key)
       set_secret_key(options, self.secret_key)
 
+      validate_request
     end
 
-    #private
+    private
 
-    def set_origin(options)
-      if options[:origin].present?
-        self.origin = options[:origin].to_s
-        self
-      end
-    end
+    def validate_request
+      raise(Pubnub::Error::OperationError, 'channel is required parameter.') if @channel.blank?
+      raise(Pubnub::Error::OperationError, 'callback is a required parameter.') if @callback.blank?
+      raise(Pubnub::Error::OperationError, 'callback is invalid.') if !@callback.respond_to? 'call'
 
-    def set_channel(options)
-      if options[:channel].blank?
-        raise(Pubnub::Error::OperationError, "channel is a required parameter.")
-      else
-        self.channel = options[:channel].to_s
-        self
-      end
-    end
-
-    def set_callback(options)
-      if options[:callback].blank?
-        raise(Pubnub::Error::OperationError, "callback is a required parameter.")
-      elsif !options[:callback].try(:respond_to?, "call")
-        raise(Pubnub::Error::OperationError, "callback is invalid.")
-      else
-        self.callback = options[:callback]
-        self
-      end
     end
 
     def set_cipher_key(options, self_cipher_key)
@@ -70,10 +51,10 @@ module Pubnub
         my_secret_key = self_secret_key || options[:secret_key]
         raise(Pubnub::Error::OperationError, "secret key must be a string.") if my_secret_key.class != String
 
-        signature = "{ @publish_key, @subscribe_key, @secret_key, channel, message}"
-        digest = OpenSSL::Digest.new("sha256")
-        key = [my_secret_key]
-        hmac = OpenSSL::HMAC.hexdigest(digest, key.pack("H*"), signature)
+        signature       = "{ @publish_key, @subscribe_key, @secret_key, channel, message}"
+        digest          = OpenSSL::Digest.new("sha256")
+        key             = [my_secret_key]
+        hmac            = OpenSSL::HMAC.hexdigest(digest, key.pack("H*"), signature)
         self.secret_key = hmac
       else
         self.secret_key = "0"

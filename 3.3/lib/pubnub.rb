@@ -16,6 +16,7 @@ require 'base64'
 require 'open-uri'
 require 'uri'
 require 'openssl'
+require 'eventmachine'
 
 require 'pubnub/client.rb'
 require 'pubnub/request.rb'

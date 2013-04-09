@@ -1,14 +1,14 @@
 module Pubnub
   module Error
-    class PresenceError < RuntimeError;
+    class PresenceError  < RuntimeError;
     end
-    class PublishError < RuntimeError;
+    class PublishError   < RuntimeError;
     end
     class SubscribeError < RuntimeError;
     end
-    class InitError < RuntimeError;
+    class InitError      < RuntimeError;
     end
-    class PublishError < RuntimeError;
+    class PublishError   < RuntimeError;
     end
     class OperationError < RuntimeError
       def operation_exception
