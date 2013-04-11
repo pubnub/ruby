@@ -2,7 +2,7 @@
 ## http://www.pubnub.com/blog/ruby-push-api - Ruby Push API Blog
 
 ## PubNub Real Time Push APIs and Notifications Framework
-## Copyright (c) 2012 PubNub
+## Copyright (c) 2013 PubNub
 ## http://www.pubnub.com/
 
 ## -----------------------------------
@@ -23,6 +23,22 @@ require 'pubnub/request.rb'
 require 'pubnub/configuration.rb'
 require 'pubnub/daemon.rb'
 require 'pubnub/error.rb'
+require 'pubnub/crypto.rb'
+
+DEFAULT_CONNECTION_OPTIONS = {
+  :host           => 'demo.pubnub.com',
+  :port           => 80,
+  :method         => 'GET',
+  :content_type   => "application/json",
+  :path           => '/',
+  :params         => {},
+  :headers        => {},
+  :user_agent     => "Pubnub",
+  :ssl            => false,
+  :timeout        => 0,
+  :encoding       => nil,
+  :auto_reconnect => true
+}
 
 class Object
   def blank?
@@ -55,15 +71,20 @@ module Pubnub
       if args[0].class == Hash
         options = args[0]
       else
-        options = Hash.new
-        options[:publish_key] = args[0].to_s
+        options                 = Hash.new
+        options[:publish_key]   = args[0].to_s
         options[:subscribe_key] = args[1].to_s
-        options[:secret_key] = args[2].to_s
-        options[:cipher_key] = args[3].to_s
-        options[:ssl] = args[4]
+        options[:secret_key]    = args[2].to_s
+        options[:cipher_key]    = args[3].to_s
+        options[:ssl]           = args[4]
       end
 
       Pubnub::Client.new(options)
     end
   end
 end
+
+# Aliases
+PubnubRequest = Pubnub::Request
+PubnubCrypto  = Pubnub::Crypto
+

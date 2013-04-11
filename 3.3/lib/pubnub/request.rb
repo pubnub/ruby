@@ -17,8 +17,8 @@ module Pubnub
       set_publish_key(options, self.publish_key)
       set_subscribe_key(options, self.subscribe_key)
       set_secret_key(options, self.secret_key)
-
       validate_request
+
     end
 
     private

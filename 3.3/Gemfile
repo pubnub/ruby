@@ -12,10 +12,10 @@ gem 'em-http-request'
 gem "uuid", "~> 2.3.5"
 gem 'yajl-ruby'
 gem 'pubnub', "3.3.0.7"
-gem 'linecache19'
+#gem "linecache", "~> 0.46"
 gem 'ruby_core_source'
-gem 'ruby-debug19'
-gem 'ruby-debug-base19'
+#gem 'ruby-debug19'
+#gem 'ruby-debug-base19'
 gem 'httparty'
 gem 'passenger'
 
@@ -34,7 +34,7 @@ end
 
 group :test do
   gem 'rspec-rails', "~> 2.0"
-  gem 'ruby-debug-base19'
+  #gem 'ruby-debug-base19'
   gem 'rr', "1.0.4"
   gem 'vcr', "2.2.4"
   gem 'webmock', "1.8.8"

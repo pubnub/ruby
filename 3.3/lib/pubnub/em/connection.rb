@@ -1,10 +1,16 @@
 require 'eventmachine'
+require 'pubnub/em/request.rb'
+require 'pubnub/em/response.rb'
 
 module EventMachine
   module Pubnub
     class Connection < EM::Connection
 
+      STALL_TIMER   = 10
+      STALL_TIMEOUT = 60
+
       def initialize(client, host, port)
+        puts 'dupa test'
         @client  = client
         @host    = host
         @port    = port
@@ -13,6 +19,29 @@ module EventMachine
         #TODO connect reconnectors
         @network_reconnector      = nil
         @application_reconnectior = nil
+      end
+
+      def connection_completed
+        #reset_connection
+        @request = Request.new(@options)
+        send_data(@request)
+      end
+
+      def post_init
+        @stall_timer = EM::PeriodicTimer.new(STALL_TIMER) do
+          if gracefully_closed?
+            @stall_timer.cancel
+          elsif stalled?
+            close_connection
+            invoke_callback(@client.no_data_callback)
+          end
+        end
+      end
+
+      def recive_data(data)
+        puts "DOSTALEM ODPOWIEDZ!"
+        puts data
+        # TODO parse data
       end
 
       def network_failure?
@@ -33,6 +62,11 @@ module EventMachine
 
       def ssl?
         @options[:ssl]
+      end
+
+      def stalled?
+        @last_response ||= EM::Pubnub::Response.new
+        @last_response.older_than?(STALL_TIMEOUT)
       end
 
       def update(options = {})

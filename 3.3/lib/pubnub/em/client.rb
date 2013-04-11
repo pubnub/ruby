@@ -4,7 +4,12 @@ module EventMachine
   module Pubnub
     class Client
 
+      CALLBACKS = [
+        :no_data_callback
+      ]
+
       attr_accessor :connection, :options, :host, :port
+      attr_accessor *CALLBACKS
 
       def self.connect(options = {})
         new(options).tap do |client|
@@ -13,7 +18,7 @@ module EventMachine
       end
 
       def initialize(options = {})
-        @options = options #TODO add default options
+        @options = DEFAULT_CONNECTION_OPTIONS.merge(options)
 
         validate_client
 
@@ -24,6 +29,18 @@ module EventMachine
 
       def connect
         @connection = EM.connect(@host, @port, Connection, self, @host, @port)
+      end
+
+      def each(&block)
+        @each_item_callback = block
+      end
+
+      def on_error(&block)
+        @error_callback = block
+      end
+
+      def on_no_data_recived(&block)
+        @no_data_callback = block
       end
 
       def validate_client

@@ -1,4 +1,5 @@
 require 'pubnub/em/client.rb'
+require 'pubnub/em/request.rb'
 
 module Pubnub
   class Client
