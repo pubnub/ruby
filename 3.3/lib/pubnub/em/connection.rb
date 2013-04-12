@@ -1,4 +1,6 @@
 require 'eventmachine'
+require 'http_parser'
+
 require 'pubnub/em/request.rb'
 require 'pubnub/em/response.rb'
 
@@ -6,11 +8,11 @@ module EventMachine
   module Pubnub
     class Connection < EM::Connection
 
-      STALL_TIMER   = 10
-      STALL_TIMEOUT = 60
+      MAX_LINE_LENGTH = 1024*1024
+      STALL_TIMER     = 10
+      STALL_TIMEOUT   = 60
 
       def initialize(client, host, port)
-        puts 'dupa test'
         @client  = client
         @host    = host
         @port    = port
@@ -19,29 +21,29 @@ module EventMachine
         #TODO connect reconnectors
         @network_reconnector      = nil
         @application_reconnectior = nil
+
       end
 
       def connection_completed
-        #reset_connection
+        reset_connection
+
         @request = Request.new(@options)
         send_data(@request)
       end
 
-      def post_init
-        @stall_timer = EM::PeriodicTimer.new(STALL_TIMER) do
-          if gracefully_closed?
-            @stall_timer.cancel
-          elsif stalled?
-            close_connection
-            invoke_callback(@client.no_data_callback)
-          end
-        end
-      end
+      #def post_init
+      #  @stall_timer = EM::PeriodicTimer.new(STALL_TIMER) do
+      #    if gracefully_closed?
+      #      @stall_timer.cancel
+      #    elsif stalled?
+      #      close_connection
+      #      invoke_callback(@client.no_data_callback)
+      #    end
+      #  end
+      #end
 
       def recive_data(data)
-        puts "DOSTALEM ODPOWIEDZ!"
-        puts data
-        # TODO parse data
+        @parser << data
       end
 
       def network_failure?
@@ -101,6 +103,39 @@ module EventMachine
                           @reconnector.reconnect_timeout,
                           @reconnector.reconnect_count)
         end
+      end
+
+      def invoke_callback(callback, *args)
+        callback.call(*args) if callback
+      end
+
+      def on_headers_complete(headers)
+        @response_code = @parser.status_code
+        @headers       = headers
+
+        puts "GOT RESPONSE CODE #{@response_code}"
+
+        if @response_code.to_i == 200
+
+          return
+        end
+
+        # TODO handle error codes
+
+      end
+
+      def on_message_complete(msg)
+        puts msg
+      end
+
+      def reset_connection
+        @buffer              = BufferedTokenizer.new("\r", MAX_LINE_LENGTH)
+        @parser              = Http::Parser.new(self)
+        @last_response       = Response.new
+        @response_code       = 0
+        @gracefully_closed   = false
+        @immediate_reconnect = false
+        @auto_reconnect      = @options[:auto_reconnect]
       end
 
     end

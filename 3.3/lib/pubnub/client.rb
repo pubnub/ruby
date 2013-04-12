@@ -8,6 +8,7 @@ module Pubnub
         instance_variable_set(:"@#{k}", v)
       end
       @ssl          = @ssl ? true : false
+      @secret_key   = @secret_key || '0'
       @session_uuid = generate_new_uuid
 
       validate_client
@@ -20,11 +21,20 @@ module Pubnub
           :cipher_key    => @cipher_key,
           :publish_key   => @publish_key,
           :subscribe_key => @subscribe_key,
-          :secret_key    => @secret_key
+          :secret_key    => @secret_key,
+          :host          => @host,
+          :operation     => 'publish',
+          :params        => { :uuid => @session_uuid }
         }
       )
 
-      request = Pubnub::Request.new(options)
+      EM.run do
+        client = EM::Pubnub::Client.connect(options)
+        client.on_no_data_recived do
+          puts "NO DATA RECIVED :("
+        end
+      end
+
     end
 
     private

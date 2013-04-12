@@ -26,7 +26,7 @@ require 'pubnub/error.rb'
 require 'pubnub/crypto.rb'
 
 DEFAULT_CONNECTION_OPTIONS = {
-  :host           => 'demo.pubnub.com',
+  :host           => 'pubsub.pubnub.com',
   :port           => 80,
   :method         => 'GET',
   :content_type   => "application/json",

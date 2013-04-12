@@ -20,11 +20,15 @@ module EventMachine
       def initialize(options = {})
         @options = DEFAULT_CONNECTION_OPTIONS.merge(options)
 
+        @options[:host] = DEFAULT_CONNECTION_OPTIONS[:host] if @options[:host].to_s.empty?
+
         validate_client
 
         @host       = @options[:host]
         @port       = @options[:port]
+
         @connection = nil
+
       end
 
       def connect
