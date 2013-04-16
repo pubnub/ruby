@@ -42,7 +42,8 @@ module EventMachine
       #  end
       #end
 
-      def recive_data(data)
+      def receive_data(data)
+        #puts data
         @parser << data
       end
 
@@ -113,7 +114,7 @@ module EventMachine
         @response_code = @parser.status_code
         @headers       = headers
 
-        puts "GOT RESPONSE CODE #{@response_code}"
+        #puts "GOT RESPONSE CODE #{@response_code}"
 
         if @response_code.to_i == 200
 
@@ -124,12 +125,22 @@ module EventMachine
 
       end
 
-      def on_message_complete(msg)
-        puts msg
+      def on_body(body)
+        @body << body
+      end
+
+      def on_message_complete
+        #puts Yajl::Parser.parse(@body)
+        if @options[:callback]
+          @options[:callback].call(Yajl::Parser.parse(@body))
+        else
+          #puts Yajl::Parser.parse(@body)
+        end
+        stop
       end
 
       def reset_connection
-        @buffer              = BufferedTokenizer.new("\r", MAX_LINE_LENGTH)
+        @body                = ''
         @parser              = Http::Parser.new(self)
         @last_response       = Response.new
         @response_code       = 0

@@ -82,6 +82,7 @@ module EventMachine
           next if val.to_s.empty?
           flat[param.to_s] = val.to_s
         end
+        flat
       end
 
       def query
@@ -98,25 +99,72 @@ module EventMachine
         #  origin << ORIGIN_HOST
         #end
 
-        encode_url(case @options[:operation]
+        url = encode_url(case @options[:operation]
                     when 'publish'
-                      [@options[:operation], @options[:publish_key], @options[:subscribe_key], @options[:secret_key], @options[:channel], '0', @options[:message].to_json]
+                      [
+                        @options[:operation],
+                        @options[:publish_key],
+                        @options[:subscribe_key],
+                        @options[:secret_key],
+                        @options[:channel],
+                        '0',
+                        @options[:message].to_json
+                      ]
                     when 'subscribe'
-                      [@options[:operation], @options[:subscribe_key], @options[:channel], '0', @options[:timetoken]]
+                      [
+                        @options[:operation],
+                        @options[:subscribe_key],
+                        @options[:channel],
+                        '0',
+                        @options[:timetoken]
+                      ]
                     when 'presence'
-                      ['subscribe', @options[:subscribe_key], @options[:channel].to_s + '-pnpres', '0', @options[:timetoken]]
+                      [
+                        'subscribe',
+                        @options[:subscribe_key],
+                        @options[:channel].to_s + '-pnpres',
+                        '0',
+                        @options[:timetoken]
+                      ]
                     when 'time'
-                      [@options[:operation], '0']
+                      [
+                        @options[:operation],
+                        '0'
+                      ]
                     when 'history'
-                      [@options[:operation], @options[:subscribe_key], @options[:channel], '0', @options[:history_limit]]
+                      [
+                        @options[:operation],
+                        @options[:subscribe_key],
+                        @options[:channel],
+                        '0',
+                        @options[:history_limit]
+                      ]
                     when 'detailed_history'
-                      ['v2', 'history', 'sub-key', @options[:subscribe_key], 'channel', @options[:channel]]
+                      [
+                        'v2',
+                        'history',
+                        'sub-key',
+                        @options[:subscribe_key],
+                        'channel',
+                        @options[:channel]
+                      ]
                     when 'here_now'
-                      ['v2', 'presence', 'sub-key', @options[:subscribe_key], 'channel', @options[:channel]]
+                      [
+                        'v2',
+                        'presence',
+                        'sub-key',
+                        @options[:subscribe_key],
+                        'channel',
+                        @options[:channel]
+                      ]
                     else
                       raise("I can't create that URL for you due to unknown operation type.")
                     end
-        ) + "?#{query}"
+        )
+
+        url = url + "?#{query}" unless query.empty?
+
+        url
 
       end
 
@@ -130,3 +178,4 @@ module EventMachine
     end
   end
 end
+
