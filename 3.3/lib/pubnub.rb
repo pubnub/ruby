@@ -6,7 +6,7 @@
 ## http://www.pubnub.com/
 
 ## -----------------------------------
-## PubNub 3.3 Real-time Push Cloud API
+## PubNub 3.4 Real-time Push Cloud API
 ## -----------------------------------
 
 require 'uuid'
@@ -18,6 +18,8 @@ require 'uri'
 require 'openssl'
 require 'eventmachine'
 require 'em-http-request'
+
+require 'version.rb'
 
 require 'pubnub/client.rb'
 require 'pubnub/request.rb'

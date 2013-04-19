@@ -19,14 +19,28 @@ module Pubnub
       @secret_key = options[:secret_key] || Configuration::DEFAULT_SECRET_KEY
       @timetoken  = options[:timetoken] || Configuration::DEFAULT_TIMETOKEN
       set_cipher_key(options, self.cipher_key)
-      set_message(options, self.cipher_key)
+      set_message(options, self.cipher_key) if @options[:operation] == 'publish'
       set_publish_key(options, self.publish_key)
       set_subscribe_key(options, self.subscribe_key)
       set_secret_key(options, self.secret_key)
       validate_request
 
-      puts "request done"
+    end
 
+    def host
+      if @ssl.present?
+        'https://' + @options[:host]
+        @port = 443
+      else
+        'http://' + @options[:host]
+        @port = 80
+      end
+    end
+
+    def query
+      params.map do |param, value|
+        [param, value].join('=')
+      end.sort.join('&')
     end
 
     def path
@@ -125,46 +139,46 @@ module Pubnub
     private
 
     def validate_request
-      raise(Pubnub::Error::OperationError, 'channel is required parameter.') if @channel.blank?
-      raise(Pubnub::Error::OperationError, 'callback is a required parameter.') if @callback.blank?
-      raise(Pubnub::Error::OperationError, 'callback is invalid.') if !@callback.respond_to? 'call'
+      raise(OperationError, 'channel is required parameter.') if @options[:channel].blank?
+      raise(OperationError, 'callback is a required parameter.') if @options[:callback].blank?
+      raise(OperationError, 'callback is invalid.') if !@options[:callback].respond_to? 'call'
 
     end
 
     def set_cipher_key(options, self_cipher_key)
       if self_cipher_key.present? && options['cipher_key'].present?
-        raise(Pubnub::Error::OperationError, "existing cipher_key #{self_cipher_key} cannot be overridden at publish-time.")
+        raise(OperationError, "existing cipher_key #{self_cipher_key} cannot be overridden at publish-time.")
 
       elsif (self_cipher_key.present? && options[:cipher_key].blank?) || (self_cipher_key.blank? && options[:cipher_key].present?)
 
         this_cipher_key = self_cipher_key || options[:cipher_key]
-        raise(Pubnub::Error::OperationError, "secret key must be a string.") if this_cipher_key.class != String
+        raise(OperationError, 'secret key must be a string.') if this_cipher_key.class != String
         self.cipher_key = this_cipher_key
       end
     end
 
     def set_secret_key(options, self_secret_key)
       if self_secret_key.present? && options['secret_key'].present?
-        raise(Pubnub::Error::OperationError, "existing secret_key #{self_secret_key} cannot be overridden at publish-time.")
+        raise(OperationError, "existing secret_key #{self_secret_key} cannot be overridden at publish-time.")
 
       elsif (self_secret_key.present? && options[:secret_key].blank?) || (self_secret_key.blank? && options[:secret_key].present?)
 
         my_secret_key = self_secret_key || options[:secret_key]
-        raise(Pubnub::Error::OperationError, "secret key must be a string.") if my_secret_key.class != String
+        raise(OperationError, 'secret key must be a string.') if my_secret_key.class != String
 
-        signature       = "{ @publish_key, @subscribe_key, @secret_key, channel, message}"
-        digest          = OpenSSL::Digest.new("sha256")
+        signature       = '{ @publish_key, @subscribe_key, @secret_key, channel, message}'
+        digest          = OpenSSL::Digest.new('sha256')
         key             = [my_secret_key]
-        hmac            = OpenSSL::HMAC.hexdigest(digest, key.pack("H*"), signature)
+        hmac            = OpenSSL::HMAC.hexdigest(digest, key.pack('H*'), signature)
         self.secret_key = hmac
       else
-        self.secret_key = "0"
+        self.secret_key = '0'
       end
     end
 
     def set_message(options, self_cipher_key)
-      if options[:message].blank? && options[:message] != ""
-        raise(Pubnub::Error::OperationError, "message is a required parameter.")
+      if options[:message].blank? && options[:message] != ''
+        raise(OperationError, 'message is a required parameter.')
       else
         my_cipher_key = options[:cipher_key] || self_cipher_key
 
@@ -178,9 +192,9 @@ module Pubnub
 
     def set_publish_key(options, self_publish_key)
       if options[:publish_key].blank? && self_publish_key.blank?
-        raise(Pubnub::Error::OperationError, "publish_key is a required parameter.")
+        raise(OperationError, 'publish_key is a required parameter.')
       elsif self_publish_key.present? && options['publish_key'].present?
-        raise(Pubnub::Error::OperationError, "existing publish_key #{self_publish_key} cannot be overridden at publish-time.")
+        raise(OperationError, "existing publish_key #{self_publish_key} cannot be overridden at publish-time.")
       else
         self.publish_key = (self_publish_key || options[:publish_key]).to_s
       end
@@ -188,9 +202,9 @@ module Pubnub
 
     def set_subscribe_key(options, self_subscribe_key)
       if options[:subscribe_key].blank? && self_subscribe_key.blank?
-        raise(Pubnub::Error::OperationError, "subscribe_key is a required parameter.")
+        raise(OperationError, 'subscribe_key is a required parameter.')
       elsif self_subscribe_key.present? && options['subscribe_key'].present?
-        raise(Pubnub::Error::OperationError, "existing subscribe_key #{self_subscribe_key} cannot be overridden at subscribe-time.")
+        raise(OperationError, "existing subscribe_key #{self_subscribe_key} cannot be overridden at subscribe-time.")
       else
         self.subscribe_key = (self_subscribe_key || options[:subscribe_key]).to_s
       end
