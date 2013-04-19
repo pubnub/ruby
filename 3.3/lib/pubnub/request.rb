@@ -1,6 +1,10 @@
 require 'pubnub/configuration.rb'
 require 'pubnub/error.rb'
 
+require 'openssl'
+require 'digest/sha2'
+require 'base64'
+
 module Pubnub
   class Request
     include Pubnub::Configuration
@@ -9,98 +13,110 @@ module Pubnub
     attr_accessor :ssl, :channel, :callback, :cipher_key, :subscribe_key, :secret_key, :operation, :message, :publish_key
 
     def initialize(options = {})
-      options.each do |k,v|
-         instance_variable_set(:"@#{k}", v)
-      end
-
-      puts options
-
+      #puts 'options=' + options.to_s
       @options = options
-      @secret_key = options[:secret_key] || Configuration::DEFAULT_SECRET_KEY
-      @timetoken  = options[:timetoken] || Configuration::DEFAULT_TIMETOKEN
-      set_cipher_key(options, self.cipher_key)
-      set_message(options, self.cipher_key) if @options[:operation] == 'publish'
-      set_publish_key(options, self.publish_key)
-      set_subscribe_key(options, self.subscribe_key)
-      set_secret_key(options, self.secret_key)
-      validate_request
+
+      @params = options[:params]
+      @operation = options[:operation].to_s
+      @callback = options[:callback]
+      @session_uuid = options[:session_uuid]
+      @channel = options[:channel]
+      @jsonp = options[:jsonp].present? ? "1" : "0"
+      @message = options[:message]
+      @timetoken = options[:timetoken] || "0"
+      @timetoken = options[:override_timetoken] if options[:override_timetoken]
+      @ssl = options[:ssl]
+      @params = options[:params]
+
+      @history_limit = options[:limit]
+
+      @port = options[:port]
+      @url = options[:url]
+      @host = options[:origin]
+      @query = options[:query]
+
+      set_cipher_key(options, @cipher_key) if %w(publish subscribe detailed_history history).include? @operation
+      set_message(options, @cipher_key) if %w(publish).include? @operation
+      set_publish_key(options, @publish_key) if %w(publish).include? @operation
+      set_subscribe_key(options, @subscribe_key) if %w(publish presence here_now detailed_history history).include? @operation
+      set_secret_key(options, @secret_key) if %w(publish subscribe).include? @operation
+      #validate_request
+
+      #self.instance_variables.each do |i|
+      #  puts i.to_s + " => " + self.instance_variable_get(i).to_s
+      #end
 
     end
 
-    def host
-      if @ssl.present?
-        'https://' + @options[:host]
+    def origin
+      if @ssl
+        @origin = 'https://' + @host
         @port = 443
       else
-        'http://' + @options[:host]
+        @origin = 'http://' + @host
         @port = 80
       end
-    end
-
-    def query
-      params.map do |param, value|
-        [param, value].join('=')
-      end.sort.join('&')
+      @origin
     end
 
     def path
-      encode_path(case @options[:operation]
+      encode_path(case @operation
                    when 'publish'
                      [
-                         @options[:operation],
-                         @options[:publish_key],
-                         @options[:subscribe_key],
-                         @options[:secret_key],
-                         @options[:channel],
+                         @operation,
+                         @publish_key,
+                         @subscribe_key,
+                         @secret_key,
+                         @channel,
                          '0',
-                         @options[:message].to_json
+                         @message.to_json
                      ]
                    when 'subscribe'
                      [
-                         @options[:operation],
-                         @options[:subscribe_key],
-                         @options[:channel],
+                         @operation,
+                         @subscribe_key,
+                         @channel,
                          '0',
-                         @options[:timetoken]
+                         @timetoken
                      ]
                    when 'presence'
                      [
                          'subscribe',
-                         @options[:subscribe_key],
-                         @options[:channel].to_s + '-pnpres',
+                         @subscribe_key,
+                         @channel.to_s + '-pnpres',
                          '0',
-                         @options[:timetoken]
+                         @timetoken
                      ]
                    when 'time'
                      [
-                         @options[:operation],
+                         @operation,
                          '0'
                      ]
                    when 'history'
                      [
-                         @options[:operation],
-                         @options[:subscribe_key],
-                         @options[:channel],
+                         @operation,
+                         @subscribe_key,
+                         @channel,
                          '0',
-                         @options[:history_limit]
+                         @history_limit
                      ]
                    when 'detailed_history'
                      [
                          'v2',
                          'history',
                          'sub-key',
-                         @options[:subscribe_key],
+                         @subscribe_key,
                          'channel',
-                         @options[:channel]
+                         @channel
                      ]
                    when 'here_now'
                      [
                          'v2',
                          'presence',
                          'sub-key',
-                         @options[:subscribe_key],
+                         @subscribe_key,
                          'channel',
-                         @options[:channel]
+                         @channel
                      ]
                    else
                      raise("I can't create that URL for you due to unknown operation type.")
@@ -116,13 +132,9 @@ module Pubnub
       }.reject(&:empty?).join('/')
     end
 
-    def origin
-      "http://#{@options[:host]}"
-    end
-
     def params
       flat = {}
-      @options[:params].each do |param,val|
+      @params.each do |param,val|
         next if val.to_s.empty?
         flat[param.to_s] = val.to_s
       end
@@ -138,27 +150,37 @@ module Pubnub
 
     private
 
+    def aes_encrypt(cipher_key, options, publish_request)
+
+      pc = Pubnub::Crypto.new(cipher_key)
+      publish_request.message = pc.encrypt(options[:message])
+
+    end
+
     def validate_request
-      raise(OperationError, 'channel is required parameter.') if @options[:channel].blank?
+      raise(OperationError, 'channel is required parameter.') if @options[:channel].blank? && @options[:operation] != 'time'
       raise(OperationError, 'callback is a required parameter.') if @options[:callback].blank?
       raise(OperationError, 'callback is invalid.') if !@options[:callback].respond_to? 'call'
 
     end
 
     def set_cipher_key(options, self_cipher_key)
-      if self_cipher_key.present? && options['cipher_key'].present?
+      puts "\n\n set_cipher_key(#{options.to_s}, #{self_cipher_key})\n\n"
+      if self_cipher_key.present? && options[:cipher_key].present?
         raise(OperationError, "existing cipher_key #{self_cipher_key} cannot be overridden at publish-time.")
 
       elsif (self_cipher_key.present? && options[:cipher_key].blank?) || (self_cipher_key.blank? && options[:cipher_key].present?)
 
         this_cipher_key = self_cipher_key || options[:cipher_key]
         raise(OperationError, 'secret key must be a string.') if this_cipher_key.class != String
-        self.cipher_key = this_cipher_key
+        @cipher_key = this_cipher_key
       end
     end
 
     def set_secret_key(options, self_secret_key)
-      if self_secret_key.present? && options['secret_key'].present?
+      puts "\n\n set_secret_key(#{options.to_s}, #{self_secret_key})\n\n"
+
+      if self_secret_key.present? && options[:secret_key].present?
         raise(OperationError, "existing secret_key #{self_secret_key} cannot be overridden at publish-time.")
 
       elsif (self_secret_key.present? && options[:secret_key].blank?) || (self_secret_key.blank? && options[:secret_key].present?)
@@ -170,9 +192,9 @@ module Pubnub
         digest          = OpenSSL::Digest.new('sha256')
         key             = [my_secret_key]
         hmac            = OpenSSL::HMAC.hexdigest(digest, key.pack('H*'), signature)
-        self.secret_key = hmac
+        @secret_key = hmac
       else
-        self.secret_key = '0'
+        @secret_key = '0'
       end
     end
 
@@ -183,9 +205,9 @@ module Pubnub
         my_cipher_key = options[:cipher_key] || self_cipher_key
 
         if my_cipher_key.present?
-          self.message = Yajl.dump(aes_encrypt(my_cipher_key, options, self))
+          @message = aes_encrypt(my_cipher_key, options, self)
         else
-          self.message = Yajl.dump(options[:message])
+          @message = options[:message]
         end
       end
     end
@@ -193,20 +215,20 @@ module Pubnub
     def set_publish_key(options, self_publish_key)
       if options[:publish_key].blank? && self_publish_key.blank?
         raise(OperationError, 'publish_key is a required parameter.')
-      elsif self_publish_key.present? && options['publish_key'].present?
+      elsif self_publish_key.present? && options[:publish_key].present?
         raise(OperationError, "existing publish_key #{self_publish_key} cannot be overridden at publish-time.")
       else
-        self.publish_key = (self_publish_key || options[:publish_key]).to_s
+        @publish_key = (self_publish_key || options[:publish_key]).to_s
       end
     end
 
     def set_subscribe_key(options, self_subscribe_key)
       if options[:subscribe_key].blank? && self_subscribe_key.blank?
         raise(OperationError, 'subscribe_key is a required parameter.')
-      elsif self_subscribe_key.present? && options['subscribe_key'].present?
+      elsif self_subscribe_key.present? && options[:subscribe_key].present?
         raise(OperationError, "existing subscribe_key #{self_subscribe_key} cannot be overridden at subscribe-time.")
       else
-        self.subscribe_key = (self_subscribe_key || options[:subscribe_key]).to_s
+        @subscribe_key = (self_subscribe_key || options[:subscribe_key]).to_s
       end
     end
 

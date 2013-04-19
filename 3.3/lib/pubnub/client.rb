@@ -11,22 +11,35 @@ module Pubnub
     attr_accessor :history_limit, :history_count, :history_start, :history_end, :history_reverse, :session_uuid, :last_timetoken, :origin, :error
 
     def initialize(options = {})
-      @operation     = options[:operation].to_s
-      @callback      = options[:callback]# || DEFAULT_CALLBACK
-      @cipher_key    = options[:cipher_key]
-      @publish_key   = options[:publish_key]# || DEFAULT_PUBLISH_KEY
-      @subscribe_key = options[:subscribe_key]# || DEFAULT_SUBSCRIBE_KEY
-      @channel       = options[:channel]# || DEFAULT_CHANNEL
-      @message       = options[:message]
-      @ssl           = options[:ssl]# || DEFAULT_SSL_SET
-      @secret_key    = options[:secret_key] || '0'
-      @timetoken     = options[:timetoken] || '0'
-      @session_uuid  = options[:session_uuid]# || generate_new_uuid
+      puts options
 
-      @port          = options[:port]# || DEFAULT_PORT
-      @url           = options[:url]
-      @host          = options[:host] || DEFAULT_HOST
-      @query         = options[:query]
+      @operation       = options[:operation].to_s
+      @operation       = options[:operation].to_s
+      @callback        = options[:callback]# || DEFAULT_CALLBACK
+      @cipher_key      = options[:cipher_key]
+      @publish_key     = options[:publish_key]# || DEFAULT_PUBLISH_KEY
+      @subscribe_key   = options[:subscribe_key]# || DEFAULT_SUBSCRIBE_KEY
+      @channel         = options[:channel]# || DEFAULT_CHANNEL
+      @message         = options[:message]
+      @ssl             = options[:ssl]# || DEFAULT_SSL_SET
+      @secret_key      = options[:secret_key]# || '0'
+      @timetoken       = options[:timetoken]# || '0'
+      @session_uuid    = options[:session_uuid] || generate_new_uuid unless Rails.env.test?
+
+      @history_count   = options[:count]
+      @history_start   = options[:start]
+      @history_end     = options[:end]
+      @history_reverse = options[:reverse]
+
+      @port            = options[:port]# || DEFAULT_PORT
+      @url             = options[:url]
+      @origin          = options[:origin]
+      @origin          = DEFAULT_ORIGIN unless @origin
+      @query           = options[:query]
+
+      @params          = Hash.new
+
+      puts "TO JEST HOST #{@origin}"
 
       validate_client
     end
@@ -38,6 +51,9 @@ module Pubnub
 
     def subscribe(options = {})
       merge_options(options, 'subscribe')
+
+      @options[:channel] = options[:channel] if options[:channel]
+
       make_request
     end
 
@@ -54,10 +70,10 @@ module Pubnub
     def detailed_history(options = {})
       merge_options(options, 'detailed_history')
 
-      @options[:params].merge!({:count => @options[:history_count]})
-      @options[:params].merge!({:start => @options[:history_start]}) unless @options[:history_start].nil?
-      @options[:params].merge!({:end => @options[:history_end]}) unless @options[:history_end].nil?
-      @options[:params].merge!({:reverse => 'true'}) if !@options[:history_reverse].nil? && @options[:history_reverse]
+      @options[:params].merge!({:count => options[:count]})
+      @options[:params].merge!({:start => options[:start]}) unless options[:start].nil?
+      @options[:params].merge!({:end => options[:end]}) unless options[:end].nil?
+      @options[:params].merge!({:reverse => 'true'}) if options[:reverse]
 
       make_request
     end
@@ -81,7 +97,7 @@ module Pubnub
         :publish_key   => @publish_key,
         :subscribe_key => @subscribe_key,
         :secret_key    => @secret_key,
-        :host          => @host,
+        :origin        => @origin,
         :operation     => operation,
         :params        => { :uuid => @session_uuid },
         :timetoken     => @timetoken
@@ -89,10 +105,14 @@ module Pubnub
     end
 
     def make_request
+      puts @options
       request = Pubnub::Request.new(@options)
-      Thread.new {
+
+      #puts request.origin + request.path + '?' + request.query
+
+      #Thread.new {
         EM.run do
-          puts "tutej #{request}"
+          #puts "tutej #{request}"
           http = EM::HttpRequest.new(request.origin).get :path => request.path, :query => request.query
           http.callback {
 
@@ -111,7 +131,7 @@ module Pubnub
             EM.stop
           }
         end
-      }
+      #}
     end
 
     def validate_client

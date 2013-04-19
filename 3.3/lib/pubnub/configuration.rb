@@ -2,7 +2,7 @@ module Pubnub
   module Configuration
     DEFAULT_SECRET_KEY         = 0
     DEFAULT_TIMETOKEN          = 0
-    DEFAULT_HOST               = 'pubsub.pubnub.com'
+    DEFAULT_ORIGIN             = 'pubsub.pubnub.com'
     DEFAULT_PORT               = 80
     DEFAULT_METHOD             = 'GET'
     DEFAULT_CONTENT_TYPE       = 'application/json'
