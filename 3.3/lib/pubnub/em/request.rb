@@ -5,9 +5,6 @@ module EventMachine
   module Pubnub
     class Request
 
-      ORIGIN_HOST = 'pubsub.pubnub.com'
-
-
       def initialize(options = {})
         @options = {
           :host => ORIGIN_HOST,
