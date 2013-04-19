@@ -22,7 +22,6 @@ module EventMachine
         data = []
         data << "#{@options[:request_method]} #{request_uri} HTTP/1.1"
         data << "Host: #{@options[:host]}"
-
         #if gzip?
         #  data << 'Connection: Keep-Alive'
         #  data << 'Accept-Encoding: deflate, gzip'
@@ -30,9 +29,9 @@ module EventMachine
           data << 'Accept: */*'
         #end
 
-        data << "User-Agent: #{@options[:user_agent]}" if @options[:user_agent]
+        data << "User-Agent: Ruby"
         if put_or_post?
-          data << "Content-Type: #{@options[:content_type]}"
+          data << "Content-Type: #{@options[:content_type]}; charset=US-ASCII"
           data << "Content-Length: #{content.bytesize}"
         end
 

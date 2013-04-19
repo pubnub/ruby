@@ -17,6 +17,7 @@ require 'open-uri'
 require 'uri'
 require 'openssl'
 require 'eventmachine'
+require 'em-http-request'
 
 require 'pubnub/client.rb'
 require 'pubnub/request.rb'
@@ -24,21 +25,6 @@ require 'pubnub/configuration.rb'
 require 'pubnub/daemon.rb'
 require 'pubnub/error.rb'
 require 'pubnub/crypto.rb'
-
-DEFAULT_CONNECTION_OPTIONS = {
-  :host           => 'pubsub.pubnub.com',
-  :port           => 80,
-  :method         => 'GET',
-  :content_type   => "application/json",
-  :path           => '/',
-  :params         => {},
-  :headers        => {},
-  :user_agent     => "Pubnub Ruby 3.4",
-  :ssl            => false,
-  :timeout        => 0,
-  :encoding       => nil,
-  :auto_reconnect => true
-}
 
 class Object
   def blank?
@@ -62,7 +48,7 @@ end
 
 module Pubnub
   extend Configuration
-  extend Error
+  include Error
 
   class << self
     def new(*args)

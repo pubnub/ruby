@@ -44,6 +44,8 @@ GEM
       http_parser.rb (>= 0.5.3)
     em-socksify (0.2.1)
       eventmachine (>= 1.0.0.beta.4)
+    em-synchrony (1.0.3)
+      eventmachine (>= 1.0.0.beta.1)
     erubis (2.7.0)
     eventmachine (1.0.0)
     fastthread (1.0.7)
@@ -143,6 +145,7 @@ PLATFORMS
 
 DEPENDENCIES
   em-http-request
+  em-synchrony
   httparty
   passenger
   pubnub (= 3.3.0.7)

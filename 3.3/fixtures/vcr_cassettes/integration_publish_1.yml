@@ -22,7 +22,7 @@ http_interactions:
       - text/javascript; charset="UTF-8"
       Transfer-Encoding:
       - chunked
-    Connection:
+      Connection:
       - keep-alive
       Cache-Control:
       - no-cache
@@ -35,6 +35,6 @@ http_interactions:
     body:
       encoding: US-ASCII
       string: ! '[1,"Sent","13450923394327693"]'
-    http_version:
+    http_version: 
   recorded_at: Thu, 16 Aug 2012 04:45:39 GMT
 recorded_with: VCR 2.2.4
