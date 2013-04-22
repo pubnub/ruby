@@ -10,10 +10,10 @@ module Pubnub
     include Pubnub::Configuration
     include Pubnub::Error
 
-    attr_accessor :ssl, :channel, :callback, :cipher_key, :subscribe_key, :secret_key, :operation, :message, :publish_key
+    attr_accessor :operation, :response, :ssl, :channel, :callback, :cipher_key, :subscribe_key, :secret_key, :operation, :message, :publish_key
 
     def initialize(options = {})
-      #puts 'options=' + options.to_s
+      puts 'options to reqest=' + options.to_s
       @options = options
 
       @params = options[:params]
@@ -38,7 +38,7 @@ module Pubnub
       set_cipher_key(options, @cipher_key) if %w(publish subscribe detailed_history history).include? @operation
       set_message(options, @cipher_key) if %w(publish).include? @operation
       set_publish_key(options, @publish_key) if %w(publish).include? @operation
-      set_subscribe_key(options, @subscribe_key) if %w(publish presence here_now detailed_history history).include? @operation
+      set_subscribe_key(options, @subscribe_key) if %w(publish presence here_now detailed_history history subscribe).include? @operation
       set_secret_key(options, @secret_key) if %w(publish subscribe).include? @operation
       #validate_request
 
@@ -147,6 +147,38 @@ module Pubnub
       end.sort.join('&')
     end
 
+    def handle_response(response)
+      @response = response.respond_to?(:content) ? Yajl.load(response.content) : Yajl.load(response)
+      @last_timetoken = @timetoken
+      @timetoken = @response[1] unless @operation == 'time'
+
+      if self.cipher_key.present? && %w(subscribe history detailed_history).include?(@operation)
+        response_array = Array.new
+        crypto = Pubnub::Crypto.new(@cipher_key)
+
+        if %w(subscribe detailed_history).include?(@operation)
+          iteration = @response[0]
+        else
+          iteration = @response
+        end
+
+        iteration.each do |msg|
+          response_array << crypto.decrypt(msg)
+        end if iteration
+
+        case @operation
+          when 'subscribe'
+            @response[0] = response_array
+          when 'detailed_history'
+            json_response_data = Yajl.load(response)
+            @response = [response_array, json_response_data[1], json_response_data[2]]
+          when 'history'
+            @response = response_array
+        end
+
+      end
+    end
+
 
     private
 
@@ -223,11 +255,15 @@ module Pubnub
     end
 
     def set_subscribe_key(options, self_subscribe_key)
+      puts "W OGOLE TUTEJ JESTEM"
       if options[:subscribe_key].blank? && self_subscribe_key.blank?
+        puts "\n SUBSCRIBE KEY! 2\n"
         raise(OperationError, 'subscribe_key is a required parameter.')
       elsif self_subscribe_key.present? && options[:subscribe_key].present?
+        puts "\n SUBSCRIBE KEY! 1\n"
         raise(OperationError, "existing subscribe_key #{self_subscribe_key} cannot be overridden at subscribe-time.")
       else
+        puts "\n SUBSCRIBE KEY! \n"
         @subscribe_key = (self_subscribe_key || options[:subscribe_key]).to_s
       end
     end

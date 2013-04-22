@@ -8,23 +8,24 @@ module Pubnub
     include Configuration
     attr_accessor :cipher_key, :host, :query, :response, :timetoken, :url, :operation, :callback, :publish_key, :subscribe_key, :secret_key, :channel, :jsonp, :message, :ssl, :port
 
-    attr_accessor :history_limit, :history_count, :history_start, :history_end, :history_reverse, :session_uuid, :last_timetoken, :origin, :error
+    attr_accessor :close_connection, :history_limit, :history_count, :history_start, :history_end, :history_reverse, :session_uuid, :last_timetoken, :origin, :error
 
     def initialize(options = {})
       puts options
 
+      @retry_count       = 0
       @operation       = options[:operation].to_s
       @operation       = options[:operation].to_s
       @callback        = options[:callback]# || DEFAULT_CALLBACK
       @cipher_key      = options[:cipher_key]
-      @publish_key     = options[:publish_key]# || DEFAULT_PUBLISH_KEY
-      @subscribe_key   = options[:subscribe_key]# || DEFAULT_SUBSCRIBE_KEY
-      @channel         = options[:channel]# || DEFAULT_CHANNEL
+      @publish_key     = options[:publish_key] || DEFAULT_PUBLISH_KEY
+      @subscribe_key   = options[:subscribe_key] || DEFAULT_SUBSCRIBE_KEY
+      @channel         = options[:channel] || DEFAULT_CHANNEL
       @message         = options[:message]
       @ssl             = options[:ssl]# || DEFAULT_SSL_SET
       @secret_key      = options[:secret_key]# || '0'
       @timetoken       = options[:timetoken]# || '0'
-      @session_uuid    = options[:session_uuid] || generate_new_uuid unless Rails.env.test?
+      @session_uuid    = options[:session_uuid]
 
       @history_count   = options[:count]
       @history_start   = options[:start]
@@ -46,7 +47,7 @@ module Pubnub
 
     def publish(options = {})
       merge_options(options, 'publish')
-      make_request
+      start_request
     end
 
     def subscribe(options = {})
@@ -54,17 +55,17 @@ module Pubnub
 
       @options[:channel] = options[:channel] if options[:channel]
 
-      make_request
+      start_request
     end
 
     def presence(options = {})
       merge_options(options, 'presence')
-      make_request
+      start_request
     end
 
     def history(options = {})
       merge_options(options, 'history')
-      make_request
+      start_request
     end
 
     def detailed_history(options = {})
@@ -75,17 +76,17 @@ module Pubnub
       @options[:params].merge!({:end => options[:end]}) unless options[:end].nil?
       @options[:params].merge!({:reverse => 'true'}) if options[:reverse]
 
-      make_request
+      start_request
     end
 
     def here_now(options = {})
       merge_options(options, 'here_now')
-      make_request
+      start_request
     end
 
     def time(options = {})
       merge_options(options, 'time')
-      make_request
+      start_request
     end
 
     private
@@ -104,34 +105,58 @@ module Pubnub
       }.merge(options)
     end
 
-    def make_request
+    def start_request
       puts @options
       request = Pubnub::Request.new(@options)
 
-      #puts request.origin + request.path + '?' + request.query
+      puts request.origin + request.path + '?' + request.query
 
       #Thread.new {
         EM.run do
-          #puts "tutej #{request}"
-          http = EM::HttpRequest.new(request.origin).get :path => request.path, :query => request.query
-          http.callback {
-
-            if http.response_header.status.to_i == 200
-              puts "GOOD ]:->"
-              request.callback.call(Yajl::Parser.parse(http.response))
+          EM.add_periodic_timer(PERIODIC_TIMER) do
+            if @close_connection
+              EM.stop
             else
-              begin
-                puts "NOT GOOD"
-                request.callback.call(Yajl::Parser.parse(http.response))
-              rescue => e
-                request.callback.call([0, "Bad server response: #{http.response_header.http_status.to_i}"])
-              end
-            end
+              http = EM::HttpRequest.new(request.origin).get :path => request.path, :query => request.query
 
-            EM.stop
-          }
+              http.callback {
+
+                if http.response_header.status.to_i == 200
+                  puts "GOOD ]:->"
+
+                  request.handle_response(http.response)
+
+                  request.callback.call(request.response)
+                else
+                  begin
+                    puts "NOT GOOD"
+                    request.callback.call(Yajl::Parser.parse(http.response))
+                    increment_retries
+                  rescue => e
+                    request.callback.call([0, "Bad server response: #{http.response_header.http_status.to_i}"])
+                    increment_retries
+                  end
+                end
+
+                EM.stop unless %w(subscribe presence).include? request.operation || @retry
+              }
+
+              http.errback {
+
+              }
+            end
+          end
         end
       #}
+    end
+    
+    def increment_retries
+      if @retry_count < MAX_RETRIES
+        @retry = true
+      else
+        @retry = false
+      end
+      @retry_count = @retry_count + 1
     end
 
     def validate_client
