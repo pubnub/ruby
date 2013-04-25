@@ -7,6 +7,7 @@ describe "Subscribe Integration Test" do
     before do
       @my_callback = lambda { |message| Rails.logger.debug(message) }
       @pn = Pubnub.new(:subscribe_key => :demo)
+      @pn.session_uuid = nil
     end
 
     context "when it is successful" do
@@ -19,8 +20,9 @@ describe "Subscribe Integration Test" do
             my_response = [[], "13617737325885516"]
             mock(@my_callback).call(my_response) {EM.stop}
 
-            any_instance_of(Pubnub) do |p|
-              mock.proxy(p).retryRequest(false, anything, anything, 0.5)
+            any_instance_of(Pubnub::Client) do |p|
+              mock.proxy(p).increment_retries
+              #mock.proxy(p).retryRequest(false, anything, anything, 0.5)
             end
 
             VCR.use_cassette("integration_subscribe_4", :record => :none) do
@@ -45,8 +47,9 @@ describe "Subscribe Integration Test" do
             my_response = [[], "13617798873598999"]
             mock(@my_callback).call(my_response) {EM.stop}
 
-            any_instance_of(Pubnub) do |p|
-              mock.proxy(p).retryRequest(false, anything, anything, 1)
+            any_instance_of(Pubnub::Client) do |p|
+              #mock.proxy(p).increment_retries
+              #mock.proxy(p).retryRequest(false, anything, anything, 1)
             end
 
             VCR.use_cassette("integration_subscribe_5", :record => :none) do

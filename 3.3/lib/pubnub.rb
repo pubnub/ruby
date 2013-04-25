@@ -54,7 +54,7 @@ module Pubnub
 
   class << self
     def new(*args)
-      raise(InitError, 'Initialize with either a hash of options, or exactly 5 named parameters.') unless args.size == 5 or (args.size == 1 and args[0].class == Hash)
+      raise(Pubnub::Error::InitError, 'Initialize with either a hash of options, or exactly 5 named parameters.') unless args.size == 5 or (args.size == 1 and args[0].class == Hash)
 
       if args[0].class == Hash
         options = args[0]

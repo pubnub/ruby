@@ -9,6 +9,7 @@ describe "History V2 Integration Test" do
   before do
     @my_sub_key = :demo
     @pn = Pubnub.new(:subscribe_key => @my_sub_key)
+    @pn.session_uuid = nil
     @my_callback = lambda { |x| puts(x) }
 
     @no_history_channel = "no_history"

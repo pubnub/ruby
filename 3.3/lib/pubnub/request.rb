@@ -10,10 +10,9 @@ module Pubnub
     include Pubnub::Configuration
     include Pubnub::Error
 
-    attr_accessor :operation, :response, :ssl, :channel, :callback, :cipher_key, :subscribe_key, :secret_key, :operation, :message, :publish_key
+    attr_accessor :timetoken, :operation, :response, :ssl, :channel, :callback, :cipher_key, :subscribe_key, :secret_key, :operation, :message, :publish_key
 
     def initialize(options = {})
-      puts 'options to reqest=' + options.to_s
       @options = options
 
       @params = options[:params]
@@ -21,7 +20,6 @@ module Pubnub
       @callback = options[:callback]
       @session_uuid = options[:session_uuid]
       @channel = options[:channel]
-      @jsonp = options[:jsonp].present? ? "1" : "0"
       @message = options[:message]
       @timetoken = options[:timetoken] || "0"
       @timetoken = options[:override_timetoken] if options[:override_timetoken]
@@ -40,11 +38,6 @@ module Pubnub
       set_publish_key(options, @publish_key) if %w(publish).include? @operation
       set_subscribe_key(options, @subscribe_key) if %w(publish presence here_now detailed_history history subscribe).include? @operation
       set_secret_key(options, @secret_key) if %w(publish subscribe).include? @operation
-      #validate_request
-
-      #self.instance_variables.each do |i|
-      #  puts i.to_s + " => " + self.instance_variable_get(i).to_s
-      #end
 
     end
 
@@ -148,6 +141,7 @@ module Pubnub
     end
 
     def handle_response(response)
+
       @response = response.respond_to?(:content) ? Yajl.load(response.content) : Yajl.load(response)
       @last_timetoken = @timetoken
       @timetoken = @response[1] unless @operation == 'time'
@@ -197,7 +191,6 @@ module Pubnub
     end
 
     def set_cipher_key(options, self_cipher_key)
-      puts "\n\n set_cipher_key(#{options.to_s}, #{self_cipher_key})\n\n"
       if self_cipher_key.present? && options[:cipher_key].present?
         raise(OperationError, "existing cipher_key #{self_cipher_key} cannot be overridden at publish-time.")
 
@@ -210,8 +203,6 @@ module Pubnub
     end
 
     def set_secret_key(options, self_secret_key)
-      puts "\n\n set_secret_key(#{options.to_s}, #{self_secret_key})\n\n"
-
       if self_secret_key.present? && options[:secret_key].present?
         raise(OperationError, "existing secret_key #{self_secret_key} cannot be overridden at publish-time.")
 
@@ -255,15 +246,11 @@ module Pubnub
     end
 
     def set_subscribe_key(options, self_subscribe_key)
-      puts "W OGOLE TUTEJ JESTEM"
       if options[:subscribe_key].blank? && self_subscribe_key.blank?
-        puts "\n SUBSCRIBE KEY! 2\n"
         raise(OperationError, 'subscribe_key is a required parameter.')
       elsif self_subscribe_key.present? && options[:subscribe_key].present?
-        puts "\n SUBSCRIBE KEY! 1\n"
         raise(OperationError, "existing subscribe_key #{self_subscribe_key} cannot be overridden at subscribe-time.")
       else
-        puts "\n SUBSCRIBE KEY! \n"
         @subscribe_key = (self_subscribe_key || options[:subscribe_key]).to_s
       end
     end

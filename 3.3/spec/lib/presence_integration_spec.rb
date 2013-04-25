@@ -7,6 +7,7 @@ describe "Presence Integration Test" do
     before do
       @my_callback = lambda { |message| Rails.logger.debug(message) }
       @pn = Pubnub.new(:subscribe_key => :demo)
+      @pn.session_uuid = nil
     end
 
     context "when it is successful" do

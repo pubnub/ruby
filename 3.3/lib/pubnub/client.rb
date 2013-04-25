@@ -2,30 +2,28 @@ require 'pubnub/em/client.rb'
 require 'pubnub/em/request.rb'
 require 'pubnub/configuration.rb'
 require 'em-http-request'
+require 'httparty'
 
 module Pubnub
   class Client
     include Configuration
-    attr_accessor :cipher_key, :host, :query, :response, :timetoken, :url, :operation, :callback, :publish_key, :subscribe_key, :secret_key, :channel, :jsonp, :message, :ssl, :port
 
+    attr_accessor :uuid, :cipher_key, :host, :query, :response, :timetoken, :url, :operation, :callback, :publish_key, :subscribe_key, :secret_key, :channel, :jsonp, :message, :ssl, :port
     attr_accessor :close_connection, :history_limit, :history_count, :history_start, :history_end, :history_reverse, :session_uuid, :last_timetoken, :origin, :error
 
     def initialize(options = {})
-      puts options
-
-      @retry_count       = 0
-      @operation       = options[:operation].to_s
-      @operation       = options[:operation].to_s
+      @retry           = true
+      @retry_count     = 0
       @callback        = options[:callback]# || DEFAULT_CALLBACK
       @cipher_key      = options[:cipher_key]
-      @publish_key     = options[:publish_key] || DEFAULT_PUBLISH_KEY
+      @publish_key     = options[:publish_key]# || DEFAULT_PUBLISH_KEY
       @subscribe_key   = options[:subscribe_key] || DEFAULT_SUBSCRIBE_KEY
       @channel         = options[:channel] || DEFAULT_CHANNEL
       @message         = options[:message]
       @ssl             = options[:ssl]# || DEFAULT_SSL_SET
       @secret_key      = options[:secret_key]# || '0'
       @timetoken       = options[:timetoken]# || '0'
-      @session_uuid    = options[:session_uuid]
+      @session_uuid    = UUID.new.generate
 
       @history_count   = options[:count]
       @history_start   = options[:start]
@@ -38,38 +36,38 @@ module Pubnub
       @origin          = DEFAULT_ORIGIN unless @origin
       @query           = options[:query]
 
+      @http_sync       = options[:http_sync]
+
       @params          = Hash.new
-
-      puts "TO JEST HOST #{@origin}"
-
-      validate_client
     end
 
     def publish(options = {})
       merge_options(options, 'publish')
+      verify_operation('publish', options)
       start_request
     end
 
     def subscribe(options = {})
       merge_options(options, 'subscribe')
-
-      @options[:channel] = options[:channel] if options[:channel]
-
+      verify_operation('subscribe', options)
       start_request
     end
 
     def presence(options = {})
       merge_options(options, 'presence')
+      verify_operation('presence', options)
       start_request
     end
 
     def history(options = {})
       merge_options(options, 'history')
+      verify_operation('history', options)
       start_request
     end
 
     def detailed_history(options = {})
       merge_options(options, 'detailed_history')
+      verify_operation('detailed_history', options)
 
       @options[:params].merge!({:count => options[:count]})
       @options[:params].merge!({:start => options[:start]}) unless options[:start].nil?
@@ -81,11 +79,13 @@ module Pubnub
 
     def here_now(options = {})
       merge_options(options, 'here_now')
+      verify_operation('here_now', options)
       start_request
     end
 
     def time(options = {})
       merge_options(options, 'time')
+      verify_operation('time', options)
       start_request
     end
 
@@ -106,48 +106,85 @@ module Pubnub
     end
 
     def start_request
-      puts @options
       request = Pubnub::Request.new(@options)
 
-      puts request.origin + request.path + '?' + request.query
-
-      #Thread.new {
+      unless @http_sync
         EM.run do
-          EM.add_periodic_timer(PERIODIC_TIMER) do
-            if @close_connection
-              EM.stop
-            else
-              http = EM::HttpRequest.new(request.origin).get :path => request.path, :query => request.query
+          if %w(subscribe presence).include? request.operation
+            EM.add_periodic_timer(PERIODIC_TIMER) do
+              if @close_connection
+                EM.stop
+              else
+                http = send_request(request)
+                http.callback do
 
-              http.callback {
+                  if http.response_header.status.to_i == 200
+                    if is_valid_json?(http.response)
+                      make_callback = is_update?(request.timetoken)
 
-                if http.response_header.status.to_i == 200
-                  puts "GOOD ]:->"
-
-                  request.handle_response(http.response)
-
-                  request.callback.call(request.response)
-                else
-                  begin
-                    puts "NOT GOOD"
-                    request.callback.call(Yajl::Parser.parse(http.response))
-                    increment_retries
-                  rescue => e
-                    request.callback.call([0, "Bad server response: #{http.response_header.http_status.to_i}"])
-                    increment_retries
+                      request.handle_response(http.response)
+                      request.callback.call(request.response) if make_callback
+                    end
                   end
                 end
 
-                EM.stop unless %w(subscribe presence).include? request.operation || @retry
-              }
+                http.errback do
 
-              http.errback {
+                end
+              end
+            end
+          else
+            EM.next_tick do
+              http = send_request(request)
 
-              }
+              http.callback do
+
+                if http.response_header.status.to_i == 200
+                  if is_valid_json?(http.response)
+                    request.handle_response(http.response)
+                    request.callback.call(request.response)
+                  end
+                else
+                  begin
+                    request.callback.call(Yajl::Parser.parse(http.response))
+                  rescue
+                    request.callback.call([0, "Bad server response: #{http.response_header.http_status.to_i}"])
+                  end
+                end
+
+                EM.stop
+              end
             end
           end
         end
-      #}
+      else
+        raise "#{request.operation} can't be executed synchroni" if %w(subscribe presence).include? request.operation
+        response = HTTParty.get(request.origin + request.path, :query => request.query)
+        if is_valid_json?(response)
+          request.handle_response(response)
+          request.callback.call(request.response)
+        end
+      end
+    end
+
+    def send_request(request)
+      EM::HttpRequest.new(request.origin).get :path => request.path, :query => request.query
+
+    end
+
+    def is_update?(timetoken)
+      @timetoken == timetoken ? false : @timetoken = timetoken
+    end
+
+    def is_valid_json?(response)
+      begin
+        JSON.parse(response)
+        valid = true
+      rescue
+        increment_retries
+        valid = false
+      end
+      valid
     end
     
     def increment_retries
@@ -155,16 +192,30 @@ module Pubnub
         @retry = true
       else
         @retry = false
+        @retry_count = 0
       end
       @retry_count = @retry_count + 1
     end
 
-    def validate_client
-      raise('subscribe_key is a mandatory parameter.') if @subscribe_key.to_s.size == 0
-    end
+    def verify_operation(operation, options)
+      case operation
+        when 'publish'
+          raise(ArgumentError, 'publish() requires :channel, :message and :callback parameters.') unless options[:channel] && options[:callback] && options[:message]
+        when 'subscribe'
+          raise(ArgumentError, 'subscribe() requires :channel and :callback parameters.') unless options[:channel] && options[:callback]
+        when 'presence'
+          raise(ArgumentError, 'presence() requires :channel and :callback parameters.') unless options[:channel] && options[:callback]
+        when 'time'
+          raise(ArgumentError, 'time() require :callback parameter.') unless options[:callback]
+        when 'history'
+          raise(ArgumentError, 'history() requires :channel, :callback and :limit parameters.') unless options[:channel] && options[:callback] && options[:limit]
+        when 'detailed_history'
+          raise(ArgumentError, 'detailed_history() requires :channel, :callback, and :count parameters.') unless options[:channel] && options[:callback] && options[:count]
+        when 'here_now'
+          raise(ArgumentError, 'here_now() requires :channel and :callback parameters.') unless options[:channel] && options[:callback]
+      end
+      raise('callback is invalid.') unless options[:callback].respond_to? 'call'
 
-    def generate_new_uuid
-      UUID.new.generate
     end
 
   end
