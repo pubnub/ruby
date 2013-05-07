@@ -128,7 +128,7 @@ pubnub.time("callback" => @my_callback)
 
 ### Sync
 
-If you want to make sync request, just pass :http_sync parameter.
+If you want to make sync request, just set `:http_sync` to `true`.
 ```ruby
 pubnub.publish(
     :channel   => :hello_world,
@@ -150,10 +150,8 @@ pubnub.history(
 
 ### Passing block
 
-You can pass a block of instructions insted of :callback parameter
+You can pass a block of instructions insted of `:callback` parameter
 
 ```ruby
-
 #TODO example here after discuss inaccuracy
-
 ```
