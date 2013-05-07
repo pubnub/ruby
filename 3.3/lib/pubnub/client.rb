@@ -108,7 +108,7 @@ module Pubnub
     def start_request
       request = Pubnub::Request.new(@options)
 
-      unless @http_sync
+      unless @options[:http_sync]
         EM.run do
           if %w(subscribe presence).include? request.operation
             EM.add_periodic_timer(PERIODIC_TIMER) do
@@ -158,18 +158,20 @@ module Pubnub
           end
         end
       else
-        raise "#{request.operation} can't be executed synchroni" if %w(subscribe presence).include? request.operation
         response = HTTParty.get(request.origin + request.path, :query => request.query)
-        if is_valid_json?(response)
-          request.handle_response(response)
+        if is_valid_json?(response.body)
+          puts response.body
+          request.handle_response(response.body)
           request.callback.call(request.response)
+          #request.response.first.each do |res|
+          #  request.callback.call(res)
+          #end
         end
       end
     end
 
     def send_request(request)
       EM::HttpRequest.new(request.origin).get :path => request.path, :query => request.query
-
     end
 
     def is_update?(timetoken)

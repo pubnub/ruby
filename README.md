@@ -125,3 +125,35 @@ Get the current timetoken.
 ```ruby
 pubnub.time("callback" => @my_callback)
 ```
+
+### Sync
+
+If you want to make sync request, just pass :http_sync parameter.
+```ruby
+pubnub.publish(
+    :channel   => :hello_world,
+    :message   => "hi",
+    :callback  => @my_callback,
+    :http_sync => true
+)
+```
+
+```ruby
+pubnub.history(
+    :cipher_key => "enigma", ## OPTIONAL
+    :channel    => @no_history_channel,
+    :limit      => 10,
+    :callback   => @my_callback,
+    :http_sync  => true
+)
+```
+
+### Passing block
+
+You can pass a block of instructions insted of :callback parameter
+
+```ruby
+
+#TODO example here after discuss inaccuracy
+
+```

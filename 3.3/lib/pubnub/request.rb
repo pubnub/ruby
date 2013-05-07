@@ -10,28 +10,26 @@ module Pubnub
     include Pubnub::Configuration
     include Pubnub::Error
 
-    attr_accessor :timetoken, :operation, :response, :ssl, :channel, :callback, :cipher_key, :subscribe_key, :secret_key, :operation, :message, :publish_key
+    attr_accessor :port, :timetoken, :operation, :response, :ssl, :channel, :callback, :cipher_key, :subscribe_key, :secret_key, :operation, :message, :publish_key
 
     def initialize(options = {})
       @options = options
 
-      @params = options[:params]
-      @operation = options[:operation].to_s
-      @callback = options[:callback]
-      @session_uuid = options[:session_uuid]
-      @channel = options[:channel]
-      @message = options[:message]
-      @timetoken = options[:timetoken] || "0"
-      @timetoken = options[:override_timetoken] if options[:override_timetoken]
-      @ssl = options[:ssl]
-      @params = options[:params]
+      @params        = options[:params]
+      @operation     = options[:operation]
+      @callback      = options[:callback]
+      @channel       = options[:channel]
+      @message       = options[:message]
+      @timetoken     = options[:timetoken] || "0"
+      @timetoken     = options[:override_timetoken] if options[:override_timetoken]
+      @ssl           = options[:ssl]
+      @params        = options[:params]
 
       @history_limit = options[:limit]
 
-      @port = options[:port]
-      @url = options[:url]
-      @host = options[:origin]
-      @query = options[:query]
+      @port          = options[:port]
+      @host          = options[:origin]
+      @query         = options[:query]
 
       set_cipher_key(options, @cipher_key) if %w(publish subscribe detailed_history history).include? @operation
       set_message(options, @cipher_key) if %w(publish).include? @operation
@@ -39,6 +37,16 @@ module Pubnub
       set_subscribe_key(options, @subscribe_key) if %w(publish presence here_now detailed_history history subscribe).include? @operation
       set_secret_key(options, @secret_key) if %w(publish subscribe).include? @operation
 
+    end
+
+    def ssl=(ssl)
+      if ssl
+        @ssl = true
+        @port = 443
+      else
+        @ssl = false
+        @port = 80
+      end
     end
 
     def origin

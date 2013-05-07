@@ -74,35 +74,35 @@ describe Pubnub::Client do
       before do
 
         @my_callback = lambda { |message| Rails.logger.debug(message) }
-        @my_pub_key = "demo"
-        @my_sub_key = "demo"
-        @my_message = "hello_world!"
-        @my_channel = "hello_world"
+        @my_pub_key = 'demo'
+        @my_sub_key = 'demo'
+        @my_message = 'hello_world!'
+        @my_channel = 'hello_world'
 
-        @my_cipher_key = "my_cipher_key"
-        @my_sec_key = "my_sec_key"
-        @alt_sec_key = "alt_sec_key"
+        @my_cipher_key = 'my_cipher_key'
+        @my_sec_key = 'my_sec_key'
+        @alt_sec_key = 'alt_sec_key'
       end
 
-      context "required parameters" do
+      context 'required parameters' do
 
         before do
           @pn = Pubnub.new(:subscribe_key => @my_sub_key)
         end
 
-        it "should raise when channel is missing" do
+        it 'should raise when channel is missing' do
           lambda { @pn.presence(:foo => :bar) }.
               should raise_error(ArgumentError, 'presence() requires :channel and :callback parameters.')
         end
 
-        it "should raise when callback is missing" do
+        it 'should raise when callback is missing' do
           lambda { @pn.presence(:channel => @my_channel) }.
               should raise_error(ArgumentError, 'presence() requires :channel and :callback parameters.')
         end
 
-        it "should raise when callback is invalid" do
+        it 'should raise when callback is invalid' do
           lambda { @pn.presence(:channel => @my_channel, :callback => :blah) }.
-              should raise_error("callback is invalid.")
+              should raise_error('callback is invalid.')
         end
 
       end
