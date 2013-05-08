@@ -77,6 +77,18 @@ module Pubnub
       start_request
     end
 
+    def leave(options = {})
+      merge_options(options, 'leave')
+      verify_operation('leave', options)
+      start_request
+    end
+
+    def unsubscribe
+      merge_options(options, 'unsubscribe')
+      verify_operation('unsubscribe', options)
+      start_request
+    end
+
     def here_now(options = {})
       merge_options(options, 'here_now')
       verify_operation('here_now', options)
@@ -171,6 +183,7 @@ module Pubnub
     end
 
     def send_request(request)
+      puts "#{request.origin}#{request.path}?#{request.query}"
       EM::HttpRequest.new(request.origin).get :path => request.path, :query => request.query
     end
 

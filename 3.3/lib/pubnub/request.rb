@@ -34,7 +34,7 @@ module Pubnub
       set_cipher_key(options, @cipher_key) if %w(publish subscribe detailed_history history).include? @operation
       set_message(options, @cipher_key) if %w(publish).include? @operation
       set_publish_key(options, @publish_key) if %w(publish).include? @operation
-      set_subscribe_key(options, @subscribe_key) if %w(publish presence here_now detailed_history history subscribe).include? @operation
+      set_subscribe_key(options, @subscribe_key) if %w(publish presence here_now detailed_history history subscribe leave).include? @operation
       set_secret_key(options, @secret_key) if %w(publish subscribe).include? @operation
 
     end
@@ -110,27 +110,51 @@ module Pubnub
                          'channel',
                          @channel
                      ]
-                   when 'here_now'
-                     [
-                         'v2',
-                         'presence',
-                         'sub-key',
-                         @subscribe_key,
-                         'channel',
-                         @channel
-                     ]
-                   else
+                    when 'here_now'
+                      [
+                          'v2',
+                          'presence',
+                          'sub-key',
+                          @subscribe_key,
+                          'channel',
+                          @channel
+                      ]
+                    when 'unsubscribe'
+                      [
+                          'v2',
+                          'presence',
+                          'sub-key',
+                          @subscribe_key,
+                          'channel',
+                          @channel
+                      ]
+                    when 'leave'
+                      [
+                          'v2',
+                          'presence',
+                          'sub-key',
+                          @subscribe_key,
+                          'channel',
+                          @channel
+                      ]
+                    else
                      raise("I can't create that URL for you due to unknown operation type.")
                  end
       )
     end
 
     def encode_path(request)
-      '/' + request.map { |bit| bit.to_s.split('').map { |ch|
+      path = '/' + request.map { |bit| bit.to_s.split('').map { |ch|
         ' ~`!@#$%^&*()+=[]\\{}|;\':",./<>?'.index(ch) ?
             '%' + ch.unpack('H2')[0].to_s.upcase : URI.encode(ch)
       }.join('')
       }.reject(&:empty?).join('/')
+
+      if @operation == 'leave'
+        "#{path}/leave"
+      else
+        path
+      end
     end
 
     def params
