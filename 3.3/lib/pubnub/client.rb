@@ -41,63 +41,91 @@ module Pubnub
       @params          = Hash.new
     end
 
-    def publish(options = {})
+    def publish(options = {}, &block)
       merge_options(options, 'publish')
-      verify_operation('publish', options)
-      start_request
+      verify_operation('publish', options.merge!(:block_given => block_given?))
+      if block_given?
+        start_request { |envelope| block.call envelope }
+      else
+        start_request
+      end
     end
 
-    def subscribe(options = {})
+    def subscribe(options = {}, &block)
       merge_options(options, 'subscribe')
-      verify_operation('subscribe', options)
-      start_request
+      verify_operation('subscribe', options.merge!(:block_given => block_given?))
+      if block_given?
+        start_request { |envelope| block.call envelope }
+      else
+        start_request
+      end
     end
 
-    def presence(options = {})
+    def presence(options = {}, &block)
       merge_options(options, 'presence')
-      verify_operation('presence', options)
-      start_request
+      verify_operation('presence', options.merge!(:block_given => block_given?))
+      if block_given?
+        start_request { |envelope| block.call envelope }
+      else
+        start_request
+      end
     end
 
-    def history(options = {})
+    def history(options = {}, &block)
       merge_options(options, 'history')
-      verify_operation('history', options)
-      start_request
+      verify_operation('history', options.merge!(:block_given => block_given?))
+      if block_given?
+        start_request { |envelope| block.call envelope }
+      else
+        start_request
+      end
     end
 
-    def detailed_history(options = {})
+    def detailed_history(options = {}, &block)
       merge_options(options, 'detailed_history')
-      verify_operation('detailed_history', options)
+      verify_operation('detailed_history', options.merge!(:block_given => block_given?))
 
       @options[:params].merge!({:count => options[:count]})
       @options[:params].merge!({:start => options[:start]}) unless options[:start].nil?
       @options[:params].merge!({:end => options[:end]}) unless options[:end].nil?
       @options[:params].merge!({:reverse => 'true'}) if options[:reverse]
 
-      start_request
+      if block_given?
+        start_request { |envelope| block.call envelope }
+      else
+        start_request
+      end
     end
 
     def leave(options = {})
       merge_options(options, 'leave')
-      verify_operation('leave', options)
-      start_request
+      verify_operation('leave', options.merge!(:block_given => block_given?))
+      if block_given?
+        start_request { |envelope| block.call envelope }
+      else
+        start_request
+      end
     end
 
     def unsubscribe
       merge_options(options, 'unsubscribe')
-      verify_operation('unsubscribe', options)
-      start_request
+      verify_operation('unsubscribe', options.merge!(:block_given => block_given?))
+      if block_given?
+        start_request { |envelope| block.call envelope }
+      else
+        start_request
+      end
     end
 
     def here_now(options = {})
       merge_options(options, 'here_now')
-      verify_operation('here_now', options)
+      verify_operation('here_now', options.merge!(:block_given => block_given?))
       start_request
     end
 
     def time(options = {})
       merge_options(options, 'time')
-      verify_operation('time', options)
+      verify_operation('time', options.merge!(:block_given => block_given?))
       start_request
     end
 
@@ -113,11 +141,12 @@ module Pubnub
         :origin        => @origin,
         :operation     => operation,
         :params        => { :uuid => @session_uuid },
-        :timetoken     => @timetoken
+        :timetoken     => @timetoken,
+        :channel       => compile_channel_parameter(options[:channel],options[:channels])
       }.merge(options)
     end
 
-    def start_request
+    def start_request(&block)
       request = Pubnub::Request.new(@options)
 
       unless @options[:http_sync]
@@ -135,7 +164,14 @@ module Pubnub
                       make_callback = is_update?(request.timetoken)
 
                       request.handle_response(http.response)
-                      request.callback.call(request.response) if make_callback
+
+                      if block_given?
+                        request.envelopes.each do |envelope|
+                          block.call envelope
+                        end
+                      else
+                        request.callback.call(request.response)
+                      end if make_callback
                     end
                   end
                 end
@@ -154,13 +190,25 @@ module Pubnub
                 if http.response_header.status.to_i == 200
                   if is_valid_json?(http.response)
                     request.handle_response(http.response)
-                    request.callback.call(request.response)
+                    if block_given?
+                      block.call request.response
+                    else
+                      request.callback.call(request.response)
+                    end
                   end
                 else
                   begin
-                    request.callback.call(Yajl::Parser.parse(http.response))
+                    if block_given?
+                      block.call Yajl::Parser.parse(http.response)
+                    else
+                      request.callback.call(Yajl::Parser.parse(http.response))
+                    end
                   rescue
-                    request.callback.call([0, "Bad server response: #{http.response_header.http_status.to_i}"])
+                    if block_given?
+                      block.call [0, "Bad server response: #{http.response_header.http_status.to_i}"]
+                    else
+                      request.callback.call([0, "Bad server response: #{http.response_header.http_status.to_i}"])
+                    end
                   end
                 end
 
@@ -183,7 +231,7 @@ module Pubnub
     end
 
     def send_request(request)
-      puts "#{request.origin}#{request.path}?#{request.query}"
+      #puts "#{request.origin}#{request.path}?#{request.query}"
       EM::HttpRequest.new(request.origin).get :path => request.path, :query => request.query
     end
 
@@ -215,22 +263,32 @@ module Pubnub
     def verify_operation(operation, options)
       case operation
         when 'publish'
-          raise(ArgumentError, 'publish() requires :channel, :message and :callback parameters.') unless options[:channel] && options[:callback] && options[:message]
+          raise(ArgumentError, 'publish() requires :channel, :message parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given]) && options[:message]
         when 'subscribe'
-          raise(ArgumentError, 'subscribe() requires :channel and :callback parameters.') unless options[:channel] && options[:callback]
+          raise(ArgumentError, 'subscribe() requires :channel parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given])
         when 'presence'
-          raise(ArgumentError, 'presence() requires :channel and :callback parameters.') unless options[:channel] && options[:callback]
+          raise(ArgumentError, 'presence() requires :channel parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given])
         when 'time'
-          raise(ArgumentError, 'time() require :callback parameter.') unless options[:callback]
+          raise(ArgumentError, 'time() require callback parameter or block given.') unless (options[:callback] || options[:block_given])
         when 'history'
-          raise(ArgumentError, 'history() requires :channel, :callback and :limit parameters.') unless options[:channel] && options[:callback] && options[:limit]
+          raise(ArgumentError, 'history() requires :channel, :limit parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given]) && options[:limit]
         when 'detailed_history'
-          raise(ArgumentError, 'detailed_history() requires :channel, :callback, and :count parameters.') unless options[:channel] && options[:callback] && options[:count]
+          raise(ArgumentError, 'detailed_history() requires :channel, :count parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given]) && options[:count]
         when 'here_now'
-          raise(ArgumentError, 'here_now() requires :channel and :callback parameters.') unless options[:channel] && options[:callback]
+          raise(ArgumentError, 'here_now() requires :channel parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given])
       end
-      raise('callback is invalid.') unless options[:callback].respond_to? 'call'
 
+      unless options[:callback].nil?
+        raise('callback is invalid.') unless options[:callback].respond_to? 'call'
+      end
+
+    end
+
+    def compile_channel_parameter(channel, channels)
+      raise(ArgumentError, 'Can\'t handle both :channel and :channels parameters given.') if channel && channels
+      channel = channels if channels
+      channel = channel.join(',') if channel.class == Array
+      channel
     end
 
   end

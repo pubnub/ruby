@@ -1,5 +1,6 @@
 require 'pubnub/configuration.rb'
 require 'pubnub/error.rb'
+require 'pubnub/response.rb'
 
 require 'openssl'
 require 'digest/sha2'
@@ -10,7 +11,7 @@ module Pubnub
     include Pubnub::Configuration
     include Pubnub::Error
 
-    attr_accessor :port, :timetoken, :operation, :response, :ssl, :channel, :callback, :cipher_key, :subscribe_key, :secret_key, :operation, :message, :publish_key
+    attr_accessor :envelopes, :port, :timetoken, :operation, :response, :ssl, :channel, :callback, :cipher_key, :subscribe_key, :secret_key, :operation, :message, :publish_key
 
     def initialize(options = {})
       @options = options
@@ -144,11 +145,13 @@ module Pubnub
     end
 
     def encode_path(request)
-      path = '/' + request.map { |bit| bit.to_s.split('').map { |ch|
-        ' ~`!@#$%^&*()+=[]\\{}|;\':",./<>?'.index(ch) ?
-            '%' + ch.unpack('H2')[0].to_s.upcase : URI.encode(ch)
-      }.join('')
-      }.reject(&:empty?).join('/')
+      #path = '/' + request.map { |bit| bit.to_s.split('').map { |ch|
+      #  ' ~`!@#$%^&*()+=[]\\{}|;\':",./<>?'.index(ch) ?
+      #      '%' + ch.unpack('H2')[0].to_s.upcase : URI.encode(ch)
+      #}.join('')
+      #}.reject(&:empty?).join('/')
+
+      path = URI.encode('/' + request.map{|i| i.to_s}.reject(&:empty?).join('/'))
 
       if @operation == 'leave'
         "#{path}/leave"
@@ -203,6 +206,17 @@ module Pubnub
         end
 
       end
+
+      @envelopes = Array.new
+
+      #puts "Response = #{@response.to_s}"
+
+      @response.first.each_with_index do |res,index|
+        @envelopes << Pubnub::Response.new(:message => res, :timetoken => @response[1], :channel => @response[2].split(',')[index])
+      end
+
+      #puts "Envelopes = #{@envelopes.to_s}"
+
     end
 
 
@@ -212,13 +226,6 @@ module Pubnub
 
       pc = Pubnub::Crypto.new(cipher_key)
       publish_request.message = pc.encrypt(options[:message])
-
-    end
-
-    def validate_request
-      raise(OperationError, 'channel is required parameter.') if @options[:channel].blank? && @options[:operation] != 'time'
-      raise(OperationError, 'callback is a required parameter.') if @options[:callback].blank?
-      raise(OperationError, 'callback is invalid.') if !@options[:callback].respond_to? 'call'
 
     end
 
