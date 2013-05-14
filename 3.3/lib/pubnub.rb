@@ -53,26 +53,11 @@ module Pubnub
   include Error
 
   class << self
-    def new(*args)
-      raise(Pubnub::Error::InitError, 'Initialize with either a hash of options, or exactly 5 named parameters.') unless args.size == 5 or (args.size == 1 and args[0].class == Hash)
-
-      if args[0].class == Hash
-        options = args[0]
-      else
-        options                 = Hash.new
-        options[:publish_key]   = args[0].to_s
-        options[:subscribe_key] = args[1].to_s
-        options[:secret_key]    = args[2].to_s
-        options[:cipher_key]    = args[3].to_s
-        options[:ssl]           = args[4]
-      end
+    def new(options = {})
+      #raise(Pubnub::Error::InitError, 'Initialize with either a hash of options, or exactly 5 named parameters.') unless args.size == 5 or (args.size == 1 and args[0].class == Hash)
 
       Pubnub::Client.new(options)
     end
   end
 end
-
-# Aliases
-PubnubRequest = Pubnub::Request
-PubnubCrypto  = Pubnub::Crypto
 

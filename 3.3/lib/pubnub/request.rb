@@ -209,13 +209,13 @@ module Pubnub
 
       @envelopes = Array.new
 
-      #puts "Response = #{@response.to_s}"
-
-      @response.first.each_with_index do |res,index|
-        @envelopes << Pubnub::Response.new(:message => res, :timetoken => @response[1], :channel => @response[2].split(',')[index])
+      if %w(subscribe detailed_history).include? @operation
+        @response.first.each_with_index do |res,index|
+          @envelopes << Pubnub::Response.new(response,index)
+        end
+      else
+        @envelopes << Pubnub::Response.new(response)
       end
-
-      #puts "Envelopes = #{@envelopes.to_s}"
 
     end
 

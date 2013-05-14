@@ -9,7 +9,7 @@ module Pubnub
     include Configuration
 
     attr_accessor :uuid, :cipher_key, :host, :query, :response, :timetoken, :url, :operation, :callback, :publish_key, :subscribe_key, :secret_key, :channel, :jsonp, :message, :ssl, :port
-    attr_accessor :close_connection, :history_limit, :history_count, :history_start, :history_end, :history_reverse, :session_uuid, :last_timetoken, :origin, :error
+    attr_accessor :subscribes, :close_connection, :history_limit, :history_count, :history_start, :history_end, :history_reverse, :session_uuid, :last_timetoken, :origin, :error
 
     def initialize(options = {})
       @retry           = true
@@ -39,6 +39,7 @@ module Pubnub
       @http_sync       = options[:http_sync]
 
       @params          = Hash.new
+      @subscribes      = Array.new
     end
 
     def publish(options = {}, &block)
@@ -146,73 +147,92 @@ module Pubnub
       }.merge(options)
     end
 
+    #def handle_em_run
+    #  Thread.new {
+    #    EM.run
+    #  }
+    #end
+
     def start_request(&block)
       request = Pubnub::Request.new(@options)
 
+      Thread.new {
+        EM.run
+      }
+
       unless @options[:http_sync]
-        EM.run do
-          if %w(subscribe presence).include? request.operation
-            EM.add_periodic_timer(PERIODIC_TIMER) do
-              if @close_connection
-                EM.stop
-              else
-                http = send_request(request)
-                http.callback do
-
-                  if http.response_header.status.to_i == 200
-                    if is_valid_json?(http.response)
-                      make_callback = is_update?(request.timetoken)
-
-                      request.handle_response(http.response)
-
-                      if block_given?
-                        request.envelopes.each do |envelope|
-                          block.call envelope
-                        end
-                      else
-                        request.callback.call(request.response)
-                      end if make_callback
-                    end
-                  end
-                end
-
-                http.errback do
-
-                end
-              end
-            end
-          else
-            EM.next_tick do
+        handle_em_run
+        if %w(subscribe presence).include? request.operation
+          @subscribes << EM.add_periodic_timer(PERIODIC_TIMER) do
+            if @close_connection
+              EM.stop
+            else
               http = send_request(request)
-
               http.callback do
 
                 if http.response_header.status.to_i == 200
                   if is_valid_json?(http.response)
+                    make_callback = is_update?(request.timetoken)
                     request.handle_response(http.response)
                     if block_given?
-                      block.call request.response
+                      request.envelopes.each do |envelope|
+                        block.call envelope
+                      end
                     else
-                      request.callback.call(request.response)
+                      request.envelopes.each do |envelope|
+                        request.callback.call envelope
+                      end
+                    end if make_callback
+                  end
+                end
+              end
+
+              http.errback do
+
+              end
+            end
+          end
+        else
+          EM.next_tick do
+            http = send_request(request)
+
+            http.callback do
+
+              if http.response_header.status.to_i == 200
+                if is_valid_json?(http.response)
+                  request.handle_response(http.response)
+                  if block_given?
+                    request.envelopes.each do |envelope|
+                      block.call envelope
+                    end
+                  else
+                    request.envelopes.each do |envelope|
+                      request.callback.call envelope
                     end
                   end
-                else
-                  begin
-                    if block_given?
-                      block.call Yajl::Parser.parse(http.response)
-                    else
-                      request.callback.call(Yajl::Parser.parse(http.response))
+                end
+              else
+                begin
+                  if block_given?
+                    request.envelopes.each do |envelope|
+                      block.call envelope
                     end
-                  rescue
-                    if block_given?
+                  else
+                    request.envelopes.each do |envelope|
+                      request.callback.call envelope
+                    end
+                  end
+                rescue
+                  if block_given?
+                    request.envelopes.each do |envelope|
                       block.call [0, "Bad server response: #{http.response_header.http_status.to_i}"]
-                    else
+                    end
+                  else
+                    request.envelopes.each do |envelope|
                       request.callback.call([0, "Bad server response: #{http.response_header.http_status.to_i}"])
                     end
                   end
                 end
-
-                EM.stop
               end
             end
           end
@@ -220,7 +240,7 @@ module Pubnub
       else
         response = HTTParty.get(request.origin + request.path, :query => request.query)
         if is_valid_json?(response.body)
-          puts response.body
+          #puts response.body
           request.handle_response(response.body)
           request.callback.call(request.response)
           #request.response.first.each do |res|
