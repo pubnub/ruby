@@ -9,7 +9,7 @@ module Pubnub
     include Configuration
 
     attr_accessor :uuid, :cipher_key, :host, :query, :response, :timetoken, :url, :operation, :callback, :publish_key, :subscribe_key, :secret_key, :channel, :jsonp, :message, :ssl, :port
-    attr_accessor :subscribes, :close_connection, :history_limit, :history_count, :history_start, :history_end, :history_reverse, :session_uuid, :last_timetoken, :origin, :error
+    attr_accessor :close_connection, :history_limit, :history_count, :history_start, :history_end, :history_reverse, :session_uuid, :last_timetoken, :origin, :error
 
     def initialize(options = {})
       @retry           = true
@@ -75,16 +75,6 @@ module Pubnub
     def history(options = {}, &block)
       merge_options(options, 'history')
       verify_operation('history', options.merge!(:block_given => block_given?))
-      if block_given?
-        start_request { |envelope| block.call envelope }
-      else
-        start_request
-      end
-    end
-
-    def detailed_history(options = {}, &block)
-      merge_options(options, 'detailed_history')
-      verify_operation('detailed_history', options.merge!(:block_given => block_given?))
 
       @options[:params].merge!({:count => options[:count]})
       @options[:params].merge!({:start => options[:start]}) unless options[:start].nil?
@@ -160,20 +150,22 @@ module Pubnub
         EM.run
       }
 
+      while EM.reactor_running? == false do
+
+      end
+
       unless @options[:http_sync]
-        handle_em_run
         if %w(subscribe presence).include? request.operation
-          @subscribes << EM.add_periodic_timer(PERIODIC_TIMER) do
+          EM.add_periodic_timer(PERIODIC_TIMER) do
             if @close_connection
               EM.stop
             else
               http = send_request(request)
               http.callback do
-
                 if http.response_header.status.to_i == 200
                   if is_valid_json?(http.response)
                     make_callback = is_update?(request.timetoken)
-                    request.handle_response(http.response)
+                    request.handle_response(http)
                     if block_given?
                       request.envelopes.each do |envelope|
                         block.call envelope
@@ -200,7 +192,7 @@ module Pubnub
 
               if http.response_header.status.to_i == 200
                 if is_valid_json?(http.response)
-                  request.handle_response(http.response)
+                  request.handle_response(http)
                   if block_given?
                     request.envelopes.each do |envelope|
                       block.call envelope
@@ -224,13 +216,13 @@ module Pubnub
                   end
                 rescue
                   if block_given?
-                    request.envelopes.each do |envelope|
+                    #request.envelopes.each do |envelope|
                       block.call [0, "Bad server response: #{http.response_header.http_status.to_i}"]
-                    end
+                    #end
                   else
-                    request.envelopes.each do |envelope|
+                    #request.envelopes.each do |envelope|
                       request.callback.call([0, "Bad server response: #{http.response_header.http_status.to_i}"])
-                    end
+                    #end
                   end
                 end
               end
@@ -291,9 +283,7 @@ module Pubnub
         when 'time'
           raise(ArgumentError, 'time() require callback parameter or block given.') unless (options[:callback] || options[:block_given])
         when 'history'
-          raise(ArgumentError, 'history() requires :channel, :limit parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given]) && options[:limit]
-        when 'detailed_history'
-          raise(ArgumentError, 'detailed_history() requires :channel, :count parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given]) && options[:count]
+          raise(ArgumentError, 'history() requires :channel, :count parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given]) && options[:count]
         when 'here_now'
           raise(ArgumentError, 'here_now() requires :channel parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given])
       end

@@ -135,7 +135,7 @@ module EventMachine
                         '0',
                         @options[:history_limit]
                       ]
-                    when 'detailed_history'
+                    when 'history'
                       [
                         'v2',
                         'history',

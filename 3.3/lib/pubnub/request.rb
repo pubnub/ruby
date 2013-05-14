@@ -32,10 +32,10 @@ module Pubnub
       @host          = options[:origin]
       @query         = options[:query]
 
-      set_cipher_key(options, @cipher_key) if %w(publish subscribe detailed_history history).include? @operation
+      set_cipher_key(options, @cipher_key) if %w(publish subscribe history).include? @operation
       set_message(options, @cipher_key) if %w(publish).include? @operation
       set_publish_key(options, @publish_key) if %w(publish).include? @operation
-      set_subscribe_key(options, @subscribe_key) if %w(publish presence here_now detailed_history history subscribe leave).include? @operation
+      set_subscribe_key(options, @subscribe_key) if %w(publish presence here_now history subscribe leave).include? @operation
       set_secret_key(options, @secret_key) if %w(publish subscribe).include? @operation
 
     end
@@ -96,14 +96,6 @@ module Pubnub
                      ]
                    when 'history'
                      [
-                         @operation,
-                         @subscribe_key,
-                         @channel,
-                         '0',
-                         @history_limit
-                     ]
-                   when 'detailed_history'
-                     [
                          'v2',
                          'history',
                          'sub-key',
@@ -145,12 +137,6 @@ module Pubnub
     end
 
     def encode_path(request)
-      #path = '/' + request.map { |bit| bit.to_s.split('').map { |ch|
-      #  ' ~`!@#$%^&*()+=[]\\{}|;\':",./<>?'.index(ch) ?
-      #      '%' + ch.unpack('H2')[0].to_s.upcase : URI.encode(ch)
-      #}.join('')
-      #}.reject(&:empty?).join('/')
-
       path = URI.encode('/' + request.map{|i| i.to_s}.reject(&:empty?).join('/'))
 
       if @operation == 'leave'
@@ -175,17 +161,16 @@ module Pubnub
       end.sort.join('&')
     end
 
-    def handle_response(response)
-
-      @response = response.respond_to?(:content) ? Yajl.load(response.content) : Yajl.load(response)
+    def handle_response(http)
+      @response = http.response.respond_to?(:content) ? Yajl.load(http.response.content) : Yajl.load(http.response)
       @last_timetoken = @timetoken
       @timetoken = @response[1] unless @operation == 'time'
 
-      if self.cipher_key.present? && %w(subscribe history detailed_history).include?(@operation)
+      if self.cipher_key.present? && %w(subscribe history).include?(@operation)
         response_array = Array.new
         crypto = Pubnub::Crypto.new(@cipher_key)
 
-        if %w(subscribe detailed_history).include?(@operation)
+        if %w(subscribe history).include?(@operation)
           iteration = @response[0]
         else
           iteration = @response
@@ -198,23 +183,25 @@ module Pubnub
         case @operation
           when 'subscribe'
             @response[0] = response_array
-          when 'detailed_history'
-            json_response_data = Yajl.load(response)
-            @response = [response_array, json_response_data[1], json_response_data[2]]
           when 'history'
-            @response = response_array
+            json_response_data = Yajl.load(http.response)
+            @response = [response_array, json_response_data[1], json_response_data[2]]
         end
 
       end
 
       @envelopes = Array.new
 
-      if %w(subscribe detailed_history).include? @operation
+      puts "tutaj"
+
+      if %w(subscribe history).include? @operation
         @response.first.each_with_index do |res,index|
-          @envelopes << Pubnub::Response.new(response,index)
+          @envelopes << Pubnub::Response.new(:http => http, :index => index, :response => @response)
         end
       else
-        @envelopes << Pubnub::Response.new(response)
+        puts 1
+        @envelopes << Pubnub::Response.new(:http => http, :channel => @channel, :response => @response)
+        puts 2
       end
 
     end
