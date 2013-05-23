@@ -112,15 +112,6 @@ module Pubnub
                           'channel',
                           @channel
                       ]
-                    when 'unsubscribe'
-                      [
-                          'v2',
-                          'presence',
-                          'sub-key',
-                          @subscribe_key,
-                          'channel',
-                          @channel
-                      ]
                     when 'leave'
                       [
                           'v2',
@@ -162,7 +153,15 @@ module Pubnub
     end
 
     def handle_response(http)
-      @response = http.response.respond_to?(:content) ? Yajl.load(http.response.content) : Yajl.load(http.response)
+      @response = nil
+
+      if http.respond_to?(:body) && http.respond_to?(:code) && http.respond_to?(:message) && http.respond_to?(:headers) # httparty
+        @response = Yajl.load(http.body)
+      else # em-http-request
+        @response = http.response.respond_to?(:content) ? Yajl.load(http.response.content) : Yajl.load(http.response)
+      end
+
+
       @last_timetoken = @timetoken
       @timetoken = @response[1] unless @operation == 'time'
 
@@ -187,23 +186,17 @@ module Pubnub
             json_response_data = Yajl.load(http.response)
             @response = [response_array, json_response_data[1], json_response_data[2]]
         end
-
       end
 
       @envelopes = Array.new
-
-      puts "tutaj"
 
       if %w(subscribe history).include? @operation
         @response.first.each_with_index do |res,index|
           @envelopes << Pubnub::Response.new(:http => http, :index => index, :response => @response)
         end
       else
-        puts 1
-        @envelopes << Pubnub::Response.new(:http => http, :channel => @channel, :response => @response)
-        puts 2
+        @envelopes << Pubnub::Response.new(:http => http, :channel => @channel, :response => @response, :operation => @operation)
       end
-
     end
 
 

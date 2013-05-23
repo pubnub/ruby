@@ -88,7 +88,7 @@ module Pubnub
       end
     end
 
-    def leave(options = {})
+    def leave(options = {}, &block)
       merge_options(options, 'leave')
       verify_operation('leave', options.merge!(:block_given => block_given?))
       if block_given?
@@ -97,10 +97,11 @@ module Pubnub
         start_request
       end
     end
+    alias_method :unsubscribe, :leave
 
-    def unsubscribe
-      merge_options(options, 'unsubscribe')
-      verify_operation('unsubscribe', options.merge!(:block_given => block_given?))
+    def here_now(options = {}, &block)
+      merge_options(options, 'here_now')
+      verify_operation('here_now', options.merge!(:block_given => block_given?))
       if block_given?
         start_request { |envelope| block.call envelope }
       else
@@ -108,16 +109,14 @@ module Pubnub
       end
     end
 
-    def here_now(options = {})
-      merge_options(options, 'here_now')
-      verify_operation('here_now', options.merge!(:block_given => block_given?))
-      start_request
-    end
-
-    def time(options = {})
+    def time(options = {}, &block)
       merge_options(options, 'time')
       verify_operation('time', options.merge!(:block_given => block_given?))
-      start_request
+      if block_given?
+        start_request { |envelope| block.call envelope }
+      else
+        start_request
+      end
     end
 
     private
@@ -137,24 +136,16 @@ module Pubnub
       }.merge(options)
     end
 
-    #def handle_em_run
-    #  Thread.new {
-    #    EM.run
-    #  }
-    #end
-
     def start_request(&block)
       request = Pubnub::Request.new(@options)
-
-      Thread.new {
-        EM.run
-      }
-
-      while EM.reactor_running? == false do
-
-      end
-
       unless @options[:http_sync]
+
+        Thread.new {
+          EM.run
+        }
+
+        while EM.reactor_running? == false do end
+
         if %w(subscribe presence).include? request.operation
           EM.add_periodic_timer(PERIODIC_TIMER) do
             if @close_connection
@@ -205,6 +196,7 @@ module Pubnub
                 end
               else
                 begin
+                  request.handle_response(http)
                   if block_given?
                     request.envelopes.each do |envelope|
                       block.call envelope
@@ -216,13 +208,15 @@ module Pubnub
                   end
                 rescue
                   if block_given?
-                    #request.envelopes.each do |envelope|
-                      block.call [0, "Bad server response: #{http.response_header.http_status.to_i}"]
-                    #end
+                      block.call Pubnub::Response.new(
+                                     :error_init => true,
+                                     :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_s
+                                 )
                   else
-                    #request.envelopes.each do |envelope|
-                      request.callback.call([0, "Bad server response: #{http.response_header.http_status.to_i}"])
-                    #end
+                      request.callback.call Pubnub::Response.new(
+                                                :error_init => true,
+                                                :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_s
+                                            )
                   end
                 end
               end
@@ -230,20 +224,54 @@ module Pubnub
           end
         end
       else
-        response = HTTParty.get(request.origin + request.path, :query => request.query)
-        if is_valid_json?(response.body)
-          #puts response.body
-          request.handle_response(response.body)
-          request.callback.call(request.response)
-          #request.response.first.each do |res|
-          #  request.callback.call(res)
-          #end
+        if request.query.to_s.empty?
+          response = HTTParty.get(request.origin + request.path)
+        else
+          response = HTTParty.get(request.origin + request.path, :query => request.query)
+        end
+        if response.response.code.to_i == 200
+          if is_valid_json?(response.body)
+            request.handle_response(response)
+            if block_given?
+              request.envelopes.each do |envelope|
+                block.call envelope
+              end
+            else
+              request.envelopes.each do |envelope|
+                request.callback.call envelope
+              end
+            end
+          end
+        else
+          begin
+            request.handle_response(response)
+            if block_given?
+              request.envelopes.each do |envelope|
+                block.call envelope
+              end
+            else
+              request.envelopes.each do |envelope|
+                request.callback.call envelope
+              end
+            end
+          rescue
+            if block_given?
+              block.call Pubnub::Response.new(
+                             :error_init => true,
+                             :message =>  [0, "Bad server response: #{response.response.code}"].to_s
+                         )
+            else
+              request.callback.call Pubnub::Response.new(
+                                        :error_init => true,
+                                        :message =>  [0, "Bad server response: #{response.response.code}"].to_s
+                                    )
+            end
+          end
         end
       end
     end
 
     def send_request(request)
-      #puts "#{request.origin}#{request.path}?#{request.query}"
       EM::HttpRequest.new(request.origin).get :path => request.path, :query => request.query
     end
 
@@ -261,7 +289,7 @@ module Pubnub
       end
       valid
     end
-    
+
     def increment_retries
       if @retry_count < MAX_RETRIES
         @retry = true
@@ -286,6 +314,8 @@ module Pubnub
           raise(ArgumentError, 'history() requires :channel, :count parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given]) && options[:count]
         when 'here_now'
           raise(ArgumentError, 'here_now() requires :channel parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given])
+        when 'leave'
+          raise(ArgumentError, 'leave() requires :channel parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given])
       end
 
       unless options[:callback].nil?

@@ -69,8 +69,162 @@ describe Pubnub::Client do
         end
       end
     end
+  end
 
-    describe '#presence' do
+  describe 'public methods' do
+    describe '.time' do
+      before do
+
+        @my_callback = lambda { |message| Rails.logger.debug(message) }
+        @my_pub_key = 'demo'
+        @my_sub_key = 'demo'
+        @my_message = 'hello_world!'
+        @my_channel = 'hello_world'
+
+        @my_cipher_key = 'my_cipher_key'
+        @my_sec_key = 'my_sec_key'
+        @alt_sec_key = 'alt_sec_key'
+      end
+
+      context 'required parameters' do
+
+        before do
+          @pn = Pubnub.new(:subscribe_key => @my_sub_key)
+        end
+
+        it 'should raise when callback or block is missing' do
+          lambda { @pn.time }.
+              should raise_error(ArgumentError, 'time() require callback parameter or block given.')
+        end
+
+        it 'should raise when callback is invalid' do
+          lambda { @pn.time(:callback => :blah) }.
+              should raise_error('callback is invalid.')
+        end
+
+      end
+    end
+
+    describe '.publish' do
+      before do
+
+        @my_callback = lambda { |message| Rails.logger.debug(message) }
+        @my_pub_key = 'demo'
+        @my_sub_key = 'demo'
+        @my_message = 'hello_world!'
+        @my_channel = 'hello_world'
+
+        @my_cipher_key = 'my_cipher_key'
+        @my_sec_key = 'my_sec_key'
+        @alt_sec_key = 'alt_sec_key'
+      end
+
+      context 'required parameters' do
+
+        before do
+          @pn = Pubnub.new(:subscribe_key => @my_sub_key)
+        end
+
+        it 'should raise when channel is missing' do
+          lambda { @pn.publish(:callback => @my_callback, :message => @my_message) }.
+              should raise_error(ArgumentError, 'publish() requires :channel, :message parameters and callback parameter or block given.')
+        end
+
+        it 'should raise when callback is missing' do
+          lambda { @pn.publish(:message => @my_message, :channel => @my_channel) }.
+              should raise_error(ArgumentError, 'publish() requires :channel, :message parameters and callback parameter or block given.')
+        end
+
+        it 'should raise when message is missing' do
+          lambda { @pn.publish(:channel => @my_channel, :callback => @my_callback) }.
+              should raise_error(ArgumentError, 'publish() requires :channel, :message parameters and callback parameter or block given.')
+        end
+
+        it 'should raise when callback is invalid' do
+          lambda { @pn.presence(:channel => @my_channel, :callback => :blah) }.
+              should raise_error('callback is invalid.')
+        end
+
+      end
+    end
+
+    describe '.subscribe' do
+      before do
+
+        @my_callback = lambda { |message| Rails.logger.debug(message) }
+        @my_pub_key = 'demo'
+        @my_sub_key = 'demo'
+        @my_message = 'hello_world!'
+        @my_channel = 'hello_world'
+
+        @my_cipher_key = 'my_cipher_key'
+        @my_sec_key = 'my_sec_key'
+        @alt_sec_key = 'alt_sec_key'
+      end
+
+      context 'required parameters' do
+
+        before do
+          @pn = Pubnub.new(:subscribe_key => @my_sub_key)
+        end
+
+        it 'should raise when channel is missing' do
+          lambda { @pn.subscribe(:foo => :bar, :callback => @my_callback) }.
+              should raise_error(ArgumentError, 'subscribe() requires :channel parameters and callback parameter or block given.')
+        end
+
+        it 'should raise when callback is missing' do
+          lambda { @pn.subscribe(:channel => @my_channel) }.
+              should raise_error(ArgumentError, 'subscribe() requires :channel parameters and callback parameter or block given.')
+        end
+
+        it 'should raise when callback is invalid' do
+          lambda { @pn.subscribe(:channel => @my_channel, :callback => :blah) }.
+              should raise_error('callback is invalid.')
+        end
+
+      end
+    end
+
+    describe '.here_now' do
+      before do
+
+        @my_callback = lambda { |message| Rails.logger.debug(message) }
+        @my_pub_key = 'demo'
+        @my_sub_key = 'demo'
+        @my_message = 'hello_world!'
+        @my_channel = 'hello_world'
+
+        @my_cipher_key = 'my_cipher_key'
+        @my_sec_key = 'my_sec_key'
+        @alt_sec_key = 'alt_sec_key'
+      end
+
+      context 'required parameters' do
+
+        before do
+          @pn = Pubnub.new(:subscribe_key => @my_sub_key)
+        end
+
+        it 'should raise when channel is missing' do
+          lambda { @pn.here_now(:foo => :bar) }.
+              should raise_error(ArgumentError, 'here_now() requires :channel parameters and callback parameter or block given.')
+        end
+
+        it 'should raise when callback is missing' do
+          lambda { @pn.here_now(:channel => @my_channel) }.
+              should raise_error(ArgumentError, 'here_now() requires :channel parameters and callback parameter or block given.')
+        end
+
+        it 'should raise when callback is invalid' do
+          lambda { @pn.here_now(:channel => @my_channel, :callback => :blah) }.
+              should raise_error('callback is invalid.')
+        end
+
+      end
+    end
+
+    describe '.presence' do
       before do
 
         @my_callback = lambda { |message| Rails.logger.debug(message) }
@@ -92,16 +246,97 @@ describe Pubnub::Client do
 
         it 'should raise when channel is missing' do
           lambda { @pn.presence(:foo => :bar) }.
-              should raise_error(ArgumentError, 'presence() requires :channel and :callback parameters.')
+              should raise_error(ArgumentError, 'presence() requires :channel parameters and callback parameter or block given.')
         end
 
         it 'should raise when callback is missing' do
           lambda { @pn.presence(:channel => @my_channel) }.
-              should raise_error(ArgumentError, 'presence() requires :channel and :callback parameters.')
+              should raise_error(ArgumentError, 'presence() requires :channel parameters and callback parameter or block given.')
         end
 
         it 'should raise when callback is invalid' do
           lambda { @pn.presence(:channel => @my_channel, :callback => :blah) }.
+              should raise_error('callback is invalid.')
+        end
+
+      end
+    end
+
+    describe '.hisotry' do
+      before do
+
+        @my_callback = lambda { |message| Rails.logger.debug(message) }
+        @my_pub_key = 'demo'
+        @my_sub_key = 'demo'
+        @my_message = 'hello_world!'
+        @my_channel = 'hello_world'
+
+        @my_cipher_key = 'my_cipher_key'
+        @my_sec_key = 'my_sec_key'
+        @alt_sec_key = 'alt_sec_key'
+      end
+
+      context 'required parameters' do
+
+        before do
+          @pn = Pubnub.new(:subscribe_key => @my_sub_key)
+        end
+
+        it 'should raise when channel is missing' do
+          lambda { @pn.history(:count => 10, :callback => @my_callback) }.
+              should raise_error(ArgumentError, 'history() requires :channel, :count parameters and callback parameter or block given.')
+        end
+
+        it 'should raise when callback is missing' do
+          lambda { @pn.history(:channel => @my_channel, :count => 10) }.
+              should raise_error(ArgumentError, 'history() requires :channel, :count parameters and callback parameter or block given.')
+        end
+
+        it 'should raise when count is missing' do
+          lambda { @pn.history(:channel => @my_channel, :callback => @my_callback) }.
+              should raise_error(ArgumentError, 'history() requires :channel, :count parameters and callback parameter or block given.')
+        end
+
+        it 'should raise when callback is invalid' do
+          lambda { @pn.history(:channel => @my_channel, :count => 10, :callback => :blah) }.
+              should raise_error('callback is invalid.')
+        end
+
+      end
+    end
+
+    describe '.leave' do
+      before do
+
+        @my_callback = lambda { |message| Rails.logger.debug(message) }
+        @my_pub_key = 'demo'
+        @my_sub_key = 'demo'
+        @my_message = 'hello_world!'
+        @my_channel = 'hello_world'
+
+        @my_cipher_key = 'my_cipher_key'
+        @my_sec_key = 'my_sec_key'
+        @alt_sec_key = 'alt_sec_key'
+      end
+
+      context 'required parameters' do
+
+        before do
+          @pn = Pubnub.new(:subscribe_key => @my_sub_key)
+        end
+
+        it 'should raise when channel is missing' do
+          lambda { @pn.leave(:callback => @my_callback) }.
+              should raise_error(ArgumentError, 'leave() requires :channel parameters and callback parameter or block given.')
+        end
+
+        it 'should raise when callback is missing' do
+          lambda { @pn.leave(:channel => @my_channel) }.
+              should raise_error(ArgumentError, 'leave() requires :channel parameters and callback parameter or block given.')
+        end
+
+        it 'should raise when callback is invalid' do
+          lambda { @pn.leave(:channel => @my_channel, :callback => :blah) }.
               should raise_error('callback is invalid.')
         end
 
