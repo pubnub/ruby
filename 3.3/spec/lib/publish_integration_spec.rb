@@ -3,7 +3,7 @@ require 'rr'
 require 'stringio'
 require 'webmock/rspec'
 
-describe '.publish' do
+describe '#publish' do
   before do
     @output = StringIO.new
     @callback = lambda { |envelope|
@@ -340,318 +340,642 @@ describe '.publish' do
   end
 
   context 'it publish correct message' do
-    context 'without cipher_key' do
-      context 'via http' do
-        context 'and it\'s asynchronous' do
-          it 'fires given callback on response envelope' do
-            my_response = '[1,"Sent","13692992007063494"]'
+    context 'without secret key' do
+      context 'without cipher_key' do
+        context 'via http' do
+          context 'and it\'s asynchronous' do
+            it 'fires given callback on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
 
-            stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22').
-                to_return(
-                :body => [1,"Sent","13692992007063494"].to_json,
-                :status => 200,
-                :headers => {
-                    'Content-Type' => 'text/javascript; charset="UTF-8"'
-                }
-            )
+              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
 
-            @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-            while EM.reactor_running? do end
-            @output.seek(0)
-            assert_equal my_response, @output.read
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
+              while EM.reactor_running? do end
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
+
+            it 'fires given block on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
+
+              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
+
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
+              while EM.reactor_running? do end
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
           end
 
-          it 'fires given block on response envelope' do
-            my_response = '[1,"Sent","13692992007063494"]'
+          context 'and it\'s synchronous' do
+            it 'fires given callback on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
 
-            stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22').
-                to_return(
-                :body => [1,"Sent","13692992007063494"].to_json,
-                :status => 200,
-                :headers => {
-                    'Content-Type' => 'text/javascript; charset="UTF-8"'
-                }
-            )
+              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
 
-            @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-            while EM.reactor_running? do end
-            @output.seek(0)
-            assert_equal my_response, @output.read
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
+
+            it 'fires given block on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
+
+              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
+
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
           end
         end
 
-        context 'and it\'s synchronous' do
-          it 'fires given callback on response envelope' do
-            my_response = '[1,"Sent","13692992007063494"]'
+        context 'via https' do
+          before do
+            @pn.ssl = true
+          end
+          context 'and it\'s asynchronous' do
+            it 'fires given callback on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
 
-            stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22').
-                to_return(
-                :body => [1,"Sent","13692992007063494"].to_json,
-                :status => 200,
-                :headers => {
-                    'Content-Type' => 'text/javascript; charset="UTF-8"'
-                }
-            )
+              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
 
-            @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
-            @output.seek(0)
-            assert_equal my_response, @output.read
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
+              while EM.reactor_running? do end
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
+
+            it 'fires given block on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
+
+              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
+
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
+              while EM.reactor_running? do end
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
           end
 
-          it 'fires given block on response envelope' do
-            my_response = '[1,"Sent","13692992007063494"]'
+          context 'and it\'s synchronous' do
+            it 'fires given callback on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
 
-            stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22').
-                to_return(
-                :body => [1,"Sent","13692992007063494"].to_json,
-                :status => 200,
-                :headers => {
-                    'Content-Type' => 'text/javascript; charset="UTF-8"'
-                }
-            )
+              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
 
-            @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
-            @output.seek(0)
-            assert_equal my_response, @output.read
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
+
+            it 'fires given block on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
+
+              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
+
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
           end
         end
       end
 
-      context 'via https' do
+      context 'using cipher_key' do
         before do
-          @pn.ssl = true
+          @pn.cipher_key = 'enigma'
         end
-        context 'and it\'s asynchronous' do
-          it 'fires given callback on response envelope' do
-            my_response = '[1,"Sent","13692992007063494"]'
+        context 'via http' do
+          context 'and it\'s asynchronous' do
+            it 'fires given callback on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
 
-            stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22').
-                to_return(
-                :body => [1,"Sent","13692992007063494"].to_json,
-                :status => 200,
-                :headers => {
-                    'Content-Type' => 'text/javascript; charset="UTF-8"'
-                }
-            )
+              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
 
-            @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-            while EM.reactor_running? do end
-            @output.seek(0)
-            assert_equal my_response, @output.read
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
+              while EM.reactor_running? do end
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
+
+            it 'fires given block on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
+
+              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
+
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
+              while EM.reactor_running? do end
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
           end
 
-          it 'fires given block on response envelope' do
-            my_response = '[1,"Sent","13692992007063494"]'
+          context 'and it\'s synchronous' do
+            it 'fires given callback on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
 
-            stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22').
-                to_return(
-                :body => [1,"Sent","13692992007063494"].to_json,
-                :status => 200,
-                :headers => {
-                    'Content-Type' => 'text/javascript; charset="UTF-8"'
-                }
-            )
+              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
 
-            @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-            while EM.reactor_running? do end
-            @output.seek(0)
-            assert_equal my_response, @output.read
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
+
+            it 'fires given block on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
+
+              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
+
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
           end
         end
 
-        context 'and it\'s synchronous' do
-          it 'fires given callback on response envelope' do
-            my_response = '[1,"Sent","13692992007063494"]'
+        context 'via https' do
+          before do
+            @pn.ssl = true
+          end
+          context 'and it\'s asynchronous' do
+            it 'fires given callback on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
 
-            stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22').
-                to_return(
-                :body => [1,"Sent","13692992007063494"].to_json,
-                :status => 200,
-                :headers => {
-                    'Content-Type' => 'text/javascript; charset="UTF-8"'
-                }
-            )
+              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
 
-            @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
-            @output.seek(0)
-            assert_equal my_response, @output.read
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
+              while EM.reactor_running? do end
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
+
+            it 'fires given block on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
+
+              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
+
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
+              while EM.reactor_running? do end
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
           end
 
-          it 'fires given block on response envelope' do
-            my_response = '[1,"Sent","13692992007063494"]'
+          context 'and it\'s synchronous' do
+            it 'fires given callback on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
 
-            stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22').
-                to_return(
-                :body => [1,"Sent","13692992007063494"].to_json,
-                :status => 200,
-                :headers => {
-                    'Content-Type' => 'text/javascript; charset="UTF-8"'
-                }
-            )
+              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
 
-            @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
-            @output.seek(0)
-            assert_equal my_response, @output.read
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
+
+            it 'fires given block on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
+
+              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
+
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
           end
         end
       end
     end
 
-    context 'using cipher_key' do
+    context 'with secret key' do
       before do
-        @pn.cipher_key = 'enigma'
+        @pn.secret_key = 'skey'
       end
-      context 'via http' do
-        context 'and it\'s asynchronous' do
-          it 'fires given callback on response envelope' do
-            my_response = '[1,"Sent","13692992007063494"]'
+      context 'without cipher_key' do
+        context 'via http' do
+          context 'and it\'s asynchronous' do
+            it 'fires given callback on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
 
-            stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
-                to_return(
-                :body => [1,"Sent","13692992007063494"].to_json,
-                :status => 200,
-                :headers => {
-                    'Content-Type' => 'text/javascript; charset="UTF-8"'
-                }
-            )
+              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
 
-            @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-            while EM.reactor_running? do end
-            @output.seek(0)
-            assert_equal my_response, @output.read
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
+              while EM.reactor_running? do end
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
+
+            it 'fires given block on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
+
+              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
+
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
+              while EM.reactor_running? do end
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
           end
 
-          it 'fires given block on response envelope' do
-            my_response = '[1,"Sent","13692992007063494"]'
+          context 'and it\'s synchronous' do
+            it 'fires given callback on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
 
-            stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
-                to_return(
-                :body => [1,"Sent","13692992007063494"].to_json,
-                :status => 200,
-                :headers => {
-                    'Content-Type' => 'text/javascript; charset="UTF-8"'
-                }
-            )
+              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
 
-            @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-            while EM.reactor_running? do end
-            @output.seek(0)
-            assert_equal my_response, @output.read
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
+
+            it 'fires given block on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
+
+              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
+
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
           end
         end
 
-        context 'and it\'s synchronous' do
-          it 'fires given callback on response envelope' do
-            my_response = '[1,"Sent","13692992007063494"]'
+        context 'via https' do
+          before do
+            @pn.ssl = true
+          end
+          context 'and it\'s asynchronous' do
+            it 'fires given callback on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
 
-            stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
-                to_return(
-                :body => [1,"Sent","13692992007063494"].to_json,
-                :status => 200,
-                :headers => {
-                    'Content-Type' => 'text/javascript; charset="UTF-8"'
-                }
-            )
+              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
 
-            @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
-            @output.seek(0)
-            assert_equal my_response, @output.read
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
+              while EM.reactor_running? do end
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
+
+            it 'fires given block on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
+
+              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
+
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
+              while EM.reactor_running? do end
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
           end
 
-          it 'fires given block on response envelope' do
-            my_response = '[1,"Sent","13692992007063494"]'
+          context 'and it\'s synchronous' do
+            it 'fires given callback on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
 
-            stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
-                to_return(
-                :body => [1,"Sent","13692992007063494"].to_json,
-                :status => 200,
-                :headers => {
-                    'Content-Type' => 'text/javascript; charset="UTF-8"'
-                }
-            )
+              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
 
-            @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
-            @output.seek(0)
-            assert_equal my_response, @output.read
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
+
+            it 'fires given block on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
+
+              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
+
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
           end
         end
       end
 
-      context 'via https' do
+      context 'using cipher_key' do
         before do
-          @pn.ssl = true
+          @pn.cipher_key = 'enigma'
         end
-        context 'and it\'s asynchronous' do
-          it 'fires given callback on response envelope' do
-            my_response = '[1,"Sent","13692992007063494"]'
+        context 'via http' do
+          context 'and it\'s asynchronous' do
+            it 'fires given callback on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
 
-            stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
-                to_return(
-                :body => [1,"Sent","13692992007063494"].to_json,
-                :status => 200,
-                :headers => {
-                    'Content-Type' => 'text/javascript; charset="UTF-8"'
-                }
-            )
+              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
 
-            @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-            while EM.reactor_running? do end
-            @output.seek(0)
-            assert_equal my_response, @output.read
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
+              while EM.reactor_running? do end
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
+
+            it 'fires given block on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
+
+              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
+
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
+              while EM.reactor_running? do end
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
           end
 
-          it 'fires given block on response envelope' do
-            my_response = '[1,"Sent","13692992007063494"]'
+          context 'and it\'s synchronous' do
+            it 'fires given callback on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
 
-            stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
-                to_return(
-                :body => [1,"Sent","13692992007063494"].to_json,
-                :status => 200,
-                :headers => {
-                    'Content-Type' => 'text/javascript; charset="UTF-8"'
-                }
-            )
+              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
 
-            @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-            while EM.reactor_running? do end
-            @output.seek(0)
-            assert_equal my_response, @output.read
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
+
+            it 'fires given block on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
+
+              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
+
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
           end
         end
 
-        context 'and it\'s synchronous' do
-          it 'fires given callback on response envelope' do
-            my_response = '[1,"Sent","13692992007063494"]'
+        context 'via https' do
+          before do
+            @pn.ssl = true
+          end
+          context 'and it\'s asynchronous' do
+            it 'fires given callback on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
 
-            stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
-                to_return(
-                :body => [1,"Sent","13692992007063494"].to_json,
-                :status => 200,
-                :headers => {
-                    'Content-Type' => 'text/javascript; charset="UTF-8"'
-                }
-            )
+              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
 
-            @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
-            @output.seek(0)
-            assert_equal my_response, @output.read
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
+              while EM.reactor_running? do end
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
+
+            it 'fires given block on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
+
+              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
+
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
+              while EM.reactor_running? do end
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
           end
 
-          it 'fires given block on response envelope' do
-            my_response = '[1,"Sent","13692992007063494"]'
+          context 'and it\'s synchronous' do
+            it 'fires given callback on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
 
-            stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
-                to_return(
-                :body => [1,"Sent","13692992007063494"].to_json,
-                :status => 200,
-                :headers => {
-                    'Content-Type' => 'text/javascript; charset="UTF-8"'
-                }
-            )
+              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
 
-            @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
-            @output.seek(0)
-            assert_equal my_response, @output.read
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
+
+            it 'fires given block on response envelope' do
+              my_response = '[1,"Sent","13692992007063494"]'
+
+              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22').
+                  to_return(
+                  :body => [1,"Sent","13692992007063494"].to_json,
+                  :status => 200,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              )
+
+              @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
+              @output.seek(0)
+              assert_equal my_response, @output.read
+            end
           end
         end
       end
