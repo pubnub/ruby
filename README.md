@@ -40,6 +40,36 @@ pubnub = Pubnub.new(
 )
 ```
 
+### Setting callback
+
+You can set callback by passing :callback option, or giving a block:
+
+```ruby
+cb = lambda { |envelope| puts envelope.message }
+pubnub.publish(:message => msg, :channel => channel, :callback => cb)
+pubnub.publish(:message => msg, :channel => channel, &cb)
+pubnub.publish(:message => msg, :channel => channel){ |envelope| puts envelope.message }
+```
+
+### Sync or Async?
+
+You can make sync and async reqest just by controlling :http_sync option (default every operation is async)
+
+```ruby
+pubnub.publish(:message => msg, :channel => channel, :callback => cb, :http_sync => true)
+pubnub.publish(:message => msg, :channel => channel, :callback => cb, :http_sync => false)
+```
+
+### Response
+
+You callback will be called each time for one envelope with that envelope passed to it. Envelope is Pubnub::Response object and contains:
+
+ - message (aliased as 'msg') -> Holds message
+ - channel -> Holds channel for current message
+ - timetoken -> Timetoken of server response
+ - status_code -> Server response status code
+ - response -> Whole and unmodified server response
+
 ### Publish
 
 For message, you can just pass: 
@@ -70,22 +100,12 @@ pubnub.subscribe(
 )
 ```
 
-### History (deprecated, use new detailed_history)
+### History
+
+Archive messages of on a given channel. Optional start, end, and reverse option examples can be found in the tests.
 
 ```ruby
 pubnub.history(
-    :cipher_key => "enigma", ## OPTIONAL
-    :channel    => @no_history_channel,
-    :limit      => 10,
-    :callback   => @my_callback
-)
-```
-
-### Detailed Message History
-
-Archive messages of on a given channel. Optional start, end, and reverse option examples can be found in the tests.
-```ruby
-pubnub.detailed_history(
     :channel  => channel,
     :count    => 10, 
     :callback => @my_callback
