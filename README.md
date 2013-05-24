@@ -167,11 +167,3 @@ pubnub.history(
     :http_sync  => true
 )
 ```
-
-### Passing block
-
-You can pass a block of instructions insted of `:callback` parameter
-
-```ruby
-#TODO example here after discuss inaccuracy
-```
