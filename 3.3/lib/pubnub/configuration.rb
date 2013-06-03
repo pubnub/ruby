@@ -18,7 +18,7 @@ module Pubnub
     DEFAULT_PUBLISH_KEY        = 'demo'
     DEFAULT_SUBSCRIBE_KEY      = 'demo'
     DEFAULT_CHANNEL            = 'hello_world'
-    PERIODIC_TIMER             = 5
+    PERIODIC_TIMER             = 0.25
     RETRYING_TIME              = 310
     MAX_RETRIES                = 1.0/PERIODIC_TIMER*RETRYING_TIME
   end

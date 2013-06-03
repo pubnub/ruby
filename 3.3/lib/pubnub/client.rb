@@ -39,7 +39,7 @@ module Pubnub
       @http_sync       = options[:http_sync]
 
       @params          = Hash.new
-      @subscribes      = Array.new
+      @subscriptions   = Hash.new
     end
 
     def publish(options = {}, &block)
@@ -96,6 +96,7 @@ module Pubnub
       else
         start_request
       end
+      @subscriptions[options[:channel]].cancel
     end
     alias_method :unsubscribe, :leave
 
@@ -116,6 +117,12 @@ module Pubnub
         start_request { |envelope| block.call envelope }
       else
         start_request
+      end
+    end
+
+    def show_subscriptions
+      @subscriptions.each do |sub|
+        puts sub
       end
     end
 
@@ -147,7 +154,7 @@ module Pubnub
         while EM.reactor_running? == false do end
 
         if %w(subscribe presence).include? request.operation
-          EM.add_periodic_timer(PERIODIC_TIMER) do
+          @subscriptions[@options[:channel]] = EM.add_periodic_timer(PERIODIC_TIMER) do
             if @close_connection
               EM.stop
             else

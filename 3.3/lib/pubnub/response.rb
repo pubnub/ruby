@@ -52,8 +52,8 @@ class Pubnub::Response
     @response == other.to_s
   end
 
-  # Returns @response.to_s
-  def to_s
-    @response.to_s
-  end
+  ## Returns @response.to_s
+  #def to_s
+  #  ap self
+  #end
 end

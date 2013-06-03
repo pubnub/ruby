@@ -189,10 +189,9 @@ module Pubnub
       end
 
       @envelopes = Array.new
-
       if %w(subscribe history).include? @operation
         @response.first.each_with_index do |res,index|
-          @envelopes << Pubnub::Response.new(:http => http, :index => index, :response => @response)
+          @envelopes << Pubnub::Response.new(:http => http, :index => index, :response => @response, :channel => @channel, :operation => @operation)
         end
       else
         @envelopes << Pubnub::Response.new(:http => http, :channel => @channel, :response => @response, :operation => @operation)
