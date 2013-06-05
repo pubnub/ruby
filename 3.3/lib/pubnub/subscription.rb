@@ -3,13 +3,14 @@ module Pubnub
     @@channels            = Array.new
     @@instances_collector = Array.new
 
-    attr_reader :callback
+    attr_accessor :channels, :callback
 
-    def initialize(options)
+    def initialize(options, &block)
 
       @@instances_collector << self
       @channels = options[:channel].split(',')
       @callback = options[:callback]
+      @callback = block if block_given?
       add_self_to_subscription
     end
 
@@ -40,15 +41,18 @@ module Pubnub
     end
 
     def remove_from_subscription(channel)
-      @channels.delete!(channel)
+      @channels.delete_if{|c| c == channel}
     end
 
     def self.remove_from_subscription(channel)
+      puts 'one'
       if Subscription.is_subscribed_to? channel
-        @@channels.delete!(channel)
+        puts 'two'
+        @@channels.delete_if{|c| c == channel}
       end
-      Subscription.clean_subscriptions
-
+      puts 'three'
+      Subscription.clean_subscriptions channel
+      puts 'eleven'
     end
 
     def self.channels_for_url
@@ -65,8 +69,15 @@ module Pubnub
       end
     end
 
-    def self.clean_subscriptions
-      Subscription.all_offspring.delete_if{ |subscription| subscription.get_channels.empty? }
+    def self.clean_subscriptions(channel)
+      puts 'five'
+      @@instances_collector.each do |subscription|
+        puts 'six'
+        subscription.remove_from_subscription channel
+      end
+      puts 'seven'
+      @@instances_collector.delete_if{ |subscription| subscription.get_channels.empty? }
+      puts 'eight'
     end
   end
 end

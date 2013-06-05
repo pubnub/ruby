@@ -82,17 +82,21 @@ class Pubnub::Response
   end
 
   def set_for_em_http_request(options)
-    if options[:response][2]
-      @channel = options[:index] ? options[:response][2][options[:index]] : options[:channel]
+    if options[:response][2] && options[:operation] == 'subscribe'
+      @channel = options[:index] ? options[:response][2].split(',')[options[:index]] : options[:channel]
     else
       @channel = options[:channel]
     end
+
     if options[:operation] == 'publish'
       set_for_publish(options[:response][1],options[:response][2])
+    elsif options[:operation] == 'here_now'
+      @message = options[:response]
     else
       @timetoken = options[:response][1]
       @message = options[:index] ? options[:response][0][options[:index]] : options[:response][0]
     end
+
     @status_code = options[:http].response_header.status.to_i
     @headers = options[:http].response_header
     @response = options[:http].response
@@ -103,3 +107,5 @@ class Pubnub::Response
     @timetoken = timetoken
   end
 end
+
+#"[[\"ping.php says 1370468905\",\"ping.php says 1370468906\",\"ping.php says 1370468907\",\"ping.php says 1370468908\",\"ping.php says 1370468909\"],13704689051165143,13

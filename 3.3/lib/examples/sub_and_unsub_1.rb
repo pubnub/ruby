@@ -5,9 +5,9 @@ require 'pubnub'
 
 p = Pubnub.new(:subscribe_key => "demo", :publish_key => "demo")
 
-cb1 = lambda { |x| puts("cb1 says on channel #{x.channel}: msg: #{x.message} response: #{x.response}") }
-cb2 = lambda { |x| puts("cb2 says on channel #{x.channel}: msg: #{x.message} response: #{x.response}") }
-cb3 = lambda { |x| puts("cb3 says on channel #{x.channel}: msg: #{x.message} response: #{x.response}") }
+cb1 = lambda { |x| puts("cb1 #{x.channel}: msg: #{x.message} response: #{x.response}") }
+cb2 = lambda { |x| puts("cb2 #{x.channel}: msg: #{x.message} response: #{x.response}") }
+cb3 = lambda { |x| puts("cb3 #{x.channel}: msg: #{x.message} response: #{x.response}") }
 
 puts("Subscribing on ch a!")
 p.subscribe(:channel => "a", :callback => cb1, :http_sync => false)
@@ -19,6 +19,8 @@ p.subscribe(:channel => "ping_3", :callback => cb2, :http_sync => false)
 
 
 # Provide example of pubnub subcribe with block here
+p.subscribe(:channel => "ping_3", :http_sync => false){ |envelope| puts envelope.message }
+p.subscribe(:channel => "a", :http_sync => false){ |envelope| puts envelope.message }
 
 x = 3
 
@@ -53,6 +55,7 @@ while (x > 0) do
   x=x-1
   puts("Looping quietly while the world goes on...")
   sleep 3
-# provide publish example with block
+
+  p.publish(:publish_key => 'demo', :channel => 'hello_world', :message => 'whatever'){|e| puts e.inspect}
 
 end
