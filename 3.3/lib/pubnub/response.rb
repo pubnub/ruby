@@ -21,27 +21,46 @@ class Pubnub::Response
       @response = options[:message]
       @timetoken = 0
     else
-      if options[:http].respond_to?(:body) && options[:http].respond_to?(:code) && options[:http].respond_to?(:message) && options[:http].respond_to?(:headers) # httparty
-        @message = options[:response]
-        @timetoken = options[:response]
-        @status_code = options[:http].response.code
-        @headers = options[:http].headers.inspect
+      if options[:http].respond_to?(:body) && options[:http].respond_to?(:code) && options[:http].respond_to?(:message) && options[:http].respond_to?(:headers)
+        httparty = true
       else
-        @message = options[:index] ? options[:response][0][options[:index]] : options[:response][0]
-        if options[:response][2]
-          @channel = options[:index] ? options[:response][2][options[:index]] : options[:channel]
-        else
-          @channel = options[:channel]
-        end
-        @timetoken = options[:response][1]
-        @status_code = options[:http].response_header.status.to_i
-        @headers = options[:http].response_header
+        httparty = false
       end
 
-      if options[:http].respond_to?(:body) && options[:http].respond_to?(:code) && options[:http].respond_to?(:message) && options[:http].respond_to?(:headers) # httparty
-        @response = options[:http].body
-      else
-        @response = options[:http].response
+      if httparty
+        case options[:operation]
+          when 'publish'
+            set_for_httparty(options)
+          when 'subscribe'
+            set_for_httparty(options)
+          when 'presence'
+            set_for_httparty(options)
+          when 'history'
+            set_for_httparty(options)
+          when 'leave'
+            set_for_httparty(options)
+          when 'here_now'
+            set_for_httparty(options)
+          when 'time'
+            set_for_httparty(options)
+        end
+      else # EM.http_request
+        case options[:operation]
+          when 'publish'
+            set_for_em_http_request(options)
+          when 'subscribe'
+            set_for_em_http_request(options)
+          when 'presence'
+            set_for_em_http_request(options)
+          when 'history'
+            set_for_em_http_request(options)
+          when 'leave'
+            set_for_em_http_request(options)
+          when 'here_now'
+            set_for_em_http_request(options)
+          when 'time'
+            set_for_em_http_request(options)
+        end
       end
     end
   end
@@ -52,8 +71,35 @@ class Pubnub::Response
     @response == other.to_s
   end
 
-  ## Returns @response.to_s
-  #def to_s
-  #  ap self
-  #end
+  private
+
+  def set_for_httparty(options)
+    @message = options[:response]
+    @timetoken = options[:response]
+    @status_code = options[:http].response.code
+    @headers = options[:http].headers.inspect
+    @response = options[:http].body
+  end
+
+  def set_for_em_http_request(options)
+    if options[:response][2]
+      @channel = options[:index] ? options[:response][2][options[:index]] : options[:channel]
+    else
+      @channel = options[:channel]
+    end
+    if options[:operation] == 'publish'
+      set_for_publish(options[:response][1],options[:response][2])
+    else
+      @timetoken = options[:response][1]
+      @message = options[:index] ? options[:response][0][options[:index]] : options[:response][0]
+    end
+    @status_code = options[:http].response_header.status.to_i
+    @headers = options[:http].response_header
+    @response = options[:http].response
+  end
+
+  def set_for_publish(msg, timetoken)
+    @message = msg
+    @timetoken = timetoken
+  end
 end

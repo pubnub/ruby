@@ -211,7 +211,7 @@ module Pubnub
     def set_cipher_key(options, self_cipher_key)
       if self_cipher_key.present? && options[:cipher_key].present?
         raise(OperationError, "existing cipher_key #{self_cipher_key} cannot be overridden at publish-time.")
-
+                                                      q
       elsif (self_cipher_key.present? && options[:cipher_key].blank?) || (self_cipher_key.blank? && options[:cipher_key].present?)
 
         this_cipher_key = self_cipher_key || options[:cipher_key]

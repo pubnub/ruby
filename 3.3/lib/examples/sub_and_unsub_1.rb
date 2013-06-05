@@ -5,8 +5,7 @@ require 'pubnub'
 
 p = Pubnub.new(:subscribe_key => "demo", :publish_key => "demo")
 
-cb1 = lambda { |x|
-  puts("cb1 says on channel #{x.channel}: msg: #{x.message}") }
+cb1 = lambda { |x|puts("cb1 says on channel #{x.channel}: msg: #{x.message}") }
 cb2 = lambda { |x| puts("cb2 says on channel #{x.channel}: msg: #{x.message}") }
 cb3 = lambda { |x| puts("cb3 says on channel #{x.channel}: msg: #{x.message}") }
 
@@ -48,5 +47,6 @@ while (x > 0) do
 
   x=x-1
 # provide publish example with block
+  p.publish(:message => 'whatever', :channel => 'hello_world', :http_sync => true){|x| p x.message}
 
 end
