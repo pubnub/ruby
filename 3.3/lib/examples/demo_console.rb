@@ -29,8 +29,8 @@ while (true)
       puts("Enter channel")
       channel = gets().chomp!
       p.subscribe(:channel => channel, :http_sync => false) do |envelope|
-      puts "My block got the message of: #{envelope.message} on channel #{envelope.channel}"
-      puts "status: #{envelope.code} and timetoken #{envelope.timetoken}"
+        puts "My block got the message of: #{envelope.message} on channel #{envelope.channel}"
+        puts "status: #{envelope.status_code} and timetoken #{envelope.timetoken}"
       end
 
     when "3"
