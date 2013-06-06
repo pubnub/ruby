@@ -55,7 +55,7 @@ describe Pubnub::Request do
                 :cipher_key    => 'so_secret_key'
             )
 
-            @pubnub_request.path.should eq '/publish/publish_key/subscribe_key/0/channel/0/%22OfUPhgfENucj3lsbSef1qg%3D%3D%22'
+            @pubnub_request.path.should eq '/publish/publish_key/subscribe_key/0/channel/0/%22OfUPhgfENucj3lsbSef1qg==%22'
           end
         end
       end

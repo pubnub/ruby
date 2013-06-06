@@ -1,6 +1,5 @@
-require 'pubnub/em/client.rb'
-require 'pubnub/em/request.rb'
 require 'pubnub/configuration.rb'
+require 'pubnub/subscription.rb'
 require 'em-http-request'
 require 'httparty'
 
@@ -10,6 +9,8 @@ module Pubnub
 
     attr_accessor :uuid, :cipher_key, :host, :query, :response, :timetoken, :url, :operation, :callback, :publish_key, :subscribe_key, :secret_key, :channel, :jsonp, :message, :ssl, :port
     attr_accessor :close_connection, :history_limit, :history_count, :history_start, :history_end, :history_reverse, :session_uuid, :last_timetoken, :origin, :error
+
+    @@subscription_request = nil
 
     def initialize(options = {})
       @retry           = true
@@ -39,7 +40,7 @@ module Pubnub
       @http_sync       = options[:http_sync]
 
       @params          = Hash.new
-      @subscriptions   = Hash.new
+      @sub_channels        = Array.new
     end
 
     def publish(options = {}, &block)
@@ -96,8 +97,8 @@ module Pubnub
       else
         start_request
       end
-      @subscriptions[options[:channel]].cancel
     end
+
     alias_method :unsubscribe, :leave
 
     def here_now(options = {}, &block)
@@ -117,12 +118,6 @@ module Pubnub
         start_request { |envelope| block.call envelope }
       else
         start_request
-      end
-    end
-
-    def show_subscriptions
-      @subscriptions.each do |sub|
-        puts sub
       end
     end
 
@@ -152,27 +147,33 @@ module Pubnub
         }
 
         while EM.reactor_running? == false do end
-
         if %w(subscribe presence).include? request.operation
-          @subscriptions[@options[:channel]] = EM.add_periodic_timer(PERIODIC_TIMER) do
+
+          if block_given?
+            Subscription.new(:channel  => @options[:channel]){ |envelope| block.call envelope }
+          else
+            Subscription.new(:channel  => @options[:channel], :callback => @options[:callback])
+          end
+
+          @@subscription_request = request unless @@subscription_request
+
+          @@subscription_request.channel = Subscription.channels_for_url
+
+          EM.add_periodic_timer(PERIODIC_TIMER) do
+            @subscription_running = true
+
             if @close_connection
               EM.stop
             else
-              http = send_request(request)
+              http = send_request(@@subscription_request)
               http.callback do
                 if http.response_header.status.to_i == 200
                   if is_valid_json?(http.response)
-                    make_callback = is_update?(request.timetoken)
-                    request.handle_response(http)
-                    if block_given?
-                      request.envelopes.each do |envelope|
-                        block.call envelope
-                      end
-                    else
-                      request.envelopes.each do |envelope|
-                        request.callback.call envelope
-                      end
-                    end if make_callback
+                    @@subscription_request.handle_response(http)
+                    # puts"\n\n ENVELOPES \n #{@@subscription_request.envelopes} \n ENVELOPES END \n\n"
+                    @@subscription_request.envelopes.each do |envelope|
+                      Subscription.fire_callbacks_for envelope
+                    end if is_update?(@@subscription_request.timetoken)
                   end
                 end
               end
@@ -181,12 +182,19 @@ module Pubnub
 
               end
             end
-          end
+          end unless @subscription_running
         else
           EM.next_tick do
             http = send_request(request)
 
             http.callback do
+
+              puts request.operation
+              if request.operation == 'leave'
+                puts 'tuteh'
+                puts request.channel
+                Subscription.remove_from_subscription request.channel
+              end
 
               if http.response_header.status.to_i == 200
                 if is_valid_json?(http.response)
@@ -279,11 +287,16 @@ module Pubnub
     end
 
     def send_request(request)
+      # puts"#{request.origin}#{request.path}?#{request.query}"
       EM::HttpRequest.new(request.origin).get :path => request.path, :query => request.query
     end
 
     def is_update?(timetoken)
-      @timetoken == timetoken ? false : @timetoken = timetoken
+      if @timetoken.to_i < timetoken.to_i
+        @timetoken = timetoken
+      else
+         false
+      end
     end
 
     def is_valid_json?(response)
@@ -336,6 +349,10 @@ module Pubnub
       channel = channels if channels
       channel = channel.join(',') if channel.class == Array
       channel
+    end
+
+    def subscription_running?
+      @subscription_running
     end
 
   end
