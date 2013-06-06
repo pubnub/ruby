@@ -10,17 +10,17 @@ cb2 = lambda { |x| puts("cb2 says on channel #{x.channel}: msg: #{x.message} res
 cb3 = lambda { |x| puts("cb3 says on channel #{x.channel}: msg: #{x.message} response: #{x.response}") }
 
 puts("Subscribing on ch a!")
-p.subscribe(:channel => "a", :callback => cb1, :http_sync => false)
+#p.subscribe(:channel => "a", :callback => cb1, :http_sync => false)
 puts("Sleeping...")
 sleep(3)
 puts("Awoke!")
 puts("Subscribing on ch ping_3!")
-p.subscribe(:channel => "ping_3", :callback => cb2, :http_sync => false)
+p.subscribe(:channel => "ping_3,a", :callback => cb2, :http_sync => false)
 
 
 # Provide example of pubnub subcribe with block here
 
-x = 3
+x = 1000000
 
 while (x > 0) do
 
