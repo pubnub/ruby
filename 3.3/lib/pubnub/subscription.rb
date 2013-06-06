@@ -45,14 +45,10 @@ module Pubnub
     end
 
     def self.remove_from_subscription(channel)
-      puts 'one'
       if Subscription.is_subscribed_to? channel
-        puts 'two'
         @@channels.delete_if{|c| c == channel}
       end
-      puts 'three'
       Subscription.clean_subscriptions channel
-      puts 'eleven'
     end
 
     def self.channels_for_url
@@ -70,14 +66,10 @@ module Pubnub
     end
 
     def self.clean_subscriptions(channel)
-      puts 'five'
       @@instances_collector.each do |subscription|
-        puts 'six'
         subscription.remove_from_subscription channel
       end
-      puts 'seven'
       @@instances_collector.delete_if{ |subscription| subscription.get_channels.empty? }
-      puts 'eight'
     end
   end
 end

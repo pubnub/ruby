@@ -191,8 +191,6 @@ module Pubnub
 
               puts request.operation
               if request.operation == 'leave'
-                puts 'tuteh'
-                puts request.channel
                 Subscription.remove_from_subscription request.channel
               end
 

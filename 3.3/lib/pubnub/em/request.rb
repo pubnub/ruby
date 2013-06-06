@@ -39,9 +39,6 @@ module EventMachine
         data << "\r\n"
         data = data.join("\r\n")
         data << content if post? || put?
-
-        puts "\n\n #{data} \n\n"
-
         data
       end
 
