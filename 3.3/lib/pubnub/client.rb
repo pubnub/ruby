@@ -54,6 +54,11 @@ module Pubnub
     end
 
     def subscribe(options = {}, &block)
+      if options[:http_sync] && options[:timetoken].nil? && @timetoken.nil?
+        time(:http_sync => true){ |envelope|
+          options[:timetoken] = envelope.message
+        }
+      end
       merge_options(options, 'subscribe')
       verify_operation('subscribe', options.merge!(:block_given => block_given?))
       if block_given?
@@ -189,7 +194,7 @@ module Pubnub
 
             http.callback do
 
-              puts request.operation
+              #puts request.operation
               if request.operation == 'leave'
                 Subscription.remove_from_subscription request.channel
               end
@@ -245,6 +250,7 @@ module Pubnub
         if response.response.code.to_i == 200
           if is_valid_json?(response.body)
             request.handle_response(response)
+            @timetoken = request.timetoken
             if block_given?
               request.envelopes.each do |envelope|
                 block.call envelope

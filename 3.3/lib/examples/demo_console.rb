@@ -15,8 +15,9 @@ while (true)
   puts("3. unsubscribe")
   puts("4. publish")
   puts("5. publish with block")
+  puts("6. subscribe with http_sync => true and block")
   puts("\n\n")
-  puts("6. Enter a selection")
+  puts("Enter a selection")
   choice = gets().chomp!
 
   case choice
@@ -45,6 +46,33 @@ while (true)
       message = gets().chomp!
       p.publish(:channel => channel, :callback => default_cb, :message => message, :http_sync => false)
 
+    when "5"
+      puts("Enter channel")
+      channel = gets().chomp!
+      puts("Enter message")
+      message = gets().chomp!
+      p.publish(:channel => channel, :message => message, :http_sync => false){|e| p e}
+
+    when "6"
+      puts("Enter channel")
+      channel = gets().chomp!
+      choices = Array.new
+      fetch = true
+      while fetch do
+        p.subscribe(:channel => channel, :http_sync => true) do |envelope|
+          puts "Do you want to accept: '#{envelope.message}' message? [y/N]"
+          if gets().chomp!.downcase == 'y'
+            choices << envelope.message
+            puts 'Accepted!'
+          else
+            puts 'Rejected!'
+          end
+        end
+        puts 'Do you want to fetch next part of messages? [Y/n]'
+        fetch = false if gets().chomp!.downcase == 'n'
+      end
+      puts 'You accepted:'
+      puts choices.inspect
   end
 
 

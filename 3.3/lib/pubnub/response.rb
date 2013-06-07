@@ -74,8 +74,21 @@ class Pubnub::Response
   private
 
   def set_for_httparty(options)
-    @message = options[:response]
-    @timetoken = options[:response]
+    if options[:response][2] && options[:operation] == 'subscribe'
+      @channel = options[:index] ? options[:response][2].split(',')[options[:index]] : options[:channel]
+    else
+      @channel = options[:channel]
+    end
+
+    if options[:operation] == 'publish'
+      set_for_publish(options[:response][1],options[:response][2])
+    elsif options[:operation] == 'here_now'
+      @message = options[:response]
+    else
+      @timetoken = options[:response][1]
+      @message = options[:index] ? options[:response][0][options[:index]] : options[:response][0]
+    end
+
     @status_code = options[:http].response.code
     @headers = options[:http].headers.inspect
     @response = options[:http].body
