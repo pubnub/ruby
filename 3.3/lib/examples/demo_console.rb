@@ -1,4 +1,4 @@
-require 'pubnub'
+#require 'pubnub'
 
 # I should get a message on channel a once a second, but it doesnt appear so... why not?
 # x.channel is always nil - please fix
@@ -7,6 +7,8 @@ p = Pubnub.new(:subscribe_key => "demo", :publish_key => "demo")
 default_cb = lambda { |x| puts("\nchannel: #{x.channel}: \nmsg: #{x.message} \nresponse: #{x.response}") }
 
 while (true)
+
+  # TODO: Give option for async/sync calls
 
   puts("\n\n")
 
@@ -51,11 +53,15 @@ while (true)
       channel = gets().chomp!
       puts("Enter message")
       message = gets().chomp!
-      p.publish(:channel => channel, :message => message, :http_sync => false){|e| p e}
+
+      p.publish(:channel => channel, :message => message, :http_sync => false) do |envelope|
+        puts(envelope.inspect)
+      end
 
     when "6"
       puts("Enter channel")
       channel = gets().chomp!
+
       choices = Array.new
       fetch = true
       while fetch do
@@ -73,6 +79,34 @@ while (true)
       end
       puts 'You accepted:'
       puts choices.inspect
+
+    when "7"
+      puts("Enter channel")
+      channel = gets().chomp!
+
+      puts("Enter count")
+      count = gets().chomp!
+      if (count == "") then count = nil end
+
+      puts("Enter start")
+      start = gets().chomp!
+      if (start == "") then start = nil end
+
+      puts("Enter end")
+      endd = gets().chomp!
+      if (endd == "") then endd = nil end
+
+      puts("Enter reverse (y/n)")
+      reverse = gets().chomp!
+      if (reverse == "" || reverse == "n") then reverse = false else reverse = true end
+
+      p.history(:channel => channel,
+                         :count => count,
+                         :start => start,
+                         :end => endd,
+                         :reverse => reverse,
+                         :http_sync => false) do |envelope| puts(envelope.inspect) end
+
   end
 
 
