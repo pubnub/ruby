@@ -18,6 +18,7 @@ while (true)
   puts("4. publish")
   puts("5. publish with block")
   puts("6. subscribe with http_sync => true and block")
+  puts("7. history")
   puts("\n\n")
   puts("Enter a selection")
   choice = gets().chomp!
