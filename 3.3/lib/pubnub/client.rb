@@ -13,34 +13,36 @@ module Pubnub
     @@subscription_request = nil
 
     def initialize(options = {})
-      @retry           = true
-      @retry_count     = 0
-      @callback        = options[:callback]# || DEFAULT_CALLBACK
-      @cipher_key      = options[:cipher_key]
-      @publish_key     = options[:publish_key]# || DEFAULT_PUBLISH_KEY
-      @subscribe_key   = options[:subscribe_key] || DEFAULT_SUBSCRIBE_KEY
-      @channel         = options[:channel] || DEFAULT_CHANNEL
-      @message         = options[:message]
-      @ssl             = options[:ssl]# || DEFAULT_SSL_SET
-      @secret_key      = options[:secret_key]# || '0'
-      @timetoken       = options[:timetoken]# || '0'
-      @session_uuid    = UUID.new.generate
+      @retry            = true
+      @retry_count      = 0
+      @callback         = options[:callback]# || DEFAULT_CALLBACK
+      @error_callback   = options[:error_callback]
+      @connect_callback = options[:connect_callback]
+      @cipher_key       = options[:cipher_key]
+      @publish_key      = options[:publish_key]# || DEFAULT_PUBLISH_KEY
+      @subscribe_key    = options[:subscribe_key] || DEFAULT_SUBSCRIBE_KEY
+      @channel          = options[:channel] || DEFAULT_CHANNEL
+      @message          = options[:message]
+      @ssl              = options[:ssl]# || DEFAULT_SSL_SET
+      @secret_key       = options[:secret_key]# || '0'
+      @timetoken        = options[:timetoken]# || '0'
+      @session_uuid     = UUID.new.generate
 
-      @history_count   = options[:count]
-      @history_start   = options[:start]
-      @history_end     = options[:end]
-      @history_reverse = options[:reverse]
+      @history_count    = options[:count]
+      @history_start    = options[:start]
+      @history_end      = options[:end]
+      @history_reverse  = options[:reverse]
 
-      @port            = options[:port]# || DEFAULT_PORT
-      @url             = options[:url]
-      @origin          = options[:origin]
-      @origin          = DEFAULT_ORIGIN unless @origin
-      @query           = options[:query]
+      @port             = options[:port]# || DEFAULT_PORT
+      @url              = options[:url]
+      @origin           = options[:origin]
+      @origin           = DEFAULT_ORIGIN unless @origin
+      @query            = options[:query]
 
-      @http_sync       = options[:http_sync]
+      @http_sync        = options[:http_sync]
 
-      @params          = Hash.new
-      @sub_channels        = Array.new
+      @params           = Hash.new
+      @sub_channels     = Array.new
     end
 
     def publish(options = {}, &block)
@@ -192,6 +194,10 @@ module Pubnub
           EM.next_tick do
             http = send_request(request)
 
+            http.errback do
+              call(@error_callback)
+            end
+
             http.callback do
 
               #puts request.operation
@@ -215,27 +221,15 @@ module Pubnub
               else
                 begin
                   request.handle_response(http)
-                  if block_given?
-                    request.envelopes.each do |envelope|
-                      block.call envelope
-                    end
-                  else
-                    request.envelopes.each do |envelope|
-                      request.callback.call envelope
-                    end
+                  request.envelopes.each do |envelope|
+                    request.error_callback.call envelope
                   end
+
                 rescue
-                  if block_given?
-                      block.call Pubnub::Response.new(
-                                     :error_init => true,
-                                     :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_s
-                                 )
-                  else
-                      request.callback.call Pubnub::Response.new(
-                                                :error_init => true,
-                                                :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_s
-                                            )
-                  end
+                    request.error_callback.call Pubnub::Response.new(
+                                              :error_init => true,
+                                              :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_s
+                                          )
                 end
               end
             end
@@ -251,6 +245,11 @@ module Pubnub
           if is_valid_json?(response.body)
             request.handle_response(response)
             @timetoken = request.timetoken
+
+            if request.operation == 'leave'
+              Subscription.remove_from_subscription request.channel
+            end
+
             if block_given?
               request.envelopes.each do |envelope|
                 block.call envelope

@@ -11,26 +11,28 @@ module Pubnub
     include Pubnub::Configuration
     include Pubnub::Error
 
-    attr_accessor :envelopes, :port, :timetoken, :operation, :response, :ssl, :channel, :callback, :cipher_key, :subscribe_key, :secret_key, :operation, :message, :publish_key
+    attr_accessor :error_callback, :envelopes, :port, :timetoken, :operation, :response, :ssl, :channel, :callback, :cipher_key, :subscribe_key, :secret_key, :operation, :message, :publish_key
 
     def initialize(options = {})
       @options = options
 
-      @params        = options[:params]
-      @operation     = options[:operation]
-      @callback      = options[:callback]
-      @channel       = options[:channel]
-      @message       = options[:message]
-      @timetoken     = options[:timetoken] || "0"
-      @timetoken     = options[:override_timetoken] if options[:override_timetoken]
-      @ssl           = options[:ssl]
-      @params        = options[:params]
+      @params         = options[:params]
+      @operation      = options[:operation]
+      @callback       = options[:callback]
+      @error_callback = options[:error_callback]
+      @error_callback = lambda { puts 'AN ERROR OCCURRED' } unless @error_callback
+      @channel        = options[:channel]
+      @message        = options[:message]
+      @timetoken      = options[:timetoken] || "0"
+      @timetoken      = options[:override_timetoken] if options[:override_timetoken]
+      @ssl            = options[:ssl]
+      @params         = options[:params]
 
-      @history_limit = options[:limit]
+      @history_limit  = options[:limit]
 
-      @port          = options[:port]
-      @host          = options[:origin]
-      @query         = options[:query]
+      @port           = options[:port]
+      @host           = options[:origin]
+      @query          = options[:query]
 
       set_cipher_key(options, @cipher_key) if %w(publish subscribe history).include? @operation
       set_message(options, @cipher_key) if %w(publish).include? @operation

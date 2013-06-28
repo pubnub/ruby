@@ -10,6 +10,7 @@ module Pubnub
       @@instances_collector << self
       @channels = options[:channel].split(',')
       @callback = options[:callback]
+      @error_callback = options[:error_callback]
       @callback = block if block_given?
       add_self_to_subscription
     end
