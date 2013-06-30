@@ -3,19 +3,19 @@ require 'pubnub'
 p = Pubnub.new(:subscribe_key => "demo", :publish_key => "demo")
 default_cb = lambda { |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
 
-while (true)
+while(true)
 
   puts("\n\n")
   sync_or_async = false
   while !%w(S A).include? sync_or_async
     puts('Should next operation be [S]ync or [A]sync?')
-    sync_or_async = gets().chomp!
+    sync_or_async = gets.chomp!
   end
 
   block_or_parameter = false
   while !%w(B P).include? block_or_parameter
     puts('Do you want pass callback as [B]lock or [P]arameter?')
-    block_or_parameter = gets().chomp!
+    block_or_parameter = gets.chomp!
   end
 
   puts('1. subscribe')
@@ -27,13 +27,13 @@ while (true)
   puts('7. time')
   puts("\n\n")
   puts('Enter a selection')
-  choice = gets().chomp!
+  choice = gets.chomp!
 
   case choice
     when '1' #SUBSCRIBE
 
       puts('Enter channel')
-      channel = gets().chomp!
+      channel = gets.chomp!
 
       if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
         p.subscribe(:channel => channel, :callback => default_cb, :http_sync => false)
@@ -49,7 +49,7 @@ while (true)
     when '2' #UNSUBSCRIBE
 
       puts('Enter channel')
-      channel = gets().chomp!
+      channel = gets.chomp!
 
       if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
         p.unsubscribe(:channel => channel, :callback => default_cb, :http_sync => false)
@@ -64,10 +64,10 @@ while (true)
     when '3' #PUBLISH
 
       puts('Enter channel')
-      channel = gets().chomp!
+      channel = gets.chomp!
 
       puts('Enter message')
-      message = gets().chomp!
+      message = gets.chomp!
 
       if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
         p.publish(:message => message, :channel => channel, :callback => default_cb, :http_sync => false)
@@ -81,22 +81,22 @@ while (true)
 
     when '4' #HISTORY
       puts('Enter channel')
-      channel = gets().chomp!
+      channel = gets.chomp!
 
       puts('Enter count')
-      count = gets().chomp!
+      count = gets.chomp!
       if (count == '') then count = nil end
 
       puts('Enter start')
-      history_start = gets().chomp!
+      history_start = gets.chomp!
       if (start == '') then history_start = nil end
 
       puts('Enter end')
-      history_end = gets().chomp!
+      history_end = gets.chomp!
       if (endd == '') then history_end = nil end
 
       puts('Enter reverse (y/n)')
-      reverse = gets().chomp!
+      reverse = gets.chomp!
       if (reverse == "" || reverse == "n") then reverse = false else reverse = true end
 
       if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
@@ -133,7 +133,7 @@ while (true)
 
     when '5' #PRESENCE
       puts('Enter channel')
-      channel = gets().chomp!
+      channel = gets.chomp!
 
       if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
         p.presence(:channel => channel, :callback => default_cb, :http_sync => false)
@@ -147,7 +147,7 @@ while (true)
 
     when '6' #HERE_NOW
       puts('Enter channel')
-      channel = gets().chomp!
+      channel = gets.chomp!
 
       if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
         p.here_now(:channel => channel, :callback => default_cb, :http_sync => false)
