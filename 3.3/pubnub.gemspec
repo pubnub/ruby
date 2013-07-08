@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.date = '2013-02-14'
   s.description = 'Ruby anywhere in the world in 250ms with PubNub!'
   s.email = 'support@pubnub.com'
-  s.files = `git ls-files`.split('\n')
+  s.files = `git ls-files`.split("\n")
   s.homepage = 'http://github.com/pubnub/pubnub-api'
   s.licenses = ['MIT']
   s.require_paths = ['lib']
