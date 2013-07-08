@@ -2,8 +2,14 @@ require 'pubnub/configuration.rb'
 require 'pubnub/subscription.rb'
 require 'em-http-request'
 require 'httparty'
+require 'persistent_httparty'
 
 module Pubnub
+  class PubNubHTTParty
+    include HTTParty
+    persistent_connection_adapter
+  end
+
   class Client
     include Configuration
 
@@ -150,7 +156,7 @@ module Pubnub
       unless @options[:http_sync]
 
         Thread.new {
-          EM.run
+          EM.run# do
         }
 
         while EM.reactor_running? == false do end
@@ -173,11 +179,11 @@ module Pubnub
               EM.stop
             else
               http = send_request(@@subscription_request)
+
               http.callback do
                 if http.response_header.status.to_i == 200
                   if is_valid_json?(http.response)
                     @@subscription_request.handle_response(http)
-                    # puts"\n\n ENVELOPES \n #{@@subscription_request.envelopes} \n ENVELOPES END \n\n"
                     @@subscription_request.envelopes.each do |envelope|
                       Subscription.fire_callbacks_for envelope
                     end if is_update?(@@subscription_request.timetoken)
@@ -186,7 +192,7 @@ module Pubnub
               end
 
               http.errback do
-
+                @error_callback.call(http)
               end
             end
           end unless @subscription_running
@@ -194,13 +200,13 @@ module Pubnub
           EM.next_tick do
             http = send_request(request)
 
+            puts http.inspect
+
             http.errback do
-              call(@error_callback)
+              @error_callback.call(http)
             end
 
             http.callback do
-
-              #puts request.operation
               if request.operation == 'leave'
                 Subscription.remove_from_subscription request.channel
               end
@@ -235,11 +241,12 @@ module Pubnub
             end
           end
         end
+        #end # EM RUN
       else
         if request.query.to_s.empty?
-          response = HTTParty.get(request.origin + request.path)
+          response = PubNubHTTParty.get(request.origin + request.path)
         else
-          response = HTTParty.get(request.origin + request.path, :query => request.query)
+          response = PubNubHTTParty.get(request.origin + request.path, :query => request.query)
         end
         if response.response.code.to_i == 200
           if is_valid_json?(response.body)
@@ -290,8 +297,17 @@ module Pubnub
     end
 
     def send_request(request)
-      # puts"#{request.origin}#{request.path}?#{request.query}"
-      EM::HttpRequest.new(request.origin).get :path => request.path, :query => request.query
+      if %w(subscribe presence).include? request.operation
+        unless @subscribe_connection
+          @subscribe_connection = EM::HttpRequest.new request.origin
+        end
+        @subscribe_connection.get :path => request.path, :query => request.query, :keepalive => true
+      else
+        unless @sconnection
+          @connection = EM::HttpRequest.new request.origin
+        end
+        @connection.get :path => request.path, :query => request.query, :keepalive => true
+      end
     end
 
     def is_update?(timetoken)
@@ -343,6 +359,10 @@ module Pubnub
 
       unless options[:callback].nil?
         raise('callback is invalid.') unless options[:callback].respond_to? 'call'
+      end
+
+      unless options[:error_callback].nil?
+        raise('error_callback is invalid.') unless options[:error_callback].respond_to? 'call'
       end
 
     end

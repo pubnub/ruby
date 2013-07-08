@@ -60,7 +60,7 @@ module Pubnub
       @@instances_collector
     end
 
-    alias_method :active_subscriptions, :all_offspring
+    #alias_method :active_subscriptions, :all_offspring
 
     def self.fire_callbacks_for(envelope)
       Subscription.all_offspring.each do |subscription|
