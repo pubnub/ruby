@@ -8,6 +8,7 @@ require 'timeout'
 module Pubnub
   class PubNubHTTParty
     include HTTParty
+    default_timeout 310
     persistent_connection_adapter
   end
 
@@ -258,6 +259,10 @@ module Pubnub
         end
       else
         begin
+          if @timetoken.to_i == 0 && request.operation == 'subscribe'
+            time(:http_sync => true){|envelope| @timetoken = envelope.message.to_i }
+          end
+          puts "#{request.origin.to_s + request.path.to_s + request.query.to_s}"
           if request.query.to_s.empty?
             response = PubNubHTTParty.get(request.origin + request.path)
           else
