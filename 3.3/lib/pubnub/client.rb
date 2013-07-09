@@ -16,7 +16,7 @@ module Pubnub
     attr_accessor :uuid, :cipher_key, :host, :query, :response, :timetoken, :url, :operation, :callback, :publish_key, :subscribe_key, :secret_key, :channel, :jsonp, :message, :ssl, :port
     attr_accessor :close_connection, :history_limit, :history_count, :history_start, :history_end, :history_reverse, :session_uuid, :last_timetoken, :origin, :error
 
-    @@subscription_request = nil
+    @subscription_request = nil
 
     DEFAULT_CONNECT_CALLBACK = lambda { puts 'CONNECTED' }
     DEFAULT_ERROR_CALLBACK = lambda { puts 'AN ERROR OCCURRED' }
@@ -173,9 +173,9 @@ module Pubnub
             Subscription.new(:channel  => @options[:channel], :callback => @options[:callback])
           end
 
-          @@subscription_request = request unless @@subscription_request
+          @subscription_request = request unless @subscription_request
 
-          @@subscription_request.channel = Subscription.channels_for_url
+          @subscription_request.channel = Subscription.channels_for_url
 
           EM.add_periodic_timer(PERIODIC_TIMER) do
             @subscription_running = true
@@ -183,15 +183,15 @@ module Pubnub
             if @close_connection
               EM.stop
             else
-              http = send_request(@@subscription_request)
+              http = send_request(@subscription_request)
 
               http.callback do
                 if http.response_header.status.to_i == 200
                   if is_valid_json?(http.response)
-                    @@subscription_request.handle_response(http)
-                    @@subscription_request.envelopes.each do |envelope|
+                    @subscription_request.handle_response(http)
+                    @subscription_request.envelopes.each do |envelope|
                       Subscription.fire_callbacks_for envelope
-                    end if is_update?(@@subscription_request.timetoken)
+                    end if is_update?(@subscription_request.timetoken)
                   end
                 end
               end
@@ -231,14 +231,25 @@ module Pubnub
                 begin
                   request.handle_response(http)
                   request.envelopes.each do |envelope|
-                    request.error_callback.call envelope
+                    if request.error_callback
+                      request.error_callback.call envelope
+                    else
+                      @error_callback.call envelope
+                    end
                   end
 
                 rescue
+                  if request.error_callback
                     request.error_callback.call Pubnub::Response.new(
-                                              :error_init => true,
-                                              :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_s
-                                          )
+                      :error_init => true,
+                      :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_s
+                    )
+                  else
+                    @error_callback.call Pubnub::Response.new(
+                      :error_init => true,
+                      :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_s
+                    )
+                  end
                 end
               end
             end
@@ -305,7 +316,7 @@ module Pubnub
         end
         @subscribe_connection.get :path => request.path, :query => request.query, :keepalive => true
       else
-        unless @sconnection
+        unless @connection
           @connection = EM::HttpRequest.new request.origin
         end
         @connection.get :path => request.path, :query => request.query, :keepalive => true
@@ -378,6 +389,10 @@ module Pubnub
 
     def subscription_running?
       @subscription_running
+    end
+    
+    def active_subscriptions
+      @subscription_request
     end
 
   end

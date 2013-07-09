@@ -89,11 +89,11 @@ while(true)
 
       puts('Enter start')
       history_start = gets.chomp!
-      if (start == '') then history_start = nil end
+      if (history_start == '') then history_start = nil end
 
       puts('Enter end')
       history_end = gets.chomp!
-      if (endd == '') then history_end = nil end
+      if (history_end == '') then history_end = nil end
 
       puts('Enter reverse (y/n)')
       reverse = gets.chomp!
@@ -117,6 +117,7 @@ while(true)
       elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
         p.history(:channel => channel,
                   :count => count,
+
                   :start => history_start,
                   :end => history_end,
                   :reverse => reverse,
