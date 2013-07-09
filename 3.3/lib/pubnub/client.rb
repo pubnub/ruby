@@ -12,12 +12,17 @@ module Pubnub
 
     @@subscription_request = nil
 
+    DEFAULT_CONNECT_CALLBACK = lambda { puts 'CONNECTED' }
+    DEFAULT_ERROR_CALLBACK = lambda { puts 'AN ERROR OCCURRED' }
+
     def initialize(options = {})
       @retry            = true
       @retry_count      = 0
       @callback         = options[:callback]# || DEFAULT_CALLBACK
       @error_callback   = options[:error_callback]
+      @error_callback   = DEFAULT_ERROR_CALLBACK unless @error_callback
       @connect_callback = options[:connect_callback]
+      @connect_callback = DEFAULT_CONNECT_CALLBACK unless @connect_callback
       @cipher_key       = options[:cipher_key]
       @publish_key      = options[:publish_key]# || DEFAULT_PUBLISH_KEY
       @subscribe_key    = options[:subscribe_key] || DEFAULT_SUBSCRIBE_KEY
@@ -148,11 +153,9 @@ module Pubnub
     def start_request(&block)
       request = Pubnub::Request.new(@options)
       unless @options[:http_sync]
-
         Thread.new {
           EM.run
         }
-
         while EM.reactor_running? == false do end
         if %w(subscribe presence).include? request.operation
 
@@ -168,16 +171,15 @@ module Pubnub
 
           EM.add_periodic_timer(PERIODIC_TIMER) do
             @subscription_running = true
-
             if @close_connection
               EM.stop
             else
+              puts @@subscription_request.inspect
               http = send_request(@@subscription_request)
               http.callback do
                 if http.response_header.status.to_i == 200
                   if is_valid_json?(http.response)
                     @@subscription_request.handle_response(http)
-                    # puts"\n\n ENVELOPES \n #{@@subscription_request.envelopes} \n ENVELOPES END \n\n"
                     @@subscription_request.envelopes.each do |envelope|
                       Subscription.fire_callbacks_for envelope
                     end if is_update?(@@subscription_request.timetoken)
@@ -186,7 +188,7 @@ module Pubnub
               end
 
               http.errback do
-
+                @error_callback.call
               end
             end
           end unless @subscription_running
@@ -199,8 +201,6 @@ module Pubnub
             end
 
             http.callback do
-
-              #puts request.operation
               if request.operation == 'leave'
                 Subscription.remove_from_subscription request.channel
               end
@@ -290,7 +290,6 @@ module Pubnub
     end
 
     def send_request(request)
-      # puts"#{request.origin}#{request.path}?#{request.query}"
       EM::HttpRequest.new(request.origin).get :path => request.path, :query => request.query
     end
 

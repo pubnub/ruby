@@ -56,14 +56,12 @@ module Pubnub
       @@channels.join(',')
     end
 
-    def self.all_offspring
+    def self.active_subscriptions
       @@instances_collector
     end
 
-    alias_method :active_subscriptions, :all_offspring
-
     def self.fire_callbacks_for(envelope)
-      Subscription.all_offspring.each do |subscription|
+      Subscription.active_subscriptions.each do |subscription|
         subscription.callback.call(envelope) if subscription.is_subscribed_to? envelope.channel
       end
     end
