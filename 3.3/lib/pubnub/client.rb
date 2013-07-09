@@ -3,6 +3,7 @@ require 'pubnub/subscription.rb'
 require 'em-http-request'
 require 'httparty'
 require 'persistent_httparty'
+require 'timeout'
 
 module Pubnub
   class PubNubHTTParty
@@ -256,11 +257,15 @@ module Pubnub
           end
         end
       else
-        if request.query.to_s.empty?
-          response = PubNubHTTParty.get(request.origin + request.path)
-        else
-          response = PubNubHTTParty.get(request.origin + request.path, :query => request.query)
-        end
+        begin
+          if request.query.to_s.empty?
+            response = PubNubHTTParty.get(request.origin + request.path)
+          else
+            response = PubNubHTTParty.get(request.origin + request.path, :query => request.query)
+          end
+          rescue Timeout::Error
+            puts 'TIMEOUT ERROR'
+          end
         if response.response.code.to_i == 200
           if is_valid_json?(response.body)
             request.handle_response(response)
