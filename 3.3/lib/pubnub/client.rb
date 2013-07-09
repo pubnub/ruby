@@ -263,53 +263,54 @@ module Pubnub
           else
             response = PubNubHTTParty.get(request.origin + request.path, :query => request.query)
           end
-          rescue Timeout::Error
-            puts 'TIMEOUT ERROR'
-          end
-        if response.response.code.to_i == 200
-          if is_valid_json?(response.body)
-            request.handle_response(response)
-            @timetoken = request.timetoken
 
-            if request.operation == 'leave'
-              Subscription.remove_from_subscription request.channel
-            end
+          if response.response.code.to_i == 200
+            if is_valid_json?(response.body)
+              request.handle_response(response)
+              @timetoken = request.timetoken
 
-            if block_given?
-              request.envelopes.each do |envelope|
-                block.call envelope
+              if request.operation == 'leave'
+                Subscription.remove_from_subscription request.channel
               end
-            else
-              request.envelopes.each do |envelope|
-                request.callback.call envelope
+
+              if block_given?
+                request.envelopes.each do |envelope|
+                  block.call envelope
+                end
+              else
+                request.envelopes.each do |envelope|
+                  request.callback.call envelope
+                end
+              end
+            end
+          else
+            begin
+              request.handle_response(response)
+              if block_given?
+                request.envelopes.each do |envelope|
+                  block.call envelope
+                end
+              else
+                request.envelopes.each do |envelope|
+                  request.callback.call envelope
+                end
+              end
+            rescue
+              if block_given?
+                block.call Pubnub::Response.new(
+                               :error_init => true,
+                               :message =>  [0, "Bad server response: #{response.response.code}"].to_s
+                           )
+              else
+                request.callback.call Pubnub::Response.new(
+                                          :error_init => true,
+                                          :message =>  [0, "Bad server response: #{response.response.code}"].to_s
+                                      )
               end
             end
           end
-        else
-          begin
-            request.handle_response(response)
-            if block_given?
-              request.envelopes.each do |envelope|
-                block.call envelope
-              end
-            else
-              request.envelopes.each do |envelope|
-                request.callback.call envelope
-              end
-            end
-          rescue
-            if block_given?
-              block.call Pubnub::Response.new(
-                             :error_init => true,
-                             :message =>  [0, "Bad server response: #{response.response.code}"].to_s
-                         )
-            else
-              request.callback.call Pubnub::Response.new(
-                                        :error_init => true,
-                                        :message =>  [0, "Bad server response: #{response.response.code}"].to_s
-                                    )
-            end
-          end
+        rescue Timeout::Error
+          puts 'TIMEOUT ERROR'
         end
       end
     end
