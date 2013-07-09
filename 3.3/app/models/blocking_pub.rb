@@ -8,7 +8,7 @@ class BlockingPub < ActiveRecord::Base
     url = "http://pubsub.pubnub.com#{url}"
 
     begin
-      response = HTTParty.get(url, :headers => {'V' => '3.3', 'User-Agent' => 'Ruby (tophatter)', 'Accept' => '*/*'}, :timeout => 1)
+      response = HTTParty.get(url, :headers => {'V' => '3.3', 'User-Agent' => 'Ruby (restful)', 'Accept' => '*/*'}, :timeout => 1)
     rescue Exception => e
       if (e.to_s == "execution expired")
         puts "Timed out: #{e}"
