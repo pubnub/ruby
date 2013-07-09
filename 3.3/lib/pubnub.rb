@@ -282,7 +282,7 @@ class Pubnub
 
   def _request(request, is_reactor_running = false)
     request.format_url!
-    Thread.new{
+    EM.schedule {
       begin
 
         operation_timeout = %w(subscribe presence).include?(request.operation) ? TIMEOUT_SUBSCRIBE : TIMEOUT_NON_SUBSCRIBE
@@ -323,7 +323,7 @@ class Pubnub
       rescue EventMachine::ConnectionError, RuntimeError => e # RuntimeError for catching "EventMachine not initialized"
         error_message = "Network Error: #{e.message}"
         puts(error_message)
-        return [0, error_message]
+        [0, error_message]
       end
     }
   end
