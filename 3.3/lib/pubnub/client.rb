@@ -16,12 +16,12 @@ module Pubnub
     attr_accessor :uuid, :cipher_key, :host, :query, :response, :timetoken, :url, :operation, :callback, :publish_key, :subscribe_key, :secret_key, :channel, :jsonp, :message, :ssl, :port
     attr_accessor :close_connection, :history_limit, :history_count, :history_start, :history_end, :history_reverse, :session_uuid, :last_timetoken, :origin, :error
 
-    @subscription_request = nil
 
     DEFAULT_CONNECT_CALLBACK = lambda { puts 'CONNECTED' }
     DEFAULT_ERROR_CALLBACK = lambda { puts 'AN ERROR OCCURRED' }
 
     def initialize(options = {})
+      @subscription_request = nil
       @retry            = true
       @retry_count      = 0
       @callback         = options[:callback]# || DEFAULT_CALLBACK
@@ -312,7 +312,11 @@ module Pubnub
     def send_request(request)
       if %w(subscribe presence).include? request.operation
         unless @subscribe_connection
-          @subscribe_connection = EM::HttpRequest.new request.origin
+          if @subscribe_connection = EM::HttpRequest.new(request.origin)
+            @connect_callback.call
+          else
+            # ERROR CONNECTING CALLBACK
+          end
         end
         @subscribe_connection.get :path => request.path, :query => request.query, :keepalive => true
       else
