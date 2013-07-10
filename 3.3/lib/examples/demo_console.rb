@@ -1,6 +1,10 @@
 require 'pubnub'
 
-p = Pubnub.new(:subscribe_key => "demo", :publish_key => "demo")
+puts 'Provide origin [demo.pubnub.com]:'
+origin = gets.chomp!
+origin = 'demo.pubnub.com' if origin == ''
+
+p = Pubnub.new(:subscribe_key => "demo", :publish_key => "demo", :origin => origin)
 default_cb = lambda { |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
 
 while(true)
