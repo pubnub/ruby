@@ -19,14 +19,14 @@ module Pubnub
     attr_accessor :close_connection, :history_limit, :history_count, :history_start, :history_end, :history_reverse, :session_uuid, :last_timetoken, :origin, :error
 
 
-    DEFAULT_CONNECT_CALLBACK = lambda { puts 'CONNECTED' }
-    DEFAULT_ERROR_CALLBACK = lambda { puts 'AN ERROR OCCURRED' }
+    DEFAULT_CONNECT_CALLBACK = lambda { |msg| puts "CONNECTED: #{msg}" }
+    DEFAULT_ERROR_CALLBACK = lambda { |msg| puts "AN ERROR OCCURRED: #{msg}" }
 
     def initialize(options = {})
       @subscription_request = nil
       @retry            = true
       @retry_count      = 0
-      @callback         = options[:callback]# || DEFAULT_CALLBACK
+      @callback         = options[:callback]
       @error_callback   = options[:error_callback]
       @error_callback   = DEFAULT_ERROR_CALLBACK unless @error_callback
       @connect_callback = options[:connect_callback]
@@ -36,9 +36,9 @@ module Pubnub
       @subscribe_key    = options[:subscribe_key] || DEFAULT_SUBSCRIBE_KEY
       @channel          = options[:channel] || DEFAULT_CHANNEL
       @message          = options[:message]
-      @ssl              = options[:ssl]# || DEFAULT_SSL_SET
-      @secret_key       = options[:secret_key]# || '0'
-      @timetoken        = options[:timetoken]# || '0'
+      @ssl              = options[:ssl]
+      @secret_key       = options[:secret_key]
+      @timetoken        = options[:timetoken]
       @session_uuid     = UUID.new.generate
 
       @history_count    = options[:count]
@@ -46,7 +46,7 @@ module Pubnub
       @history_end      = options[:end]
       @history_reverse  = options[:reverse]
 
-      @port             = options[:port]# || DEFAULT_PORT
+      @port             = options[:port]
       @url              = options[:url]
       @origin           = options[:origin]
       @origin           = DEFAULT_ORIGIN unless @origin
@@ -54,8 +54,17 @@ module Pubnub
 
       @http_sync        = options[:http_sync]
 
-      @params           = Hash.new
-      @sub_channels     = Array.new
+      @non_subscribe_timeout = options[:non_subscribe_timeout]
+      @non_subscribe_timeout = 5 unless @non_subscribe_timeout
+
+      @reconnect_max_attempts = options[:reconnect_max_attempts]
+      @reconnect_max_attempts = 60 unless @reconnect_max_attempts
+
+      @reconnect_retry_interval = options[:reconnect_retry_interval]
+      @reconnect_retry_interval = 5 unless @reconnect_retry_interval
+
+      @reconnect_response_timeout = options[:reconnect_response_timeout]
+      @reconnect_response_timeout = 5 unless @reconnect_response_timeout
     end
 
     def publish(options = {}, &block)
@@ -69,11 +78,6 @@ module Pubnub
     end
 
     def subscribe(options = {}, &block)
-      if options[:http_sync] && options[:timetoken].nil? && @timetoken.nil?
-        time(:http_sync => true){ |envelope|
-          options[:timetoken] = envelope.message
-        }
-      end
       merge_options(options, 'subscribe')
       verify_operation('subscribe', options.merge!(:block_given => block_given?))
       if block_given?
@@ -163,7 +167,7 @@ module Pubnub
       unless @options[:http_sync]
 
         Thread.new {
-          EM.run
+          EM.run# do
         }
 
         while EM.reactor_running? == false do end
@@ -199,7 +203,7 @@ module Pubnub
               end
 
               http.errback do
-                @error_callback.call
+                @error_callback.call [0, http.error]
               end
             end
           end unless @subscription_running
@@ -208,7 +212,7 @@ module Pubnub
             http = send_request(request)
 
             http.errback do
-              @error_callback.call(http)
+              @error_callback.call [0, http.error]
             end
 
             http.callback do
@@ -257,16 +261,24 @@ module Pubnub
             end
           end
         end
+        #end
       else
         begin
           if @timetoken.to_i == 0 && request.operation == 'subscribe'
             time(:http_sync => true){|envelope| @timetoken = envelope.message.to_i }
           end
-          puts "#{request.origin.to_s + request.path.to_s + request.query.to_s}"
           if request.query.to_s.empty?
-            response = PubNubHTTParty.get(request.origin + request.path)
+            if %w(subscribe presence).include request.operation
+              response = PubNubHTTParty.get(request.origin + request.path)
+            else
+              response = PubNubHTTParty.get(request.origin + request.path, :timeout => @non_subscribe_timeout)
+            end
           else
-            response = PubNubHTTParty.get(request.origin + request.path, :query => request.query)
+            if %w(subscribe presence).include request.operation
+              response = PubNubHTTParty.get(request.origin + request.path, :query => request.query)
+            else
+              response = PubNubHTTParty.get(request.origin + request.path, :query => request.query, :timeout => @non_subscribe_timeout)
+            end
           end
 
           if response.response.code.to_i == 200
@@ -315,7 +327,11 @@ module Pubnub
             end
           end
         rescue Timeout::Error
-          puts 'TIMEOUT ERROR'
+          if request.error_callback
+            request.error_callback.call 'TIMEOUT'
+          else
+            @error_callback.call 'TIMEOUT'
+          end
         end
       end
     end
@@ -323,11 +339,7 @@ module Pubnub
     def send_request(request)
       if %w(subscribe presence).include? request.operation
         unless @subscribe_connection
-          if @subscribe_connection = EM::HttpRequest.new(request.origin)
-            @connect_callback.call
-          else
-            # ERROR CONNECTING CALLBACK
-          end
+          @subscribe_connection = EM::HttpRequest.new(request.origin)
         end
         @subscribe_connection.get :path => request.path, :query => request.query, :keepalive => true
       else
