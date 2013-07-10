@@ -141,6 +141,14 @@ module Pubnub
       end
     end
 
+    def subscription_running?
+      @subscription_running
+    end
+
+    def active_subscriptions
+      @subscription_request
+    end
+
     private
 
     def merge_options(options = {}, operation)
@@ -400,14 +408,6 @@ module Pubnub
       channel = channels if channels
       channel = channel.join(',') if channel.class == Array
       channel
-    end
-
-    def subscription_running?
-      @subscription_running
-    end
-    
-    def active_subscriptions
-      @subscription_request
     end
 
   end
