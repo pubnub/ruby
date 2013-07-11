@@ -276,14 +276,14 @@ module Pubnub
             time(:http_sync => true){|envelope| @timetoken = envelope.message.to_i }
           end
           if request.query.to_s.empty?
-            if %w(subscribe presence).include request.operation
-              response = PubNubHTTParty.get(request.origin + request.path)
+            if %w(subscribe presence).include? request.operation
+              response = PubNubHTTParty.get(request.origin + request.path, :timeout => 310)
             else
               response = PubNubHTTParty.get(request.origin + request.path, :timeout => @non_subscribe_timeout)
             end
           else
-            if %w(subscribe presence).include request.operation
-              response = PubNubHTTParty.get(request.origin + request.path, :query => request.query)
+            if %w(subscribe presence).include? request.operation
+              response = PubNubHTTParty.get(request.origin + request.path, :query => request.query, :timeout => 310)
             else
               response = PubNubHTTParty.get(request.origin + request.path, :query => request.query, :timeout => @non_subscribe_timeout)
             end
@@ -302,10 +302,12 @@ module Pubnub
                 request.envelopes.each do |envelope|
                   block.call envelope
                 end
-              else
+              elsif !request.callback.nil?
                 request.envelopes.each do |envelope|
                   request.callback.call envelope
                 end
+              else
+                return request.envelopes
               end
             end
           else
@@ -315,30 +317,26 @@ module Pubnub
                 request.envelopes.each do |envelope|
                   block.call envelope
                 end
-              else
+              elsif !request.callback.nil?
                 request.envelopes.each do |envelope|
                   request.callback.call envelope
                 end
+              else
+                return request.envelopes
               end
             rescue
-              if block_given?
-                block.call Pubnub::Response.new(
-                               :error_init => true,
-                               :message =>  [0, "Bad server response: #{response.response.code}"].to_s
-                           )
+              if request.error_callback
+                request.error_callback.call [0, "Bad server response: #{response.response.code}"]
               else
-                request.callback.call Pubnub::Response.new(
-                                          :error_init => true,
-                                          :message =>  [0, "Bad server response: #{response.response.code}"].to_s
-                                      )
+                @error_callback.call [0, "Bad server response: #{response.response.code}"]
               end
             end
           end
         rescue Timeout::Error
           if request.error_callback
-            request.error_callback.call 'TIMEOUT'
+            request.error_callback.call [0, 'TIMEOUT']
           else
-            @error_callback.call 'TIMEOUT'
+            @error_callback.call [0, 'TIMEOUT']
           end
         end
       end
@@ -390,19 +388,19 @@ module Pubnub
     def verify_operation(operation, options)
       case operation
         when 'publish'
-          raise(ArgumentError, 'publish() requires :channel, :message parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given]) && options[:message]
+          raise(ArgumentError, 'publish() requires :channel, :message parameters and, if async, callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given] || options[:http_sync]) && options[:message]
         when 'subscribe'
-          raise(ArgumentError, 'subscribe() requires :channel parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given])
+          raise(ArgumentError, 'subscribe() requires :channel parameters and, if async, callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given] || options[:http_sync])
         when 'presence'
-          raise(ArgumentError, 'presence() requires :channel parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given])
+          raise(ArgumentError, 'presence() requires :channel parameters and, if async, callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given] || options[:http_sync])
         when 'time'
-          raise(ArgumentError, 'time() require callback parameter or block given.') unless (options[:callback] || options[:block_given])
+          raise(ArgumentError, 'time() require, if async, callback parameter or block given.') unless (options[:callback] || options[:block_given] || options[:http_sync])
         when 'history'
-          raise(ArgumentError, 'history() requires :channel, :count parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given]) && options[:count]
+          raise(ArgumentError, 'history() requires :channel, :count parameters and, if async, callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given] || options[:http_sync]) && options[:count]
         when 'here_now'
-          raise(ArgumentError, 'here_now() requires :channel parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given])
+          raise(ArgumentError, 'here_now() requires :channel parameters and, if async, callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given] || options[:http_sync])
         when 'leave'
-          raise(ArgumentError, 'leave() requires :channel parameters and callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given])
+          raise(ArgumentError, 'leave() requires :channel parameters and, if async, callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given] || options[:http_sync])
       end
 
       unless options[:callback].nil?
