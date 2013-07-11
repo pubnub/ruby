@@ -217,6 +217,10 @@ module Pubnub
           end unless @subscription_running
         else
           EM.next_tick do
+            if request.operation == 'leave'
+              Subscription.remove_from_subscription request.channel
+            end
+
             http = send_request(request)
 
             http.errback do
@@ -224,10 +228,6 @@ module Pubnub
             end
 
             http.callback do
-              if request.operation == 'leave'
-                Subscription.remove_from_subscription request.channel
-              end
-
               if http.response_header.status.to_i == 200
                 if is_valid_json?(http.response)
                   request.handle_response(http)
