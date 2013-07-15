@@ -9,7 +9,12 @@ default_cb = lambda { |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{
 
 while(true)
 
-  puts("\n\n")
+  ssl = false
+  while !%w(Y N).include ssl
+    puts('Should next operation be ssl [Y/N]?')
+    ssl = gets.chomp!
+  end
+
   sync_or_async = false
   while !%w(S A).include? sync_or_async
     puts('Should next operation be [S]ync or [A]sync?')
@@ -40,13 +45,13 @@ while(true)
       channel = gets.chomp!
 
       if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.subscribe(:channel => channel, :callback => default_cb, :http_sync => false)
+        p.subscribe(:channel => channel, :callback => default_cb, :http_sync => false, :ssl => ssl)
       elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
-        p.subscribe(:channel => channel, :http_sync => false){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+        p.subscribe(:channel => channel, :http_sync => false, :ssl => ssl){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
       elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.subscribe(:channel => channel, :callback => default_cb, :http_sync => true)
+        p.subscribe(:channel => channel, :callback => default_cb, :http_sync => true, :ssl => ssl)
       elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
-        p.subscribe(:channel => channel, :http_sync => true){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+        p.subscribe(:channel => channel, :http_sync => true, :ssl => ssl){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
       end
 
 
@@ -56,13 +61,13 @@ while(true)
       channel = gets.chomp!
 
       if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.unsubscribe(:channel => channel, :callback => default_cb, :http_sync => false)
+        p.unsubscribe(:channel => channel, :callback => default_cb, :http_sync => false, :ssl => ssl)
       elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
-        p.unsubscribe(:channel => channel, :http_sync => false){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+        p.unsubscribe(:channel => channel, :http_sync => false, :ssl => ssl){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
       elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.unsubscribe(:channel => channel, :callback => default_cb, :http_sync => true)
+        p.unsubscribe(:channel => channel, :callback => default_cb, :http_sync => true, :ssl => ssl)
       elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
-        p.unsubscribe(:channel => channel, :http_sync => true){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+        p.unsubscribe(:channel => channel, :http_sync => true, :ssl => ssl){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
       end
 
     when '3' #PUBLISH
@@ -74,13 +79,13 @@ while(true)
       message = gets.chomp!
 
       if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.publish(:message => message, :channel => channel, :callback => default_cb, :http_sync => false)
+        p.publish(:message => message, :channel => channel, :callback => default_cb, :http_sync => false, :ssl => ssl)
       elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
-        p.publish(:message => message, :channel => channel, :http_sync => false){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+        p.publish(:message => message, :channel => channel, :http_sync => false, :ssl => ssl){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
       elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.publish(:message => message, :channel => channel, :callback => default_cb, :http_sync => true)
+        p.publish(:message => message, :channel => channel, :callback => default_cb, :http_sync => true, :ssl => ssl)
       elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
-        p.publish(:message => message, :channel => channel, :http_sync => true){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+        p.publish(:message => message, :channel => channel, :http_sync => true, :ssl => ssl){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
       end
 
     when '4' #HISTORY
@@ -110,30 +115,33 @@ while(true)
                   :end => history_end,
                   :reverse => reverse,
                   :callback => default_cb,
-                  :http_sync => false) do |envelope| puts(envelope.inspect) end
+                  :http_sync => false,
+                  :ssl => ssl) do |envelope| puts(envelope.inspect) end
       elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
         p.history(:channel => channel,
                   :count => count,
                   :start => history_start,
                   :end => history_end,
                   :reverse => reverse,
-                  :http_sync => false){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+                  :http_sync => false,
+                  :ssl => ssl){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
       elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
         p.history(:channel => channel,
                   :count => count,
-
                   :start => history_start,
                   :end => history_end,
                   :reverse => reverse,
                   :callback => default_cb,
-                  :http_sync => true) do |envelope| puts(envelope.inspect) end
+                  :http_sync => true,
+                  :ssl => ssl) do |envelope| puts(envelope.inspect) end
       elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
         p.history(:channel => channel,
                   :count => count,
                   :start => history_start,
                   :end => history_end,
                   :reverse => true,
-                  :http_sync => false){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+                  :http_sync => false,
+                  :ssl => ssl){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
       end
 
     when '5' #PRESENCE
@@ -141,13 +149,13 @@ while(true)
       channel = gets.chomp!
 
       if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.presence(:channel => channel, :callback => default_cb, :http_sync => false)
+        p.presence(:channel => channel, :callback => default_cb, :http_sync => false, :ssl => ssl)
       elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
-        p.presence(:channel => channel, :http_sync => false){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+        p.presence(:channel => channel, :http_sync => false, :ssl => ssl){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
       elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.presence(:channel => channel, :callback => default_cb, :http_sync => true)
+        p.presence(:channel => channel, :callback => default_cb, :http_sync => true, :ssl => ssl)
       elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
-        p.presence(:channel => channel, :http_sync => true){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+        p.presence(:channel => channel, :http_sync => true, :ssl => ssl){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
       end
 
     when '6' #HERE_NOW
@@ -155,25 +163,25 @@ while(true)
       channel = gets.chomp!
 
       if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.here_now(:channel => channel, :callback => default_cb, :http_sync => false)
+        p.here_now(:channel => channel, :callback => default_cb, :http_sync => false, :ssl => ssl)
       elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
-        p.here_now(:channel => channel, :http_sync => false){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+        p.here_now(:channel => channel, :http_sync => false, :ssl => ssl){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
       elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.here_now(:channel => channel, :callback => default_cb, :http_sync => true)
+        p.here_now(:channel => channel, :callback => default_cb, :http_sync => true, :ssl => ssl)
       elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
-        p.here_now(:channel => channel, :http_sync => true){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+        p.here_now(:channel => channel, :http_sync => true, :ssl => ssl){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
       end
 
 
     when '7' #TIME
       if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.time(:callback => default_cb, :http_sync => false)
+        p.time(:callback => default_cb, :http_sync => false, :ssl => ssl)
       elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
-        p.time(:http_sync => false){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+        p.time(:http_sync => false, :ssl => ssl){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
       elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.time(:callback => default_cb, :http_sync => true)
+        p.time(:callback => default_cb, :http_sync => true, :ssl => ssl)
       elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
-        p.time(:http_sync => true){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+        p.time(:http_sync => true, :ssl => ssl){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
       end
 
     end

@@ -155,7 +155,7 @@ module Pubnub
 
     private
 
-    def merge_options(options = {}, operation)
+    def merge_options(options = {}, operation = '')
       @options = {
         :ssl           => @ssl,
         :cipher_key    => @cipher_key,
