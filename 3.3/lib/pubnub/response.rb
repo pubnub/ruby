@@ -82,7 +82,7 @@ class Pubnub::Response
 
     if options[:operation] == 'publish'
       set_for_publish(options[:response][1],options[:response][2])
-    elsif options[:operation] == 'here_now'
+    elsif %w(here_now leave).include? options[:operation]
       @message = options[:response]
     else
       @timetoken = options[:response][1]
@@ -103,7 +103,7 @@ class Pubnub::Response
 
     if options[:operation] == 'publish'
       set_for_publish(options[:response][1],options[:response][2])
-    elsif options[:operation] == 'here_now'
+    elsif %w(here_now leave).include? options[:operation]
       @message = options[:response]
     else
       @timetoken = options[:response][1]
@@ -120,5 +120,3 @@ class Pubnub::Response
     @timetoken = timetoken
   end
 end
-
-#"[[\"ping.php says 1370468905\",\"ping.php says 1370468906\",\"ping.php says 1370468907\",\"ping.php says 1370468908\",\"ping.php says 1370468909\"],13704689051165143,13
