@@ -27,8 +27,9 @@ Gem::Specification.new do |s|
   s.add_dependency "eventmachine"
   s.add_dependency "em-http-request"
   s.add_dependency "uuid", "~> 2.3.5"
-  s.add_dependency "yajl-ruby"
   s.add_dependency "json"
+  
+  s.add_development_dependency "yajl-ruby" # not compatible with JRuby
 
 
 end
