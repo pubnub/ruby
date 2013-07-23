@@ -4,13 +4,23 @@ puts 'Provide origin [demo.pubnub.com]:'
 origin = gets.chomp!
 origin = 'demo.pubnub.com' if origin == ''
 
-p = Pubnub.new(:subscribe_key => "demo", :publish_key => "demo", :origin => origin)
+p = Pubnub.new(
+    :subscribe_key    => 'demo',
+    :publish_key      => 'demo',
+    :origin           => origin,
+    :error_callback   => lambda { |msg|
+      puts "SOMETHING TERRIBLE HAPPENED HERE: #{msg.inspect}"
+    },
+    :connect_callback => lambda { |msg|
+      puts "CONNECTED: #{msg.inspect}"
+    }
+)
 default_cb = lambda { |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
 
 while(true)
 
   ssl = false
-  while !%w(Y N).include ssl
+  while !%w(Y N).include? ssl
     puts('Should next operation be ssl [Y/N]?')
     ssl = gets.chomp!
   end
