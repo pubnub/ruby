@@ -1,5 +1,5 @@
 class Pubnub::Response
-  attr_reader :message, :channel, :timetoken, :status_code, :response
+  attr_reader :message, :channel, :timetoken, :status_code, :response, :path, :query
   alias :msg :message
 
   # Creates Pubnub::Response object based on options hash
@@ -16,6 +16,9 @@ class Pubnub::Response
   # While you pass :index option it will treat :response as array which size is greater than one
   # In case you want create your custom error response, you have to pass :error_init option with true value and :message with your message
   def initialize(options = {})
+    @path  = options[:path]
+    @query = options[:query]
+
     if options[:error_init]
       @message = options[:message]
       @response = options[:message]

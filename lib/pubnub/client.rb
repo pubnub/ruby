@@ -176,6 +176,7 @@ module Pubnub
 
         Thread.new {
           EM.run# do
+          EM.add_shutdown_hook { 'EXITING' }
         }
 
         while EM.reactor_running? == false do end
@@ -375,7 +376,7 @@ module Pubnub
       if @timetoken.to_i < timetoken.to_i
         @timetoken = timetoken
       else
-         false
+        false
       end
     end
 
