@@ -198,21 +198,25 @@ module Pubnub
             if @close_connection
               EM.stop
             else
-              http = send_request(@subscription_request)
+              unless @wait_for_response
+                @wait_for_response = true
+                puts 'SENDING REQUEST'
+                http = send_request(@subscription_request)
 
-              http.callback do
-                if http.response_header.status.to_i == 200
-                  if is_valid_json?(http.response)
-                    @subscription_request.handle_response(http)
-                    @subscription_request.envelopes.each do |envelope|
-                      Subscription.fire_callbacks_for envelope
-                    end if is_update?(@subscription_request.timetoken)
+                http.callback do
+                  @wait_for_response = false
+                  if http.response_header.status.to_i == 200
+                    if is_valid_json?(http.response)
+                      @subscription_request.handle_response(http)
+                      @subscription_request.envelopes.each do |envelope|
+                        Subscription.fire_callbacks_for envelope
+                      end if is_update?(@subscription_request.timetoken)
+                    end
                   end
                 end
-              end
-
-              http.errback do
-                @error_callback.call [0, http.error]
+                http.errback do
+                  @error_callback.call [0, http.error]
+                end
               end
             end
           end unless @subscription_running
@@ -354,15 +358,20 @@ module Pubnub
     def send_request(request)
       if %w(subscribe presence).include? request.operation
         unless @subscribe_connection
-          @subscribe_connection = EM::HttpRequest.new(request.origin)
-        end
-        unless @is_already_connected
-          connect = @subscribe_connection.get
-          connect.callback do
+          @subscribe_connection = EM::HttpRequest.new(request.origin, :connect_timeout => 370, :inactivity_timeout => 370)
+          connection = @subscribe_connection.get :path => '/time/0', :keepalive => true, :query => request.query
+          connection.callback do
             @connect_callback.call 'ASYNC SUBSCRIBE CONNECTION'
-            @is_already_connected = true
           end
         end
+
+        #unless @is_already_connected
+        #  connect = @subscribe_connection.get
+        #  connect.callback do
+        #    @connect_callback.call 'ASYNC SUBSCRIBE CONNECTION'
+        #    @is_already_connected = true
+        #  end
+        #end
         @subscribe_connection.get :path => request.path, :query => request.query, :keepalive => true
       else
         unless @connection
@@ -378,6 +387,7 @@ module Pubnub
       else
         false
       end
+
     end
 
     def is_valid_json?(response)
