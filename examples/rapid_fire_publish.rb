@@ -38,15 +38,14 @@ class PubTest
     MAX_CYCLES.times do |x|
       sleep(FREQUENCY)
       msg = {:serial => x}
-      @p.publish(:message => msg, :channel => 'hello_world', :callback => @publish_cb)
+      @p.publish(:message => msg, :channel => 'hello_world_for_test', :callback => @publish_cb)
     end
-    sleep(10)
     puts "Received #{@counter} of #{MAX_CYCLES}"
   end
 
 
   def subscribe
-    @p.subscribe(:channel => 'hello_world', :callback => @subscribe_cb)
+    @p.subscribe(:channel => 'hello_world_for_test', :callback => @subscribe_cb)
   end
 
   def self.go
@@ -55,3 +54,5 @@ class PubTest
   end
 
 end
+
+PubTest.go
