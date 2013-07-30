@@ -19,6 +19,7 @@ p = Pubnub.new(
 
 p.subscribe(:channel => 'my_channel_123'){ |envelope|
   p envelope.msg
+  @last = msg
   @msgs << envelope.msg
   @timetokens << envelope.timetoken
   @envelopes << envelope
@@ -27,13 +28,11 @@ p.subscribe(:channel => 'my_channel_123'){ |envelope|
 }
 
 9001.times do |i|
-  sleep(0.01)
+  sleep(0.2)
   p.publish(:message => i+1, :channel => 'my_channel_123', :http_sync => false){|envelope|
     @publish_responses << envelope.response
-    @last = i
   }
 end
-while @last < 100 do end
-sleep(10)
+while @last < 9001 do end
 
 puts "msgs size: #{msgs.size}"

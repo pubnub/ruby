@@ -365,13 +365,6 @@ module Pubnub
           end
         end
 
-        #unless @is_already_connected
-        #  connect = @subscribe_connection.get
-        #  connect.callback do
-        #    @connect_callback.call 'ASYNC SUBSCRIBE CONNECTION'
-        #    @is_already_connected = true
-        #  end
-        #end
         @subscribe_connection.get :path => request.path, :query => request.query, :keepalive => true
       else
         unless @connection
