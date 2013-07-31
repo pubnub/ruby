@@ -1,4 +1,7 @@
 require 'pubnub'
+require 'pry'
+
+TIMES = 40000
 
 @msgs = Array.new
 @timetokens = Array.new
@@ -6,6 +9,7 @@ require 'pubnub'
 @responses = Array.new
 @paths = Array.new
 @publish_responses = Array.new
+@last = 0
 
 p = Pubnub.new(
     #:origin         => 'localhost',
@@ -18,8 +22,8 @@ p = Pubnub.new(
 )
 
 p.subscribe(:channel => 'my_channel_123'){ |envelope|
-  p envelope.msg
-  @last = msg
+  #p envelope.msg
+  @last = envelope.msg.to_i
   @msgs << envelope.msg
   @timetokens << envelope.timetoken
   @envelopes << envelope
@@ -27,12 +31,17 @@ p.subscribe(:channel => 'my_channel_123'){ |envelope|
   @paths << envelope.path
 }
 
-10.times do |i|
-  sleep(0.2)
+sleep 3
+
+TIMES.times do |i|
+  sleep 0.25
   p.publish(:message => i+1, :channel => 'my_channel_123', :http_sync => false){|envelope|
+    print '.'
     @publish_responses << envelope.response
   }
 end
-while @last < 9001 do end
+while @last < TIMES do end
 
-puts "msgs size: #{msgs.size}"
+puts "\nmsgs size: #{@msgs.size}"
+
+#binding.pry

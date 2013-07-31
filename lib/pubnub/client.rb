@@ -195,7 +195,8 @@ module Pubnub
 
           @subscription_request.channel = Subscription.channels_for_url
 
-          EM.add_periodic_timer(PERIODIC_TIMER) do
+          #EM.add_periodic_timer(PERIODIC_TIMER) do
+          EM.tick_loop do
             @subscription_running = true
 
             if @close_connection

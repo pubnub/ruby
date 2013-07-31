@@ -4,8 +4,8 @@ require 'pubnub'
 
 class PubTest
 
-  MAX_CYCLES = 1000
-  FREQUENCY = 1.0/3.0
+  MAX_CYCLES = 10
+  FREQUENCY = 0.25
 
   def error_callback(error)
     @logger.debug "Error: #{error.inspect}"
@@ -45,10 +45,10 @@ class PubTest
       msg = {:serial => x}
       @p.publish(:message => msg, :channel => 'hello_world_for_test', :callback => @publish_cb)
     end
-
+    sleep 1
     while @counter < MAX_CYCLES do
-      sleep 0.3
-      puts @counter
+      sleep 1
+      puts "current @counter #{@counter}"
     end
 
     puts "\nReceived #{@counter} of #{MAX_CYCLES}"
@@ -65,7 +65,6 @@ class PubTest
   def self.go
     pt = PubTest.new
     pt.subscribe
-    #pt.publish_cycle
     pt
   end
 
@@ -73,4 +72,4 @@ end
 
 pubtest = PubTest.go
 
-binding.pry
+while EM.reactor_running? do end
