@@ -19,10 +19,13 @@ module Pubnub
     attr_accessor :close_connection, :history_limit, :history_count, :history_start, :history_end, :history_reverse, :session_uuid, :last_timetoken, :origin, :error
 
 
-    DEFAULT_CONNECT_CALLBACK = lambda { |msg| puts "CONNECTED: #{msg}" }
-    DEFAULT_ERROR_CALLBACK = lambda { |msg| puts "AN ERROR OCCURRED: #{msg}" }
+    DEFAULT_CONNECT_CALLBACK = lambda { |msg| $log.info "CONNECTED: #{msg}" }
+    DEFAULT_ERROR_CALLBACK = lambda { |msg| $log.error "AN ERROR OCCURRED: #{msg}" }
 
     def initialize(options = {})
+      $log = options[:logger]
+      $log = Logger.new('./log/pubnub.log', 0, 100 * 1024 * 1024) unless $log
+
       @subscription_request = nil
       @retry            = true
       @retry_count      = 0
@@ -200,10 +203,11 @@ module Pubnub
             else
               unless @wait_for_response
                 @wait_for_response = true
-                puts 'SENDING REQUEST'
+                $log.debug 'SENDING SUBSCRIBE REQUEST'
                 http = send_request(@subscription_request)
 
                 http.callback do
+                  $log.debug 'GOT SUBSCRIBE RESPONSE'
                   @wait_for_response = false
                   if http.response_header.status.to_i == 200
                     if is_valid_json?(http.response)
@@ -215,6 +219,7 @@ module Pubnub
                   end
                 end
                 http.errback do
+                  $log.error 'GOT SUBSCRIBE ERROR'
                   @error_callback.call [0, http.error]
                 end
               end
@@ -222,6 +227,8 @@ module Pubnub
           end unless @subscription_running
         else
           EM.next_tick do
+            $log.debug 'SENDING OTHER REQUEST'
+
             if request.operation == 'leave'
               Subscription.remove_from_subscription request.channel
             end
@@ -233,15 +240,18 @@ module Pubnub
             end
 
             http.callback do
+              $log.debug 'GOT OTHER RESPONSE'
               if http.response_header.status.to_i == 200
                 if is_valid_json?(http.response)
                   request.handle_response(http)
                   if block_given?
                     request.envelopes.each do |envelope|
+                      $log.debug 'CALLING BLOCK CALLBACK'
                       block.call envelope
                     end
                   else
                     request.envelopes.each do |envelope|
+                      $log.debug 'CALLING PARAMETER CALLBACK'
                       request.callback.call envelope
                     end
                   end
@@ -357,15 +367,13 @@ module Pubnub
 
     def send_request(request)
       if %w(subscribe presence).include? request.operation
-        unless @subscribe_connection
+        if @subscribe_connection
+          @subscribe_connection.get :path => request.path, :query => request.query, :keepalive => true
+        else
           @subscribe_connection = EM::HttpRequest.new(request.origin, :connect_timeout => 370, :inactivity_timeout => 370)
-          connection = @subscribe_connection.get :path => '/time/0', :keepalive => true, :query => request.query
-          connection.callback do
-            @connect_callback.call 'ASYNC SUBSCRIBE CONNECTION'
-          end
+          @subscribe_connection.get :path => request.path, :query => request.query, :keepalive => true
+          @connect_callback.call 'ASYNC SUBSCRIBE CONNECTION'
         end
-
-        @subscribe_connection.get :path => request.path, :query => request.query, :keepalive => true
       else
         unless @connection
           @connection = EM::HttpRequest.new request.origin

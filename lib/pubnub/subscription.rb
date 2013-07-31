@@ -62,6 +62,7 @@ module Pubnub
 
     def self.fire_callbacks_for(envelope)
       Subscription.active_subscriptions.each do |subscription|
+        $log.debug 'CALLING SUBSCRIPTION CALLBACK'
         subscription.callback.call(envelope) if subscription.is_subscribed_to? envelope.channel
       end
     end

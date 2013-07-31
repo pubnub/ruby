@@ -2,3 +2,4 @@ pubnub-*.gem
 .ruby-version
 *.iml
 .idea/
+log/*

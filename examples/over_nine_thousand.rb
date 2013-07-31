@@ -27,7 +27,7 @@ p.subscribe(:channel => 'my_channel_123'){ |envelope|
   @paths << envelope.path
 }
 
-9001.times do |i|
+10.times do |i|
   sleep(0.2)
   p.publish(:message => i+1, :channel => 'my_channel_123', :http_sync => false){|envelope|
     @publish_responses << envelope.response
