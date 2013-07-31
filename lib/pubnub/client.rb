@@ -24,7 +24,7 @@ module Pubnub
 
     def initialize(options = {})
       $log = options[:logger]
-      $log = Logger.new('./log/pubnub.log', 0, 100 * 1024 * 1024) unless $log
+      $log = Logger.new('pubnub.log', 0, 100 * 1024 * 1024) unless $log
 
       @subscription_request = nil
       @retry            = true
@@ -181,7 +181,7 @@ module Pubnub
           EM.run# do
           EM.add_shutdown_hook { 'EXITING' }
         }
-
+        EM.defer do
         while EM.reactor_running? == false do end
         if %w(subscribe presence).include? request.operation
 
@@ -284,6 +284,7 @@ module Pubnub
             end
           end
         end
+        end
         #end
       else
         begin
@@ -367,13 +368,17 @@ module Pubnub
 
     def send_request(request)
       if %w(subscribe presence).include? request.operation
-        if @subscribe_connection
-          @subscribe_connection.get :path => request.path, :query => request.query, :keepalive => true
-        else
+        unless @subscribe_connection
           @subscribe_connection = EM::HttpRequest.new(request.origin, :connect_timeout => 370, :inactivity_timeout => 370)
-          @subscribe_connection.get :path => request.path, :query => request.query, :keepalive => true
-          @connect_callback.call 'ASYNC SUBSCRIBE CONNECTION'
+          connection = @subscribe_connection.get :path => '/time/0', :keepalive => true, :query => request.query
+          #EM.next_tick do
+            connection.callback do
+              EM.defer do @connect_callback.call 'ASYNC SUBSCRIBE CONNECTION' end
+            end
+          #end
         end
+
+        @subscribe_connection.get :path => request.path, :query => request.query, :keepalive => true
       else
         unless @connection
           @connection = EM::HttpRequest.new request.origin

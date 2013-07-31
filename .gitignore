@@ -3,3 +3,4 @@ pubnub-*.gem
 *.iml
 .idea/
 log/*
+*.log
