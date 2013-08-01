@@ -9,7 +9,21 @@ module Pubnub
   class PubNubHTTParty
     include HTTParty
     default_timeout 310
-    persistent_connection_adapter
+    #persistent_connection_adapter
+
+    def first_run?
+      @first_run ? true : false
+    end
+
+    def send_request(path, options={}, &block)
+      if @first_run.nil?
+        @first_run = true
+      else
+        @first_run = false
+      end
+      self.class.get path, options
+
+    end
   end
 
   class Client
@@ -68,6 +82,9 @@ module Pubnub
 
       @reconnect_response_timeout = options[:reconnect_response_timeout]
       @reconnect_response_timeout = 5 unless @reconnect_response_timeout
+
+      @sync_connection_sub = Pubnub::PubNubHTTParty.new
+      @sync_connection     = Pubnub::PubNubHTTParty.new
     end
 
     def publish(options = {}, &block)
@@ -181,7 +198,7 @@ module Pubnub
           EM.run# do
           EM.add_shutdown_hook { 'EXITING' }
         }
-        EM.defer do
+        #EM.defer do
         while EM.reactor_running? == false do end
         if %w(subscribe presence).include? request.operation
 
@@ -285,7 +302,7 @@ module Pubnub
             end
           end
         end
-        end
+        #end
         #end
       else
         begin
@@ -294,16 +311,20 @@ module Pubnub
           end
           if request.query.to_s.empty?
             if %w(subscribe presence).include? request.operation
-              response = PubNubHTTParty.get(request.origin + request.path, :timeout => 310)
+              response = @sync_connection_sub.send_request(request.origin + request.path, :timeout => 370)
             else
-              response = PubNubHTTParty.get(request.origin + request.path, :timeout => @non_subscribe_timeout)
+              response = @sync_connection.send_request(request.origin + request.path, :timeout => @non_subscribe_timeout)
             end
           else
             if %w(subscribe presence).include? request.operation
-              response = PubNubHTTParty.get(request.origin + request.path, :query => request.query, :timeout => 310)
+              response = @sync_connection_sub.send_request(request.origin + request.path, :query => request.query, :timeout => 370)
             else
-              response = PubNubHTTParty.get(request.origin + request.path, :query => request.query, :timeout => @non_subscribe_timeout)
+              response = @sync_connection.send_request(request.origin + request.path, :query => request.query, :timeout => @non_subscribe_timeout)
             end
+          end
+
+          if @sync_connection_sub.first_run?
+            @connect_callback.call 'SYNC CONNECTION ESTABLISHED'
           end
 
           if response.response.code.to_i == 200
