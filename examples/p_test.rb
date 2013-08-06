@@ -22,27 +22,36 @@ p = Pubnub.new(
     }
 )
 
-CH = 'my_channel_123'
-CH-PRES = CH + "-pnpres"
+ch = 'my_channel_123'
+ch_pres = ch + "-pnpres"
 
-p.subscribe(:channel => CH){ |envelope|
-  p envelope.msg
-  @last = envelope.msg.to_i
-  @msgs << envelope.msg
-  @timetokens << envelope.timetoken
-  @envelopes << envelope
-  @responses << envelope.response
-  @paths << envelope.path
-}
+def doSub(ch, p)
+  p.subscribe(:channel => ch) { |envelope|
+    p envelope.msg
+    @last = envelope.msg.to_i
+    @msgs << envelope.msg
+    @timetokens << envelope.timetoken
+    @envelopes << envelope
+    @responses << envelope.response
+    @paths << envelope.path
+  }
+end
+
+doSub(ch, p)
 
 sleep 3
 
 TIMES.times do |i|
+  puts(" #{TIMES - i} iterations left.")
   sleep 0.25
-  p.publish(:message => i+1, :channel => CH, :http_sync => false){|envelope|
+
+  p.publish(:message => i+1, :channel => ch, :http_sync => false){|envelope|
     print '.'
     @publish_responses << envelope.response
+    p.unsubscribe(:channel => ch, :callback => lambda { |x| puts "#{x}: Unsubscribed."})
+
   }
+
 end
 
 
