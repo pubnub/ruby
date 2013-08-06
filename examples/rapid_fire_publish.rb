@@ -19,13 +19,15 @@ class PubTest
 
   def initialize
     @logger = Logger.new('rapid_fire_publish.log', 0, 10 * 1024 * 1024)
-
     @counter = 0
+
     @p = Pubnub.new(:subscribe_key => 'demo',
                     :publish_key => 'demo',
                     :logger => @logger,
                     :error_callback => method(:error_callback),
-                    :connect_callback => method(:connect_callback))
+                    :connect_callback => method(:connect_callback),
+                    :ssl => false
+    )
 
     @publish_cb = lambda { |x|
       @logger.debug "Publish #{x.channel}: msg: #{x.message} response: #{x.response}"
@@ -43,7 +45,7 @@ class PubTest
       @logger.debug "AT #{x} CYCLE"
       sleep(FREQUENCY)
       msg = {:serial => x}
-      @p.publish(:message => msg, :channel => 'hello_world_for_test', :callback => @publish_cb)
+      @p.publish(:message => msg, :channel => 'hello_world_for_test', :callback => @publish_cb, :http_sync => true)
     end
     sleep 1
     while @counter < MAX_CYCLES do
@@ -52,24 +54,19 @@ class PubTest
     end
 
     puts "\nReceived #{@counter} of #{MAX_CYCLES}"
-    @logger.info "Received #{@counter} of #{MAX_CYCLES}"
-
-    EM.stop
   end
 
 
   def subscribe
-    @p.subscribe(:channel => 'hello_world_for_test', :callback => @subscribe_cb)
+    @p.subscribe(:channel => 'hello_world_for_test', :callback => @subscribe_cb, :http_sync => true)
   end
 
   def self.go
     pt = PubTest.new
     pt.subscribe
-    pt
   end
 
 end
 
-pubtest = PubTest.go
+PubTest.go
 
-while EM.reactor_running? do end

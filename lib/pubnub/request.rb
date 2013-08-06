@@ -130,7 +130,7 @@ module Pubnub
     end
 
     def encode_path(request)
-      path = URI.encode('/' + request.map{|i| i.to_s}.reject(&:empty?).join('/'))
+      path = URI.escape('/' + request.map{|i| i.to_s}.reject(&:empty?).join('/')).gsub(/\?/,'%3F')
 
       if @operation == 'leave'
         "#{path}/leave"
