@@ -22,7 +22,10 @@ p = Pubnub.new(
     }
 )
 
-p.subscribe(:channel => 'my_channel_123'){ |envelope|
+CH = 'my_channel_123'
+CH-PRES = CH + "-pnpres"
+
+p.subscribe(:channel => CH){ |envelope|
   p envelope.msg
   @last = envelope.msg.to_i
   @msgs << envelope.msg
@@ -36,7 +39,7 @@ sleep 3
 
 TIMES.times do |i|
   sleep 0.25
-  p.publish(:message => i+1, :channel => 'my_channel_123', :http_sync => false){|envelope|
+  p.publish(:message => i+1, :channel => CH, :http_sync => false){|envelope|
     print '.'
     @publish_responses << envelope.response
   }
