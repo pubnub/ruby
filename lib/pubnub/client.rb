@@ -134,6 +134,8 @@ module Pubnub
     end
 
     def leave(options = {}, &block)
+      return false unless Subscription.get_channels.include? options[:channel]
+
       merge_options(options, 'leave')
       verify_operation('leave', options.merge!(:block_given => block_given?))
       if block_given?

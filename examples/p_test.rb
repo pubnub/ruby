@@ -49,11 +49,11 @@ TIMES.times do |i|
 
   z = p.publish(:message => i+1, :channel => ch, :http_sync => true)
   print '.'
-  if Pubnub::Subscription.get_channels.include? ch
+  #if Pubnub::Subscription.get_channels.include? ch
     u = p.unsubscribe(:channel => ch, :http_sync => true)
-    puts "#{u.msg}: Unsubscribed."
+    puts "#{u.msg}: Unsubscribed." if u
     #binding.pry
-  end
+  #end
 
 end
 
