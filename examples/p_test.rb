@@ -52,7 +52,7 @@ TIMES.times do |i|
   if Pubnub::Subscription.get_channels.include? ch
     u = p.unsubscribe(:channel => ch, :http_sync => true)
     puts "#{u.msg}: Unsubscribed."
-    binding.pry
+    #binding.pry
   end
 
 end
