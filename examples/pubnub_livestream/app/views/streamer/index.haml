@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title Pubnub Subscriber
+    = stylesheet_link_tag 'application'
+  %body
+    .container
+      .row
+        .col-md-12
+          .panel.panel-default
+            .panel-heading
+              %h3 Pubnub chat console
+            .panel-body
+              #messages
+            #footer.panel-footer
+              .input-group
+                %span.input-group-btn
+                  %input{:type => 'text', :class => 'form-control', :placeholder => 'your name', :id => 'author-field'}
+                %input{:type => 'text', :class => 'form-control', :placeholder => 'message', :id => 'message-field'}
+                %span.input-group-btn
+                  %button{:type => 'button', :class => 'btn btn-info', :id => 'send-button'} Send
+    #timetoken.hidden 0
