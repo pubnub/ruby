@@ -158,9 +158,9 @@ module Pubnub
       @response = nil
 
       if http.respond_to?(:body) && http.respond_to?(:code) && http.respond_to?(:message) && http.respond_to?(:headers) # httparty
-        @response = Yajl.load(http.body)
+        @response = JSON.load(http.body)
       else # em-http-request
-        @response = http.response.respond_to?(:content) ? Yajl.load(http.response.content) : Yajl.load(http.response)
+        @response = http.response.respond_to?(:content) ? JSON.load(http.response.content) : JSON.load(http.response)
       end
 
 
@@ -185,7 +185,7 @@ module Pubnub
           when 'subscribe'
             @response[0] = response_array
           when 'history'
-            json_response_data = Yajl.load(http.response)
+            json_response_data = JSON.load(http.response)
             @response = [response_array, json_response_data[1], json_response_data[2]]
         end
       end

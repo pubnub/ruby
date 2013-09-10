@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20130826110322) do
   create_table "messages", force: true do |t|
     t.string   "author"
     t.text     "message"
-    t.integer  "timetoken"
+    t.string   "timetoken"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -10,7 +10,6 @@
 ## -----------------------------------
 
 require 'uuid'
-require 'yajl'
 require 'json'
 require 'base64'
 require 'open-uri'

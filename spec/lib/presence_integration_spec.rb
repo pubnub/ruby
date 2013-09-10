@@ -13,7 +13,4 @@ describe '#presence' do
     @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo)
     @pn.session_uuid = nil
   end
-
-  context '' do
-    
-  end
+end

@@ -16,7 +16,7 @@ module Pubnub
       aes.key = @key
       aes.iv = @iv
 
-      json_message = Yajl.dump(message)
+      json_message = JSON.dump(message)
       cipher = aes.update(json_message)
       cipher << aes.final
 
@@ -42,7 +42,7 @@ module Pubnub
       end
 
       begin
-        Yajl.load(plain_text)
+        JSON.load(plain_text)
       rescue
         return 'PARSE DECRYPTION MESSAGE ERROR'
       end

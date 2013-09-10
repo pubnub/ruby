@@ -94,7 +94,7 @@ describe Pubnub::Client do
 
         it 'should raise when callback or block is missing' do
           lambda { @pn.time }.
-              should raise_error(ArgumentError, 'time() require callback parameter or block given.')
+              should raise_error(ArgumentError, 'time() require, if async, callback parameter or block given.')
         end
 
         it 'should raise when callback is invalid' do
@@ -127,17 +127,17 @@ describe Pubnub::Client do
 
         it 'should raise when channel is missing' do
           lambda { @pn.publish(:callback => @my_callback, :message => @my_message) }.
-              should raise_error(ArgumentError, 'publish() requires :channel, :message parameters and callback parameter or block given.')
+              should raise_error(ArgumentError, 'publish() requires :channel, :message parameters and, if async, callback parameter or block given.')
         end
 
         it 'should raise when callback is missing' do
           lambda { @pn.publish(:message => @my_message, :channel => @my_channel) }.
-              should raise_error(ArgumentError, 'publish() requires :channel, :message parameters and callback parameter or block given.')
+              should raise_error(ArgumentError, 'publish() requires :channel, :message parameters and, if async, callback parameter or block given.')
         end
 
         it 'should raise when message is missing' do
           lambda { @pn.publish(:channel => @my_channel, :callback => @my_callback) }.
-              should raise_error(ArgumentError, 'publish() requires :channel, :message parameters and callback parameter or block given.')
+              should raise_error(ArgumentError, 'publish() requires :channel, :message parameters and, if async, callback parameter or block given.')
         end
 
         it 'should raise when callback is invalid' do
@@ -170,12 +170,12 @@ describe Pubnub::Client do
 
         it 'should raise when channel is missing' do
           lambda { @pn.subscribe(:foo => :bar, :callback => @my_callback) }.
-              should raise_error(ArgumentError, 'subscribe() requires :channel parameters and callback parameter or block given.')
+              should raise_error(ArgumentError, 'subscribe() requires :channel parameters and, if async, callback parameter or block given.')
         end
 
         it 'should raise when callback is missing' do
           lambda { @pn.subscribe(:channel => @my_channel) }.
-              should raise_error(ArgumentError, 'subscribe() requires :channel parameters and callback parameter or block given.')
+              should raise_error(ArgumentError, 'subscribe() requires :channel parameters and, if async, callback parameter or block given.')
         end
 
         it 'should raise when callback is invalid' do
@@ -208,12 +208,12 @@ describe Pubnub::Client do
 
         it 'should raise when channel is missing' do
           lambda { @pn.here_now(:foo => :bar) }.
-              should raise_error(ArgumentError, 'here_now() requires :channel parameters and callback parameter or block given.')
+              should raise_error(ArgumentError, 'here_now() requires :channel parameters and, if async, callback parameter or block given.')
         end
 
         it 'should raise when callback is missing' do
           lambda { @pn.here_now(:channel => @my_channel) }.
-              should raise_error(ArgumentError, 'here_now() requires :channel parameters and callback parameter or block given.')
+              should raise_error(ArgumentError, 'here_now() requires :channel parameters and, if async, callback parameter or block given.')
         end
 
         it 'should raise when callback is invalid' do
@@ -246,12 +246,12 @@ describe Pubnub::Client do
 
         it 'should raise when channel is missing' do
           lambda { @pn.presence(:foo => :bar) }.
-              should raise_error(ArgumentError, 'presence() requires :channel parameters and callback parameter or block given.')
+              should raise_error(ArgumentError, 'presence() requires :channel parameters and, if async, callback parameter or block given.')
         end
 
         it 'should raise when callback is missing' do
           lambda { @pn.presence(:channel => @my_channel) }.
-              should raise_error(ArgumentError, 'presence() requires :channel parameters and callback parameter or block given.')
+              should raise_error(ArgumentError, 'presence() requires :channel parameters and, if async, callback parameter or block given.')
         end
 
         it 'should raise when callback is invalid' do
@@ -284,17 +284,17 @@ describe Pubnub::Client do
 
         it 'should raise when channel is missing' do
           lambda { @pn.history(:count => 10, :callback => @my_callback) }.
-              should raise_error(ArgumentError, 'history() requires :channel, :count parameters and callback parameter or block given.')
+              should raise_error(ArgumentError, 'history() requires :channel, :count parameters and, if async, callback parameter or block given.')
         end
 
         it 'should raise when callback is missing' do
           lambda { @pn.history(:channel => @my_channel, :count => 10) }.
-              should raise_error(ArgumentError, 'history() requires :channel, :count parameters and callback parameter or block given.')
+              should raise_error(ArgumentError, 'history() requires :channel, :count parameters and, if async, callback parameter or block given.')
         end
 
         it 'should raise when count is missing' do
           lambda { @pn.history(:channel => @my_channel, :callback => @my_callback) }.
-              should raise_error(ArgumentError, 'history() requires :channel, :count parameters and callback parameter or block given.')
+              should raise_error(ArgumentError, 'history() requires :channel, :count parameters and, if async, callback parameter or block given.')
         end
 
         it 'should raise when callback is invalid' do
@@ -327,12 +327,12 @@ describe Pubnub::Client do
 
         it 'should raise when channel is missing' do
           lambda { @pn.leave(:callback => @my_callback) }.
-              should raise_error(ArgumentError, 'leave() requires :channel parameters and callback parameter or block given.')
+              should raise_error(ArgumentError, 'leave() requires :channel parameters and, if async, callback parameter or block given.')
         end
 
         it 'should raise when callback is missing' do
           lambda { @pn.leave(:channel => @my_channel) }.
-              should raise_error(ArgumentError, 'leave() requires :channel parameters and callback parameter or block given.')
+              should raise_error(ArgumentError, 'leave() requires :channel parameters and, if async, callback parameter or block given.')
         end
 
         it 'should raise when callback is invalid' do
