@@ -74,10 +74,10 @@ describe Pubnub::Request do
         end
       end
 
-      context 'is detailed_history' do
+      context 'is history' do
         it 'is valid' do
           @pubnub_request = Pubnub::Request.new(
-              :operation     => 'detailed_history',
+              :operation     => 'history',
               :channel       => 'channel',
               :subscribe_key => 'subscribe_key',
               :origin        => 'pubsub.pubnub.com',
@@ -87,22 +87,6 @@ describe Pubnub::Request do
           @pubnub_request.path.should eq '/v2/history/sub-key/subscribe_key/channel/channel'
         end
 
-      end
-
-      context 'is history' do
-        it 'is valid' do
-
-          @pubnub_request = Pubnub::Request.new(
-            :operation     => 'history',
-            :channel       => 'channel',
-            :subscribe_key => 'subscribe_key',
-            :origin        => 'pubsub.pubnub.com',
-            :publish_key   => 'publish_key',
-            :limit         => '100'
-          )
-
-        @pubnub_request.path.should eq '/history/subscribe_key/channel/0/100'
-        end
       end
 
       context 'is presence' do

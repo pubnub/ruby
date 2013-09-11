@@ -134,10 +134,10 @@ module Pubnub
     end
 
     def leave(options = {}, &block)
-      return false unless Subscription.get_channels.include? options[:channel]
-
       merge_options(options, 'leave')
       verify_operation('leave', options.merge!(:block_given => block_given?))
+
+      return false unless Subscription.get_channels.include? options[:channel]
       if block_given?
         start_request { |envelope| block.call envelope }
       else
@@ -188,6 +188,7 @@ module Pubnub
         :operation     => operation,
         :params        => { :uuid => @session_uuid },
         :timetoken     => @timetoken,
+        :error_callback=> @error_callback,
         :channel       => compile_channel_parameter(options[:channel],options[:channels])
       }.merge(options)
     end
@@ -261,6 +262,7 @@ module Pubnub
 
             http.callback do
               $log.debug 'GOT OTHER RESPONSE'
+              #byebug
               if http.response_header.status.to_i == 200
                 if is_valid_json?(http.response)
                   request.handle_response(http)
@@ -291,12 +293,14 @@ module Pubnub
                   if request.error_callback
                     request.error_callback.call Pubnub::Response.new(
                       :error_init => true,
-                      :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_s
+                      :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_s,
+                      :response =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_s
                     )
                   else
                     @error_callback.call Pubnub::Response.new(
                       :error_init => true,
-                      :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_s
+                      :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_s,
+                      :response =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_s
                     )
                   end
                 end
@@ -374,9 +378,17 @@ module Pubnub
               end
             rescue
               if request.error_callback
-                request.error_callback.call [0, "Bad server response: #{response.response.code}"]
+                request.error_callback.call Pubnub::Response.new(
+                                                :error_init => true,
+                                                :message =>  [0, "Bad server response: #{response.response.code.to_i}"].to_s,
+                                                :response =>  [0, "Bad server response: #{response.response.code.to_i}"].to_s
+                                            )
               else
-                @error_callback.call [0, "Bad server response: #{response.response.code}"]
+                @error_callback.call Pubnub::Response.new(
+                                         :error_init => true,
+                                         :message =>  [0, "Bad server response: #{response.response.code.to_i}"].to_s,
+                                         :response =>  [0, "Bad server response: #{response.response.code.to_i}"].to_s
+                                     )
               end
             end
           end

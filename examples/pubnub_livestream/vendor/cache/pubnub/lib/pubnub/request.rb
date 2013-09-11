@@ -20,7 +20,7 @@ module Pubnub
       @operation      = options[:operation]
       @callback       = options[:callback]
       @error_callback = options[:error_callback]
-      @error_callback = lambda { |x| puts "AN ERROR OCCURRED: #{x}" } unless @error_callback
+      @error_callback = lambda { |x| puts "AN ERROR OCCURRED: #{x.msg}" } unless @error_callback
       @channel        = options[:channel]
       @message        = options[:message]
       @timetoken      = options[:timetoken] || "0"
