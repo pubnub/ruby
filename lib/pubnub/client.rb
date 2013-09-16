@@ -196,11 +196,11 @@ module Pubnub
     def start_request(&block)
       request = Pubnub::Request.new(@options)
       unless @options[:http_sync]
-
         Thread.new {
-          EM.run# do
-          EM.add_shutdown_hook { 'EXITING' }
-        }
+          #puts EM.reactor_running?.to_s
+          EM.run # do
+          #EM.add_shutdown_hook { 'EXITING' }
+        } unless EM.reactor_running?
         #EM.defer do
         while EM.reactor_running? == false do end
         if %w(subscribe presence).include? request.operation

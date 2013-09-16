@@ -1,8 +1,5 @@
 require 'rubygems'
-require 'bundler/setup'
-require 'byebug'
-
-require 'pubnub' # and any other gems you need
+require 'pubnub'
 
 RSpec.configure do |config|
 

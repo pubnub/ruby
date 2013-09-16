@@ -8,14 +8,18 @@ describe '#publish' do
     @output = StringIO.new
     @callback = lambda { |envelope|
       @output.write envelope.response
-      EM.stop if EM.reactor_running?
+      @after_callback = true
     }
     @error_callback = lambda { |envelope|
       @output.write envelope.response
-      EM.stop if EM.reactor_running?
+      @after_callback = true
     }
     @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback)
     @pn.session_uuid = nil
+  end
+
+  before(:each) do
+    @after_callback = false
   end
 
   context 'when it gets server error' do
@@ -37,7 +41,7 @@ describe '#publish' do
             @pn.publish(:publish_key => :demo, :message => 'Soooolooong', :channel => :hello_world, :callback => @callback, :http_sync => true)
 
             @output.seek(0)
-            my_response.should eq @output.read
+            @output.read.should eq my_response
           end
 
           it 'fires given block on response envelope' do
@@ -55,7 +59,7 @@ describe '#publish' do
             @pn.publish(:publish_key => :demo, :message => 'Soooolooong', :channel => :hello_world, :callback => @callback, :http_sync => true, &@callback)
 
             @output.seek(0)
-            my_response.should eq @output.read
+            @output.read.should eq my_response
           end
         end
 
@@ -73,10 +77,12 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'Soooolooong', :channel => :hello_world, :callback => @callback, :http_sync => false)
-            while EM.reactor_running? do end
+            sleep(1)
+            while !@after_callback do end
+            #while EM.reactor_running? do end
 
             @output.seek(0)
-            my_response.should eq @output.read
+            @output.read.should eq my_response
           end
 
           it 'fires given block on response envelope' do
@@ -92,10 +98,10 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'Soooolooong', :channel => :hello_world, :http_sync => false, &@callback)
-            while EM.reactor_running? do end
+            while !@after_callback do end
 
             @output.seek(0)
-            my_response.should eq @output.read
+            @output.read.should eq my_response
           end
         end
       end
@@ -116,7 +122,7 @@ describe '#publish' do
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :callback => @callback, :http_sync => true)
             @output.seek(0)
-            my_response.should eq @output.read
+            @output.read.should eq my_response
           end
 
           it 'fires given block on hardcoded envelope' do
@@ -133,7 +139,7 @@ describe '#publish' do
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :http_sync => true, &@callback)
             @output.seek(0)
-            my_response.should eq @output.read
+            @output.read.should eq my_response
           end
         end
 
@@ -152,9 +158,9 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :callback => @callback)
-            while EM.reactor_running? do end
+            while !@after_callback do end
             @output.seek(0)
-            my_response.should eq @output.read
+            @output.read.should eq my_response
           end
 
           it 'fires given block on hardcoded envelope' do
@@ -171,9 +177,9 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, &@callback)
-            while EM.reactor_running? do end
+            while !@after_callback do end
             @output.seek(0)
-            my_response.should eq @output.read
+            @output.read.should eq my_response
           end
         end
       end
@@ -200,7 +206,7 @@ describe '#publish' do
             @pn.publish(:publish_key => :demo, :message => 'Soooolooong', :channel => :hello_world, :callback => @callback, :http_sync => true)
 
             @output.seek(0)
-            my_response.should eq @output.read
+            @output.read.should eq my_response
           end
 
           it 'fires given block on response envelope' do
@@ -218,7 +224,7 @@ describe '#publish' do
             @pn.publish(:publish_key => :demo, :message => 'Soooolooong', :channel => :hello_world, :callback => @callback, :http_sync => true, &@callback)
 
             @output.seek(0)
-            my_response.should eq @output.read
+            @output.read.should eq my_response
           end
         end
 
@@ -236,10 +242,10 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'Soooolooong', :channel => :hello_world, :callback => @callback, :http_sync => false)
-            while EM.reactor_running? do end
+            while !@after_callback do end
 
             @output.seek(0)
-            my_response.should eq @output.read
+            @output.read.should eq my_response
           end
 
           it 'fires given block on response envelope' do
@@ -255,10 +261,10 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'Soooolooong', :channel => :hello_world, :http_sync => false, &@callback)
-            while EM.reactor_running? do end
+            while !@after_callback do end
 
             @output.seek(0)
-            my_response.should eq @output.read
+            @output.read.should eq my_response
           end
         end
       end
@@ -279,7 +285,7 @@ describe '#publish' do
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :callback => @callback, :http_sync => true)
             @output.seek(0)
-            my_response.should eq @output.read
+            @output.read.should eq my_response
           end
 
           it 'fires given block on hardcoded envelope' do
@@ -296,7 +302,7 @@ describe '#publish' do
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :http_sync => true, &@callback)
             @output.seek(0)
-            my_response.should eq @output.read
+            @output.read.should eq my_response
           end
         end
 
@@ -315,9 +321,9 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :callback => @callback)
-            while EM.reactor_running? do end
+            while !@after_callback do end
             @output.seek(0)
-            my_response.should eq @output.read
+            @output.read.should eq my_response
           end
 
           it 'fires given block on hardcoded envelope' do
@@ -334,9 +340,9 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, &@callback)
-            while EM.reactor_running? do end
+            while !@after_callback do end
             @output.seek(0)
-            my_response.should eq @output.read
+            @output.read.should eq my_response
           end
         end
       end
@@ -361,9 +367,9 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-              while EM.reactor_running? do end
+              while !@after_callback do end
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
 
             it 'fires given block on response envelope' do
@@ -379,9 +385,9 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-              while EM.reactor_running? do end
+              while !@after_callback do end
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
           end
 
@@ -400,7 +406,7 @@ describe '#publish' do
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
 
             it 'fires given block on response envelope' do
@@ -417,7 +423,7 @@ describe '#publish' do
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
           end
         end
@@ -440,9 +446,9 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-              while EM.reactor_running? do end
+              while !@after_callback do end
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
 
             it 'fires given block on response envelope' do
@@ -458,9 +464,9 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-              while EM.reactor_running? do end
+              while !@after_callback do end
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
           end
 
@@ -479,7 +485,7 @@ describe '#publish' do
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
 
             it 'fires given block on response envelope' do
@@ -496,7 +502,7 @@ describe '#publish' do
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
           end
         end
@@ -521,9 +527,9 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-              while EM.reactor_running? do end
+              while !@after_callback do end
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
 
             it 'fires given block on response envelope' do
@@ -539,9 +545,9 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-              while EM.reactor_running? do end
+              while !@after_callback do end
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
           end
 
@@ -560,7 +566,7 @@ describe '#publish' do
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
 
             it 'fires given block on response envelope' do
@@ -577,7 +583,7 @@ describe '#publish' do
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
           end
         end
@@ -600,9 +606,9 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-              while EM.reactor_running? do end
+              while !@after_callback do end
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
 
             it 'fires given block on response envelope' do
@@ -618,9 +624,9 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-              while EM.reactor_running? do end
+              while !@after_callback do end
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
           end
 
@@ -639,7 +645,7 @@ describe '#publish' do
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
 
             it 'fires given block on response envelope' do
@@ -656,7 +662,7 @@ describe '#publish' do
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
           end
         end
@@ -683,9 +689,9 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-              while EM.reactor_running? do end
+              while !@after_callback do end
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
 
             it 'fires given block on response envelope' do
@@ -701,9 +707,9 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-              while EM.reactor_running? do end
+              while !@after_callback do end
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
           end
 
@@ -722,7 +728,7 @@ describe '#publish' do
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
 
             it 'fires given block on response envelope' do
@@ -739,7 +745,7 @@ describe '#publish' do
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
           end
         end
@@ -762,9 +768,9 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-              while EM.reactor_running? do end
+              while !@after_callback do end
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
 
             it 'fires given block on response envelope' do
@@ -780,9 +786,9 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-              while EM.reactor_running? do end
+              while !@after_callback do end
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
           end
 
@@ -801,7 +807,7 @@ describe '#publish' do
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
 
             it 'fires given block on response envelope' do
@@ -818,7 +824,7 @@ describe '#publish' do
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
           end
         end
@@ -843,9 +849,9 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-              while EM.reactor_running? do end
+              while !@after_callback do end
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
 
             it 'fires given block on response envelope' do
@@ -861,9 +867,9 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-              while EM.reactor_running? do end
+              while !@after_callback do end
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
           end
 
@@ -882,7 +888,7 @@ describe '#publish' do
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
 
             it 'fires given block on response envelope' do
@@ -899,7 +905,7 @@ describe '#publish' do
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
           end
         end
@@ -922,9 +928,9 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-              while EM.reactor_running? do end
+              while !@after_callback do end
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
 
             it 'fires given block on response envelope' do
@@ -940,9 +946,9 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-              while EM.reactor_running? do end
+              while !@after_callback do end
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
           end
 
@@ -961,7 +967,7 @@ describe '#publish' do
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback, :http_sync => true)
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
 
             it 'fires given block on response envelope' do
@@ -978,7 +984,7 @@ describe '#publish' do
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :http_sync => true, &@callback)
               @output.seek(0)
-              my_response.should eq @output.read
+              @output.read.should eq my_response
             end
           end
         end
