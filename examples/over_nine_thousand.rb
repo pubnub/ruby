@@ -1,7 +1,7 @@
 require 'pubnub'
 require 'pry'
 
-TIMES = 10000
+TIMES = 1000
 
 @msgs = Array.new
 @timetokens = Array.new
