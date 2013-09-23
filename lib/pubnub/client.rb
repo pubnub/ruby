@@ -315,19 +315,34 @@ module Pubnub
           if @timetoken.to_i == 0 && request.operation == 'subscribe'
             time(:http_sync => true){|envelope| @timetoken = envelope.message.to_i }
           end
-          if request.query.to_s.empty?
-            if %w(subscribe presence).include? request.operation
-              response = @sync_connection_sub.send_request(request.origin + request.path, :timeout => 370)
+          begin
+            if request.query.to_s.empty?
+              if %w(subscribe presence).include? request.operation
+                response = @sync_connection_sub.send_request(request.origin + request.path, :timeout => 370)
+              else
+                response = @sync_connection.send_request(request.origin + request.path, :timeout => @non_subscribe_timeout)
+              end
             else
-              response = @sync_connection.send_request(request.origin + request.path, :timeout => @non_subscribe_timeout)
+              if %w(subscribe presence).include? request.operation
+                response = @sync_connection_sub.send_request(request.origin + request.path, :query => request.query, :timeout => 370)
+              else
+                response = @sync_connection.send_request(request.origin + request.path, :query => request.query, :timeout => @non_subscribe_timeout)
+              end
             end
-          else
-            if %w(subscribe presence).include? request.operation
-              response = @sync_connection_sub.send_request(request.origin + request.path, :query => request.query, :timeout => 370)
+          rescue
+            @error_callback.call 'ERROR SENDING REQUEST'
+            @retries = 0 unless @retries
+            @retries += 1
+            if @retries <= MAX_RETRIES
+              return start_request(&block)
             else
-              response = @sync_connection.send_request(request.origin + request.path, :query => request.query, :timeout => @non_subscribe_timeout)
+              return Pubnub::Response.new(
+                          :error_init => true,
+                          :message =>  [0, 'ERROR SENDING REQUEST'].to_s,
+                          :response =>  [0, 'ERROR SENDING REQUEST'].to_s
+                      )
             end
-          end
+        end
 
           if @sync_connection_sub.first_run?
             @connect_callback.call 'SYNC CONNECTION ESTABLISHED'

@@ -8,7 +8,7 @@ module Pubnub
     def initialize(options, &block)
 
       @@instances_collector << self
-      @channels = options[:channel].split(',')
+      @channels = options[:channel].to_s.split(',')
       @callback = options[:callback]
       @error_callback = options[:error_callback]
       @callback = block if block_given?

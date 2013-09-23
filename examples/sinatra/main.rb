@@ -1,8 +1,8 @@
 require 'sinatra'
+require 'json'
 require 'slim'
 require 'coffee-script'
 require 'sass'
-require 'pry'
 require 'pubnub'
 
 set :root, File.dirname(__FILE__)
@@ -13,24 +13,35 @@ pubnub = Pubnub.new(
     :subscribe_key => 'demo'
 )
 
-callback = lambda do |envelope|
-  Message.create(
-      :author => envelope.msg['author'],
-      :message => envelope.msg['message'],
-      :timetoken => envelope.timetoken
-  ) if envelope.msg['author'] && envelope.msg['message']
-end
-
 get '/' do
   slim :index
 end
 
-get '/update_stream' do
+post '/get_messages' do
+  content_type :json
 
+  msgs = pubnub.subscribe(
+             :channel => 'pubnub_chat',
+             :http_sync => true
+         )
+
+  msgs.map { |envelope| {
+          :message => envelope.msg['message'],
+          :author => envelope.msg['author']
+      }
+  }.to_json
 end
 
-get '/send_message' do
-
+post '/publish' do
+  content_type :json
+  pubnub.publish(
+      :http_sync => true,
+      :channel => 'pubnub_chat',
+      :message => {
+          :message => params[:message],
+          :author  => params[:author]
+      }
+  ).to_json
 end
 
 get '/application.css' do

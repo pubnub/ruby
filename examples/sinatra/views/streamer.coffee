@@ -1,5 +1,6 @@
 worker = ->
   $.ajax
+    method: "post"
     url: "get_messages"
     success: (data) ->
       append message for message in data
@@ -9,30 +10,28 @@ worker = ->
 
 append = (message) ->
   timetoken = parseInt($("#timetoken").html())
-  if timetoken < message["timetoken"]
-    msg = jQuery("<div/>",
-      text: message["message"]
-      class: 'list-group-item'
-    )
+  msg = jQuery("<div/>",
+    text: message.message
+    class: 'list-group-item'
+  )
 
-    author = jQuery("<span/>",
-      text: message["author"] + "@" + message["created_at"]
-      class: 'badge'
-    )
+  author = jQuery("<span/>",
+    text: message.author
+    class: 'badge'
+  )
 
-    author.appendTo msg
-    msg.appendTo "#messages"
+  author.appendTo msg
+  msg.appendTo "#messages"
 
-    $("#messages").stop().animate
-      scrollTop: $("#messages")[0].scrollHeight
-    , 800
+  $("#messages").stop().animate
+    scrollTop: $("#messages")[0].scrollHeight, 800
 
-    $("#timetoken").html(message["timetoken"])
-    $("#message-field").val('')
+  $("#message-field").val('')
 
 $ ->
   $('#send-button').click ->
     $.ajax
+      method: "post"
       url: "publish"
       data: {
         author: $("#author-field").val()
