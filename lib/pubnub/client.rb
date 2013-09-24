@@ -336,13 +336,15 @@ module Pubnub
             if @retries <= MAX_RETRIES
               return start_request(&block)
             else
+              msg = "ERROR SENDING REQUEST AFTER #{@retries} RETRIES"
+              @retries = 0
               return Pubnub::Response.new(
                           :error_init => true,
-                          :message =>  [0, 'ERROR SENDING REQUEST'].to_s,
-                          :response =>  [0, 'ERROR SENDING REQUEST'].to_s
+                          :message =>  [0, msg].to_s,
+                          :response =>  [0, msg].to_s
                       )
             end
-        end
+          end
 
           if @sync_connection_sub.first_run?
             @connect_callback.call 'SYNC CONNECTION ESTABLISHED'
