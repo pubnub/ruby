@@ -6,6 +6,8 @@ require 'openssl'
 require 'digest/sha2'
 require 'base64'
 
+require 'json'
+
 module Pubnub
   class Request
     include Pubnub::Configuration
@@ -133,8 +135,10 @@ module Pubnub
       path = URI.escape('/' + request.map{|i| i.to_s}.reject(&:empty?).join('/')).gsub(/\?/,'%3F')
 
       if @operation == 'leave'
+        $log.debug "#{path}/leave"
         "#{path}/leave"
       else
+        $log.debug path
         path
       end
     end

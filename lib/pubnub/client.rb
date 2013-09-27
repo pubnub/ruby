@@ -9,7 +9,6 @@ module Pubnub
   class PubNubHTTParty
     include HTTParty
     default_timeout 310
-    #persistent_connection_adapter
 
     def first_run?
       @first_run ? true : false
@@ -71,6 +70,9 @@ module Pubnub
 
       @http_sync        = options[:http_sync]
 
+      @max_retries = options[:max_retries]
+      @max_retries = MAX_RETRIES unless @max_retries
+
       @non_subscribe_timeout = options[:non_subscribe_timeout]
       @non_subscribe_timeout = 5 unless @non_subscribe_timeout
 
@@ -88,83 +90,60 @@ module Pubnub
     end
 
     def publish(options = {}, &block)
-      merge_options(options, 'publish')
-      verify_operation('publish', options.merge!(:block_given => block_given?))
-      if block_given?
-        start_request { |envelope| block.call envelope }
-      else
-        start_request
-      end
+      options[:callback] = block if block_given?
+      options = merge_options(options, 'publish')
+      verify_operation('publish', options)
+      start_request options
+
     end
 
     def subscribe(options = {}, &block)
-      merge_options(options, 'subscribe')
-      verify_operation('subscribe', options.merge!(:block_given => block_given?))
-      if block_given?
-        start_request { |envelope| block.call envelope }
-      else
-        start_request
-      end
+      options[:callback] = block if block_given?
+      options = merge_options(options, 'subscribe')
+      verify_operation('subscribe', options)
+      start_request options
     end
 
     def presence(options = {}, &block)
-      merge_options(options, 'presence')
-      verify_operation('presence', options.merge!(:block_given => block_given?))
-      if block_given?
-        start_request { |envelope| block.call envelope }
-      else
-        start_request
-      end
+      options[:callback] = block if block_given?
+      options = merge_options(options, 'presence')
+      verify_operation('presence', options)
+      start_request options
     end
 
     def history(options = {}, &block)
-      merge_options(options, 'history')
-      verify_operation('history', options.merge!(:block_given => block_given?))
-
-      @options[:params].merge!({:count => options[:count]})
-      @options[:params].merge!({:start => options[:start]}) unless options[:start].nil?
-      @options[:params].merge!({:end => options[:end]}) unless options[:end].nil?
-      @options[:params].merge!({:reverse => 'true'}) if options[:reverse]
-
-      if block_given?
-        start_request { |envelope| block.call envelope }
-      else
-        start_request
-      end
+      options[:callback] = block if block_given?
+      options = merge_options(options, 'history')
+      verify_operation('history', options)
+      options[:params].merge!({:count => options[:count]})
+      options[:params].merge!({:start => options[:start]}) unless options[:start].nil?
+      options[:params].merge!({:end => options[:end]}) unless options[:end].nil?
+      options[:params].merge!({:reverse => 'true'}) if options[:reverse]
+      start_request options
     end
 
     def leave(options = {}, &block)
-      merge_options(options, 'leave')
-      verify_operation('leave', options.merge!(:block_given => block_given?))
-
+      options[:callback] = block if block_given?
+      options = merge_options(options, 'leave')
+      verify_operation('leave', options)
       return false unless Subscription.get_channels.include? options[:channel]
-      if block_given?
-        start_request { |envelope| block.call envelope }
-      else
-        start_request
-      end
+      start_request options
     end
 
     alias_method :unsubscribe, :leave
 
     def here_now(options = {}, &block)
-      merge_options(options, 'here_now')
-      verify_operation('here_now', options.merge!(:block_given => block_given?))
-      if block_given?
-        start_request { |envelope| block.call envelope }
-      else
-        start_request
-      end
+      options[:callback] = block if block_given?
+      options = merge_options(options, 'here_now')
+      verify_operation('here_now', options)
+      start_request options
     end
 
     def time(options = {}, &block)
-      merge_options(options, 'time')
-      verify_operation('time', options.merge!(:block_given => block_given?))
-      if block_given?
-        start_request { |envelope| block.call envelope }
-      else
-        start_request
-      end
+      options[:callback] = block if block_given?
+      options = merge_options(options, 'time')
+      verify_operation('time', options)
+      start_request options
     end
 
     def subscription_running?
@@ -178,7 +157,7 @@ module Pubnub
     private
 
     def merge_options(options = {}, operation = '')
-      @options = {
+      return {
         :ssl           => @ssl,
         :cipher_key    => @cipher_key,
         :publish_key   => @publish_key,
@@ -193,31 +172,28 @@ module Pubnub
       }.merge(options)
     end
 
-    def start_request(&block)
-      request = Pubnub::Request.new(@options)
-      unless @options[:http_sync]
-        Thread.new {
-          #puts EM.reactor_running?.to_s
-          EM.run # do
-          #EM.add_shutdown_hook { 'EXITING' }
-        } unless EM.reactor_running?
-        #EM.defer do
-        while EM.reactor_running? == false do end
+    def start_em_if_not_running
+      Thread.new {
+        EM.run
+      } unless EM.reactor_running?
+
+      until EM.reactor_running? do end
+    end
+
+    def start_request(options, &block)
+      request = Pubnub::Request.new(options)
+      unless options[:http_sync]
+        start_em_if_not_running
+
         if %w(subscribe presence).include? request.operation
 
-          if block_given?
-            Subscription.new(:channel  => @options[:channel]){ |envelope| block.call envelope }
-          else
-            Subscription.new(:channel  => @options[:channel], :callback => @options[:callback])
-          end
+          Subscription.new(:channel  => options[:channel], :callback => options[:callback])
 
           @subscription_request = request unless @subscription_request
 
           @subscription_request.channel = Subscription.channels_for_url
 
-          #EM.add_periodic_timer(PERIODIC_TIMER) do
-          EM.tick_loop do
-            @subscription_running = true
+          @subscription_running = EM::PeriodicTimer(PERIODIC_TIMER) do
 
             if @close_connection
               EM.stop
@@ -266,16 +242,9 @@ module Pubnub
               if http.response_header.status.to_i == 200
                 if is_valid_json?(http.response)
                   request.handle_response(http)
-                  if block_given?
-                    request.envelopes.each do |envelope|
-                      $log.debug 'CALLING BLOCK CALLBACK'
-                      block.call envelope
-                    end
-                  else
-                    request.envelopes.each do |envelope|
-                      $log.debug 'CALLING PARAMETER CALLBACK'
-                      request.callback.call envelope
-                    end
+                  request.envelopes.each do |envelope|
+                    $log.debug 'CALLING PARAMETER CALLBACK'
+                    request.callback.call envelope
                   end
                 end
               else
@@ -293,14 +262,14 @@ module Pubnub
                   if request.error_callback
                     request.error_callback.call Pubnub::Response.new(
                       :error_init => true,
-                      :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_s,
-                      :response =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_s
+                      :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_json,
+                      :response =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_json
                     )
                   else
                     @error_callback.call Pubnub::Response.new(
                       :error_init => true,
-                      :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_s,
-                      :response =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_s
+                      :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_json,
+                      :response =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_json
                     )
                   end
                 end
@@ -308,8 +277,6 @@ module Pubnub
             end
           end
         end
-        #end
-        #end
       else
         begin
           if @timetoken.to_i == 0 && request.operation == 'subscribe'
@@ -330,11 +297,16 @@ module Pubnub
               end
             end
           rescue
-            @error_callback.call 'ERROR SENDING REQUEST'
+            msg = 'ERROR SENDING REQUEST'
+            @error_callback.call  Pubnub::Response.new(
+                                      :error_init => true,
+                                      :message =>  [0, msg].to_s,
+                                      :response =>  [0, msg].to_s
+                                  )
             @retries = 0 unless @retries
             @retries += 1
-            if @retries <= MAX_RETRIES
-              return start_request(&block)
+            if @retries <= @max_retries
+              return start_request options
             else
               msg = "ERROR SENDING REQUEST AFTER #{@retries} RETRIES"
               @retries = 0
@@ -349,7 +321,6 @@ module Pubnub
           if @sync_connection_sub.first_run?
             @connect_callback.call 'SYNC CONNECTION ESTABLISHED'
           end
-
           if response.response.code.to_i == 200
             if is_valid_json?(response.body)
               request.handle_response(response)
@@ -359,11 +330,7 @@ module Pubnub
                 Subscription.remove_from_subscription request.channel
               end
 
-              if block_given?
-                request.envelopes.each do |envelope|
-                  block.call envelope
-                end
-              elsif !request.callback.nil?
+              if !request.callback.nil?
                 request.envelopes.each do |envelope|
                   request.callback.call envelope
                 end
@@ -378,11 +345,7 @@ module Pubnub
           else
             begin
               request.handle_response(response)
-              if block_given?
-                request.envelopes.each do |envelope|
-                  block.call envelope
-                end
-              elsif !request.callback.nil?
+              if !request.callback.nil?
                 request.envelopes.each do |envelope|
                   request.callback.call envelope
                 end
@@ -397,16 +360,26 @@ module Pubnub
               if request.error_callback
                 request.error_callback.call Pubnub::Response.new(
                                                 :error_init => true,
-                                                :message =>  [0, "Bad server response: #{response.response.code.to_i}"].to_s,
-                                                :response =>  [0, "Bad server response: #{response.response.code.to_i}"].to_s
+                                                :message =>  [0, "Bad server response: #{response.response.code.to_i}"].to_json,
+                                                :response =>  [0, "Bad server response: #{response.response.code.to_i}"].to_json
                                             )
               else
                 @error_callback.call Pubnub::Response.new(
                                          :error_init => true,
-                                         :message =>  [0, "Bad server response: #{response.response.code.to_i}"].to_s,
-                                         :response =>  [0, "Bad server response: #{response.response.code.to_i}"].to_s
+                                         :message =>  [0, "Bad server response: #{response.response.code.to_i}"].to_json,
+                                         :response =>  [0, "Bad server response: #{response.response.code.to_i}"].to_json
                                      )
               end
+            end
+
+            if @sync_retries
+              @sync_retries += 1
+            else
+              @sync_retries = 1
+            end
+
+            if @sync_retries < @max_retries
+              start_request options
             end
           end
         rescue Timeout::Error
@@ -454,20 +427,9 @@ module Pubnub
         JSON.parse(response)
         valid = true
       rescue
-        increment_retries
         valid = false
       end
       valid
-    end
-
-    def increment_retries
-      if @retry_count < MAX_RETRIES
-        @retry = true
-      else
-        @retry = false
-        @retry_count = 0
-      end
-      @retry_count = @retry_count + 1
     end
 
     def verify_operation(operation, options)

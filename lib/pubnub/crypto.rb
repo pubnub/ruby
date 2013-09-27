@@ -16,7 +16,7 @@ module Pubnub
       aes.key = @key
       aes.iv = @iv
 
-      json_message = JSON.dump(message)
+      json_message = message.to_json
       cipher = aes.update(json_message)
       cipher << aes.final
 
@@ -43,6 +43,8 @@ module Pubnub
 
       begin
         JSON.load(plain_text)
+      rescue JSON::ParserError
+        JSON.load("[#{plain_text}]")[0] # srsly ruby? srsly?
       rescue
         return 'PARSE DECRYPTION MESSAGE ERROR'
       end

@@ -14,7 +14,7 @@ describe '#publish' do
       @output.write envelope.response
       @after_callback = true
     }
-    @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback)
+    @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1)
     @pn.session_uuid = nil
   end
 
@@ -109,7 +109,7 @@ describe '#publish' do
       context 'and response message is not usable' do
         context 'and it\'s synchronous' do
           it 'fires given callback on hardcoded envelope' do
-            my_response = '[0, "Bad server response: 500"]'
+            my_response = '[0,"Bad server response: 500"]'
 
             stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22').
                 to_return(
@@ -126,7 +126,7 @@ describe '#publish' do
           end
 
           it 'fires given block on hardcoded envelope' do
-            my_response = '[0, "Bad server response: 500"]'
+            my_response = '[0,"Bad server response: 500"]'
 
             stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22').
                 to_return(
@@ -146,7 +146,7 @@ describe '#publish' do
         context 'and it\'s asynchronous' do
           it 'fires given callback on hardcoded envelope' do
 
-            my_response = '[0, "Bad server response: 500"]'
+            my_response = '[0,"Bad server response: 500"]'
 
             stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22').
                 to_return(
@@ -165,7 +165,7 @@ describe '#publish' do
 
           it 'fires given block on hardcoded envelope' do
 
-            my_response = '[0, "Bad server response: 500"]'
+            my_response = '[0,"Bad server response: 500"]'
 
             stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22').
                 to_return(
@@ -272,7 +272,7 @@ describe '#publish' do
       context 'and response message is not usable' do
         context 'and it\'s synchronous' do
           it 'fires given callback on hardcoded envelope' do
-            my_response = '[0, "Bad server response: 500"]'
+            my_response = '[0,"Bad server response: 500"]'
 
             stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22').
                 to_return(
@@ -289,7 +289,7 @@ describe '#publish' do
           end
 
           it 'fires given block on hardcoded envelope' do
-            my_response = '[0, "Bad server response: 500"]'
+            my_response = '[0,"Bad server response: 500"]'
 
             stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22').
                 to_return(
@@ -309,7 +309,7 @@ describe '#publish' do
         context 'and it\'s asynchronous' do
           it 'fires given callback on hardcoded envelope' do
 
-            my_response = '[0, "Bad server response: 500"]'
+            my_response = '[0,"Bad server response: 500"]'
 
             stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22').
                 to_return(
@@ -328,7 +328,7 @@ describe '#publish' do
 
           it 'fires given block on hardcoded envelope' do
 
-            my_response = '[0, "Bad server response: 500"]'
+            my_response = '[0,"Bad server response: 500"]'
 
             stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22').
                 to_return(
