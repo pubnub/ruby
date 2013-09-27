@@ -5,13 +5,12 @@ module Pubnub
 
     attr_accessor :channels, :callback
 
-    def initialize(options, &block)
+    def initialize(options)
 
       @@instances_collector << self
       @channels = options[:channel].to_s.split(',')
       @callback = options[:callback]
       @error_callback = options[:error_callback]
-      @callback = block if block_given?
       add_self_to_subscription
     end
 
@@ -61,6 +60,7 @@ module Pubnub
     end
 
     def self.fire_callbacks_for(envelope)
+      $log.debug 'SEARCHING FOR SUBSCRIPTION CALLBACK'
       Subscription.active_subscriptions.each do |subscription|
         $log.debug 'CALLING SUBSCRIPTION CALLBACK'
         subscription.callback.call(envelope) if subscription.is_subscribed_to? envelope.channel

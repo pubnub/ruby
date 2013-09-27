@@ -78,7 +78,7 @@ describe '#publish' do
 
             @pn.publish(:publish_key => :demo, :message => 'Soooolooong', :channel => :hello_world, :callback => @callback, :http_sync => false)
             sleep(1)
-            while !@after_callback do end
+            until @after_callback do end
             #while EM.reactor_running? do end
 
             @output.seek(0)
@@ -98,7 +98,7 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'Soooolooong', :channel => :hello_world, :http_sync => false, &@callback)
-            while !@after_callback do end
+            until @after_callback do end
 
             @output.seek(0)
             @output.read.should eq my_response
@@ -158,7 +158,7 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :callback => @callback)
-            while !@after_callback do end
+            until @after_callback do end
             @output.seek(0)
             @output.read.should eq my_response
           end
@@ -177,7 +177,7 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, &@callback)
-            while !@after_callback do end
+            until @after_callback do end
             @output.seek(0)
             @output.read.should eq my_response
           end
@@ -242,7 +242,7 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'Soooolooong', :channel => :hello_world, :callback => @callback, :http_sync => false)
-            while !@after_callback do end
+            until @after_callback do end
 
             @output.seek(0)
             @output.read.should eq my_response
@@ -261,7 +261,7 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'Soooolooong', :channel => :hello_world, :http_sync => false, &@callback)
-            while !@after_callback do end
+            until @after_callback do end
 
             @output.seek(0)
             @output.read.should eq my_response
@@ -321,7 +321,7 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :callback => @callback)
-            while !@after_callback do end
+            until @after_callback do end
             @output.seek(0)
             @output.read.should eq my_response
           end
@@ -340,7 +340,7 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, &@callback)
-            while !@after_callback do end
+            until @after_callback do end
             @output.seek(0)
             @output.read.should eq my_response
           end
@@ -367,7 +367,7 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-              while !@after_callback do end
+              until @after_callback do end
               @output.seek(0)
               @output.read.should eq my_response
             end
@@ -385,7 +385,7 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-              while !@after_callback do end
+              until @after_callback do end
               @output.seek(0)
               @output.read.should eq my_response
             end
@@ -446,7 +446,7 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-              while !@after_callback do end
+              until @after_callback do end
               @output.seek(0)
               @output.read.should eq my_response
             end
@@ -464,7 +464,7 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-              while !@after_callback do end
+              until @after_callback do end
               @output.seek(0)
               @output.read.should eq my_response
             end
@@ -527,7 +527,7 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-              while !@after_callback do end
+              until @after_callback do end
               @output.seek(0)
               @output.read.should eq my_response
             end
@@ -545,7 +545,7 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-              while !@after_callback do end
+              until @after_callback do end
               @output.seek(0)
               @output.read.should eq my_response
             end
@@ -606,7 +606,7 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-              while !@after_callback do end
+              until @after_callback do end
               @output.seek(0)
               @output.read.should eq my_response
             end
@@ -624,7 +624,7 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-              while !@after_callback do end
+              until @after_callback do end
               @output.seek(0)
               @output.read.should eq my_response
             end
@@ -689,7 +689,7 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-              while !@after_callback do end
+              until @after_callback do end
               @output.seek(0)
               @output.read.should eq my_response
             end
@@ -707,7 +707,7 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-              while !@after_callback do end
+              until @after_callback do end
               @output.seek(0)
               @output.read.should eq my_response
             end
@@ -768,7 +768,7 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-              while !@after_callback do end
+              until @after_callback do end
               @output.seek(0)
               @output.read.should eq my_response
             end
@@ -786,7 +786,7 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-              while !@after_callback do end
+              until @after_callback do end
               @output.seek(0)
               @output.read.should eq my_response
             end
@@ -849,7 +849,7 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-              while !@after_callback do end
+              until @after_callback do end
               @output.seek(0)
               @output.read.should eq my_response
             end
@@ -867,7 +867,7 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-              while !@after_callback do end
+              until @after_callback do end
               @output.seek(0)
               @output.read.should eq my_response
             end
@@ -928,7 +928,7 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, :callback => @callback)
-              while !@after_callback do end
+              until @after_callback do end
               @output.seek(0)
               @output.read.should eq my_response
             end
@@ -946,7 +946,7 @@ describe '#publish' do
               )
 
               @pn.publish(:publish_key => :demo, :message => 'good_times', :channel => :hello_world, &@callback)
-              while !@after_callback do end
+              until @after_callback do end
               @output.seek(0)
               @output.read.should eq my_response
             end

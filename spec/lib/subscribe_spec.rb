@@ -14,7 +14,7 @@ describe '#subscirbe' do
     @error_callback = lambda { |envelope|
       $log.error envelope.response
       @error_output.write envelope.response
-      @after_callback = true
+      @after_error_callback = true
     }
     @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback)
     @pn.session_uuid = nil
@@ -40,6 +40,7 @@ describe '#subscirbe' do
                 }
               }
             else
+              #puts "DOBRE"
               {
                 :body => [[{"text" => "hey"}],"#{/\/(\d+)\/$/.match request.uri.path}"].to_json,
                 :status => 200,
@@ -89,6 +90,15 @@ describe '#subscirbe' do
             @http_sync = false
           end
           it 'fires given callback on response envelope and retry' do
+            my_response =  [[{"text" => "hey"}],""].to_json
+
+            @pn.subscribe(:channel => 'demo', :callback => @callback, :http_sync => @http_sync)
+            sleep(1)
+            binding.pry
+            until @after_callback do end
+            #puts @after_callback
+            @output.seek(0)
+            @output.read.should eq my_response
           end
 
           it 'fires given block on response envelope and retry' do

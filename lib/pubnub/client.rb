@@ -180,20 +180,19 @@ module Pubnub
       until EM.reactor_running? do end
     end
 
-    def start_request(options, &block)
+    def start_request(options)
       request = Pubnub::Request.new(options)
       unless options[:http_sync]
         start_em_if_not_running
 
         if %w(subscribe presence).include? request.operation
-
-          Subscription.new(:channel  => options[:channel], :callback => options[:callback])
+          Subscription.new(:channel => options[:channel], :callback => options[:callback])
 
           @subscription_request = request unless @subscription_request
 
           @subscription_request.channel = Subscription.channels_for_url
 
-          @subscription_running = EM::PeriodicTimer(PERIODIC_TIMER) do
+          @subscription_running = EM.add_periodic_timer(PERIODIC_TIMER) do
 
             if @close_connection
               EM.stop
@@ -213,6 +212,21 @@ module Pubnub
                         Subscription.fire_callbacks_for envelope
                       end if is_update?(@subscription_request.timetoken)
                     end
+                  else
+                    if request.error_callback
+                      request.error_callback.call Pubnub::Response.new(
+                                                      :error_init => true,
+                                                      :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_json,
+                                                      :response =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_json
+                                                  )
+                    else
+                      @error_callback.call Pubnub::Response.new(
+                                               :error_init => true,
+                                               :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_json,
+                                               :response =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_json
+                                           )
+                    end
+
                   end
                 end
                 http.errback do
