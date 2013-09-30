@@ -39,6 +39,8 @@ module Pubnub
       $log = options[:logger]
       $log = Logger.new('pubnub.log', 0, 100 * 1024 * 1024) unless $log
 
+      @subscriptions = Array.new
+
       @subscription_request = nil
       @retry            = true
       @retry_count      = 0
@@ -87,6 +89,8 @@ module Pubnub
 
       @sync_connection_sub = Pubnub::PubNubHTTParty.new
       @sync_connection     = Pubnub::PubNubHTTParty.new
+
+      @pause_subscribe = false
     end
 
     def publish(options = {}, &block)
@@ -123,11 +127,17 @@ module Pubnub
     end
 
     def leave(options = {}, &block)
+      remove_from_subscription options['channel']
       options[:callback] = block if block_given?
       options = merge_options(options, 'leave')
       verify_operation('leave', options)
-      return false unless Subscription.get_channels.include? options[:channel]
+      return false unless get_channels_for_subscription.include? options[:channel]
+      if @subscriptions.empty?
+        @subscription_running.cancel
+        @subscription_running = nil
+      end
       start_request options
+
     end
 
     alias_method :unsubscribe, :leave
@@ -156,6 +166,10 @@ module Pubnub
 
     private
 
+    def remove_from_subscription(channel)
+      @subscriptions.delete_if { |s| s.channel == channel }
+    end
+
     def merge_options(options = {}, operation = '')
       return {
         :ssl           => @ssl,
@@ -180,69 +194,78 @@ module Pubnub
       until EM.reactor_running? do end
     end
 
+    def get_channels_for_subscription
+      @subscriptions.map { |sub| sub.channel }
+    end
+
+    def fire_subscriptions_callback_for(envelope)
+      @subscriptions.each do |subscription|
+        subscription.fire_callback_for envelope
+      end
+    end
+
     def start_request(options)
       request = Pubnub::Request.new(options)
       unless options[:http_sync]
         start_em_if_not_running
 
         if %w(subscribe presence).include? request.operation
-          Subscription.new(:channel => options[:channel], :callback => options[:callback])
+          @subscriptions << Subscription.new(:channel => options[:channel], :callback => options[:callback], :error_callback => options[:error_callback])
 
           @subscription_request = request unless @subscription_request
 
-          @subscription_request.channel = Subscription.channels_for_url
+          @subscription_request.channel = get_channels_for_subscription.join(',')
 
           @subscription_running = EM.add_periodic_timer(PERIODIC_TIMER) do
 
-            if @close_connection
-              EM.stop
-            else
-              unless @wait_for_response
-                @wait_for_response = true
-                $log.debug 'SENDING SUBSCRIBE REQUEST'
-                http = send_request(@subscription_request)
+            unless @wait_for_response
+              @wait_for_response = true
+              $log.debug 'SENDING SUBSCRIBE REQUEST'
+              http = send_request(@subscription_request)
 
-                http.callback do
-                  $log.debug 'GOT SUBSCRIBE RESPONSE'
-                  @wait_for_response = false
-                  if http.response_header.status.to_i == 200
-                    if is_valid_json?(http.response)
-                      @subscription_request.handle_response(http)
+              http.callback do
+                $log.debug 'GOT SUBSCRIBE RESPONSE'
+                @wait_for_response = false
+                if http.response_header.status.to_i == 200
+                  if is_valid_json?(http.response)
+                    $log.debug 'GOT VALID JSON'
+                    @subscription_request.handle_response(http)
+                    $log.debug 'HANDLED RESPONSE'
+                    if is_update?(@subscription_request.timetoken)
+                      $log.debug 'TIMETOKEN UPDATED'
                       @subscription_request.envelopes.each do |envelope|
-                        Subscription.fire_callbacks_for envelope
-                      end if is_update?(@subscription_request.timetoken)
-                    end
-                  else
-                    if request.error_callback
-                      request.error_callback.call Pubnub::Response.new(
-                                                      :error_init => true,
-                                                      :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_json,
-                                                      :response =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_json
-                                                  )
+                        fire_subscriptions_callback_for envelope
+                      end
                     else
-                      @error_callback.call Pubnub::Response.new(
-                                               :error_init => true,
-                                               :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_json,
-                                               :response =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_json
-                                           )
+                      $log.debug 'TIMETOKEN NOT UPDATED'
                     end
-
                   end
+                else
+                  if request.error_callback
+                    request.error_callback.call Pubnub::Response.new(
+                                                    :error_init => true,
+                                                    :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_json,
+                                                    :response =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_json
+                                                )
+                  else
+                    fire_subscriptions_callback_for Pubnub::Response.new(
+                                             :error_init => true,
+                                             :message =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_json,
+                                             :response =>  [0, "Bad server response: #{http.response_header.status.to_i}"].to_json
+                                         )
+                  end
+
                 end
-                http.errback do
-                  $log.error 'GOT SUBSCRIBE ERROR'
-                  @error_callback.call [0, http.error]
-                end
+              end
+              http.errback do
+                $log.error 'GOT SUBSCRIBE ERROR'
+                @error_callback.call [0, http.error]
               end
             end
           end unless @subscription_running
         else
           EM.next_tick do
             $log.debug 'SENDING OTHER REQUEST'
-
-            if request.operation == 'leave'
-              Subscription.remove_from_subscription request.channel
-            end
 
             http = send_request(request)
 
@@ -452,6 +475,7 @@ module Pubnub
           raise(ArgumentError, 'publish() requires :channel, :message parameters and, if async, callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given] || options[:http_sync]) && options[:message]
         when 'subscribe'
           raise(ArgumentError, 'subscribe() requires :channel parameters and, if async, callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given] || options[:http_sync])
+          raise('Channel already subscribed, leave it before subscribing again') if get_channels_for_subscription.include? options[:channel]
         when 'presence'
           raise(ArgumentError, 'presence() requires :channel parameters and, if async, callback parameter or block given.') unless (options[:channel] || options[:channels]) && (options[:callback] || options[:block_given] || options[:http_sync])
         when 'time'

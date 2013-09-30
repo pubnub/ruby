@@ -37,8 +37,8 @@ module Pubnub
         undecoded_text = Base64.decode64(cipher_text)
         plain_text = decode_cipher.update(undecoded_text)
         plain_text << decode_cipher.final
-      rescue
-        return 'DECRYPTION_ERROR'
+      rescue => e
+        return "DECRYPTION_ERROR #{e}"
       end
 
       begin

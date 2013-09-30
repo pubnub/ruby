@@ -132,8 +132,8 @@ module Pubnub
     end
 
     def encode_path(request)
+      $log.debug 'ENCODING PATH'
       path = URI.escape('/' + request.map{|i| i.to_s}.reject(&:empty?).join('/')).gsub(/\?/,'%3F')
-
       if @operation == 'leave'
         $log.debug "#{path}/leave"
         "#{path}/leave"
@@ -171,7 +171,8 @@ module Pubnub
       @last_timetoken = @timetoken
       @timetoken = @response[1] unless @operation == 'time'
 
-      if self.cipher_key.present? && %w(subscribe history).include?(@operation)
+      if @cipher_key.present? && %w(subscribe history).include?(@operation)
+
         response_array = Array.new
         crypto = Pubnub::Crypto.new(@cipher_key)
 
@@ -181,9 +182,13 @@ module Pubnub
           iteration = @response
         end
 
-        iteration.each do |msg|
-          response_array << crypto.decrypt(msg)
-        end if iteration
+        if iteration.class == Array
+          iteration.each do |msg|
+            response_array << crypto.decrypt(msg)
+          end if iteration
+        elsif iteration.class == String
+          response_array = [crypto.decrypt(iteration)]
+        end
 
         case @operation
           when 'subscribe'
