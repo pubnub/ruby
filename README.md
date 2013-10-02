@@ -4,18 +4,17 @@ PubNub - http://github/pubnub/ruby
 ##### YOU MUST HAVE A PUBNUB ACCOUNT TO USE THE API.
 ##### http://www.pubnub.com/account
 
-## PubNub 3.3 Real-time Cloud Push API - RUBY (gem version 3.3.0.5)
+## PubNub 3.4beta Real-time Cloud Push API - RUBY (gem version 3.4beta)
 
 www.pubnub.com - PubNub Real-time Push Service in the Cloud. 
-http://www.pubnub.com/blog/ruby-push-api
 
 PubNub is a Real-time Network for Mobile App, Web Apps for pushing updates
 and enabling real-time notifications and even games!
 This is a cloud-based service for broadcasting Real-time messages
 to thousands of web and mobile clients simultaneously.
 
-# PubNub 3.3 for Ruby is a complete rewrite, 
-and is NOT compatible with earlierversions of Pubnub Ruby Client.
+# PubNub 3.4 for Ruby is a complete rewrite
+and is NOT compatible with earlier versions of Pubnub Ruby Client.
 
 ### Usage Examples
 
@@ -82,7 +81,7 @@ For message, you can just pass:
 > it will be serialized as a JSON for the transport to your mobile and web apps.
 
 ```ruby
-@my_callback = lambda { |message| puts(message) }
+@my_callback = lambda { |envelop| puts(envelope.msg) }
 
 pubnub.publish(
     :channel  => :hello_world,

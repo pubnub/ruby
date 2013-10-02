@@ -10,10 +10,8 @@ module Pubnub
 
     def fire_callback_for(envelope)
       $log.debug "CALLING SUBSCRIPTION CALLBACK FOR CHANNEL #{@channel}" if envelope.channel == @channel
-
       @callback.call envelope if envelope.channel == @channel
       $log.debug "AFTER CALLING SUBSCRIPTION CALLBACK FOR CHANNEL #{@channel}"
-
     end
 
     def ==(other)
