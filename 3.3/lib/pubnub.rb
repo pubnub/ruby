@@ -59,13 +59,14 @@ class Pubnub
 
   def initialize(*args)
 
-    if args.size == 5 # passing in named parameters
+    if args.size == 6 # passing in named parameters
 
       @publish_key = args[0].to_s
       @subscribe_key = args[1].to_s
       @secret_key = args[2].to_s
       @cipher_key = args[3].to_s
       @ssl = args[4]
+      @logger = args[5]
 
     elsif args.size == 1 && args[0].class == Hash # passing in an options hash
 
