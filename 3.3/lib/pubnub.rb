@@ -23,7 +23,12 @@ require 'json'
 require 'uuid'
 require 'active_support/core_ext/hash/indifferent_access'
 require 'active_support/core_ext/string/inflections'
-require 'active_support/core_ext/object/try'
+begin
+  require 'active_support/core_ext/object/try'
+# In case of Rails 2.3, the location is different
+rescue LoadError
+  require 'active_support/core_ext/try'
+end
 require 'active_support/core_ext/object/blank'
 require 'logger'
 
@@ -37,9 +42,6 @@ class Pubnub
   TIMEOUT_GENERAL_ERROR = 1
   TIMEOUT_SUBSCRIBE = 310
   TIMEOUT_NON_SUBSCRIBE = 5
-
-  PUBNUB_LOGGER = Logger.new("#{Dir.tmpdir}/pubnubError.log", 10, 10000000)
-  PUBNUB_LOGGER.level = Logger::DEBUG
 
   class PresenceError < RuntimeError;
   end
@@ -57,13 +59,14 @@ class Pubnub
 
   def initialize(*args)
 
-    if args.size == 5 # passing in named parameters
+    if args.size == 6 # passing in named parameters
 
       @publish_key = args[0].to_s
       @subscribe_key = args[1].to_s
       @secret_key = args[2].to_s
       @cipher_key = args[3].to_s
       @ssl = args[4]
+      @logger = args[5]
 
     elsif args.size == 1 && args[0].class == Hash # passing in an options hash
 
@@ -73,6 +76,7 @@ class Pubnub
       @secret_key = options_hash[:secret_key].blank? ? nil : options_hash[:secret_key].to_s
       @cipher_key = options_hash[:cipher_key].blank? ? nil : options_hash[:cipher_key].to_s
       @ssl = options_hash[:ssl].blank? ? false : true
+      @logger = options_hash[:logger]
 
     else
       raise(InitError, "Initialize with either a hash of options, or exactly 5 named parameters.")
@@ -278,6 +282,10 @@ class Pubnub
     end
   end
 
+  def logger
+    @logger ||= initDefaultLogger
+  end
+
   private
 
   def _request(request, is_reactor_running = false)
@@ -378,9 +386,9 @@ class Pubnub
   end
 
   def logError(errMsg, url)
-    PUBNUB_LOGGER.debug("url: #{url}")
-    PUBNUB_LOGGER.debug("#{errMsg}")
-    PUBNUB_LOGGER.debug("")
+    logger.debug("url: #{url}")
+    logger.debug("#{errMsg}")
+    logger.debug("")
   end
 
   def retryRequest(is_reactor_running, req, request, delay)
@@ -395,11 +403,17 @@ class Pubnub
       request.set_error(true)
       request.callback.call(error_msg)
 
-      PUBNUB_LOGGER.debug(error_msg)
+      logger.debug(error_msg)
 
       EM.stop unless is_reactor_running
     end
 
+  end
+
+  def initDefaultLogger
+    logger = Logger.new("#{Dir.tmpdir}/pubnubError.log", 10, 10000000)
+    logger.level = Logger::DEBUG
+    logger
   end
 
 end
