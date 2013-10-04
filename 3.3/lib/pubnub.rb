@@ -43,8 +43,8 @@ class Pubnub
   TIMEOUT_SUBSCRIBE = 310
   TIMEOUT_NON_SUBSCRIBE = 5
 
-  PUBNUB_LOGGER = Logger.new("#{Dir.tmpdir}/pubnubError.log", 10, 10000000)
-  PUBNUB_LOGGER.level = Logger::DEBUG
+  PUBNUB_LOGGER = Logger.new("#{Rails.root}/log/pubnubError.log", 10, 10000000)
+  PUBNUB_LOGGER.level = Logger::WARN
 
   class PresenceError < RuntimeError;
   end
