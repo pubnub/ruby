@@ -23,7 +23,12 @@ require 'json'
 require 'uuid'
 require 'active_support/core_ext/hash/indifferent_access'
 require 'active_support/core_ext/string/inflections'
-require 'active_support/core_ext/object/try'
+begin
+  require 'active_support/core_ext/object/try'
+# In case of Rails 2.3, the location is different
+rescue LoadError
+  require 'active_support/core_ext/try'
+end
 require 'active_support/core_ext/object/blank'
 require 'logger'
 
