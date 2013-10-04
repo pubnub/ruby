@@ -83,6 +83,7 @@ describe Pubnub do
       @cipher_key = "demo_cipher_key"
       @ssl_enabled = false
       @channel = "pn_test"
+      @logger  = Object.new
     end
 
     context "when initialized" do
@@ -124,9 +125,14 @@ describe Pubnub do
                            :subscribe_key => @subscribe_key,
                            :secret_key => @secret_key,
                            :cipher_key => @cipher_key,
-                           :ssl => @ssl_enabled)
+                           :ssl => @ssl_enabled,
+                           :logger => @logger)
         end
         it_behaves_like "successful initialization"
+
+        it "uses passed logger" do
+          @pn.logger.should == @logger
+        end
       end
 
       context "when the hash key is named" do
@@ -136,9 +142,14 @@ describe Pubnub do
                            "subscribe_key" => @subscribe_key,
                            "secret_key" => @secret_key,
                            "cipher_key" => @cipher_key,
-                           "ssl" => @ssl_enabled)
+                           "ssl" => @ssl_enabled,
+                           "logger" => @logger)
         end
         it_behaves_like "successful initialization"
+
+        it "uses passed logger" do
+          @pn.logger.should == @logger
+        end
 
       end
 
@@ -654,6 +665,25 @@ describe Pubnub do
         @pn.here_now(:channel => :hello_world, :callback => @my_callback)
       end
 
+    end
+
+  end
+
+  describe "logger" do
+
+    before do
+      @sub_key = "demo"
+    end
+
+    it "defaults to Ruby Logger" do
+      pn = Pubnub.new(:subscribe_key => @sub_key)
+      pn.logger.should be_kind_of(::Logger)
+    end
+
+    it "accepts custom logger" do
+      logger = Object.new
+      pn = Pubnub.new(:subscribe_key => @sub_key, :logger => logger)
+      pn.logger.should == logger
     end
 
   end

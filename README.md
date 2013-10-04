@@ -36,7 +36,8 @@ pubnub = Pubnub.new(
     :subscribe_key => 'demo', # required
     :secret_key    => nil,    # optional, if used, message signing is enabled
     :cipher_key    => nil,    # optional, if used, encryption is enabled
-    :ssl           => nil     # true or default is false
+    :ssl           => nil,    # true or default is false
+    :logger        => nil     # optional, if used, you can pass your own logger, eg. Rails.logger
 )
 ```
 
