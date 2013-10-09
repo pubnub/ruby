@@ -190,15 +190,17 @@ module Pubnub
     end
 
     def start_em_if_not_running
-      Thread.new {
+      Thread.new do
         EM.run
-      } unless EM.reactor_running?
+      end unless EM.reactor_running?
 
       until EM.reactor_running? do end
     end
 
     def get_channels_for_subscription
-      @subscriptions.map { |sub| sub.channel }
+      @subscriptions.map do |sub|
+        sub.channel
+      end
     end
 
     def fire_subscriptions_callback_for(envelope)
@@ -213,16 +215,19 @@ module Pubnub
         start_em_if_not_running
 
         if %w(subscribe presence).include? request.operation
-          @subscriptions << Subscription.new(:channel => options[:channel], :callback => options[:callback], :error_callback => options[:error_callback])
+          options[:channel].split(',').each do |channel|
+            @subscriptions << Subscription.new(:channel => channel, :callback => options[:callback], :error_callback => options[:error_callback])
+          end
 
           @subscription_request = request unless @subscription_request
-
           @subscription_request.channel = get_channels_for_subscription.join(',')
 
           @subscription_running = EM.add_periodic_timer(PERIODIC_TIMER) do
 
             unless @wait_for_response
               @wait_for_response = true
+              $log.debug 'SETTING CHANNELS'
+              @subscription_request.channel = get_channels_for_subscription.join(',')
               $log.debug 'SENDING SUBSCRIBE REQUEST'
               http = send_request(@subscription_request)
 

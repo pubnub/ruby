@@ -23,7 +23,6 @@ require 'version.rb'
 require 'pubnub/client.rb'
 require 'pubnub/request.rb'
 require 'pubnub/configuration.rb'
-require 'pubnub/daemon.rb'
 require 'pubnub/error.rb'
 require 'pubnub/crypto.rb'
 
