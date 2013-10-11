@@ -57,9 +57,9 @@ module Pubnub
       @ssl              = options[:ssl]
       @secret_key       = options[:secret_key]
       @timetoken        = options[:timetoken]
-      @session_uuid     = UUID.new.generate || options[:uuid]
+      @session_uuid     = options[:uuid] || options[:session_uuid] || UUID.new.generate
 
-      @history_count    = options[:count]
+          @history_count    = options[:count]
       @history_start    = options[:start]
       @history_end      = options[:end]
       @history_reverse  = options[:reverse]
