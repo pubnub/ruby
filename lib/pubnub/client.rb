@@ -135,8 +135,10 @@ module Pubnub
       return false unless get_channels_for_subscription.include? options[:channel]
       remove_from_subscription options[:channel]
       if @subscriptions.empty?
+        @timetoken = 0
+        @subscription_request.timetoken = 0
         @subscribe_connection.close
-        @subscription_running = nil
+        @wait_for_response = false
       end
       start_request options
 
@@ -169,7 +171,7 @@ module Pubnub
     private
 
     def remove_from_subscription(channel)
-      @subscriptions.delete_if { |s| s.channel == channel }
+      @subscriptions.delete_if { |s| s.channel.to_s == channel.to_s }
     end
 
     def merge_options(options = {}, operation = '')
@@ -221,19 +223,17 @@ module Pubnub
           @subscription_request = request unless @subscription_request
 
           if @subscription_request.channel != get_channels_for_subscription.join(',') && @subscription_running
-            puts 'cancel connection'
             @subscribe_connection.close
-            puts 'canceled'
             @timetoken = 0
+            @subscription_request.timetoken = 0
             @wait_for_response = false
-            puts 'setted'
           end
 
           @subscription_request.channel = get_channels_for_subscription.join(',')
 
           @subscription_running = EM.add_periodic_timer(PERIODIC_TIMER) do
 
-            unless @wait_for_response
+            unless @wait_for_response || get_channels_for_subscription.empty?
               @wait_for_response = true
               $log.debug 'SETTING CHANNELS'
               @subscription_request.channel = get_channels_for_subscription.join(',')
