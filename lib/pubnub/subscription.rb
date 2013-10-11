@@ -3,7 +3,6 @@ module Pubnub
     attr_accessor :channel, :callback
 
     def initialize(options)
-
       @channel = options[:channel]
       @callback = options[:callback]
     end

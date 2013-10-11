@@ -57,7 +57,7 @@ module Pubnub
       @ssl              = options[:ssl]
       @secret_key       = options[:secret_key]
       @timetoken        = options[:timetoken]
-      @session_uuid     = UUID.new.generate
+      @session_uuid     = UUID.new.generate || options[:uuid]
 
       @history_count    = options[:count]
       @history_start    = options[:start]
@@ -135,7 +135,7 @@ module Pubnub
       return false unless get_channels_for_subscription.include? options[:channel]
       remove_from_subscription options[:channel]
       if @subscriptions.empty?
-        @subscription_running.cancel
+        @subscribe_connection.close
         @subscription_running = nil
       end
       start_request options
@@ -173,7 +173,7 @@ module Pubnub
     end
 
     def merge_options(options = {}, operation = '')
-      options[:channel] = options[:channel].to_s if options[:channel]
+      options[:channel] = compile_channel_parameter(options[:channel],options[:channels]) if options[:channel] || options[:channels]
       return {
         :ssl           => @ssl,
         :cipher_key    => @cipher_key,
@@ -184,8 +184,7 @@ module Pubnub
         :operation     => operation,
         :params        => { :uuid => @session_uuid },
         :timetoken     => @timetoken,
-        :error_callback=> @error_callback,
-        :channel       => compile_channel_parameter(options[:channel],options[:channels])
+        :error_callback=> @error_callback
       }.merge(options)
     end
 
@@ -216,10 +215,20 @@ module Pubnub
 
         if %w(subscribe presence).include? request.operation
           options[:channel].split(',').each do |channel|
-            @subscriptions << Subscription.new(:channel => channel, :callback => options[:callback], :error_callback => options[:error_callback])
+            @subscriptions << Subscription.new(:channel => channel, :callback => options[:callback], :error_callback => options[:error_callback]) unless get_channels_for_subscription.include? channel
           end
 
           @subscription_request = request unless @subscription_request
+
+          if @subscription_request.channel != get_channels_for_subscription.join(',') && @subscription_running
+            puts 'cancel connection'
+            @subscribe_connection.close
+            puts 'canceled'
+            @timetoken = 0
+            @wait_for_response = false
+            puts 'setted'
+          end
+
           @subscription_request.channel = get_channels_for_subscription.join(',')
 
           @subscription_running = EM.add_periodic_timer(PERIODIC_TIMER) do
@@ -508,8 +517,9 @@ module Pubnub
     def compile_channel_parameter(channel, channels)
       raise(ArgumentError, 'Can\'t handle both :channel and :channels parameters given.') if channel && channels
       channel = channels if channels
-      channel = channel.join(',') if channel.class == Array
-      channel
+      channel = channel.to_s if channel.class == Symbol
+      channel = channel.map! {|c| c.to_s}.join(',') if channel.class == Array
+      return channel
     end
 
   end
