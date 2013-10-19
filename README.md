@@ -64,17 +64,16 @@ There are a few different ways to make any given PubNub call. How do it depends 
 If you wish to make asyncronous calls (implemented via EM), you have a few different patterns you can follow:
 
 ```ruby
-
-\# Lets use a callback for the first example...
+# Lets use a callback for the first example...
 cb = lambda { |envelope| puts envelope.message }
 
-\# Asynchronous is implicitly enabled by default, if you do not provide an :http_sync option
+# Asynchronous is implicitly enabled by default, if you do not provide an :http_sync option
 pubnub.publish(:message => msg, :channel => channel, :callback => cb)
 
-\# You can also explicitly request async with :http_sync => false
+# You can also explicitly request async with :http_sync => false
 pubnub.publish(:message => msg, :channel => channel, :callback => cb, :http_sync => true)
 
-\# Alternatively, you can pass in the callback as a block
+# Alternatively, you can pass in the callback as a block
 
 pubnub.publish(:message => msg, :channel => channel, &cb)
 
@@ -93,17 +92,17 @@ If you'd prefer to make your calls blocking (implemented via HTTParty), set :htt
 
 ```ruby
 
-\# Lets use a callback for the first example...
+# Lets use a callback for the first example...
 cb = lambda { |envelope| puts envelope.message }
 
-\# Sync (blocking) with a callback (if you wanted to)
+# Sync (blocking) with a callback (if you wanted to)
 pubnub.publish(:http_sync => true, :message => msg, :channel => channel, &cb)
 
-\# Sync (blocking), with assignment via return
+# Sync (blocking), with assignment via return
 myResponse = pubnub.publish(:http_sync => true, :message => msg, :channel => channel)
 puts "myR: #{myResponse}" 
 
-\# Sync (blocking), with a block
+# Sync (blocking), with a block
 pubnub.publish(:http_sync => true, :message => msg, :channel => channel) do |envelope| 
     puts envelope.message
     puts envelope.channel
