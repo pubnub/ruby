@@ -57,7 +57,7 @@ pubnub = Pubnub.new(
 * connect_callback is the callback that lets you know when you're connected to the origin
 
 #### Making PubNub calls
-There are a few different ways to make any given PubNub call. How do it depends first on whether or not you want the call to be blocking (synchronous), or not blocking (asynchronous).
+There are a few different ways to make any given PubNub call. How to do it depends first on whether or not you want the call to be blocking (synchronous), or not blocking (asynchronous).
 
 ##### Asynchronous (non-blocking) calling
 
@@ -160,6 +160,7 @@ pubnub = Pubnub.new(
       puts "CONNECTED: #{msg.inspect}"
     }
 )
+```
 
 #### Publish
 When publishing, send a string, number, array, or hash. PubNub automatically serializes it to JSON for you, so you don't have to.
