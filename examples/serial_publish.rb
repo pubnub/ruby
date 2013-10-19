@@ -1,5 +1,4 @@
 require 'pubnub'
-require 'pry'
 
 TIMES = 1000
 
