@@ -45,7 +45,8 @@ pubnub = Pubnub.new(
       puts "SOMETHING TERRIBLE HAPPENED HERE: #{msg.inspect}"
     },
     :connect_callback => lambda { |msg|
-      puts "CONNECTED: #{msg.inspect}"
+      puts "CONNECTED: #{msg.inspect}",
+    :logger => "mylog.log"
     }
 )
 ```
