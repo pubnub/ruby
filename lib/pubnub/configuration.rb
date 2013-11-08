@@ -9,7 +9,7 @@ module Pubnub
     DEFAULT_PATH               = '/'
     DEFAULT_PARAMS             = {}
     DEFAULT_HEADERS            = {}
-    DEFAULT_USER_AGENT         = "Pubnub Ruby #{PUBNUB_VERSION}"
+    DEFAULT_USER_AGENT         = "Pubnub Ruby #{VERSION}"
     DEFAULT_SSL_SET            = false
     DEFAULT_TIMEOUT            = 5
     DEFAULT_ENCODING           = nil
