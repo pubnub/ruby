@@ -15,6 +15,10 @@ describe '#subscribe' do
     )
   end
 
+  after(:each) do
+    while EM.reactor_running? do end
+  end
+
   context 'when it gets server error' do
 
     before(:each) do
@@ -24,10 +28,10 @@ describe '#subscribe' do
       @msg_output = StringIO.new
 
       @callback = lambda { |envelope|
-        $log.debug 'FIRE CALLBACK'
-        @after_callback = true
+        $log.debug 'FIRE TEST CALLBACK'
         @output.write envelope.response
         @msg_output.write envelope.msg
+        @after_callback = true
         EM.stop if EM.reactor_running?
       }
 
@@ -38,7 +42,7 @@ describe '#subscribe' do
       }
 
       @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback)
-      @pn.session_uuid = nil
+      @pn.set_uuid(nil)
     end
 
     context 'via http' do
@@ -48,7 +52,7 @@ describe '#subscribe' do
           stub_request(:get, /http[s]?:\/\/pubsub.pubnub.com\/subscribe\/demo\/demo\/0\/\d+/).
             to_return(lambda { |request|
               @counter += 1
-                if @counter < 10
+                if @counter < 3
                   {
                       :body => [500, 'Error msg'].to_json,
                       :status => 500,
@@ -90,7 +94,7 @@ describe '#subscribe' do
             $log.debug 'START #SUBSCRIBE SPEC #7'
 
             @pn.subscribe(:channel => 'demo', :callback => @callback, :http_sync => @http_sync)
-
+            until @after_callback do end
             @output.seek(0)
 
             @output.read.should match response_regex
@@ -100,7 +104,7 @@ describe '#subscribe' do
             response_regex = /text.*hey\D*\d*/
 
             @pn.subscribe(:channel => 'demo', :http_sync => @http_sync, &@callback)
-
+            until @after_callback do end
             @output.seek(0)
 
             @output.read.should match response_regex
@@ -136,7 +140,7 @@ describe '#subscribe' do
           stub_request(:get, /http[s]?:\/\/pubsub.pubnub.com\/subscribe\/demo\/demo\/0\/\d+/).
               to_return(lambda { |request|
             @counter += 1
-            if @counter < 10
+            if @counter < 3
               {
                   :body => '2132131asad@!EASD#!',
                   :status => 500,
@@ -176,7 +180,7 @@ describe '#subscribe' do
             response_regex = /text.*hey\D*\d*/
 
             @pn.subscribe(:channel => 'demo', :callback => @callback, :http_sync => @http_sync)
-
+            until @after_callback do end
             @output.seek(0)
 
             @output.read.should match response_regex
@@ -186,7 +190,7 @@ describe '#subscribe' do
             response_regex = /text.*hey\D*\d*/
 
             @pn.subscribe(:channel => 'demo', :http_sync => @http_sync, &@callback)
-
+            until @after_callback do end
             @output.seek(0)
 
             @output.read.should match response_regex
@@ -227,7 +231,7 @@ describe '#subscribe' do
           stub_request(:get, /http[s]?:\/\/pubsub.pubnub.com\/subscribe\/demo\/demo\/0\/\d+/).
               to_return(lambda { |request|
             @counter += 1
-            if @counter < 10
+            if @counter < 3
               {
                   :body => [500, 'Error msg'].to_json,
                   :status => 500,
@@ -269,7 +273,7 @@ describe '#subscribe' do
             $log.debug 'START #SUBSCRIBE SPEC #7'
 
             @pn.subscribe(:channel => 'demo', :callback => @callback, :http_sync => @http_sync)
-
+            until @after_callback do end
             @output.seek(0)
 
             @output.read.should match response_regex
@@ -279,7 +283,7 @@ describe '#subscribe' do
             response_regex = /text.*hey\D*\d*/
 
             @pn.subscribe(:channel => 'demo', :http_sync => @http_sync, &@callback)
-
+            until @after_callback do end
             @output.seek(0)
 
             @output.read.should match response_regex
@@ -315,7 +319,7 @@ describe '#subscribe' do
           stub_request(:get, /http[s]?:\/\/pubsub.pubnub.com\/subscribe\/demo\/demo\/0\/\d+/).
               to_return(lambda { |request|
             @counter += 1
-            if @counter < 10
+            if @counter < 3
               {
                   :body => '2132131asad@!EASD#!',
                   :status => 500,
@@ -355,7 +359,7 @@ describe '#subscribe' do
             response_regex = /text.*hey\D*\d*/
 
             @pn.subscribe(:channel => 'demo', :callback => @callback, :http_sync => @http_sync)
-
+            until @after_callback do end
             @output.seek(0)
 
             @output.read.should match response_regex
@@ -365,7 +369,7 @@ describe '#subscribe' do
             response_regex = /text.*hey\D*\d*/
 
             @pn.subscribe(:channel => 'demo', :http_sync => @http_sync, &@callback)
-
+            until @after_callback do end
             @output.seek(0)
 
             @output.read.should match response_regex
@@ -407,9 +411,9 @@ describe '#subscribe' do
 
       @callback = lambda { |envelope|
         $log.debug 'FIRE CALLBACK'
-        @after_callback = true
         @output.write envelope.response
         @msg_output.write envelope.msg
+        @after_callback = true
         EM.stop if EM.reactor_running?
       }
 
@@ -420,7 +424,7 @@ describe '#subscribe' do
       }
 
       @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback)
-      @pn.session_uuid = nil
+      @pn.set_uuid(nil)
     end
 
     before(:each) do
@@ -695,7 +699,7 @@ describe '#subscribe' do
       }
 
       @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback)
-      @pn.session_uuid = nil
+      @pn.set_uuid(nil)
     end
 
     before(:each) do

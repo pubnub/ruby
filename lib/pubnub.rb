@@ -16,15 +16,13 @@ require 'open-uri'
 require 'uri'
 require 'openssl'
 require 'eventmachine'
-require 'em-http-request'
+require 'faraday'
+require 'logger'
 
-require 'version.rb'
+require 'version'
 
-require 'pubnub/client.rb'
-require 'pubnub/request.rb'
-require 'pubnub/configuration.rb'
-require 'pubnub/error.rb'
-require 'pubnub/crypto.rb'
+require 'pubnub/client'
+
 
 class Object
   def blank?
@@ -47,9 +45,6 @@ class Proc
 end
 
 module Pubnub
-  extend Configuration
-  include Error
-
   class << self
     def new(options = {})
       #raise(Pubnub::Error::InitError, 'Initialize with either a hash of options, or exactly 5 named parameters.') unless args.size == 5 or (args.size == 1 and args[0].class == Hash)

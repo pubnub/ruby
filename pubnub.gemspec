@@ -17,10 +17,9 @@ Gem::Specification.new do |s|
   s.summary = 'PubNub Official Ruby gem'
 
   s.add_dependency 'eventmachine'
-  s.add_dependency 'httparty'
-  s.add_dependency 'persistent_httparty'
-  s.add_dependency 'em-http-request'
+  s.add_dependency 'net-http-persistent'
   s.add_dependency 'uuid', '~> 2.3.5'
   s.add_dependency 'json'
+  s.add_dependency 'faraday'
 
 end

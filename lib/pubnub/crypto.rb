@@ -1,3 +1,4 @@
+# TODO that file isn't refactored yet!
 module Pubnub
   class Crypto
     def initialize(cipher_key)

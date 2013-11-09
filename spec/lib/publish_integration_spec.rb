@@ -5,6 +5,7 @@ require 'webmock/rspec'
 
 describe '#publish' do
   before do
+    @error_envelope = nil
     @output = StringIO.new
     @callback = lambda { |envelope|
       @output.write envelope.response
@@ -13,6 +14,7 @@ describe '#publish' do
     @error_callback = lambda { |envelope|
       @output.write envelope.response
       @after_callback = true
+      @error_envelope = envelope
     }
     @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1)
     @pn.session_uuid = nil
@@ -121,8 +123,8 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :callback => @callback, :http_sync => true)
-            @output.seek(0)
-            @output.read.should eq my_response
+
+            @error_envelope.message[1].class.should eq JSON::ParserError
           end
 
           it 'fires given block on hardcoded envelope' do
@@ -138,8 +140,8 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :http_sync => true, &@callback)
-            @output.seek(0)
-            @output.read.should eq my_response
+
+            @error_envelope.message[1].class.should eq JSON::ParserError
           end
         end
 
@@ -159,8 +161,8 @@ describe '#publish' do
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :callback => @callback)
             until @after_callback do end
-            @output.seek(0)
-            @output.read.should eq my_response
+
+            @error_envelope.message[1].class.should eq JSON::ParserError
           end
 
           it 'fires given block on hardcoded envelope' do
@@ -178,8 +180,8 @@ describe '#publish' do
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, &@callback)
             until @after_callback do end
-            @output.seek(0)
-            @output.read.should eq my_response
+
+            @error_envelope.message[1].class.should eq JSON::ParserError
           end
         end
       end
@@ -284,8 +286,8 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :callback => @callback, :http_sync => true)
-            @output.seek(0)
-            @output.read.should eq my_response
+
+            @error_envelope.message[1].class.should eq JSON::ParserError
           end
 
           it 'fires given block on hardcoded envelope' do
@@ -301,8 +303,8 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :http_sync => true, &@callback)
-            @output.seek(0)
-            @output.read.should eq my_response
+
+            @error_envelope.message[1].class.should eq JSON::ParserError
           end
         end
 
@@ -322,8 +324,8 @@ describe '#publish' do
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :callback => @callback)
             until @after_callback do end
-            @output.seek(0)
-            @output.read.should eq my_response
+
+            @error_envelope.message[1].class.should eq JSON::ParserError
           end
 
           it 'fires given block on hardcoded envelope' do
@@ -341,8 +343,8 @@ describe '#publish' do
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, &@callback)
             until @after_callback do end
-            @output.seek(0)
-            @output.read.should eq my_response
+
+            @error_envelope.message[1].class.should eq JSON::ParserError
           end
         end
       end

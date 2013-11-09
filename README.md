@@ -37,6 +37,10 @@ require 'pubnub'
 #### Init and instantiate a new PubNub instance
 
 ```ruby
+
+# If you wish to override the default logger, create one and pass it in.
+my_logger = Logger.new(STDOUT)
+
 pubnub = Pubnub.new(
     :subscribe_key    => 'demo',
     :publish_key      => 'demo',
@@ -46,7 +50,8 @@ pubnub = Pubnub.new(
     },
     :connect_callback => lambda { |msg|
       puts "CONNECTED: #{msg.inspect}"
-    }
+    },
+    :logger => my_logger
 )
 ```
 
