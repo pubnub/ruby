@@ -39,6 +39,7 @@ module Pubnub
       $logger.debug('Calling subscribe')
       options.merge!({ :action => :subscribe })
       options.merge!({ :callback => block }) if block_given?
+      check_required_parameters('subscribe', options)
       preform_subscribe(@env.merge(options))
     end
 
@@ -48,6 +49,7 @@ module Pubnub
       options.merge!({ :action => :presence })
       options[:channel] = options[:channel].to_s + '-pnpres'
       options.merge!({ :callback => block }) if block_given?
+      check_required_parameters('presence', options)
       preform_subscribe(@env.merge(options))
     end
 
@@ -56,6 +58,7 @@ module Pubnub
       $logger.debug('Calling leave')
       options.merge!({ :action => :leave })
       options.merge!({ :callback => block }) if block_given?
+      check_required_parameters('leave', options)
       perform_single_request(@env.merge(options))
     end
 
@@ -64,6 +67,7 @@ module Pubnub
       $logger.debug('Calling publish')
       options.merge!({ :action => :publish })
       options.merge!({ :callback => block }) if block_given?
+      check_required_parameters('publish', options)
       perform_single_request(@env.merge(options))
     end
 
@@ -72,6 +76,7 @@ module Pubnub
       $logger.debug('Calling history')
       options.merge!({ :action => :history })
       options.merge!({ :callback => block }) if block_given?
+      check_required_parameters('history', options)
       perform_single_request(@env.merge(options))
     end
 
@@ -80,6 +85,7 @@ module Pubnub
       $logger.debug('Calling here_now')
       options.merge!({ :action => :here_now })
       options.merge!({ :callback => block }) if block_given?
+      check_required_parameters('here_now', options)
       perform_single_request(@env.merge(options))
     end
 
@@ -88,6 +94,7 @@ module Pubnub
       $logger.debug('Calling time')
       options.merge!({ :action => :time })
       options.merge!({ :callback => block }) if block_given?
+      check_required_parameters('time', options)
       perform_single_request(@env.merge(options))
     end
 
@@ -240,14 +247,29 @@ module Pubnub
         when :initialize
           # Check origin
           #warn "You are using default origin: pubsub.pubnub.com.\nYou should use custom origin provided by pubnub.\nIn case of any troubles, please contact us with an email: help@pubnub.com." if parameters[:origin].blank?
-          raise InitializationError.new(:object => self), 'Origin parameter is not valid. Should be type of String or Symbol' unless parameters[:origin].is_a?(String || Symbol) || parameters[:origin].blank?
+          raise InitializationError.new(:object => self), 'Origin parameter is not valid. Should be type of String or Symbol' unless [String, Symbol].include?(parameters[:origin].class) || parameters[:origin].blank?
 
           # Check subscribe key
           raise InitializationError.new(:object => self), 'Missing required :subscribe_key parameter' unless parameters[:subscribe_key]
-          raise InitializationError.new(:object => self), 'Subscribe key parameter is not valid. Should be type of String or Symbol' unless parameters[:subscribe_key].is_a? String || Symbol
+          raise InitializationError.new(:object => self), 'Subscribe key parameter is not valid. Should be type of String or Symbol' unless [String, Symbol].include?(parameters[:subscribe_key].class)
 
           # Check publish key
-          raise InitializationError.new(:object => self), 'Publish key parameter is not valid. Should be type of String or Symbol' unless parameters[:publish_key].is_a?(String || Symbol) || parameters[:publish_key].blank?
+          raise InitializationError.new(:object => self), 'Publish key parameter is not valid. Should be type of String or Symbol' unless [String, Symbol].include?(parameters[:publish_key].class) || parameters[:publish_key].blank?
+        when :subscribe
+          #
+
+        when :presence
+
+        when :leave
+
+        when :publish
+
+        when :history
+
+        when :here_now
+
+        when :time
+
         else
           raise 'Can\'t determine operation'
       end
