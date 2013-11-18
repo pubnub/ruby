@@ -11,9 +11,7 @@ require 'pubnub/middleware/request'
 
 # TODO Split every operation as separate modules?
 # TODO Setup proper values for timeouts
-# TODO Cover _EVERYTHING_ with tests
 # TODO Implement multiorigin
-# TODO Maybe create Timetoken class that nice work whenever it's compared to string or int?
 
 module Pubnub
   class Client
@@ -241,15 +239,15 @@ module Pubnub
       case operation
         when :initialize
           # Check origin
-          warn "You are using default origin: pubsub.pubnub.com.\nYou should use custom origin provided by pubnub.\nIn case of any troubles, please contact us with an email: help@pubnub.com."
-          raise InitializationError.new(:object => self), 'Origin parameter is not valid. Should be type of String or Symbol' unless parameters[:origin].is_a? String || Symbol
+          warn "You are using default origin: pubsub.pubnub.com.\nYou should use custom origin provided by pubnub.\nIn case of any troubles, please contact us with an email: help@pubnub.com." if parameters[:origin].blank?
+          raise InitializationError.new(:object => self), 'Origin parameter is not valid. Should be type of String or Symbol' unless parameters[:origin].is_a?(String || Symbol) || parameters[:origin].blank?
 
           # Check subscribe key
           raise InitializationError.new(:object => self), 'Missing required :subscribe_key parameter' unless parameters[:subscribe_key]
           raise InitializationError.new(:object => self), 'Subscribe key parameter is not valid. Should be type of String or Symbol' unless parameters[:subscribe_key].is_a? String || Symbol
 
           # Check publish key
-          raise InitializationError.new(:object => self), 'Publish key parameter is not valid. Should be type of String or Symbol' unless parameters[:publish_key].is_a? String || Symbol
+          raise InitializationError.new(:object => self), 'Publish key parameter is not valid. Should be type of String or Symbol' unless parameters[:publish_key].is_a?(String || Symbol) || parameters[:publish_key].blank?
         else
           raise 'Can\'t determine operation'
       end
