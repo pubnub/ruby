@@ -4,12 +4,12 @@ require 'pubnub/single_request'
 require 'pubnub/subscription'
 require 'pubnub/envelope'
 require 'pubnub/crypto'
+require 'pubnub/exceptions'
 require 'pubnub/middleware/response'
 require 'pubnub/middleware/request'
 
 
 # TODO Split every operation as separate modules?
-# TODO Setup Errors and operation verification
 # TODO Setup proper values for timeouts
 # TODO Cover _EVERYTHING_ with tests
 # TODO Implement multiorigin
@@ -27,7 +27,8 @@ module Pubnub
 
     # While creating new Pubnub::Client instance it checks for
     def initialize(options)
-      # TODO check for required options and validate given keys
+      check_required_parameters(:initialize, options)
+
       setup_env(options)
       run_em unless EM.reactor_running?
       register_faraday_middleware
@@ -197,6 +198,12 @@ module Pubnub
       # We must be sure if every key is symbol
       @env = symbolize_options options
 
+      set_default_values
+
+      $logger.debug('Created environment')
+    end
+
+    def set_default_values
       defaults = {
           :error_callback             => DEFAULT_ERROR_CALLBACK,
           :connect_callback           => DEFAULT_CONNECT_CALLBACK,
@@ -213,31 +220,39 @@ module Pubnub
       }
 
       # Let's fill missing keys with default values
-      # TODO: move it with defaults to set_default_values method
       $logger.debug('Setting default values')
       defaults.each do |key,default_value|
         set_default_value_if_not_set(key, default_value)
       end
-
-      $logger.debug('Created environment')
     end
 
     # Handles error response
     # TODO Move to another module? So from single_request it will be usable
     def handle_error_response(response)
-      $logger.error("
-        \n###########################
-        GOT AN ERROR! DUMP:
-        response: #{response.inspect}
-        env: #{@env.inspect}
-        ###########################\n
-      ") # TODO Create Pubnub::Error object and inspect it nicely
       @env[:error_callback].call response
     end
 
     def origin(options)
       origin = options[:ssl] ? 'https://' : 'http://'
       origin << options[:origin]
+    end
+
+    def check_required_parameters(operation, parameters)
+      case operation
+        when :initialize
+          # Check origin
+          warn "You are using default origin: pubsub.pubnub.com.\nYou should use custom origin provided by pubnub.\nIn case of any troubles, please contact us with an email: help@pubnub.com."
+          raise InitializeError(self), 'Origin parameter is not valid. Should be type of String or Symbol ' unless parameters[:origin].is_a? String || Symbol
+
+          # Check subscribe key
+          raise InitializeError(self), 'Missing required :subscribe_key parameter' unless parameters[:subscribe_key]
+          raise InitializeError(self), 'Subscribe key parameter is not valid. Should be type of String or Symbol ' unless parameters[:subscribe_key].is_a? String || Symbol
+
+          # Check publish key
+          raise InitializeError(self), 'Publish key parameter is not valid. Should be type of String or Symbol ' unless parameters[:publish_key].is_a? String || Symbol
+        else
+          raise 'Can\'t determine operation'
+      end
     end
 
   end
