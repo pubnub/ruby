@@ -1,13 +1,14 @@
 module Pubnub
   class Error < StandardError
-    attr_reader :operation, :request, :object, :message
+    attr_reader :operation, :request, :object, :response
 
     def initialize(options = {})
-      @message   = message
-      @operation = options[:operation]
-      @request   = options[:request]
-      @object    = options[:object]
-      @response  = options[:response]
+      unless options.is_a? Hash
+        @operation = options[:operation]
+        @request   = options[:request]
+        @object    = options[:object]
+        @response  = options[:response]
+      end
       log_error
     end
 
@@ -19,7 +20,8 @@ module Pubnub
 
   end
 
-  class InitializeError < Error; end
+  class InitializationError < Error; end
+  class ArgumentError < Error; end
   class RequestError < Error; end
 
 end

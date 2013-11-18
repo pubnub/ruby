@@ -1,6 +1,4 @@
 require 'spec_helper'
-require 'rr'
-require 'vcr'
 
 describe Pubnub::Client do
 
@@ -9,7 +7,7 @@ describe Pubnub::Client do
     end
   end
 
-  describe '.initialize' do
+  describe '#initialize' do
 
     before do
       @publish_key   = 'demo_pub_key'
