@@ -239,7 +239,7 @@ module Pubnub
       case operation
         when :initialize
           # Check origin
-          warn "You are using default origin: pubsub.pubnub.com.\nYou should use custom origin provided by pubnub.\nIn case of any troubles, please contact us with an email: help@pubnub.com." if parameters[:origin].blank?
+          #warn "You are using default origin: pubsub.pubnub.com.\nYou should use custom origin provided by pubnub.\nIn case of any troubles, please contact us with an email: help@pubnub.com." if parameters[:origin].blank?
           raise InitializationError.new(:object => self), 'Origin parameter is not valid. Should be type of String or Symbol' unless parameters[:origin].is_a?(String || Symbol) || parameters[:origin].blank?
 
           # Check subscribe key
