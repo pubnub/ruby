@@ -40,6 +40,7 @@ module Pubnub
       options.merge!({ :action => :subscribe })
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters('subscribe', options)
+      options[:channel] = options[:channels] if options[:channel].blank? && !options[:channels].blank?
       preform_subscribe(@env.merge(options))
     end
 
@@ -242,7 +243,10 @@ module Pubnub
       origin << options[:origin]
     end
 
+    # Checks if passed arguments are valid for client operation.
+    # It's not DRY for better readability
     def check_required_parameters(operation, parameters)
+      channel_or_channels = parameters[:channel] || parameters[:channels]
       case operation
         when :initialize
           # Check origin
@@ -256,19 +260,75 @@ module Pubnub
           # Check publish key
           raise InitializationError.new(:object => self), 'Publish key parameter is not valid. Should be type of String or Symbol' unless [String, Symbol].include?(parameters[:publish_key].class) || parameters[:publish_key].blank?
         when :subscribe
-          #
+          # Check channels
+          raise ArgumentError.new(:object => self), 'Subscribe requires :channel or :channels argument' unless channel_or_channels
+          raise ArgumentError.new(:object => self), 'Subscribe can\'t be given both :channel and channels parameter' if parameters[:channel] && parameters[:channels]
+          raise ArgumentError.new(:object => self), 'Invalid channel(s) format! Should be type of: String, Symbol, or Array of both' unless Subscription::valid_channels?(channel_or_channels)
 
+          # check callback
+          raise ArgumentError.new(:object => self), 'Callback parameter is required while using async subscribe' if !parameters[:http_sync] && parameters[:callback].blank?
         when :presence
+          # Check channels
+          raise ArgumentError.new(:object => self), 'Presence requires :channel or :channels argument' unless channel_or_channels
+          raise ArgumentError.new(:object => self), 'Presence can\'t be given both :channel and channels parameter' if parameters[:channel] && parameters[:channels]
+          raise ArgumentError.new(:object => self), 'Invalid channel(s) format! Should be type of: String, Symbol, or Array of both' unless Subscription::valid_channels?(channel_or_channels)
+
+          # check callback
+          raise ArgumentError.new(:object => self), 'Callback parameter is required while using async presence' if !parameters[:http_sync] && parameters[:callback].blank?
 
         when :leave
+          # check channel
+          raise ArgumentError.new(:object => self), 'Leave requires :channel argument' unless parameters[:channel]
+          raise ArgumentError.new(:object => self), 'Invalid channel format! Should be type of: String, Symbol, or Array of both' unless [String, Symbol].include?(parameters[:channel].class)
+
+          # check callback
+          raise ArgumentError.new(:object => self), 'Callback parameter is required while using async leave/unsubscribe' if !parameters[:http_sync] && parameters[:callback].blank?
 
         when :publish
+          # check message
+          raise ArgumentError.new(:object => self), 'Publish requires :message argument' unless parameters[:message]
+
+          # check channel/channels
+          raise ArgumentError.new(:object => self), 'Publish requires :channel or :channels argument' unless parameters[:channel] || parameters[:channels]
+          raise ArgumentError.new(:object => self), 'Invalid channel(s) format! Should be type of: String, Symbol, or Array of both' unless Subscription::valid_channels?(channel_or_channels)
+
+          # check callback
+          raise ArgumentError.new(:object => self), 'Callback parameter is required while using async publish' if !parameters[:http_sync] && parameters[:callback].blank?
 
         when :history
+          # check channel
+          raise ArgumentError.new(:object => self), 'History requires :channel argument' unless parameters[:channel]
+          raise ArgumentError.new(:object => self), 'Invalid channel format! Should be type of: String, Symbol' unless [String, Symbol].include?(parameters[:channel].class)
+
+          # check if history parameters are valid
+
+          # start
+          raise ArgumentError.new(:object => self), 'Invalid :start parameter, should be type of Integer, Fixnum or String' unless [String, Fixnum, Integer].include?(parameters[:start].class)
+          raise ArgumentError.new(:object => self), 'Invalid :start parameter, should be positive integer number' if !parameters[:start].to_i.integer? && parameters[:start].to_i <= 0
+
+          # end
+          raise ArgumentError.new(:object => self), 'Invalid :end parameter, should be type of Integer, Fixnum or String' unless [String, Fixnum, Integer].include?(parameters[:end].class)
+          raise ArgumentError.new(:object => self), 'Invalid :end parameter, should be positive integer number' if !parameters[:end].to_i.integer? && parameters[:end].to_i <= 0
+          raise ArgumentError.new(:object => self), 'Invalid :end parameter, should be bigger than :start parameter.
+                                                     If you want to get messages in reverse order, use :reverse => true at call.' if parameters[:start].to_i >= parameters[:end].to_i
+          # count
+          raise ArgumentError.new(:object => self), 'Invalid :count parameter, should be type of Integer, Fixnum or String' unless [String, Fixnum, Integer].include?(parameters[:count].class)
+          raise ArgumentError.new(:object => self), 'Invalid :count parameter, should be positive integer number' if !parameters[:count].to_i.integer? && parameters[:count].to_i <= 0
+
+          # check callback
+          raise ArgumentError.new(:object => self), 'Callback parameter is required while using async history' if !parameters[:http_sync] && parameters[:callback].blank?
 
         when :here_now
+          # check channel
+          raise ArgumentError.new(:object => self), 'History requires :channel argument' unless parameters[:channel]
+          raise ArgumentError.new(:object => self), 'Invalid channel format! Should be type of: String, Symbol' unless [String, Symbol].include?(parameters[:channel].class)
+
+          # check callback
+          raise ArgumentError.new(:object => self), 'Callback parameter is required while using async here_now' if !parameters[:http_sync] && parameters[:callback].blank?
 
         when :time
+          # check callback
+          raise ArgumentError.new(:object => self), 'Callback parameter is required while using async time' if !parameters[:http_sync] && parameters[:callback].blank?
 
         else
           raise 'Can\'t determine operation'

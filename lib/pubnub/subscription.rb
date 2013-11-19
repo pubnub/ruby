@@ -4,6 +4,14 @@ module Pubnub
 
     attr_reader :subscribed_channel_list, :callback_list
 
+    def self.valid_channels?(channels)
+      return false if [String, Symbol, Integer].include?(channels.class)
+      if channels.class == Array
+        channels.each {|c| return false if [String, Symbol].include?(c) }
+      end
+      true
+    end
+
     # Check if channel isn't already subscribed, if not, adds channel to channels list and add callback
     # to callbacks list. In meantime starts event machine reactor and periodic timer for subscription
     # if not running
