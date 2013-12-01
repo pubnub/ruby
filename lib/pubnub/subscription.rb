@@ -5,9 +5,9 @@ module Pubnub
     attr_reader :subscribed_channel_list, :callback_list
 
     def self.valid_channels?(channels)
-      return false if [String, Symbol, Integer].include?(channels.class)
+      return false unless [String, Symbol, Integer].include?(channels.class)
       if channels.class == Array
-        channels.each {|c| return false if [String, Symbol].include?(c) }
+        channels.each {|c| return false unless [String, Symbol].include?(c) }
       end
       true
     end
@@ -21,11 +21,11 @@ module Pubnub
       options[:channel].split(',').join(',') if options[:channel].is_a? String
 
       if options[:http_sync] # Synchronized action
-        unless perform_subscribe_request(options) # Performing request and checking if it's successful
+        unless envelope = perform_subscribe_request(options) # Performing request and checking if it's successful
           retry_subscribe_request(options)
         end
       else # Asynchronized action
-        [options[:channel].split(',')].flatten.each do |channel|
+        [options[:channel].to_s.split(',')].flatten.each do |channel|
           unless channel_already_on_list?(channel)
             register_channel(channel)
             register_callback(channel, options[:callback])
@@ -35,6 +35,8 @@ module Pubnub
         start_subscription_timer(options) unless subscription_running?
 
       end
+
+      envelope
     end
 
     private
@@ -69,15 +71,16 @@ module Pubnub
       EM.next_tick { }
     end
 
-    def format_envelopes(response, pubsub_operation, cipher_key = nil)
-      Pubnub::Envelope.format_from_string_with_json(response, pubsub_operation, cipher_key)
+    def format_envelopes(response, pubsub_operation, cipher_key = nil, msg = nil)
+      Pubnub::Envelope.format_from_string_with_json(response, pubsub_operation, cipher_key, msg)
     end
 
     # Performs subscribe request
     def perform_subscribe_request(options)
       response = fire_subscribe_request(options)
-
-      if (200..206).include? response.status                                 # We've got some successful response
+      $logger.debug 'Got response'
+      if (200..206).include?(response.status) && Pubnub::Parser.valid_json?(response.body) # We've got some successful response
+        $logger.debug 'Status 2xx and valid JSON'
         envelopes = format_envelopes(                                        # Let's format envelopes
             response.body,
             :subscribe,
@@ -90,18 +93,19 @@ module Pubnub
           ),
           options[:callback]                                                 # Passing callback or nil
         )
-        true                                                                 # Success, we don't need to retry
+        envelopes                                                            # Success, we don't need to retry
       else                                                                   # Crap! There's something wrong!
-        handle_error_response(
-            format_envelopes(response.body, :error)
-        )
-        false                                                                # We will have to retry
+        $logger.debug 'Status non-2xx or invalid JSON'
+        envelopes = format_envelopes(response.body, :error, options[:cipher_key], 'Response message not usable')
+        handle_error_response(envelopes)
+        false                                                                # We have to retry
       end
       # Do not add here anything or you will break returned value (see above)
     end
 
     # Fires subscribe request and returns response object with envelopes located at .env[:envelopes]
     def fire_subscribe_request(options)
+      $logger.debug 'Setting path'
       if options[:http_sync]
         path = subscription_path(
             options[:subscribe_key],
@@ -118,18 +122,30 @@ module Pubnub
 
       end
 
-      @subscribe_connection.get(
-          origin(options) + path,
-          { :uuid => @session_uuid }
-      )
+      $logger.debug 'Firing subscribe request'
+      begin
+        @subscribe_connection.get do |req|
+          req.path = path
+          req.params = { :uuid => @session_uuid }
+          req.options = {
+              :timeout      => options[:subscribe_timeout],
+              :open_timeout => options[:subscribe_timeout]
+          }
+        end
+      rescue Exception => e
+        binding.pry
+      end
     end
 
     def retry_subscribe_request(options, retry_attempts = 0)
-      unless retry_attempts > MAX_RETRIES
+      unless retry_attempts > options[:max_retries]
         retry_attempts += 1
         unless perform_subscribe_request(options)
+          $logger.debug('Retrying')
           retry_subscribe_request(options, retry_attempts)
         end
+      else
+
       end
     end
 
@@ -151,8 +167,7 @@ module Pubnub
       update_timetoken envelopes.first.timetoken
       unless envelopes.size == 1 && envelopes.first.timetoken_update?
         envelopes.each do |envelope|
-          EM.next_tick { fire_callback_for(envelope, callback) }# TODO: uncomment this after fixing tests
-          #fire_callback_for(envelope, callback)
+          EM.next_tick { fire_callback_for(envelope, callback) }
         end
       end
     end

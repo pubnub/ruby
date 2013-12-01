@@ -4,7 +4,7 @@ describe '#subscribe' do
   before do
     EM.stop if EM.reactor_running?
     stub_request(:get, 'http://pubsub.pubnub.com/v2/presence/sub-key/demo/channel/demo/leave').
-      to_return(
+        to_return(
         {
             :body => '{"action": "leave"}',
             :status => 200,
@@ -19,6 +19,28 @@ describe '#subscribe' do
     while EM.reactor_running? do end
   end
 
+  context 'when it get invalid JSON with 200 status' do
+    context 'via http' do
+      context 'and it\'s synchronous' do
+
+      end
+
+      context 'and it\'s asynchronous' do
+
+      end
+    end
+
+    context 'via https' do
+      context 'and it\'s synchronous' do
+
+      end
+
+      context 'and it\'s asynchronous' do
+
+      end
+    end
+  end
+
   context 'when it gets server error' do
 
     before(:each) do
@@ -28,7 +50,7 @@ describe '#subscribe' do
       @msg_output = StringIO.new
 
       @callback = lambda { |envelope|
-        $log.debug 'FIRE TEST CALLBACK'
+        $logger.debug 'FIRE TEST CALLBACK'
         @output.write envelope.response
         @msg_output.write envelope.msg
         @after_callback = true
@@ -36,7 +58,7 @@ describe '#subscribe' do
       }
 
       @error_callback = lambda { |envelope|
-        $log.error envelope.response
+        $logger.error envelope.response
         @error_output.write envelope.response
         @after_error_callback = true
       }
@@ -50,38 +72,28 @@ describe '#subscribe' do
         before(:each) do
           @counter = 0
           stub_request(:get, /http[s]?:\/\/pubsub.pubnub.com\/subscribe\/demo\/demo\/0\/\d+/).
-            to_return(lambda { |request|
-              @counter += 1
-                if @counter < 3
-                  {
-                      :body => [500, 'Error msg'].to_json,
-                      :status => 500,
-                      :headers => {
-                          'Content-Type' => 'text/javascript; charset="UTF-8"'
-                      }
-                  }
-                else
-                  {
-                      :body => [[{"text" => "hey"}],"#{/\d+$/.match(request.uri.path).to_s.to_i + 1}"].to_json,
-                      :status => 200,
-                      :headers => {
-                          'Content-Type' => 'text/javascript; charset="UTF-8"'
-                      }
-                  }
-                end
-            }
-          )
-
-          stub_request(:get, /http[s]?:\/\/pubsub.pubnub.com\/time\/0/).
-              to_return(
+              to_return(lambda { |request|
+            @counter += 1
+            if @counter < 3
               {
-                  :body => '[13804562752311765]',
+                  :body => [500, 'Error msg'].to_json,
+                  :status => 500,
+                  :headers => {
+                      'Content-Type' => 'text/javascript; charset="UTF-8"'
+                  }
+              }
+            else
+              {
+                  :body => [[{"text" => "hey"}],"#{/\d+$/.match(request.uri.path).to_s.to_i + 1}"].to_json,
                   :status => 200,
                   :headers => {
                       'Content-Type' => 'text/javascript; charset="UTF-8"'
                   }
               }
+            end
+          }
           )
+
         end
 
         context 'and it\'s synchronous' do
@@ -90,9 +102,7 @@ describe '#subscribe' do
           end
           it 'fires given callback on response envelope and retry' do
             response_regex = /text.*hey\D*\d*/
-
-            $log.debug 'START #SUBSCRIBE SPEC #7'
-
+            $logger.debug 'START #SUBSCRIBE SPEC #7'
             @pn.subscribe(:channel => 'demo', :callback => @callback, :http_sync => @http_sync)
             until @after_callback do end
             @output.seek(0)
@@ -270,7 +280,7 @@ describe '#subscribe' do
           it 'fires given callback on response envelope and retry' do
             response_regex = /text.*hey\D*\d*/
 
-            $log.debug 'START #SUBSCRIBE SPEC #7'
+            $logger.debug 'START #SUBSCRIBE SPEC #7'
 
             @pn.subscribe(:channel => 'demo', :callback => @callback, :http_sync => @http_sync)
             until @after_callback do end
@@ -410,7 +420,7 @@ describe '#subscribe' do
       @msg_output = StringIO.new
 
       @callback = lambda { |envelope|
-        $log.debug 'FIRE CALLBACK'
+        $logger.debug 'FIRE CALLBACK'
         @output.write envelope.response
         @msg_output.write envelope.msg
         @after_callback = true
@@ -418,7 +428,7 @@ describe '#subscribe' do
       }
 
       @error_callback = lambda { |envelope|
-        $log.error envelope.response
+        $logger.error envelope.response
         @error_output.write envelope.response
         @after_error_callback = true
       }
@@ -430,13 +440,13 @@ describe '#subscribe' do
     before(:each) do
       stub_request(:get, /http[s]?:\/\/pubsub.pubnub.com\/subscribe\/demo\/demo\/0\/\d+/).
           to_return(lambda { |request|
-          {
-              :body => [[{"text" => "hey"}],"#{/\d+$/.match(request.uri.path).to_s.to_i + 1}"].to_json,
-              :status => 200,
-              :headers => {
-                  'Content-Type' => 'text/javascript; charset="UTF-8"'
-              }
-          }
+        {
+            :body => [[{"text" => "hey"}],"#{/\d+$/.match(request.uri.path).to_s.to_i + 1}"].to_json,
+            :status => 200,
+            :headers => {
+                'Content-Type' => 'text/javascript; charset="UTF-8"'
+            }
+        }
       }
       )
 
@@ -681,7 +691,7 @@ describe '#subscribe' do
       @first_callback_done = false
 
       @callback = lambda { |envelope|
-        $log.debug 'FIRE CALLBACK'
+        $logger.debug 'FIRE CALLBACK'
         @output.write envelope.response
         @msg_output.write envelope.msg
         if @first_callback_done
@@ -693,7 +703,7 @@ describe '#subscribe' do
       }
 
       @error_callback = lambda { |envelope|
-        $log.error envelope.response
+        $logger.error envelope.response
         @error_output.write envelope.response
         @after_error_callback = true
       }
@@ -705,13 +715,13 @@ describe '#subscribe' do
     before(:each) do
       stub_request(:get, /http[s]?:\/\/pubsub.pubnub.com\/subscribe\/demo\/demo\/0\/\d+/).
           to_return(lambda { |request|
-          {
-              :body => [[{"text" => "hey"},{"text" => "hey"}],"#{/\d+$/.match(request.uri.path).to_s.to_i + 1}"].to_json,
-              :status => 200,
-              :headers => {
-                  'Content-Type' => 'text/javascript; charset="UTF-8"'
-              }
-          }
+        {
+            :body => [[{"text" => "hey"},{"text" => "hey"}],"#{/\d+$/.match(request.uri.path).to_s.to_i + 1}"].to_json,
+            :status => 200,
+            :headers => {
+                'Content-Type' => 'text/javascript; charset="UTF-8"'
+            }
+        }
       }
       )
 

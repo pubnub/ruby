@@ -1,31 +1,174 @@
 require 'spec_helper'
-require 'rr'
-require 'stringio'
-require 'webmock/rspec'
 
 describe '#publish' do
-  before do
+  before(:each) do
     @error_envelope = nil
     @output = StringIO.new
+    @msg_output = StringIO.new
     @callback = lambda { |envelope|
+      $logger.debug 'FIRING CALLBACK FROM TEST'
       @output.write envelope.response
+      @msg_output.write envelope.msg
       @after_callback = true
     }
+
     @error_callback = lambda { |envelope|
+      $logger.debug 'FIRING ERROR CALLBACK FROM TEST'
       @output.write envelope.response
+      @msg_output.write envelope.msg
       @after_callback = true
       @error_envelope = envelope
     }
-    @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1)
-    @pn.session_uuid = nil
+
   end
 
   before(:each) do
     @after_callback = false
   end
 
+  context 'when it get invalid JSON with 200 status' do
+    context 'via http' do
+      before(:each) do
+        @ssl = false
+
+        @counter = 0
+        stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22message%22').
+            to_return(lambda { |request|
+          @counter += 1
+          if @counter < 3
+            {
+                :body => "\t\n{ 23:'1S12ent',''}",
+                :status => 200,
+                :headers => {
+                    'Content-Type' => 'text/javascript; charset="UTF-8"'
+                }
+            }
+          else
+            {
+                :body => [1,'Sent','13854097001083729'].to_json,
+                :status => 200,
+                :headers => {
+                    'Content-Type' => 'text/javascript; charset="UTF-8"'
+                }
+            }
+          end
+        }
+        )
+
+      end
+      context 'and it\'s synchronous' do
+        before(:all) do
+          @http_sync = true
+        end
+        it 'retries until max retries limit is reached' do
+          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+          @pn.session_uuid = nil
+
+          @pn.publish(:message => 'message', :channel => :hello_world, :http_sync => @http_sync, :callback => @callback)
+          @msg_output.seek(0)
+
+          @msg_output.read.should eq '[0,"Invalid JSON in response."]'
+        end
+
+        it 'retries until it gets correct response' do
+          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 3, :ssl => @ssl)
+          @pn.session_uuid = nil
+
+          @pn.publish(:message => 'message', :channel => :hello_world, :http_sync => @http_sync, :callback => @callback)
+          @output.seek(0)
+
+          @output.read.should eq '[1,"Sent","13854097001083729"]'
+        end
+      end
+
+      context 'and it\'s asynchronous' do
+        before(:all) do
+          @http_sync = false
+        end
+        it 'retries until max retries limit is reached' do
+          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+          @pn.session_uuid = nil
+
+          @pn.publish(:message => 'message', :channel => :hello_world, :http_sync => @http_sync, :callback => @callback)
+          until @after_callback do end
+          @msg_output.seek(0)
+
+          @msg_output.read.should eq '[0,"Invalid JSON in response."]'
+        end
+
+        it 'retries until it gets correct response' do
+          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 3, :ssl => @ssl)
+          @pn.session_uuid = nil
+
+          @pn.publish(:message => 'message', :channel => :hello_world, :http_sync => @http_sync, :callback => @callback)
+          until @after_callback do end
+          @output.seek(0)
+
+          @output.read.should eq '[1,"Sent","13854097001083729"]'
+        end
+      end
+    end
+
+    context 'via https' do
+      before(:each) do
+        @ssl = false
+
+        @counter = 0
+        stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22message%22').
+            to_return(lambda { |request|
+          @counter += 1
+          if @counter < 3
+            {
+                :body => "\t\n{ 23:'1S12ent',''}",
+                :status => 200,
+                :headers => {
+                    'Content-Type' => 'text/javascript; charset="UTF-8"'
+                }
+            }
+          else
+            {
+                :body => [1,'Sent','13854097001083729'].to_json,
+                :status => 200,
+                :headers => {
+                    'Content-Type' => 'text/javascript; charset="UTF-8"'
+                }
+            }
+          end
+        }
+        )
+
+      end
+      context 'and it\'s synchronous' do
+        context 'and it\'s synchronous' do
+          it 'retries until max retries limit is reached' do
+
+          end
+
+          it 'retries until it gets correct response' do
+
+          end
+        end
+
+        context 'and it\'s asynchronous' do
+          it 'retries until max retries limit is reached' do
+
+          end
+
+          it 'retries until it gets correct response' do
+
+          end
+        end
+      end
+    end
+  end
+
   context 'when it gets server error' do
     context 'via http' do
+      before(:each) do
+        @ssl = false
+        @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+        @pn.session_uuid = nil
+      end
       context 'and response message is usable' do
         context 'and it\'s synchronous' do
           it 'fires given callback on response envelope' do
@@ -111,7 +254,7 @@ describe '#publish' do
       context 'and response message is not usable' do
         context 'and it\'s synchronous' do
           it 'fires given callback on hardcoded envelope' do
-            my_response = '[0,"Bad server response: 500"]'
+            my_response = '[0,"Invalid JSON in response."]'
 
             stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22').
                 to_return(
@@ -124,11 +267,13 @@ describe '#publish' do
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :callback => @callback, :http_sync => true)
 
-            @error_envelope.message[1].class.should eq JSON::ParserError
+            #binding.pry
+
+            @error_envelope.error.class.should eq TrueClass
           end
 
           it 'fires given block on hardcoded envelope' do
-            my_response = '[0,"Bad server response: 500"]'
+            my_response = '[0,"Invalid JSON in response."]'
 
             stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22').
                 to_return(
@@ -140,15 +285,14 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :http_sync => true, &@callback)
-
-            @error_envelope.message[1].class.should eq JSON::ParserError
+            @error_envelope.error.class.should eq TrueClass
           end
         end
 
         context 'and it\'s asynchronous' do
           it 'fires given callback on hardcoded envelope' do
 
-            my_response = '[0,"Bad server response: 500"]'
+            my_response = '[0,"Invalid JSON in response."]'
 
             stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22').
                 to_return(
@@ -162,12 +306,12 @@ describe '#publish' do
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :callback => @callback)
             until @after_callback do end
 
-            @error_envelope.message[1].class.should eq JSON::ParserError
+            @error_envelope.error.class.should eq TrueClass
           end
 
           it 'fires given block on hardcoded envelope' do
 
-            my_response = '[0,"Bad server response: 500"]'
+            my_response = '[0,"Invalid JSON in response."]'
 
             stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22').
                 to_return(
@@ -181,7 +325,7 @@ describe '#publish' do
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, &@callback)
             until @after_callback do end
 
-            @error_envelope.message[1].class.should eq JSON::ParserError
+            @error_envelope.error.class.should eq TrueClass
           end
         end
       end
@@ -189,7 +333,9 @@ describe '#publish' do
 
     context 'via https' do
       before do
-        @pn.ssl = true
+        @ssl = true
+        @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+        @pn.session_uuid = nil
       end
       context 'and response message is usable' do
         context 'and it\'s synchronous' do
@@ -274,7 +420,7 @@ describe '#publish' do
       context 'and response message is not usable' do
         context 'and it\'s synchronous' do
           it 'fires given callback on hardcoded envelope' do
-            my_response = '[0,"Bad server response: 500"]'
+            my_response = '[0,"Invalid JSON in response."]'
 
             stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22').
                 to_return(
@@ -287,11 +433,11 @@ describe '#publish' do
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :callback => @callback, :http_sync => true)
 
-            @error_envelope.message[1].class.should eq JSON::ParserError
+            @error_envelope.error.class.should eq TrueClass
           end
 
           it 'fires given block on hardcoded envelope' do
-            my_response = '[0,"Bad server response: 500"]'
+            my_response = '[0,"Invalid JSON in response."]'
 
             stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22').
                 to_return(
@@ -304,14 +450,14 @@ describe '#publish' do
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :http_sync => true, &@callback)
 
-            @error_envelope.message[1].class.should eq JSON::ParserError
+            @error_envelope.error.class.should eq TrueClass
           end
         end
 
         context 'and it\'s asynchronous' do
           it 'fires given callback on hardcoded envelope' do
 
-            my_response = '[0,"Bad server response: 500"]'
+            my_response = '[0,"Invalid JSON in response."]'
 
             stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22').
                 to_return(
@@ -325,12 +471,12 @@ describe '#publish' do
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :callback => @callback)
             until @after_callback do end
 
-            @error_envelope.message[1].class.should eq JSON::ParserError
+            @error_envelope.error.class.should eq TrueClass
           end
 
           it 'fires given block on hardcoded envelope' do
 
-            my_response = '[0,"Bad server response: 500"]'
+            my_response = '[0,"Invalid JSON in response."]'
 
             stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22').
                 to_return(
@@ -344,7 +490,7 @@ describe '#publish' do
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, &@callback)
             until @after_callback do end
 
-            @error_envelope.message[1].class.should eq JSON::ParserError
+            @error_envelope.error.class.should eq TrueClass
           end
         end
       end
@@ -355,6 +501,11 @@ describe '#publish' do
     context 'without secret key' do
       context 'without cipher_key' do
         context 'via http' do
+          before(:each) do
+            @ssl = false
+            @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+            @pn.session_uuid = nil
+          end
           context 'and it\'s asynchronous' do
             it 'fires given callback on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
@@ -432,7 +583,9 @@ describe '#publish' do
 
         context 'via https' do
           before do
-            @pn.ssl = true
+            @ssl = true
+            @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+            @pn.session_uuid = nil
           end
           context 'and it\'s asynchronous' do
             it 'fires given callback on response envelope' do
@@ -511,10 +664,14 @@ describe '#publish' do
       end
 
       context 'using cipher_key' do
-        before do
-          @pn.cipher_key = 'enigma'
-        end
         context 'via http' do
+          before(:each) do
+            @ssl = false
+            @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+            @pn.session_uuid = nil
+            @pn.cipher_key = 'enigma'
+
+          end
           context 'and it\'s asynchronous' do
             it 'fires given callback on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
@@ -592,7 +749,10 @@ describe '#publish' do
 
         context 'via https' do
           before do
-            @pn.ssl = true
+            @ssl = true
+            @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+            @pn.session_uuid = nil
+            @pn.cipher_key = 'enigma'
           end
           context 'and it\'s asynchronous' do
             it 'fires given callback on response envelope' do
@@ -672,11 +832,14 @@ describe '#publish' do
     end
 
     context 'with secret key' do
-      before do
-        @pn.secret_key = 'skey'
-      end
       context 'without cipher_key' do
         context 'via http' do
+          before(:each) do
+            @ssl = false
+            @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+            @pn.session_uuid = nil
+            @pn.secret_key = 'skey'
+          end
           context 'and it\'s asynchronous' do
             it 'fires given callback on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
@@ -754,7 +917,10 @@ describe '#publish' do
 
         context 'via https' do
           before do
-            @pn.ssl = true
+            @ssl = true
+            @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+            @pn.session_uuid = nil
+            @pn.secret_key = 'skey'
           end
           context 'and it\'s asynchronous' do
             it 'fires given callback on response envelope' do
@@ -833,10 +999,14 @@ describe '#publish' do
       end
 
       context 'using cipher_key' do
-        before do
-          @pn.cipher_key = 'enigma'
-        end
         context 'via http' do
+          before(:each) do
+            @ssl = false
+            @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+            @pn.session_uuid = nil
+            @pn.cipher_key = 'enigma'
+            @pn.secret_key = 'skey'
+          end
           context 'and it\'s asynchronous' do
             it 'fires given callback on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
@@ -914,7 +1084,11 @@ describe '#publish' do
 
         context 'via https' do
           before do
-            @pn.ssl = true
+            @ssl = true
+            @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+            @pn.session_uuid = nil
+            @pn.cipher_key = 'enigma'
+            @pn.secret_key = 'skey'
           end
           context 'and it\'s asynchronous' do
             it 'fires given callback on response envelope' do

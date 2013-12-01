@@ -39,7 +39,7 @@ module Pubnub
       $logger.debug('Calling subscribe')
       options.merge!({ :action => :subscribe })
       options.merge!({ :callback => block }) if block_given?
-      check_required_parameters('subscribe', options)
+      check_required_parameters(:subscribe, options)
       options[:channel] = options[:channels] if options[:channel].blank? && !options[:channels].blank?
       preform_subscribe(@env.merge(options))
     end
@@ -50,7 +50,7 @@ module Pubnub
       options.merge!({ :action => :presence })
       options[:channel] = options[:channel].to_s + '-pnpres'
       options.merge!({ :callback => block }) if block_given?
-      check_required_parameters('presence', options)
+      check_required_parameters(:presence, options)
       preform_subscribe(@env.merge(options))
     end
 
@@ -59,7 +59,7 @@ module Pubnub
       $logger.debug('Calling leave')
       options.merge!({ :action => :leave })
       options.merge!({ :callback => block }) if block_given?
-      check_required_parameters('leave', options)
+      check_required_parameters(:leave, options)
       perform_single_request(@env.merge(options))
     end
 
@@ -68,7 +68,7 @@ module Pubnub
       $logger.debug('Calling publish')
       options.merge!({ :action => :publish })
       options.merge!({ :callback => block }) if block_given?
-      check_required_parameters('publish', options)
+      check_required_parameters(:publish, options)
       perform_single_request(@env.merge(options))
     end
 
@@ -77,7 +77,7 @@ module Pubnub
       $logger.debug('Calling history')
       options.merge!({ :action => :history })
       options.merge!({ :callback => block }) if block_given?
-      check_required_parameters('history', options)
+      check_required_parameters(:history, options)
       perform_single_request(@env.merge(options))
     end
 
@@ -86,7 +86,7 @@ module Pubnub
       $logger.debug('Calling here_now')
       options.merge!({ :action => :here_now })
       options.merge!({ :callback => block }) if block_given?
-      check_required_parameters('here_now', options)
+      check_required_parameters(:here_now, options)
       perform_single_request(@env.merge(options))
     end
 
@@ -95,7 +95,7 @@ module Pubnub
       $logger.debug('Calling time')
       options.merge!({ :action => :time })
       options.merge!({ :callback => block }) if block_given?
-      check_required_parameters('time', options)
+      check_required_parameters(:time, options)
       perform_single_request(@env.merge(options))
     end
 
@@ -218,6 +218,8 @@ module Pubnub
           :uuid                       => UUID.new.generate,
           :port                       => DEFAULT_CONNECTION_PORT,
           :origin                     => DEFAULT_ORIGIN,
+          :subscribe_timeout          => DEFAULT_SUBSCRIBE_TIMEOUT,
+          :timeout                    => DEFAULT_NON_SUBSCRIBE_TIMEOUT,
           :max_retries                => MAX_RETRIES,
           :non_subscribe_timeout      => DEFAULT_NON_SUBSCRIBE_TIMEOUT,
           :reconnect_max_attempts     => DEFAULT_RECONNECT_ATTEMPTS,
@@ -249,8 +251,6 @@ module Pubnub
       channel_or_channels = parameters[:channel] || parameters[:channels]
       case operation
         when :initialize
-          # Check origin
-          #warn "You are using default origin: pubsub.pubnub.com.\nYou should use custom origin provided by pubnub.\nIn case of any troubles, please contact us with an email: help@pubnub.com." if parameters[:origin].blank?
           raise InitializationError.new(:object => self), 'Origin parameter is not valid. Should be type of String or Symbol' unless [String, Symbol].include?(parameters[:origin].class) || parameters[:origin].blank?
 
           # Check subscribe key

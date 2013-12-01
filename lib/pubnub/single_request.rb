@@ -6,7 +6,7 @@ module Pubnub
         single_request(options)
       else
         $logger.debug('Performing asynchronized single request')
-        EM.next_tick { single_request(options) }
+        EM.defer { single_request(options) }
       end
     end
 
@@ -21,7 +21,7 @@ module Pubnub
 
       response = fire_single_request(options)
 
-      if (200..206).include? response.status
+      if (200..206).include?(response.status) && Pubnub::Parser.valid_json?(response.body)
         envelopes = format_envelopes(
             response.body,
             options[:action],
@@ -31,8 +31,15 @@ module Pubnub
         envelopes = fix_empty_channels_non_subscribe(envelopes, options)
 
         envelopes.each { |envelope| fire_callback_for_non_subscribe(envelope, options[:callback]) }
+
+
+      elsif !Pubnub::Parser.valid_json?(response.body)
+        envelopes = format_envelopes(response.body, :error, nil, [0, 'Invalid JSON in response.'].to_json)
+
+        handle_error_response(envelopes)
       else
         envelopes = format_envelopes(response.body, :error)
+
         handle_error_response(envelopes)
       end
 
@@ -40,7 +47,6 @@ module Pubnub
     end
 
     def preform_leave_event(options)
-      binding.pry
       @subscribed_channel_list -= [options[:channel]]
       @callback_list.delete_if { |k,v| k.to_sym == options[:channel].to_sym }
     end
@@ -51,25 +57,32 @@ module Pubnub
 
     # Sets channel for envelope without channel
     # It happens when we're subscribed to one channel only
-    def fix_empty_channels_non_subscribe(envelopes, channel = nil)
+    def fix_empty_channels_non_subscribe(envelopes, options = nil)
       envelopes.each do |e|
         if e.have_message_without_channel?
-          e.set_channel channel
+          e.set_channel options[:channel]
         end
       end
 
       envelopes
     end
 
-    def format_envelopes(response, pubsub_operation, cipher_key = nil)
-      Pubnub::Envelope.format_from_string_with_json(response, pubsub_operation, cipher_key)
+    def format_envelopes(response, pubsub_operation, cipher_key = nil, msg = nil)
+      Pubnub::Envelope.format_from_string_with_json(response, pubsub_operation, cipher_key, msg)
     end
 
-    def fire_single_request(options)
-      @single_event_connection.get(
-          origin(options) + path_for_event(options),
+    def fire_single_request(options, retry_attempts = 0)
+      response = @single_event_connection.get(
+          path_for_event(options),
           variables_for_request(options)
       )
+
+      if Pubnub::Parser.valid_json?(response.body) || retry_attempts >= options[:max_retries]
+        response
+      else
+        $logger.debug 'Retrying single request'
+        fire_single_request(options, retry_attempts += 1)
+      end
     end
 
     def variables_for_request(options)
@@ -167,22 +180,22 @@ module Pubnub
     end
 
     def generate_secret_key(options, self_secret_key)
-    if self_secret_key != options[:secret_key]
-      raise("existing secret_key #{self_secret_key} cannot be overridden at publish-time.")
+      if self_secret_key != options[:secret_key]
+        raise("existing secret_key #{self_secret_key} cannot be overridden at publish-time.")
 
-    elsif !self_secret_key.blank?
+      elsif !self_secret_key.blank?
 
-      my_secret_key = self_secret_key || options[:secret_key]
-      raise('secret key must be a string.') if my_secret_key.class != String
+        my_secret_key = self_secret_key || options[:secret_key]
+        raise('secret key must be a string.') if my_secret_key.class != String
 
-      signature = '{ @publish_key, @subscribe_key, @secret_key, channel, message}'
-      digest    = OpenSSL::Digest.new('sha256')
-      key       = [my_secret_key]
-      hmac      = OpenSSL::HMAC.hexdigest(digest, key.pack('H*'), signature)
-      @secret_key = hmac
-    else
-      @secret_key = '0'
-    end
+        signature = '{ @publish_key, @subscribe_key, @secret_key, channel, message}'
+        digest    = OpenSSL::Digest.new('sha256')
+        key       = [my_secret_key]
+        hmac      = OpenSSL::HMAC.hexdigest(digest, key.pack('H*'), signature)
+        @secret_key = hmac
+      else
+        @secret_key = '0'
+      end
     end
 
   end

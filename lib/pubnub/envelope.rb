@@ -1,8 +1,6 @@
 module Pubnub
   class Envelope
-
-
-    def self.format_from_string_with_json(response_string, pubsub_operation, cipher_key = nil)
+    def self.format_from_string_with_json(response_string, pubsub_operation, cipher_key = nil, msg = nil)
       envelopes = case pubsub_operation
                     when :subscribe
                       format_after_subscribe(response_string, cipher_key)
@@ -17,7 +15,7 @@ module Pubnub
                     when :time
                       format_after_time(response_string)
                     when :error
-                      format_after_error(response_string)
+                      format_after_error(response_string, msg)
                     else
                       # TODO rise error
                   end
@@ -25,7 +23,7 @@ module Pubnub
     end
 
     attr_reader :message, :timetoken, :channel, :timetoken_update, :response, :error
-    attr_reader :history_end, :history_start
+    attr_reader :history_end, :history_start, :object
 
     alias_method 'msg', 'message'
 
@@ -34,10 +32,11 @@ module Pubnub
       @timetoken = options[:timetoken]
       @channel   = options[:channel]
       @response  = options[:response]
+      @object    = options[:object]
 
       # History specific values
-      @history_start  = options[:response]
-      @history_end    = options[:response]
+      @history_start  = options[:history_start]
+      @history_end    = options[:history_end]
 
       @timetoken_update = options[:timetoken_update]
       @error            = options[:error]
@@ -61,16 +60,6 @@ module Pubnub
 
     private
 
-    # Parses string to JSON
-    # TODO: Move to Pubnub::Parser or sth?
-    def self.parse_json(response_string)
-      begin
-        JSON.parse(response_string)
-      rescue JSON::ParserError => e
-        [0, e]
-      end
-    end
-
     # Object here is array containing 3 values
     # 1. Messages
     # 2. Timetoken
@@ -80,7 +69,7 @@ module Pubnub
     # The only exception from that is when we get only update with current timetoken
     def self.format_after_subscribe(response_string, cipher_key = nil)
       $logger.debug('Formatting envelopes after subscribe')
-      object = parse_json(response_string)
+      object = Pubnub::Parser.parse_json(response_string)
       envelopes = []
       if object.size == 3 # That's when we are subscribed to more than one channel
         object[2].split(',').size.times do |i|
@@ -116,7 +105,7 @@ module Pubnub
     # There's only message, nil channel (channel is set before firing callback or returning value)
     # and response, as raw server response string
     def self.format_after_here_now(response_string)
-      object = parse_json(response_string)
+      object = Pubnub::Parser.parse_json(response_string)
       [
           Pubnub::Envelope.new({
                                    :message => object,
@@ -130,7 +119,7 @@ module Pubnub
     # There's only message, nil channel (channel is set before firing callback or returning value)
     # and response, as raw server response string
     def self.format_after_leave(response_string)
-      object = parse_json(response_string)
+      object = Pubnub::Parser.parse_json(response_string)
       [
           Pubnub::Envelope.new({
                                    :message => object,
@@ -150,7 +139,7 @@ module Pubnub
     # * timetoken, same as history_end
     def self.format_after_history(response_string)
       $logger.debug('Formating envelopes after history')
-      object = parse_json(response_string)
+      object = Pubnub::Parser.parse_json(response_string)
       envelopes = []
       object[0].each do |message|
         envelopes << Pubnub::Envelope.new({
@@ -167,18 +156,22 @@ module Pubnub
 
     def self.format_after_publish(response_string)
       $logger.debug('Formatting envelopes after publish')
-      object = parse_json(response_string)
-      [
-          Pubnub::Envelope.new({
-                                  :message => object[1],
-                                  :response => response_string,
-                                  :timetoken => object[2]
-                              })
-      ]
+      object = Pubnub::Parser.parse_json(response_string)
+      #if object.class == Pubnub::Envelope # Got error envelope at JSON parse stage
+      #  [object]
+      #else
+        [
+            Pubnub::Envelope.new({
+                                     :message => object[1],
+                                     :response => response_string,
+                                     :timetoken => object[2]
+                                 })
+        ]
+      #end
     end
 
     def self.format_after_time(response_string)
-      object = Pubnub::Envelope.parse_json(response_string)
+      object = Pubnub::Parser.Pubnub::Parser.parse_json(response_string)
       [
           Pubnub::Envelope.new({
                                     :message => object[0],
@@ -188,12 +181,22 @@ module Pubnub
       ]
     end
 
-    def self.format_after_error(response_string)
-      object = Pubnub::Envelope.parse_json(response_string)
+    def self.format_after_error(response_string, msg)
+      object = Pubnub::Parser.parse_json(response_string)
+
       Pubnub::Envelope.new({
-                               :message  => object,
+                               :message  => msg,
+                               :object   => object,
                                :response => response_string,
                                :error    => true
+                           })
+    end
+
+    def self.format_after_json_error(response_string, error)
+      Pubnub::Envelope.new({
+                               :message  => [0, 'Invalid JSON in response.'].to_json,
+                               :response => response_string,
+                               :error    => error
                            })
     end
 

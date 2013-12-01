@@ -1,6 +1,6 @@
 require 'pubnub'
 
-TIMES = 1000
+TIMES = 10000
 
 @msgs = Array.new
 @timetokens = Array.new
@@ -16,7 +16,6 @@ p = Pubnub.new(
     :publish_key    => 'demo',
     :error_callback => lambda{ |e|
       puts "ERROR! #{e.inspect}"
-      puts this.inspect
     }
 )
 
@@ -27,13 +26,12 @@ p.subscribe(:channel => 'my_channel_123'){ |envelope|
   @timetokens << envelope.timetoken
   @envelopes << envelope
   @responses << envelope.response
-  @paths << envelope.path
 }
 
 sleep 3
 
 TIMES.times do |i|
-  sleep 0.25
+  sleep 0.05
   p.publish(:message => i+1, :channel => 'my_channel_123', :http_sync => false){|envelope|
     print '.'
     @publish_responses << envelope.response
