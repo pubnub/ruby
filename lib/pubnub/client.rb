@@ -30,7 +30,7 @@ module Pubnub
       setup_env(options)
       run_em unless EM.reactor_running?
       register_faraday_middleware
-      setup_connections
+      setup_connections(@env) # We're using @env not options because it has default values that could be necessary
 
     end
 
@@ -157,27 +157,40 @@ module Pubnub
     end
 
     # Returns url for connections depending on origin and enabled ssl
-    def url_for_connection
-      "http#{@env[:ssl] ? 's' : ''}://#{@env[:origin]}"
+    def url_for_connection(options)
+      "http#{options[:ssl] ? 's' : ''}://#{options[:origin]}"
     end
 
-    # Sets up two persistent connections via Faraday with pubnub middleware
-    # TODO set timeout
-    def setup_connections
-      @subscribe_connection = Faraday.new(:url => url_for_connection) do |faraday|
+    def origin_already_registered?(origin)
+      !@subscribe_connections_pool[origin].nil?
+    end
+
+    def setup_subscribe_connection(options)
+      $logger.debug('Setting subscribe connection')
+      @subscribe_connections_pool[options[:origin]] = Faraday.new(:url => url_for_connection(options)) do |faraday|
         faraday.adapter  :net_http_persistent
         faraday.response :pubnub
         faraday.request  :pubnub
       end
       $logger.debug('Created subscribe connection')
+    end
 
-      @single_event_connection = Faraday.new(:url => url_for_connection) do |faraday|
+    def setup_single_event_connection(options)
+      @single_event_connections_pool = Hash.new
+      @single_event_connections_pool[options[:origin]] = Faraday.new(:url => url_for_connection(options)) do |faraday|
         faraday.adapter  :net_http_persistent
         faraday.response :pubnub
         faraday.request  :pubnub
       end
       $logger.debug('Created single event connection')
+    end
 
+    # Sets up two persistent connections via Faraday with pubnub middleware
+    # TODO set timeout
+    def setup_connections(options)
+      @subscribe_connections_pool = Hash.new
+      setup_subscribe_connection(options)
+      setup_single_event_connection(options)
     end
 
     # Returns converted env hash with all non-symbol keys in given env hash into symbols
@@ -249,9 +262,11 @@ module Pubnub
     # It's not DRY for better readability
     def check_required_parameters(operation, parameters)
       channel_or_channels = parameters[:channel] || parameters[:channels]
+
+      raise InitializationError.new(:object => self), 'Origin parameter is not valid. Should be type of String or Symbol' unless [String, Symbol].include?(parameters[:origin].class) || parameters[:origin].blank?
+
       case operation
         when :initialize
-          raise InitializationError.new(:object => self), 'Origin parameter is not valid. Should be type of String or Symbol' unless [String, Symbol].include?(parameters[:origin].class) || parameters[:origin].blank?
 
           # Check subscribe key
           raise InitializationError.new(:object => self), 'Missing required :subscribe_key parameter' unless parameters[:subscribe_key]

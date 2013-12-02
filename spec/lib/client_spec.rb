@@ -95,13 +95,16 @@ describe Pubnub::Client do
       expect(Pubnub::Middleware::Request.loaded?).to be true
     end
 
-    it 'setups connections' do
+    it 'setups connections pools' do
       pubnub = Pubnub.new(:subscribe_key => 'key')
-      expect(pubnub.instance_variables.include?(:@subscribe_connection)).to be true
-      expect(pubnub.instance_variables.include?(:@single_event_connection)).to be true
+      expect(pubnub.instance_variables.include?(:@subscribe_connections_pool)).to be true
+      expect(pubnub.instance_variables.include?(:@single_event_connections_pool)).to be true
 
-      expect(pubnub.instance_variable_get(:@subscribe_connection).class).to eq Faraday::Connection
-      expect(pubnub.instance_variable_get(:@single_event_connection).class).to eq Faraday::Connection
+      expect(pubnub.instance_variable_get(:@subscribe_connections_pool).class).to eq Hash
+      expect(pubnub.instance_variable_get(:@single_event_connections_pool).class).to eq Hash
+
+      expect(pubnub.instance_variable_get(:@subscribe_connections_pool)[Pubnub::Configuration::DEFAULT_ORIGIN].class).to eq Faraday::Connection
+      expect(pubnub.instance_variable_get(:@single_event_connections_pool)[Pubnub::Configuration::DEFAULT_ORIGIN].class).to eq Faraday::Connection
     end
 
   end

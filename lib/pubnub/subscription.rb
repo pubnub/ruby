@@ -17,6 +17,8 @@ module Pubnub
     # if not running
     # TODO: Isn't there a little mess with channels?
     def preform_subscribe(options)
+      setup_subscribe_connection(options) unless origin_already_registered?(options[:origin])
+
       options[:channel] ||= options[:channels]
       options[:channel].split(',').join(',') if options[:channel].is_a? String
 
@@ -26,9 +28,9 @@ module Pubnub
         end
       else # Asynchronized action
         [options[:channel].to_s.split(',')].flatten.each do |channel|
-          unless channel_already_on_list?(channel)
-            register_channel(channel)
-            register_callback(channel, options[:callback])
+          unless channel_already_on_list?(options[:origin], channel)
+            register_channel(options[:origin], channel)
+            register_callback(options[:origin], channel, options[:callback])
           end
         end
 
@@ -87,9 +89,11 @@ module Pubnub
             options[:cipher_key]
         )
         handle_envelopes(                                                    # Calling callbacks
+          options[:origin],
           fix_empty_channels(                                                # Fixing empty channels if happen
             envelopes,                                                       # Formatted Envelopes
-            options[:channel]                                                # Channel if set in options
+            options[:channel],                                               # Channel if set in options
+            options[:origin]
           ),
           options[:callback]                                                 # Passing callback or nil
         )
@@ -116,7 +120,7 @@ module Pubnub
       else
         path = subscription_path(
             options[:subscribe_key],
-            channels_for_subscribe,
+            channels_for_subscribe(options[:origin]),
             @env[:timetoken]
         )
 
@@ -124,7 +128,7 @@ module Pubnub
 
       $logger.debug 'Firing subscribe request'
       begin
-        @subscribe_connection.get do |req|
+        @subscribe_connections_pool[options[:origin]].get do |req|
           req.path = path
           req.params = { :uuid => @session_uuid }
           req.options = {
@@ -151,10 +155,10 @@ module Pubnub
 
     # Sets channel for envelope without channel
     # It happens when we're subscribed to one channel only
-    def fix_empty_channels(envelopes, channel = nil)
+    def fix_empty_channels(envelopes, channel = nil, origin = nil)
       envelopes.each do |e|
         if e.have_message_without_channel?
-          e.set_channel (channel || channels_for_subscribe)
+          e.set_channel (channel || channels_for_subscribe(origin))
         end
       end
 
@@ -162,57 +166,61 @@ module Pubnub
     end
 
     # Handles returned envelopes
-    def handle_envelopes(envelopes, callback = nil)
+    def handle_envelopes(origin, envelopes, callback = nil)
       $logger.debug('Handling envelopes')
       update_timetoken envelopes.first.timetoken
       unless envelopes.size == 1 && envelopes.first.timetoken_update?
         envelopes.each do |envelope|
-          EM.next_tick { fire_callback_for(envelope, callback) }
+          EM.next_tick { fire_callback_for(origin, envelope, callback) }
         end
       end
     end
 
     # Finds proper callback for envelope and calls it
-    def fire_callback_for(envelope, callback = nil)
+    def fire_callback_for(origin, envelope, callback = nil)
       $logger.debug('Firing callback')
+      #binding.pry
       if callback
         callback.call envelope
       else
-        @callback_list[envelope.channel.to_sym].call envelope
+        @callback_list[origin][envelope.channel.to_sym].call envelope
       end
     end
 
     # Returns currently subscribed channels as string string separated by commas
-    def channels_for_subscribe
-      @subscribed_channel_list.join(',')
+    def channels_for_subscribe(origin)
+      @subscribed_channel_list[origin].join(',')
     end
 
     # Add given callback to callback list which is hash where key is channel (as a symbol) and value
     # is given callback
-    def register_callback(channel, callback)
+    def register_callback(origin, channel, callback)
       $logger.debug("Registering callback for channel #{channel}")
       if @callback_list.nil?
-        @callback_list = { channel.to_sym => callback }
+        @callback_list = Hash.new
+        @callback_list[origin] = { channel.to_sym => callback }
       else
-        @callback_list.merge!({ channel.to_sym => callback })
+        @callback_list[origin].merge!({ channel.to_sym => callback })
       end
     end
 
     # Check if given channel is already subscribed
-    def channel_already_on_list?(channel)
-      is_channel_on_list = @subscribed_channel_list.nil? ? false : @subscribed_channel_list.include?(channel.to_s)
-      $logger.debug("Checking if channel #{channel} is on the list? #{is_channel_on_list.to_s}")
+    def channel_already_on_list?(origin, channel)
+      is_channel_on_list = (@subscribed_channel_list.nil? || @subscribed_channel_list[origin].nil?) ? false : @subscribed_channel_list.include?(channel.to_s)
+      $logger.debug("Checking if channel #{channel} @ #{origin} is on the list? #{is_channel_on_list.to_s}")
 
       is_channel_on_list
     end
 
     # Adds given channel to channel list array
-    def register_channel(channel)
-      $logger.debug("Registering #{channel}")
-      if @subscribed_channel_list
-        @subscribed_channel_list << channel.to_s
+    def register_channel(origin, channel)
+      $logger.debug("Registering #{channel} @ #{origin}")
+      @subscribed_channel_list = Hash.new if @subscribed_channel_list.nil?
+
+      if @subscribed_channel_list[origin]
+        @subscribed_channel_list[origin] << channel.to_s
       else
-        @subscribed_channel_list = [channel.to_s]
+        @subscribed_channel_list[origin] = [channel.to_s]
       end
     end
 

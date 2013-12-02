@@ -47,8 +47,8 @@ module Pubnub
     end
 
     def preform_leave_event(options)
-      @subscribed_channel_list -= [options[:channel]]
-      @callback_list.delete_if { |k,v| k.to_sym == options[:channel].to_sym }
+      @subscribed_channel_list[options[:origin]] -= [options[:channel]]
+      @callback_list[options[:origin]].delete_if { |k,v| k.to_sym == options[:channel].to_sym }
     end
 
     def fire_callback_for_non_subscribe(envelope, callback)
@@ -72,7 +72,7 @@ module Pubnub
     end
 
     def fire_single_request(options, retry_attempts = 0)
-      response = @single_event_connection.get(
+      response = @single_event_connections_pool[options[:origin]].get(
           path_for_event(options),
           variables_for_request(options)
       )
