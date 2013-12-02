@@ -13,6 +13,8 @@ module Pubnub
     private
 
     def single_request(options)
+      setup_connections(options)
+
       $logger.debug("Sending reqest to #{path_for_event(options)}")
 
       if options[:action] == :leave
@@ -75,7 +77,10 @@ module Pubnub
       response = @single_event_connections_pool[options[:origin]].get(
           path_for_event(options),
           variables_for_request(options)
-      )
+      ) do |request|
+        request.options[:timeout]      = options[:timeout] # open/read timeout in seconds
+        request.options[:open_timeout] = options[:timeout] # connection open timeout in seconds
+      end
 
       if Pubnub::Parser.valid_json?(response.body) || retry_attempts >= options[:max_retries]
         response

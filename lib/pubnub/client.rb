@@ -167,6 +167,7 @@ module Pubnub
 
     def setup_subscribe_connection(options)
       $logger.debug('Setting subscribe connection')
+      @subscribe_connections_pool = Hash.new if @subscribe_connections_pool.nil?
       @subscribe_connections_pool[options[:origin]] = Faraday.new(:url => url_for_connection(options)) do |faraday|
         faraday.adapter  :net_http_persistent
         faraday.response :pubnub
@@ -176,7 +177,7 @@ module Pubnub
     end
 
     def setup_single_event_connection(options)
-      @single_event_connections_pool = Hash.new
+      @single_event_connections_pool = Hash.new if @single_event_connections_pool.nil?
       @single_event_connections_pool[options[:origin]] = Faraday.new(:url => url_for_connection(options)) do |faraday|
         faraday.adapter  :net_http_persistent
         faraday.response :pubnub
@@ -186,9 +187,7 @@ module Pubnub
     end
 
     # Sets up two persistent connections via Faraday with pubnub middleware
-    # TODO set timeout
     def setup_connections(options)
-      @subscribe_connections_pool = Hash.new
       setup_subscribe_connection(options)
       setup_single_event_connection(options)
     end

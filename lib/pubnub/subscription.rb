@@ -17,7 +17,7 @@ module Pubnub
     # if not running
     # TODO: Isn't there a little mess with channels?
     def preform_subscribe(options)
-      setup_subscribe_connection(options) unless origin_already_registered?(options[:origin])
+      setup_connections(options)
 
       options[:channel] ||= options[:channels]
       options[:channel].split(',').join(',') if options[:channel].is_a? String
@@ -128,10 +128,10 @@ module Pubnub
 
       $logger.debug 'Firing subscribe request'
       begin
-        @subscribe_connections_pool[options[:origin]].get do |req|
-          req.path = path
-          req.params = { :uuid => @session_uuid }
-          req.options = {
+        @subscribe_connections_pool[options[:origin]].get do |request|
+          request.path = path
+          request.params = { :uuid => @session_uuid }
+          request.options = {
               :timeout      => options[:subscribe_timeout],
               :open_timeout => options[:subscribe_timeout]
           }
