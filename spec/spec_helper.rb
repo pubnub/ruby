@@ -4,6 +4,7 @@ require 'pry'
 require 'rr'
 require 'stringio'
 require 'webmock/rspec'
+require 'vcr'
 
 WebMock.disable_net_connect!
 

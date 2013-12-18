@@ -40,5 +40,3 @@ end
 while @last < TIMES do end
 
 puts "\nmsgs size: #{@msgs.size}"
-
-#binding.pry

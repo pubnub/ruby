@@ -1,0 +1,35 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/publish/pub-c-e72b633d-bb2f-42ba-8e98-69a9d3f7bdaa/sub-c-8e798456-4520-11e3-9b46-02ee2ddab7fe/90879536748281faf678c1b9245f3d8eb55fae5444f89956ffc3ec1699ffe307/mychannel/0/%22hello%20PAM%20world!%22?uuid=182f0150-275c-0131-e585-20c9d047a189
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Date:
+      - Mon, 04 Nov 2013 08:50:30 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: |
+        {"status":403,"service":"Access Manager","error":true,"message":"Forbidden","payload":{"channels":["mychannel"]}}
+    http_version:
+  recorded_at: Mon, 04 Nov 2013 08:50:36 GMT
+recorded_with: VCR 2.6.0

@@ -16,6 +16,7 @@ require 'open-uri'
 require 'uri'
 require 'openssl'
 require 'eventmachine'
+require 'net/http/persistent'
 require 'faraday'
 require 'logger'
 

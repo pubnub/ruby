@@ -12,13 +12,13 @@ describe Pubnub::Client do
 
     context 'parameter :subscribe_key' do
       it 'is required' do
-        expect{ Pubnub.new(:http_sync => true) }.to raise_error(Pubnub::InitializationError, 'Missing required :subscribe_key parameter')
+        expect{ Pubnub.new(:http_sync => true) }.to raise_error(Pubnub::InitializationError)
       end
 
       it 'must be valid' do
-        expect{ Pubnub.new(:subscribe_key => 123) }.to raise_error(Pubnub::InitializationError, 'Subscribe key parameter is not valid. Should be type of String or Symbol')
-        expect{ Pubnub.new(:subscribe_key => [] ) }.to raise_error(Pubnub::InitializationError, 'Subscribe key parameter is not valid. Should be type of String or Symbol')
-        expect{ Pubnub.new(:subscribe_key => {} ) }.to raise_error(Pubnub::InitializationError, 'Subscribe key parameter is not valid. Should be type of String or Symbol')
+        expect{ Pubnub.new(:subscribe_key => 123) }.to raise_error(Pubnub::InitializationError)
+        expect{ Pubnub.new(:subscribe_key => [] ) }.to raise_error(Pubnub::InitializationError)
+        expect{ Pubnub.new(:subscribe_key => {} ) }.to raise_error(Pubnub::InitializationError)
 
         expect{ Pubnub.new(:subscribe_key => 'key') }.not_to raise_error
         expect{ Pubnub.new(:subscribe_key => :key ) }.not_to raise_error
@@ -27,9 +27,9 @@ describe Pubnub::Client do
 
     context 'parameter :publish_key' do
       it 'must be valid' do
-        expect{ Pubnub.new(:subscribe_key => 'valid', :publish_key => ['invalid']) }.to raise_error(Pubnub::InitializationError, 'Publish key parameter is not valid. Should be type of String or Symbol')
-        expect{ Pubnub.new(:subscribe_key => 'valid', :publish_key => {'invalid' => 'yeah'}) }.to raise_error(Pubnub::InitializationError, 'Publish key parameter is not valid. Should be type of String or Symbol')
-        expect{ Pubnub.new(:subscribe_key => 'valid', :publish_key => ['invalid']) }.to raise_error(Pubnub::InitializationError, 'Publish key parameter is not valid. Should be type of String or Symbol')
+        expect{ Pubnub.new(:subscribe_key => 'valid', :publish_key => ['invalid']) }.to raise_error(Pubnub::InitializationError)
+        expect{ Pubnub.new(:subscribe_key => 'valid', :publish_key => {'invalid' => 'yeah'}) }.to raise_error(Pubnub::InitializationError)
+        expect{ Pubnub.new(:subscribe_key => 'valid', :publish_key => ['invalid']) }.to raise_error(Pubnub::InitializationError)
 
         expect{ Pubnub.new(:subscribe_key => 'valid', :publish_key => 'key') }.not_to raise_error
         expect{ Pubnub.new(:subscribe_key => 'valid', :publish_key => :key ) }.not_to raise_error

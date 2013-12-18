@@ -1,11 +1,11 @@
 module Pubnub
   module SingleRequest
-    def perform_single_request(options)
+    def preform_single_request(options)
       if options[:http_sync]
-        $logger.debug('Performing synchronized single request')
+        $logger.debug('preforming synchronized single request')
         single_request(options)
       else
-        $logger.debug('Performing asynchronized single request')
+        $logger.debug('preforming asynchronized single request')
         EM.defer { single_request(options) }
       end
     end
@@ -21,11 +21,12 @@ module Pubnub
         preform_leave_event(options)
       end
 
+      @timestamp = current_time
       response = fire_single_request(options)
 
       if (200..206).include?(response.status) && Pubnub::Parser.valid_json?(response.body)
         envelopes = format_envelopes(
-            response.body,
+            response,
             options[:action],
             options[:cipher_key]
         )
@@ -36,11 +37,22 @@ module Pubnub
 
 
       elsif !Pubnub::Parser.valid_json?(response.body)
-        envelopes = format_envelopes(response.body, :error, nil, [0, 'Invalid JSON in response.'].to_json)
+        envelopes = Pubnub::JSONParseError.new(
+            :response => response,
+            :message => [0, 'Invalid JSON in response.'].to_json,
+            :operation => options[:operation],
+            :env => @env,
+            :options => options
+        ).to_envelope
 
         handle_error_response(envelopes)
       else
-        envelopes = format_envelopes(response.body, :error)
+        envelopes = Pubnub::JSONParseError.new(
+            :response => response,
+            :operation => options[:operation],
+            :env => @env,
+            :options => options
+        ).to_envelope
 
         handle_error_response(envelopes)
       end
@@ -49,7 +61,7 @@ module Pubnub
     end
 
     def preform_leave_event(options)
-      @subscribed_channel_list[options[:origin]] -= [options[:channel]]
+      @subscribed_channel_list[options[:origin]] -= [options[:channel].to_s]
       @callback_list[options[:origin]].delete_if { |k,v| k.to_sym == options[:channel].to_sym }
     end
 
@@ -74,13 +86,13 @@ module Pubnub
     end
 
     def fire_single_request(options, retry_attempts = 0)
-      response = @single_event_connections_pool[options[:origin]].get(
-          path_for_event(options),
-          variables_for_request(options)
-      ) do |request|
+      response = @single_event_connections_pool[options[:origin]].get(path_for_event(options)) do |request|
+        request.params                 = variables_for_request(options)
         request.options[:timeout]      = options[:timeout] # open/read timeout in seconds
         request.options[:open_timeout] = options[:timeout] # connection open timeout in seconds
       end
+
+      $logger.debug 'Got response'
 
       if Pubnub::Parser.valid_json?(response.body) || retry_attempts >= options[:max_retries]
         response
@@ -90,7 +102,7 @@ module Pubnub
       end
     end
 
-    def variables_for_request(options)
+    def variables_for_request(options, skip_signature = false)
       vars = case options[:action]
         when :history
           {
@@ -99,10 +111,18 @@ module Pubnub
             :reverse => options[:reverse],
             :count   => options[:count]
           }.delete_if{ |k, v| v.blank? }
+        when :audit
+          {
+            :timestamp => @timestamp,
+            :channel   => options[:channel]
+          }.delete_if{ |k, v| v.blank? }
         else
           { }
       end
-      vars.merge({ :uuid => options[:uuid] }) if options[:uuid]
+      vars.merge!({ :uuid => options[:uuid] })                  if options[:uuid]
+      vars.merge!({ :auth => options[:auth_key] })              if options[:action] != :audit
+      vars.merge!({ :signature => get_signature(options) }) unless skip_signature
+      vars
     end
 
     def path_for_event(options)
@@ -133,7 +153,7 @@ module Pubnub
                      'publish',
                      options[:publish_key],
                      options[:subscribe_key],
-                     generate_secret_key(@env, options[:secret_key]),
+                     if !options[:auth_key].blank? then options[:secret_key] else '0' end,
                      options[:channel],
                      '0',
                      format_message_for_publish(options)
@@ -157,6 +177,24 @@ module Pubnub
                      options[:subscribe_key],
                      'channel',
                      options[:channel]
+                 ].join('/')
+
+               when :audit
+                 '/' + [
+                      'v1',
+                      'auth',
+                      'audit',
+                      'sub-key',
+                      options[:subscribe_key]
+                 ].join('/')
+
+               when :grant
+                 '/' + [
+                      'v1',
+                      'auth',
+                      'grant',
+                      'sub-key',
+                      options[:subscribe_key]
                  ].join('/')
 
                when :time
@@ -184,23 +222,19 @@ module Pubnub
       message.to_json
     end
 
-    def generate_secret_key(options, self_secret_key)
-      if self_secret_key != options[:secret_key]
-        raise("existing secret_key #{self_secret_key} cannot be overridden at publish-time.")
+    def get_signature(options)
+      $logger.debug 'Generating signature'
+      message = "#{options[:subscribe_key]}\n#{options[:publish_key]}\n#{options[:action]}\n#{variables_for_signature(options)}"
+      CGI::escape(Base64.strict_encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha256'), options[:secret_key], message)).strip)
+    end
 
-      elsif !self_secret_key.blank?
+    def variables_for_signature(options)
+      variables_for_request(options, true).map{|k,v| "#{k}=#{v}"}.join('&')
+    end
 
-        my_secret_key = self_secret_key || options[:secret_key]
-        raise('secret key must be a string.') if my_secret_key.class != String
-
-        signature = '{ @publish_key, @subscribe_key, @secret_key, channel, message}'
-        digest    = OpenSSL::Digest.new('sha256')
-        key       = [my_secret_key]
-        hmac      = OpenSSL::HMAC.hexdigest(digest, key.pack('H*'), signature)
-        @secret_key = hmac
-      else
-        @secret_key = '0'
-      end
+    def current_time
+      123456
+      #Time.now.to_i
     end
 
   end

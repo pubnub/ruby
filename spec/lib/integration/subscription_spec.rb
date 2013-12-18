@@ -20,23 +20,194 @@ describe '#subscribe' do
   end
 
   context 'when it get invalid JSON with 200 status' do
-    context 'via http' do
-      context 'and it\'s synchronous' do
 
+    before(:each) do
+      @after_callback = false
+      @output = StringIO.new
+      @error_output = StringIO.new
+      @msg_output = StringIO.new
+
+      @callback = lambda { |envelope|
+        $logger.debug 'FIRE TEST CALLBACK'
+        @output.write envelope.response
+        @msg_output.write envelope.msg
+        @after_callback = true
+        EM.stop if EM.reactor_running?
+      }
+
+      @error_callback = lambda { |envelope|
+        $logger.debug 'FIRE TEST ERROR CALLBACK'
+        $logger.error envelope.response
+        @error_output.write envelope.response
+        @after_error_callback = true
+      }
+    end
+
+    context 'via http' do
+
+      before(:each) do
+        @counter = 0
+        stub_request(:get, /http[s]?:\/\/pubsub.pubnub.com\/subscribe\/demo\/demo\/0\/\d+/).            to_return(lambda { |request|
+          @counter += 1
+          if @counter < 3
+            {
+                :body => '^*STDAH@U#H A{}ASD@EDA S3',
+                :status => 200,
+                :headers => {
+                    'Content-Type' => 'text/javascript; charset="UTF-8"'
+                }
+            }
+          else
+            {
+                :body => [[{"text" => "hey"}],"#{/\d+$/.match(request.uri.path).to_s.to_i + 1}"].to_json,
+                :status => 200,
+                :headers => {
+                    'Content-Type' => 'text/javascript; charset="UTF-8"'
+                }
+            }
+          end
+        }
+        )
+      end
+
+      before(:all) do
+        @ssl = false
+      end
+      context 'and it\'s synchronous' do
+        before(:all) do
+          @http_sync = true
+        end
+
+        it 'retries until max retries limit is reached' do
+          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+          @pn.session_uuid = nil
+
+          @pn.subscribe(:channel => :demo, :http_sync => @http_sync, :callback => @callback)
+
+          @error_output.seek(0)
+          @error_output.read.should eq ('^*STDAH@U#H A{}ASD@EDA S3'*2) # *2 because it calls error callback twice (one - first request, second - retry)
+        end
+
+        it 'retries until it gets correct response' do
+          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 3, :ssl => @ssl)
+          @pn.session_uuid = nil
+
+          @pn.subscribe(:channel => :demo, :http_sync => @http_sync, :callback => @callback)
+          until @after_callback do end
+          @output.seek(0)
+          @output.read.should eq "[[{\"text\":\"hey\"}],\"1\"]"
+        end
       end
 
       context 'and it\'s asynchronous' do
+        before(:all) do
+          @http_sync = false
+        end
 
+        it 'retries until max retries limit is reached' do
+          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+          @pn.session_uuid = nil
+
+          @pn.subscribe(:channel => :demo, :http_sync => @http_sync, :callback => @callback)
+
+          until @after_callback do end
+
+          @error_output.seek(0)
+          @error_output.read.should eq ('^*STDAH@U#H A{}ASD@EDA S3'*2) # *2 because it calls error callback twice (one - first request, second - retry)
+        end
+
+        it 'retries until it gets correct response' do
+          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 3, :ssl => @ssl)
+          @pn.session_uuid = nil
+
+          @pn.subscribe(:channel => :demo, :http_sync => @http_sync, :callback => @callback)
+          until @after_callback do end
+          @output.seek(0)
+          @output.read.should eq "[[{\"text\":\"hey\"}],\"1\"]"
+        end
       end
     end
 
     context 'via https' do
-      context 'and it\'s synchronous' do
+      before(:each) do
+        @counter = 0
+        stub_request(:get, /http[s]?:\/\/pubsub.pubnub.com\/subscribe\/demo\/demo\/0\/\d+/).            to_return(lambda { |request|
+          @counter += 1
+          if @counter < 3
+            {
+                :body => '^*STDAH@U#H A{}ASD@EDA S3',
+                :status => 200,
+                :headers => {
+                    'Content-Type' => 'text/javascript; charset="UTF-8"'
+                }
+            }
+          else
+            {
+                :body => [[{"text" => "hey"}],"#{/\d+$/.match(request.uri.path).to_s.to_i + 1}"].to_json,
+                :status => 200,
+                :headers => {
+                    'Content-Type' => 'text/javascript; charset="UTF-8"'
+                }
+            }
+          end
+        }
+        )
+      end
 
+      before(:all) do
+        @ssl = true
+      end
+      context 'and it\'s synchronous' do
+        before(:all) do
+          @http_sync = true
+        end
+
+        it 'retries until max retries limit is reached' do
+          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+          @pn.session_uuid = nil
+
+          @pn.subscribe(:channel => :demo, :http_sync => @http_sync, :callback => @callback)
+
+          @error_output.seek(0)
+          @error_output.read.should eq ('^*STDAH@U#H A{}ASD@EDA S3'*2) # *2 because it calls error callback twice (one - first request, second - retry)
+        end
+
+        it 'retries until it gets correct response' do
+          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 3, :ssl => @ssl)
+          @pn.session_uuid = nil
+
+          @pn.subscribe(:channel => :demo, :http_sync => @http_sync, :callback => @callback)
+          until @after_callback do end
+          @output.seek(0)
+          @output.read.should eq "[[{\"text\":\"hey\"}],\"1\"]"
+        end
       end
 
       context 'and it\'s asynchronous' do
+        before(:all) do
+          @http_sync = false
+        end
 
+        it 'retries until max retries limit is reached' do
+          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+          @pn.session_uuid = nil
+
+          @pn.subscribe(:channel => :demo, :http_sync => @http_sync, :callback => @callback)
+          until @after_callback do end
+
+          @error_output.seek(0)
+          @error_output.read.should eq ('^*STDAH@U#H A{}ASD@EDA S3'*2) # *2 because it calls error callback twice (one - first request, second - retry)
+        end
+
+        it 'retries until it gets correct response' do
+          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 3, :ssl => @ssl)
+          @pn.session_uuid = nil
+
+          @pn.subscribe(:channel => :demo, :http_sync => @http_sync, :callback => @callback)
+          until @after_callback do end
+          @output.seek(0)
+          @output.read.should eq "[[{\"text\":\"hey\"}],\"1\"]"
+        end
       end
     end
   end

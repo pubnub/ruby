@@ -23,7 +23,7 @@ module Pubnub
       options[:channel].split(',').join(',') if options[:channel].is_a? String
 
       if options[:http_sync] # Synchronized action
-        unless envelope = perform_subscribe_request(options) # Performing request and checking if it's successful
+        unless envelope = preform_subscribe_request(options) # preforming request and checking if it's successful
           retry_subscribe_request(options)
         end
       else # Asynchronized action
@@ -52,21 +52,22 @@ module Pubnub
     def start_subscription_timer(options)
       $logger.debug('Starting subscription timer')
       @wait_for_response = false
-      @subscription_request_timer = EM.add_periodic_timer(PERIODIC_TIMER_INTERVAL) do
+      @subscription_request_timers = Hash.new unless @subscription_request_timers
+      @subscription_request_timers[options[:origin]] = EM.add_periodic_timer(PERIODIC_TIMER_INTERVAL) do
         $logger.debug('Subscription timer started')
         unless @wait_for_response
           @wait_for_response = true
 
-          unless perform_subscribe_request(options)
+          unless preform_subscribe_request(options)
             retry_subscribe_request(options)
           end
 
           @wait_for_response = false
         end
 
-        if @subscribed_channel_list.empty?
-          @subscription_request_timer.stop
-          @subscription_request_timer = nil
+        if @subscribed_channel_list[options[:origin]].empty?
+          @subscription_request_timer[options[:origin]].stop
+          @subscription_request_timer[options[:origin]] = nil
         end
 
       end
@@ -77,14 +78,14 @@ module Pubnub
       Pubnub::Envelope.format_from_string_with_json(response, pubsub_operation, cipher_key, msg)
     end
 
-    # Performs subscribe request
-    def perform_subscribe_request(options)
+    # preforms subscribe request
+    def preform_subscribe_request(options)
       response = fire_subscribe_request(options)
       $logger.debug 'Got response'
       if (200..206).include?(response.status) && Pubnub::Parser.valid_json?(response.body) # We've got some successful response
         $logger.debug 'Status 2xx and valid JSON'
         envelopes = format_envelopes(                                        # Let's format envelopes
-            response.body,
+            response,
             :subscribe,
             options[:cipher_key]
         )
@@ -100,7 +101,7 @@ module Pubnub
         envelopes                                                            # Success, we don't need to retry
       else                                                                   # Crap! There's something wrong!
         $logger.debug 'Status non-2xx or invalid JSON'
-        envelopes = format_envelopes(response.body, :error, options[:cipher_key], 'Response message not usable')
+        envelopes = format_envelopes(response, :error, options[:cipher_key], 'Response message not usable')
         handle_error_response(envelopes)
         false                                                                # We have to retry
       end
@@ -130,7 +131,7 @@ module Pubnub
       begin
         @subscribe_connections_pool[options[:origin]].get do |request|
           request.path = path
-          request.params = { :uuid => @session_uuid }
+          request.params = variables_for_subscribe(options)
           request.options = {
               :timeout      => options[:subscribe_timeout],
               :open_timeout => options[:subscribe_timeout]
@@ -141,15 +142,22 @@ module Pubnub
       end
     end
 
+    def variables_for_subscribe(options)
+      auth = options[:auth_key] || nil
+      vars = { :uuid => options[:uuid] }
+      vars.merge!({:auth => auth})
+      vars
+    end
+
     def retry_subscribe_request(options, retry_attempts = 0)
-      unless retry_attempts > options[:max_retries]
+      if retry_attempts <= options[:max_retries]
         retry_attempts += 1
-        unless perform_subscribe_request(options)
+        unless preform_subscribe_request(options)
           $logger.debug('Retrying')
           retry_subscribe_request(options, retry_attempts)
         end
       else
-
+        false
       end
     end
 
@@ -179,7 +187,6 @@ module Pubnub
     # Finds proper callback for envelope and calls it
     def fire_callback_for(origin, envelope, callback = nil)
       $logger.debug('Firing callback')
-      #binding.pry
       if callback
         callback.call envelope
       else

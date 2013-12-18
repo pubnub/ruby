@@ -40,6 +40,7 @@ module Pubnub
       options.merge!({ :action => :subscribe })
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:subscribe, options)
+      options[:channel] = CGI.escape(options[:channel].to_s).gsub('+','%20')
       options[:channel] = options[:channels] if options[:channel].blank? && !options[:channels].blank?
       preform_subscribe(@env.merge(options))
     end
@@ -51,6 +52,7 @@ module Pubnub
       options[:channel] = options[:channel].to_s + '-pnpres'
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:presence, options)
+      options[:channel] = CGI.escape(options[:channel].to_s).gsub('+','%20')
       preform_subscribe(@env.merge(options))
     end
 
@@ -60,7 +62,8 @@ module Pubnub
       options.merge!({ :action => :leave })
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:leave, options)
-      perform_single_request(@env.merge(options))
+      options[:channel] = CGI.escape(options[:channel].to_s).gsub('+','%20')
+      preform_single_request(@env.merge(options))
     end
 
     # TODO well documented leave examples
@@ -69,7 +72,8 @@ module Pubnub
       options.merge!({ :action => :publish })
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:publish, options)
-      perform_single_request(@env.merge(options))
+      options[:channel] = CGI.escape(options[:channel].to_s).gsub('+','%20')
+      preform_single_request(@env.merge(options))
     end
 
     # TODO well documented history examples
@@ -78,7 +82,8 @@ module Pubnub
       options.merge!({ :action => :history })
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:history, options)
-      perform_single_request(@env.merge(options))
+      options[:channel] = CGI.escape(options[:channel].to_s).gsub('+','%20')
+      preform_single_request(@env.merge(options))
     end
 
     # TODO well documented here_now examples
@@ -87,7 +92,28 @@ module Pubnub
       options.merge!({ :action => :here_now })
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:here_now, options)
-      perform_single_request(@env.merge(options))
+      options[:channel] = CGI.escape(options[:channel].to_s).gsub('+','%20')
+      preform_single_request(@env.merge(options))
+    end
+
+    # TODO well documented audit examples
+    def audit(options, &block)
+      $logger.debug('Calling audit')
+      options.merge!({ :action => :audit })
+      options.merge!({ :callback => block }) if block_given?
+      check_required_parameters(:audit, options)
+      options[:channel] = CGI.escape(options[:channel].to_s).gsub('+','%20')
+      preform_single_request(@env.merge(options))
+    end
+
+    # TODO well documented grant examples
+    def grant(options, &block)
+      $logger.debug('Calling grant')
+      options.merge!({ :action => :grant })
+      options.merge!({ :callback => block }) if block_given?
+      check_required_parameters(:grant, options)
+      options[:channel] = CGI.escape(options[:channel].to_s).gsub('+','%20')
+      preform_single_request(@env.merge(options))
     end
 
     # Returns current timetoken from server
@@ -96,7 +122,7 @@ module Pubnub
       options.merge!({ :action => :time })
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:time, options)
-      perform_single_request(@env.merge(options))
+      preform_single_request(@env.merge(options))
     end
 
     def set_secret_key(secret_key)
@@ -122,6 +148,11 @@ module Pubnub
       @env[:cipher_key] = cipher_key
     end
     alias_method 'cipher_key=', 'set_cipher_key'
+
+    def set_auth_key(auth_key)
+      @env[:auth_key] = auth_key
+    end
+    alias_method 'auth_key=', 'set_auth_key'
 
     # For some backwards compatibility
     def uuid
@@ -317,16 +348,16 @@ module Pubnub
           # check if history parameters are valid
 
           # start
-          raise ArgumentError.new(:object => self), 'Invalid :start parameter, should be type of Integer, Fixnum or String' unless [String, Fixnum, Integer].include?(parameters[:start].class)
+          raise ArgumentError.new(:object => self), 'Invalid :start parameter, should be type of Integer, Fixnum or String' unless [String, Fixnum, Integer, NilClass].include?(parameters[:start].class)
           raise ArgumentError.new(:object => self), 'Invalid :start parameter, should be positive integer number' if !parameters[:start].to_i.integer? && parameters[:start].to_i <= 0
 
           # end
-          raise ArgumentError.new(:object => self), 'Invalid :end parameter, should be type of Integer, Fixnum or String' unless [String, Fixnum, Integer].include?(parameters[:end].class)
+          raise ArgumentError.new(:object => self), 'Invalid :end parameter, should be type of Integer, Fixnum or String' unless [String, Fixnum, Integer, NilClass].include?(parameters[:end].class)
           raise ArgumentError.new(:object => self), 'Invalid :end parameter, should be positive integer number' if !parameters[:end].to_i.integer? && parameters[:end].to_i <= 0
           raise ArgumentError.new(:object => self), 'Invalid :end parameter, should be bigger than :start parameter.
-                                                     If you want to get messages in reverse order, use :reverse => true at call.' if parameters[:start].to_i >= parameters[:end].to_i
+                                                     If you want to get messages in reverse order, use :reverse => true at call.' if parameters[:start].to_i >= parameters[:end].to_i && !parameters[:start].nil? && parameters[:end].nil?
           # count
-          raise ArgumentError.new(:object => self), 'Invalid :count parameter, should be type of Integer, Fixnum or String' unless [String, Fixnum, Integer].include?(parameters[:count].class)
+          raise ArgumentError.new(:object => self), 'Invalid :count parameter, should be type of Integer, Fixnum or String' unless [String, Fixnum, Integer, NilClass].include?(parameters[:count].class)
           raise ArgumentError.new(:object => self), 'Invalid :count parameter, should be positive integer number' if !parameters[:count].to_i.integer? && parameters[:count].to_i <= 0
 
           # check callback
@@ -343,6 +374,10 @@ module Pubnub
         when :time
           # check callback
           raise ArgumentError.new(:object => self), 'Callback parameter is required while using async time' if !parameters[:http_sync] && parameters[:callback].blank?
+
+        when :audit
+          raise ArgumentError.new(:object => self), 'publish_key is required by Audit' unless parameters[:publish_key] || @env[:publish_key]
+          raise ArgumentError.new(:object => self), 'Parameter secret_key is required by Audit' unless parameters[:secret_key] || @env[:secret_key]
 
         else
           raise 'Can\'t determine operation'
