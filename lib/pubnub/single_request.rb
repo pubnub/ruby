@@ -87,7 +87,7 @@ module Pubnub
 
     def fire_single_request(options, retry_attempts = 0)
       response = @single_event_connections_pool[options[:origin]].get(path_for_event(options)) do |request|
-        request.params                 = variables_for_request(options)
+        request.params                 = params_for_request(options)
         request.options[:timeout]      = options[:timeout] # open/read timeout in seconds
         request.options[:open_timeout] = options[:timeout] # connection open timeout in seconds
       end
@@ -102,7 +102,7 @@ module Pubnub
       end
     end
 
-    def variables_for_request(options, skip_signature = false)
+    def params_for_request(options, skip_signature = false)
       vars = case options[:action]
         when :history
           {
@@ -231,7 +231,7 @@ module Pubnub
     end
 
     def variables_for_signature(options)
-      variables_for_request(options, true).map{|k,v| "#{k}=#{v}"}.join('&')
+      params_for_request(options, true).map{|k,v| "#{k}=#{v}"}.join('&')
     end
 
     def current_time
