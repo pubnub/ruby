@@ -365,9 +365,9 @@ describe 'PAM' do
                   VCR.use_cassette('pam11', :record => :none) do
                     response = @p.audit(:http_sync => true, :channel => @channel)
 
-                    response.is_error.should be_false
-                    response.response["payload"]["channels"].should be_empty
-                    response.response["payload"]["level"].should == 'channel'
+                    response.first.is_error?.should           be_false
+                    response.first.payload['channels'].should be_empty
+                    response.first.payload['level'].should eq 'channel'
 
                   end
 
@@ -381,9 +381,9 @@ describe 'PAM' do
                     @p.auth_key = @auth_key
                     response = @p.audit(:http_sync => true, :channel => @channel)
 
-                    response.is_error.should be_false
-                    response.response["payload"]["channel"].should == "mychannel"
-                    response.response["payload"]["level"].should == 'user'
+                    response.first.is_error?.should          be_false
+                    response.first.payload['channel'].should eq 'mychannel'
+                    response.first.payload['level'].should   eq 'user'
 
                   end
 
@@ -402,9 +402,9 @@ describe 'PAM' do
                   VCR.use_cassette('pam13', :record => :none) do
                     response = @p.grant(:http_sync => true)
 
-                    response.is_error.should be_false
-                    response.response["payload"]["channels"].should be_nil
-                    response.response["payload"]["level"].should == 'subkey'
+                    response.first.is_error?.should          be_false
+                    response.first.payload['channel'].should be_nil
+                    response.first.payload['level'].should   eq 'subkey'
                   end
                 end
 

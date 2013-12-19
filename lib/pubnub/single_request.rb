@@ -103,6 +103,7 @@ module Pubnub
     end
 
     def params_for_request(options, skip_signature = false)
+      # TODO: refactor to use if statements?
       vars = case options[:action]
         when :history
           {
@@ -114,13 +115,20 @@ module Pubnub
         when :audit
           {
             :timestamp => @timestamp,
-            :channel   => options[:channel]
+            :channel   => options[:channel],
+            :auth      => options[:auth_key]
+          }.delete_if{ |k, v| v.blank? }
+        when :grant
+          {
+            :timestamp => @timestamp,
+            :channel   => options[:channel],
+            :auth      => options[:auth_key]
           }.delete_if{ |k, v| v.blank? }
         else
           { }
       end
-      vars.merge!({ :uuid => options[:uuid] })                  if options[:uuid]
-      vars.merge!({ :auth => options[:auth_key] })              if options[:action] != :audit
+      vars.merge!({ :uuid => options[:uuid] })                  if     options[:uuid]
+      vars.merge!({ :auth => options[:auth_key] })              unless [:audit, :grant, :revoke].include?(options[:action])
       if !skip_signature && [:audit, :grant].include?(options[:action])
         vars.merge!({ :signature => get_signature(options) })
       end

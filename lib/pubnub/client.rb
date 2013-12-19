@@ -379,6 +379,10 @@ module Pubnub
           raise ArgumentError.new(:object => self), 'publish_key is required by Audit' unless parameters[:publish_key] || @env[:publish_key]
           raise ArgumentError.new(:object => self), 'Parameter secret_key is required by Audit' unless parameters[:secret_key] || @env[:secret_key]
 
+        when :grant
+          raise ArgumentError.new(:object => self), 'publish_key is required by Audit' unless parameters[:publish_key] || @env[:publish_key]
+          raise ArgumentError.new(:object => self), 'Parameter secret_key is required by Audit' unless parameters[:secret_key] || @env[:secret_key]
+
         else
           raise 'Can\'t determine operation'
       end

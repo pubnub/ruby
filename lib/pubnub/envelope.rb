@@ -14,6 +14,8 @@ module Pubnub
                       format_after_here_now(response)
                     when :audit
                       format_after_audit(response)
+                    when :grant
+                      format_after_grant(response)
                     when :time
                       format_after_time(response)
                     when :error
@@ -206,8 +208,23 @@ module Pubnub
                                      :response_object => response
                                  })
         ]
-      #end
     end
+
+    def self.format_after_grant(response)
+      response_string = response.body
+      $logger.debug('Formatting envelopes after publish')
+      object = Pubnub::Parser.parse_json(response_string)
+        [
+            Pubnub::Envelope.new({
+                                     :message         => object['message'],
+                                     :response        => response_string,
+                                     :service         => object['service'],
+                                     :payload         => object['payload'],
+                                     :response_object => response
+                                 })
+        ]
+    end
+
 
     def self.format_after_time(response)
       response_string = response.body
