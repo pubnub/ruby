@@ -415,9 +415,9 @@ describe 'PAM' do
                   VCR.use_cassette('pam14', :record => :none) do
                     response = @p.grant(:http_sync => true, :channel => @channel)
 
-                    response.is_error.should be_false
-                    response.response["payload"]["channels"].should == {"mychannel" => {"r" => 0, "w" => 0}}
-                    response.response["payload"]["level"].should == 'channel'
+                    response.first.is_error?.should           be_false
+                    response.first.payload['channels'].should == {'mychannel' => {'r' => 0, 'w' => 0}}
+                    response.first.payload['level'].should    eq 'channel'
 
                   end
 
@@ -428,11 +428,11 @@ describe 'PAM' do
 
                 it "IOS Dev" do
                   VCR.use_cassette('pam17', :record => :none) do
-                    response = @p.grant(:http_sync => true, :channel => "IOS Dev")
+                    response = @p.grant(:http_sync => true, :channel => 'IOS Dev')
 
-                    response.is_error.should be_false
-                    response.response["payload"]["channels"].should == {"IOS Dev"=>{"r"=>0, "w"=>0}}
-                    response.response["payload"]["level"].should == 'channel'
+                    response.first.is_error?.should be_false
+                    response.first.payload['channels'].should == {'IOS Dev'=>{'r'=>0, 'w'=>0}}
+                    response.first.payload['level'].should    eq 'channel'
 
                   end
 
@@ -448,9 +448,9 @@ describe 'PAM' do
                     @p.auth_key = @auth_key
                     response = @p.grant(:http_sync => true, :channel => @channel)
 
-                    response.is_error.should be_false
-                    response.response["payload"]["channel"].should == "mychannel"
-                    response.response["payload"]["level"].should == 'user'
+                    response.first.is_error?.should be_false
+                    response.first.payload['channel'].should.should eq 'mychannel'
+                    response.first.payload['level'].should          eq 'user'
 
                   end
 

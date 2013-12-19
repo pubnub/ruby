@@ -40,7 +40,7 @@ module Pubnub
       options.merge!({ :action => :subscribe })
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:subscribe, options)
-      options[:channel] = CGI.escape(options[:channel].to_s).gsub('+','%20')
+      options[:channel] = options[:channel].to_s.gsub('+','%20')
       options[:channel] = options[:channels] if options[:channel].blank? && !options[:channels].blank?
       preform_subscribe(@env.merge(options))
     end
@@ -52,7 +52,7 @@ module Pubnub
       options[:channel] = options[:channel].to_s + '-pnpres'
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:presence, options)
-      options[:channel] = CGI.escape(options[:channel].to_s).gsub('+','%20')
+      options[:channel] = options[:channel].to_s.gsub('+','%20')
       preform_subscribe(@env.merge(options))
     end
 
@@ -62,7 +62,7 @@ module Pubnub
       options.merge!({ :action => :leave })
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:leave, options)
-      options[:channel] = CGI.escape(options[:channel].to_s).gsub('+','%20')
+      options[:channel] = options[:channel].to_s.gsub('+','%20')
       preform_single_request(@env.merge(options))
     end
 
@@ -72,7 +72,7 @@ module Pubnub
       options.merge!({ :action => :publish })
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:publish, options)
-      options[:channel] = CGI.escape(options[:channel].to_s).gsub('+','%20')
+      options[:channel] = options[:channel].to_s.gsub('+','%20')
       preform_single_request(@env.merge(options))
     end
 
@@ -82,7 +82,7 @@ module Pubnub
       options.merge!({ :action => :history })
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:history, options)
-      options[:channel] = CGI.escape(options[:channel].to_s).gsub('+','%20')
+      options[:channel] = options[:channel].to_s.gsub('+','%20')
       preform_single_request(@env.merge(options))
     end
 
@@ -92,7 +92,7 @@ module Pubnub
       options.merge!({ :action => :here_now })
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:here_now, options)
-      options[:channel] = CGI.escape(options[:channel].to_s).gsub('+','%20')
+      options[:channel] = options[:channel].to_s.gsub('+','%20')
       preform_single_request(@env.merge(options))
     end
 
@@ -102,7 +102,7 @@ module Pubnub
       options.merge!({ :action => :audit })
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:audit, options)
-      options[:channel] = CGI.escape(options[:channel].to_s).gsub('+','%20')
+      options[:channel] = options[:channel].to_s.gsub('+','%20')
       preform_single_request(@env.merge(options))
     end
 
@@ -112,7 +112,7 @@ module Pubnub
       options.merge!({ :action => :grant })
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:grant, options)
-      options[:channel] = CGI.escape(options[:channel].to_s).gsub('+','%20')
+      options[:channel] = options[:channel].to_s.gsub('+','%20')
       preform_single_request(@env.merge(options))
     end
 
@@ -382,7 +382,7 @@ module Pubnub
         when :grant
           raise ArgumentError.new(:object => self), 'publish_key is required by Audit' unless parameters[:publish_key] || @env[:publish_key]
           raise ArgumentError.new(:object => self), 'Parameter secret_key is required by Audit' unless parameters[:secret_key] || @env[:secret_key]
-
+          
         else
           raise 'Can\'t determine operation'
       end
