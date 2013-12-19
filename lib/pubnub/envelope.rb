@@ -25,7 +25,7 @@ module Pubnub
     end
 
     attr_reader :message, :timetoken, :channel, :timetoken_update, :response, :error
-    attr_reader :history_end, :history_start, :object, :response_object
+    attr_reader :history_end, :history_start, :object, :response_object, :payload, :serviece
 
     alias_method 'msg', 'message'
 
@@ -40,6 +40,10 @@ module Pubnub
       # History specific values
       @history_start  = options[:history_start]
       @history_end    = options[:history_end]
+
+      # Audit
+      @payload = options[:payload]
+      @service = options[:service]
 
       @timetoken_update = options[:timetoken_update]
       @error            = options[:error]
@@ -59,6 +63,10 @@ module Pubnub
 
     def update_message(msg)
       @message = msg
+    end
+
+    def is_error?
+      @error ? true : false
     end
 
     private
