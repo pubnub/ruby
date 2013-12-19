@@ -227,7 +227,7 @@ module Pubnub
     def get_signature(options)
       $logger.debug 'Generating signature'
       message = "#{options[:subscribe_key]}\n#{options[:publish_key]}\n#{options[:action]}\n#{variables_for_signature(options)}"
-      CGI::escape(Base64.strict_encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha256'), options[:secret_key], message)).strip)
+      Base64.strict_encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha256'), options[:secret_key], message)).strip
     end
 
     def variables_for_signature(options)
