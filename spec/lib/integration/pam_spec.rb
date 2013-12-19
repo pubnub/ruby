@@ -353,9 +353,9 @@ describe 'PAM' do
                   VCR.use_cassette('pam10', :record => :none) do
                     response = @p.audit(:http_sync => true)
 
-                    response.is_error.should be_false
-                    response.response["payload"]["channels"].should be_empty
-                    response.response["payload"]["level"].should == 'subkey'
+                    response.first.is_error.should be_false
+                    response.first.response["payload"]["channels"].should be_empty
+                    response.first.response["payload"]["level"].should == 'subkey'
                   end
                 end
               end

@@ -12,12 +12,14 @@ module Pubnub
                       format_after_history(response)
                     when :here_now
                       format_after_here_now(response)
+                    when :audit
+                      format_after_audit(response)
                     when :time
                       format_after_time(response)
                     when :error
                       format_after_error(response, msg, error)
                     else
-                      # TODO rise error
+                      raise "Don't know how to generate envelope for: #{pubsub_operation}"
                   end
       envelopes
     end
@@ -177,6 +179,22 @@ module Pubnub
                                      :message         => object[1],
                                      :response        => response_string,
                                      :timetoken       => object[2],
+                                     :response_object => response
+                                 })
+        ]
+      #end
+    end
+
+    def self.format_after_audit(response)
+      response_string = response.body
+      $logger.debug('Formatting envelopes after publish')
+      object = Pubnub::Parser.parse_json(response_string)
+        [
+            Pubnub::Envelope.new({
+                                     :message         => object['message'],
+                                     :response        => response_string,
+                                     :service         => object['service'],
+                                     :payload         => object['payload'],
                                      :response_object => response
                                  })
         ]
