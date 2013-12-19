@@ -231,7 +231,7 @@ module Pubnub
     end
 
     def variables_for_signature(options)
-      params_for_request(options, true).map{|k,v| "#{k}=#{v}"}.join('&')
+      params_for_request(options, true).map{|k,v| "#{k}=#{v}"}.sort.join('&')
     end
 
     def current_time
