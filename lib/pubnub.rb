@@ -18,7 +18,7 @@ require 'openssl'
 require 'eventmachine'
 require 'em-http-request'
 
-require 'version.rb'
+require 'pubnub/version.rb'
 
 require 'pubnub/client.rb'
 require 'pubnub/request.rb'
