@@ -232,7 +232,6 @@ module Pubnub
           @subscription_request.channel = get_channels_for_subscription.join(',')
 
           @subscription_running = EM.add_periodic_timer(PERIODIC_TIMER) do
-
             unless @wait_for_response || get_channels_for_subscription.empty?
               @wait_for_response = true
               $log.debug 'SETTING CHANNELS'
@@ -242,8 +241,8 @@ module Pubnub
 
               http.callback do
                 $log.debug 'GOT SUBSCRIBE RESPONSE'
-                @wait_for_response = false
                 if http.response_header.status.to_i == 200
+                  $log.debug 'STATUS 200'
                   if is_valid_json?(http.response)
                     $log.debug 'GOT VALID JSON'
                     @subscription_request.handle_response(http)
@@ -273,10 +272,20 @@ module Pubnub
                   end
 
                 end
+
+                @wait_for_response = false
               end
+
               http.errback do
                 $log.error 'GOT SUBSCRIBE ERROR'
-                @error_callback.call [0, http.error]
+                @error_callback.call Pubnub::Response.new(
+                                       :error_init => true,
+                                       :message =>  [0, http.error].to_json,
+                                       :response =>  [0, http.error].to_json
+                                     )
+                $log.error 'CALLED ERROR CALLBACK'
+
+                @wait_for_response = false
               end
             end
           end unless @subscription_running
@@ -451,11 +460,9 @@ module Pubnub
         unless @subscribe_connection
           @subscribe_connection = EM::HttpRequest.new(request.origin, :connect_timeout => 370, :inactivity_timeout => 370)
           connection = @subscribe_connection.get :path => '/time/0', :keepalive => true, :query => request.query
-          #EM.next_tick do
-            connection.callback do
-              EM.defer do @connect_callback.call 'ASYNC SUBSCRIBE CONNECTION' end
-            end
-          #end
+          connection.callback do
+            @connect_callback.call 'ASYNC SUBSCRIBE CONNECTION'
+          end
         end
 
         @subscribe_connection.get :path => request.path, :query => request.query, :keepalive => true
