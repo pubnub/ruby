@@ -175,7 +175,7 @@ When publishing, send a string, number, array, or hash. PubNub automatically ser
 @my_callback = lambda { |envelope| puts(envelope.msg) }
 
 pubnub.publish(
-    :channel  => "hello_world"",
+    :channel  => "hello_world",
     :message  => "hi",
     :callback => @my_callback
 )
