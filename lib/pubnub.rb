@@ -9,7 +9,6 @@
 ## PubNub 3.4 Real-time Push Cloud API
 ## -----------------------------------
 
-require 'uuid'
 require 'json'
 require 'base64'
 require 'open-uri'
