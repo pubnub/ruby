@@ -228,7 +228,7 @@ module Pubnub
 
     def self.format_after_time(response)
       response_string = response.body
-      object = Pubnub::Parser.Pubnub::Parser.parse_json(response_string)
+      object = Pubnub::Parser.parse_json(response_string)
       [
           Pubnub::Envelope.new({
                                     :message         => object[0],
