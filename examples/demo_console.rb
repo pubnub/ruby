@@ -21,8 +21,9 @@ while(true)
 
   ssl = false
   while !%w(Y N).include? ssl
-    puts('Should next operation be ssl [Y/N]?')
+    puts('Should next operation be ssl [y/N]?')
     ssl = gets.chomp!
+    ssl = 'N' if ssl.blank?
   end
 
   sync_or_async = false
