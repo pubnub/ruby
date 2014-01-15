@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = 'pubnub'
-  s.version = '3.4.1beta2'
+  s.version = '3.5.0beta'
 
   s.required_rubygems_version = Gem::Requirement.new('>= 0') if s.respond_to? :required_rubygems_version=
   s.authors = ['PubNub']
-  s.date = '2013-10-19'
+  s.date = '2014-01-15'
   s.description = 'Ruby anywhere in the world in 250ms with PubNub!'
   s.email = 'support@pubnub.com'
   s.files = `git ls-files`.split("\n")
