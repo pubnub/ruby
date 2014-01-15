@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'eventmachine'
   s.add_dependency 'net-http-persistent'
-  s.add_dependency 'uuid', '~> 2.3.5'
   s.add_dependency 'json'
   s.add_dependency 'faraday'
 
