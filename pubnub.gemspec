@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = 'pubnub'
-  s.version = '3.4'
+  s.version = '3.4.1'
 
   s.required_rubygems_version = Gem::Requirement.new('>= 0') if s.respond_to? :required_rubygems_version=
   s.authors = ['PubNub']
@@ -20,7 +20,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'httparty'
   s.add_dependency 'persistent_httparty'
   s.add_dependency 'em-http-request'
-  s.add_dependency 'uuid', '~> 2.3.5'
   s.add_dependency 'json'
 
 end
