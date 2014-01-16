@@ -116,7 +116,6 @@ module Pubnub
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:grant, options)
       options[:channel] = options[:channel].to_s.gsub('+','%20')
-      options = treat_sub_key_param_as_param(options)
       options = treat_auth_key_param_as_param(options)
       preform_single_request(@env.merge(options))
     end
@@ -291,12 +290,6 @@ module Pubnub
     def origin(options)
       origin = options[:ssl] ? 'https://' : 'http://'
       origin << options[:origin]
-    end
-
-    def treat_sub_key_param_as_param(options)
-      options[:subscribe_key_parameter] = options[:subscribe_key]
-      options.delete(:subscribe_key)
-      options
     end
 
     def treat_auth_key_param_as_param(options)

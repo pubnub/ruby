@@ -139,8 +139,7 @@ module Pubnub
             :auth          => options[:auth_key_parameter],
             :w             => options[:write],
             :r             => options[:read],
-            :ttl           => options[:ttl],
-            :subscribe_key => options[:subscribe_key_parameter]
+            :ttl           => options[:ttl]
           }.delete_if{ |k, v| v.blank? }
         else
           { }
