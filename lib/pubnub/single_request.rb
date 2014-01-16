@@ -115,14 +115,32 @@ module Pubnub
         when :audit
           {
             :timestamp => @timestamp,
-            :channel   => options[:channel],
-            :auth      => options[:auth_key]
+            :channel       => options[:channel],
+            :auth          => options[:auth_key_parameter],
+            :subscribe_key => options[:subscribe_key_parameter]
           }.delete_if{ |k, v| v.blank? }
         when :grant
+
+          if options[:write] == true
+            options[:write] = '1'
+          elsif options[:write] == false
+            options[:write] = '0'
+          end
+
+          if options[:read] == true
+            options[:read] = '1'
+          elsif options[:read] == false
+            options[:read] = '0'
+          end
+
           {
-            :timestamp => @timestamp,
-            :channel   => options[:channel],
-            :auth      => options[:auth_key]
+            :timestamp     => @timestamp,
+            :channel       => options[:channel],
+            :auth          => options[:auth_key_parameter],
+            :w             => options[:write],
+            :r             => options[:read],
+            :ttl           => options[:ttl],
+            :subscribe_key => options[:subscribe_key_parameter]
           }.delete_if{ |k, v| v.blank? }
         else
           { }
@@ -244,8 +262,8 @@ module Pubnub
     end
 
     def current_time
-      123456
-      #Time.now.to_i
+      #123456
+      Time.now.to_i
     end
 
   end

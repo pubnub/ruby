@@ -5,3 +5,4 @@ pubnub-*.gem
 .idea/
 log/*
 *.log
+examples/test.rb

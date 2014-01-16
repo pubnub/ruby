@@ -2,11 +2,23 @@ require 'pubnub'
 
 puts 'Provide origin [demo.pubnub.com]:'
 origin = gets.chomp!
-origin = 'demo.pubnub.com' if origin == ''
+origin = 'demo.pubnub.com' if origin.blank?
+puts 'Provide subscribe key [demo]:'
+sub_key = gets.chomp!
+sub_key = 'demo' if sub_key.blank?
+
+puts 'Provide publish key [demo]:'
+pub_key = gets.chomp!
+pub_key = 'demo' if pub_key.blank?
+
+puts 'Provide secret key (optional):'
+sec_key = gets.chomp!
+sec_key = nil if sec_key.blank?
 
 p = Pubnub.new(
-    :subscribe_key    => 'demo',
-    :publish_key      => 'demo',
+    :subscribe_key    => sub_key,
+    :secret_key       => sec_key,
+    :publish_key      => pub_key,
     :origin           => origin,
     :error_callback   => lambda { |msg|
       puts "SOMETHING TERRIBLE HAPPENED HERE: #{msg.inspect}"
@@ -15,7 +27,12 @@ p = Pubnub.new(
       puts "CONNECTED: #{msg.inspect}"
     }
 )
-default_cb = lambda { |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+
+default_cb = lambda { |envelope|
+  puts "\nchannel: #{envelope.channel}"
+  puts "msg: #{envelope.message}"
+  puts "payload: #{envelope.payload}" if envelope.payload
+}
 
 while(true)
 
@@ -45,6 +62,9 @@ while(true)
   puts('5. presence')
   puts('6. here_now')
   puts('7. time')
+  puts('8. audit')
+  puts('9. grant')
+  puts('10. revoke')
   puts("\n\n")
   puts('Enter a selection')
   choice = gets.chomp!
@@ -195,5 +215,69 @@ while(true)
         p.time(:http_sync => true, :ssl => ssl){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
       end
 
+    when '8' # AUDIT
+      puts 'Enter channel for channel level'
+      channel = gets.chomp!
+      channel = nil if channel.blank?
+
+      puts 'Enter auth key'
+      auth_key = gets.chomp!
+      auth_key = nil if auth_key.blank?
+
+      puts 'Enter subscribe key'
+      subscribe_key = gets.chomp!
+      subscribe_key = nil if auth_key.blank?
+
+      if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
+        p.audit(:callback => default_cb, :http_sync => false, :ssl => ssl, :channel => channel, :auth_key => auth_key, :subscribe_key => subscribe_key)
+      elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
+        p.audit(:http_sync => false, :ssl => ssl, :channel => channel, :auth_key => auth_key, :subscribe_key => subscribe_key){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+      elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
+        p.audit(:callback => default_cb, :http_sync => true, :ssl => ssl, :channel => channel, :auth_key => auth_key, :subscribe_key => subscribe_key)
+      elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
+        p.audit(:http_sync => true, :ssl => ssl, :channel => channel, :auth_key => auth_key, :subscribe_key => subscribe_key){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+      end
+
+    when '9' # GRANT
+      puts 'Enter channel for channel level'
+      channel = gets.chomp!
+      channel = nil if channel.blank?
+
+      puts 'Enter auth key'
+      auth_key = gets.chomp!
+      auth_key = nil if auth_key.blank?
+
+      puts 'Enter subscribe key'
+      subscribe_key = gets.chomp!
+      subscribe_key = nil if auth_key.blank?
+
+      read = nil
+      while !%w(1 0).include? read
+        puts 'Read? [0/1]'
+        read = gets.chomp!
+      end
+
+      write = nil
+      while !%w(1 0).include? write
+        puts 'Write? [0/1]'
+        write = gets.chomp!
+      end
+
+      puts 'TTL [3600]:'
+      ttl = gets.chomp!
+      ttl = 3600 if ttl.blank?
+
+      if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
+        p.grant(:callback => default_cb, :http_sync => false, :ssl => ssl, :channel => channel, :read => read, :write => write, :ttl => ttl, :auth_key => auth_key, :subscribe_key => subscribe_key)
+      elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
+        p.grant(:http_sync => false, :ssl => ssl, :channel => channel, :read => read, :write => write, :ttl => ttl, :auth_key => auth_key, :subscribe_key => subscribe_key){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+      elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
+        p.grant(:callback => default_cb, :http_sync => true, :ssl => ssl, :channel => channel, :read => read, :write => write, :ttl => ttl, :auth_key => auth_key, :subscribe_key => subscribe_key)
+      elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
+        p.grant(:http_sync => true, :ssl => ssl, :channel => channel, :read => read, :write => write, :ttl => ttl, :auth_key => auth_key, :subscribe_key => subscribe_key){ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+      end
+
+    when '10' # REVOKE
+      # TODO ADD FIXED GRANT
     end
 end

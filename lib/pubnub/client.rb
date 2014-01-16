@@ -104,6 +104,8 @@ module Pubnub
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:audit, options)
       options[:channel] = options[:channel].to_s.gsub('+','%20')
+      options = treat_sub_key_param_as_param(options)
+      options = treat_auth_key_param_as_param(options)
       preform_single_request(@env.merge(options))
     end
 
@@ -114,6 +116,8 @@ module Pubnub
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:grant, options)
       options[:channel] = options[:channel].to_s.gsub('+','%20')
+      options = treat_sub_key_param_as_param(options)
+      options = treat_auth_key_param_as_param(options)
       preform_single_request(@env.merge(options))
     end
 
@@ -289,6 +293,18 @@ module Pubnub
       origin << options[:origin]
     end
 
+    def treat_sub_key_param_as_param(options)
+      options[:subscribe_key_parameter] = options[:subscribe_key]
+      options.delete(:subscribe_key)
+      options
+    end
+
+    def treat_auth_key_param_as_param(options)
+      options[:auth_key_parameter] = options[:auth_key]
+      options.delete(:auth_key)
+      options
+    end
+
     # Checks if passed arguments are valid for client operation.
     # It's not DRY for better readability
     def check_required_parameters(operation, parameters)
@@ -381,9 +397,14 @@ module Pubnub
           raise ArgumentError.new(:object => self), 'Parameter secret_key is required by Audit' unless parameters[:secret_key] || @env[:secret_key]
 
         when :grant
-          raise ArgumentError.new(:object => self), 'publish_key is required by Audit' unless parameters[:publish_key] || @env[:publish_key]
-          raise ArgumentError.new(:object => self), 'Parameter secret_key is required by Audit' unless parameters[:secret_key] || @env[:secret_key]
-          
+          raise ArgumentError.new(:object => self), 'publish_key is required by Grant' unless parameters[:publish_key] || @env[:publish_key]
+          raise ArgumentError.new(:object => self), 'Parameter secret_key is required by Grant' unless parameters[:secret_key] || @env[:secret_key]
+
+          raise ArgumentError.new(:object => self), 'write parameter accept only one of: 1, "1", 0, "0", true, false values' unless [nil, 1, "1", 0, "0", true, false].include?(parameters[:write])
+          raise ArgumentError.new(:object => self), 'read parameter accept only: 1, "1", 0, "0", true, false values' unless [nil, 1, "1", 0, "0", true, false].include?(parameters[:read])
+
+          raise ArgumentError.new(:object => self), 'ttl parameter is too big, max value is: 525600' unless parameters[:ttl].to_i <= 525600
+          raise ArgumentError.new(:object => self), 'ttl parameter is too small, min value is: 1' unless parameters[:ttl].to_i >= 1
         else
           raise 'Can\'t determine operation'
       end

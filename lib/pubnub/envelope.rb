@@ -197,7 +197,7 @@ module Pubnub
 
     def self.format_after_audit(response)
       response_string = response.body
-      $logger.debug('Formatting envelopes after publish')
+      $logger.debug('Formatting envelopes after audit')
       object = Pubnub::Parser.parse_json(response_string)
         [
             Pubnub::Envelope.new({
@@ -212,7 +212,7 @@ module Pubnub
 
     def self.format_after_grant(response)
       response_string = response.body
-      $logger.debug('Formatting envelopes after publish')
+      $logger.debug('Formatting envelopes after grant')
       object = Pubnub::Parser.parse_json(response_string)
         [
             Pubnub::Envelope.new({
