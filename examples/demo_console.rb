@@ -224,10 +224,6 @@ while(true)
       auth_key = gets.chomp!
       auth_key = nil if auth_key.blank?
 
-      puts 'Enter subscribe key'
-      subscribe_key = gets.chomp!
-      subscribe_key = nil if auth_key.blank?
-
       if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
         p.audit(:callback => default_cb, :http_sync => false, :ssl => ssl, :channel => channel, :auth_key => auth_key, :subscribe_key => subscribe_key)
       elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
