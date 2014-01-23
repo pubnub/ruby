@@ -104,7 +104,6 @@ module Pubnub
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:audit, options)
       options[:channel] = options[:channel].to_s.gsub('+','%20')
-      options = treat_sub_key_param_as_param(options)
       options = treat_auth_key_param_as_param(options)
       preform_single_request(@env.merge(options))
     end
@@ -117,6 +116,19 @@ module Pubnub
       check_required_parameters(:grant, options)
       options[:channel] = options[:channel].to_s.gsub('+','%20')
       options = treat_auth_key_param_as_param(options)
+      preform_single_request(@env.merge(options))
+    end
+
+    # TODO well documented revoke examples
+    def revoke(options, &block)
+      $logger.debug('Calling revoke')
+      options.merge!({ :action => :grant })
+      options.merge!({ :callback => block }) if block_given?
+      check_required_parameters(:grant, options)
+      options[:channel] = options[:channel].to_s.gsub('+','%20')
+      options = treat_auth_key_param_as_param(options)
+      options[:read] = false if options[:read]
+      options[:write] = false if options[:write]
       preform_single_request(@env.merge(options))
     end
 
@@ -187,8 +199,8 @@ module Pubnub
     def register_faraday_middleware
       $logger.debug('Registering faraday middleware')
 
-      Faraday.register_middleware :response, :pubnub => Pubnub::Middleware::Response
-      Faraday.register_middleware :request,  :pubnub => Pubnub::Middleware::Request
+      Faraday::Response.register_middleware :response, :pubnub => Pubnub::Middleware::Response
+      Faraday::Request.register_middleware :request,  :pubnub => Pubnub::Middleware::Request
     end
 
     # Returns url for connections depending on origin and enabled ssl
@@ -271,7 +283,8 @@ module Pubnub
           :non_subscribe_timeout      => DEFAULT_NON_SUBSCRIBE_TIMEOUT,
           :reconnect_max_attempts     => DEFAULT_RECONNECT_ATTEMPTS,
           :reconnect_retry_interval   => DEFAULT_RECONNECT_INTERVAL,
-          :reconnect_response_timeout => DEFAULT_RECONNECT_RESPONSE_TIMEOUT
+          :reconnect_response_timeout => DEFAULT_RECONNECT_RESPONSE_TIMEOUT,
+          :ttl                        => DEFAULT_TTL
       }
 
       # Let's fill missing keys with default values
@@ -396,8 +409,8 @@ module Pubnub
           raise ArgumentError.new(:object => self), 'write parameter accept only one of: 1, "1", 0, "0", true, false values' unless [nil, 1, "1", 0, "0", true, false].include?(parameters[:write])
           raise ArgumentError.new(:object => self), 'read parameter accept only: 1, "1", 0, "0", true, false values' unless [nil, 1, "1", 0, "0", true, false].include?(parameters[:read])
 
-          raise ArgumentError.new(:object => self), 'ttl parameter is too big, max value is: 525600' unless parameters[:ttl].to_i <= 525600
-          raise ArgumentError.new(:object => self), 'ttl parameter is too small, min value is: 1' unless parameters[:ttl].to_i >= 1
+          raise ArgumentError.new(:object => self), 'ttl parameter is too big, max value is: 525600' unless parameters[:ttl].to_i <= 525600 || parameters[:ttl].nil?
+          raise ArgumentError.new(:object => self), 'ttl parameter is too small, min value is: 1' unless parameters[:ttl].to_i >= 1 || parameters[:ttl].nil?
         else
           raise 'Can\'t determine operation'
       end

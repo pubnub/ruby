@@ -178,7 +178,9 @@ module Pubnub
       $logger.debug('Handling envelopes')
       update_timetoken envelopes.first.timetoken
       unless envelopes.size == 1 && envelopes.first.timetoken_update?
-        envelopes.each do |envelope|
+        envelopes.each_with_index do |envelope, i|
+          envelope.first = true if i == 0
+          envelope.last  = true if i == envelopes.size-1
           EM.next_tick { fire_callback_for(origin, envelope, callback) }
         end
       end

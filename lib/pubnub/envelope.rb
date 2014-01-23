@@ -26,8 +26,10 @@ module Pubnub
       envelopes
     end
 
-    attr_reader :message, :timetoken, :channel, :timetoken_update, :response, :error
+    attr_reader :last, :first, :message, :timetoken, :channel, :timetoken_update, :response, :error
     attr_reader :history_end, :history_start, :object, :response_object, :payload, :serviece
+
+    attr_writer :last, :first
 
     alias_method 'msg', 'message'
 
@@ -69,6 +71,14 @@ module Pubnub
 
     def is_error?
       @error ? true : false
+    end
+
+    def is_last?
+      @last || @error ? true : false
+    end
+
+    def is_first?
+      @first || @error ? true : false
     end
 
     private

@@ -27,6 +27,7 @@ module Pubnub
     PERIODIC_TIMER_INTERVAL            = 0.25
     MAX_RETRIES                        = 10
     RETRIES_INTERVAL                   = 1
+    DEFAULT_TTL                        = 3600
   end
 end
 

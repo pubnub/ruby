@@ -46,5 +46,6 @@ module Pubnub
   class InitializationError < Error; end
   class ArgumentError < Error; end
   class RequestError < Error; end
+  class ResponseError < Error; end
 
 end

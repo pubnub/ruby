@@ -33,8 +33,11 @@ module Pubnub
 
         envelopes = fix_empty_channels_non_subscribe(envelopes, options)
 
-        envelopes.each { |envelope| fire_callback_for_non_subscribe(envelope, options[:callback]) }
-
+        envelopes.each_with_index { |envelope, i|
+          envelope.first = true if i == 0
+          envelope.last  = true if i == envelopes.size-1
+          fire_callback_for_non_subscribe(envelope, options[:callback])
+        }
 
       elsif !Pubnub::Parser.valid_json?(response.body)
         envelopes = Pubnub::JSONParseError.new(
@@ -47,7 +50,8 @@ module Pubnub
 
         handle_error_response(envelopes)
       else
-        envelopes = Pubnub::JSONParseError.new(
+        envelopes = Pubnub::ResponseError.new(
+            :message => [0, 'Non 2xx server response'].to_json,
             :response => response,
             :operation => options[:operation],
             :env => @env,
@@ -61,8 +65,8 @@ module Pubnub
     end
 
     def preform_leave_event(options)
-      @subscribed_channel_list[options[:origin]] -= [options[:channel].to_s]
-      @callback_list[options[:origin]].delete_if { |k,v| k.to_sym == options[:channel].to_sym }
+      @subscribed_channel_list[options[:origin]] -= [options[:channel].to_s] if @subscribed_channel_list
+      @callback_list[options[:origin]].delete_if { |k,v| k.to_sym == options[:channel].to_sym } if @subscribed_channel_list
     end
 
     def fire_callback_for_non_subscribe(envelope, callback)
