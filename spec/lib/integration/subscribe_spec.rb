@@ -5,7 +5,8 @@ VCR.configure do |c|
   c.hook_into :webmock
 end
 
-describe "#publish" do
+
+describe "#subscribe" do
   before(:each) do
     @response_output = StringIO.new
     @message_output = StringIO.new
@@ -41,29 +42,30 @@ describe "#publish" do
         context "gets status 200 in response" do
           context "uses sync connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-ssl-block-valid-200-sync", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
+              VCR.use_cassette("subscribe-ssl-block-valid-200-sync", :record => :none) do
+                @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
+                @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
                 @after_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"][[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
-                @message_output.read.should eq 'Sent'
+                @message_output.read.should eq '{"text"=>"hey"}{"text"=>"hey"}'
               end
             end
           end
           context "uses async connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-ssl-block-valid-200-async", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
+              VCR.use_cassette("subscribe-ssl-block-valid-200-async", :record => :none) do
+                @pn.subscribe(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
                 @after_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"][[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
-                @message_output.read.should eq 'Sent'
+                @message_output.read.should eq '{"text"=>"hey"}{"text"=>"hey"}'
               end
             end
           end
@@ -71,13 +73,14 @@ describe "#publish" do
         context "gets status non-200 in response" do
           context "uses sync connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-ssl-block-valid-non-200-sync", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
+              VCR.use_cassette("subscribe-ssl-block-valid-non-200-sync", :record => :none) do
+                @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
+                @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Non 2xx server response"]'
               end
@@ -85,13 +88,13 @@ describe "#publish" do
           end
           context "uses async connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-ssl-block-valid-non-200-async", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
+              VCR.use_cassette("subscribe-ssl-block-valid-non-200-async", :record => :none) do
+                @pn.subscribe(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Non 2xx server response"]'
               end
@@ -103,13 +106,14 @@ describe "#publish" do
         context "gets status 200 in response" do
           context "uses sync connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-ssl-block-invalid-200-sync", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
+              VCR.use_cassette("subscribe-ssl-block-invalid-200-sync", :record => :none) do
+                @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
+                @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
@@ -117,13 +121,13 @@ describe "#publish" do
           end
           context "uses async connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-ssl-block-invalid-200-async", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
+              VCR.use_cassette("subscribe-ssl-block-invalid-200-async", :record => :none) do
+                @pn.subscribe(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
@@ -133,13 +137,14 @@ describe "#publish" do
         context "gets status non-200 in response" do
           context "uses sync connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-ssl-block-invalid-non-200-sync", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
+              VCR.use_cassette("subscribe-ssl-block-invalid-non-200-sync", :record => :none) do
+                @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
+                @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
@@ -147,13 +152,13 @@ describe "#publish" do
           end
           context "uses async connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-ssl-block-invalid-non-200-async", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
+              VCR.use_cassette("subscribe-ssl-block-invalid-non-200-async", :record => :none) do
+                @pn.subscribe(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
@@ -167,29 +172,30 @@ describe "#publish" do
         context "gets status 200 in response" do
           context "uses sync connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-ssl-parameter-valid-200-sync", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
+              VCR.use_cassette("subscribe-ssl-parameter-valid-200-sync", :record => :none) do
+                @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
+                @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
                 @after_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"][[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
-                @message_output.read.should eq 'Sent'
+                @message_output.read.should eq '{"text"=>"hey"}{"text"=>"hey"}'
               end
             end
           end
           context "uses async connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-ssl-parameter-valid-200-async", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
+              VCR.use_cassette("subscribe-ssl-parameter-valid-200-async", :record => :none) do
+                @pn.subscribe(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
                 @after_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"][[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
-                @message_output.read.should eq 'Sent'
+                @message_output.read.should eq '{"text"=>"hey"}{"text"=>"hey"}'
               end
             end
           end
@@ -197,13 +203,14 @@ describe "#publish" do
         context "gets status non-200 in response" do
           context "uses sync connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-ssl-parameter-valid-non-200-sync", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
+              VCR.use_cassette("subscribe-ssl-parameter-valid-non-200-sync", :record => :none) do
+                @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
+                @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Non 2xx server response"]'
               end
@@ -211,13 +218,13 @@ describe "#publish" do
           end
           context "uses async connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-ssl-parameter-valid-non-200-async", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
+              VCR.use_cassette("subscribe-ssl-parameter-valid-non-200-async", :record => :none) do
+                @pn.subscribe(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Non 2xx server response"]'
               end
@@ -229,13 +236,14 @@ describe "#publish" do
         context "gets status 200 in response" do
           context "uses sync connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-ssl-parameter-invalid-200-sync", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
+              VCR.use_cassette("subscribe-ssl-parameter-invalid-200-sync", :record => :none) do
+                @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
+                @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
@@ -243,13 +251,13 @@ describe "#publish" do
           end
           context "uses async connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-ssl-parameter-invalid-200-async", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
+              VCR.use_cassette("subscribe-ssl-parameter-invalid-200-async", :record => :none) do
+                @pn.subscribe(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
@@ -259,13 +267,14 @@ describe "#publish" do
         context "gets status non-200 in response" do
           context "uses sync connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-ssl-parameter-invalid-non-200-sync", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
+              VCR.use_cassette("subscribe-ssl-parameter-invalid-non-200-sync", :record => :none) do
+                @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
+                @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
@@ -273,13 +282,13 @@ describe "#publish" do
           end
           context "uses async connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-ssl-parameter-invalid-non-200-async", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
+              VCR.use_cassette("subscribe-ssl-parameter-invalid-non-200-async", :record => :none) do
+                @pn.subscribe(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
@@ -296,29 +305,30 @@ describe "#publish" do
         context "gets status 200 in response" do
           context "uses sync connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-nonssl-block-valid-200-sync", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
+              VCR.use_cassette("subscribe-nonssl-block-valid-200-sync", :record => :none) do
+                @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
+                @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
                 @after_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"][[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
-                @message_output.read.should eq 'Sent'
+                @message_output.read.should eq '{"text"=>"hey"}{"text"=>"hey"}'
               end
             end
           end
           context "uses async connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-nonssl-block-valid-200-async", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
+              VCR.use_cassette("subscribe-nonssl-block-valid-200-async", :record => :none) do
+                @pn.subscribe(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
                 @after_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"][[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
-                @message_output.read.should eq 'Sent'
+                @message_output.read.should eq '{"text"=>"hey"}{"text"=>"hey"}'
               end
             end
           end
@@ -326,13 +336,14 @@ describe "#publish" do
         context "gets status non-200 in response" do
           context "uses sync connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-nonssl-block-valid-non-200-sync", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
+              VCR.use_cassette("subscribe-nonssl-block-valid-non-200-sync", :record => :none) do
+                @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
+                @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Non 2xx server response"]'
               end
@@ -340,13 +351,13 @@ describe "#publish" do
           end
           context "uses async connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-nonssl-block-valid-non-200-async", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
+              VCR.use_cassette("subscribe-nonssl-block-valid-non-200-async", :record => :none) do
+                @pn.subscribe(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Non 2xx server response"]'
               end
@@ -358,13 +369,14 @@ describe "#publish" do
         context "gets status 200 in response" do
           context "uses sync connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-nonssl-block-invalid-200-sync", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
+              VCR.use_cassette("subscribe-nonssl-block-invalid-200-sync", :record => :none) do
+                @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
+                @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
@@ -372,13 +384,13 @@ describe "#publish" do
           end
           context "uses async connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-nonssl-block-invalid-200-async", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
+              VCR.use_cassette("subscribe-nonssl-block-invalid-200-async", :record => :none) do
+                @pn.subscribe(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
@@ -388,13 +400,14 @@ describe "#publish" do
         context "gets status non-200 in response" do
           context "uses sync connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-nonssl-block-invalid-non-200-sync", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
+              VCR.use_cassette("subscribe-nonssl-block-invalid-non-200-sync", :record => :none) do
+                @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
+                @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
@@ -402,13 +415,13 @@ describe "#publish" do
           end
           context "uses async connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-nonssl-block-invalid-non-200-async", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
+              VCR.use_cassette("subscribe-nonssl-block-invalid-non-200-async", :record => :none) do
+                @pn.subscribe(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
@@ -422,29 +435,30 @@ describe "#publish" do
         context "gets status 200 in response" do
           context "uses sync connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-nonssl-parameter-valid-200-sync", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
+              VCR.use_cassette("subscribe-nonssl-parameter-valid-200-sync", :record => :none) do
+                @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
+                @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
                 @after_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"][[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
-                @message_output.read.should eq 'Sent'
+                @message_output.read.should eq '{"text"=>"hey"}{"text"=>"hey"}'
               end
             end
           end
           context "uses async connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-nonssl-parameter-valid-200-async", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
+              VCR.use_cassette("subscribe-nonssl-parameter-valid-200-async", :record => :none) do
+                @pn.subscribe(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
                 @after_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"][[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
-                @message_output.read.should eq 'Sent'
+                @message_output.read.should eq '{"text"=>"hey"}{"text"=>"hey"}'
               end
             end
           end
@@ -452,13 +466,14 @@ describe "#publish" do
         context "gets status non-200 in response" do
           context "uses sync connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-nonssl-parameter-valid-non-200-sync", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
+              VCR.use_cassette("subscribe-nonssl-parameter-valid-non-200-sync", :record => :none) do
+                @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
+                @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Non 2xx server response"]'
               end
@@ -466,13 +481,13 @@ describe "#publish" do
           end
           context "uses async connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-nonssl-parameter-valid-non-200-async", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
+              VCR.use_cassette("subscribe-nonssl-parameter-valid-non-200-async", :record => :none) do
+                @pn.subscribe(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Non 2xx server response"]'
               end
@@ -484,13 +499,14 @@ describe "#publish" do
         context "gets status 200 in response" do
           context "uses sync connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-nonssl-parameter-invalid-200-sync", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
+              VCR.use_cassette("subscribe-nonssl-parameter-invalid-200-sync", :record => :none) do
+                @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
+                @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
@@ -498,13 +514,13 @@ describe "#publish" do
           end
           context "uses async connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-nonssl-parameter-invalid-200-async", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
+              VCR.use_cassette("subscribe-nonssl-parameter-invalid-200-async", :record => :none) do
+                @pn.subscribe(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
@@ -514,13 +530,14 @@ describe "#publish" do
         context "gets status non-200 in response" do
           context "uses sync connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-nonssl-parameter-invalid-non-200-sync", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
+              VCR.use_cassette("subscribe-nonssl-parameter-invalid-non-200-sync", :record => :none) do
+                @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
+                @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
@@ -528,13 +545,13 @@ describe "#publish" do
           end
           context "uses async connection" do
             it 'works fine' do
-              VCR.use_cassette("publish-nonssl-parameter-invalid-non-200-async", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
+              VCR.use_cassette("subscribe-nonssl-parameter-invalid-non-200-async", :record => :none) do
+                @pn.subscribe(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
+                @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end

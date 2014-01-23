@@ -174,6 +174,9 @@ describe 'PAM' do
 
             response.response_object.env[:url].to_s.index('auth').nil?.should be_false
             response.response_object.env[:url].to_s.index('auth=').nil?.should be_true
+            #
+            #response.response_object.env[:url].to_s.index('auth').nil?.should be_false
+            #response.response_object.env[:url].to_s.index('auth=').nil?.should be_true
           end
         end
       end
@@ -334,7 +337,7 @@ describe 'PAM' do
     describe "integration" do
 
       before do
-        any_instance_of(Pubnub::SingleRequest) do |request|
+        any_instance_of(Pubnub::Client) do |request|
           request.stub(:current_time).and_return 123456
         end
       end

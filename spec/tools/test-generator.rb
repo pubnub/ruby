@@ -106,8 +106,7 @@ actions.each do |action|
                                   :channel => 'demo',
                                   :auth_key => 'authkey',
                                   :write => true,
-                                  :read => true,
-                                  :publish_key => 'some_publish_key'
+                                  :read => true
                               }
                             when 'audit'
                               {
@@ -119,8 +118,7 @@ actions.each do |action|
                                   :channel => 'demo',
                                   :auth_key => 'authkey',
                                   :write => true,
-                                  :read => true,
-                                  :publish_key => 'some_publish_key'
+                                  :read => true
                               }
 
                           end

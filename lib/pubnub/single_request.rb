@@ -265,7 +265,6 @@ module Pubnub
     end
 
     def current_time
-      #123456
       Time.now.to_i
     end
 
