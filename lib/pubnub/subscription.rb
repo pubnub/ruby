@@ -99,12 +99,37 @@ module Pubnub
           options[:callback]                                                 # Passing callback or nil
         )
         envelopes                                                            # Success, we don't need to retry
-      else                                                                   # Crap! There's something wrong!
-        $logger.debug 'Status non-2xx or invalid JSON'
-        envelopes = format_envelopes(response, :error, options[:cipher_key], 'Response message not usable')
+      elsif !Pubnub::Parser.valid_json?(response.body)
+        envelopes = Pubnub::JSONParseError.new(
+            :response => response,
+            :message => [0, 'Invalid JSON in response.'].to_json,
+            :operation => options[:operation],
+            :env => @env,
+            :options => options
+        ).to_envelope
+
         handle_error_response(envelopes)
-        false                                                                # We have to retry
+        false
+      else
+        envelopes = Pubnub::ResponseError.new(
+            :message => [0, 'Non 2xx server response'].to_json,
+            :response => response,
+            :operation => options[:operation],
+            :env => @env,
+            :options => options
+        ).to_envelope
+
+        handle_error_response(envelopes)
+        false
       end
+
+      #else                                                                   # Crap! There's something wrong!
+      #  binding.pry
+      #  $logger.debug 'Status non-2xx or invalid JSON'
+      #  envelopes = format_envelopes(response, :error, options[:cipher_key], 'Response message not usable')
+      #  handle_error_response(envelopes)
+      #  false                                                                # We have to retry
+      #end
       # Do not add here anything or you will break returned value (see above)
     end
 
@@ -128,7 +153,8 @@ module Pubnub
       end
 
       $logger.debug 'Firing subscribe request'
-      begin
+      #begin
+      #  binding.pry
         @subscribe_connections_pool[options[:origin]].get do |request|
           request.path = path
           request.params = variables_for_subscribe(options)
@@ -137,9 +163,9 @@ module Pubnub
               :open_timeout => options[:subscribe_timeout]
           }
         end
-      rescue Exception => e
-        binding.pry
-      end
+      #rescue Exception => e
+      #  binding.pry
+      #end
     end
 
     def variables_for_subscribe(options)
@@ -150,7 +176,7 @@ module Pubnub
     end
 
     def retry_subscribe_request(options, retry_attempts = 0)
-      if retry_attempts <= options[:max_retries]
+      if retry_attempts < options[:max_retries]
         retry_attempts += 1
         unless preform_subscribe_request(options)
           $logger.debug('Retrying')

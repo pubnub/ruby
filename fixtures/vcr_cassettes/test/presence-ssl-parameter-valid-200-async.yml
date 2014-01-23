@@ -79,8 +79,9 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '[[{"action": "join", "timestamp": 1390430029, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",
-        "occupancy": 2}],"13904300297661600"]'
+      string: '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",
+        "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",
+        "occupancy": 2}],"13904300089348992"]'
     http_version: 
   recorded_at: Wed, 22 Jan 2014 22:33:49 GMT
 recorded_with: VCR 2.8.0

@@ -60,7 +60,7 @@ http_interactions:
       - 30
   response:
     status:
-      code: 200
+      code: 500 # internal server error
       message: OK
     headers:
       Date:
@@ -79,8 +79,7 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '[[{"action": "join", "timestamp": 1390430095, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",
-        "occupancy": 2}],"13904300954686920"]'
-    http_version: 
+      string: '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
+    http_version:
   recorded_at: Wed, 22 Jan 2014 22:34:55 GMT
 recorded_with: VCR 2.8.0

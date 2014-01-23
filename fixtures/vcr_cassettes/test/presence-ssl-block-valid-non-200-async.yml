@@ -60,7 +60,7 @@ http_interactions:
       - 30
   response:
     status:
-      code: 200
+      code: 500 # internal server error
       message: OK
     headers:
       Date:

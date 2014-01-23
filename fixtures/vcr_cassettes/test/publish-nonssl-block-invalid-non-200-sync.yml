@@ -19,7 +19,7 @@ http_interactions:
       - 30
   response:
     status:
-      code: 200
+      code: 500 # INTERNAL SERVER ERROR
       message: OK
     headers:
       Date:
@@ -38,7 +38,7 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '[1,"Sent","13904299735675204"]'
+      string: '[1,"Sent","'
     http_version: 
   recorded_at: Wed, 22 Jan 2014 22:32:53 GMT
 recorded_with: VCR 2.8.0

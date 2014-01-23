@@ -166,7 +166,7 @@ actions.each do |action|
                                 puts "@message_output.read.should eq '[0,\"Invalid JSON in response.\"]'"
                               end
 
-                              when 'history'
+                            when 'history'
                               if valid_json
                                 if status_200
                                   puts "@response_output.seek 0"
@@ -189,6 +189,108 @@ actions.each do |action|
                                 puts "@message_output.read.should eq '[0,\"Invalid JSON in response.\"]'"
                               end
 
+                            when 'leave'
+                              if valid_json
+                                puts "@response_output.seek 0"
+                                puts "@response_output.read.should eq '{\"action\": \"leave\"}'"
+                                if status_200
+                                  puts "@message_output.seek 0"
+                                  puts "@message_output.read.should eq '{\"action\"=>\"leave\"}'"
+                                else
+                                  puts "@message_output.seek 0"
+                                  puts "@message_output.read.should eq '[0,\"Non 2xx server response\"]'"
+                                end
+                              else
+                                puts "@response_output.seek 0"
+                                puts "@response_output.read.should eq '{\"action\": \"leav'"
+
+                                puts "@message_output.seek 0"
+                                puts "@message_output.read.should eq '[0,\"Invalid JSON in response.\"]'"
+                              end
+
+                            when 'presence'
+                              if valid_json
+                                if status_200
+                                  puts "@response_output.seek 0"
+                                  puts "@response_output.read.should eq '[[{\"action\": \"leave\", \"timestamp\": 1390430008, \"uuid\": \"3bad4360-2b9f-470f-aaf7-dac04454b1fb\", \"occupancy\": 1},{\"action\": \"join\", \"timestamp\": 1390430008, \"uuid\": \"3bad4360-2b9f-470f-aaf7-dac04454b1fb\", \"occupancy\": 2}],\"13904300089348992\"][[{\"action\": \"leave\", \"timestamp\": 1390430008, \"uuid\": \"3bad4360-2b9f-470f-aaf7-dac04454b1fb\", \"occupancy\": 1},{\"action\": \"join\", \"timestamp\": 1390430008, \"uuid\": \"3bad4360-2b9f-470f-aaf7-dac04454b1fb\", \"occupancy\": 2}],\"13904300089348992\"]'"
+
+                                  puts "@message_output.seek 0"
+                                  puts "@message_output.read.should eq '{\"action\"=>\"leave\", \"timestamp\"=>1390430008, \"uuid\"=>\"3bad4360-2b9f-470f-aaf7-dac04454b1fb\", \"occupancy\"=>1}{\"action\"=>\"join\", \"timestamp\"=>1390430008, \"uuid\"=>\"3bad4360-2b9f-470f-aaf7-dac04454b1fb\", \"occupancy\"=>2}'"
+                                else
+                                  puts "@response_output.seek 0"
+                                  puts "@response_output.read.should eq '[[{\"action\": \"leave\", \"timestamp\": 1390430008, \"uuid\": \"3bad4360-2b9f-470f-aaf7-dac04454b1fb\", \"occupancy\": 1},{\"action\": \"join\", \"timestamp\": 1390430008, \"uuid\": \"3bad4360-2b9f-470f-aaf7-dac04454b1fb\", \"occupancy\": 2}],\"13904300089348992\"]'"
+
+                                  puts "@message_output.seek 0"
+                                  puts "@message_output.read.should eq '[0,\"Non 2xx server response\"]'"
+                                end
+                              else
+                                puts "@response_output.seek 0"
+                                puts "@response_output.read.should eq '[[{\"action\": \"leave\", \"timestamp\": 1390430067, \"uuid\": \"3bad4360-2b9f-470f-aaf7-dac04454b1fb\",'"
+
+                                puts "@message_output.seek 0"
+                                puts "@message_output.read.should eq '[0,\"Invalid JSON in response.\"]'"
+                              end
+
+                            when 'publish'
+                              if valid_json
+                                puts "@response_output.seek 0"
+                                puts "@response_output.read.should eq '[1,\"Sent\",\"13904299694449458\"]'"
+                                if status_200
+                                  puts "@message_output.seek 0"
+                                  puts "@message_output.read.should eq 'Sent'"
+                                else
+                                  puts "@message_output.seek 0"
+                                  puts "@message_output.read.should eq '[0,\"Non 2xx server response\"]'"
+                                end
+                              else
+                                puts "@response_output.seek 0"
+                                puts "@response_output.read.should eq '[1,\"Sent\",\"'"
+
+                                puts "@message_output.seek 0"
+                                puts "@message_output.read.should eq '[0,\"Invalid JSON in response.\"]'"
+                              end
+
+                            when 'subscribe'
+                              if valid_json
+                                if status_200
+                                  puts "@response_output.seek 0"
+                                  puts "@response_output.read.should eq '[[{\"text\":\"hey\"},{\"text\":\"hey\"}],\"13904299332319098\"][[{\"text\":\"hey\"},{\"text\":\"hey\"}],\"13904299332319098\"]'"
+
+                                  puts "@message_output.seek 0"
+                                  puts "@message_output.read.should eq '{\"text\"=>\"hey\"}{\"text\"=>\"hey\"}'"
+                                else
+                                  puts "@response_output.seek 0"
+                                  puts "@response_output.read.should eq '[[{\"text\":\"hey\"},{\"text\":\"hey\"}],\"13904299332319098\"]'"
+
+                                  puts "@message_output.seek 0"
+                                  puts "@message_output.read.should eq '[0,\"Non 2xx server response\"]'"
+                                end
+                              else
+                                puts "@response_output.seek 0"
+                                puts "@response_output.read.should eq '[[{\"text\":\"hey\"},{\"text\":\"hey\"}],\"'"
+
+                                puts "@message_output.seek 0"
+                                puts "@message_output.read.should eq '[0,\"Invalid JSON in response.\"]'"
+                              end
+
+                            when 'time'
+                              if valid_json
+                                puts "@response_output.seek 0"
+                                puts "@response_output.read.should eq '[13904301930718907]'"
+                                if status_200
+                                  puts "@message_output.seek 0"
+                                  puts "@message_output.read.should eq '13904301930718907'"
+                                else
+                                  puts "@message_output.seek 0"
+                                  puts "@message_output.read.should eq '[0,\"Non 2xx server response\"]'"
+                                end
+                              else
+                                puts "@response_output.seek 0"
+                                puts "@response_output.read.should eq '[13904301869920523'"
+
+                                puts "@message_output.seek 0"
+                                puts "@message_output.read.should eq '[0,\"Invalid JSON in response.\"]'"
+                              end
 
                           end
 

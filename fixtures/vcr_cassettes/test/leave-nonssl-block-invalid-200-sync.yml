@@ -42,7 +42,7 @@ http_interactions:
       - Pubnub Presence
     body:
       encoding: UTF-8
-      string: '{"action": "leave"}'
+      string: '{"action": "leav'
     http_version: 
   recorded_at: Wed, 22 Jan 2014 22:37:09 GMT
 recorded_with: VCR 2.8.0

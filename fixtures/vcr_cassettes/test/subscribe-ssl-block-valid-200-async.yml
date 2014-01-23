@@ -79,7 +79,7 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '[[{"text":"hey"}],"13904298680893904"]'
+      string: '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
     http_version: 
   recorded_at: Wed, 22 Jan 2014 22:31:09 GMT
 recorded_with: VCR 2.8.0
