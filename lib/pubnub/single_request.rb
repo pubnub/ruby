@@ -150,6 +150,7 @@ module Pubnub
       end
       vars.merge!({ :uuid => options[:uuid] })                  if     options[:uuid]
       vars.merge!({ :auth => options[:auth_key] })              unless [:audit, :grant, :revoke].include?(options[:action])
+      vars.merge!({ :pnsdk => "PubNub-Ruby/#{Pubnub::VERSION}" })
       if !skip_signature && [:audit, :grant].include?(options[:action])
         vars.merge!({ :signature => get_signature(options) })
       end

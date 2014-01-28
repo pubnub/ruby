@@ -2,11 +2,6 @@ require 'spec_helper'
 
 describe 'PAM' do
 
-  VCR.configure do |c|
-    c.cassette_library_dir = 'fixtures/vcr_cassettes'
-    c.hook_into :webmock
-  end
-
   before(:each) do
     @publish_key   = 'pub-c-e72b633d-bb2f-42ba-8e98-69a9d3f7bdaa'
     @subscribe_key = 'sub-c-8e798456-4520-11e3-9b46-02ee2ddab7fe'

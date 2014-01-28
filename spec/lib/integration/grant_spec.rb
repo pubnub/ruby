@@ -1,9 +1,5 @@
 require 'spec_helper'
 
-VCR.configure do |c|
-  c.cassette_library_dir = 'fixtures/vcr_cassettes'
-  c.hook_into :webmock
-end
 
 describe "#grant" do
   before(:each) do

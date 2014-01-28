@@ -11,8 +11,6 @@ require 'pubnub/middleware/request'
 
 
 # TODO Split every operation as separate modules?
-# TODO Setup proper values for timeouts
-# TODO Implement multiorigin
 
 module Pubnub
   class Client
@@ -183,6 +181,11 @@ module Pubnub
     # For some backwards compatibility
     def secret_key
       @env[:secret_key]
+    end
+
+    # Gracefully closes all connections
+    def exit
+      binding.pry
     end
 
     private

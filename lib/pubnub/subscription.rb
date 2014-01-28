@@ -171,7 +171,8 @@ module Pubnub
     def variables_for_subscribe(options)
       auth = options[:auth_key] || nil
       vars = { :uuid => options[:uuid] }
-      vars.merge!({:auth => auth})
+      vars.merge!({ :auth => auth })
+      vars.merge!({ :pnsdk => "PubNub-Ruby/#{Pubnub::VERSION}" })
       vars
     end
 

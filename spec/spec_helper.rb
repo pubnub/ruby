@@ -13,3 +13,11 @@ RSpec.configure do |config|
   config.color_enabled = true
   config.tty = true
 end
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'fixtures/vcr_cassettes'
+  c.hook_into :webmock
+  c.default_cassette_options = {
+      :match_requests_on => [:method, VCR.request_matchers.uri_without_param(:pnsdk)]
+  }
+end

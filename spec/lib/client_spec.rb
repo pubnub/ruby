@@ -51,7 +51,8 @@ describe Pubnub::Client do
             :non_subscribe_timeout      => Pubnub::Configuration::DEFAULT_NON_SUBSCRIBE_TIMEOUT,
             :reconnect_max_attempts     => Pubnub::Configuration::DEFAULT_RECONNECT_ATTEMPTS,
             :reconnect_retry_interval   => Pubnub::Configuration::DEFAULT_RECONNECT_INTERVAL,
-            :reconnect_response_timeout => Pubnub::Configuration::DEFAULT_RECONNECT_RESPONSE_TIMEOUT
+            :reconnect_response_timeout => Pubnub::Configuration::DEFAULT_RECONNECT_RESPONSE_TIMEOUT,
+            :ttl                        => Pubnub::Configuration::DEFAULT_TTL
         }
       end
 

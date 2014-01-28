@@ -1,11 +1,5 @@
 require 'spec_helper'
 
-VCR.configure do |c|
-  c.cassette_library_dir = 'fixtures/vcr_cassettes'
-  c.hook_into :webmock
-end
-
-
 describe "#audit" do
   before(:each) do
     @response_output = StringIO.new
