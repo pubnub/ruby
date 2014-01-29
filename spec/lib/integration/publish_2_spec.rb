@@ -32,7 +32,7 @@ describe '#publish' do
         @ssl = false
 
         @counter = 0
-        stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22message%22?auth').
+        stub_request(:get, "http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22message%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
             to_return(lambda { |request|
           @counter += 1
           if @counter < 3
@@ -114,7 +114,7 @@ describe '#publish' do
         @ssl = true
 
         @counter = 0
-        stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22message%22?auth').
+        stub_request(:get, "https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22message%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
             to_return(lambda { |request|
           @counter += 1
           if @counter < 3
@@ -204,7 +204,7 @@ describe '#publish' do
           it 'fires given callback on response envelope' do
             my_response = '[0,"Message Too Large","13619441967053834"]'
 
-            stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22Soooolooong%22?auth').
+            stub_request(:get, "http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22Soooolooong%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                 to_return(
                 :body => [0,"Message Too Large","13619441967053834"].to_json,
                 :status => 500,
@@ -222,7 +222,7 @@ describe '#publish' do
           it 'fires given block on response envelope' do
             my_response = '[0,"Message Too Large","13619441967053834"]'
 
-            stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22Soooolooong%22?auth').
+            stub_request(:get, "http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22Soooolooong%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                 to_return(
                 :body => [0,"Message Too Large","13619441967053834"].to_json,
                 :status => 500,
@@ -242,7 +242,7 @@ describe '#publish' do
           it 'fires given callback on response envelope' do
             my_response = '[0,"Message Too Large","13619441967053834"]'
 
-            stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22Soooolooong%22?auth').
+            stub_request(:get, "http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22Soooolooong%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                 to_return(
                 :body => [0,"Message Too Large","13619441967053834"].to_json,
                 :status => 500,
@@ -263,7 +263,7 @@ describe '#publish' do
           it 'fires given block on response envelope' do
             my_response = '[0,"Message Too Large","13619441967053834"]'
 
-            stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22Soooolooong%22?auth').
+            stub_request(:get, "http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22Soooolooong%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                 to_return(
                 :body => [0,"Message Too Large","13619441967053834"].to_json,
                 :status => 500,
@@ -286,7 +286,7 @@ describe '#publish' do
           it 'fires given callback on hardcoded envelope' do
             my_response = '[0,"Invalid JSON in response."]'
 
-            stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22?auth').
+            stub_request(:get, "http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                 to_return(
                 :body => '23e4eduf58$#%YHRE%#',
                 :status => 500,
@@ -303,7 +303,7 @@ describe '#publish' do
           it 'fires given block on hardcoded envelope' do
             my_response = '[0,"Invalid JSON in response."]'
 
-            stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22?auth').
+            stub_request(:get, "http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                 to_return(
                 :body => '23e4eduf58$#%YHRE%#',
                 :status => 500,
@@ -322,7 +322,7 @@ describe '#publish' do
 
             my_response = '[0,"Invalid JSON in response."]'
 
-            stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22?auth').
+            stub_request(:get, "http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                 to_return(
                 :body => '23e4eduf58$#%YHRE%#',
                 :status => 500,
@@ -341,7 +341,7 @@ describe '#publish' do
 
             my_response = '[0,"Invalid JSON in response."]'
 
-            stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22?auth').
+            stub_request(:get, "http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                 to_return(
                 :body => '23e4eduf58$#%YHRE%#',
                 :status => 500,
@@ -370,7 +370,7 @@ describe '#publish' do
           it 'fires given callback on response envelope' do
             my_response = '[0,"Message Too Large","13619441967053834"]'
 
-            stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22Soooolooong%22?auth').
+            stub_request(:get, "https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22Soooolooong%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                 to_return(
                 :body => [0,"Message Too Large","13619441967053834"].to_json,
                 :status => 500,
@@ -388,7 +388,7 @@ describe '#publish' do
           it 'fires given block on response envelope' do
             my_response = '[0,"Message Too Large","13619441967053834"]'
 
-            stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22Soooolooong%22?auth').
+            stub_request(:get, "https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22Soooolooong%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                 to_return(
                 :body => [0,"Message Too Large","13619441967053834"].to_json,
                 :status => 500,
@@ -408,7 +408,7 @@ describe '#publish' do
           it 'fires given callback on response envelope' do
             my_response = '[0,"Message Too Large","13619441967053834"]'
 
-            stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22Soooolooong%22?auth').
+            stub_request(:get, "https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22Soooolooong%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                 to_return(
                 :body => [0,"Message Too Large","13619441967053834"].to_json,
                 :status => 500,
@@ -427,7 +427,7 @@ describe '#publish' do
           it 'fires given block on response envelope' do
             my_response = '[0,"Message Too Large","13619441967053834"]'
 
-            stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22Soooolooong%22?auth').
+            stub_request(:get, "https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22Soooolooong%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                 to_return(
                 :body => [0,"Message Too Large","13619441967053834"].to_json,
                 :status => 500,
@@ -450,7 +450,7 @@ describe '#publish' do
           it 'fires given callback on hardcoded envelope' do
             my_response = '[0,"Invalid JSON in response."]'
 
-            stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22?auth').
+            stub_request(:get, "https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                 to_return(
                 :body => '23e4eduf58$#%YHRE%#',
                 :status => 500,
@@ -467,7 +467,7 @@ describe '#publish' do
           it 'fires given block on hardcoded envelope' do
             my_response = '[0,"Invalid JSON in response."]'
 
-            stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22?auth').
+            stub_request(:get, "https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                 to_return(
                 :body => '23e4eduf58$#%YHRE%#',
                 :status => 500,
@@ -487,7 +487,7 @@ describe '#publish' do
 
             my_response = '[0,"Invalid JSON in response."]'
 
-            stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22?auth').
+            stub_request(:get, "https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                 to_return(
                 :body => '23e4eduf58$#%YHRE%#',
                 :status => 500,
@@ -506,7 +506,7 @@ describe '#publish' do
 
             my_response = '[0,"Invalid JSON in response."]'
 
-            stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22?auth').
+            stub_request(:get, "https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22SomethingWrong%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                 to_return(
                 :body => '23e4eduf58$#%YHRE%#',
                 :status => 500,
@@ -538,7 +538,7 @@ describe '#publish' do
             it 'fires given callback on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
 
-              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22?auth').
+              stub_request(:get, "http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                   to_return(
                   :body => [1,"Sent","13692992007063494"].to_json,
                   :status => 200,
@@ -556,7 +556,7 @@ describe '#publish' do
             it 'fires given block on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
 
-              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22?auth').
+              stub_request(:get, "http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                   to_return(
                   :body => [1,"Sent","13692992007063494"].to_json,
                   :status => 200,
@@ -576,7 +576,7 @@ describe '#publish' do
             it 'fires given callback on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
 
-              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22?auth').
+              stub_request(:get, "http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                   to_return(
                   :body => [1,"Sent","13692992007063494"].to_json,
                   :status => 200,
@@ -593,7 +593,7 @@ describe '#publish' do
             it 'fires given block on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
 
-              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22?auth').
+              stub_request(:get, "http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                   to_return(
                   :body => [1,"Sent","13692992007063494"].to_json,
                   :status => 200,
@@ -619,7 +619,7 @@ describe '#publish' do
             it 'fires given callback on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
 
-              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22?auth').
+              stub_request(:get, "https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                   to_return(
                   :body => [1,"Sent","13692992007063494"].to_json,
                   :status => 200,
@@ -637,7 +637,7 @@ describe '#publish' do
             it 'fires given block on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
 
-              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22?auth').
+              stub_request(:get, "https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                   to_return(
                   :body => [1,"Sent","13692992007063494"].to_json,
                   :status => 200,
@@ -657,7 +657,7 @@ describe '#publish' do
             it 'fires given callback on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
 
-              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22?auth').
+              stub_request(:get, "https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                   to_return(
                   :body => [1,"Sent","13692992007063494"].to_json,
                   :status => 200,
@@ -674,7 +674,7 @@ describe '#publish' do
             it 'fires given block on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
 
-              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22?auth').
+              stub_request(:get, "https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22good_times%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                   to_return(
                   :body => [1,"Sent","13692992007063494"].to_json,
                   :status => 200,
@@ -704,7 +704,7 @@ describe '#publish' do
             it 'fires given callback on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
 
-              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth').
+              stub_request(:get, "http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                   to_return(
                   :body => [1,"Sent","13692992007063494"].to_json,
                   :status => 200,
@@ -722,7 +722,7 @@ describe '#publish' do
             it 'fires given block on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
 
-              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth').
+              stub_request(:get, "http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                   to_return(
                   :body => [1,"Sent","13692992007063494"].to_json,
                   :status => 200,
@@ -742,7 +742,7 @@ describe '#publish' do
             it 'fires given callback on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
 
-              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth').
+              stub_request(:get, "http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                   to_return(
                   :body => [1,"Sent","13692992007063494"].to_json,
                   :status => 200,
@@ -759,7 +759,7 @@ describe '#publish' do
             it 'fires given block on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
 
-              stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth').
+              stub_request(:get, "http://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                   to_return(
                   :body => [1,"Sent","13692992007063494"].to_json,
                   :status => 200,
@@ -786,7 +786,7 @@ describe '#publish' do
             it 'fires given callback on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
 
-              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth').
+              stub_request(:get, "https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                   to_return(
                   :body => [1,"Sent","13692992007063494"].to_json,
                   :status => 200,
@@ -804,7 +804,7 @@ describe '#publish' do
             it 'fires given block on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
 
-              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth').
+              stub_request(:get, "https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                   to_return(
                   :body => [1,"Sent","13692992007063494"].to_json,
                   :status => 200,
@@ -824,7 +824,7 @@ describe '#publish' do
             it 'fires given callback on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
 
-              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth').
+              stub_request(:get, "https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                   to_return(
                   :body => [1,"Sent","13692992007063494"].to_json,
                   :status => 200,
@@ -841,7 +841,7 @@ describe '#publish' do
             it 'fires given block on response envelope' do
               my_response = '[1,"Sent","13692992007063494"]'
 
-              stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth').
+              stub_request(:get, "https://pubsub.pubnub.com/publish/demo/demo/0/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}").
                   to_return(
                   :body => [1,"Sent","13692992007063494"].to_json,
                   :status => 200,
@@ -872,7 +872,7 @@ describe '#publish' do
     #        it 'fires given callback on response envelope' do
     #          my_response = '[1,"Sent","13692992007063494"]'
     #
-    #          stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22?auth').
+    #          stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}').
     #              to_return(
     #              :body => [1,"Sent","13692992007063494"].to_json,
     #              :status => 200,
@@ -890,7 +890,7 @@ describe '#publish' do
     #        it 'fires given block on response envelope' do
     #          my_response = '[1,"Sent","13692992007063494"]'
     #
-    #          stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22?auth').
+    #          stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}').
     #              to_return(
     #              :body => [1,"Sent","13692992007063494"].to_json,
     #              :status => 200,
@@ -910,7 +910,7 @@ describe '#publish' do
     #        it 'fires given callback on response envelope' do
     #          my_response = '[1,"Sent","13692992007063494"]'
     #
-    #          stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22?auth').
+    #          stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}').
     #              to_return(
     #              :body => [1,"Sent","13692992007063494"].to_json,
     #              :status => 200,
@@ -927,7 +927,7 @@ describe '#publish' do
     #        it 'fires given block on response envelope' do
     #          my_response = '[1,"Sent","13692992007063494"]'
     #
-    #          stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22?auth').
+    #          stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}').
     #              to_return(
     #              :body => [1,"Sent","13692992007063494"].to_json,
     #              :status => 200,
@@ -954,7 +954,7 @@ describe '#publish' do
     #        it 'fires given callback on response envelope' do
     #          my_response = '[1,"Sent","13692992007063494"]'
     #
-    #          stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22?auth').
+    #          stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}').
     #              to_return(
     #              :body => [1,"Sent","13692992007063494"].to_json,
     #              :status => 200,
@@ -972,7 +972,7 @@ describe '#publish' do
     #        it 'fires given block on response envelope' do
     #          my_response = '[1,"Sent","13692992007063494"]'
     #
-    #          stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22?auth').
+    #          stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}').
     #              to_return(
     #              :body => [1,"Sent","13692992007063494"].to_json,
     #              :status => 200,
@@ -992,7 +992,7 @@ describe '#publish' do
     #        it 'fires given callback on response envelope' do
     #          my_response = '[1,"Sent","13692992007063494"]'
     #
-    #          stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22?auth').
+    #          stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}').
     #              to_return(
     #              :body => [1,"Sent","13692992007063494"].to_json,
     #              :status => 200,
@@ -1009,7 +1009,7 @@ describe '#publish' do
     #        it 'fires given block on response envelope' do
     #          my_response = '[1,"Sent","13692992007063494"]'
     #
-    #          stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22?auth').
+    #          stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22good_times%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}').
     #              to_return(
     #              :body => [1,"Sent","13692992007063494"].to_json,
     #              :status => 200,
@@ -1039,7 +1039,7 @@ describe '#publish' do
     #        it 'fires given callback on response envelope' do
     #          my_response = '[1,"Sent","13692992007063494"]'
     #
-    #          stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth').
+    #          stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}').
     #              to_return(
     #              :body => [1,"Sent","13692992007063494"].to_json,
     #              :status => 200,
@@ -1057,7 +1057,7 @@ describe '#publish' do
     #        it 'fires given block on response envelope' do
     #          my_response = '[1,"Sent","13692992007063494"]'
     #
-    #          stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth').
+    #          stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}').
     #              to_return(
     #              :body => [1,"Sent","13692992007063494"].to_json,
     #              :status => 200,
@@ -1077,7 +1077,7 @@ describe '#publish' do
     #        it 'fires given callback on response envelope' do
     #          my_response = '[1,"Sent","13692992007063494"]'
     #
-    #          stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth').
+    #          stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}').
     #              to_return(
     #              :body => [1,"Sent","13692992007063494"].to_json,
     #              :status => 200,
@@ -1094,7 +1094,7 @@ describe '#publish' do
     #        it 'fires given block on response envelope' do
     #          my_response = '[1,"Sent","13692992007063494"]'
     #
-    #          stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth').
+    #          stub_request(:get, 'http://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}').
     #              to_return(
     #              :body => [1,"Sent","13692992007063494"].to_json,
     #              :status => 200,
@@ -1122,7 +1122,7 @@ describe '#publish' do
     #        it 'fires given callback on response envelope' do
     #          my_response = '[1,"Sent","13692992007063494"]'
     #
-    #          stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth').
+    #          stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}').
     #              to_return(
     #              :body => [1,"Sent","13692992007063494"].to_json,
     #              :status => 200,
@@ -1140,7 +1140,7 @@ describe '#publish' do
     #        it 'fires given block on response envelope' do
     #          my_response = '[1,"Sent","13692992007063494"]'
     #
-    #          stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth').
+    #          stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}').
     #              to_return(
     #              :body => [1,"Sent","13692992007063494"].to_json,
     #              :status => 200,
@@ -1160,7 +1160,7 @@ describe '#publish' do
     #        it 'fires given callback on response envelope' do
     #          my_response = '[1,"Sent","13692992007063494"]'
     #
-    #          stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth').
+    #          stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}').
     #              to_return(
     #              :body => [1,"Sent","13692992007063494"].to_json,
     #              :status => 200,
@@ -1177,7 +1177,7 @@ describe '#publish' do
     #        it 'fires given block on response envelope' do
     #          my_response = '[1,"Sent","13692992007063494"]'
     #
-    #          stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth').
+    #          stub_request(:get, 'https://pubsub.pubnub.com/publish/demo/demo/8a17cc7935e17ab106f71f38ed5ebeba8614cc08ce8fe1117fc3b77df5ad30ea/hello_world/0/%22f15upEZgHvh6rSP0xi/c1g==%22?auth=&pnsdk=PubNub-Ruby/#{Pubnub::VERSION}').
     #              to_return(
     #              :body => [1,"Sent","13692992007063494"].to_json,
     #              :status => 200,

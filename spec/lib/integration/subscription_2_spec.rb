@@ -79,7 +79,7 @@ describe '#subscribe' do
         end
 
         it 'retries until max retries limit is reached' do
-          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 3, :ssl => @ssl)
           @pn.session_uuid = nil
 
           @pn.subscribe(:channel => :demo, :http_sync => @http_sync, :callback => @callback)
@@ -105,7 +105,7 @@ describe '#subscribe' do
         end
 
         it 'retries until max retries limit is reached' do
-          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 3, :ssl => @ssl)
           @pn.session_uuid = nil
 
           @pn.subscribe(:channel => :demo, :http_sync => @http_sync, :callback => @callback)
@@ -131,7 +131,8 @@ describe '#subscribe' do
     context 'via https' do
       before(:each) do
         @counter = 0
-        stub_request(:get, /http[s]?:\/\/pubsub.pubnub.com\/subscribe\/demo\/demo\/0\/\d+/).            to_return(lambda { |request|
+        stub_request(:get, /http[s]?:\/\/pubsub.pubnub.com\/subscribe\/demo\/demo\/0\/\d+/)
+        .to_return(lambda { |request|
           @counter += 1
           if @counter < 3
             {
@@ -163,7 +164,7 @@ describe '#subscribe' do
         end
 
         it 'retries until max retries limit is reached' do
-          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 3, :ssl => @ssl)
           @pn.session_uuid = nil
 
           @pn.subscribe(:channel => :demo, :http_sync => @http_sync, :callback => @callback)
@@ -189,7 +190,7 @@ describe '#subscribe' do
         end
 
         it 'retries until max retries limit is reached' do
-          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 1, :ssl => @ssl)
+          @pn = Pubnub.new(:publish_key => :demo, :subscribe_key => :demo, :error_callback => @error_callback, :max_retries => 3, :ssl => @ssl)
           @pn.session_uuid = nil
 
           @pn.subscribe(:channel => :demo, :http_sync => @http_sync, :callback => @callback)

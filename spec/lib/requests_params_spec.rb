@@ -6,6 +6,12 @@ describe 'Pubnub::SingleRequest' do
     p = Pubnub.new(:subscribe_key => :demo, :publish_key => :demo)
     params = p.send(:params_for_request, {})
     params[:pnsdk].should eq "PubNub-Ruby/#{Pubnub::VERSION}"
+    end
+
+  it 'holds auth even it\'s empty' do
+    p = Pubnub.new(:subscribe_key => :demo, :publish_key => :demo)
+    params = p.send(:params_for_request, {})
+    params.has_key?(:auth).should eq true
   end
 
 end
@@ -16,6 +22,12 @@ describe 'Pubnub::Subscription' do
     p = Pubnub.new(:subscribe_key => :demo, :publish_key => :demo)
     params = p.send(:variables_for_subscribe, {})
     params[:pnsdk].should eq "PubNub-Ruby/#{Pubnub::VERSION}"
+  end
+
+  it 'holds auth even it\'s empty' do
+    p = Pubnub.new(:subscribe_key => :demo, :publish_key => :demo)
+    params = p.send(:variables_for_subscribe, {})
+    params.has_key?(:auth).should eq true
   end
 
 end

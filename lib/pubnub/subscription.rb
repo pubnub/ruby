@@ -176,14 +176,14 @@ module Pubnub
       vars
     end
 
-    def retry_subscribe_request(options, retry_attempts = 0)
-      if retry_attempts < options[:max_retries]
-        retry_attempts += 1
+    def retry_subscribe_request(options, retry_attempts = 1)
+      if retry_attempts <= options[:max_retries]
         unless preform_subscribe_request(options)
           $logger.debug('Retrying')
-          retry_subscribe_request(options, retry_attempts)
+          retry_subscribe_request(options, retry_attempts + 1)
         end
       else
+        $logger.debug('Reached max retries')
         false
       end
     end
