@@ -1,7 +1,7 @@
 require 'pubnub'
 
 puts 'Provide origin [demo.pubnub.com]:'
-origin = gets.chomp!
+origin = gets.chomp!.downcase
 origin = 'demo.pubnub.com' if origin.blank?
 puts 'Provide subscribe key [demo]:'
 sub_key = gets.chomp!
@@ -39,20 +39,21 @@ while(true)
   ssl = false
   while !%w(Y N).include? ssl
     puts('Should next operation be ssl [y/N]?')
-    ssl = gets.chomp!
+    ssl = gets.chomp!.upcase
     ssl = 'N' if ssl.blank?
   end
+  ssl = ssl == 'Y' ? true : false
 
   sync_or_async = false
   while !%w(S A).include? sync_or_async
     puts('Should next operation be [S]ync or [A]sync?')
-    sync_or_async = gets.chomp!
+    sync_or_async = gets.chomp!.upcase
   end
 
   block_or_parameter = false
   while !%w(B P).include? block_or_parameter
     puts('Do you want pass callback as [B]lock or [P]arameter?')
-    block_or_parameter = gets.chomp!
+    block_or_parameter = gets.chomp!.upcase
   end
 
   puts('1. subscribe')
