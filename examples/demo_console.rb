@@ -31,6 +31,7 @@ p = Pubnub.new(
 default_cb = lambda { |envelope|
   puts "\nchannel: #{envelope.channel}"
   puts "msg: #{envelope.message}"
+  binding.pry
   puts "payload: #{envelope.payload}" if envelope.payload
 }
 

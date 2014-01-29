@@ -106,7 +106,7 @@ module Pubnub
       end
     end
 
-    def params_for_request(options, skip_signature = false)
+    def params_for_request(options, generating_signature = false)
       # TODO: refactor to use if statements?
       vars = case options[:action]
         when :history
@@ -148,10 +148,10 @@ module Pubnub
         else
           { }
       end
-      vars.merge!({ :uuid => options[:uuid] })                  if     options[:uuid]
-      vars.merge!({ :auth => options[:auth_key] })              unless [:audit, :grant, :revoke].include?(options[:action])
-      vars.merge!({ :pnsdk => "PubNub-Ruby/#{Pubnub::VERSION}" })
-      if !skip_signature && [:audit, :grant].include?(options[:action])
+      vars.merge!({ :uuid => options[:uuid] })                    if     options[:uuid]
+      vars.merge!({ :auth => options[:auth_key] })                unless [:audit, :grant, :revoke].include?(options[:action])
+      vars.merge!({ :pnsdk => "PubNub-Ruby/#{Pubnub::VERSION}" }) unless generating_signature
+      if !generating_signature && [:audit, :grant].include?(options[:action])
         vars.merge!({ :signature => get_signature(options) })
       end
       vars
@@ -257,12 +257,13 @@ module Pubnub
     def get_signature(options)
       $logger.debug 'Generating signature'
       options[:channel] = CGI.escape(options[:channel]).gsub('+','%20')
+      @timestamp = current_time
       message = "#{options[:subscribe_key]}\n#{options[:publish_key]}\n#{options[:action]}\n#{variables_for_signature(options)}"
       Base64.strict_encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha256'), options[:secret_key], message)).strip
     end
 
     def variables_for_signature(options)
-      params_for_request(options, true).map{|k,v| "#{k}=#{v}"}.sort.join('&')
+      params_for_request(options, true).map{|k,v| "#{k.to_s}=#{v.to_s}"}.sort.join('&')
     end
 
     def current_time
