@@ -22,6 +22,8 @@ module Pubnub
       end
 
       @timestamp = current_time
+      $logger.debug("Set timestamp to: #{@timestamp}")
+
       response = fire_single_request(options)
 
       if (200..206).include?(response.status) && Pubnub::Parser.valid_json?(response.body)
@@ -108,6 +110,7 @@ module Pubnub
 
     def params_for_request(options, generating_signature = false)
       # TODO: refactor to use if statements?
+      $logger.debug("Timestamp is equal #{@timestamp}")
       vars = case options[:action]
         when :history
           {
@@ -118,7 +121,7 @@ module Pubnub
           }.delete_if{ |k, v| v.blank? }
         when :audit
           {
-            :timestamp => @timestamp,
+            :timestamp     => @timestamp,
             :channel       => options[:channel],
             :auth          => options[:auth_key_parameter],
             :subscribe_key => options[:subscribe_key_parameter]
@@ -150,7 +153,7 @@ module Pubnub
       end
       vars.merge!({ :uuid => options[:uuid] })                    if     options[:uuid]
       vars.merge!({ :auth => options[:auth_key] })                unless [:audit, :grant, :revoke].include?(options[:action])
-      vars.merge!({ :pnsdk => "PubNub-Ruby/#{Pubnub::VERSION}" }) unless generating_signature
+      vars.merge!({ :pnsdk => "PubNub-Ruby/#{Pubnub::VERSION}" })
       if !generating_signature && [:audit, :grant].include?(options[:action])
         vars.merge!({ :signature => get_signature(options) })
       end
@@ -257,13 +260,18 @@ module Pubnub
     def get_signature(options)
       $logger.debug 'Generating signature'
       options[:channel] = CGI.escape(options[:channel]).gsub('+','%20')
-      @timestamp = current_time
       message = "#{options[:subscribe_key]}\n#{options[:publish_key]}\n#{options[:action]}\n#{variables_for_signature(options)}"
-      Base64.strict_encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha256'), options[:secret_key], message)).strip
+      Base64.urlsafe_encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha256'), options[:secret_key], message)).strip
     end
 
     def variables_for_signature(options)
-      params_for_request(options, true).map{|k,v| "#{k.to_s}=#{v.to_s}"}.sort.join('&')
+      vars = params_for_request(options, true).map{|k,v|
+        "#{k.to_s}=#{CGI.escape(v.to_s).gsub('+','%20')}"
+      }.sort.join('&')
+
+      $logger.debug("Variables for signature is eq #{vars}")
+
+      vars
     end
 
     def current_time

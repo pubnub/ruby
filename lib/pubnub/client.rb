@@ -309,8 +309,7 @@ module Pubnub
     end
 
     def treat_auth_key_param_as_param(options)
-      options[:auth_key_parameter] = options[:auth_key]
-      options.delete(:auth_key)
+      options[:auth_key_parameter] = options.delete(:auth_key)
       options
     end
 
