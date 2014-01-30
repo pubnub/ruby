@@ -269,7 +269,7 @@ module Pubnub
         "#{k.to_s}=#{CGI.escape(v.to_s).gsub('+','%20')}"
       }.sort.join('&')
 
-      $logger.debug("Variables for signature is eq #{vars}")
+      $logger.debug("Variables for signature are #{vars}")
 
       vars
     end

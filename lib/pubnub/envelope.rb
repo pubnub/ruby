@@ -257,7 +257,8 @@ module Pubnub
                                :object          => object,
                                :response        => response_string,
                                :error           => error,
-                               :response_object => response
+                               :response_object => response,
+                               :payload         => object['payload']
                            })
     end
 
