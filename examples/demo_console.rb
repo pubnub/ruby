@@ -2,31 +2,31 @@ require 'pubnub'
 
 keys_option = nil
 
-until %w(1 2 3).include? keys_option do
-  puts 'How do you want to set up app keys?'
-  puts '1. Default DEMO keys'
-  puts '2. Default PAM keys'
-  puts '3. I want to enter them manually'
-  puts 'Enter your choice:'
+puts 'How do you want to set up app keys?'
+puts 'd. Default [D]EMO keys (default)'
+puts 'p. Default [p]am keys'
+puts 'c. want to enter [c]ustom keys'
+puts 'Enter your choice:'
 
-  keys_option = gets.chomp!
-end
+keys_option = gets.chomp!.downcase
+keys_option = 'd' if keys_option.blank? || !%w(d p c).include?(keys_option)
+
 
 case keys_option
-  when '1'
+  when 'd'
     origin = 'demo.pubnub.com'
     sub_key = 'demo'
     pub_key = 'demo'
     sec_key = nil
 
-  when '2'
+  when 'p'
     origin = 'pubsub.pubnub.com'
     sub_key	= 'sub-c-a478dd2a-c33d-11e2-883f-02ee2ddab7fe'
     pub_key	= 'pub-c-a2650a22-deb1-44f5-aa87-1517049411d5'
     sec_key	= 'sec-c-YjFmNzYzMGMtYmI3NC00NzJkLTlkYzYtY2MwMzI4YTJhNDVh'
 
 
-  when '3'
+  when 'c'
     puts 'Provide origin [demo.pubnub.com]:'
     origin = gets.chomp!.downcase
     origin = 'demo.pubnub.com' if origin.blank?
