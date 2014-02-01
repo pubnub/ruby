@@ -1,19 +1,48 @@
 require 'pubnub'
 
-puts 'Provide origin [demo.pubnub.com]:'
-origin = gets.chomp!.downcase
-origin = 'demo.pubnub.com' if origin.blank?
-puts 'Provide subscribe key [demo]:'
-sub_key = gets.chomp!
-sub_key = 'demo' if sub_key.blank?
+keys_option = nil
 
-puts 'Provide publish key [demo]:'
-pub_key = gets.chomp!
-pub_key = 'demo' if pub_key.blank?
+until %w(1 2 3).include? keys_option do
+  puts 'How do you want to set up app keys?'
+  puts '1. Default DEMO keys'
+  puts '2. Default PAM keys'
+  puts '3. I want to enter them manually'
+  puts 'Enter your choice:'
 
-puts 'Provide secret key (optional):'
-sec_key = gets.chomp!
-sec_key = nil if sec_key.blank?
+  keys_option = gets.chomp!
+end
+
+case keys_option
+  when '1'
+    origin = 'demo.pubnub.com'
+    sub_key = 'demo'
+    pub_key = 'demo'
+    sec_key = ''
+
+  when '2'
+    origin = 'pubsub.pubnub.com'
+    sub_key	= 'sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe'
+    pub_key	= 'pub-c-15d6fd3c-05de-4abc-8eba-6595a441959d'
+    sec_key	= 'sec-c-ZWYwMGJiZTYtMTQwMC00NDQ5LWI0NmEtMzZiM2M5NThlOTJh'
+
+
+  when '3'
+    puts 'Provide origin [demo.pubnub.com]:'
+    origin = gets.chomp!.downcase
+    origin = 'demo.pubnub.com' if origin.blank?
+    puts 'Provide subscribe key [demo]:'
+    sub_key = gets.chomp!
+    sub_key = 'demo' if sub_key.blank?
+
+    puts 'Provide publish key [demo]:'
+    pub_key = gets.chomp!
+    pub_key = 'demo' if pub_key.blank?
+
+    puts 'Provide secret key (optional):'
+    sec_key = gets.chomp!
+    sec_key = nil if sec_key.blank?
+end
+
 
 p = Pubnub.new(
     :subscribe_key    => sub_key,
