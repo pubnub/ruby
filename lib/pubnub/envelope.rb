@@ -27,7 +27,7 @@ module Pubnub
     end
 
     attr_reader :last, :first, :message, :timetoken, :channel, :timetoken_update, :response, :error
-    attr_reader :history_end, :history_start, :object, :response_object, :payload, :serviece
+    attr_reader :history_end, :history_start, :object, :response_object, :payload, :serviece, :message
 
     attr_writer :last, :first
 
@@ -59,6 +59,10 @@ module Pubnub
 
     def set_channel(channel)
       @channel = channel
+    end
+
+    def set_message(message)
+      @message = message
     end
 
     def timetoken_update?

@@ -34,6 +34,7 @@ module Pubnub
         )
 
         envelopes = fix_empty_channels_non_subscribe(envelopes, options)
+        envelopes = add_message(envelopes, options[:message])
 
         envelopes.each_with_index { |envelope, i|
           envelope.first = true if i == 0
@@ -63,6 +64,11 @@ module Pubnub
         handle_error_response(envelopes)
       end
 
+      envelopes
+    end
+
+    def add_message(envelopes, message)
+      envelopes.each do |e| e.set_message(message) end
       envelopes
     end
 
