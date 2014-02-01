@@ -17,13 +17,13 @@ case keys_option
     origin = 'demo.pubnub.com'
     sub_key = 'demo'
     pub_key = 'demo'
-    sec_key = ''
+    sec_key = nil
 
   when '2'
     origin = 'pubsub.pubnub.com'
-    sub_key	= 'sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe'
-    pub_key	= 'pub-c-15d6fd3c-05de-4abc-8eba-6595a441959d'
-    sec_key	= 'sec-c-ZWYwMGJiZTYtMTQwMC00NDQ5LWI0NmEtMzZiM2M5NThlOTJh'
+    sub_key	= 'sub-c-a478dd2a-c33d-11e2-883f-02ee2ddab7fe'
+    pub_key	= 'pub-c-a2650a22-deb1-44f5-aa87-1517049411d5'
+    sec_key	= 'sec-c-YjFmNzYzMGMtYmI3NC00NzJkLTlkYzYtY2MwMzI4YTJhNDVh'
 
 
   when '3'
@@ -42,6 +42,11 @@ case keys_option
     sec_key = gets.chomp!
     sec_key = nil if sec_key.blank?
 end
+
+puts "\nUsing following keys:"
+puts "Subscribe key: #{sub_key}"
+puts "Publish key:   #{pub_key}"
+puts "Secret key:    #{sec_key}" if sec_key
 
 
 p = Pubnub.new(
@@ -92,9 +97,9 @@ while(true)
   puts('5. presence')
   puts('6. here_now')
   puts('7. time')
-  puts('8. audit')
-  puts('9. grant')
-  puts('10. revoke')
+  puts('8. audit') if sec_key
+  puts('9. grant') if sec_key
+  puts('10. revoke') if sec_key
   puts("\n\n")
   puts('Enter a selection')
   choice = gets.chomp!
