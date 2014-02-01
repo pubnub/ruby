@@ -38,8 +38,8 @@ module Pubnub
         undecoded_text = Base64.decode64(cipher_text)
         plain_text = decode_cipher.update(undecoded_text)
         plain_text << decode_cipher.final
-      rescue => e
-        return "DECRYPTION_ERROR #{e}"
+      rescue => error
+        @error_callback.call Pubnub::Envelope.format_after_encryption_error(error)
       end
 
       begin

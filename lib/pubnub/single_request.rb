@@ -34,7 +34,7 @@ module Pubnub
         )
 
         envelopes = fix_empty_channels_non_subscribe(envelopes, options)
-        envelopes = add_message(envelopes, options[:message])
+        envelopes = change_message(envelopes, options[:message]) if options[:action] == :publish
 
         envelopes.each_with_index { |envelope, i|
           envelope.first = true if i == 0
@@ -67,7 +67,7 @@ module Pubnub
       envelopes
     end
 
-    def add_message(envelopes, message)
+    def change_message(envelopes, message)
       envelopes.each do |e| e.set_message(message) end
       envelopes
     end
@@ -257,7 +257,11 @@ module Pubnub
       $logger.debug('Formatting message for publish')
       if options[:cipher_key]
         pc = Pubnub::Crypto.new(options[:cipher_key])
-        message = pc.encrypt(options[:message])
+        begin
+          message = pc.encrypt(options[:message])
+        rescue => error
+          @error_callback.call Pubnub::Envelope.format_after_encryption_error(error)
+        end
       else
         message = options[:message]
       end

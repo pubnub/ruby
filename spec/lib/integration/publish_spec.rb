@@ -45,7 +45,7 @@ describe "#publish" do
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
                 @message_output.seek 0
-                @message_output.read.should eq 'Sent'
+                @message_output.read.should eq "{:text=>\"hey\"}"
               end
             end
           end
@@ -59,7 +59,7 @@ describe "#publish" do
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
                 @message_output.seek 0
-                @message_output.read.should eq 'Sent'
+                @message_output.read.should eq "{:text=>\"hey\"}"
               end
             end
           end
@@ -171,7 +171,7 @@ describe "#publish" do
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
                 @message_output.seek 0
-                @message_output.read.should eq 'Sent'
+                @message_output.read.should eq "{:text=>\"hey\"}"
               end
             end
           end
@@ -185,7 +185,7 @@ describe "#publish" do
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
                 @message_output.seek 0
-                @message_output.read.should eq 'Sent'
+                @message_output.read.should eq "{:text=>\"hey\"}"
               end
             end
           end
@@ -300,7 +300,7 @@ describe "#publish" do
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
                 @message_output.seek 0
-                @message_output.read.should eq 'Sent'
+                @message_output.read.should eq "{:text=>\"hey\"}"
               end
             end
           end
@@ -314,7 +314,7 @@ describe "#publish" do
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
                 @message_output.seek 0
-                @message_output.read.should eq 'Sent'
+                @message_output.read.should eq "{:text=>\"hey\"}"
               end
             end
           end
@@ -426,7 +426,7 @@ describe "#publish" do
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
                 @message_output.seek 0
-                @message_output.read.should eq 'Sent'
+                @message_output.read.should eq "{:text=>\"hey\"}"
               end
             end
           end
@@ -440,7 +440,7 @@ describe "#publish" do
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
                 @message_output.seek 0
-                @message_output.read.should eq 'Sent'
+                @message_output.read.should eq "{:text=>\"hey\"}"
               end
             end
           end

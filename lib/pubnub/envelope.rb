@@ -282,6 +282,13 @@ module Pubnub
                                :error           => error,
                                :response_object => response_string
                            })
+      end
+
+    def self.format_after_encryption_error(error)
+      Pubnub::Envelope.new({
+                               :message         => [0, 'Encryption error.'].to_json,
+                               :error           => error
+                           })
     end
 
     def self.decrypt(string, cipher_key)
