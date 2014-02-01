@@ -39,8 +39,9 @@ module Pubnub
       options.merge!({ :action => :subscribe })
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:subscribe, options)
-      options[:channel] = options[:channel].to_s.gsub('+','%20')
       options[:channel] = options[:channels] if options[:channel].blank? && !options[:channels].blank?
+      options[:channel] = Subscription.format_channels(options[:channel])
+      options[:channel] = options[:channel].gsub('+','%20')
       preform_subscribe(@env.merge(options))
     end
 
@@ -48,10 +49,10 @@ module Pubnub
     def presence(options, &block)
       $logger.debug('Calling presence')
       options.merge!({ :action => :presence })
-      options[:channel] = options[:channel].to_s + '-pnpres'
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:presence, options)
-      options[:channel] = options[:channel].to_s.gsub('+','%20')
+      options[:channel] = Subscription.format_channels_for_presence(options[:channel])
+      options[:channel] = options[:channel].gsub('+','%20')
       preform_subscribe(@env.merge(options))
     end
 

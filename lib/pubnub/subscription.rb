@@ -5,12 +5,33 @@ module Pubnub
     attr_reader :subscribed_channel_list, :callback_list
 
     def self.valid_channels?(channels)
-      return false unless [String, Symbol, Integer].include?(channels.class)
+      return false unless [String, Symbol, Integer, Array].include?(channels.class)
       if channels.class == Array
-        channels.each {|c| return false unless [String, Symbol].include?(c) }
+        channels.each {|c| return false unless [String, Symbol, Integer].include?(c.class) }
       end
       true
     end
+
+    def self.format_channels(channels)
+      if channels.is_a? Array
+        channels.map{|c| c.to_s}.join(',')
+      elsif channels.is_a? String
+        channels.split(',').join(',')
+      else
+        channels.to_s
+      end
+      end
+
+    def self.format_channels_for_presence(channels)
+      if channels.is_a? Array
+        channels.map{|c| c.to_s + '-pnpres'}.join(',')
+      elsif channels.is_a? String
+        channels.split(',').map{|c| c + '-pnpres'}.join(',')
+      else
+        channels.to_s + '-pnpres'
+      end
+    end
+
 
     # Check if channel isn't already subscribed, if not, adds channel to channels list and add callback
     # to callbacks list. In meantime starts event machine reactor and periodic timer for subscription
@@ -18,9 +39,6 @@ module Pubnub
     # TODO: Isn't there a little mess with channels?
     def preform_subscribe(options)
       setup_connections(options)
-
-      options[:channel] ||= options[:channels]
-      options[:channel].split(',').join(',') if options[:channel].is_a? String
 
       if options[:http_sync] # Synchronized action
         unless envelope = preform_subscribe_request(options) # preforming request and checking if it's successful
@@ -96,7 +114,8 @@ module Pubnub
             options[:channel],                                               # Channel if set in options
             options[:origin]
           ),
-          options[:callback]                                                 # Passing callback or nil
+          options[:callback],                                                # Passing callback or nil
+          options[:http_sync]
         )
         envelopes                                                            # Success, we don't need to retry
       elsif !Pubnub::Parser.valid_json?(response.body)
@@ -201,14 +220,14 @@ module Pubnub
     end
 
     # Handles returned envelopes
-    def handle_envelopes(origin, envelopes, callback = nil)
+    def handle_envelopes(origin, envelopes, callback = nil, http_sync = nil)
       $logger.debug('Handling envelopes')
       update_timetoken envelopes.first.timetoken
       unless envelopes.size == 1 && envelopes.first.timetoken_update?
         envelopes.each_with_index do |envelope, i|
           envelope.first = true if i == 0
           envelope.last  = true if i == envelopes.size-1
-          EM.next_tick { fire_callback_for(origin, envelope, callback) }
+          Thread.new { fire_callback_for(origin, envelope, callback) if callback || !http_sync }
         end
       end
     end
@@ -219,7 +238,7 @@ module Pubnub
       if callback
         callback.call envelope
       else
-        @callback_list[origin][envelope.channel.to_sym].call envelope
+        @callback_list[origin][envelope.channel.to_s].call envelope
       end
     end
 
@@ -234,9 +253,9 @@ module Pubnub
       $logger.debug("Registering callback for channel #{channel}")
       if @callback_list.nil?
         @callback_list = Hash.new
-        @callback_list[origin] = { channel.to_sym => callback }
+        @callback_list[origin] = { channel.to_s => callback }
       else
-        @callback_list[origin].merge!({ channel.to_sym => callback })
+        @callback_list[origin].merge!({ channel.to_s => callback })
       end
     end
 

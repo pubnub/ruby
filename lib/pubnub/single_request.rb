@@ -38,7 +38,7 @@ module Pubnub
         envelopes.each_with_index { |envelope, i|
           envelope.first = true if i == 0
           envelope.last  = true if i == envelopes.size-1
-          fire_callback_for_non_subscribe(envelope, options[:callback])
+          fire_callback_for_non_subscribe(envelope, options[:callback]) if options[:callback]
         }
 
       elsif !Pubnub::Parser.valid_json?(response.body)
@@ -238,13 +238,14 @@ module Pubnub
                  # TODO: rise error
              end
 
-      escape_path(path)
+      #escape_path(path)
+      path
     end
 
-    def escape_path(path)
-      $logger.debug('Escaping path')
-      URI.escape(path).gsub(/\?/,'%3F')
-    end
+    #def escape_path(path)
+    #  $logger.debug('Escaping path')
+    #  #URI.escape(path).gsub(/\?/,'%3F')
+    #end
 
     def format_message_for_publish(options)
       $logger.debug('Formatting message for publish')
@@ -254,7 +255,8 @@ module Pubnub
       else
         message = options[:message]
       end
-      message.to_json
+
+      options[:cipher_key] ?  URI.escape(message.to_json) : CGI.escape(message.to_json)
     end
 
     def get_signature(options)

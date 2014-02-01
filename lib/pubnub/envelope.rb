@@ -91,7 +91,7 @@ module Pubnub
     #
     # The only exception from that is when we get only update with current timetoken
     def self.format_after_subscribe(response, cipher_key = nil)
-      $logger.debug('Formatting envelopes afffter subscribe')
+      $logger.debug('Formatting envelopes after subscribe')
       response_string = response.body
       object = Pubnub::Parser.parse_json(response_string)
       envelopes = []
@@ -106,14 +106,24 @@ module Pubnub
                                             })
         end
       elsif object.size == 2 && !object[0].empty? # That's when we are subscribed to one channel only
-        [object[0]].flatten.size.times do |i|
+        if object[0].is_a?(String)
           envelopes << Pubnub::Envelope.new({
-                                                :message         => decrypt([object[0]].flatten[i], cipher_key),
+                                                :message         => decrypt(object[0], cipher_key),
                                                 :response        => decrypt(response_string, cipher_key),
                                                 :channel         => nil,            # nil channel is fixed as Pubnub::Subscription level
                                                 :timetoken       => object[1].to_i,
                                                 :response_object => response
                                             })
+        else
+          object[0].size.times do |i|
+            envelopes << Pubnub::Envelope.new({
+                                                  :message         => decrypt(object[0][i], cipher_key),
+                                                  :response        => decrypt(response_string, cipher_key),
+                                                  :channel         => nil,            # nil channel is fixed as Pubnub::Subscription level
+                                                  :timetoken       => object[1].to_i,
+                                                  :response_object => response
+                                              })
+          end
         end
       else # We have got only timetoken update
         envelopes = [
@@ -257,8 +267,7 @@ module Pubnub
                                :object          => object,
                                :response        => response_string,
                                :error           => error,
-                               :response_object => response,
-                               :payload         => object['payload']
+                               :response_object => response
                            })
     end
 

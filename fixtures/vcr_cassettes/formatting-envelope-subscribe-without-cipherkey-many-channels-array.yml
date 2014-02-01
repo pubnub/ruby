@@ -1,0 +1,89 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/subscribe/demo/test_channel_one,test_channel_two/0/0?auth=&pnsdk=PubNub-Ruby/3.5.0beta&uuid=a13db158-00a5-426e-88ef-20c2903bc727
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 01 Feb 2014 03:39:30 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '24'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+      Pn-Throttled:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: '[[],"13912259700970380"]'
+    http_version: 
+  recorded_at: Sat, 01 Feb 2014 03:39:29 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/subscribe/demo/test_channel_one,test_channel_two/0/13912259700970380?auth=&pnsdk=PubNub-Ruby/3.5.0beta&uuid=a13db158-00a5-426e-88ef-20c2903bc727
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 01 Feb 2014 03:39:35 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '50'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+      Pn-Throttled:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: '[[[1,2,3]],"13912259759369660","test_channel_one"]'
+    http_version: 
+  recorded_at: Sat, 01 Feb 2014 03:39:35 GMT
+recorded_with: VCR 2.8.0
