@@ -82,12 +82,14 @@ while(true)
   while !%w(S A).include? sync_or_async
     puts('Should next operation be [S]ync or [A]sync?')
     sync_or_async = gets.chomp!.upcase
+    sync_or_async = 'A' if sync_or_async.blank?
   end
 
   block_or_parameter = false
   while !%w(B P).include? block_or_parameter
     puts('Do you want pass callback as [B]lock or [P]arameter?')
     block_or_parameter = gets.chomp!.upcase
+    block_or_parameter = 'B' if block_or_parameter.blank?
   end
 
   puts('1. subscribe')
