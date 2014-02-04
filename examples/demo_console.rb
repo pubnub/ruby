@@ -62,6 +62,13 @@ p = Pubnub.new(
     }
 )
 
+puts("\nUse PubNub AES encryption? Leave blank for now, else enter your cipher key.")
+aes = gets.chomp!
+
+unless aes.blank?
+  p.cipher_key = aes
+end
+
 default_cb = lambda { |envelope|
   puts "\nchannel: #{envelope.channel}"
   puts "msg: #{envelope.message}"
