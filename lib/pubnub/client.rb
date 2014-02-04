@@ -65,6 +65,7 @@ module Pubnub
       options[:channel] = options[:channel].to_s.gsub('+','%20')
       preform_single_request(@env.merge(options))
     end
+    alias_method 'unsubscribe', 'leave' 
 
     # TODO well documented leave examples
     def publish(options, &block)
