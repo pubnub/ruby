@@ -93,7 +93,7 @@ module Pubnub
     end
 
     def format_envelopes(response, pubsub_operation, cipher_key = nil, msg = nil)
-      Pubnub::Envelope.format_from_string_with_json(response, pubsub_operation, cipher_key, msg)
+      Pubnub::Envelope.format_from_string_with_json(response, pubsub_operation, cipher_key, msg, @env)
     end
 
     # preforms subscribe request

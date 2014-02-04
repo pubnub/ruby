@@ -18,7 +18,7 @@ module Pubnub
     end
 
     def to_envelope
-      Pubnub::Envelope.format_from_string_with_json(@response, :error, nil, @message, @error)
+      Pubnub::Envelope.format_from_string_with_json(@response, :error, nil, @message, @error, @env)
     end
 
     private

@@ -94,7 +94,7 @@ module Pubnub
     end
 
     def format_envelopes(response, pubsub_operation, cipher_key = nil, msg = nil)
-      Pubnub::Envelope.format_from_string_with_json(response, pubsub_operation, cipher_key, msg)
+      Pubnub::Envelope.format_from_string_with_json(response, pubsub_operation, cipher_key, msg, @env)
     end
 
     def fire_single_request(options, retry_attempts = 0)
@@ -260,7 +260,7 @@ module Pubnub
         begin
           message = pc.encrypt(options[:message])
         rescue => error
-          @error_callback.call Pubnub::Envelope.format_after_encryption_error(error)
+          @env[:error_callback].call Pubnub::Envelope.format_after_encryption_error(error)
         end
       else
         message = options[:message]

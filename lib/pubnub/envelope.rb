@@ -1,25 +1,25 @@
 module Pubnub
   class Envelope
-    def self.format_from_string_with_json(response, pubsub_operation, cipher_key = nil, msg = nil, error = nil)
+    def self.format_from_string_with_json(response, pubsub_operation, cipher_key = nil, msg = nil, error = nil, env)
       envelopes = case pubsub_operation
                     when :subscribe
-                      format_after_subscribe(response, cipher_key)
+                      format_after_subscribe(response, cipher_key, env)
                     when :leave
-                      format_after_leave(response)
+                      format_after_leave(response, env)
                     when :publish
-                      format_after_publish(response)
+                      format_after_publish(response, env)
                     when :history
-                      format_after_history(response)
+                      format_after_history(response, env)
                     when :here_now
-                      format_after_here_now(response)
+                      format_after_here_now(response, env)
                     when :audit
-                      format_after_audit(response)
+                      format_after_audit(response, env)
                     when :grant
-                      format_after_grant(response)
+                      format_after_grant(response, env)
                     when :time
-                      format_after_time(response)
+                      format_after_time(response, env)
                     when :error
-                      format_after_error(response, msg, error)
+                      format_after_error(response, msg, error, env)
                     else
                       raise "Don't know how to generate envelope for: #{pubsub_operation}"
                   end
@@ -51,6 +51,8 @@ module Pubnub
 
       @timetoken_update = options[:timetoken_update]
       @error            = options[:error]
+
+      @env = options[:env]
     end
 
     def have_message_without_channel?
@@ -94,16 +96,18 @@ module Pubnub
     # First message is form first channel etc.
     #
     # The only exception from that is when we get only update with current timetoken
-    def self.format_after_subscribe(response, cipher_key = nil)
+    def self.format_after_subscribe(response, cipher_key = nil, env)
       $logger.debug('Formatting envelopes after subscribe')
       response_string = response.body
       object = Pubnub::Parser.parse_json(response_string)
       envelopes = []
+      #require 'pry'
+      #binding.pry
       if object.size == 3 # That's when we are subscribed to more than one channel
         object[2].split(',').size.times do |i|
           envelopes << Pubnub::Envelope.new({
-                                              :message         => decrypt(object[0][i], cipher_key),
-                                              :response        => decrypt(response_string, cipher_key),
+                                              :message         => decrypt(object[0][i], cipher_key, env),
+                                              :response        => response_string,
                                               :channel         => object[2][i],
                                               :timetoken       => object[1].to_i,
                                               :response_object => response
@@ -112,8 +116,8 @@ module Pubnub
       elsif object.size == 2 && !object[0].empty? # That's when we are subscribed to one channel only
         if object[0].is_a?(String)
           envelopes << Pubnub::Envelope.new({
-                                                :message         => decrypt(object[0], cipher_key),
-                                                :response        => decrypt(response_string, cipher_key),
+                                                :message         => decrypt(object[0], cipher_key, env),
+                                                :response        => response_string,
                                                 :channel         => nil,            # nil channel is fixed as Pubnub::Subscription level
                                                 :timetoken       => object[1].to_i,
                                                 :response_object => response
@@ -121,8 +125,8 @@ module Pubnub
         else
           object[0].size.times do |i|
             envelopes << Pubnub::Envelope.new({
-                                                  :message         => decrypt(object[0][i], cipher_key),
-                                                  :response        => decrypt(response_string, cipher_key),
+                                                  :message         => decrypt(object[0][i], cipher_key, env),
+                                                  :response        => response_string,
                                                   :channel         => nil,            # nil channel is fixed as Pubnub::Subscription level
                                                   :timetoken       => object[1].to_i,
                                                   :response_object => response
@@ -145,7 +149,7 @@ module Pubnub
     # Returns Pubnub::Envelope object in array formatted after here_now operation
     # There's only message, nil channel (channel is set before firing callback or returning value)
     # and response, as raw server response string
-    def self.format_after_here_now(response)
+    def self.format_after_here_now(response, env)
       response_string = response.body
       object = Pubnub::Parser.parse_json(response_string)
       [
@@ -161,7 +165,7 @@ module Pubnub
     # Returns Pubnub::Envelope object in array formatted after leave operation
     # There's only message, nil channel (channel is set before firing callback or returning value)
     # and response, as raw server response string
-    def self.format_after_leave(response)
+    def self.format_after_leave(response, env)
       response_string = response.body
       object = Pubnub::Parser.parse_json(response_string)
       [
@@ -182,7 +186,7 @@ module Pubnub
     # * history_start, with timetoken when first message appears
     # * history_end, with timetoken when history ends
     # * timetoken, same as history_end
-    def self.format_after_history(response)
+    def self.format_after_history(response, env)
       response_string = response.body
       $logger.debug('Formating envelopes after history')
       object = Pubnub::Parser.parse_json(response_string)
@@ -201,7 +205,7 @@ module Pubnub
       envelopes
     end
 
-    def self.format_after_publish(response)
+    def self.format_after_publish(response, env)
       response_string = response.body
       $logger.debug('Formatting envelopes after publish')
       object = Pubnub::Parser.parse_json(response_string)
@@ -219,7 +223,7 @@ module Pubnub
       #end
     end
 
-    def self.format_after_audit(response)
+    def self.format_after_audit(response, env)
       response_string = response.body
       $logger.debug('Formatting envelopes after audit')
       object = Pubnub::Parser.parse_json(response_string)
@@ -234,7 +238,7 @@ module Pubnub
         ]
     end
 
-    def self.format_after_grant(response)
+    def self.format_after_grant(response, env)
       response_string = response.body
       $logger.debug('Formatting envelopes after grant')
       object = Pubnub::Parser.parse_json(response_string)
@@ -250,7 +254,7 @@ module Pubnub
     end
 
 
-    def self.format_after_time(response)
+    def self.format_after_time(response, env)
       response_string = response.body
       object = Pubnub::Parser.parse_json(response_string)
       [
@@ -263,7 +267,7 @@ module Pubnub
       ]
     end
 
-    def self.format_after_error(response, msg, error = nil)
+    def self.format_after_error(response, msg, error = nil, env)
       response_string = response.body
       object = Pubnub::Parser.parse_json(response_string) unless response_string.blank?
       Pubnub::Envelope.new({
@@ -284,20 +288,25 @@ module Pubnub
                            })
       end
 
-    def self.format_after_encryption_error(error)
+    def self.format_after_encryption_error(error, env)
       Pubnub::Envelope.new({
                                :message         => [0, 'Encryption error.'].to_json,
                                :error           => error
                            })
     end
 
-    def self.decrypt(string, cipher_key)
+    def self.decrypt(string, cipher_key, env)
       if cipher_key.blank?
         string
       else
         $logger.debug('Cipher_key not blank, decrypting message')
-        crypto = Pubnub::Crypto.new(cipher_key)
-        crypto.decrypt(string)
+        begin
+          crypto = Pubnub::Crypto.new(cipher_key)
+          crypto.decrypt(string)
+        rescue => error
+          env[:error_callback].call format_after_encryption_error(error, env)
+        end
+
       end
     end
 
