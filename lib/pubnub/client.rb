@@ -27,7 +27,7 @@ module Pubnub
       check_required_parameters(:initialize, options)
 
       setup_env(options)
-      run_em unless EM.reactor_running?
+      run_em
       register_faraday_middleware
       setup_connections(@env) # We're using @env not options because it has default values that could be necessary
 
@@ -195,7 +195,9 @@ module Pubnub
     # Sterts event machine reactor in new thread
     def run_em
       $logger.debug('Starting EventMachine')
-      Thread.new { EM.run }
+      unless EM.reactor_running?
+        Thread.new { EM.run }
+      end
 
       # block thread until EM starts
       until EM.reactor_running? do end

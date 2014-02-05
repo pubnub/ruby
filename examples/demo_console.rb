@@ -70,9 +70,11 @@ unless aes.blank?
 end
 
 default_cb = lambda { |envelope|
-  puts "\nchannel: #{envelope.channel}"
+  puts "\n/------------------"
+  puts "channel: #{envelope.channel}"
   puts "msg: #{envelope.message}"
   puts "payload: #{envelope.payload}" if envelope.payload
+  puts '------------------/'
 }
 
 while(true)

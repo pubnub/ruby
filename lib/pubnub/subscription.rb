@@ -69,6 +69,7 @@ module Pubnub
     # Creates event machine timer for subscription requests.
     def start_subscription_timer(options)
       $logger.debug('Starting subscription timer')
+      run_em
       @wait_for_response = false
       @subscription_request_timers = Hash.new unless @subscription_request_timers
       @subscription_request_timers[options[:origin]] = EM.add_periodic_timer(PERIODIC_TIMER_INTERVAL) do
@@ -84,12 +85,11 @@ module Pubnub
         end
 
         if @subscribed_channel_list[options[:origin]].empty?
-          @subscription_request_timer[options[:origin]].stop
+          @subscription_request_timer[options[:origin]].cancel
           @subscription_request_timer[options[:origin]] = nil
         end
 
       end
-      EM.next_tick { }
     end
 
     def format_envelopes(response, pubsub_operation, cipher_key = nil, msg = nil)
@@ -210,6 +210,11 @@ module Pubnub
     # Sets channel for envelope without channel
     # It happens when we're subscribed to one channel only
     def fix_empty_channels(envelopes, channel = nil, origin = nil)
+      puts 'FIXING EMPTY CHANNELS'
+      puts "e: #{envelopes}"
+      puts "c: #{channel}"
+      puts "o: #{origin}"
+      puts "cfs: #{channels_for_subscribe(origin)}"
       envelopes.each do |e|
         if e.have_message_without_channel?
           e.set_channel (channel || channels_for_subscribe(origin))
@@ -228,6 +233,7 @@ module Pubnub
           envelope.first = true if i == 0
           envelope.last  = true if i == envelopes.size-1
           Thread.new { fire_callback_for(origin, envelope, callback) if callback || !http_sync }
+          #fire_callback_for(origin, envelope, callback) if callback || !http_sync
         end
       end
     end

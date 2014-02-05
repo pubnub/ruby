@@ -105,10 +105,17 @@ module Pubnub
       #binding.pry
       if object.size == 3 # That's when we are subscribed to more than one channel
         object[2].split(',').size.times do |i|
+
+          if object[2].is_a? Array
+            channel = object[2][i]
+          else
+            channel = object[2]
+          end
+
           envelopes << Pubnub::Envelope.new({
                                               :message         => decrypt(object[0][i], cipher_key, env),
                                               :response        => response_string,
-                                              :channel         => object[2][i],
+                                              :channel         => channel,
                                               :timetoken       => object[1].to_i,
                                               :response_object => response
                                             })
