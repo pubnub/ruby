@@ -210,11 +210,6 @@ module Pubnub
     # Sets channel for envelope without channel
     # It happens when we're subscribed to one channel only
     def fix_empty_channels(envelopes, channel = nil, origin = nil)
-      puts 'FIXING EMPTY CHANNELS'
-      puts "e: #{envelopes}"
-      puts "c: #{channel}"
-      puts "o: #{origin}"
-      puts "cfs: #{channels_for_subscribe(origin)}"
       envelopes.each do |e|
         if e.have_message_without_channel?
           e.set_channel (channel || channels_for_subscribe(origin))
