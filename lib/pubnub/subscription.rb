@@ -12,15 +12,17 @@ module Pubnub
       true
     end
 
-    def self.format_channels(channels)
-      if channels.is_a? Array
-        channels.map{|c| c.to_s}.join(',')
-      elsif channels.is_a? String
-        channels.split(',').join(',')
+    def format_channels(channels)
+      if channels.is_a? String
+        formatted_channels = channels.split(',')
+      elsif !channels.is_a? Array
+        formatted_channels = channels = [channels.to_s]
       else
-        channels.to_s
+        formatted_channels = channels.map{ |c| c.to_s }
       end
-      end
+
+      formatted_channels.map{ |c| c.gsub('+','%20') }
+    end
 
     def self.format_channels_for_presence(channels)
       if channels.is_a? Array
@@ -38,6 +40,8 @@ module Pubnub
     # if not running
     # TODO: Isn't there a little mess with channels?
     def preform_subscribe(options)
+
+      options[:channel] = format_channels(options[:channel])
       setup_connections(options)
 
       if options[:http_sync] # Synchronized action
@@ -45,7 +49,7 @@ module Pubnub
           retry_subscribe_request(options)
         end
       else # Asynchronized action
-        [options[:channel].to_s.split(',')].flatten.each do |channel|
+        options[:channel].each do |channel|
           unless channel_already_on_list?(options[:origin], channel)
             register_channel(options[:origin], channel)
             register_callback(options[:origin], channel, options[:callback])
@@ -74,6 +78,7 @@ module Pubnub
       @subscription_request_timers = Hash.new unless @subscription_request_timers
       @subscription_request_timers[options[:origin]] = EM.add_periodic_timer(PERIODIC_TIMER_INTERVAL) do
         $logger.debug('Subscription timer started')
+
         unless @wait_for_response
           @wait_for_response = true
 
@@ -98,6 +103,7 @@ module Pubnub
 
     # preforms subscribe request
     def preform_subscribe_request(options)
+      channel_for_envelope = options[:channel][0] if options[:channel].size == 1 && options[:http_sync]
       response = fire_subscribe_request(options)
       $logger.debug 'Got response'
       if (200..206).include?(response.status) && Pubnub::Parser.valid_json?(response.body) # We've got some successful response
@@ -111,7 +117,7 @@ module Pubnub
           options[:origin],
           fix_empty_channels(                                                # Fixing empty channels if happen
             envelopes,                                                       # Formatted Envelopes
-            options[:channel],                                               # Channel if set in options
+            channel_for_envelope,                                                         # Channel if set in options
             options[:origin]
           ),
           options[:callback],                                                # Passing callback or nil
@@ -141,24 +147,16 @@ module Pubnub
         handle_error_response(envelopes)
         false
       end
-
-      #else                                                                   # Crap! There's something wrong!
-      #  binding.pry
-      #  $logger.debug 'Status non-2xx or invalid JSON'
-      #  envelopes = format_envelopes(response, :error, options[:cipher_key], 'Response message not usable')
-      #  handle_error_response(envelopes)
-      #  false                                                                # We have to retry
-      #end
-      # Do not add here anything or you will break returned value (see above)
     end
 
     # Fires subscribe request and returns response object with envelopes located at .env[:envelopes]
     def fire_subscribe_request(options)
       $logger.debug 'Setting path'
       if options[:http_sync]
+        channels = options[:channel].join(',')
         path = subscription_path(
             options[:subscribe_key],
-            options[:channel],
+            channels,
             options[:timetoken]
         )
 
@@ -172,19 +170,16 @@ module Pubnub
       end
 
       $logger.debug 'Firing subscribe request'
-      #begin
-      #  binding.pry
-        @subscribe_connections_pool[options[:origin]].get do |request|
-          request.path = path
-          request.params = variables_for_subscribe(options)
-          request.options = {
-              :timeout      => options[:subscribe_timeout],
-              :open_timeout => options[:subscribe_timeout]
-          }
-        end
-      #rescue Exception => e
-      #  binding.pry
-      #end
+
+      @subscribe_connections_pool[options[:origin]].get do |request|
+        request.path = path
+        request.params = variables_for_subscribe(options)
+        request.options = {
+            :timeout      => options[:subscribe_timeout],
+            :open_timeout => options[:subscribe_timeout]
+        }
+      end
+
     end
 
     def variables_for_subscribe(options)
@@ -227,7 +222,7 @@ module Pubnub
         envelopes.each_with_index do |envelope, i|
           envelope.first = true if i == 0
           envelope.last  = true if i == envelopes.size-1
-          Thread.new { fire_callback_for(origin, envelope, callback) if callback || !http_sync }
+          Thread.new { fire_callback_for(origin, envelope, callback) if callback || !http_sync } unless envelope.msg.blank? # can be blank after encoding error
           #fire_callback_for(origin, envelope, callback) if callback || !http_sync
         end
       end

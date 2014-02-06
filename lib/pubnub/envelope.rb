@@ -101,8 +101,6 @@ module Pubnub
       response_string = response.body
       object = Pubnub::Parser.parse_json(response_string)
       envelopes = []
-      #require 'pry'
-      #binding.pry
       if object.size == 3 # That's when we are subscribed to more than one channel
         object[2].split(',').size.times do |i|
 

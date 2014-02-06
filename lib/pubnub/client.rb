@@ -40,8 +40,6 @@ module Pubnub
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:subscribe, options)
       options[:channel] = options[:channels] if options[:channel].blank? && !options[:channels].blank?
-      options[:channel] = Subscription.format_channels(options[:channel])
-      options[:channel] = options[:channel].gsub('+','%20')
       preform_subscribe(@env.merge(options))
     end
 
@@ -62,8 +60,10 @@ module Pubnub
       options.merge!({ :action => :leave })
       options.merge!({ :callback => block }) if block_given?
       check_required_parameters(:leave, options)
-      options[:channel] = options[:channel].to_s.gsub('+','%20')
-      preform_single_request(@env.merge(options))
+      format_channels(options[:channel]).each do |channel|
+        c = channel.to_s.gsub('+','%20')
+        preform_single_request(@env.merge(options).merge({:channel => c}))
+      end
     end
     alias_method 'unsubscribe', 'leave'
 
