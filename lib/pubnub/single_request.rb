@@ -6,6 +6,7 @@ module Pubnub
         single_request(options)
       else
         $logger.debug('preforming asynchronized single request')
+        run_em
         EM.defer { single_request(options) }
       end
     end
