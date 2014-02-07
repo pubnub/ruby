@@ -55,8 +55,21 @@ describe Pubnub::Request do
                 :cipher_key    => 'so_secret_key'
             )
 
-            @pubnub_request.path.should eq '/publish/publish_key/subscribe_key/0/channel/0/%22OfUPhgfENucj3lsbSef1qg==%22'
+            @pubnub_request.path.should eq '/publish/publish_key/subscribe_key/0/channel/0/%22OfUPhgfENucj3lsbSef1qg%3D%3D%22'
           end
+        end
+
+        it 'encodes uris properly' do
+          @pubnub_request = Pubnub::Request.new(
+              :operation     => 'publish',
+              :channel       => 'channel/channel+channel',
+              :subscribe_key => 'subscribe_key',
+              :origin        => 'pubsub.pubnub.com',
+              :publish_key   => 'publish_key',
+              :message       => 'test_message',
+          )
+
+          @pubnub_request.path.should eq '/publish/publish_key/subscribe_key/0/channel%2Fchannel%2Bchannel/0/%22test_message%22'
         end
       end
 
