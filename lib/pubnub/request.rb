@@ -133,7 +133,7 @@ module Pubnub
 
     def encode_path(request)
       $log.debug 'ENCODING PATH'
-      path = URI.escape('/' + request.map{|i| i.to_s}.reject(&:empty?).join('/')).gsub(/\?/,'%3F')
+      path = '/' + request.map{|i| URI.encode_www_form_component(i.to_s).gsub('+', '%20')}.reject(&:empty?).join('/')
       if @operation == 'leave'
         $log.debug "#{path}/leave"
         "#{path}/leave"
