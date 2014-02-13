@@ -79,7 +79,7 @@ describe "#revoke" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,"message":"Success","payload":{"auths":{"authkey":{"r":0,"w":0}},"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe","ttl":1,"channel":"demo","level":"user"},"service":"Access Manager"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -93,7 +93,7 @@ describe "#revoke" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,"message":"Success","payload":{"auths":{"authkey":{"r":0,"w":0}},"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe","ttl":1,"channel":"demo","level":"user"},"service":"Access Manager"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -205,7 +205,7 @@ describe "#revoke" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,"message":"Success","payload":{"auths":{"authkey":{"r":0,"w":0}},"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe","ttl":1,"channel":"demo","level":"user"},"service":"Access Manager"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -219,7 +219,7 @@ describe "#revoke" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,"message":"Success","payload":{"auths":{"authkey":{"r":0,"w":0}},"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe","ttl":1,"channel":"demo","level":"user"},"service":"Access Manager"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -334,7 +334,7 @@ describe "#revoke" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,"message":"Success","payload":{"auths":{"authkey":{"r":0,"w":0}},"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe","ttl":1,"channel":"demo","level":"user"},"service":"Access Manager"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -348,7 +348,7 @@ describe "#revoke" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,"message":"Success","payload":{"auths":{"authkey":{"r":0,"w":0}},"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe","ttl":1,"channel":"demo","level":"user"},"service":"Access Manager"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -460,7 +460,7 @@ describe "#revoke" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,"message":"Success","payload":{"auths":{"authkey":{"r":0,"w":0}},"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe","ttl":1,"channel":"demo","level":"user"},"service":"Access Manager"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -474,7 +474,7 @@ describe "#revoke" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,"message":"Success","payload":{"auths":{"authkey":{"r":0,"w":0}},"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe","ttl":1,"channel":"demo","level":"user"},"service":"Access Manager"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end

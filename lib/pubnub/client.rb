@@ -1,281 +1,124 @@
 require 'pubnub/configuration'
 require 'pubnub/parser'
-require 'pubnub/single_request'
-require 'pubnub/subscription'
 require 'pubnub/envelope'
 require 'pubnub/crypto'
 require 'pubnub/uuid'
 require 'pubnub/exceptions'
-require 'pubnub/middleware/response'
-require 'pubnub/middleware/request'
-
-
-# TODO Split every operation as separate modules?
+require 'pubnub/event'
+require 'pubnub/formatter'
+require 'pubnub/validator'
+require 'pubnub/pam'
 
 module Pubnub
   class Client
     include Configuration
-    include Subscription
-    include SingleRequest
-
-    VERSION = Pubnub::VERSION
 
     attr_reader :env
+    attr_accessor :single_event_connections_pool, :subscribe_event_connections_pool, :uuid
 
-    # While creating new Pubnub::Client instance it checks for
-    def initialize(options)
-      check_required_parameters(:initialize, options)
+    EVENTS = %w(publish subscribe presence leave history here_now audit grant revoke time)
+    VERSION = Pubnub::VERSION
 
-      setup_env(options)
-      run_em
-      register_faraday_middleware
-      setup_connections(@env) # We're using @env not options because it has default values that could be necessary
-
+    EVENTS.each do |event_name|
+      require File.join('pubnub', 'events', event_name)
     end
 
-    # TODO well documented subscribe examples
-    def subscribe(options, &block)
-      $logger.debug('Calling subscribe')
-      options.merge!({ :action => :subscribe })
-      options.merge!({ :callback => block }) if block_given?
-      check_required_parameters(:subscribe, options)
-      options[:channel] = options[:channels] if options[:channel].blank? && !options[:channels].blank?
-      preform_subscribe(@env.merge(options))
-    end
-
-    # TODO well documented presence examples
-    def presence(options, &block)
-      $logger.debug('Calling presence')
-      options.merge!({ :action => :presence })
-      options.merge!({ :callback => block }) if block_given?
-      check_required_parameters(:presence, options)
-      options[:channel] = Subscription.format_channels_for_presence(options[:channel])
-      options[:channel] = options[:channel].gsub('+','%20')
-      preform_subscribe(@env.merge(options))
-    end
-
-    # TODO well documented leave examples
-    def leave(options, &block)
-      $logger.debug('Calling leave')
-      options.merge!({ :action => :leave })
-      options.merge!({ :callback => block }) if block_given?
-      check_required_parameters(:leave, options)
-      format_channels(options[:channel]).each do |channel|
-        c = channel.to_s.gsub('+','%20')
-        preform_single_request(@env.merge(options).merge({:channel => c}))
+    EVENTS.each do |event_name|
+      define_method event_name do |params, &block|
+        params[:callback] = block if params[:callback].nil?
+        event = Pubnub.const_get(classify_method(event_name)).new(params, self)
+        params[:http_sync] ? event.fire(self) : EM.next_tick { event.fire(self) }
+        #event.fire(self)
       end
     end
-    alias_method 'unsubscribe', 'leave'
 
-    # TODO well documented leave examples
-    def publish(options, &block)
-      $logger.debug('Calling publish')
-      options.merge!({ :action => :publish })
-      options.merge!({ :callback => block }) if block_given?
-      check_required_parameters(:publish, options)
-      options[:channel] = options[:channel].to_s.gsub('+','%20')
-      preform_single_request(@env.merge(options))
+    def initialize(options)
+      validate!(options)
+      setup_app(options)
+      # From this moment we have to use @env in that method instead of options
+      create_connections_pools(@env)
+      create_subscriptions_pools(@env)
+      start_event_machine(@env)
+
     end
 
-    # TODO well documented history examples
-    def history(options, &block)
-      $logger.debug('Calling history')
-      options.merge!({ :action => :history })
-      options.merge!({ :callback => block }) if block_given?
-      check_required_parameters(:history, options)
-      options[:channel] = options[:channel].to_s.gsub('+','%20')
-      preform_single_request(@env.merge(options))
+    def shutdown(stop_em = false)
+      @single_event_connections_pool.each do |origin, conn|
+        conn.shutdown
+        conn = nil
+      end
+      @single_event_connections_pool = Hash.new
+
+      @subscribe_event_connections_pool.each do |origin, conn|
+        conn.shutdown
+        conn = nil
+      end
+      @subscribe_event_connections_pool = Hash.new
+
+      @env[:callback_pool] = Hash.new
+      @env[:subscriptions] = Hash.new
+
+      EM.stop if stop_em
+
+      $logger.info('Bye!')
     end
 
-    # TODO well documented here_now examples
-    def here_now(options, &block)
-      $logger.debug('Calling here_now')
-      options.merge!({ :action => :here_now })
-      options.merge!({ :callback => block }) if block_given?
-      check_required_parameters(:here_now, options)
-      options[:channel] = options[:channel].to_s.gsub('+','%20')
-      preform_single_request(@env.merge(options))
+    def start_subscribe
+      @env[:wait_for_response] = Hash.new unless @wait_for_response
+      #@env[:railgun] = EM.add_periodic_timer(PERIODIC_TIMER_INTERVAL) do
+        @env[:subscriptions].each do |origin, subscribe|
+          unless @env[:wait_for_response][origin] == true
+            @env[:wait_for_response][origin] = true
+
+            $logger.debug('Async subscription running')
+            binding.pry
+            subscribe.start_event(self)
+
+            @env[:wait_for_response][origin] = false
+          end
+        end
+      #end unless @env[:railgun]
     end
 
-    # TODO well documented audit examples
-    def audit(options, &block)
-      $logger.debug('Calling audit')
-      options.merge!({ :action => :audit })
-      options.merge!({ :callback => block }) if block_given?
-      check_required_parameters(:audit, options)
-      options[:channel] = options[:channel].to_s.gsub('+','%20')
-      options = treat_auth_key_param_as_param(options)
-      preform_single_request(@env.merge(options))
+    def create_subscriptions_pools(env)
+      @env[:subscriptions]        = Hash.new
+      @env[:callbacks_pool]       = Hash.new
+      @env[:error_callbacks_pool] = Hash.new
     end
 
-    # TODO well documented grant examples
-    def grant(options, &block)
-      $logger.debug('Calling grant')
-      options.merge!({ :action => :grant })
-      options.merge!({ :callback => block }) if block_given?
-      check_required_parameters(:grant, options)
-      options[:channel] = options[:channel].to_s.gsub('+','%20')
-      options = treat_auth_key_param_as_param(options)
-      preform_single_request(@env.merge(options))
+    def update_timetoken(timetoken)
+      @env[:timetoken] = timetoken.to_i
     end
-
-    # TODO well documented revoke examples
-    def revoke(options, &block)
-      $logger.debug('Calling revoke')
-      options.merge!({ :action => :grant })
-      options.merge!({ :callback => block }) if block_given?
-      check_required_parameters(:grant, options)
-      options[:channel] = options[:channel].to_s.gsub('+','%20')
-      options = treat_auth_key_param_as_param(options)
-      options[:read] = false if options[:read]
-      options[:write] = false if options[:write]
-      preform_single_request(@env.merge(options))
-    end
-
-    # Returns current timetoken from server
-    def time(options, &block)
-      $logger.debug('Calling time')
-      options.merge!({ :action => :time })
-      options.merge!({ :callback => block }) if block_given?
-      check_required_parameters(:time, options)
-      preform_single_request(@env.merge(options))
-    end
-
-    def set_secret_key(secret_key)
-      @env[:secret_key] = secret_key
-    end
-    alias_method 'secret=',     'set_secret_key'
-    alias_method 'secret_key=', 'set_secret_key'
 
     def set_uuid(uuid)
-      $logger.debug('Setting new UUID')
       @env[:uuid] = uuid
     end
-    alias_method 'uuid=',         'set_uuid'
-    alias_method 'session_uuid=', 'set_uuid'
-
-    def set_ssl(ssl)
-      $logger.debug('Setting SSL')
-      @env[:ssl] = ssl
-    end
-    alias_method 'ssl=', 'set_ssl'
+    alias_method :session_uuid=, :set_uuid
 
     def set_cipher_key(cipher_key)
       @env[:cipher_key] = cipher_key
     end
-    alias_method 'cipher_key=', 'set_cipher_key'
-
-    def set_auth_key(auth_key)
-      @env[:auth_key] = auth_key
-    end
-    alias_method 'auth_key=', 'set_auth_key'
-
-    # For some backwards compatibility
-    def uuid
-      @env[:uuid]
-    end
-
-    # For some backwards compatibility
-    def ssl
-      @env[:ssl]
-    end
-
-    # For some backwards compatibility
-    def secret_key
-      @env[:secret_key]
-    end
-
-    # Gracefully closes all connections
-    def exit
-      binding.pry
-    end
+    alias_method :cipher_key=, :set_cipher_key
 
     private
 
-    # Sterts event machine reactor in new thread
-    def run_em
-      $logger.debug('Starting EventMachine')
-      unless EM.reactor_running?
-        Thread.new { EM.run }
-      end
-
-      # block thread until EM starts
-      until EM.reactor_running? do end
+    def start_event_machine(options)
+      Thread.new { EM.run } unless EM.reactor_running?
     end
 
-    def register_faraday_middleware
-      $logger.debug('Registering faraday middleware')
-
-      Faraday::Response.register_middleware :response, :pubnub => Pubnub::Middleware::Response
-      Faraday::Request.register_middleware :request,  :pubnub => Pubnub::Middleware::Request
+    def setup_app(options)
+      $logger = options[:logger] || Logger.new('pubnub.log')
+      @env = symbolize_options_keys(options)
+      @env = set_default_values(@env)
+      $logger.debug('Created Pubnub::Client.app')
     end
 
-    # Returns url for connections depending on origin and enabled ssl
-    def url_for_connection(options)
-      "http#{options[:ssl] ? 's' : ''}://#{options[:origin]}"
+    def create_connections_pools(options)
+      @subscribe_event_connections_pool = Hash.new
+      @single_event_connections_pool    = Hash.new
     end
 
-    def origin_already_registered?(origin)
-      !@subscribe_connections_pool[origin].nil?
-    end
-
-    def setup_subscribe_connection(options)
-      $logger.debug('Setting subscribe connection')
-      @subscribe_connections_pool = Hash.new if @subscribe_connections_pool.nil?
-      @subscribe_connections_pool[options[:origin]] = Faraday.new(:url => url_for_connection(options)) do |faraday|
-        faraday.adapter  :net_http_persistent
-        faraday.response :pubnub
-        faraday.request  :pubnub
-      end
-      $logger.debug('Created subscribe connection')
-    end
-
-    def setup_single_event_connection(options)
-      @single_event_connections_pool = Hash.new if @single_event_connections_pool.nil?
-      @single_event_connections_pool[options[:origin]] = Faraday.new(:url => url_for_connection(options)) do |faraday|
-        faraday.adapter  :net_http_persistent
-        faraday.response :pubnub
-        faraday.request  :pubnub
-      end
-      $logger.debug('Created single event connection')
-    end
-
-    # Sets up two persistent connections via Faraday with pubnub middleware
-    def setup_connections(options)
-      setup_subscribe_connection(options)
-      setup_single_event_connection(options)
-    end
-
-    # Returns converted env hash with all non-symbol keys in given env hash into symbols
-    def symbolize_options(options)
-      $logger.debug('Symbolizing options')
-      symbolized_options = {}
-      options.each_key { |k| symbolized_options.merge!({ k.to_sym => options[k] }) }
-      symbolized_options
-    end
-
-    # Checks if given key is already set, if not, sets default value
-    def set_default_value_if_not_set(key, default_value)
-      @env[key] = default_value if @env[key].nil?
-    end
-
-    # Create valid and complete @env variable
-    # @env holds whole configuration and is merged with options that are passed to REST actions
-    # so values form env overridden by request options are available in every action
-    def setup_env(options)
-
-      # Setup logger or let's create default one
-      $logger = options[:logger] || Logger.new('pubnub.log', 'weekly')
-
-      # We must be sure if every key is symbol
-      @env = symbolize_options options
-
-      set_default_values
-
-      $logger.debug('Created environment')
-    end
-
-    def set_default_values
+    def set_default_values(env)
       defaults = {
           :error_callback             => DEFAULT_ERROR_CALLBACK,
           :connect_callback           => DEFAULT_CONNECT_CALLBACK,
@@ -297,129 +140,27 @@ module Pubnub
       # Let's fill missing keys with default values
       $logger.debug('Setting default values')
       defaults.each do |key,default_value|
-        set_default_value_if_not_set(key, default_value)
+        env[key] = default_value if @env[key].nil?
       end
+
+      env
     end
 
-    # Handles error response
-    # TODO Move to another module? So from single_request it will be usable
-    def handle_error_response(response)
-      @env[:error_callback].call response
+    def symbolize_options_keys(options)
+      $logger.debug('Symbolizing options keys')
+      symbolized_options = {}
+      options.each_key { |k| symbolized_options.merge!({ k.to_sym => options[k] }) }
+      symbolized_options
     end
 
-    def origin(options)
-      origin = options[:ssl] ? 'https://' : 'http://'
-      origin << options[:origin]
+    def classify_method(method)
+      method.split('_').map{ |w| w.capitalize }.join
     end
 
-    def treat_auth_key_param_as_param(options)
-      options[:auth_key_parameter] = options.delete(:auth_key)
-      options
-    end
-
-    # Checks if passed arguments are valid for client operation.
-    # It's not DRY for better readability
-    def check_required_parameters(operation, parameters)
-      channel_or_channels = parameters[:channel] || parameters[:channels]
-
-      raise InitializationError.new(:object => self), 'Origin parameter is not valid. Should be type of String or Symbol' unless [String, Symbol].include?(parameters[:origin].class) || parameters[:origin].blank?
-
-      case operation
-        when :initialize
-
-          # Check subscribe key
-          raise InitializationError.new(:object => self), 'Missing required :subscribe_key parameter' unless parameters[:subscribe_key]
-          raise InitializationError.new(:object => self), 'Subscribe key parameter is not valid. Should be type of String or Symbol' unless [String, Symbol].include?(parameters[:subscribe_key].class)
-
-          # Check publish key
-          raise InitializationError.new(:object => self), 'Publish key parameter is not valid. Should be type of String or Symbol' unless [String, Symbol].include?(parameters[:publish_key].class) || parameters[:publish_key].blank?
-        when :subscribe
-          # Check channels
-          raise ArgumentError.new(:object => self), 'Subscribe requires :channel or :channels argument' unless channel_or_channels
-          raise ArgumentError.new(:object => self), 'Subscribe can\'t be given both :channel and channels parameter' if parameters[:channel] && parameters[:channels]
-          raise ArgumentError.new(:object => self), 'Invalid channel(s) format! Should be type of: String, Symbol, or Array of both' unless Subscription::valid_channels?(channel_or_channels)
-
-          # check callback
-          raise ArgumentError.new(:object => self), 'Callback parameter is required while using async subscribe' if !parameters[:http_sync] && parameters[:callback].blank?
-        when :presence
-          # Check channels
-          raise ArgumentError.new(:object => self), 'Presence requires :channel or :channels argument' unless channel_or_channels
-          raise ArgumentError.new(:object => self), 'Presence can\'t be given both :channel and channels parameter' if parameters[:channel] && parameters[:channels]
-          raise ArgumentError.new(:object => self), 'Invalid channel(s) format! Should be type of: String, Symbol, or Array of both' unless Subscription::valid_channels?(channel_or_channels)
-
-          # check callback
-          raise ArgumentError.new(:object => self), 'Callback parameter is required while using async presence' if !parameters[:http_sync] && parameters[:callback].blank?
-
-        when :leave
-          # check channel
-          raise ArgumentError.new(:object => self), 'Leave requires :channel argument' unless parameters[:channel]
-          raise ArgumentError.new(:object => self), 'Invalid channel format! Should be type of: String, Symbol, or Array of both' unless [String, Symbol].include?(parameters[:channel].class)
-
-          # check callback
-          raise ArgumentError.new(:object => self), 'Callback parameter is required while using async leave/unsubscribe' if !parameters[:http_sync] && parameters[:callback].blank?
-
-        when :publish
-          # check message
-          raise ArgumentError.new(:object => self), 'Publish requires :message argument' unless parameters[:message]
-
-          # check channel/channels
-          raise ArgumentError.new(:object => self), 'Publish requires :channel or :channels argument' unless parameters[:channel] || parameters[:channels]
-          raise ArgumentError.new(:object => self), 'Invalid channel(s) format! Should be type of: String, Symbol, or Array of both' unless Subscription::valid_channels?(channel_or_channels)
-
-          # check callback
-          raise ArgumentError.new(:object => self), 'Callback parameter is required while using async publish' if !parameters[:http_sync] && parameters[:callback].blank?
-
-        when :history
-          # check channel
-          raise ArgumentError.new(:object => self), 'History requires :channel argument' unless parameters[:channel]
-          raise ArgumentError.new(:object => self), 'Invalid channel format! Should be type of: String, Symbol' unless [String, Symbol].include?(parameters[:channel].class)
-
-          # check if history parameters are valid
-
-          # start
-          raise ArgumentError.new(:object => self), 'Invalid :start parameter, should be type of Integer, Fixnum or String' unless [String, Fixnum, Integer, NilClass].include?(parameters[:start].class)
-          raise ArgumentError.new(:object => self), 'Invalid :start parameter, should be positive integer number' if !parameters[:start].to_i.integer? && parameters[:start].to_i <= 0
-
-          # end
-          raise ArgumentError.new(:object => self), 'Invalid :end parameter, should be type of Integer, Fixnum or String' unless [String, Fixnum, Integer, NilClass].include?(parameters[:end].class)
-          raise ArgumentError.new(:object => self), 'Invalid :end parameter, should be positive integer number' if !parameters[:end].to_i.integer? && parameters[:end].to_i <= 0
-          raise ArgumentError.new(:object => self), 'Invalid :end parameter, should be bigger than :start parameter.
-                                                     If you want to get messages in reverse order, use :reverse => true at call.' if parameters[:start].to_i >= parameters[:end].to_i && !parameters[:start].nil? && parameters[:end].nil?
-          # count
-          raise ArgumentError.new(:object => self), 'Invalid :count parameter, should be type of Integer, Fixnum or String' unless [String, Fixnum, Integer, NilClass].include?(parameters[:count].class)
-          raise ArgumentError.new(:object => self), 'Invalid :count parameter, should be positive integer number' if !parameters[:count].to_i.integer? && parameters[:count].to_i <= 0
-
-          # check callback
-          raise ArgumentError.new(:object => self), 'Callback parameter is required while using async history' if !parameters[:http_sync] && parameters[:callback].blank?
-
-        when :here_now
-          # check channel
-          raise ArgumentError.new(:object => self), 'History requires :channel argument' unless parameters[:channel]
-          raise ArgumentError.new(:object => self), 'Invalid channel format! Should be type of: String, Symbol' unless [String, Symbol].include?(parameters[:channel].class)
-
-          # check callback
-          raise ArgumentError.new(:object => self), 'Callback parameter is required while using async here_now' if !parameters[:http_sync] && parameters[:callback].blank?
-
-        when :time
-          # check callback
-          raise ArgumentError.new(:object => self), 'Callback parameter is required while using async time' if !parameters[:http_sync] && parameters[:callback].blank?
-
-        when :audit
-          raise ArgumentError.new(:object => self), 'publish_key is required by Audit' unless parameters[:publish_key] || @env[:publish_key]
-          raise ArgumentError.new(:object => self), 'Parameter secret_key is required by Audit' unless parameters[:secret_key] || @env[:secret_key]
-
-        when :grant
-          raise ArgumentError.new(:object => self), 'publish_key is required by Grant' unless parameters[:publish_key] || @env[:publish_key]
-          raise ArgumentError.new(:object => self), 'Parameter secret_key is required by Grant' unless parameters[:secret_key] || @env[:secret_key]
-
-          raise ArgumentError.new(:object => self), 'write parameter accept only one of: 1, "1", 0, "0", true, false values' unless [nil, 1, "1", 0, "0", true, false].include?(parameters[:write])
-          raise ArgumentError.new(:object => self), 'read parameter accept only: 1, "1", 0, "0", true, false values' unless [nil, 1, "1", 0, "0", true, false].include?(parameters[:read])
-
-          raise ArgumentError.new(:object => self), 'ttl parameter is too big, max value is: 525600' unless parameters[:ttl].to_i <= 525600 || parameters[:ttl].nil?
-          raise ArgumentError.new(:object => self), 'ttl parameter is too small, min value is: 1' unless parameters[:ttl].to_i >= 1 || parameters[:ttl].nil?
-        else
-          raise 'Can\'t determine operation'
-      end
+    def validate!(parameters)
+      raise InitializationError.new(:object => self), 'Origin parameter is not valid. Should be type of String'                  unless parameters[:origin].is_a?(String) || parameters[:origin].blank?
+      raise InitializationError.new(:object => self), 'Missing required :subscribe_key parameter'                                unless parameters[:subscribe_key]
+      raise InitializationError.new(:object => self), 'Subscribe key parameter is not valid. Should be type of String or Symbol' unless [String, Symbol].include?(parameters[:subscribe_key].class)
     end
 
   end

@@ -75,7 +75,7 @@ describe "#leave" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leave"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -89,7 +89,7 @@ describe "#leave" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leave"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -201,7 +201,7 @@ describe "#leave" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leave"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -215,7 +215,7 @@ describe "#leave" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leave"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -330,7 +330,7 @@ describe "#leave" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leave"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -344,7 +344,7 @@ describe "#leave" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leave"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -456,7 +456,7 @@ describe "#leave" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leave"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -470,7 +470,7 @@ describe "#leave" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leave"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end

@@ -297,7 +297,7 @@ describe '#publish' do
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :callback => @callback, :http_sync => true)
 
-            @error_envelope.error.class.should eq Pubnub::JSONParseError
+            @error_envelope.error.class.should eq Pubnub::ResponseError
           end
 
           it 'fires given block on hardcoded envelope' do
@@ -313,7 +313,7 @@ describe '#publish' do
             )
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :http_sync => true, &@callback)
-            @error_envelope.error.class.should eq Pubnub::JSONParseError
+            @error_envelope.error.class.should eq Pubnub::ResponseError
           end
         end
 
@@ -334,7 +334,7 @@ describe '#publish' do
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :callback => @callback)
             until @after_callback do end
 
-            @error_envelope.error.class.should eq Pubnub::JSONParseError
+            @error_envelope.error.class.should eq Pubnub::ResponseError
           end
 
           it 'fires given block on hardcoded envelope' do
@@ -353,7 +353,7 @@ describe '#publish' do
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, &@callback)
             until @after_callback do end
 
-            @error_envelope.error.class.should eq Pubnub::JSONParseError
+            @error_envelope.error.class.should eq Pubnub::ResponseError
           end
         end
       end
@@ -461,7 +461,7 @@ describe '#publish' do
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :callback => @callback, :http_sync => true)
 
-            @error_envelope.error.class.should eq Pubnub::JSONParseError
+            @error_envelope.error.class.should eq Pubnub::ResponseError
           end
 
           it 'fires given block on hardcoded envelope' do
@@ -478,7 +478,7 @@ describe '#publish' do
 
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :http_sync => true, &@callback)
 
-            @error_envelope.error.class.should eq Pubnub::JSONParseError
+            @error_envelope.error.class.should eq Pubnub::ResponseError
           end
         end
 
@@ -499,7 +499,7 @@ describe '#publish' do
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, :callback => @callback)
             until @after_callback do end
 
-            @error_envelope.error.class.should eq Pubnub::JSONParseError
+            @error_envelope.error.class.should eq Pubnub::ResponseError
           end
 
           it 'fires given block on hardcoded envelope' do
@@ -518,7 +518,7 @@ describe '#publish' do
             @pn.publish(:publish_key => :demo, :message => 'SomethingWrong', :channel => :hello_world, &@callback)
             until @after_callback do end
 
-            @error_envelope.error.class.should eq Pubnub::JSONParseError
+            @error_envelope.error.class.should eq Pubnub::ResponseError
           end
         end
       end

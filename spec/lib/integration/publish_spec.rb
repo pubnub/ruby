@@ -41,6 +41,7 @@ describe "#publish" do
                 @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
@@ -55,6 +56,7 @@ describe "#publish" do
                 @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
@@ -71,11 +73,12 @@ describe "#publish" do
                 @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -85,11 +88,12 @@ describe "#publish" do
                 @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -103,6 +107,7 @@ describe "#publish" do
                 @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","'
@@ -117,6 +122,7 @@ describe "#publish" do
                 @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","'
@@ -133,6 +139,7 @@ describe "#publish" do
                 @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","'
@@ -147,6 +154,7 @@ describe "#publish" do
                 @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","'
@@ -167,6 +175,7 @@ describe "#publish" do
                 @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
@@ -181,6 +190,7 @@ describe "#publish" do
                 @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
@@ -197,11 +207,12 @@ describe "#publish" do
                 @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -211,11 +222,12 @@ describe "#publish" do
                 @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -229,6 +241,7 @@ describe "#publish" do
                 @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","'
@@ -243,6 +256,7 @@ describe "#publish" do
                 @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","'
@@ -259,6 +273,7 @@ describe "#publish" do
                 @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","'
@@ -273,6 +288,7 @@ describe "#publish" do
                 @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","'
@@ -296,6 +312,7 @@ describe "#publish" do
                 @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
@@ -310,6 +327,7 @@ describe "#publish" do
                 @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
@@ -326,11 +344,12 @@ describe "#publish" do
                 @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -340,11 +359,12 @@ describe "#publish" do
                 @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -358,6 +378,7 @@ describe "#publish" do
                 @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","'
@@ -372,6 +393,7 @@ describe "#publish" do
                 @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","'
@@ -388,6 +410,7 @@ describe "#publish" do
                 @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","'
@@ -402,6 +425,7 @@ describe "#publish" do
                 @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","'
@@ -422,6 +446,7 @@ describe "#publish" do
                 @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
@@ -436,6 +461,7 @@ describe "#publish" do
                 @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
@@ -452,11 +478,12 @@ describe "#publish" do
                 @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -466,11 +493,12 @@ describe "#publish" do
                 @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","13904299694449458"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -484,6 +512,7 @@ describe "#publish" do
                 @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","'
@@ -498,6 +527,7 @@ describe "#publish" do
                 @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","'
@@ -514,6 +544,7 @@ describe "#publish" do
                 @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","'
@@ -528,6 +559,7 @@ describe "#publish" do
                 @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[1,"Sent","'

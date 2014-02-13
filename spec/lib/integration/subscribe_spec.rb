@@ -43,6 +43,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"][[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
@@ -57,6 +58,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"][[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
@@ -74,11 +76,12 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -88,11 +91,12 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -107,6 +111,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
@@ -121,6 +126,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
@@ -138,6 +144,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
@@ -152,6 +159,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
@@ -173,6 +181,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"][[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
@@ -187,6 +196,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"][[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
@@ -204,11 +214,12 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -218,11 +229,12 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -237,6 +249,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
@@ -251,6 +264,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
@@ -268,6 +282,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
@@ -282,6 +297,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
@@ -306,6 +322,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"][[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
@@ -320,6 +337,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"][[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
@@ -337,11 +355,12 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -351,11 +370,12 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -370,6 +390,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
@@ -384,6 +405,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
@@ -401,6 +423,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
@@ -415,6 +438,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
@@ -436,6 +460,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"][[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
@@ -450,6 +475,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"][[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
@@ -467,11 +493,12 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -481,11 +508,12 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"13904299332319098"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -500,6 +528,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
@@ -514,6 +543,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
@@ -531,6 +561,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'
@@ -545,6 +576,7 @@ describe "#subscribe" do
                 @pn.subscribe(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
                 while EM.reactor_running? do
                 end
+                sleep(0.1)
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"hey"}],"'

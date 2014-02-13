@@ -154,7 +154,7 @@ actions.each do |action|
                     puts "@message_output.read.should eq '{\"uuids\"=>[\"rubytests\"], \"occupancy\"=>1}'"
                   else
                     puts "@message_output.seek 0"
-                    puts "@message_output.read.should eq '[0,\"Non 2xx server response\"]'"
+                    puts "@message_output.read.should eq '[0,\"Non 2xx server response.\"]'"
                   end
                 else
                   puts "@response_output.seek 0"
@@ -177,7 +177,7 @@ actions.each do |action|
                     puts "@response_output.read.should eq '[[{\"text\":\"hey\"},{\"text\":\"howdy\"},{\"text\":\"hello\"}],13904298660188334,13904300138214858]'"
 
                     puts "@message_output.seek 0"
-                    puts "@message_output.read.should eq '[0,\"Non 2xx server response\"]'"
+                    puts "@message_output.read.should eq '[0,\"Non 2xx server response.\"]'"
                   end
                 else
                   puts "@response_output.seek 0"
@@ -196,7 +196,7 @@ actions.each do |action|
                     puts "@message_output.read.should eq '{\"action\"=>\"leave\"}'"
                   else
                     puts "@message_output.seek 0"
-                    puts "@message_output.read.should eq '[0,\"Non 2xx server response\"]'"
+                    puts "@message_output.read.should eq '[0,\"Non 2xx server response.\"]'"
                   end
                 else
                   puts "@response_output.seek 0"
@@ -219,7 +219,7 @@ actions.each do |action|
                     puts "@response_output.read.should eq '[[{\"action\": \"leave\", \"timestamp\": 1390430008, \"uuid\": \"3bad4360-2b9f-470f-aaf7-dac04454b1fb\", \"occupancy\": 1},{\"action\": \"join\", \"timestamp\": 1390430008, \"uuid\": \"3bad4360-2b9f-470f-aaf7-dac04454b1fb\", \"occupancy\": 2}],\"13904300089348992\"]'"
 
                     puts "@message_output.seek 0"
-                    puts "@message_output.read.should eq '[0,\"Non 2xx server response\"]'"
+                    puts "@message_output.read.should eq '[0,\"Non 2xx server response.\"]'"
                   end
                 else
                   puts "@response_output.seek 0"
@@ -238,7 +238,7 @@ actions.each do |action|
                     puts "@message_output.read.should eq 'Sent'"
                   else
                     puts "@message_output.seek 0"
-                    puts "@message_output.read.should eq '[0,\"Non 2xx server response\"]'"
+                    puts "@message_output.read.should eq '[0,\"Non 2xx server response.\"]'"
                   end
                 else
                   puts "@response_output.seek 0"
@@ -261,7 +261,7 @@ actions.each do |action|
                     puts "@response_output.read.should eq '[[{\"text\":\"hey\"},{\"text\":\"hey\"}],\"13904299332319098\"]'"
 
                     puts "@message_output.seek 0"
-                    puts "@message_output.read.should eq '[0,\"Non 2xx server response\"]'"
+                    puts "@message_output.read.should eq '[0,\"Non 2xx server response.\"]'"
                   end
                 else
                   puts "@response_output.seek 0"
@@ -280,7 +280,7 @@ actions.each do |action|
                     puts "@message_output.read.should eq '13904301930718907'"
                   else
                     puts "@message_output.seek 0"
-                    puts "@message_output.read.should eq '[0,\"Non 2xx server response\"]'"
+                    puts "@message_output.read.should eq '[0,\"Non 2xx server response.\"]'"
                   end
                 else
                   puts "@response_output.seek 0"
@@ -299,7 +299,7 @@ actions.each do |action|
                     puts "@message_output.read.should eq 'Success'"
                   else
                     puts "@message_output.seek 0"
-                    puts "@message_output.read.should eq '[0,\"Non 2xx server response\"]'"
+                    puts "@message_output.read.should eq '[0,\"Non 2xx server response.\"]'"
                   end
                 else
                   puts "@response_output.seek 0"
@@ -318,7 +318,7 @@ actions.each do |action|
                     puts "@message_output.read.should eq 'Success'"
                   else
                     puts "@message_output.seek 0"
-                    puts "@message_output.read.should eq '[0,\"Non 2xx server response\"]'"
+                    puts "@message_output.read.should eq '[0,\"Non 2xx server response.\"]'"
                   end
                 else
                   puts "@response_output.seek 0"
@@ -337,7 +337,7 @@ actions.each do |action|
                     puts "@message_output.read.should eq 'Success'"
                   else
                     puts "@message_output.seek 0"
-                    puts "@message_output.read.should eq '[0,\"Non 2xx server response\"]'"
+                    puts "@message_output.read.should eq '[0,\"Non 2xx server response.\"]'"
                   end
                 else
                   puts "@response_output.seek 0"

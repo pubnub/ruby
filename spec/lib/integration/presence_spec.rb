@@ -77,7 +77,7 @@ describe "#presence" do
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -91,7 +91,7 @@ describe "#presence" do
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -207,7 +207,7 @@ describe "#presence" do
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -221,7 +221,7 @@ describe "#presence" do
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -340,7 +340,7 @@ describe "#presence" do
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -354,7 +354,7 @@ describe "#presence" do
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -470,7 +470,7 @@ describe "#presence" do
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -484,7 +484,7 @@ describe "#presence" do
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response"]'
+                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
