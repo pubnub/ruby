@@ -65,19 +65,19 @@ module Pubnub
 
     def start_subscribe
       @env[:wait_for_response] = Hash.new unless @wait_for_response
-      #@env[:railgun] = EM.add_periodic_timer(PERIODIC_TIMER_INTERVAL) do
+      @env[:railgun] = EM.add_periodic_timer(PERIODIC_TIMER_INTERVAL) do
         @env[:subscriptions].each do |origin, subscribe|
           unless @env[:wait_for_response][origin] == true
             @env[:wait_for_response][origin] = true
 
             $logger.debug('Async subscription running')
-            binding.pry
+
             subscribe.start_event(self)
 
             @env[:wait_for_response][origin] = false
           end
         end
-      #end unless @env[:railgun]
+      end unless @env[:railgun]
     end
 
     def create_subscriptions_pools(env)

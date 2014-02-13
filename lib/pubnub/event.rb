@@ -188,7 +188,7 @@ module Pubnub
     private
 
     def setup_connection(app)
-      app.single_event_connections_pool[@origin] = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
+      app.single_event_connections_pool[@origin] = new_connection(app)
     end
 
     def connection_exist?(app)
@@ -197,6 +197,14 @@ module Pubnub
 
     def get_connection(app)
       app.single_event_connections_pool[@origin]
+    end
+
+    def new_connection(app)
+      connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
+      connection.idle_timeout = app.env[:timeout]
+      connection.keep_alive   = app.env[:timeout]
+      connection.read_timeout   = app.env[:timeout]
+      connection
     end
   end
 
@@ -282,14 +290,13 @@ module Pubnub
             update_timetoken(app, envelope.timetoken)
           end
         end
-        binding.pry
-        app.env[:error_callbacks_pool][@origin][:error_callback].call(envelopes.first) if envelopes.first.error
+        app.env[:error_callbacks_pool][@origin].call(envelopes.first) if envelopes.first.error
       end
 
     end
 
     def setup_connection(app)
-      app.subscribe_event_connections_pool[@origin] = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
+      app.subscribe_event_connections_pool[@origin] = new_connection(app)
     end
 
     def connection_exist?(app)
@@ -310,6 +317,14 @@ module Pubnub
       else
         parsed_response[2][i]
       end
+    end
+
+    def new_connection(app)
+    connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
+    connection.idle_timeout   = app.env[:subscribe_timeout]
+    connection.keep_alive     = app.env[:subscribe_timeout]
+    connection.read_timeout   = app.env[:subscribe_timeout]
+    connection
     end
   end
 end

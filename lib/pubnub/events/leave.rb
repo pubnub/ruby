@@ -23,6 +23,11 @@ module Pubnub
     end
 
     def fire(app)
+      if app.env[:subscriptions][@origin].nil?
+        raise ArgumentError.new(:object => self),  'You cannot leave channel that is not subscribed'
+      elsif app.env[:subscriptions][@origin].get_channels.include?(@channel)
+        raise ArgumentError.new(:object => self),  'You cannot leave channel that is not subscribed'
+      end
       @channel.each do |channel|
         app.env[:subscriptions][@origin].remove_channel(channel, app)
       end
