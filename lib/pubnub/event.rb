@@ -24,6 +24,7 @@ module Pubnub
     end
 
     def fire(app)
+      $logger.debug('Event#fire')
       setup_connection(app) unless connection_exist?(app)
       envelopes = start_event(app)
     end
@@ -212,7 +213,9 @@ module Pubnub
 
 
     def fire(app)
+      $logger.debug('SubscribeEvent#fire')
       if @http_sync == true
+        $logger.debug('SubscribeEvent#fire sync')
         super
       else
         $logger.debug('SubscribeEvent#fire async')
@@ -256,14 +259,18 @@ module Pubnub
     end
 
     def add_channel(channel, app)
-      @channel = @channel + channel
+      @channel = @channel + format_channels(channel)
       $logger.debug('SubscribeEvent#add_channel | Added channel')
     end
 
     def remove_channel(channel, app)
       @channel = @channel - format_channels(channel)
-      $logger.debug('SubscribeEvent#add_channel | Removed channel')
-      shutdown_subscribe(app) if @channel.empty?
+      $logger.debug('SubscribeEvent#remove_channel | Removed channel')
+      begin
+        shutdown_subscribe(app) if @channel.empty?
+      rescue => e
+        puts e.msg
+      end
     end
 
     def get_channels
@@ -274,9 +281,12 @@ module Pubnub
 
     def shutdown_subscribe(app)
       app.env[:subscriptions][@origin]  = nil
+      app.env[:subscriptions].delete(@origin)
       app.env[:callbacks_pool][@origin] = nil
+      app.env[:callbacks_pool].delete(@origin)
       app.subscribe_event_connections_pool[@origin].shutdown
       app.subscribe_event_connections_pool[@origin] = nil
+      app.subscribe_event_connections_pool.delete(@origin)
     end
 
     def fire_callbacks(envelopes, app)

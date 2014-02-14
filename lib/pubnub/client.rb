@@ -27,7 +27,18 @@ module Pubnub
       define_method event_name do |params, &block|
         params[:callback] = block if params[:callback].nil?
         event = Pubnub.const_get(classify_method(event_name)).new(params, self)
-        params[:http_sync] ? event.fire(self) : EM.next_tick { event.fire(self) }
+        $logger.debug('Created event ' + event.class.to_s)
+        if params[:http_sync]
+          event.fire(self)
+        else
+          EM.next_tick {
+            begin
+              event.fire(self)
+            rescue => e
+              puts e
+            end
+          }
+        end
         #event.fire(self)
       end
     end
@@ -66,16 +77,20 @@ module Pubnub
     def start_subscribe
       @env[:wait_for_response] = Hash.new unless @wait_for_response
       @env[:railgun] = EM.add_periodic_timer(PERIODIC_TIMER_INTERVAL) do
-        @env[:subscriptions].each do |origin, subscribe|
-          unless @env[:wait_for_response][origin] == true
-            @env[:wait_for_response][origin] = true
+        begin
+          @env[:subscriptions].each do |origin, subscribe|
+            unless @env[:wait_for_response][origin] == true
+              @env[:wait_for_response][origin] = true
 
-            $logger.debug('Async subscription running')
+              $logger.debug('Async subscription running')
 
-            subscribe.start_event(self)
+              subscribe.start_event(self) if subscribe
 
-            @env[:wait_for_response][origin] = false
+              @env[:wait_for_response][origin] = false
+            end
           end
+        rescue => e
+          puts e
         end
       end unless @env[:railgun]
     end
