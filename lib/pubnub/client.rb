@@ -42,6 +42,7 @@ module Pubnub
         #event.fire(self)
       end
     end
+    alias_method :unsubscribe, :leave
 
     def initialize(options)
       validate!(options)
