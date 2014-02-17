@@ -88,7 +88,7 @@ module Pubnub
           envelopes << Envelope.new(
               {
                   :message           => message,
-                  :channel           => @channel,
+                  :channel           => @channel.first,
                   :response_message  => response_message(parsed_response),
                   :timetoken         => timetoken(parsed_response),
                   :history_start     => parsed_response[1],

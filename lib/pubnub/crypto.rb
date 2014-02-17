@@ -37,9 +37,14 @@ module Pubnub
 
       plain_text = ''
 
-      undecoded_text = Base64.decode64(cipher_text)
-      plain_text = decode_cipher.update(undecoded_text)
-      plain_text << decode_cipher.final
+      begin
+        undecoded_text = Base64.decode64(cipher_text)
+        plain_text = decode_cipher.update(undecoded_text)
+        plain_text << decode_cipher.final
+      rescue => e
+        $logger.error 'DECRYPTION ERROR'
+        plain_text =  '"DECRYPTION ERROR"'
+      end
 
       begin
         JSON.load(plain_text)

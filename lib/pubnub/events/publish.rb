@@ -55,6 +55,7 @@ module Pubnub
         {
             :message           => @message,
             :published_message => @message,
+            :channel           => @channel,
             :response_message  => response_message(parsed_response),
             :timetoken         => timetoken(parsed_response)
         },

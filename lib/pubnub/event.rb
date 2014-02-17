@@ -269,7 +269,8 @@ module Pubnub
       begin
         shutdown_subscribe(app) if @channel.empty?
       rescue => e
-        puts e.msg
+        $logger.error(e.msg)
+        $logger.error(e.backtrace)
       end
     end
 
@@ -284,7 +285,7 @@ module Pubnub
       app.env[:subscriptions].delete(@origin)
       app.env[:callbacks_pool][@origin] = nil
       app.env[:callbacks_pool].delete(@origin)
-      app.subscribe_event_connections_pool[@origin].shutdown
+      app.subscribe_event_connections_pool[@origin].shutdown_in_all_threads
       app.subscribe_event_connections_pool[@origin] = nil
       app.subscribe_event_connections_pool.delete(@origin)
     end
@@ -321,20 +322,95 @@ module Pubnub
       channels.join(',')
     end
 
-    def channel_from_response(parsed_response, i = nil)
-      if parsed_response[2].nil?
-        @channel.first
+    def path(app)
+      path = URI.escape("/subscribe/#{@subscribe_key}/#{channels_for_url(@channel)}/0/#{@timetoken}").gsub(/\?/,'%3F')
+    end
+
+    def timetoken(parsed_response)
+      parsed_response[1] if parsed_response.is_a? Array
+    end
+
+    def message(parsed_response, i, channel, app)
+      if app.env[:cipher_key].blank? || channel.index('-pnpres')
+        parsed_response.first[i]
       else
-        parsed_response[2][i]
+        pc = Crypto.new(app.env[:cipher_key])
+        pc.decrypt(parsed_response.first[i])
       end
     end
 
+    def format_envelopes(response, app, error)
+
+      $logger.debug('Subscribe#format_envelopes')
+
+      parsed_response = Parser.parse_json(response.body) if Parser.valid_json?(response.body)
+
+      $logger.debug('Subscribe#format_envelopes | Response parsed')
+
+      envelopes = Array.new
+      if error
+        $logger.debug('Subscribe#format_envelopes | Error')
+        envelopes << Envelope.new(
+            {
+                :channel           => @channel,
+                :timetoken         => timetoken(parsed_response)
+            },
+            app
+        )
+      elsif parsed_response[0].empty?
+        $logger.debug('Subscribe#format_envelopes | Timetoken')
+        envelopes << Envelope.new(
+            {
+                :channel           => @channel.first,
+                :response_message  => parsed_response,
+                :timetoken         => timetoken(parsed_response),
+                :timetoken_update  => true
+            },
+            app
+        )
+      else
+        $logger.debug('Subscribe#format_envelopes | Not timetoken update')
+        parsed_response[0].size.times do |i|
+          if parsed_response[2].is_a? Array
+            channel = parsed_response[2][i]
+          elsif parsed_response[2].is_a? String
+            channel = parsed_response[2]
+          else
+            channel = @channel.first
+          end
+          $logger.debug('Subscribe#format_envelopes | Channel created')
+
+          $logger.debug("#{parsed_response}")
+
+          envelopes << Envelope.new(
+              {
+                  :message           => message(parsed_response, i, channel, app),
+                  :channel           => channel,
+                  :response_message  => parsed_response,
+                  :timetoken         => timetoken(parsed_response)
+              },
+              app
+          )
+
+          $logger.debug('Subscribe#format_envelopes | Envelopes created')
+
+        end
+      end
+
+      $logger.debug('Subscribe#format_envelopes | envelopes created')
+
+      envelopes = add_common_data_to_envelopes(envelopes, response, app, error)
+
+      envelopes
+
+    end
+
     def new_connection(app)
-    connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
-    connection.idle_timeout   = app.env[:subscribe_timeout]
-    connection.keep_alive     = app.env[:subscribe_timeout]
-    connection.read_timeout   = app.env[:subscribe_timeout]
-    connection
+      connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
+      connection.idle_timeout   = app.env[:subscribe_timeout]
+      connection.keep_alive     = app.env[:subscribe_timeout]
+      connection.read_timeout   = app.env[:subscribe_timeout]
+      connection
     end
   end
 end

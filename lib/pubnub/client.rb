@@ -56,13 +56,13 @@ module Pubnub
 
     def shutdown(stop_em = false)
       @single_event_connections_pool.each do |origin, conn|
-        conn.shutdown
+        conn.shutdown_in_all_threads
         conn = nil
       end
       @single_event_connections_pool = Hash.new
 
       @subscribe_event_connections_pool.each do |origin, conn|
-        conn.shutdown
+        conn.shutdown_in_all_threads
         conn = nil
       end
       @subscribe_event_connections_pool = Hash.new

@@ -43,16 +43,27 @@ case keys_option
     sec_key = nil if sec_key.blank?
 end
 
+puts 'Provide auth key or skip? (default: skip)'
+auth_key = gets.chomp!
+
+puts 'Do you want your connection to be ssl? [y/N]'
+ssl = gets.chomp!.upcase
+ssl = 'N' if ssl != 'Y'
+ssl = ssl == 'Y' ? true : false
+
 puts "\nUsing following keys:"
 puts "Subscribe key: #{sub_key}"
 puts "Publish key:   #{pub_key}"
 puts "Secret key:    #{sec_key}" if sec_key
+puts "Auth key:      #{auth_key}" if auth_key
 
 
 p = Pubnub.new(
+    :ssl              => ssl,
     :subscribe_key    => sub_key,
     :secret_key       => sec_key,
     :publish_key      => pub_key,
+    :auth_key         => auth_key,
     :origin           => origin,
     :error_callback   => lambda { |msg|
       puts "Error callback says: #{msg.inspect}"
@@ -71,6 +82,7 @@ end
 
 default_cb = lambda { |envelope|
   puts "\n/------------------"
+  puts "#{envelope.inspect}"
   puts "channel: #{envelope.channel}"
   puts "msg: #{envelope.message}"
   puts "payload: #{envelope.payload}" if envelope.payload
@@ -78,14 +90,6 @@ default_cb = lambda { |envelope|
 }
 
 while(true)
-
-  ssl = false
-  while !%w(Y N).include? ssl
-    puts('Should next operation be ssl [y/N]?')
-    ssl = gets.chomp!.upcase
-    ssl = 'N' if ssl.blank?
-  end
-  ssl = ssl == 'Y' ? true : false
 
   sync_or_async = false
   while !%w(S A).include? sync_or_async
