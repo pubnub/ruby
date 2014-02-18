@@ -91,7 +91,8 @@ module Pubnub
             end
           end
         rescue => e
-          puts e
+          $logger.error(e)
+          $logger.error(e.backtrace)
         end
       end unless @env[:railgun]
     end

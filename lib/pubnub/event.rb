@@ -160,6 +160,7 @@ module Pubnub
     end
 
     def uri(app)
+      $logger.debug("#{self.class}#uri #{[origin(app), path(app), '?', params_hash_to_url_params(parameters(app))].join}")
       URI [origin(app), path(app), '?', params_hash_to_url_params(parameters(app))].join
     end
 
@@ -294,15 +295,21 @@ module Pubnub
       if @http_sync == true
         super
       else
-        $logger.debug('Event#fire_callbacks async')
-        envelopes.each do |envelope|
-          app.env[:callbacks_pool][@origin][envelope.channel][:callback].call(envelope) if !envelope.error && !envelope.timetoken_update
-          if envelope.timetoken_update || envelope.timetoken.to_i > app.env[:timetoken].to_i
-            update_timetoken(app, envelope.timetoken)
+        begin
+          $logger.debug('Event#fire_callbacks async')
+          envelopes.each do |envelope|
+            app.env[:callbacks_pool][@origin][envelope.channel][:callback].call(envelope) if !envelope.error && !envelope.timetoken_update
+            if envelope.timetoken_update || envelope.timetoken.to_i > app.env[:timetoken].to_i
+              update_timetoken(app, envelope.timetoken)
+            end
           end
+          $logger.debug('We can send next request now')
+          app.env[:error_callbacks_pool][@origin].call(envelopes.first) if envelopes.first.error
+        rescue => error
+          $logger.error(error)
+          $logger.error(error.backtrace)
         end
-        app.env[:error_callbacks_pool][@origin].call(envelopes.first) if envelopes.first.error
-      end
+      end unless envelopes.nil?
 
     end
 
