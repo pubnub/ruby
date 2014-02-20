@@ -80,12 +80,12 @@ module Pubnub
       @env[:railgun] = EM.add_periodic_timer(PERIODIC_TIMER_INTERVAL) do
         begin
           @env[:subscriptions].each do |origin, subscribe|
-            puts '.'
             unless @env[:wait_for_response][origin] == true
               @env[:wait_for_response][origin] = true
 
               $logger.debug('Async subscription running')
-
+              $logger.debug("ORIGIN #{origin}")
+              $logger.debug("SUBSCRIBE #{subscribe}")
               subscribe.start_event(self) if subscribe
 
               @env[:wait_for_response][origin] = false
