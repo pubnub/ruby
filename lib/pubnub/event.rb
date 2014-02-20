@@ -204,7 +204,6 @@ module Pubnub
     def new_connection(app)
       connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
       connection.idle_timeout = app.env[:timeout]
-      connection.keep_alive   = app.env[:timeout]
       connection.read_timeout   = app.env[:timeout]
       connection
     end
@@ -415,7 +414,6 @@ module Pubnub
     def new_connection(app)
       connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
       connection.idle_timeout   = app.env[:subscribe_timeout]
-      connection.keep_alive     = app.env[:subscribe_timeout]
       connection.read_timeout   = app.env[:subscribe_timeout]
       connection
     end
