@@ -75,7 +75,16 @@ module Pubnub
       $logger.info('Bye!')
     end
 
-    def start_subscribe
+    def start_subscribe(overwrite = false)
+
+      if overwrite
+        @env[:railgun].cancel
+        @env[:railgun] = nil
+        @env[:wait_for_response].each do |k,v|
+          @env[:wait_for_response][k] = false
+        end
+      end
+
       @env[:wait_for_response] = Hash.new unless @wait_for_response
       @env[:railgun] = EM.add_periodic_timer(PERIODIC_TIMER_INTERVAL) do
         begin
