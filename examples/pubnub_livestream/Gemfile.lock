@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/pubnub/ruby.git
-  revision: 9fa6db2fe07de3787f6a6162e09c37daa6df3d67
+  revision: 7c13d0f379a35308ae13bcf5639ca208ec4f7fe1
   branch: 3.5.0beta
   specs:
     pubnub (3.5.0beta)

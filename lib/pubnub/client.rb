@@ -31,6 +31,7 @@ module Pubnub
         if params[:http_sync]
           event.fire(self)
         else
+          start_event_machine(@env)
           EM.next_tick {
             begin
               event.fire(self)
@@ -50,7 +51,6 @@ module Pubnub
       # From this moment we have to use @env in that method instead of options
       create_connections_pools(@env)
       create_subscriptions_pools(@env)
-      start_event_machine(@env)
 
     end
 
@@ -134,7 +134,7 @@ module Pubnub
     private
 
     def start_event_machine(options)
-      #Thread.new { EM.run } unless EM.reactor_running?
+      Thread.new { EM.run } unless EM.reactor_running?
     end
 
     def setup_app(options)
