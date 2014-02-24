@@ -134,7 +134,7 @@ module Pubnub
     private
 
     def start_event_machine(options)
-      Thread.new { EM.run } unless EM.reactor_running?
+      Thread.new { EM.run } if !EM.reactor_running? && !defined?(Thin)
     end
 
     def setup_app(options)
