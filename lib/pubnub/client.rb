@@ -107,6 +107,10 @@ module Pubnub
       end unless @env[:railgun]
     end
 
+    def subscription_running?
+      @env[:railgun] && !@env[:subscriptions].empty? ? true : false
+    end
+
     def create_subscriptions_pools(env)
       @env[:subscriptions]        = Hash.new
       @env[:callbacks_pool]       = Hash.new
