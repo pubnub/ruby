@@ -134,7 +134,9 @@ module Pubnub
     private
 
     def start_event_machine(options)
+      $logger.debug 'Pubnub::Client#start_event_machine | starting EM in new thread'
       Thread.new { EM.run } if !EM.reactor_running? && !defined?(Thin)
+      $logger.debug 'Pubnub::Client#start_event_machine | EM started'
     end
 
     def setup_app(options)
