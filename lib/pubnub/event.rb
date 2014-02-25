@@ -195,6 +195,16 @@ module Pubnub
   end
 
   module SingleEvent
+
+    def fire(app)
+      if app.async_events.include? self
+        super(app)
+      else
+        app.async_events << self
+        app.start_railgun
+      end
+    end
+
     private
 
     def setup_connection(app)

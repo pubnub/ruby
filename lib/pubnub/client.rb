@@ -14,7 +14,7 @@ module Pubnub
     include Configuration
 
     attr_reader :env
-    attr_accessor :single_event_connections_pool, :subscribe_event_connections_pool, :uuid
+    attr_accessor :single_event_connections_pool, :subscribe_event_connections_pool, :uuid, :async_events
 
     EVENTS = %w(publish subscribe presence leave history here_now audit grant revoke time)
     VERSION = Pubnub::VERSION
@@ -31,18 +31,18 @@ module Pubnub
         if params[:http_sync]
           event.fire(self)
         else
-          start_event_machine(@env)
-          EM.defer do
-            @async_events << event
-            start_railgun(@env)
-          end
-          #EM.defer {
-          #  begin
-          #    event.fire(self)
-          #  rescue => e
-          #    puts e
-          #  end
-          #}
+          #start_event_machine(@env)
+          #EM.defer do
+          #  @async_events << event
+          #  start_railgun(@env)
+          #end
+          EM.defer {
+            begin
+              event.fire(self)
+            rescue => e
+              puts e
+            end
+          }
         end
       end
     end
@@ -54,7 +54,7 @@ module Pubnub
       # From this moment we have to use @env in that method instead of options
       create_connections_pools(@env)
       create_subscriptions_pools(@env)
-
+      start_event_machine(@env)
     end
 
     def shutdown(stop_em = false)
@@ -134,12 +134,7 @@ module Pubnub
     end
     alias_method :cipher_key=, :set_cipher_key
 
-    private
-
-    def start_railgun(options)
-
-      sleep 1 unless EM.reactor_running?
-
+    def start_railgun
       if @env[:railgun]
         $logger.debug('Pubnub::Client#start_event_machine | Railgun already initialized')
       else
@@ -152,6 +147,8 @@ module Pubnub
         end
       end
     end
+
+    private
 
     def start_event_machine(options)
       $logger.debug 'Pubnub::Client#start_event_machine | starting EM in new thread'
