@@ -98,9 +98,12 @@ module Pubnub
               $logger.debug('Async subscription running')
               $logger.debug("ORIGIN #{origin}")
               $logger.debug("SUBSCRIBE #{subscribe}")
-              subscribe.start_event(self) if subscribe
 
-              @env[:wait_for_response][origin] = false
+              EM.defer do
+                subscribe.start_event(self) if subscribe
+                @env[:wait_for_response][origin] = false
+              end
+
             end
           end
         rescue => e
@@ -141,7 +144,9 @@ module Pubnub
         $logger.debug('Pubnub::Client#start_event_machine | Initializing railgun')
         @env[:railgun] = EM.add_periodic_timer(0.05) do
           @async_events.each do |event|
-            event.fire(self) unless event.fired
+            EM.defer do
+              event.fire(self) unless event.fired
+            end
           end
           @async_events.delete_if {|event| event.finished }
         end
