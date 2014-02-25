@@ -32,8 +32,10 @@ module Pubnub
           event.fire(self)
         else
           start_event_machine(@env)
-          @async_events << event
-          start_railgun(@env)
+          EM.defer do
+            @async_events << event
+            start_railgun(@env)
+          end
           #EM.defer {
           #  begin
           #    event.fire(self)
