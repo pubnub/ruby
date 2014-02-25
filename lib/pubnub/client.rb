@@ -33,6 +33,7 @@ module Pubnub
         else
           start_event_machine(@env)
           @async_events << event
+          start_railgun(@env)
           #EM.defer {
           #  begin
           #    event.fire(self)
@@ -133,17 +134,7 @@ module Pubnub
 
     private
 
-    def start_event_machine(options)
-      $logger.debug 'Pubnub::Client#start_event_machine | starting EM in new thread'
-      Thread.new { EM.run {} } if !EM.reactor_running? && !defined?(Thin)
-      if EM.reactor_running?
-        $logger.debug 'Pubnub::Client#start_event_machine | EM already running'
-      else
-        $logger.debug 'Pubnub::Client#start_event_machine | EM started'
-      end
-
-      until EM.reactor_running? do end
-
+    def start_railgun(options)
       if @env[:railgun]
         $logger.debug('Pubnub::Client#start_event_machine | Railgun already initialized')
       else
@@ -155,7 +146,16 @@ module Pubnub
           @async_events.delete_if {|event| event.finished }
         end
       end
+    end
 
+    def start_event_machine(options)
+      $logger.debug 'Pubnub::Client#start_event_machine | starting EM in new thread'
+      Thread.new { EM.run {} } if !EM.reactor_running? && !defined?(Thin)
+      if EM.reactor_running?
+        $logger.debug 'Pubnub::Client#start_event_machine | EM already running'
+      else
+        $logger.debug 'Pubnub::Client#start_event_machine | EM started'
+      end
     end
 
     def setup_app(options)
