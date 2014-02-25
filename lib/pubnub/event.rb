@@ -21,6 +21,7 @@ module Pubnub
       validate!
       @original_channel = format_channels(@channel, false)
       @channel          = format_channels(@channel)
+      $logger.debug("Event#initialize | Initialized #{self.class.to_s}")
     end
 
     def fire(app)
@@ -31,6 +32,7 @@ module Pubnub
 
     def start_event(app, count = 0)
       if count <= app.env[:max_retries]
+        $logger.debug('Event#start_event | sending request')
         @response = get_connection(app).request(uri(app))
       end
 
@@ -80,6 +82,7 @@ module Pubnub
     end
 
     def fire_callbacks(envelopes, app)
+      $logger.debug('Firing callbacks')
       envelopes.each do |envelope|
         @callback.call(envelope)       if !envelope.error && @callback && !envelope.timetoken_update
         if envelope.timetoken_update || envelope.timetoken.to_i > app.env[:timetoken].to_i
