@@ -135,6 +135,9 @@ module Pubnub
     private
 
     def start_railgun(options)
+
+      sleep 1 unless EM.reactor_running?
+
       if @env[:railgun]
         $logger.debug('Pubnub::Client#start_event_machine | Railgun already initialized')
       else
