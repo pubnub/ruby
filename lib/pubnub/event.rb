@@ -1,5 +1,8 @@
 module Pubnub
   module Event
+
+    attr_reader :fired, :finished
+
     def initialize(options, app)
       @app            = app
       @origin         = options[:origin]          || app.env[:origin]
@@ -25,6 +28,7 @@ module Pubnub
     end
 
     def fire(app)
+      @fired = true
       $logger.debug('Event#fire')
       setup_connection(app) unless connection_exist?(app)
       envelopes = start_event(app)
@@ -77,6 +81,7 @@ module Pubnub
       $logger.debug('Event#handle_response')
       envelopes = format_envelopes(response, app, error)
       fire_callbacks(envelopes,app)
+      @finished = true
       envelopes
 
     end

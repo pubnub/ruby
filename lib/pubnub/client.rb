@@ -32,15 +32,15 @@ module Pubnub
           event.fire(self)
         else
           start_event_machine(@env)
-          EM.next_tick {
-            begin
-              event.fire(self)
-            rescue => e
-              puts e
-            end
-          }
+          @async_events << event
+          #EM.defer {
+          #  begin
+          #    event.fire(self)
+          #  rescue => e
+          #    puts e
+          #  end
+          #}
         end
-        #event.fire(self)
       end
     end
     alias_method :unsubscribe, :leave
@@ -78,15 +78,15 @@ module Pubnub
     def start_subscribe(overwrite = false)
 
       if overwrite
-        @env[:railgun].cancel
-        @env[:railgun] = nil
+        @env[:subscribe_railgun].cancel
+        @env[:subscribe_railgun] = nil
         @env[:wait_for_response].each do |k,v|
           @env[:wait_for_response][k] = false
         end
       end
 
       @env[:wait_for_response] = Hash.new unless @wait_for_response
-      @env[:railgun] = EM.add_periodic_timer(PERIODIC_TIMER_INTERVAL) do
+      @env[:subscribe_railgun] = EM.add_periodic_timer(PERIODIC_TIMER_INTERVAL) do
         begin
           @env[:subscriptions].each do |origin, subscribe|
             unless @env[:wait_for_response][origin] == true
@@ -104,11 +104,11 @@ module Pubnub
           $logger.error(e)
           $logger.error(e.backtrace)
         end
-      end unless @env[:railgun]
+      end unless @env[:subscribe_railgun]
     end
 
     def subscription_running?
-      @env[:railgun] && !@env[:subscriptions].empty? ? true : false
+      @env[:subscribe_railgun] && !@env[:subscriptions].empty? ? true : false
     end
 
     def create_subscriptions_pools(env)
@@ -141,12 +141,28 @@ module Pubnub
       else
         $logger.debug 'Pubnub::Client#start_event_machine | EM started'
       end
+
+      until EM.reactor_running? do end
+
+      if @env[:railgun]
+        $logger.debug('Pubnub::Client#start_event_machine | Railgun already initialized')
+      else
+        $logger.debug('Pubnub::Client#start_event_machine | Initializing railgun')
+        @env[:railgun] = EM.add_periodic_timer(0.05) do
+          @async_events.each do |event|
+            event.fire(self) unless event.fired
+          end
+          @async_events.delete_if {|event| event.finished }
+        end
+      end
+
     end
 
     def setup_app(options)
       $logger = options[:logger] || Logger.new('pubnub.log')
       @env = symbolize_options_keys(options)
       @env = set_default_values(@env)
+      @async_events = Array.new
       $logger.debug('Created Pubnub::Client.app')
     end
 
