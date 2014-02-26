@@ -36,6 +36,7 @@ module Pubnub
           #  @async_events << event
           #  start_railgun(@env)
           #end
+          unless EM.reactor_running? do end
           EM.defer {
             begin
               event.fire(self)

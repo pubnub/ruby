@@ -197,7 +197,9 @@ module Pubnub
   module SingleEvent
 
     def fire(app)
-      if app.async_events.include? self
+      if @http_sync
+        super(app)
+      elsif app.async_events.include? self
         super(app)
       else
         app.async_events << self
