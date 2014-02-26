@@ -197,12 +197,17 @@ module Pubnub
   module SingleEvent
 
     def fire(app)
+      $logger.debug('Pubnub::SingleEvent#fire')
       if @http_sync
+        $logger.debug('Pubnub::SingleEvent#fire | Sync event!')
         super(app)
       elsif app.async_events.include? self
+        $logger.debug('Pubnub::SingleEvent#fire | Event already on list!')
         super(app)
       else
+        $logger.debug('Pubnub::SingleEvent#fire | Adding event to async_events')
         app.async_events << self
+        $logger.debug('Pubnub::SingleEvent#fire | Starting railgun')
         app.start_railgun
       end
     end

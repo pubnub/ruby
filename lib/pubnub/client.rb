@@ -136,9 +136,9 @@ module Pubnub
 
     def start_railgun
       if @env[:railgun]
-        $logger.debug('Pubnub::Client#start_event_machine | Railgun already initialized')
+        $logger.debug('Pubnub::Client#start_railgun | Railgun already initialized')
       else
-        $logger.debug('Pubnub::Client#start_event_machine | Initializing railgun')
+        $logger.debug('Pubnub::Client#start_railgun | Initializing railgun')
         @env[:railgun] = EM.add_periodic_timer(0.05) do
           @async_events.each do |event|
             EM.defer do
