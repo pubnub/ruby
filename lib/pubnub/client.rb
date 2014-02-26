@@ -75,6 +75,8 @@ module Pubnub
 
     def start_subscribe(overwrite = false)
 
+      start_event_machine
+
       if overwrite
         @env[:subscribe_railgun].cancel
         @env[:subscribe_railgun] = nil
@@ -150,7 +152,7 @@ module Pubnub
 
     private
 
-    def start_event_machine(options)
+    def start_event_machine(options = nil)
       $logger.debug 'Pubnub::Client#start_event_machine | starting EM in new thread'
       Thread.new { EM.run {} } if !EM.reactor_running? && !defined?(Thin)
       if EM.reactor_running?
