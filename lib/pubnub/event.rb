@@ -233,48 +233,52 @@ module Pubnub
 
 
     def fire(app)
-      $logger.debug('SubscribeEvent#fire')
-      if @http_sync == true
-        $logger.debug('SubscribeEvent#fire sync')
-        super
-      else
-        $logger.debug('SubscribeEvent#fire async')
-        $logger.debug("Channel: #{@channel}")
-        setup_connection(app) unless connection_exist?(app)
-        unless app.env[:subscriptions][@origin].blank?
-          @channel.each do |channel|
-            if app.env[:subscriptions][@origin].get_channels.include?(channel)
-              @channel.delete(channel)
-              $logger.error("Already subscribed to channel #{channel}, you have to leave that channel first")
-            end
-            $logger.debug('SubscribeEvent#add_channel | Adding channel')
-            app.env[:subscriptions][@origin].add_channel(channel, app)
-          end
-        end
-
-        if app.env[:subscriptions][@origin].nil?
-          app.env[:subscriptions][@origin]        = self            if app.env[:subscriptions][@origin].nil?
-          app.env[:callbacks_pool][@origin]       = Hash.new        if app.env[:callbacks_pool][@origin].nil?
-          app.env[:error_callbacks_pool][@origin] = @error_callback if app.env[:error_callbacks_pool][@origin].nil?
-
-          @channel.each do |channel|
-            app.env[:callbacks_pool][@origin][channel] = Hash.new
-
-            app.env[:callbacks_pool][@origin][channel][:callback]       = @callback       unless app.env[:callbacks_pool][@origin][:callback]
-          end
-
+      begin
+        $logger.debug('SubscribeEvent#fire')
+        if @http_sync == true
+          $logger.debug('SubscribeEvent#fire sync')
+          super
         else
-          @channel.each do |channel|
-            app.env[:callbacks_pool][@origin][channel] = Hash.new
-            app.env[:callbacks_pool][@origin][channel] = Hash.new
-
-            app.env[:callbacks_pool][@origin][channel][:callback]       = @callback       unless app.env[:callbacks_pool][@origin][:callback]
-            app.env[:callbacks_pool][@origin][channel][:error_callback] = @error_callback unless app.env[:callbacks_pool][@origin][:error_callback]
+          $logger.debug('SubscribeEvent#fire async')
+          $logger.debug("Channel: #{@channel}")
+          setup_connection(app) unless connection_exist?(app)
+          unless app.env[:subscriptions][@origin].blank?
+            @channel.each do |channel|
+              if app.env[:subscriptions][@origin].get_channels.include?(channel)
+                @channel.delete(channel)
+                $logger.error("Already subscribed to channel #{channel}, you have to leave that channel first")
+              end
+              $logger.debug('SubscribeEvent#add_channel | Adding channel')
+              app.env[:subscriptions][@origin].add_channel(channel, app)
+            end
           end
+
+          if app.env[:subscriptions][@origin].nil?
+            app.env[:subscriptions][@origin]        = self            if app.env[:subscriptions][@origin].nil?
+            app.env[:callbacks_pool][@origin]       = Hash.new        if app.env[:callbacks_pool][@origin].nil?
+            app.env[:error_callbacks_pool][@origin] = @error_callback if app.env[:error_callbacks_pool][@origin].nil?
+
+            @channel.each do |channel|
+              app.env[:callbacks_pool][@origin][channel] = Hash.new
+
+              app.env[:callbacks_pool][@origin][channel][:callback]       = @callback       unless app.env[:callbacks_pool][@origin][:callback]
+            end
+
+          else
+            @channel.each do |channel|
+              app.env[:callbacks_pool][@origin][channel] = Hash.new
+              app.env[:callbacks_pool][@origin][channel] = Hash.new
+
+              app.env[:callbacks_pool][@origin][channel][:callback]       = @callback       unless app.env[:callbacks_pool][@origin][:callback]
+              app.env[:callbacks_pool][@origin][channel][:error_callback] = @error_callback unless app.env[:callbacks_pool][@origin][:error_callback]
+            end
+          end
+
+          app.start_subscribe
+
         end
-
-        app.start_subscribe
-
+      rescue => error
+        $logger.error(error)
       end
     end
 
