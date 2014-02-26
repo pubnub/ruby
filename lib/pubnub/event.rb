@@ -235,7 +235,7 @@ module Pubnub
     def fire(app)
       begin
         $logger.debug('SubscribeEvent#fire')
-        if @http_sync == true
+        if @http_sync
           $logger.debug('SubscribeEvent#fire sync')
           super
         else

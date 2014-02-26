@@ -156,15 +156,14 @@ module Pubnub
       $logger.debug 'Pubnub::Client#start_event_machine | starting EM in new thread'
       if defined?(Thin)
         $logger.debug('Pubnub::Client#start_event_machine | We\'re running on thin')
+      else
+        $logger.debug('Pubnub::Client#start_event_machine | We aren\'t running on thin')
       end
-      unless EM.reactor_running?
-        $logger.debug('Pubnub::Client#start_event_machine | EventMachine is not running')
-      end
-      Thread.new { EM.run {} } if !EM.reactor_running? && !defined?(Thin)
       if EM.reactor_running?
         $logger.debug 'Pubnub::Client#start_event_machine | EM already running'
       else
-        $logger.debug 'Pubnub::Client#start_event_machine | EM started'
+        Thread.new { EM.run {} }
+        $logger.debug 'Pubnub::Client#start_event_machine | EM started in new thread'
       end
     end
 
