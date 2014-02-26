@@ -27,7 +27,6 @@ module Pubnub
 
     end
 
-
     def decrypt(cipher_text)
       $logger.debug("Decrypting: #{cipher_text}")
       decode_cipher = OpenSSL::Cipher::Cipher.new(@alg)
