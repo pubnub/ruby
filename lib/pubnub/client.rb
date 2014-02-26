@@ -31,11 +31,11 @@ module Pubnub
         if params[:http_sync]
           event.fire(self)
         else
-          #start_event_machine(@env)
           #EM.defer do
           #  @async_events << event
           #  start_railgun(@env)
           #end
+          start_event_machine(@env)
           until EM.reactor_running? do
             puts '.'
           end
