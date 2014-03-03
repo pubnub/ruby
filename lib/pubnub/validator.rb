@@ -6,7 +6,7 @@ module Pubnub
       if @channel.is_a? Array
         if allow_array
           @channel.each do |channel|
-            unless channel.is_a? String
+            unless channel.is_a?(String) || channel.is_a?(Symbol)
               valid = false
               break
             end
@@ -17,7 +17,7 @@ module Pubnub
       else
         if !@channel.is_a?(String) && !@channel.is_a?(Symbol)
           valid = false
-        elsif @channel.index(',') && !allow_array
+        elsif @channel.to_s.index(',') && !allow_array
           valid = false
         end
       end

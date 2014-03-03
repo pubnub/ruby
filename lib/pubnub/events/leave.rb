@@ -11,7 +11,7 @@ module Pubnub
       @event = 'leave'
       @allow_multiple_channels = true
       @doesnt_require_callback = true
-
+      @force = options[:force]
     end
 
     def validate!
@@ -28,9 +28,9 @@ module Pubnub
         raise ArgumentError.new(:object => self),  'You cannot leave channel that is not subscribed'
       elsif app.env[:subscriptions][@origin].get_channels.include?(@channel)
         raise ArgumentError.new(:object => self),  'You cannot leave channel that is not subscribed'
-      end
+      end unless @force
       @channel.each do |channel|
-        app.env[:subscriptions][@origin].remove_channel(channel, app)
+        app.env[:subscriptions][@origin].remove_channel(channel, app) if app.env[:subscriptions][@origin]
       end
       super
     end

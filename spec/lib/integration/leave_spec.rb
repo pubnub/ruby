@@ -11,9 +11,6 @@ describe "#leave" do
       @response_output.write envelope.response
       @message_output.write envelope.msg
       @after_callback = true
-      if EM.reactor_running? && envelope.is_last?
-        EM.stop
-      end
     }
 
     @error_callback = lambda { |envelope|
@@ -21,14 +18,10 @@ describe "#leave" do
       @response_output.write envelope.response
       @message_output.write envelope.msg
       @after_error_callback = true
-      if EM.reactor_running? && envelope.is_last?
-        EM.stop
-      end
     }
 
     @pn = Pubnub.new(:max_retries => 0, :subscribe_key => :demo, :publish_key => :demo, :auth_key => :demoish_authkey, :secret_key => 'some_secret_key', :error_callback => @error_callback)
     @pn.uuid = 'rubytests'
-
   end
   context "uses ssl" do
     before(:each) { @ssl = true }
@@ -38,9 +31,8 @@ describe "#leave" do
           context "uses sync connection" do
             it 'works fine' do
               VCR.use_cassette("leave-ssl-block-valid-200-sync", :record => :none) do
-                @pn.leave(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
+                @pn.leave(:force => true, :ssl => true, :http_sync => true, :channel => "demo", &@callback)
+                
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leave"}'
@@ -52,14 +44,15 @@ describe "#leave" do
           context "uses async connection" do
             it 'works fine' do
               VCR.use_cassette("leave-ssl-block-valid-200-async", :record => :none) do
-                @pn.leave(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+                @pn.leave(:force => true, :ssl => true, :http_sync => false, :channel => "demo", &@callback)
+
+                eventually do
+                  @after_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '{"action": "leave"}'
+                  @message_output.seek 0
+                  @message_output.read.should eq '{"action"=>"leave"}'
                 end
-                @after_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '{"action": "leave"}'
-                @message_output.seek 0
-                @message_output.read.should eq '{"action"=>"leave"}'
               end
             end
           end
@@ -68,9 +61,8 @@ describe "#leave" do
           context "uses sync connection" do
             it 'works fine' do
               VCR.use_cassette("leave-ssl-block-valid-non-200-sync", :record => :none) do
-                @pn.leave(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
+                @pn.leave(:force => true, :ssl => true, :http_sync => true, :channel => "demo", &@callback)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leave"}'
@@ -82,14 +74,15 @@ describe "#leave" do
           context "uses async connection" do
             it 'works fine' do
               VCR.use_cassette("leave-ssl-block-valid-non-200-async", :record => :none) do
-                @pn.leave(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+                @pn.leave(:force => true, :ssl => true, :http_sync => false, :channel => "demo", &@callback)
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '{"action": "leave"}'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '{"action": "leave"}'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -100,9 +93,8 @@ describe "#leave" do
           context "uses sync connection" do
             it 'works fine' do
               VCR.use_cassette("leave-ssl-block-invalid-200-sync", :record => :none) do
-                @pn.leave(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
+                @pn.leave(:force => true, :ssl => true, :http_sync => true, :channel => "demo", &@callback)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leav'
@@ -114,14 +106,15 @@ describe "#leave" do
           context "uses async connection" do
             it 'works fine' do
               VCR.use_cassette("leave-ssl-block-invalid-200-async", :record => :none) do
-                @pn.leave(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+                @pn.leave(:force => true, :ssl => true, :http_sync => false, :channel => "demo", &@callback)
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '{"action": "leav'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '{"action": "leav'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -130,9 +123,8 @@ describe "#leave" do
           context "uses sync connection" do
             it 'works fine' do
               VCR.use_cassette("leave-ssl-block-invalid-non-200-sync", :record => :none) do
-                @pn.leave(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
+                @pn.leave(:force => true, :ssl => true, :http_sync => true, :channel => "demo", &@callback)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leav'
@@ -144,14 +136,15 @@ describe "#leave" do
           context "uses async connection" do
             it 'works fine' do
               VCR.use_cassette("leave-ssl-block-invalid-non-200-async", :record => :none) do
-                @pn.leave(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+                @pn.leave(:force => true, :ssl => true, :http_sync => false, :channel => "demo", &@callback)
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '{"action": "leav'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '{"action": "leav'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -164,9 +157,8 @@ describe "#leave" do
           context "uses sync connection" do
             it 'works fine' do
               VCR.use_cassette("leave-ssl-parameter-valid-200-sync", :record => :none) do
-                @pn.leave(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
+                @pn.leave(:force => true, :ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
+                
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leave"}'
@@ -178,14 +170,15 @@ describe "#leave" do
           context "uses async connection" do
             it 'works fine' do
               VCR.use_cassette("leave-ssl-parameter-valid-200-async", :record => :none) do
-                @pn.leave(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+                @pn.leave(:force => true, :ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
+
+                eventually do
+                  @after_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '{"action": "leave"}'
+                  @message_output.seek 0
+                  @message_output.read.should eq '{"action"=>"leave"}'
                 end
-                @after_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '{"action": "leave"}'
-                @message_output.seek 0
-                @message_output.read.should eq '{"action"=>"leave"}'
               end
             end
           end
@@ -194,9 +187,8 @@ describe "#leave" do
           context "uses sync connection" do
             it 'works fine' do
               VCR.use_cassette("leave-ssl-parameter-valid-non-200-sync", :record => :none) do
-                @pn.leave(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
+                @pn.leave(:force => true, :ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leave"}'
@@ -208,14 +200,15 @@ describe "#leave" do
           context "uses async connection" do
             it 'works fine' do
               VCR.use_cassette("leave-ssl-parameter-valid-non-200-async", :record => :none) do
-                @pn.leave(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+                @pn.leave(:force => true, :ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '{"action": "leave"}'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '{"action": "leave"}'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -226,9 +219,8 @@ describe "#leave" do
           context "uses sync connection" do
             it 'works fine' do
               VCR.use_cassette("leave-ssl-parameter-invalid-200-sync", :record => :none) do
-                @pn.leave(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
+                @pn.leave(:force => true, :ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leav'
@@ -240,14 +232,15 @@ describe "#leave" do
           context "uses async connection" do
             it 'works fine' do
               VCR.use_cassette("leave-ssl-parameter-invalid-200-async", :record => :none) do
-                @pn.leave(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+                @pn.leave(:force => true, :ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '{"action": "leav'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '{"action": "leav'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -256,9 +249,8 @@ describe "#leave" do
           context "uses sync connection" do
             it 'works fine' do
               VCR.use_cassette("leave-ssl-parameter-invalid-non-200-sync", :record => :none) do
-                @pn.leave(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
+                @pn.leave(:force => true, :ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leav'
@@ -270,14 +262,15 @@ describe "#leave" do
           context "uses async connection" do
             it 'works fine' do
               VCR.use_cassette("leave-ssl-parameter-invalid-non-200-async", :record => :none) do
-                @pn.leave(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+                @pn.leave(:force => true, :ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '{"action": "leav'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '{"action": "leav'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -293,9 +286,8 @@ describe "#leave" do
           context "uses sync connection" do
             it 'works fine' do
               VCR.use_cassette("leave-nonssl-block-valid-200-sync", :record => :none) do
-                @pn.leave(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
+                @pn.leave(:force => true, :ssl => false, :http_sync => true, :channel => "demo", &@callback)
+                
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leave"}'
@@ -307,14 +299,15 @@ describe "#leave" do
           context "uses async connection" do
             it 'works fine' do
               VCR.use_cassette("leave-nonssl-block-valid-200-async", :record => :none) do
-                @pn.leave(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+                @pn.leave(:force => true, :ssl => false, :http_sync => false, :channel => "demo", &@callback)
+
+                eventually do
+                  @after_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '{"action": "leave"}'
+                  @message_output.seek 0
+                  @message_output.read.should eq '{"action"=>"leave"}'
                 end
-                @after_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '{"action": "leave"}'
-                @message_output.seek 0
-                @message_output.read.should eq '{"action"=>"leave"}'
               end
             end
           end
@@ -323,9 +316,8 @@ describe "#leave" do
           context "uses sync connection" do
             it 'works fine' do
               VCR.use_cassette("leave-nonssl-block-valid-non-200-sync", :record => :none) do
-                @pn.leave(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
+                @pn.leave(:force => true, :ssl => false, :http_sync => true, :channel => "demo", &@callback)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leave"}'
@@ -337,14 +329,15 @@ describe "#leave" do
           context "uses async connection" do
             it 'works fine' do
               VCR.use_cassette("leave-nonssl-block-valid-non-200-async", :record => :none) do
-                @pn.leave(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+                @pn.leave(:force => true, :ssl => false, :http_sync => false, :channel => "demo", &@callback)
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '{"action": "leave"}'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '{"action": "leave"}'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -355,9 +348,8 @@ describe "#leave" do
           context "uses sync connection" do
             it 'works fine' do
               VCR.use_cassette("leave-nonssl-block-invalid-200-sync", :record => :none) do
-                @pn.leave(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
+                @pn.leave(:force => true, :ssl => false, :http_sync => true, :channel => "demo", &@callback)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leav'
@@ -369,14 +361,15 @@ describe "#leave" do
           context "uses async connection" do
             it 'works fine' do
               VCR.use_cassette("leave-nonssl-block-invalid-200-async", :record => :none) do
-                @pn.leave(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+                @pn.leave(:force => true, :ssl => false, :http_sync => false, :channel => "demo", &@callback)
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '{"action": "leav'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '{"action": "leav'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -385,9 +378,8 @@ describe "#leave" do
           context "uses sync connection" do
             it 'works fine' do
               VCR.use_cassette("leave-nonssl-block-invalid-non-200-sync", :record => :none) do
-                @pn.leave(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
+                @pn.leave(:force => true, :ssl => false, :http_sync => true, :channel => "demo", &@callback)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leav'
@@ -399,14 +391,15 @@ describe "#leave" do
           context "uses async connection" do
             it 'works fine' do
               VCR.use_cassette("leave-nonssl-block-invalid-non-200-async", :record => :none) do
-                @pn.leave(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+                @pn.leave(:force => true, :ssl => false, :http_sync => false, :channel => "demo", &@callback)
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '{"action": "leav'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '{"action": "leav'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -419,9 +412,8 @@ describe "#leave" do
           context "uses sync connection" do
             it 'works fine' do
               VCR.use_cassette("leave-nonssl-parameter-valid-200-sync", :record => :none) do
-                @pn.leave(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
+                @pn.leave(:force => true, :ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
+                
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leave"}'
@@ -433,14 +425,15 @@ describe "#leave" do
           context "uses async connection" do
             it 'works fine' do
               VCR.use_cassette("leave-nonssl-parameter-valid-200-async", :record => :none) do
-                @pn.leave(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+                @pn.leave(:force => true, :ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
+
+                eventually do
+                  @after_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '{"action": "leave"}'
+                  @message_output.seek 0
+                  @message_output.read.should eq '{"action"=>"leave"}'
                 end
-                @after_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '{"action": "leave"}'
-                @message_output.seek 0
-                @message_output.read.should eq '{"action"=>"leave"}'
               end
             end
           end
@@ -449,9 +442,8 @@ describe "#leave" do
           context "uses sync connection" do
             it 'works fine' do
               VCR.use_cassette("leave-nonssl-parameter-valid-non-200-sync", :record => :none) do
-                @pn.leave(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
+                @pn.leave(:force => true, :ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leave"}'
@@ -463,14 +455,15 @@ describe "#leave" do
           context "uses async connection" do
             it 'works fine' do
               VCR.use_cassette("leave-nonssl-parameter-valid-non-200-async", :record => :none) do
-                @pn.leave(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+                @pn.leave(:force => true, :ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '{"action": "leave"}'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '{"action": "leave"}'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -481,9 +474,8 @@ describe "#leave" do
           context "uses sync connection" do
             it 'works fine' do
               VCR.use_cassette("leave-nonssl-parameter-invalid-200-sync", :record => :none) do
-                @pn.leave(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
+                @pn.leave(:force => true, :ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leav'
@@ -495,14 +487,15 @@ describe "#leave" do
           context "uses async connection" do
             it 'works fine' do
               VCR.use_cassette("leave-nonssl-parameter-invalid-200-async", :record => :none) do
-                @pn.leave(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+                @pn.leave(:force => true, :ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '{"action": "leav'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '{"action": "leav'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -511,9 +504,8 @@ describe "#leave" do
           context "uses sync connection" do
             it 'works fine' do
               VCR.use_cassette("leave-nonssl-parameter-invalid-non-200-sync", :record => :none) do
-                @pn.leave(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
+                @pn.leave(:force => true, :ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
+
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leav'
@@ -525,14 +517,15 @@ describe "#leave" do
           context "uses async connection" do
             it 'works fine' do
               VCR.use_cassette("leave-nonssl-parameter-invalid-non-200-async", :record => :none) do
-                @pn.leave(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+                @pn.leave(:force => true, :ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '{"action": "leav'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '{"action": "leav'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end

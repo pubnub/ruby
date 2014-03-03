@@ -6,9 +6,27 @@ require 'stringio'
 require 'webmock/rspec'
 require 'vcr'
 
+module AsyncHelper
+  def eventually(options = {})
+    timeout = options[:timeout] || 3
+    interval = options[:interval] || 0.1
+    time_limit = Time.now + timeout
+    loop do
+      begin
+        yield
+      rescue => error
+      end
+      return if error.nil?
+      raise error if Time.now >= time_limit
+      sleep interval
+    end
+  end
+end
+
 WebMock.disable_net_connect!
 
 RSpec.configure do |config|
+  config.include AsyncHelper
   config.mock_framework = :rspec
   config.color_enabled = true
   config.tty = true

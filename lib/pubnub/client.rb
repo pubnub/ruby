@@ -73,11 +73,12 @@ module Pubnub
       $logger.info('Bye!')
     end
 
-    def start_subscribe(overwrite = false)
+    def start_subscribe(override = false)
 
       start_event_machine
 
-      if overwrite
+      if override
+        $logger.debug('Pubnub::Client#start_subscribe | Override')
         @env[:subscribe_railgun].cancel
         @env[:subscribe_railgun] = nil
         @env[:wait_for_response].each do |k,v|
@@ -89,16 +90,16 @@ module Pubnub
       @env[:subscribe_railgun] = EM.add_periodic_timer(PERIODIC_TIMER_INTERVAL) do
         begin
           @env[:subscriptions].each do |origin, subscribe|
-            unless @env[:wait_for_response][origin] == true
+            unless @env[:wait_for_response][origin]
               @env[:wait_for_response][origin] = true
 
               $logger.debug('Async subscription running')
-              $logger.debug("ORIGIN #{origin}")
-              $logger.debug("SUBSCRIBE #{subscribe}")
+              $logger.debug("origin: #{origin}")
+              $logger.debug("timetoken: #{@env[:timetoken]}")
 
               EM.defer do
                 subscribe.start_event(self) if subscribe
-                @env[:wait_for_response][origin] = false
+                # @env[:wait_for_response][origin] = false # moved to Event
               end
 
             end
@@ -122,12 +123,14 @@ module Pubnub
 
     def update_timetoken(timetoken)
       @env[:timetoken] = timetoken.to_i
+      $logger.debug("Pubnub::Client#update_timetoken | Current timetoken is eq #{@env[:timetoken]}")
     end
 
     def set_uuid(uuid)
       @env[:uuid] = uuid
     end
     alias_method :session_uuid=, :set_uuid
+    alias_method :uuid=, :set_uuid
 
     def set_cipher_key(cipher_key)
       @env[:cipher_key] = cipher_key
@@ -139,7 +142,7 @@ module Pubnub
         $logger.debug('Pubnub::Client#start_railgun | Railgun already initialized')
       else
         $logger.debug('Pubnub::Client#start_railgun | Initializing railgun')
-        @env[:railgun] = EM.add_periodic_timer(0.05) do
+        @env[:railgun] = EM.add_periodic_timer(0.01) do
           @async_events.each do |event|
             EM.defer do
               event.fire(self) unless event.fired
@@ -172,7 +175,7 @@ module Pubnub
       @env = symbolize_options_keys(options)
       @env = set_default_values(@env)
       @async_events = Array.new
-      $logger.debug('Created Pubnub::Client.app')
+      $logger.debug("\n\nCreated new Pubnub::Client instance")
     end
 
     def create_connections_pools(options)
@@ -223,6 +226,7 @@ module Pubnub
       raise InitializationError.new(:object => self), 'Origin parameter is not valid. Should be type of String'                  unless parameters[:origin].is_a?(String) || parameters[:origin].blank?
       raise InitializationError.new(:object => self), 'Missing required :subscribe_key parameter'                                unless parameters[:subscribe_key]
       raise InitializationError.new(:object => self), 'Subscribe key parameter is not valid. Should be type of String or Symbol' unless [String, Symbol].include?(parameters[:subscribe_key].class)
+      raise InitializationError.new(:object => self), 'Publish key parameter is not valid. Should be type of String or Symbol' unless [String, Symbol].include?(parameters[:publish_key].class) || parameters[:publish_key].blank?
     end
 
   end

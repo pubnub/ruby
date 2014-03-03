@@ -14,6 +14,11 @@ module Pubnub
 
     end
 
+    def fire(app)
+      app.update_timetoken(0)
+      super
+    end
+
     def validate!
       super
 

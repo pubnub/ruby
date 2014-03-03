@@ -11,9 +11,6 @@ describe "#history" do
       @response_output.write envelope.response
       @message_output.write envelope.msg
       @after_callback = true
-      if EM.reactor_running? && envelope.is_last?
-        EM.stop
-      end
     }
 
     @error_callback = lambda { |envelope|
@@ -21,9 +18,6 @@ describe "#history" do
       @response_output.write envelope.response
       @message_output.write envelope.msg
       @after_error_callback = true
-      if EM.reactor_running? && envelope.is_last?
-        EM.stop
-      end
     }
 
     @pn = Pubnub.new(:max_retries => 0, :subscribe_key => :demo, :publish_key => :demo, :auth_key => :demoish_authkey, :secret_key => 'some_secret_key', :error_callback => @error_callback)
@@ -39,9 +33,7 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-ssl-block-valid-200-sync", :record => :none) do
                 @pn.history(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
-                sleep(0.1)
+                
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq ('[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'*3)
@@ -54,14 +46,14 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-ssl-block-valid-200-async", :record => :none) do
                 @pn.history(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq ('[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'*3)
+                  @message_output.seek 0
+                  @message_output.read.should eq '{"text"=>"hey"}{"text"=>"howdy"}{"text"=>"hello"}'
                 end
-                sleep(0.1)
-                @after_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq ('[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'*3)
-                @message_output.seek 0
-                @message_output.read.should eq '{"text"=>"hey"}{"text"=>"howdy"}{"text"=>"hello"}'
               end
             end
           end
@@ -71,9 +63,7 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-ssl-block-valid-non-200-sync", :record => :none) do
                 @pn.history(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
-                sleep(0.1)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'
@@ -86,14 +76,14 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-ssl-block-valid-non-200-async", :record => :none) do
                 @pn.history(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end
-                sleep(0.1)
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -105,9 +95,7 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-ssl-block-invalid-200-sync", :record => :none) do
                 @pn.history(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
-                sleep(0.1)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey'
@@ -120,14 +108,14 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-ssl-block-invalid-200-async", :record => :none) do
                 @pn.history(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"text":"hey'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                sleep(0.1)
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"text":"hey'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -137,9 +125,7 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-ssl-block-invalid-non-200-sync", :record => :none) do
                 @pn.history(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
-                sleep(0.1)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey'
@@ -152,14 +138,14 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-ssl-block-invalid-non-200-async", :record => :none) do
                 @pn.history(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"text":"hey'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                sleep(0.1)
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"text":"hey'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -173,9 +159,7 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-ssl-parameter-valid-200-sync", :record => :none) do
                 @pn.history(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
-                sleep(0.1)
+                
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq ('[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'*3)
@@ -188,14 +172,14 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-ssl-parameter-valid-200-async", :record => :none) do
                 @pn.history(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq ('[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'*3)
+                  @message_output.seek 0
+                  @message_output.read.should eq '{"text"=>"hey"}{"text"=>"howdy"}{"text"=>"hello"}'
                 end
-                sleep(0.1)
-                @after_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq ('[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'*3)
-                @message_output.seek 0
-                @message_output.read.should eq '{"text"=>"hey"}{"text"=>"howdy"}{"text"=>"hello"}'
               end
             end
           end
@@ -205,9 +189,7 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-ssl-parameter-valid-non-200-sync", :record => :none) do
                 @pn.history(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
-                sleep(0.1)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'
@@ -220,14 +202,14 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-ssl-parameter-valid-non-200-async", :record => :none) do
                 @pn.history(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end
-                sleep(0.1)
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -239,9 +221,7 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-ssl-parameter-invalid-200-sync", :record => :none) do
                 @pn.history(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
-                sleep(0.1)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey'
@@ -254,14 +234,14 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-ssl-parameter-invalid-200-async", :record => :none) do
                 @pn.history(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"text":"hey'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                sleep(0.1)
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"text":"hey'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -271,9 +251,7 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-ssl-parameter-invalid-non-200-sync", :record => :none) do
                 @pn.history(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
-                sleep(0.1)
+
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey'
@@ -286,14 +264,14 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-ssl-parameter-invalid-non-200-async", :record => :none) do
                 @pn.history(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"text":"hey'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                sleep(0.1)
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"text":"hey'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -310,9 +288,7 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-nonssl-block-valid-200-sync", :record => :none) do
                 @pn.history(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
-                sleep(0.1)
+                
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq ('[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'*3)
@@ -325,14 +301,14 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-nonssl-block-valid-200-async", :record => :none) do
                 @pn.history(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq ('[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'*3)
+                  @message_output.seek 0
+                  @message_output.read.should eq '{"text"=>"hey"}{"text"=>"howdy"}{"text"=>"hello"}'
                 end
-                sleep(0.1)
-                @after_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq ('[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'*3)
-                @message_output.seek 0
-                @message_output.read.should eq '{"text"=>"hey"}{"text"=>"howdy"}{"text"=>"hello"}'
               end
             end
           end
@@ -342,9 +318,7 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-nonssl-block-valid-non-200-sync", :record => :none) do
                 @pn.history(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
-                sleep(0.1)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'
@@ -357,14 +331,14 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-nonssl-block-valid-non-200-async", :record => :none) do
                 @pn.history(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end
-                sleep(0.1)
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -376,9 +350,7 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-nonssl-block-invalid-200-sync", :record => :none) do
                 @pn.history(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
-                sleep(0.1)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey'
@@ -391,14 +363,14 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-nonssl-block-invalid-200-async", :record => :none) do
                 @pn.history(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"text":"hey'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                sleep(0.1)
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"text":"hey'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -408,9 +380,7 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-nonssl-block-invalid-non-200-sync", :record => :none) do
                 @pn.history(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
-                sleep(0.1)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey'
@@ -423,14 +393,14 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-nonssl-block-invalid-non-200-async", :record => :none) do
                 @pn.history(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"text":"hey'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                sleep(0.1)
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"text":"hey'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -444,9 +414,7 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-nonssl-parameter-valid-200-sync", :record => :none) do
                 @pn.history(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
-                sleep(0.1)
+                
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq ('[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'*3)
@@ -459,14 +427,14 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-nonssl-parameter-valid-200-async", :record => :none) do
                 @pn.history(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq ('[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'*3)
+                  @message_output.seek 0
+                  @message_output.read.should eq '{"text"=>"hey"}{"text"=>"howdy"}{"text"=>"hello"}'
                 end
-                sleep(0.1)
-                @after_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq ('[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'*3)
-                @message_output.seek 0
-                @message_output.read.should eq '{"text"=>"hey"}{"text"=>"howdy"}{"text"=>"hello"}'
               end
             end
           end
@@ -476,9 +444,7 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-nonssl-parameter-valid-non-200-sync", :record => :none) do
                 @pn.history(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
-                sleep(0.1)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'
@@ -491,14 +457,14 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-nonssl-parameter-valid-non-200-async", :record => :none) do
                 @pn.history(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end
-                sleep(0.1)
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"text":"hey"},{"text":"howdy"},{"text":"hello"}],13904298660188334,13904300138214858]'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -510,9 +476,7 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-nonssl-parameter-invalid-200-sync", :record => :none) do
                 @pn.history(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
-                sleep(0.1)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey'
@@ -525,14 +489,14 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-nonssl-parameter-invalid-200-async", :record => :none) do
                 @pn.history(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"text":"hey'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                sleep(0.1)
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"text":"hey'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -542,9 +506,7 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-nonssl-parameter-invalid-non-200-sync", :record => :none) do
                 @pn.history(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
-                sleep(0.1)
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"text":"hey'
@@ -557,14 +519,14 @@ describe "#history" do
             it 'works fine' do
               VCR.use_cassette("history-nonssl-parameter-invalid-non-200-async", :record => :none) do
                 @pn.history(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"text":"hey'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                sleep(0.1)
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"text":"hey'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end

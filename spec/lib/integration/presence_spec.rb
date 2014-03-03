@@ -11,9 +11,6 @@ describe "#presence" do
       @response_output.write envelope.response
       @message_output.write envelope.msg
       @after_callback = true
-      if EM.reactor_running? && envelope.is_last?
-        EM.stop
-      end
     }
 
     @error_callback = lambda { |envelope|
@@ -21,9 +18,6 @@ describe "#presence" do
       @response_output.write envelope.response
       @message_output.write envelope.msg
       @after_error_callback = true
-      if EM.reactor_running? && envelope.is_last?
-        EM.stop
-      end
     }
 
     @pn = Pubnub.new(:max_retries => 0, :subscribe_key => :demo, :publish_key => :demo, :auth_key => :demoish_authkey, :secret_key => 'some_secret_key', :error_callback => @error_callback)
@@ -40,8 +34,7 @@ describe "#presence" do
               VCR.use_cassette("presence-ssl-block-valid-200-sync", :record => :none) do
                 @pn.presence(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
                 @pn.presence(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
+                
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"][[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
@@ -54,13 +47,14 @@ describe "#presence" do
             it 'works fine' do
               VCR.use_cassette("presence-ssl-block-valid-200-async", :record => :none) do
                 @pn.presence(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"][[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
+                  @message_output.seek 0
+                  @message_output.read.should eq '{"action"=>"leave", "timestamp"=>1390430008, "uuid"=>"3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy"=>1}{"action"=>"join", "timestamp"=>1390430008, "uuid"=>"3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy"=>2}'
                 end
-                @after_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"][[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
-                @message_output.seek 0
-                @message_output.read.should eq '{"action"=>"leave", "timestamp"=>1390430008, "uuid"=>"3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy"=>1}{"action"=>"join", "timestamp"=>1390430008, "uuid"=>"3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy"=>2}'
               end
             end
           end
@@ -71,8 +65,7 @@ describe "#presence" do
               VCR.use_cassette("presence-ssl-block-valid-non-200-sync", :record => :none) do
                 @pn.presence(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
                 @pn.presence(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
@@ -85,13 +78,14 @@ describe "#presence" do
             it 'works fine' do
               VCR.use_cassette("presence-ssl-block-valid-non-200-async", :record => :none) do
                 @pn.presence(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -104,8 +98,7 @@ describe "#presence" do
               VCR.use_cassette("presence-ssl-block-invalid-200-sync", :record => :none) do
                 @pn.presence(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
                 @pn.presence(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
@@ -118,13 +111,14 @@ describe "#presence" do
             it 'works fine' do
               VCR.use_cassette("presence-ssl-block-invalid-200-async", :record => :none) do
                 @pn.presence(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -135,8 +129,7 @@ describe "#presence" do
               VCR.use_cassette("presence-ssl-block-invalid-non-200-sync", :record => :none) do
                 @pn.presence(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
                 @pn.presence(:ssl => true, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
@@ -149,13 +142,14 @@ describe "#presence" do
             it 'works fine' do
               VCR.use_cassette("presence-ssl-block-invalid-non-200-async", :record => :none) do
                 @pn.presence(:ssl => true, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -170,8 +164,7 @@ describe "#presence" do
               VCR.use_cassette("presence-ssl-parameter-valid-200-sync", :record => :none) do
                 @pn.presence(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
                 @pn.presence(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
+                
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"][[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
@@ -184,13 +177,14 @@ describe "#presence" do
             it 'works fine' do
               VCR.use_cassette("presence-ssl-parameter-valid-200-async", :record => :none) do
                 @pn.presence(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"][[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
+                  @message_output.seek 0
+                  @message_output.read.should eq '{"action"=>"leave", "timestamp"=>1390430008, "uuid"=>"3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy"=>1}{"action"=>"join", "timestamp"=>1390430008, "uuid"=>"3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy"=>2}'
                 end
-                @after_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"][[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
-                @message_output.seek 0
-                @message_output.read.should eq '{"action"=>"leave", "timestamp"=>1390430008, "uuid"=>"3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy"=>1}{"action"=>"join", "timestamp"=>1390430008, "uuid"=>"3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy"=>2}'
               end
             end
           end
@@ -201,8 +195,7 @@ describe "#presence" do
               VCR.use_cassette("presence-ssl-parameter-valid-non-200-sync", :record => :none) do
                 @pn.presence(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
                 @pn.presence(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
@@ -215,13 +208,14 @@ describe "#presence" do
             it 'works fine' do
               VCR.use_cassette("presence-ssl-parameter-valid-non-200-async", :record => :none) do
                 @pn.presence(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -234,8 +228,7 @@ describe "#presence" do
               VCR.use_cassette("presence-ssl-parameter-invalid-200-sync", :record => :none) do
                 @pn.presence(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
                 @pn.presence(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
@@ -248,13 +241,14 @@ describe "#presence" do
             it 'works fine' do
               VCR.use_cassette("presence-ssl-parameter-invalid-200-async", :record => :none) do
                 @pn.presence(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -265,8 +259,7 @@ describe "#presence" do
               VCR.use_cassette("presence-ssl-parameter-invalid-non-200-sync", :record => :none) do
                 @pn.presence(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
                 @pn.presence(:ssl => true, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
@@ -279,13 +272,14 @@ describe "#presence" do
             it 'works fine' do
               VCR.use_cassette("presence-ssl-parameter-invalid-non-200-async", :record => :none) do
                 @pn.presence(:ssl => true, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -303,8 +297,7 @@ describe "#presence" do
               VCR.use_cassette("presence-nonssl-block-valid-200-sync", :record => :none) do
                 @pn.presence(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
                 @pn.presence(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
+                
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"][[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
@@ -317,13 +310,14 @@ describe "#presence" do
             it 'works fine' do
               VCR.use_cassette("presence-nonssl-block-valid-200-async", :record => :none) do
                 @pn.presence(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"][[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
+                  @message_output.seek 0
+                  @message_output.read.should eq '{"action"=>"leave", "timestamp"=>1390430008, "uuid"=>"3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy"=>1}{"action"=>"join", "timestamp"=>1390430008, "uuid"=>"3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy"=>2}'
                 end
-                @after_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"][[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
-                @message_output.seek 0
-                @message_output.read.should eq '{"action"=>"leave", "timestamp"=>1390430008, "uuid"=>"3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy"=>1}{"action"=>"join", "timestamp"=>1390430008, "uuid"=>"3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy"=>2}'
               end
             end
           end
@@ -334,8 +328,7 @@ describe "#presence" do
               VCR.use_cassette("presence-nonssl-block-valid-non-200-sync", :record => :none) do
                 @pn.presence(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
                 @pn.presence(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
@@ -348,13 +341,14 @@ describe "#presence" do
             it 'works fine' do
               VCR.use_cassette("presence-nonssl-block-valid-non-200-async", :record => :none) do
                 @pn.presence(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -367,8 +361,7 @@ describe "#presence" do
               VCR.use_cassette("presence-nonssl-block-invalid-200-sync", :record => :none) do
                 @pn.presence(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
                 @pn.presence(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
@@ -381,13 +374,14 @@ describe "#presence" do
             it 'works fine' do
               VCR.use_cassette("presence-nonssl-block-invalid-200-async", :record => :none) do
                 @pn.presence(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -398,8 +392,7 @@ describe "#presence" do
               VCR.use_cassette("presence-nonssl-block-invalid-non-200-sync", :record => :none) do
                 @pn.presence(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
                 @pn.presence(:ssl => false, :http_sync => true, :channel => "demo", &@callback)
-                while EM.reactor_running? do
-                end
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
@@ -412,13 +405,14 @@ describe "#presence" do
             it 'works fine' do
               VCR.use_cassette("presence-nonssl-block-invalid-non-200-async", :record => :none) do
                 @pn.presence(:ssl => false, :http_sync => false, :channel => "demo", &@callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -433,8 +427,7 @@ describe "#presence" do
               VCR.use_cassette("presence-nonssl-parameter-valid-200-sync", :record => :none) do
                 @pn.presence(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
                 @pn.presence(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
+                
                 @after_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"][[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
@@ -447,13 +440,14 @@ describe "#presence" do
             it 'works fine' do
               VCR.use_cassette("presence-nonssl-parameter-valid-200-async", :record => :none) do
                 @pn.presence(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"][[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
+                  @message_output.seek 0
+                  @message_output.read.should eq '{"action"=>"leave", "timestamp"=>1390430008, "uuid"=>"3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy"=>1}{"action"=>"join", "timestamp"=>1390430008, "uuid"=>"3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy"=>2}'
                 end
-                @after_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"][[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
-                @message_output.seek 0
-                @message_output.read.should eq '{"action"=>"leave", "timestamp"=>1390430008, "uuid"=>"3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy"=>1}{"action"=>"join", "timestamp"=>1390430008, "uuid"=>"3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy"=>2}'
               end
             end
           end
@@ -464,8 +458,7 @@ describe "#presence" do
               VCR.use_cassette("presence-nonssl-parameter-valid-non-200-sync", :record => :none) do
                 @pn.presence(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
                 @pn.presence(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
@@ -478,13 +471,14 @@ describe "#presence" do
             it 'works fine' do
               VCR.use_cassette("presence-nonssl-parameter-valid-non-200-async", :record => :none) do
                 @pn.presence(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 1},{"action": "join", "timestamp": 1390430008, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb", "occupancy": 2}],"13904300089348992"]'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
             end
           end
@@ -497,8 +491,7 @@ describe "#presence" do
               VCR.use_cassette("presence-nonssl-parameter-invalid-200-sync", :record => :none) do
                 @pn.presence(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
                 @pn.presence(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
+
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
@@ -511,13 +504,14 @@ describe "#presence" do
             it 'works fine' do
               VCR.use_cassette("presence-nonssl-parameter-invalid-200-async", :record => :none) do
                 @pn.presence(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end
@@ -528,8 +522,7 @@ describe "#presence" do
               VCR.use_cassette("presence-nonssl-parameter-invalid-non-200-sync", :record => :none) do
                 @pn.presence(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
                 @pn.presence(:ssl => false, :http_sync => true, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
-                end
+                
                 @after_error_callback.should eq true
                 @response_output.seek 0
                 @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
@@ -542,13 +535,14 @@ describe "#presence" do
             it 'works fine' do
               VCR.use_cassette("presence-nonssl-parameter-invalid-non-200-async", :record => :none) do
                 @pn.presence(:ssl => false, :http_sync => false, :channel => "demo", :callback => @callback)
-                while EM.reactor_running? do
+
+                eventually do
+                  @after_error_callback.should eq true
+                  @response_output.seek 0
+                  @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
+                  @message_output.seek 0
+                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
                 end
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[[{"action": "leave", "timestamp": 1390430067, "uuid": "3bad4360-2b9f-470f-aaf7-dac04454b1fb",'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
               end
             end
           end

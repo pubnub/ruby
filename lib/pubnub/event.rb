@@ -37,6 +37,7 @@ module Pubnub
     def start_event(app, count = 0)
       if count <= app.env[:max_retries]
         $logger.debug('Event#start_event | sending request')
+        $logger.debug("Event#start_event | tt: #{@timetoken}; ctt #{app.env[:timetoken]}")
         @response = get_connection(app).request(uri(app))
       end
 
@@ -56,7 +57,7 @@ module Pubnub
         raise ArgumentError.new(:object => self), 'Invalid channel(s) format! Should be type of: String, Symbol' unless valid_channel?(false)
       end
 
-      raise ArgumentError.new(:object => self), 'Callback parameter is required while using async' if !@http_sync && @callback.blank? && !@doesnt_require_callback
+      raise ArgumentError.new(:object => self), 'Callback parameter is required while using async' if (!@http_sync && @callback.blank?) && !@doesnt_require_callback
 
     end
 
@@ -80,27 +81,41 @@ module Pubnub
 
       $logger.debug('Event#handle_response')
       envelopes = format_envelopes(response, app, error)
+      update_app_timetoken(envelopes, app)
       fire_callbacks(envelopes,app)
       @finished = true
       envelopes
 
     end
 
+    def update_app_timetoken(envelopes, app)
+      if self.class == Pubnub::Subscribe || Pubnub::Presence
+        $logger.debug('Event#update_app_timetoken')
+        envelopes.each do |envelope|
+          if envelope.timetoken_update || envelope.timetoken.to_i > app.env[:timetoken].to_i
+            update_timetoken(app, envelope.timetoken)
+          end
+        end
+        app.env[:wait_for_response][@origin] = false unless @http_sync
+      end
+    end
+
     def fire_callbacks(envelopes, app)
       $logger.debug('Firing callbacks')
       envelopes.each do |envelope|
         @callback.call(envelope)       if !envelope.error && @callback && !envelope.timetoken_update
-        if envelope.timetoken_update || envelope.timetoken.to_i > app.env[:timetoken].to_i
-          update_timetoken(app, envelope.timetoken)
-        end
+        #if envelope.timetoken_update || envelope.timetoken.to_i > app.env[:timetoken].to_i
+        #  update_timetoken(app, envelope.timetoken)
+        #end
       end
       @error_callback.call(envelopes.first) if envelopes.first.error
 
     end
 
     def update_timetoken(app, timetoken)
-      app.update_timetoken(timetoken)
-      @timetoken = timetoken
+      @timetoken = timetoken.to_i
+      app.update_timetoken(timetoken.to_i)
+      $logger.debug("Updated timetoken to #{timetoken}")
     end
 
     def add_common_data_to_envelopes(envelopes, response, app, error)
@@ -320,16 +335,13 @@ module Pubnub
     end
 
     def fire_callbacks(envelopes, app)
-      if @http_sync == true
+      if @http_sync
         super
       else
         begin
           $logger.debug('Event#fire_callbacks async')
           envelopes.each do |envelope|
             app.env[:callbacks_pool][@origin][envelope.channel][:callback].call(envelope) if !envelope.error && !envelope.timetoken_update
-            if envelope.timetoken_update || envelope.timetoken.to_i > app.env[:timetoken].to_i
-              update_timetoken(app, envelope.timetoken)
-            end
           end
           $logger.debug('We can send next request now')
           app.env[:error_callbacks_pool][@origin].call(envelopes.first) if envelopes.first.error
