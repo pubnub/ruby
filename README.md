@@ -42,7 +42,7 @@ pubnub = Pubnub.new(
     :publish_key      => 'demo',
     :origin           => origin,
     :error_callback   => lambda { |msg|
-      puts "SOMETHING TERRIBLE HAPPENED HERE: #{msg.inspect}"
+      puts "Error callback says: #{msg.inspect}"
     },
     :connect_callback => lambda { |msg|
       puts "CONNECTED: #{msg.inspect}"
