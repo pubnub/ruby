@@ -121,6 +121,7 @@ Conceptually, the callback or block is fired once for each message in the raw se
 ```ruby
 envelopes.each do |envelope|
     callback.call envelope
+end
 ```
 
 
