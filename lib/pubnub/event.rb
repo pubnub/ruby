@@ -89,15 +89,7 @@ module Pubnub
     end
 
     def update_app_timetoken(envelopes, app)
-      if self.class == Pubnub::Subscribe || Pubnub::Presence
-        $logger.debug('Event#update_app_timetoken')
-        envelopes.each do |envelope|
-          if envelope.timetoken_update || envelope.timetoken.to_i > app.env[:timetoken].to_i
-            update_timetoken(app, envelope.timetoken)
-          end
-        end
-        app.env[:wait_for_response][@origin] = false unless @http_sync
-      end
+      # stub
     end
 
     def fire_callbacks(envelopes, app)
@@ -323,6 +315,16 @@ module Pubnub
     end
 
     private
+
+    def update_app_timetoken(envelopes, app)
+      $logger.debug('Event#update_app_timetoken')
+      envelopes.each do |envelope|
+        if envelope.timetoken_update || envelope.timetoken.to_i > app.env[:timetoken].to_i
+          update_timetoken(app, envelope.timetoken)
+        end
+      end
+      app.env[:wait_for_response][@origin] = false unless @http_sync
+    end
 
     def shutdown_subscribe(app)
       app.env[:subscriptions][@origin]  = nil

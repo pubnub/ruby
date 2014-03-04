@@ -1,8 +1,12 @@
 require 'spec_helper'
 
-
 describe "#time" do
   before(:each) do
+
+    EM.stop if EM.reactor_running?
+    while EM.reactor_running? do end
+    sleep(0.1)
+
     @response_output = StringIO.new
     @message_output = StringIO.new
 
