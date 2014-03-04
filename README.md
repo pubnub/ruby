@@ -145,6 +145,7 @@ Internally, the block or callback is iterates over the response array, similar t
 ```ruby
 envelopes.each do |envelope|
     callback.call envelope
+end
 ```
 
 In a given callback cycle, the **envelope** will be the currently iterated envelopes item of the response.
