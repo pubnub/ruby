@@ -25,6 +25,7 @@ module Pubnub
     end
 
     alias_method 'msg', 'message'
+    alias_method 'status_code', 'status'
 
     def initialize(parameters, app)
       INSTANCE_VARIABLES.each do |var_name|

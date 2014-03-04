@@ -2,11 +2,11 @@
 ## http://www.pubnub.com/blog/ruby-push-api - Ruby Push API Blog
 
 ## PubNub Real Time Push APIs and Notifications Framework
-## Copyright (c) 2013 PubNub
+## Copyright (c) 2014 PubNub
 ## http://www.pubnub.com/
 
 ## -----------------------------------
-## PubNub 3.5 Real-time Push Cloud API
+## PubNub 3.5.0 Real-time Push Cloud API
 ## -----------------------------------
 
 require 'json'
