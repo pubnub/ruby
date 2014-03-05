@@ -42,7 +42,7 @@ pubnub = Pubnub.new(
     :publish_key      => 'demo',
     :origin           => origin,
     :error_callback   => lambda { |msg|
-      puts "SOMETHING TERRIBLE HAPPENED HERE: #{msg.inspect}"
+      puts "Error callback says: #{msg.inspect}"
     },
     :connect_callback => lambda { |msg|
       puts "CONNECTED: #{msg.inspect}"
@@ -121,6 +121,7 @@ Conceptually, the callback or block is fired once for each message in the raw se
 ```ruby
 envelopes.each do |envelope|
     callback.call envelope
+end
 ```
 
 
@@ -144,6 +145,7 @@ Internally, the block or callback is iterates over the response array, similar t
 ```ruby
 envelopes.each do |envelope|
     callback.call envelope
+end
 ```
 
 In a given callback cycle, the **envelope** will be the currently iterated envelopes item of the response.
