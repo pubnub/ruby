@@ -275,14 +275,14 @@ end
 ```
 
 ##### Revoke
-Same as grant but reversed
+Revokes right to read and write
 
 ```ruby
-pubnub.revoke(:channel => :forbidden_to_write, :read => false, :write => true) do |envelope|
+pubnub.revoke(:channel => :forbidden) do |envelope|
   puts envelope.payload
 end
 
-pubnub.grant(:channel => :forbidden_to_write, :read => false, :write => false, :auth_key => :admin) do |envelope|
+pubnub.grant(:channel => :forbidden, :auth_key => :godzilla) do |envelope|
   puts envelope.payload
 end
 ```

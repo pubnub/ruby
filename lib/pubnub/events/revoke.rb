@@ -34,8 +34,8 @@ module Pubnub
     private
 
     def parameters(app, signature = false)
-      write = [0, "0", false].include?(@write) ? 1 : 0
-      read =  [0, "0", false].include?(@read) ?  1 : 0
+      write = 0
+      read =  0
 
       {
           :timestamp => @timestamp,
