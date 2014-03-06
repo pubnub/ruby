@@ -53,12 +53,12 @@ module Pubnub
 
     def validate!
       if @allow_multiple_channels == true
-        raise ArgumentError.new(:object => self), 'Invalid channel(s) format! Should be type of: String, Symbol, or Array of both' unless valid_channel?(true)
+        raise ArgumentError.new(:object => self, :message => 'Invalid channel(s) format! Should be type of: String, Symbol, or Array of both') unless valid_channel?(true)
       elsif @allow_multiple_channels == false
-        raise ArgumentError.new(:object => self), 'Invalid channel(s) format! Should be type of: String, Symbol' unless valid_channel?(false)
+        raise ArgumentError.new(:object => self, :message => 'Invalid channel(s) format! Should be type of: String, Symbol') unless valid_channel?(false)
       end
 
-      raise ArgumentError.new(:object => self), 'Callback parameter is required while using async' if (!@http_sync && @callback.blank?) && !@doesnt_require_callback
+      raise ArgumentError.new(:object => self, message => 'Callback parameter is required while using async') if (!@http_sync && @callback.blank?) && !@doesnt_require_callback
 
     end
 

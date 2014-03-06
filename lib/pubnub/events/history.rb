@@ -20,23 +20,22 @@ module Pubnub
       super
 
       # check channel
-      raise ArgumentError.new(:object => self), 'History requires :channel argument' unless @channel
-      raise ArgumentError.new(:object => self), 'Invalid channel format! Should be type of: String, Symbol' unless [String, Symbol].include?(@channel.class)
+      raise ArgumentError.new(:object => self, :message => 'History requires :channel argument') unless @channel
+      raise ArgumentError.new(:object => self, :message => 'Invalid channel format! Should be type of: String, Symbol') unless [String, Symbol].include?(@channel.class)
 
       # check if history parameters are valid
 
       # start
-      raise ArgumentError.new(:object => self), 'Invalid :start parameter, should be type of Integer, Fixnum or String' unless [String, Fixnum, Integer, NilClass].include?(@start.class)
-      raise ArgumentError.new(:object => self), 'Invalid :start parameter, should be positive integer number' if !@start.to_i.integer? && @start.to_i <= 0
+      raise ArgumentError.new(:object => self, :message => 'Invalid :start parameter, should be type of Integer, Fixnum or String') unless [String, Fixnum, Integer, NilClass].include?(@start.class)
+      raise ArgumentError.new(:object => self, :message => 'Invalid :start parameter, should be positive integer number') if !@start.to_i.integer? && @start.to_i <= 0
 
       # end
-      raise ArgumentError.new(:object => self), 'Invalid :end parameter, should be type of Integer, Fixnum or String' unless [String, Fixnum, Integer, NilClass].include?(@end.class)
-      raise ArgumentError.new(:object => self), 'Invalid :end parameter, should be positive integer number' if !@end.to_i.integer? && @end.to_i <= 0
-      raise ArgumentError.new(:object => self), 'Invalid :end parameter, should be bigger than :start parameter.
-                                                     If you want to get messages in reverse order, use :reverse => true at call.' if @start.to_i >= @end.to_i && !@start.nil? && @end.nil?
+      raise ArgumentError.new(:object => self, :message => 'Invalid :end parameter, should be type of Integer, Fixnum or String') unless [String, Fixnum, Integer, NilClass].include?(@end.class)
+      raise ArgumentError.new(:object => self, :message => 'Invalid :end parameter, should be positive integer number') if !@end.to_i.integer? && @end.to_i <= 0
+      raise ArgumentError.new(:object => self, :message => 'Invalid :end parameter, should be bigger than :start parameter. If you want to get messages in reverse order, use :reverse => true at call.') if @start.to_i >= @end.to_i && !@start.nil? && @end.nil?
       # count
-      raise ArgumentError.new(:object => self), 'Invalid :count parameter, should be type of Integer, Fixnum or String' unless [String, Fixnum, Integer, NilClass].include?(@count.class)
-      raise ArgumentError.new(:object => self), 'Invalid :count parameter, should be positive integer number' if !@count.to_i.integer? && @count.to_i <= 0
+      raise ArgumentError.new(:object => self, :message => 'Invalid :count parameter, should be type of Integer, Fixnum or String') unless [String, Fixnum, Integer, NilClass].include?(@count.class)
+      raise ArgumentError.new(:object => self, :message => 'Invalid :count parameter, should be positive integer number') if !@count.to_i.integer? && @count.to_i <= 0
     end
 
     private

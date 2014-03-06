@@ -29,7 +29,7 @@ module Pubnub
           @error_callback.call 'bug'
         end
       else
-        CGI.escape(message.to_json)
+        URI.encode_www_form_component(message.to_json).gsub('+', '%20')
       end
     end
 

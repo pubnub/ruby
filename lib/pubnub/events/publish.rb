@@ -17,11 +17,11 @@ module Pubnub
     def validate!
       super
       # check message
-      raise ArgumentError.new(:object => self), 'Publish requires :message argument' unless @message
+      raise ArgumentError.new(:object => self, :message => 'Publish requires :message argument') unless @message
 
       # check channel/channels
-      raise ArgumentError.new(:object => self), 'Publish requires :channel or :channels argument' unless @channel
-      raise ArgumentError.new(:object => self), 'Invalid channel(s) format! Should be type of: String, Symbol, or Array of both' unless valid_channel?
+      raise ArgumentError.new(:object => self, :message => 'Publish requires :channel or :channels argument') unless @channel
+      raise ArgumentError.new(:object => self, :message => 'Invalid channel(s) format! Should be type of: String, Symbol, or Array of both') unless valid_channel?
     end
 
     private

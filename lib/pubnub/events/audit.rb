@@ -14,8 +14,8 @@ module Pubnub
     end
 
     def validate!
-      raise ArgumentError.new(:object => self), 'publish_key is required by Audit' unless @publish_key
-      raise ArgumentError.new(:object => self), 'Parameter secret_key is required by Audit' unless @secret_key
+      raise ArgumentError.new(:object => self, :message => 'publish_key is required by Audit') unless @publish_key
+      raise ArgumentError.new(:object => self, :message => 'Parameter secret_key is required by Audit') unless @secret_key
 
     end
 

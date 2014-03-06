@@ -199,7 +199,8 @@ module Pubnub
           :reconnect_max_attempts     => DEFAULT_RECONNECT_ATTEMPTS,
           :reconnect_retry_interval   => DEFAULT_RECONNECT_INTERVAL,
           :reconnect_response_timeout => DEFAULT_RECONNECT_RESPONSE_TIMEOUT,
-          :ttl                        => DEFAULT_TTL
+          :ttl                        => DEFAULT_TTL,
+          :secret_key                 => 0
       }
 
       # Let's fill missing keys with default values
@@ -223,10 +224,10 @@ module Pubnub
     end
 
     def validate!(parameters)
-      raise InitializationError.new(:object => self), 'Origin parameter is not valid. Should be type of String'                  unless parameters[:origin].is_a?(String) || parameters[:origin].blank?
-      raise InitializationError.new(:object => self), 'Missing required :subscribe_key parameter'                                unless parameters[:subscribe_key]
-      raise InitializationError.new(:object => self), 'Subscribe key parameter is not valid. Should be type of String or Symbol' unless [String, Symbol].include?(parameters[:subscribe_key].class)
-      raise InitializationError.new(:object => self), 'Publish key parameter is not valid. Should be type of String or Symbol' unless [String, Symbol].include?(parameters[:publish_key].class) || parameters[:publish_key].blank?
+      raise InitializationError.new(:object => self, :message => 'Origin parameter is not valid. Should be type of String')                  unless parameters[:origin].is_a?(String) || parameters[:origin].blank?
+      raise InitializationError.new(:object => self, :message => 'Missing required :subscribe_key parameter')                                unless parameters[:subscribe_key]
+      raise InitializationError.new(:object => self, :message => 'Subscribe key parameter is not valid. Should be type of String or Symbol') unless [String, Symbol].include?(parameters[:subscribe_key].class)
+      raise InitializationError.new(:object => self, :message => 'Publish key parameter is not valid. Should be type of String or Symbol')   unless [String, Symbol].include?(parameters[:publish_key].class) || parameters[:publish_key].blank?
     end
 
   end

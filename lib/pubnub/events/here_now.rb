@@ -16,8 +16,8 @@ module Pubnub
       super
 
       # check channel
-      raise ArgumentError.new(:object => self), 'History requires :channel argument' unless @channel
-      raise ArgumentError.new(:object => self), 'Invalid channel format! Should be type of: String, Symbol' unless [String, Symbol].include?(@channel.class)
+      raise ArgumentError.new(:object => self, :message => 'History requires :channel argument') unless @channel
+      raise ArgumentError.new(:object => self, :message => 'Invalid channel format! Should be type of: String, Symbol') unless [String, Symbol].include?(@channel.class)
 
     end
 

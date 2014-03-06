@@ -18,16 +18,16 @@ module Pubnub
       super
 
       # check channel
-      raise ArgumentError.new(:object => self), 'Leave requires :channel argument' unless @channel
-      raise ArgumentError.new(:object => self), 'Invalid channel format! Should be type of: String, Symbol, or Array of both' unless valid_channel?
+      raise ArgumentError.new(:object => self, :message => 'Leave requires :channel argument') unless @channel
+      raise ArgumentError.new(:object => self, :message => 'Invalid channel format! Should be type of: String, Symbol, or Array of both') unless valid_channel?
     end
 
     def fire(app)
       app.update_timetoken(0)
       if app.env[:subscriptions][@origin].nil?
-        raise ArgumentError.new(:object => self),  'You cannot leave channel that is not subscribed'
+        raise ArgumentError.new(:object => self, :message => 'You cannot leave channel that is not subscribed')
       elsif app.env[:subscriptions][@origin].get_channels.include?(@channel)
-        raise ArgumentError.new(:object => self),  'You cannot leave channel that is not subscribed'
+        raise ArgumentError.new(:object => self, :message => 'You cannot leave channel that is not subscribed')
       end unless @force
       @channel.each do |channel|
         app.env[:subscriptions][@origin].remove_channel(channel, app) if app.env[:subscriptions][@origin]

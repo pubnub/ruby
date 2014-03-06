@@ -21,21 +21,18 @@ module Pubnub
     def validate!
       super
 
-      raise ArgumentError.new(:object => self), 'publish_key is required by Revoke' unless @publish_key
-      raise ArgumentError.new(:object => self), 'Parameter secret_key is required by Revoke' unless @secret_key
+      raise ArgumentError.new(:object => self, :message => 'publish_key is required by Revoke') unless @publish_key
+      raise ArgumentError.new(:object => self, :message => 'Parameter secret_key is required by Revoke') unless @secret_key
 
-      raise ArgumentError.new(:object => self), 'write parameter accept only one of: 1, "1", 0, "0", true, false values' unless [nil, 1, "1", 0, "0", true, false].include?(@write)
-      raise ArgumentError.new(:object => self), 'read parameter accept only: 1, "1", 0, "0", true, false values' unless [nil, 1, "1", 0, "0", true, false].include?(@read)
-
-      raise ArgumentError.new(:object => self), 'ttl parameter is too big, max value is: 525600' unless @ttl.to_i <= 525600 || @ttl.nil?
-      raise ArgumentError.new(:object => self), 'ttl parameter is too small, min value is: 1' unless @ttl.to_i >= 1 || @ttl.nil?
+      raise ArgumentError.new(:object => self, :message => 'ttl parameter is too big, max value is: 525600') unless @ttl.to_i <= 525600 || @ttl.nil?
+      raise ArgumentError.new(:object => self, :message => 'ttl parameter is too small, min value is: 1')  unless @ttl.to_i >= 1 || @ttl.nil?
     end
 
     private
 
     def parameters(app, signature = false)
       write = 0
-      read =  0
+      read  = 0
 
       {
           :timestamp => @timestamp,

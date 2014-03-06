@@ -15,8 +15,7 @@ module Pubnub
     def validate!
       super
       # check callback
-      raise ArgumentError.new(:object => self), 'Callback parameter is required while using async time' if !@http_sync && @callback.blank?
-
+      raise ArgumentError.new(:object => self, :message => 'Callback parameter is required while using async time') if !@http_sync && @callback.blank?
     end
 
     private
