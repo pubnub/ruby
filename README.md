@@ -14,14 +14,14 @@ PubNub 3.5.0 is NOT compatible with earlier than 3.4 versions of Pubnub Ruby Cli
 PubNub 3.5.0 is compatible with 3.4 version.
 
 #### Asynchronous vs Synchronous Responses
-Feedback from prior versions of the gem demonstrated that some users would like to 'fire and forget' PubNub calls. Others wanted to block, and take specific action, based on server response.
-
-In 3.4, you can now have both, even on a per-call basis!
+Every event you will fire could be fired asynchronous ro synchonous just by passing 
+```ruby
+:http_sync
+```
+set to true to that event. Asynchronous events will not block your main thread and will be fired withing new thread.
 
 #### Message Handling: callback, block, return
-Feedback from users of prior versions demonstrated the need for flexibility in how received messages were handled. The general PubNub response pattern dictated that responses be sent to callbacks, however, there was also a non-addressed use case of simply assigning a variable on return.
-
-In 3.4, you can now have both, even on a per-call basis!
+You could pass to every even callback as callback or just by block that will get envelope with message. Callback will be fired for every message that will event get in response. Synchornous events will return array of envelopes (if you passed callback to sychronous event it will be called too!).
 
 ### Code Examples
 
@@ -62,7 +62,7 @@ There are a few different ways to make any given PubNub call. How to do it depen
 
 ##### Asynchronous (non-blocking) calling
 
-If you wish to make asyncronous calls (implemented via EM), you have a few different patterns you can follow:
+If you wish to make asyncronous calls (implemented via EventMachine), you have a few different patterns you can follow:
 
 ```ruby
 # Lets use a callback for the first example...
@@ -292,7 +292,82 @@ end
 
 ### Advanced Usage Examples
 
-Advanced usage examples can be found in the examples directory.
+##### Init
+```ruby
+# Example below shows passing more options for client
+# Pubnub.new returns Pubnub::Client instance
+pubnub = Pubnub.new(
+  :error_callback             => custom_error_callback,
+  :connect_callback           => custom_connect_callback,
+  :ssl                        => true,
+  :uuid                       => 'newton',
+  :port                       => 80,
+  :origin                     => custom_origin,
+  :subscribe_timeout          => 310,
+  :non_subscribe_timeout      => 5,
+  :max_retries                => 10,
+  :reconnect_max_attempts     => 10,
+  :ttl                        => custom_default_ttl_for_pam,
+  :secret_key                 => 0
+)
+```
+
+##### Publish
+```ruby
+# Message could be any object that have .to_json method
+# You do not need to jsonify message before sending
+# This time publish event will block main thread until callback will finish as we set :http_sync to true
+pubnub.publish(
+  :messsage => message,
+  :channel  => :whatever,
+  :http_sync => true )
+```
+
+##### Subscribe
+```ruby
+# You can pass in :channel or :channels String, Symbol, Array of both, or csv separated with commas, remember, as space is valid channel part, there should not be any spaces between commas (unless you want them)
+# Some example of valid channels:
+# :example_symbol
+# 'example_string'
+# [:one, :two, 'three']
+# [:anything]
+# 'one,two,three'
+
+# Firing sync subscribe could lock your thread even for 5 minutes
+# When there's no traffic on channel server will send timetoken without
+# any messages every ~300s.
+# First sync subscribe will just update your timetoken, you will not get any messages
+# example:
+pubnub.subscribe(:channel => 'alerts', :http_sync => true) # just update timetoken
+pubnub.subscribe(:channel => 'alerts', :http_sycn => true) # Will fire request with current timetoken and can possibly get messages
+
+# Async subscribe starts infinity loop in seperate thread (EM.periodic_timer precisely)
+# It will update your timetoken and will fire given callback for every message that it gets
+# example:
+pubnub.subscribe(
+  :channel => 'fight_log'
+) do |envelope|
+  puts envelope.message['attacker']
+  puts envelope.message['defender']
+  puts envelope.message['demage']
+end
+```
+
+##### History
+
+##### Presence
+
+##### HereNow
+
+#### Pam
+
+##### Audit
+
+##### Grant
+
+##### Revoke
+
+Advanced usage examples can be found also in the examples directory.
 
 #### demo_console
 A demo console app which shows how to use just about every PubNub Ruby call, just about every possible way!
