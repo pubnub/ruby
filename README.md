@@ -436,3 +436,44 @@ Mixing up some async pubs and subs, using blocks and callbacks.
 
 #### serial_publish
 Publish 10000 times with an explicit 0.05s delay between publishes
+
+## Comment on Passenger users
+Passenger is orphaning threads and it causes issues with EM which is need to run async pubnub events.
+Below is fix that worked with our tests. You should fire that code from your initializers.
+
+Some other environments could cause similar problems with EM, if you think you're affected, feel free to open issue and we will do our best to help.
+
+```ruby
+module Pubnub
+  # Taken from http://www.hiringthing.com/2011/11/04/eventmachine-with-rails.html
+  # Thanks Joshua!
+  def self.start
+    if defined?(PhusionPassenger)
+      PhusionPassenger.on_event(:starting_worker_process) do |forked|
+        # for passenger, we need to avoid orphaned threads
+
+        $my_logger.debug "=> Starting worker process"
+
+        if forked && EM.reactor_running?
+          $my_logger.debug "=> EventMachine stopped fork"
+          EM.stop
+        end
+        Thread.new {
+          EM.run do
+            $my_logger.debug "=> EventMachine started"
+          end
+        }
+        die_gracefully_on_signal
+      end
+    end
+  end
+
+  def self.die_gracefully_on_signal
+    $my_logger.debug "=> EventMachine stopped die"
+    Signal.trap("INT")  { EM.stop }
+    Signal.trap("TERM") { EM.stop }
+  end
+end
+
+Pubnub.start
+```
