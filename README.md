@@ -353,13 +353,24 @@ end
 ```
 
 ##### History
-History returns :count messages from given channel
+History returns :count messages from given channel.
 ```ruby
 pubnub.history(
   :channel  => :actions,
   :count    => 10,
   :start    => 13942156708212448,
   :end      => 13942156908212448,
+  :callback => replay
+)
+```
+
+:reverse set to true will traverse the time line in reverse starting with the newest message first. Default is false.
+If both start and end arguments are provided, reverse is ignored and messages are returned starting with the newest message.
+
+```ruby
+pubnub.history(
+  :channel  => :actions,
+  :count    => 10,
   :reverse  => true,
   :callback => replay
 )
