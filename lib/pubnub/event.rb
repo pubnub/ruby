@@ -58,7 +58,7 @@ module Pubnub
         raise ArgumentError.new(:object => self, :message => 'Invalid channel(s) format! Should be type of: String, Symbol') unless valid_channel?(false)
       end
 
-      raise ArgumentError.new(:object => self, message => 'Callback parameter is required while using async') if (!@http_sync && @callback.blank?) && !@doesnt_require_callback
+      raise ArgumentError.new(:object => self, :message => 'Callback parameter is required while using async') if (!@http_sync && @callback.blank?) && !@doesnt_require_callback
 
     end
 

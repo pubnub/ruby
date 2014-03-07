@@ -339,7 +339,7 @@ pubnub.publish(
 # First sync subscribe will just update your timetoken, you will not get any messages
 # example:
 pubnub.subscribe(:channel => 'alerts', :http_sync => true) # just update timetoken
-pubnub.subscribe(:channel => 'alerts', :http_sycn => true) # Will fire request with current timetoken and can possibly get messages
+pubnub.subscribe(:channel => 'alerts', :http_sync => true) # Will fire request with current timetoken and can possibly get messages
 
 # Async subscribe starts infinity loop in seperate thread (EM.periodic_timer precisely)
 # It will update your timetoken and will fire given callback for every message that it gets
@@ -354,18 +354,68 @@ end
 ```
 
 ##### History
+History returns :count messages from given channel
+```ruby
+pubnub.history(
+  :channel  => :actions,
+  :count    => 10,
+  :start    => 13942156708212448,
+  :end      => 13942156908212448,
+  :reverse  => true,
+  :callback => replay
+)
+```
+History envelope also contains .history_start and .history_end values
 
 ##### Presence
+Presence works exactly the same way as subscribe, it just adds '-pnpres' to channel name.
+```ruby
+pubnub.subscribe(
+  :channel => :mars
+) do |envelope|
+  show_in_roster(envelope.uuid)
+end
 
 ##### HereNow
-
+HereNow shows us who is currently subscribing channel and how much clients are online on given channel.
+```ruby
+pubnub.here_now(
+  :channel => :pamam_moon_iv
+) do |envelope|
+  puts envelope.msg['uuids']
+  puts envelope.msg['occupancy']
+end
+```
 #### Pam
+PAM allows you to grant read and write access basing on channels and auth_keys.
+Every pam event requires :secret_key (Remember! You should set it while initializing pubnub)
 
 ##### Audit
+```ruby
+pubnub.audit(:channel => 'hidden_system'){ |envelope| puts envelope.msg }
+
+```
 
 ##### Grant
+```ruby
+# Channel level
+pubnub.grant(:channel => 'hidden_system', :read => true, :write => false){ |envelope| puts envelope.msg }
+
+# Auth key level
+pubnub.grant(:channel => 'hidden_system', :read => true, :write => false, :auth_key => :lemon){ |envelope| puts envelope.msg }
+```
 
 ##### Revoke
+Works like grant but revokes all previously given privilages
+```ruby
+# Channel level
+pubnub.revoke(:channel => 'hidden_system'){ |envelope| puts envelope.msg }
+
+# Auth key level
+pubnub.revoke(:channel => 'hidden_system', :auth_key => :lemon){ |envelope| puts envelope.msg }
+```
+
+### Other
 
 Advanced usage examples can be found also in the examples directory.
 

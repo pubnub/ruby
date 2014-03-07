@@ -8,10 +8,11 @@ module Pubnub
 
     def initialize(options, app)
       super
-      @start = options[:start]
-      @end   = options[:end]
-      @count = options[:count]
-      @event = 'history'
+      @start   = options[:start]
+      @end     = options[:end]
+      @count   = options[:count]
+      @reverse = options[:reverse]
+      @event   = 'history'
       @allow_multiple_channels = false
 
     end
@@ -53,9 +54,10 @@ module Pubnub
 
     def parameters(app)
       params = super(app)
-      params.merge!({ :start => @start }) if @start
-      params.merge!({ :end   => @end })   if @end
-      params.merge!({ :count => @count }) if @count
+      params.merge!({ :start   => @start }) if @start
+      params.merge!({ :end     => @end   }) if @end
+      params.merge!({ :count   => @count }) if @count
+      params.merge!({ :reverse => 'true' }) if @reverse
       params
     end
 

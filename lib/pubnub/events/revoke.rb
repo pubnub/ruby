@@ -22,7 +22,7 @@ module Pubnub
       super
 
       raise ArgumentError.new(:object => self, :message => 'publish_key is required by Revoke') unless @publish_key
-      raise ArgumentError.new(:object => self, :message => 'Parameter secret_key is required by Revoke') unless @secret_key
+      raise ArgumentError.new(:object => self, :message => 'Parameter secret_key is required by Revoke') if !@secret_key || @secret_key == 0
 
       raise ArgumentError.new(:object => self, :message => 'ttl parameter is too big, max value is: 525600') unless @ttl.to_i <= 525600 || @ttl.nil?
       raise ArgumentError.new(:object => self, :message => 'ttl parameter is too small, min value is: 1')  unless @ttl.to_i >= 1 || @ttl.nil?

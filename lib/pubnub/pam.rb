@@ -3,7 +3,7 @@ module Pubnub
     def signature(app)
       channel = @original_channel.first
       message = "#{@subscribe_key}\n#{@publish_key}\n#{@event}\n#{variables_for_signature(app)}"
-      Base64.urlsafe_encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha256'), @secret_key, message)).strip
+      Base64.urlsafe_encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha256'), @secret_key.to_s, message)).strip
     end
 
     def payload(parsed_response)

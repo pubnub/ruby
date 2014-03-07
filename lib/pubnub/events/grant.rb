@@ -21,7 +21,7 @@ module Pubnub
       super
 
       raise ArgumentError.new(:object => self, :message => 'publish_key is required by Grant') unless @publish_key
-      raise ArgumentError.new(:object => self, :message => 'Parameter secret_key is required by Grant') unless @secret_key
+      raise ArgumentError.new(:object => self, :message => 'Parameter secret_key is required by Grant') if !@secret_key || @secret_key == 0
 
       raise ArgumentError.new(:object => self, :message => 'write parameter accept only one of: 1, "1", 0, "0", true, false values') unless [nil, 1, '1', 0, '0', true, false].include?(@write)
       raise ArgumentError.new(:object => self, :message => 'read parameter accept only: 1, "1", 0, "0", true, false values') unless [nil, 1, '1', 0, '0', true, false].include?(@read)
