@@ -305,8 +305,7 @@ pubnub = Pubnub.new(
   :origin                     => custom_origin,
   :subscribe_timeout          => 310,
   :non_subscribe_timeout      => 5,
-  :max_retries                => 10,
-  :reconnect_max_attempts     => 10,
+  :max_retries                => 10, # max retries if response got invalid json
   :ttl                        => custom_default_ttl_for_pam,
   :secret_key                 => 0
 )
@@ -375,6 +374,7 @@ pubnub.subscribe(
 ) do |envelope|
   show_in_roster(envelope.uuid)
 end
+```
 
 ##### HereNow
 HereNow shows us who is currently subscribing channel and how much clients are online on given channel.
