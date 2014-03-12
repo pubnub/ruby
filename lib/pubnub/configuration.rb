@@ -17,7 +17,6 @@ module Pubnub
     DEFAULT_PATH                       = '/'
     DEFAULT_PARAMS                     = {}
     DEFAULT_HEADERS                    = {}
-    DEFAULT_USER_AGENT                 = "Pubnub Ruby #{VERSION}" # TODO: setup this
     DEFAULT_SSL_SET                    = false
     DEFAULT_TIMEOUT                    = 5
     DEFAULT_ENCODING                   = nil
@@ -27,7 +26,7 @@ module Pubnub
     PERIODIC_TIMER_INTERVAL            = 0.25
     MAX_RETRIES                        = 10
     RETRIES_INTERVAL                   = 1
-    DEFAULT_TTL                        = 3600
+    DEFAULT_TTL                        = 1440
   end
 end
 

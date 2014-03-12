@@ -72,7 +72,7 @@ cb = lambda { |envelope| puts envelope.message }
 pubnub.publish(:message => msg, :channel => channel, :callback => cb)
 
 # You can also explicitly request async with :http_sync => false
-pubnub.publish(:message => msg, :channel => channel, :callback => cb, :http_sync => true)
+pubnub.publish(:message => msg, :channel => channel, :callback => cb, :http_sync => false)
 
 # Alternatively, you can pass in the callback as a block
 

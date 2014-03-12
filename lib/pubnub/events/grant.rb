@@ -27,7 +27,7 @@ module Pubnub
       raise ArgumentError.new(:object => self, :message => 'read parameter accept only: 1, "1", 0, "0", true, false values') unless [nil, 1, '1', 0, '0', true, false].include?(@read)
 
       raise ArgumentError.new(:object => self, :message => 'ttl parameter is too big, max value is: 525600') unless @ttl.to_i <= 525600 || @ttl.nil?
-      raise ArgumentError.new(:object => self, :message => 'ttl parameter is too small, min value is: 1') unless @ttl.to_i >= 1 || @ttl.nil?
+      raise ArgumentError.new(:object => self, :message => 'ttl parameter can\'t be negative')               unless @ttl.to_i >= 0      || @ttl.nil?
 
     end
 
