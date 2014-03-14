@@ -295,6 +295,10 @@ module Pubnub
       end
     end
 
+    def set_timetoken(timetoken)
+      @timetoken = timetoken
+    end
+
     def add_channel(channel, app)
       @channel = @channel + format_channels(channel)
       $logger.debug('SubscribeEvent#add_channel | Added channel')
@@ -306,7 +310,7 @@ module Pubnub
       begin
         shutdown_subscribe(app) if @channel.empty?
       rescue => e
-        $logger.error(e.msg)
+        $logger.error(e.message)
         $logger.error(e.backtrace)
       end
     end

@@ -127,10 +127,19 @@ module Pubnub
     end
 
     def set_uuid(uuid)
+      leave_all unless @env[:subscriptions].empty?
       @env[:uuid] = uuid
+      start_subscribe(true) unless @env[:subscriptions].empty?
     end
     alias_method :session_uuid=, :set_uuid
     alias_method :uuid=, :set_uuid
+
+    def set_auth_key(auth_key)
+      leave_all unless @env[:subscriptions].empty?
+      @env[:auth_key] = auth_key
+      start_subscribe(true) unless @env[:subscriptions].empty?
+    end
+    alias_method :auth_key=, :set_auth_key
 
     def set_cipher_key(cipher_key)
       @env[:cipher_key] = cipher_key
@@ -154,6 +163,19 @@ module Pubnub
     end
 
     private
+
+    def leave_all
+      @env[:subscriptions].each do |origin, subscribe|
+        leave(
+            :origin => origin,
+            :channel => subscribe.get_channels.map{|c| c.to_s}.join(','),
+            :http_sync => true,
+            :skip_remove => true
+        )
+
+        subscribe.set_timetoken(0)
+      end
+    end
 
     def start_event_machine(options = nil)
       $logger.debug 'Pubnub::Client#start_event_machine | starting EM in new thread'

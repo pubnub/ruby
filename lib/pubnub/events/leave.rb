@@ -12,6 +12,7 @@ module Pubnub
       @allow_multiple_channels = true
       @doesnt_require_callback = true
       @force = options[:force]
+      @skip_remove = options[:skip_remove]
     end
 
     def validate!
@@ -31,7 +32,7 @@ module Pubnub
       end unless @force
       @channel.each do |channel|
         app.env[:subscriptions][@origin].remove_channel(channel, app) if app.env[:subscriptions][@origin]
-      end
+      end unless @skip_remove
       super
     end
 
