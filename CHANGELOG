@@ -1,0 +1,5 @@
+3-17-14 - 3.5.1 Release
+. PAM Support!
+. extensive refactor, removed a lot of dependencies, such as Faraday for HTTP_SYNC mode
+. connection callback can be set per subscribe call
+. fixed issue where EM could silently fail after some time with Passenger
