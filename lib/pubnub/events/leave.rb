@@ -24,15 +24,23 @@ module Pubnub
     end
 
     def fire(app)
-      app.update_timetoken(0)
-      if app.env[:subscriptions][@origin].nil?
-        raise ArgumentError.new(:object => self, :message => 'You cannot leave channel that is not subscribed')
-      elsif app.env[:subscriptions][@origin].get_channels.include?(@channel)
-        raise ArgumentError.new(:object => self, :message => 'You cannot leave channel that is not subscribed')
-      end unless @force
-      @channel.each do |channel|
-        app.env[:subscriptions][@origin].remove_channel(channel, app) if app.env[:subscriptions][@origin]
-      end unless @skip_remove
+      $logger.debug("Pubnub::Leave#fire")
+      unless @left
+        app.update_timetoken(0)
+        if app.env[:subscriptions][@origin].nil?
+          $logger.error 'There\'s no subscription for that origin'
+          raise ArgumentError.new(:object => self, :message => 'You cannot leave channel that is not subscribed')
+        else
+          @channel.each do |channel|
+            $logger.debug "#{app.env[:subscriptions][@origin].get_channels.to_s}.include? #{channel}"
+            raise ArgumentError.new(:object => self, :message => 'You cannot leave channel that is not subscribed') unless app.env[:subscriptions][@origin].get_channels.include?(channel)
+          end
+        end unless @force
+        @channel.each do |channel|
+          app.env[:subscriptions][@origin].remove_channel(channel, app) if app.env[:subscriptions][@origin]
+          @left = true
+        end unless @skip_remove
+      end
       super
     end
 

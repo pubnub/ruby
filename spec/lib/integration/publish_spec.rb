@@ -1,409 +1,455 @@
 require 'spec_helper'
 
-describe "#publish" do
+describe '#publish' do
   before(:each) do
+    @envelopes = Array.new
+    @error_envelopes = Array.new
 
-    EM.stop if EM.reactor_running?
-    while EM.reactor_running? do end
-    sleep(0.1)
-
-    @response_output = StringIO.new
-    @message_output = StringIO.new
-
-    @callback = lambda { |envelope|
-      $logger.debug 'FIRING CALLBACK FROM TEST'
-      @response_output.write envelope.response
-      @message_output.write envelope.msg
-      @after_callback = true
-    }
-
-    @error_callback = lambda { |envelope|
-      $logger.debug 'FIRING ERROR CALLBACK FROM TEST'
-      @response_output.write envelope.response
-      @message_output.write envelope.msg
-      @after_error_callback = true
-    }
-
-    @pn = Pubnub.new(:max_retries => 0, :subscribe_key => :demo, :publish_key => :demo, :auth_key => :demoish_authkey, :secret_key => 'some_secret_key', :error_callback => @error_callback)
-    @pn.uuid = 'rubytests'
-
-  end
-  context "uses ssl" do
-    before(:each) { @ssl = true }
-    context "passess callback as block" do
-      context "gets valid json in response" do
-        context "gets status 200 in response" do
-          context "uses sync connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-ssl-block-valid-200-sync", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
-                
-                @after_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
-                @message_output.seek 0
-                @message_output.read.should eq "{:text=>\"hey\"}"
-              end
-            end
-          end
-          context "uses async connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-ssl-block-valid-200-async", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
-
-                eventually do
-                  @after_callback.should eq true
-                  @response_output.seek 0
-                  @response_output.read.should eq '[1,"Sent","13904299694449458"]'
-                  @message_output.seek 0
-                  @message_output.read.should eq "{:text=>\"hey\"}"
-                end
-              end
-            end
-          end
-        end
-        context "gets status non-200 in response" do
-          context "uses sync connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-ssl-block-valid-non-200-sync", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
-                
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
-              end
-            end
-          end
-          context "uses async connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-ssl-block-valid-non-200-async", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
-
-                eventually do
-                  @after_error_callback.should eq true
-                  @response_output.seek 0
-                  @response_output.read.should eq '[1,"Sent","13904299694449458"]'
-                  @message_output.seek 0
-                  @message_output.read.should eq '[0,"Non 2xx server response."]'
-                end
-              end
-            end
-          end
-        end
-      end
-      context "gets invalid json in response" do
-        context "gets status 200 in response" do
-          context "uses sync connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-ssl-block-invalid-200-sync", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
-                
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
-              end
-            end
-          end
-          context "uses async connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-ssl-block-invalid-200-async", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
-
-                eventually do
-                  @after_error_callback.should eq true
-                  @response_output.seek 0
-                  @response_output.read.should eq '[1,"Sent","'
-                  @message_output.seek 0
-                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
-                end
-              end
-            end
-          end
-        end
-        context "gets status non-200 in response" do
-          context "uses sync connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-ssl-block-invalid-non-200-sync", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
-                
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
-              end
-            end
-          end
-          context "uses async connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-ssl-block-invalid-non-200-async", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
-
-                eventually do
-                  @after_error_callback.should eq true
-                  @response_output.seek 0
-                  @response_output.read.should eq '[1,"Sent","'
-                  @message_output.seek 0
-                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
-                end
-              end
-            end
-          end
-        end
-      end
+    @callback = lambda do |envelope|
+      @envelopes << envelope
     end
-    context "passess callback as parameter" do
-      context "gets valid json in response" do
-        context "gets status 200 in response" do
-          context "uses sync connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-ssl-parameter-valid-200-sync", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
-                
-                @after_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
-                @message_output.seek 0
-                @message_output.read.should eq "{:text=>\"hey\"}"
-              end
-            end
-          end
-          context "uses async connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-ssl-parameter-valid-200-async", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
 
-                eventually do
-                  @after_callback.should eq true
-                  @response_output.seek 0
-                  @response_output.read.should eq '[1,"Sent","13904299694449458"]'
-                  @message_output.seek 0
-                  @message_output.read.should eq "{:text=>\"hey\"}"
-                end
-              end
-            end
-          end
-        end
-        context "gets status non-200 in response" do
-          context "uses sync connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-ssl-parameter-valid-non-200-sync", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
-
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
-              end
-            end
-          end
-          context "uses async connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-ssl-parameter-valid-non-200-async", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
-
-                eventually do
-                  @after_error_callback.should eq true
-                  @response_output.seek 0
-                  @response_output.read.should eq '[1,"Sent","13904299694449458"]'
-                  @message_output.seek 0
-                  @message_output.read.should eq '[0,"Non 2xx server response."]'
-                end
-              end
-            end
-          end
-        end
-      end
-      context "gets invalid json in response" do
-        context "gets status 200 in response" do
-          context "uses sync connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-ssl-parameter-invalid-200-sync", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
-                
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
-              end
-            end
-          end
-          context "uses async connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-ssl-parameter-invalid-200-async", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
-
-                eventually do
-                  @after_error_callback.should eq true
-                  @response_output.seek 0
-                  @response_output.read.should eq '[1,"Sent","'
-                  @message_output.seek 0
-                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
-                end
-              end
-            end
-          end
-        end
-        context "gets status non-200 in response" do
-          context "uses sync connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-ssl-parameter-invalid-non-200-sync", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
-                
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
-              end
-            end
-          end
-          context "uses async connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-ssl-parameter-invalid-non-200-async", :record => :none) do
-                @pn.publish(:ssl => true, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
-
-                eventually do
-                  @after_error_callback.should eq true
-                  @response_output.seek 0
-                  @response_output.read.should eq '[1,"Sent","'
-                  @message_output.seek 0
-                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
-                end
-              end
-            end
-          end
-        end
-      end
+    @error_callback = lambda do |envelope|
+      @error_envelopes << envelope
     end
   end
-  context "uses non-ssl" do
-    before(:each) { @ssl = false }
-    context "passess callback as block" do
-      context "gets valid json in response" do
-        context "gets status 200 in response" do
-          context "uses sync connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-nonssl-block-valid-200-sync", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
-                
-                @after_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
-                @message_output.seek 0
-                @message_output.read.should eq "{:text=>\"hey\"}"
+
+  context 'uses http' do
+    context 'with auth_key provided' do
+      context 'without encrypting message' do
+
+        before(:each) do
+          @pubnub = Pubnub.new(
+              :max_retries => 0,
+              :subscribe_key => :demo,
+              :publish_key => :demo,
+              :auth_key => :demoish_authkey,
+              :secret_key => 'some_secret_key',
+              :error_callback => @error_callback
+          )
+
+          @pubnub.uuid = 'tester'
+        end
+
+        context 'gets status 200 response' do
+          context 'with valid json' do
+            context 'its asynchronous' do
+              it 'publishes valid message' do
+                VCR.use_cassette('new_ones/publish/publish-http-auth_key-200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 1
+                    @envelopes.first.response_message.should eq 'Sent'
+                    @envelopes.first.status.should eq 200
+                    @envelopes.first.channel.should eq 'ruby_demo_channel'
+                    @envelopes.first.message.should eq({:text => 'sometext'})
+                    @envelopes.first.timetoken.blank?.should eq false
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'publishes valid message' do
+                VCR.use_cassette('new_ones/publish/publish-http-auth_key-200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 1
+                  @envelopes.first.response_message.should eq 'Sent'
+                  @envelopes.first.status.should eq 200
+                  @envelopes.first.channel.should eq 'ruby_demo_channel'
+                  @envelopes.first.message.should eq({:text => 'sometext'})
+                  @envelopes.first.timetoken.blank?.should eq false
+
+                end
               end
             end
           end
-          context "uses async connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-nonssl-block-valid-200-async", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
 
-                eventually do
-                  @after_callback.should eq true
-                  @response_output.seek 0
-                  @response_output.read.should eq '[1,"Sent","13904299694449458"]'
-                  @message_output.seek 0
-                  @message_output.read.should eq "{:text=>\"hey\"}"
+          context 'with invalid json' do
+            context 'its asynchronous' do
+              it 'handles invalid json gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-http-auth_key-200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq nil
+                    @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
+                    @error_envelopes.first.status.should eq 200
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq true
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles invalid json gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-http-auth_key-200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq nil
+                  @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
+                  @error_envelopes.first.status.should eq 200
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq true
+
                 end
               end
             end
           end
         end
-        context "gets status non-200 in response" do
-          context "uses sync connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-nonssl-block-valid-non-200-sync", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
-                
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
+
+        context 'gets status non200 response' do
+          context 'with valid json' do
+            context 'its asynchronous' do
+              it 'handles non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-http-auth_key-non200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq 'Sent'
+                    @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"]')
+                    @error_envelopes.first.status.should eq 500
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq false
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-http-auth_key-non200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq 'Sent'
+                  @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"]')
+                  @error_envelopes.first.status.should eq 500
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq false
+
+                end
               end
             end
           end
-          context "uses async connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-nonssl-block-valid-non-200-async", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
 
-                eventually do
-                  @after_error_callback.should eq true
-                  @response_output.seek 0
-                  @response_output.read.should eq '[1,"Sent","13904299694449458"]'
-                  @message_output.seek 0
-                  @message_output.read.should eq '[0,"Non 2xx server response."]'
+          context 'with invalid json' do
+            context 'its asynchronous' do
+              it 'handles invalid json and non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-http-auth_key-non200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq nil
+                    @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
+                    @error_envelopes.first.status.should eq 500
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq true
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles invalid json and non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-http-auth_key-non200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq nil
+                  @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
+                  @error_envelopes.first.status.should eq 500
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq true
+
                 end
               end
             end
           end
         end
       end
-      context "gets invalid json in response" do
-        context "gets status 200 in response" do
-          context "uses sync connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-nonssl-block-invalid-200-sync", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
-                
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+
+      context 'with encrypting message' do
+
+        before(:each) do
+          @pubnub = Pubnub.new(
+              :max_retries => 0,
+              :subscribe_key => :demo,
+              :publish_key => :demo,
+              :auth_key => :demoish_authkey,
+              :secret_key => 'some_secret_key',
+              :cipher_key => 'secret',
+              :error_callback => @error_callback
+          )
+
+          @pubnub.uuid = 'tester'
+        end
+
+        context 'gets status 200 response' do
+          context 'with valid json' do
+            context 'its asynchronous' do
+              it 'publishes valid message' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-http-auth_key-200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 1
+                    @envelopes.first.response_message.should eq 'Sent'
+                    @envelopes.first.status.should eq 200
+                    @envelopes.first.channel.should eq 'ruby_demo_channel'
+                    @envelopes.first.message.should eq({:text => 'sometext'})
+                    @envelopes.first.timetoken.blank?.should eq false
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'publishes valid message' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-http-auth_key-200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 1
+                  @envelopes.first.response_message.should eq 'Sent'
+                  @envelopes.first.status.should eq 200
+                  @envelopes.first.channel.should eq 'ruby_demo_channel'
+                  @envelopes.first.message.should eq({:text => 'sometext'})
+                  @envelopes.first.timetoken.blank?.should eq false
+
+                end
               end
             end
           end
-          context "uses async connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-nonssl-block-invalid-200-async", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
 
-                eventually do
-                  @after_error_callback.should eq true
-                  @response_output.seek 0
-                  @response_output.read.should eq '[1,"Sent","'
-                  @message_output.seek 0
-                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
+          context 'with invalid json' do
+            context 'its asynchronous' do
+              it 'handles invalid json gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-http-auth_key-200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq nil
+                    @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
+                    @error_envelopes.first.status.should eq 200
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq true
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles invalid json gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-http-auth_key-200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq nil
+                  @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
+                  @error_envelopes.first.status.should eq 200
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq true
+
                 end
               end
             end
           end
         end
-        context "gets status non-200 in response" do
-          context "uses sync connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-nonssl-block-invalid-non-200-sync", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, &@callback)
-                
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+
+        context 'gets status non200 response' do
+          context 'with valid json' do
+            context 'its asynchronous' do
+              it 'handles non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-http-auth_key-non200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq 'Sent'
+                    @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"]')
+                    @error_envelopes.first.status.should eq 500
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq false
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-http-auth_key-non200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq 'Sent'
+                  @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"]')
+                  @error_envelopes.first.status.should eq 500
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq false
+
+                end
               end
             end
           end
-          context "uses async connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-nonssl-block-invalid-non-200-async", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, &@callback)
 
-                eventually do
-                  @after_error_callback.should eq true
-                  @response_output.seek 0
-                  @response_output.read.should eq '[1,"Sent","'
-                  @message_output.seek 0
-                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
+          context 'with invalid json' do
+            context 'its asynchronous' do
+              it 'handles invalid json and non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-http-auth_key-non200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq nil
+                    @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
+                    @error_envelopes.first.status.should eq 500
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq true
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles invalid json and non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-http-auth_key-non200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq nil
+                  @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
+                  @error_envelopes.first.status.should eq 500
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq true
+
                 end
               end
             end
@@ -411,127 +457,1407 @@ describe "#publish" do
         end
       end
     end
-    context "passess callback as parameter" do
-      context "gets valid json in response" do
-        context "gets status 200 in response" do
-          context "uses sync connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-nonssl-parameter-valid-200-sync", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
-                
-                @after_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
-                @message_output.seek 0
-                @message_output.read.should eq "{:text=>\"hey\"}"
+
+    context 'without auth_key provided' do
+      context 'without encrypting message' do
+
+        before(:each) do
+          @pubnub = Pubnub.new(
+              :max_retries => 0,
+              :subscribe_key => :demo,
+              :publish_key => :demo,
+              :secret_key => 'some_secret_key',
+              :error_callback => @error_callback
+          )
+
+          @pubnub.uuid = 'tester'
+        end
+
+        context 'gets status 200 response' do
+          context 'with valid json' do
+            context 'its asynchronous' do
+              it 'publishes valid message' do
+                VCR.use_cassette('new_ones/publish/publish-http-200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 1
+                    @envelopes.first.response_message.should eq 'Sent'
+                    @envelopes.first.status.should eq 200
+                    @envelopes.first.channel.should eq 'ruby_demo_channel'
+                    @envelopes.first.message.should eq({:text => 'sometext'})
+                    @envelopes.first.timetoken.blank?.should eq false
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'publishes valid message' do
+                VCR.use_cassette('new_ones/publish/publish-http-200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 1
+                  @envelopes.first.response_message.should eq 'Sent'
+                  @envelopes.first.status.should eq 200
+                  @envelopes.first.channel.should eq 'ruby_demo_channel'
+                  @envelopes.first.message.should eq({:text => 'sometext'})
+                  @envelopes.first.timetoken.blank?.should eq false
+
+                end
               end
             end
           end
-          context "uses async connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-nonssl-parameter-valid-200-async", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
 
-                eventually do
-                  @after_callback.should eq true
-                  @response_output.seek 0
-                  @response_output.read.should eq '[1,"Sent","13904299694449458"]'
-                  @message_output.seek 0
-                  @message_output.read.should eq "{:text=>\"hey\"}"
+          context 'with invalid json' do
+            context 'its asynchronous' do
+              it 'handles invalid json gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-http-200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq nil
+                    @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
+                    @error_envelopes.first.status.should eq 200
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq true
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles invalid json gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-http-200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq nil
+                  @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
+                  @error_envelopes.first.status.should eq 200
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq true
+
                 end
               end
             end
           end
         end
-        context "gets status non-200 in response" do
-          context "uses sync connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-nonssl-parameter-valid-non-200-sync", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
-                
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","13904299694449458"]'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
+
+        context 'gets status non200 response' do
+          context 'with valid json' do
+            context 'its asynchronous' do
+              it 'handles non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-http-non200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq 'Sent'
+                    @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"]')
+                    @error_envelopes.first.status.should eq 500
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq false
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-http-non200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq 'Sent'
+                  @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"]')
+                  @error_envelopes.first.status.should eq 500
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq false
+
+                end
               end
             end
           end
-          context "uses async connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-nonssl-parameter-valid-non-200-async", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
 
-                eventually do
-                  @after_error_callback.should eq true
-                  @response_output.seek 0
-                  @response_output.read.should eq '[1,"Sent","13904299694449458"]'
-                  @message_output.seek 0
-                  @message_output.read.should eq '[0,"Non 2xx server response."]'
+          context 'with invalid json' do
+            context 'its asynchronous' do
+              it 'handles invalid json and non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-http-non200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq nil
+                    @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
+                    @error_envelopes.first.status.should eq 500
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq true
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles invalid json and non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-http-non200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq nil
+                  @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
+                  @error_envelopes.first.status.should eq 500
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq true
+
                 end
               end
             end
           end
         end
       end
-      context "gets invalid json in response" do
-        context "gets status 200 in response" do
-          context "uses sync connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-nonssl-parameter-invalid-200-sync", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
-                
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+
+      context 'with encrypting message' do
+
+        before(:each) do
+          @pubnub = Pubnub.new(
+              :max_retries => 0,
+              :subscribe_key => :demo,
+              :publish_key => :demo,
+              :secret_key => 'some_secret_key',
+              :cipher_key => 'secret',
+              :error_callback => @error_callback
+          )
+
+          @pubnub.uuid = 'tester'
+        end
+
+        context 'gets status 200 response' do
+          context 'with valid json' do
+            context 'its asynchronous' do
+              it 'publishes valid message' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-http-200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 1
+                    @envelopes.first.response_message.should eq 'Sent'
+                    @envelopes.first.status.should eq 200
+                    @envelopes.first.channel.should eq 'ruby_demo_channel'
+                    @envelopes.first.message.should eq({:text => 'sometext'})
+                    @envelopes.first.timetoken.blank?.should eq false
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'publishes valid message' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-http-200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 1
+                  @envelopes.first.response_message.should eq 'Sent'
+                  @envelopes.first.status.should eq 200
+                  @envelopes.first.channel.should eq 'ruby_demo_channel'
+                  @envelopes.first.message.should eq({:text => 'sometext'})
+                  @envelopes.first.timetoken.blank?.should eq false
+
+                end
               end
             end
           end
-          context "uses async connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-nonssl-parameter-invalid-200-async", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
 
-                eventually do
-                  @after_error_callback.should eq true
-                  @response_output.seek 0
-                  @response_output.read.should eq '[1,"Sent","'
-                  @message_output.seek 0
-                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
+          context 'with invalid json' do
+            context 'its asynchronous' do
+              it 'handles invalid json gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-http-200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq nil
+                    @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
+                    @error_envelopes.first.status.should eq 200
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq true
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles invalid json gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-http-200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq nil
+                  @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
+                  @error_envelopes.first.status.should eq 200
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq true
+
                 end
               end
             end
           end
         end
-        context "gets status non-200 in response" do
-          context "uses sync connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-nonssl-parameter-invalid-non-200-sync", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => true, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
-                
-                @after_error_callback.should eq true
-                @response_output.seek 0
-                @response_output.read.should eq '[1,"Sent","'
-                @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+
+        context 'gets status non200 response' do
+          context 'with valid json' do
+            context 'its asynchronous' do
+              it 'handles non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-http-non200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq 'Sent'
+                    @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"]')
+                    @error_envelopes.first.status.should eq 500
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq false
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-http-non200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq 'Sent'
+                  @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"]')
+                  @error_envelopes.first.status.should eq 500
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq false
+
+                end
               end
             end
           end
-          context "uses async connection" do
-            it 'works fine' do
-              VCR.use_cassette("publish-nonssl-parameter-invalid-non-200-async", :record => :none) do
-                @pn.publish(:ssl => false, :http_sync => false, :channel => "demo", :message => {:text => "hey"}, :callback => @callback)
 
-                eventually do
-                  @after_error_callback.should eq true
-                  @response_output.seek 0
-                  @response_output.read.should eq '[1,"Sent","'
-                  @message_output.seek 0
-                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
+          context 'with invalid json' do
+            context 'its asynchronous' do
+              it 'handles invalid json and non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-http-non200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq nil
+                    @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
+                    @error_envelopes.first.status.should eq 500
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq true
+                  end
+
                 end
               end
+            end
+
+            context 'its synchronous' do
+              it 'handles invalid json and non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-http-non200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq nil
+                  @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
+                  @error_envelopes.first.status.should eq 500
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq true
+
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+
+  context 'uses https' do
+    context 'with auth_key provided' do
+      context 'without encrypting message' do
+
+        before(:each) do
+          @pubnub = Pubnub.new(
+              :max_retries => 0,
+              :subscribe_key => :demo,
+              :publish_key => :demo,
+              :auth_key => :demoish_authkey,
+              :secret_key => 'some_secret_key',
+              :error_callback => @error_callback,
+              :ssl => true
+          )
+
+          @pubnub.uuid = 'tester'
+        end
+
+        context 'gets status 200 response' do
+          context 'with valid json' do
+            context 'its asynchronous' do
+              it 'publishes valid message' do
+                VCR.use_cassette('new_ones/publish/publish-https-auth_key-200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 1
+                    @envelopes.first.response_message.should eq 'Sent'
+                    @envelopes.first.status.should eq 200
+                    @envelopes.first.channel.should eq 'ruby_demo_channel'
+                    @envelopes.first.message.should eq({:text => 'sometext'})
+                    @envelopes.first.timetoken.blank?.should eq false
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'publishes valid message' do
+                VCR.use_cassette('new_ones/publish/publish-https-auth_key-200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 1
+                  @envelopes.first.response_message.should eq 'Sent'
+                  @envelopes.first.status.should eq 200
+                  @envelopes.first.channel.should eq 'ruby_demo_channel'
+                  @envelopes.first.message.should eq({:text => 'sometext'})
+                  @envelopes.first.timetoken.blank?.should eq false
+
+                end
+              end
+            end
+          end
+
+          context 'with invalid json' do
+            context 'its asynchronous' do
+              it 'handles invalid json gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-https-auth_key-200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq nil
+                    @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
+                    @error_envelopes.first.status.should eq 200
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq true
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles invalid json gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-https-auth_key-200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq nil
+                  @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
+                  @error_envelopes.first.status.should eq 200
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq true
+
+                end
+              end
+            end
+          end
+        end
+
+        context 'gets status non200 response' do
+          context 'with valid json' do
+            context 'its asynchronous' do
+              it 'handles non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-https-auth_key-non200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq 'Sent'
+                    @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"]')
+                    @error_envelopes.first.status.should eq 500
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq false
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-https-auth_key-non200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq 'Sent'
+                  @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"]')
+                  @error_envelopes.first.status.should eq 500
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq false
+
+                end
+              end
+            end
+          end
+
+          context 'with invalid json' do
+            context 'its asynchronous' do
+              it 'handles invalid json and non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-https-auth_key-non200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq nil
+                    @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
+                    @error_envelopes.first.status.should eq 500
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq true
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles invalid json and non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-https-auth_key-non200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq nil
+                  @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
+                  @error_envelopes.first.status.should eq 500
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq true
+
+                end
+              end
+            end
+          end
+        end
+      end
+
+      context 'with encrypting message' do
+
+        before(:each) do
+          @pubnub = Pubnub.new(
+              :max_retries => 0,
+              :subscribe_key => :demo,
+              :publish_key => :demo,
+              :auth_key => :demoish_authkey,
+              :secret_key => 'some_secret_key',
+              :cipher_key => 'secret',
+              :error_callback => @error_callback,
+              :ssl => true
+          )
+
+          @pubnub.uuid = 'tester'
+        end
+
+        context 'gets status 200 response' do
+          context 'with valid json' do
+            context 'its asynchronous' do
+              it 'publishes valid message' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-https-auth_key-200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 1
+                    @envelopes.first.response_message.should eq 'Sent'
+                    @envelopes.first.status.should eq 200
+                    @envelopes.first.channel.should eq 'ruby_demo_channel'
+                    @envelopes.first.message.should eq({:text => 'sometext'})
+                    @envelopes.first.timetoken.blank?.should eq false
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'publishes valid message' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-https-auth_key-200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 1
+                  @envelopes.first.response_message.should eq 'Sent'
+                  @envelopes.first.status.should eq 200
+                  @envelopes.first.channel.should eq 'ruby_demo_channel'
+                  @envelopes.first.message.should eq({:text => 'sometext'})
+                  @envelopes.first.timetoken.blank?.should eq false
+
+                end
+              end
+            end
+          end
+
+          context 'with invalid json' do
+            context 'its asynchronous' do
+              it 'handles invalid json gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-https-auth_key-200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq nil
+                    @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
+                    @error_envelopes.first.status.should eq 200
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq true
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles invalid json gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-https-auth_key-200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq nil
+                  @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
+                  @error_envelopes.first.status.should eq 200
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq true
+
+                end
+              end
+            end
+          end
+        end
+
+        context 'gets status non200 response' do
+          context 'with valid json' do
+            context 'its asynchronous' do
+              it 'handles non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-https-auth_key-non200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq 'Sent'
+                    @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"]')
+                    @error_envelopes.first.status.should eq 500
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq false
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-https-auth_key-non200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq 'Sent'
+                  @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"]')
+                  @error_envelopes.first.status.should eq 500
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq false
+
+                end
+              end
+            end
+          end
+
+          context 'with invalid json' do
+            context 'its asynchronous' do
+              it 'handles invalid json and non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-https-auth_key-non200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq nil
+                    @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
+                    @error_envelopes.first.status.should eq 500
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq true
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles invalid json and non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-https-auth_key-non200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq nil
+                  @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
+                  @error_envelopes.first.status.should eq 500
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq true
+
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+
+    context 'without auth_key provided' do
+      context 'without encrypting message' do
+
+        before(:each) do
+          @pubnub = Pubnub.new(
+              :max_retries => 0,
+              :subscribe_key => :demo,
+              :publish_key => :demo,
+              :secret_key => 'some_secret_key',
+              :error_callback => @error_callback,
+              :ssl => true
+          )
+
+          @pubnub.uuid = 'tester'
+        end
+
+        context 'gets status 200 response' do
+          context 'with valid json' do
+            context 'its asynchronous' do
+              it 'publishes valid message' do
+                VCR.use_cassette('new_ones/publish/publish-https-200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 1
+                    @envelopes.first.response_message.should eq 'Sent'
+                    @envelopes.first.status.should eq 200
+                    @envelopes.first.channel.should eq 'ruby_demo_channel'
+                    @envelopes.first.message.should eq({:text => 'sometext'})
+                    @envelopes.first.timetoken.blank?.should eq false
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'publishes valid message' do
+                VCR.use_cassette('new_ones/publish/publish-https-200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 1
+                  @envelopes.first.response_message.should eq 'Sent'
+                  @envelopes.first.status.should eq 200
+                  @envelopes.first.channel.should eq 'ruby_demo_channel'
+                  @envelopes.first.message.should eq({:text => 'sometext'})
+                  @envelopes.first.timetoken.blank?.should eq false
+
+                end
+              end
+            end
+          end
+
+          context 'with invalid json' do
+            context 'its asynchronous' do
+              it 'handles invalid json gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-https-200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq nil
+                    @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
+                    @error_envelopes.first.status.should eq 200
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq true
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles invalid json gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-https-200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq nil
+                  @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
+                  @error_envelopes.first.status.should eq 200
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq true
+
+                end
+              end
+            end
+          end
+        end
+
+        context 'gets status non200 response' do
+          context 'with valid json' do
+            context 'its asynchronous' do
+              it 'handles non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-https-non200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq 'Sent'
+                    @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"]')
+                    @error_envelopes.first.status.should eq 500
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq false
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-https-non200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq 'Sent'
+                  @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"]')
+                  @error_envelopes.first.status.should eq 500
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq false
+
+                end
+              end
+            end
+          end
+
+          context 'with invalid json' do
+            context 'its asynchronous' do
+              it 'handles invalid json and non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-https-non200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq nil
+                    @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
+                    @error_envelopes.first.status.should eq 500
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq true
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles invalid json and non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-https-non200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq nil
+                  @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
+                  @error_envelopes.first.status.should eq 500
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq true
+
+                end
+              end
+            end
+          end
+        end
+      end
+
+      context 'with encrypting message' do
+
+        before(:each) do
+          @pubnub = Pubnub.new(
+              :max_retries => 0,
+              :subscribe_key => :demo,
+              :publish_key => :demo,
+              :secret_key => 'some_secret_key',
+              :cipher_key => 'secret',
+              :error_callback => @error_callback,
+              :ssl => true
+          )
+
+          @pubnub.uuid = 'tester'
+        end
+
+        context 'gets status 200 response' do
+          context 'with valid json' do
+            context 'its asynchronous' do
+              it 'publishes valid message' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-https-200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 1
+                    @envelopes.first.response_message.should eq 'Sent'
+                    @envelopes.first.status.should eq 200
+                    @envelopes.first.channel.should eq 'ruby_demo_channel'
+                    @envelopes.first.message.should eq({:text => 'sometext'})
+                    @envelopes.first.timetoken.blank?.should eq false
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'publishes valid message' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-https-200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 1
+                  @envelopes.first.response_message.should eq 'Sent'
+                  @envelopes.first.status.should eq 200
+                  @envelopes.first.channel.should eq 'ruby_demo_channel'
+                  @envelopes.first.message.should eq({:text => 'sometext'})
+                  @envelopes.first.timetoken.blank?.should eq false
+
+                end
+              end
+            end
+          end
+
+          context 'with invalid json' do
+            context 'its asynchronous' do
+              it 'handles invalid json gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-https-200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq nil
+                    @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
+                    @error_envelopes.first.status.should eq 200
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq true
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles invalid json gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-https-200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq nil
+                  @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
+                  @error_envelopes.first.status.should eq 200
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq true
+
+                end
+              end
+            end
+          end
+        end
+
+        context 'gets status non200 response' do
+          context 'with valid json' do
+            context 'its asynchronous' do
+              it 'handles non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-https-non200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq 'Sent'
+                    @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"]')
+                    @error_envelopes.first.status.should eq 500
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq false
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-https-non200-valid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq 'Sent'
+                  @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"]')
+                  @error_envelopes.first.status.should eq 500
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq false
+
+                end
+              end
+            end
+          end
+
+          context 'with invalid json' do
+            context 'its asynchronous' do
+              it 'handles invalid json and non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-https-non200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback
+                  )
+
+                  eventually do
+                    @envelopes.size.should eq 0
+                    @error_envelopes.size.should eq 1
+                    @error_envelopes.first.response_message.should eq nil
+                    @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
+                    @error_envelopes.first.status.should eq 500
+                    @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                    @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                    @error_envelopes.first.timetoken.blank?.should eq true
+                  end
+
+                end
+              end
+            end
+
+            context 'its synchronous' do
+              it 'handles invalid json and non200 response gracefully' do
+                VCR.use_cassette('new_ones/publish/publish-encrypted-https-non200-invalid', :record => :none) do
+
+                  @pubnub.publish(
+                      :message => {:text => 'sometext'},
+                      :channel => 'ruby_demo_channel',
+                      :callback => @callback,
+                      :http_sync => true
+                  )
+
+                  @envelopes.size.should eq 0
+                  @error_envelopes.size.should eq 1
+                  @error_envelopes.first.response_message.should eq nil
+                  @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
+                  @error_envelopes.first.status.should eq 500
+                  @error_envelopes.first.channel.should eq('ruby_demo_channel')
+                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.timetoken.blank?.should eq true
+
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+
+  context 'when gets message as' do
+    context 'array of hashes' do
+      context 'and its plain' do
+        it 'publishes it correctly' do
+          @pubnub = Pubnub.new(
+              :max_retries => 0,
+              :subscribe_key => :demo,
+              :publish_key => :demo,
+              :secret_key => 'some_secret_key',
+              :error_callback => @error_callback
+          )
+
+          @pubnub.uuid = 'tester'
+
+          msg = [{:a => 1}, {:b => 2}, :c => [1,2,3]]
+
+          VCR.use_cassette('new_ones/publish/publish-plain-array-of-hashes', :record => :none) do
+
+            @pubnub.publish(
+                :message => msg,
+                :channel => 'ruby_demo_channel',
+                :callback => @callback
+            )
+
+            eventually do
+              @envelopes.size.should eq 1
+              @envelopes.first.response_message.should eq 'Sent'
+              @envelopes.first.status.should eq 200
+              @envelopes.first.channel.should eq 'ruby_demo_channel'
+              @envelopes.first.message.should eq(msg)
+              @envelopes.first.timetoken.blank?.should eq false
+            end
+          end
+
+        end
+      end
+
+      context 'and its encrypted' do
+        it 'publishes it correctly' do
+          @pubnub = Pubnub.new(
+              :max_retries => 0,
+              :subscribe_key => :demo,
+              :publish_key => :demo,
+              :secret_key => 'some_secret_key',
+              :cipher_key => 'secret',
+              :error_callback => @error_callback,
+              :ssl => true
+          )
+
+          @pubnub.uuid = 'tester'
+
+          msg = [{:a => 1}, {:b => 2}, :c => [1,2,3]]
+
+          VCR.use_cassette('new_ones/publish/publish-encrypted-array-of-hashes', :record => :none) do
+
+            @pubnub.publish(
+                :message => msg,
+                :channel => 'ruby_demo_channel',
+                :callback => @callback
+            )
+
+            eventually do
+              @envelopes.size.should eq 1
+              @envelopes.first.response_message.should eq 'Sent'
+              @envelopes.first.status.should eq 200
+              @envelopes.first.channel.should eq 'ruby_demo_channel'
+              @envelopes.first.message.should eq(msg)
+              @envelopes.first.timetoken.blank?.should eq false
             end
           end
         end

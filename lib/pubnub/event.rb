@@ -29,6 +29,7 @@ module Pubnub
     end
 
     def fire(app)
+      $logger.debug("Pubnub::Event#fire")
       @fired = true
       $logger.debug('Event#fire')
       setup_connection(app) unless connection_exist?(app)

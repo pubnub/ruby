@@ -1,0 +1,218 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/subscribe/demo/rubya/0/0?auth=&pnsdk=PubNub-Ruby/3.5.1&uuid=rubytest
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 25 Mar 2014 23:38:50 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '24'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[[],"13957907308874754"]'
+    http_version: 
+  recorded_at: Tue, 25 Mar 2014 23:38:51 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/subscribe/demo/rubya,rubya-pnpres/0/13957907308874754?auth=&pnsdk=PubNub-Ruby/3.5.1&uuid=rubytest
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 25 Mar 2014 23:38:51 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '118'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[[{"action": "join", "timestamp": 1395790731, "uuid": "rubytest", "occupancy":
+        1}],"13957907316294523","rubya-pnpres"]'
+    http_version: 
+  recorded_at: Tue, 25 Mar 2014 23:38:52 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v2/presence/sub-key/demo/channel/rubyb/leave?auth=&pnsdk=PubNub-Ruby/3.5.1&uuid=rubytest
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 25 Mar 2014 23:38:53 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '74'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub Presence
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "action": "leave", "message": "OK", "service": "Presence"}'
+    http_version: 
+  recorded_at: Tue, 25 Mar 2014 23:38:54 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v2/presence/sub-key/demo/channel/rubya,rubya-pnpres/leave?auth=&pnsdk=PubNub-Ruby/3.5.1&uuid=rubytest
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 25 Mar 2014 23:38:54 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '74'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub Presence
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "action": "leave", "message": "OK", "service": "Presence"}'
+    http_version: 
+  recorded_at: Tue, 25 Mar 2014 23:38:55 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/subscribe/demo/rubya,rubya-pnpres,rubyb/0/13957907316294523?auth=&pnsdk=PubNub-Ruby/3.5.1&uuid=rubytest
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 25 Mar 2014 23:38:54 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '119'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[[{"action": "leave", "timestamp": 1395790734, "uuid": "rubytest",
+        "occupancy": 0}],"13957907346369289","rubya-pnpres"]'
+    http_version: 
+  recorded_at: Tue, 25 Mar 2014 23:38:55 GMT
+recorded_with: VCR 2.8.0
