@@ -448,6 +448,17 @@ Mixing up some async pubs and subs, using blocks and callbacks.
 #### serial_publish
 Publish 10000 times with an explicit 0.05s delay between publishes
 
+## Proxy support
+Basic proxy is supported using ENV global, before initializing pubnub just set:
+
+```ruby
+ENV['HTTP_PROXY']      = 'http://my.poxy/'
+ENV['HTTP_PROXY_USER'] = 'user'
+ENV['HTTP_PROXY_PASS'] = 'secret'
+```
+
+after that you can initialize pubnub object as always.
+
 ## Comment on Passenger users
 Passenger is orphaning threads and it causes issues with EM which is need to run async pubnub events.
 Below is fix that worked with our tests. You should fire that code from your initializers.

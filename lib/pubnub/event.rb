@@ -239,6 +239,7 @@ module Pubnub
       connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
       connection.idle_timeout = app.env[:timeout]
       connection.read_timeout = app.env[:timeout]
+      connection.proxy_from_env
       connection
     end
   end
@@ -465,6 +466,7 @@ module Pubnub
       connection.idle_timeout   = app.env[:subscribe_timeout]
       connection.read_timeout   = app.env[:subscribe_timeout]
       @connect_callback.call "New subscribe connection to #{@origin}"
+      connection.proxy_from_env   
       connection
     end
   end
