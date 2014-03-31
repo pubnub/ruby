@@ -16,7 +16,7 @@ module Pubnub
     attr_reader :env
     attr_accessor :single_event_connections_pool, :subscribe_event_connections_pool, :uuid, :async_events
 
-    EVENTS = %w(publish subscribe presence leave history here_now audit grant revoke time)
+    EVENTS = %w(publish subscribe presence leave history here_now audit grant revoke time heartbeat)
     VERSION = Pubnub::VERSION
 
     EVENTS.each do |event_name|
@@ -73,9 +73,32 @@ module Pubnub
       $logger.info('Bye!')
     end
 
+    def start_respirator
+      $logger.debug('Pubnub::Client#start_respirator | fired')
+      if @env[:heartbeat]
+        $logger.debug('Pubnub::Client#start_respirator | starting')
+
+        if @env[:heartbeat] != @env[:respirator].interval
+          $logger.debug('Pubnub::Client#start_respirator | destroy old respirator')
+          @env[:respirator].cancel
+          @env[:respirator] = nil
+        end if @env[:respirator]
+
+        @env[:respirator] = EM.add_periodic_timer((@env[:heartbeat].to_i/2) - 1) do
+          @env[:subscriptions].each do |origin, subscribe|
+            $logger.debug('Pubnub::Client#start_respirator | BUM')
+            EM.defer { heartbeat(:channel => subscribe.get_channels){ |e| $logger.debug('Pubnub::Client#start_respirator | bum') } }
+          end
+        end unless @env[:respirator]
+
+        $logger.debug('Pubnub::Client#start_respirator | started')
+      end
+    end
+
     def start_subscribe(override = false)
 
       start_event_machine
+      start_respirator if @env[:heartbeat]
 
       if override
         $logger.debug('Pubnub::Client#start_subscribe | Override')
@@ -140,6 +163,18 @@ module Pubnub
       start_subscribe(true) unless @env[:subscriptions].empty?
     end
     alias_method :auth_key=, :set_auth_key
+
+    def set_heartbeat(heartbeat = nil)
+      if heartbeat
+        @env[:heartbeat] = heartbeat
+      end
+      @env[:heartbeat]
+    end
+    alias_method :heartbeat=, :set_heartbeat
+
+    def get_heartbeat
+      @env[:heartbeat]
+    end
 
     def set_cipher_key(cipher_key)
       @env[:cipher_key] = cipher_key
