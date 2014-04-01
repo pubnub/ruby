@@ -246,14 +246,21 @@ module Pubnub
   end
 
   module SubscribeEvent
-
-
     def fire(app)
       begin
         $logger.debug('SubscribeEvent#fire')
         if @http_sync
           $logger.debug('SubscribeEvent#fire sync')
-          super
+          if self.class == Pubnub::Subscribe && app.env[:heartbeat]
+            app.heartbeat(:channel => @channel, :http_sync => true)
+            envelopes = super
+            @channel.each do |channel|
+              app.leave(:channel => channel, :http_sync => true, :skip_remove => true, :force => true) unless (app.env[:subscriptions][@origin] && app.env[:subscriptions][@origin].get_channels.include(channel))
+            end
+          else
+            envelopes = super
+          end
+          envelopes
         else
           $logger.debug('SubscribeEvent#fire async')
           $logger.debug("Channel: #{@channel}")

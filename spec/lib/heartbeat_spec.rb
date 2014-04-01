@@ -7,7 +7,7 @@ describe 'hearbeat' do
     @pn.env[:heartbeat].should eq nil
   end
 
-  it 'is present in subscribe request when set' do
+  it 'is present in subscribe request when set, also fires leave after sync subscribe' do
     @pn = Pubnub.new(:subscribe_key => 'demo-36', :heartbeat => 100)
 
     VCR.use_cassette("heartbeated-subscribe", :record => :none) do
