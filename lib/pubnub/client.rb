@@ -28,17 +28,7 @@ module Pubnub
         params[:callback] = block if params[:callback].nil?
         event = Pubnub.const_get(classify_method(event_name)).new(params, self)
         $logger.debug('Created event ' + event.class.to_s)
-        #if params[:http_sync]
-          event.fire(self)
-        #else
-        #  EM.defer {
-        #    begin
-        #      event.fire(self)
-        #    rescue => e
-        #      puts e
-        #    end
-        #  }
-        #end
+        event.fire(self)
       end
     end
     alias_method :unsubscribe, :leave
