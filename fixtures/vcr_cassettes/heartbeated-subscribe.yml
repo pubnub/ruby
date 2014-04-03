@@ -1,0 +1,136 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/subscribe/demo-36/ruby_test/0/0?auth=&heartbeat=100&pnsdk=PubNub-Ruby/3.5.1&uuid=86fa92b4-eec0-48d1-9692-5a4d88bf0905
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 27 Mar 2014 21:51:59 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '24'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[[],"13959571193693019"]'
+    http_version: 
+  recorded_at: Thu, 27 Mar 2014 21:52:00 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v2/presence/sub-key/demo-36/channel/ruby_test/heartbeat?auth=&pnsdk=PubNub-Ruby/3.5.1&state=%7B%7D&uuid=0bf9787a-92fd-4eff-b4e6-7ebda6482827
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 01 Apr 2014 22:34:51 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '55'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub Presence
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "message": "OK", "service": "Presence"}'
+    http_version: 
+  recorded_at: Tue, 01 Apr 2014 22:34:54 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v2/presence/sub-key/demo-36/channel/ruby_test/leave?auth=&pnsdk=PubNub-Ruby/3.5.1&uuid=4c9f8877-d506-4087-9123-c18b752e8c58
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 01 Apr 2014 22:49:59 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '74'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub Presence
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "action": "leave", "message": "OK", "service": "Presence"}'
+    http_version: 
+  recorded_at: Tue, 01 Apr 2014 22:50:02 GMT
+recorded_with: VCR 2.8.0

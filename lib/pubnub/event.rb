@@ -59,7 +59,9 @@ module Pubnub
         raise ArgumentError.new(:object => self, :message => 'Invalid channel(s) format! Should be type of: String, Symbol') unless valid_channel?(false)
       end
 
-      raise ArgumentError.new(:object => self, :message => 'Callback parameter is required while using async') if (!@http_sync && @callback.blank?) && !@doesnt_require_callback
+      unless @doesnt_require_callback
+        raise ArgumentError.new(:object => self, :message => 'Callback parameter is required while using async') if (!@http_sync && @callback.blank?)
+      end
 
     end
 
@@ -244,14 +246,21 @@ module Pubnub
   end
 
   module SubscribeEvent
-
-
     def fire(app)
       begin
         $logger.debug('SubscribeEvent#fire')
         if @http_sync
           $logger.debug('SubscribeEvent#fire sync')
-          super
+          if self.class == Pubnub::Subscribe && app.env[:heartbeat]
+            app.heartbeat(:channel => @channel, :http_sync => true)
+            envelopes = super
+            @channel.each do |channel|
+              app.leave(:channel => channel, :http_sync => true, :skip_remove => true, :force => true) unless (app.env[:subscriptions][@origin] && app.env[:subscriptions][@origin].get_channels.include(channel))
+            end
+          else
+            envelopes = super
+          end
+          envelopes
         else
           $logger.debug('SubscribeEvent#fire async')
           $logger.debug("Channel: #{@channel}")
@@ -265,6 +274,7 @@ module Pubnub
               $logger.debug('SubscribeEvent#add_channel | Adding channel')
               app.env[:subscriptions][@origin].add_channel(channel, app)
             end
+            app.start_respirator
           end
 
           if app.env[:subscriptions][@origin].nil?
@@ -321,6 +331,12 @@ module Pubnub
     end
 
     private
+
+    def parameters(app)
+      parameters = super(app)
+      parameters.merge!({:heartbeat => app.env[:heartbeat]}) if app.env[:heartbeat]
+      parameters
+    end
 
     def update_app_timetoken(envelopes, app)
       $logger.debug('Event#update_app_timetoken')
