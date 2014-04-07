@@ -16,22 +16,31 @@ module Pubnub
       super
 
       # check channel
-      raise ArgumentError.new(:object => self, :message => 'History requires :channel argument') unless @channel
-      raise ArgumentError.new(:object => self, :message => 'Invalid channel format! Should be type of: String, Symbol') unless [String, Symbol].include?(@channel.class)
+      raise ArgumentError.new(:object => self, :message => 'Invalid channel format! Should be type of: String, Symbol') unless [String, Symbol, NilClass].include?(@channel.class)
 
     end
 
     private
 
     def path(app)
-      '/' + [
-          'v2',
-          'presence',
-          'sub-key',
-          @subscribe_key,
-          'channel',
-          @channel
-      ].join('/')
+      unless @channel.blank?
+        '/' + [
+            'v2',
+            'presence',
+            'sub-key',
+            @subscribe_key,
+            'channel',
+            @channel
+        ].join('/')
+      else
+        $logger.debug('Global here_now')
+        '/' + [
+            'v2',
+            'presence',
+            'sub-key',
+            @subscribe_key
+        ].join('/')
+      end
     end
 
     def format_envelopes(response, app, error)
