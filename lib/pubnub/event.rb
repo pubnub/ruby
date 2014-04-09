@@ -198,7 +198,7 @@ module Pubnub
           :uuid => app.env[:uuid]
       }
 
-      empty_if_blank.delete_if {|k, v| v.nil? }
+      empty_if_blank.delete_if {|k, v| v.blank? }
 
       required.merge(empty_if_blank)
     end

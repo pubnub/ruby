@@ -221,6 +221,7 @@ module Pubnub
       $logger = options[:logger] || Logger.new('pubnub.log')
       @env = symbolize_options_keys(options)
       @env = set_default_values(@env)
+      @env.delete(:auth_key) if @env[:auth_key].blank?
       @async_events = Array.new
       $logger.debug("Created new Pubnub::Client instance. VERSION #{Pubnub::VERSION}")
     end
