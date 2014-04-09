@@ -17,7 +17,6 @@ module Pubnub
       @cipher_key       = app.env[:cipher_key]
       @secret_key       = app.env[:secret_key]
       @auth_key         = options[:auth_key]        || app.env[:auth_key]
-      @auth_key         = nil if @auth_key.blank?
       @publish_key      = app.env[:publish_key]
       @subscribe_key    = app.env[:subscribe_key]
 
