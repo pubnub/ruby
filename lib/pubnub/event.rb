@@ -190,11 +190,11 @@ module Pubnub
 
     def parameters(app)
       required = {
-          :auth => @auth_key,
           :pnsdk => "PubNub-Ruby/#{Pubnub::VERSION}"
       }
 
       empty_if_blank = {
+          :auth => @auth_key,
           :uuid => app.env[:uuid]
       }
 
