@@ -25,21 +25,21 @@ module Pubnub
       validate!
       @original_channel = format_channels(@channel, false)
       @channel          = format_channels(@channel)
-      $logger.debug("Event#initialize | Initialized #{self.class.to_s}")
+      $logger.debug('Pubnub'){"Event#initialize | Initialized #{self.class.to_s}"}
     end
 
     def fire(app)
-      $logger.debug("Pubnub::Event#fire")
+      $logger.debug('Pubnub'){'Pubnub::Event#fire'}
       @fired = true
-      $logger.debug('Event#fire')
+      $logger.debug('Pubnub'){'Event#fire'}
       setup_connection(app) unless connection_exist?(app)
       envelopes = start_event(app)
     end
 
     def start_event(app, count = 0)
       if count <= app.env[:max_retries]
-        $logger.debug('Event#start_event | sending request')
-        $logger.debug("Event#start_event | tt: #{@timetoken}; ctt #{app.env[:timetoken]}")
+        $logger.debug('Pubnub'){'Event#start_event | sending request'}
+        $logger.debug('Pubnub'){"Event#start_event | tt: #{@timetoken}; ctt #{app.env[:timetoken]}"}
         @response = get_connection(app).request(uri(app))
       end
 
@@ -83,7 +83,7 @@ module Pubnub
 
     def handle_response(response, app, error)
 
-      $logger.debug('Event#handle_response')
+      $logger.debug('Pubnub'){'Event#handle_response'}
       envelopes = format_envelopes(response, app, error)
       update_app_timetoken(envelopes, app)
       fire_callbacks(envelopes,app)
@@ -97,7 +97,7 @@ module Pubnub
     end
 
     def fire_callbacks(envelopes, app)
-      $logger.debug('Firing callbacks')
+      $logger.debug('Pubnub'){'Firing callbacks'}
       envelopes.each do |envelope|
         @callback.call(envelope)       if !envelope.error && @callback && !envelope.timetoken_update
         #if envelope.timetoken_update || envelope.timetoken.to_i > app.env[:timetoken].to_i
@@ -111,11 +111,11 @@ module Pubnub
     def update_timetoken(app, timetoken)
       @timetoken = timetoken.to_i
       app.update_timetoken(timetoken.to_i)
-      $logger.debug("Updated timetoken to #{timetoken}")
+      $logger.debug('Pubnub'){"Updated timetoken to #{timetoken}"}
     end
 
     def add_common_data_to_envelopes(envelopes, response, app, error)
-      $logger.debug('Event#add_common_data_to_envelopes')
+      $logger.debug('Pubnub'){'Event#add_common_data_to_envelopes'}
 
       envelopes.each do |envelope|
         envelope.response      = response.body
@@ -179,7 +179,7 @@ module Pubnub
     end
 
     def uri(app)
-      $logger.debug("#{self.class}#uri #{[origin(app), path(app), '?', params_hash_to_url_params(parameters(app))].join}")
+      $logger.debug('Pubnub'){"#{self.class}#uri #{[origin(app), path(app), '?', params_hash_to_url_params(parameters(app))].join}"}
       URI [origin(app), path(app), '?', params_hash_to_url_params(parameters(app))].join
     end
 
@@ -208,17 +208,17 @@ module Pubnub
   module SingleEvent
 
     def fire(app)
-      $logger.debug('Pubnub::SingleEvent#fire')
+      $logger.debug('Pubnub'){'Pubnub::SingleEvent#fire'}
       if @http_sync
-        $logger.debug('Pubnub::SingleEvent#fire | Sync event!')
+        $logger.debug('Pubnub'){'Pubnub::SingleEvent#fire | Sync event!'}
         super(app)
       elsif app.async_events.include? self
-        $logger.debug('Pubnub::SingleEvent#fire | Event already on list!')
+        $logger.debug('Pubnub'){'Pubnub::SingleEvent#fire | Event already on list!'}
         super(app)
       else
-        $logger.debug('Pubnub::SingleEvent#fire | Adding event to async_events')
+        $logger.debug('Pubnub'){'Pubnub::SingleEvent#fire | Adding event to async_events'}
         app.async_events << self
-        $logger.debug('Pubnub::SingleEvent#fire | Starting railgun')
+        $logger.debug('Pubnub'){'Pubnub::SingleEvent#fire | Starting railgun'}
         app.start_railgun
       end
     end
@@ -249,9 +249,9 @@ module Pubnub
   module SubscribeEvent
     def fire(app)
       begin
-        $logger.debug('SubscribeEvent#fire')
+        $logger.debug('Pubnub'){'SubscribeEvent#fire'}
         if @http_sync
-          $logger.debug('SubscribeEvent#fire sync')
+          $logger.debug('Pubnub'){'SubscribeEvent#fire sync'}
           if self.class == Pubnub::Subscribe && app.env[:heartbeat]
             app.heartbeat(:channel => @channel, :http_sync => true)
             envelopes = super
@@ -263,16 +263,16 @@ module Pubnub
           end
           envelopes
         else
-          $logger.debug('SubscribeEvent#fire async')
-          $logger.debug("Channel: #{@channel}")
+          $logger.debug('Pubnub'){'SubscribeEvent#fire async'}
+          $logger.debug('Pubnub'){"Channel: #{@channel}"}
           setup_connection(app) unless connection_exist?(app)
           unless app.env[:subscriptions][@origin].blank?
             @channel.each do |channel|
               if app.env[:subscriptions][@origin].get_channels.include?(channel)
                 @channel.delete(channel)
-                $logger.error("Already subscribed to channel #{channel}, you have to leave that channel first")
+                $logger.error('Pubnub'){"Already subscribed to channel #{channel}, you have to leave that channel first"}
               end
-              $logger.debug('SubscribeEvent#add_channel | Adding channel')
+              $logger.debug('Pubnub'){'SubscribeEvent#add_channel | Adding channel'}
               app.env[:subscriptions][@origin].add_channel(channel, app)
             end
             app.start_respirator
@@ -303,7 +303,7 @@ module Pubnub
 
         end
       rescue => error
-        $logger.error(error)
+        $logger.error('Pubnub'){error}
       end
     end
 
@@ -313,17 +313,17 @@ module Pubnub
 
     def add_channel(channel, app)
       @channel = @channel + format_channels(channel)
-      $logger.debug('SubscribeEvent#add_channel | Added channel')
+      $logger.debug('Pubnub'){'SubscribeEvent#add_channel | Added channel'}
     end
 
     def remove_channel(channel, app)
       @channel = @channel - format_channels(channel)
-      $logger.debug('SubscribeEvent#remove_channel | Removed channel')
+      $logger.debug('Pubnub'){'SubscribeEvent#remove_channel | Removed channel'}
       begin
         shutdown_subscribe(app) if @channel.empty?
       rescue => e
-        $logger.error(e.message)
-        $logger.error(e.backtrace)
+        $logger.error('Pubnub'){e.message}
+        $logger.error('Pubnub'){e.backtrace}
       end
     end
 
@@ -340,7 +340,7 @@ module Pubnub
     end
 
     def update_app_timetoken(envelopes, app)
-      $logger.debug('Event#update_app_timetoken')
+      $logger.debug('Pubnub'){'Event#update_app_timetoken'}
       envelopes.each do |envelope|
         if envelope.timetoken_update || envelope.timetoken.to_i > app.env[:timetoken].to_i
           update_timetoken(app, envelope.timetoken)
@@ -364,15 +364,15 @@ module Pubnub
         super
       else
         begin
-          $logger.debug('Event#fire_callbacks async')
+          $logger.debug('Pubnub'){'Event#fire_callbacks async'}
           envelopes.each do |envelope|
             app.env[:callbacks_pool][@origin][envelope.channel][:callback].call(envelope) if !envelope.error && !envelope.timetoken_update
           end
-          $logger.debug('We can send next request now')
+          $logger.debug('Pubnub'){'We can send next request now'}
           app.env[:error_callbacks_pool][@origin].call(envelopes.first) if envelopes.first.error
         rescue => error
-          $logger.error(error)
-          $logger.error(error.backtrace)
+          $logger.error('Pubnub'){error}
+          $logger.error('Pubnub'){error.backtrace}
         end
       end unless envelopes.nil?
 
@@ -413,15 +413,15 @@ module Pubnub
 
     def format_envelopes(response, app, error)
 
-      $logger.debug('Subscribe#format_envelopes')
+      $logger.debug('Pubnub'){'Subscribe#format_envelopes'}
 
       parsed_response = Parser.parse_json(response.body) if Parser.valid_json?(response.body)
 
-      $logger.debug('Subscribe#format_envelopes | Response parsed')
+      $logger.debug('Pubnub'){'Subscribe#format_envelopes | Response parsed'}
 
       envelopes = Array.new
       if error
-        $logger.debug('Subscribe#format_envelopes | Error')
+        $logger.debug('Pubnub'){'Subscribe#format_envelopes | Error'}
         envelopes << Envelope.new(
             {
                 :channel           => @channel,
@@ -430,7 +430,7 @@ module Pubnub
             app
         )
       elsif parsed_response[0].empty?
-        $logger.debug('Subscribe#format_envelopes | Timetoken')
+        $logger.debug('Pubnub'){'Subscribe#format_envelopes | Timetoken'}
         envelopes << Envelope.new(
             {
                 :channel           => @channel.first,
@@ -441,7 +441,7 @@ module Pubnub
             app
         )
       else
-        $logger.debug('Subscribe#format_envelopes | Not timetoken update')
+        $logger.debug('Pubnub'){'Subscribe#format_envelopes | Not timetoken update'}
         parsed_response[0].size.times do |i|
           if parsed_response[2].is_a? Array
             channel = parsed_response[2][i]
@@ -450,9 +450,9 @@ module Pubnub
           else
             channel = @channel.first
           end
-          $logger.debug('Subscribe#format_envelopes | Channel created')
+          $logger.debug('Pubnub'){'Subscribe#format_envelopes | Channel created'}
 
-          $logger.debug("#{parsed_response}")
+          $logger.debug('Pubnub'){"#{parsed_response}"}
 
           envelopes << Envelope.new(
               {
@@ -464,12 +464,12 @@ module Pubnub
               app
           )
 
-          $logger.debug('Subscribe#format_envelopes | Envelopes created')
+          $logger.debug('Pubnub'){'Subscribe#format_envelopes | Envelopes created'}
 
         end
       end
 
-      $logger.debug('Subscribe#format_envelopes | envelopes created')
+      $logger.debug('Pubnub'){'Subscribe#format_envelopes | envelopes created'}
 
       envelopes = add_common_data_to_envelopes(envelopes, response, app, error)
 
