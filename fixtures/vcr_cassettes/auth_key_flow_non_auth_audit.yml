@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v1/auth/audit/sub-key/sub-c-a478dd2a-c33d-11e2-883f-02ee2ddab7fe?channel=ruby_test&pnsdk=PubNub-Ruby/3.5.2&signature=kdDh/sFC3rSR%2Bt5AEymIc57d1velIr562V7usa5M4k0=&timestamp=1234567890&uuid=4b92172b-aa29-4ac2-997d-000e631ef735
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 10 Apr 2014 22:42:27 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '166'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"service":"Access Manager","message":"Success","payload":{"channels":{},"subscribe_key":"sub-c-a478dd2a-c33d-11e2-883f-02ee2ddab7fe","level":"channel"}}'
+    http_version: 
+  recorded_at: Thu, 10 Apr 2014 22:42:28 GMT
+recorded_with: VCR 2.9.0
