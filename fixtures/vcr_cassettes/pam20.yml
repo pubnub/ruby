@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://pam-next.devbuild.pubnub.com/publish/pub-c-e72b633d-bb2f-42ba-8e98-69a9d3f7bdaa/sub-c-8e798456-4520-11e3-9b46-02ee2ddab7fe/0/mychannel/0/%22hello%20PAM%20world!%22?auth=&uuid=myuuid
+    uri: http://pam-next.devbuild.pubnub.com/publish/pub-c-e72b633d-bb2f-42ba-8e98-69a9d3f7bdaa/sub-c-8e798456-4520-11e3-9b46-02ee2ddab7fe/0/mychannel/0/%22hello%20PAM%20world!%22?uuid=myuuid
     body:
       encoding: US-ASCII
       string: ''

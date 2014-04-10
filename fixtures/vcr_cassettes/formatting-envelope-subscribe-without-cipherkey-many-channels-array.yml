@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/subscribe/demo/test_channel_one,test_channel_two/0/0?auth=&pnsdk=PubNub-Ruby/3.5.0beta&uuid=a13db158-00a5-426e-88ef-20c2903bc727
+    uri: http://pubsub.pubnub.com/subscribe/demo/test_channel_one,test_channel_two/0/0?pnsdk=PubNub-Ruby/3.5.0beta&uuid=a13db158-00a5-426e-88ef-20c2903bc727
     body:
       encoding: US-ASCII
       string: ''
@@ -45,7 +45,7 @@ http_interactions:
   recorded_at: Sat, 01 Feb 2014 03:39:29 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/subscribe/demo/test_channel_one,test_channel_two/0/13912259700970380?auth=&pnsdk=PubNub-Ruby/3.5.0beta&uuid=a13db158-00a5-426e-88ef-20c2903bc727
+    uri: http://pubsub.pubnub.com/subscribe/demo/test_channel_one,test_channel_two/0/13912259700970380?pnsdk=PubNub-Ruby/3.5.0beta&uuid=a13db158-00a5-426e-88ef-20c2903bc727
     body:
       encoding: US-ASCII
       string: ''
