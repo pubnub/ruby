@@ -17,7 +17,7 @@ module Pubnub
     attr_accessor :single_event_connections_pool, :subscribe_event_connections_pool, :uuid, :async_events
 
     EVENTS = %w(publish subscribe presence leave history here_now audit grant revoke time heartbeat)
-    VERSION = Pubnub::VERSION
+    #VERSION = Pubnub::VERSION
 
     EVENTS.each do |event_name|
       require File.join('pubnub', 'events', event_name)
