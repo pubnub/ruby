@@ -27,7 +27,7 @@ module Pubnub
       define_method event_name do |params, &block|
         params[:callback] = block if params[:callback].nil?
         event = Pubnub.const_get(classify_method(event_name)).new(params, self)
-        $logger.debug('Created event ' + event.class.to_s)
+        $logger.debug('Pubnub'){'Created event ' + event.class.to_s}
         event.fire(self)
       end
     end
@@ -60,28 +60,28 @@ module Pubnub
 
       EM.stop if stop_em
 
-      $logger.info('Bye!')
+      $logger.info('Pubnub'){'Bye!'}
     end
 
     def start_respirator
-      $logger.debug('Pubnub::Client#start_respirator | fired')
+      $logger.debug('Pubnub'){'Pubnub::Client#start_respirator | fired'}
       if @env[:heartbeat]
-        $logger.debug('Pubnub::Client#start_respirator | starting')
+        $logger.debug('Pubnub'){'Pubnub::Client#start_respirator | starting'}
 
         if @env[:heartbeat] != @env[:respirator].interval
-          $logger.debug('Pubnub::Client#start_respirator | destroy old respirator')
+          $logger.debug('Pubnub'){'Pubnub::Client#start_respirator | destroy old respirator'}
           @env[:respirator].cancel
           @env[:respirator] = nil
         end if @env[:respirator]
 
         @env[:respirator] = EM.add_periodic_timer((@env[:heartbeat].to_i/2) - 1) do
           @env[:subscriptions].each do |origin, subscribe|
-            $logger.debug('Pubnub::Client#start_respirator | BUM')
+            $logger.debug('Pubnub'){'Pubnub::Client#start_respirator | BUM'}
             EM.defer { heartbeat(:channel => subscribe.get_channels){ |e| $logger.debug('Pubnub::Client#start_respirator | bum') } }
           end
         end unless @env[:respirator]
 
-        $logger.debug('Pubnub::Client#start_respirator | started')
+        $logger.debug('Pubnub'){'Pubnub::Client#start_respirator | started'}
       end
     end
 
@@ -91,7 +91,7 @@ module Pubnub
       start_respirator if @env[:heartbeat]
 
       if override
-        $logger.debug('Pubnub::Client#start_subscribe | Override')
+        $logger.debug('Pubnub'){'Pubnub::Client#start_subscribe | Override'}
         @env[:subscribe_railgun].cancel
         @env[:subscribe_railgun] = nil
         @env[:wait_for_response].each do |k,v|
@@ -106,9 +106,9 @@ module Pubnub
             unless @env[:wait_for_response][origin]
               @env[:wait_for_response][origin] = true
 
-              $logger.debug('Async subscription running')
-              $logger.debug("origin: #{origin}")
-              $logger.debug("timetoken: #{@env[:timetoken]}")
+              $logger.debug('Pubnub'){'Async subscription running'}
+              $logger.debug('Pubnub'){"origin: #{origin}"}
+              $logger.debug('Pubnub'){"timetoken: #{@env[:timetoken]}"}
 
               EM.defer do
                 subscribe.start_event(self) if subscribe
@@ -118,8 +118,8 @@ module Pubnub
             end
           end
         rescue => e
-          $logger.error(e)
-          $logger.error(e.backtrace)
+          $logger.error('Pubnub'){e}
+          $logger.error('Pubnub'){e.backtrace}
         end
       end unless @env[:subscribe_railgun]
     end
@@ -136,7 +136,7 @@ module Pubnub
 
     def update_timetoken(timetoken)
       @env[:timetoken] = timetoken.to_i
-      $logger.debug("Pubnub::Client#update_timetoken | Current timetoken is eq #{@env[:timetoken]}")
+      $logger.debug('Pubnub'){"Pubnub::Client#update_timetoken | Current timetoken is eq #{@env[:timetoken]}"}
     end
 
     def set_uuid(uuid)
@@ -173,9 +173,9 @@ module Pubnub
 
     def start_railgun
       if @env[:railgun]
-        $logger.debug('Pubnub::Client#start_railgun | Railgun already initialized')
+        $logger.debug('Pubnub'){'Pubnub::Client#start_railgun | Railgun already initialized'}
       else
-        $logger.debug('Pubnub::Client#start_railgun | Initializing railgun')
+        $logger.debug('Pubnub'){'Pubnub::Client#start_railgun | Initializing railgun'}
         @env[:railgun] = EM.add_periodic_timer(0.01) do
           @async_events.each do |event|
             EM.defer do
@@ -203,17 +203,17 @@ module Pubnub
     end
 
     def start_event_machine(options = nil)
-      $logger.debug 'Pubnub::Client#start_event_machine | starting EM in new thread'
+      $logger.debug('Pubnub'){'Pubnub::Client#start_event_machine | starting EM in new thread'}
       if defined?(Thin)
-        $logger.debug('Pubnub::Client#start_event_machine | We\'re running on thin')
+        $logger.debug('Pubnub'){'Pubnub::Client#start_event_machine | We\'re running on thin'}
       else
-        $logger.debug('Pubnub::Client#start_event_machine | We aren\'t running on thin')
+        $logger.debug('Pubnub'){'Pubnub::Client#start_event_machine | We aren\'t running on thin'}
       end
       if EM.reactor_running?
-        $logger.debug 'Pubnub::Client#start_event_machine | EM already running'
+        $logger.debug('Pubnub'){'Pubnub::Client#start_event_machine | EM already running'}
       else
         Thread.new { EM.run {} }
-        $logger.debug 'Pubnub::Client#start_event_machine | EM started in new thread'
+        $logger.debug('Pubnub'){'Pubnub::Client#start_event_machine | EM started in new thread'}
       end
     end
 
@@ -223,7 +223,7 @@ module Pubnub
       @env = set_default_values(@env)
       @env.delete_if { |k,v| v.blank? } # nillify if blank
       @async_events = Array.new
-      $logger.debug("Created new Pubnub::Client instance. VERSION #{Pubnub::VERSION}")
+      $logger.debug('Pubnub'){"\n\nCreated new Pubnub::Client instance"}
     end
 
     def create_connections_pools(options)
@@ -252,7 +252,7 @@ module Pubnub
       }
 
       # Let's fill missing keys with default values
-      $logger.debug('Setting default values')
+      $logger.debug('Pubnub'){'Setting default values'}
       defaults.each do |key,default_value|
         env[key] = default_value if @env[key].nil?
       end
@@ -261,7 +261,7 @@ module Pubnub
     end
 
     def symbolize_options_keys(options)
-      $logger.debug('Symbolizing options keys')
+      $logger.debug('Pubnub'){'Symbolizing options keys'}
       symbolized_options = {}
       options.each_key { |k| symbolized_options.merge!({ k.to_sym => options[k] }) }
       symbolized_options

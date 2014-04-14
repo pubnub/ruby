@@ -35,7 +35,7 @@ module Pubnub
       if $logger.blank?
         puts error_message
       else
-        $logger.error(error_message)
+        $logger.error('Pubnub'){error_message}
       end
     end
 

@@ -1,3 +1,6 @@
+3.6.0 Release
+. Exposed HTTP/S Proxy Support
+
 3-17-14 - 3.5.1 Release
 . PAM Support!
 . extensive refactor, removed a lot of dependencies, such as Faraday for HTTP_SYNC mode
