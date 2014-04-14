@@ -1,5 +1,10 @@
 module Pubnub
   module PAM
+    def initialize(options, app)
+      super
+      @auth_key = options[:auth_key]
+    end
+
     def signature(app)
       channel = @original_channel.first
       message = "#{@subscribe_key}\n#{@publish_key}\n#{@event}\n#{variables_for_signature(app)}"

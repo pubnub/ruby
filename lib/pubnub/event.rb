@@ -190,15 +190,15 @@ module Pubnub
 
     def parameters(app)
       required = {
-          :auth => @auth_key,
           :pnsdk => "PubNub-Ruby/#{Pubnub::VERSION}"
       }
 
       empty_if_blank = {
+          :auth => @auth_key,
           :uuid => app.env[:uuid]
       }
 
-      empty_if_blank.delete_if {|k, v| v.nil? }
+      empty_if_blank.delete_if {|k, v| v.blank? }
 
       required.merge(empty_if_blank)
     end

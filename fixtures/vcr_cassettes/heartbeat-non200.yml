@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/subscribe/demo-36/rubyheartbeatdemo/0/13962834724662579?auth=&heartbeat=4&pnsdk=PubNub-Ruby/3.5.1&uuid=5978a0b7-5c8c-45f8-b5d4-618bd36eaf82
+    uri: http://pubsub.pubnub.com/subscribe/demo-36/rubyheartbeatdemo/0/13962834724662579?heartbeat=4&pnsdk=PubNub-Ruby/3.5.1&uuid=5978a0b7-5c8c-45f8-b5d4-618bd36eaf82
     body:
       encoding: US-ASCII
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
       Connection:
@@ -33,7 +33,7 @@ http_interactions:
       Cache-Control:
       - no-cache
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Access-Control-Allow-Methods:
       - GET
     body:
@@ -43,7 +43,7 @@ http_interactions:
   recorded_at: Mon, 31 Mar 2014 16:31:14 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/subscribe/demo-36/rubyheartbeatdemo/0/13962834735397816?auth=&heartbeat=4&pnsdk=PubNub-Ruby/3.5.1&uuid=5978a0b7-5c8c-45f8-b5d4-618bd36eaf82
+    uri: http://pubsub.pubnub.com/subscribe/demo-36/rubyheartbeatdemo/0/13962834735397816?heartbeat=4&pnsdk=PubNub-Ruby/3.5.1&uuid=5978a0b7-5c8c-45f8-b5d4-618bd36eaf82
     body:
       encoding: US-ASCII
       string: ''
@@ -51,7 +51,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
       Connection:
@@ -74,7 +74,7 @@ http_interactions:
       Cache-Control:
       - no-cache
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Access-Control-Allow-Methods:
       - GET
     body:
@@ -84,7 +84,7 @@ http_interactions:
   recorded_at: Mon, 31 Mar 2014 16:31:14 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/subscribe/demo-36/rubyheartbeatdemo/0/13962834738227474?auth=&heartbeat=4&pnsdk=PubNub-Ruby/3.5.1&uuid=5978a0b7-5c8c-45f8-b5d4-618bd36eaf82
+    uri: http://pubsub.pubnub.com/subscribe/demo-36/rubyheartbeatdemo/0/13962834738227474?heartbeat=4&pnsdk=PubNub-Ruby/3.5.1&uuid=5978a0b7-5c8c-45f8-b5d4-618bd36eaf82
     body:
       encoding: US-ASCII
       string: ''
@@ -92,7 +92,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
       Connection:
@@ -115,7 +115,7 @@ http_interactions:
       Cache-Control:
       - no-cache
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Access-Control-Allow-Methods:
       - GET
     body:
@@ -125,7 +125,7 @@ http_interactions:
   recorded_at: Mon, 31 Mar 2014 16:31:14 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/subscribe/demo-36/rubyheartbeatdemo/0/13962834739552478?auth=&heartbeat=4&pnsdk=PubNub-Ruby/3.5.1&uuid=5978a0b7-5c8c-45f8-b5d4-618bd36eaf82
+    uri: http://pubsub.pubnub.com/subscribe/demo-36/rubyheartbeatdemo/0/13962834739552478?heartbeat=4&pnsdk=PubNub-Ruby/3.5.1&uuid=5978a0b7-5c8c-45f8-b5d4-618bd36eaf82
     body:
       encoding: US-ASCII
       string: ''
@@ -133,7 +133,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
       Connection:
@@ -156,7 +156,7 @@ http_interactions:
       Cache-Control:
       - no-cache
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Access-Control-Allow-Methods:
       - GET
     body:
@@ -166,7 +166,7 @@ http_interactions:
   recorded_at: Mon, 31 Mar 2014 16:31:14 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/subscribe/demo-36/rubyheartbeatdemo/0/0?auth=&heartbeat=4&pnsdk=PubNub-Ruby/3.5.1&uuid=a3191078-9099-4b86-a36c-c03b03568b89
+    uri: http://pubsub.pubnub.com/subscribe/demo-36/rubyheartbeatdemo/0/0?heartbeat=4&pnsdk=PubNub-Ruby/3.5.1&uuid=a3191078-9099-4b86-a36c-c03b03568b89
     body:
       encoding: US-ASCII
       string: ''
@@ -174,7 +174,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
       Connection:
@@ -197,7 +197,7 @@ http_interactions:
       Cache-Control:
       - no-cache
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Access-Control-Allow-Methods:
       - GET
     body:
@@ -207,7 +207,7 @@ http_interactions:
   recorded_at: Mon, 31 Mar 2014 16:44:26 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/v2/presence/sub-key/demo-36/channel/rubyheartbeatdemo/heartbeat?auth=&pnsdk=PubNub-Ruby/3.5.1&state=%7B%7D&uuid=a3191078-9099-4b86-a36c-c03b03568b89
+    uri: http://pubsub.pubnub.com/v2/presence/sub-key/demo-36/channel/rubyheartbeatdemo/heartbeat?pnsdk=PubNub-Ruby/3.5.1&state=%7B%7D&uuid=a3191078-9099-4b86-a36c-c03b03568b89
     body:
       encoding: US-ASCII
       string: ''
@@ -215,7 +215,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
       Connection:
@@ -236,7 +236,7 @@ http_interactions:
       Connection:
       - keep-alive
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Access-Control-Allow-Methods:
       - GET
       Cache-Control:
@@ -254,7 +254,7 @@ http_interactions:
   recorded_at: Mon, 31 Mar 2014 16:44:27 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/v2/presence/sub-key/demo-36/channel/rubyheartbeatdemo/heartbeat?auth=&pnsdk=PubNub-Ruby/3.5.1&state=%7B%7D&uuid=a3191078-9099-4b86-a36c-c03b03568b89
+    uri: http://pubsub.pubnub.com/v2/presence/sub-key/demo-36/channel/rubyheartbeatdemo/heartbeat?pnsdk=PubNub-Ruby/3.5.1&state=%7B%7D&uuid=a3191078-9099-4b86-a36c-c03b03568b89
     body:
       encoding: US-ASCII
       string: ''
@@ -262,7 +262,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
       Connection:
@@ -283,7 +283,7 @@ http_interactions:
       Connection:
       - keep-alive
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Access-Control-Allow-Methods:
       - GET
       Cache-Control:
@@ -301,7 +301,7 @@ http_interactions:
   recorded_at: Mon, 31 Mar 2014 16:44:28 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/subscribe/demo-36/rubyheartbeatdemo/0/0?auth=&heartbeat=12&pnsdk=PubNub-Ruby/3.5.1&uuid=a74c5a27-76e7-4095-8f57-ebe1e4084ea0
+    uri: http://pubsub.pubnub.com/subscribe/demo-36/rubyheartbeatdemo/0/0?heartbeat=12&pnsdk=PubNub-Ruby/3.5.1&uuid=a74c5a27-76e7-4095-8f57-ebe1e4084ea0
     body:
       encoding: US-ASCII
       string: ''
@@ -309,7 +309,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
       Connection:
@@ -332,7 +332,7 @@ http_interactions:
       Cache-Control:
       - no-cache
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Access-Control-Allow-Methods:
       - GET
     body:
@@ -340,4 +340,180 @@ http_interactions:
       string: '[[],"13962834750580997"]'
     http_version: 
   recorded_at: Mon, 31 Mar 2014 16:55:05 GMT
-recorded_with: VCR 2.8.0
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/subscribe/demo-36/rubyheartbeatdemo/0/0?heartbeat=4&pnsdk=PubNub-Ruby/3.5.2&uuid=19befa34-c27a-4903-b2c3-bc02812d3c79
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 10 Apr 2014 10:54:41 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '24'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[[],"13971272816618646"]'
+    http_version: 
+  recorded_at: Thu, 10 Apr 2014 10:54:43 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/subscribe/demo-36/rubyheartbeatdemo/0/0?heartbeat=12&pnsdk=PubNub-Ruby/3.5.2&uuid=c2564912-7b58-4f82-9088-08d8a77c0d99
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 10 Apr 2014 10:54:41 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '24'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[[],"13971272816630114"]'
+    http_version: 
+  recorded_at: Thu, 10 Apr 2014 10:54:43 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v2/presence/sub-key/demo-36/channel/rubyheartbeatdemo/heartbeat?pnsdk=PubNub-Ruby/3.5.2&state=%7B%7D&uuid=19befa34-c27a-4903-b2c3-bc02812d3c79
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 10 Apr 2014 10:54:42 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '55'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub Presence
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "message": "OK", "service": "Presence"}'
+    http_version: 
+  recorded_at: Thu, 10 Apr 2014 10:54:44 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v2/presence/sub-key/demo-36/channel/rubyheartbeatdemo/heartbeat?pnsdk=PubNub-Ruby/3.5.2&state=%7B%7D&uuid=19befa34-c27a-4903-b2c3-bc02812d3c79
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 10 Apr 2014 10:54:43 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '55'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '1'
+      Server:
+      - Pubnub Presence
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "message": "OK", "service": "Presence"}'
+    http_version: 
+  recorded_at: Thu, 10 Apr 2014 10:54:45 GMT
+recorded_with: VCR 2.9.0
