@@ -221,6 +221,7 @@ module Pubnub
       $logger = options[:logger] || Logger.new('pubnub.log')
       @env = symbolize_options_keys(options)
       @env = set_default_values(@env)
+      @env.delete_if { |k,v| v.blank? } # nillify if blank
       @async_events = Array.new
       $logger.debug('Pubnub'){"\n\nCreated new Pubnub::Client instance"}
     end

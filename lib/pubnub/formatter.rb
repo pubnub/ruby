@@ -38,6 +38,7 @@ module Pubnub
       hash.each do |key, value|
         params << "#{key}=#{value}&"
       end
+      params.chop! if params[-1] == '&'
       params
     end
 
