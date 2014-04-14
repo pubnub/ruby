@@ -2,17 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/subscribe/demo/demo/0/0?auth=demoish_authkey&pnsdk=PubNub-Ruby/3.5.0&uuid=rubytests
+    uri: http://pubsub.pubnub.com/publish/demo/demo/0/demo/0/%7B%22text%22:%22hey%22%7D?auth=demoish_authkey&uuid=rubytests
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - Faraday v0.9.0
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - '*/*'
-      User-Agent:
-      - Ruby
       Connection:
       - keep-alive
       Keep-Alive:
@@ -23,11 +23,11 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 05 Mar 2014 23:56:29 GMT
+      - Wed, 22 Jan 2014 22:32:56 GMT
       Content-Type:
       - text/javascript; charset="UTF-8"
       Content-Length:
-      - '24'
+      - '30'
       Connection:
       - keep-alive
       Cache-Control:
@@ -38,37 +38,37 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '[[],"13940416024250966"]'
+      string: '[1,"Sent","1390429969444'
     http_version: 
-  recorded_at: Wed, 05 Mar 2014 23:56:29 GMT
+  recorded_at: Wed, 22 Jan 2014 22:32:56 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/subscribe/demo/demo/0/13940416024250966?auth=demoish_authkey&pnsdk=PubNub-Ruby/3.5.0&uuid=rubytests
+    uri: http://pubsub.pubnub.com/publish/demo/demo/0/demo/0/%7B%22text%22:%22hey%22%7D?auth=demoish_authkey&uuid=rubytests
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - Faraday v0.9.0
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - '*/*'
-      User-Agent:
-      - Ruby
       Connection:
       - keep-alive
       Keep-Alive:
       - 30
   response:
     status:
-      code: 500
+      code: 200
       message: OK
     headers:
       Date:
-      - Wed, 05 Mar 2014 23:56:33 GMT
+      - Wed, 22 Jan 2014 22:32:56 GMT
       Content-Type:
       - text/javascript; charset="UTF-8"
       Content-Length:
-      - '38'
+      - '30'
       Connection:
       - keep-alive
       Cache-Control:
@@ -79,130 +79,7 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '[[{"text":"hey"}],"139406379335395'
+      string: '[1,"Sent","13904299694449458"]'
     http_version: 
-  recorded_at: Wed, 05 Mar 2014 23:56:33 GMT
-- request:
-    method: get
-    uri: http://pubsub.pubnub.com/subscribe/demo/demo/0/13940416024250966?auth=demoish_authkey&pnsdk=PubNub-Ruby/3.5.0&uuid=rubytests
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - '*/*'
-      User-Agent:
-      - Ruby
-      Connection:
-      - keep-alive
-      Keep-Alive:
-      - 30
-  response:
-    status:
-      code: 500
-      message: OK
-    headers:
-      Date:
-      - Wed, 05 Mar 2014 23:56:33 GMT
-      Content-Type:
-      - text/javascript; charset="UTF-8"
-      Content-Length:
-      - '38'
-      Connection:
-      - keep-alive
-      Cache-Control:
-      - no-cache
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Allow-Methods:
-      - GET
-    body:
-      encoding: UTF-8
-      string: '[[{"text":"hey"}],"139406379335395'
-    http_version:
-  recorded_at: Wed, 05 Mar 2014 23:56:33 GMT
- - request:
-     method: get
-     uri: http://pubsub.pubnub.com/subscribe/demo/demo/0/13940416024250966?auth=demoish_authkey&pnsdk=PubNub-Ruby/3.5.0&uuid=rubytests
-     body:
-       encoding: US-ASCII
-       string: ''
-     headers:
-       Accept-Encoding:
-       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-       Accept:
-       - '*/*'
-       User-Agent:
-       - Ruby
-       Connection:
-       - keep-alive
-       Keep-Alive:
-       - 30
-   response:
-     status:
-       code: 500
-       message: OK
-     headers:
-       Date:
-       - Wed, 05 Mar 2014 23:56:33 GMT
-       Content-Type:
-       - text/javascript; charset="UTF-8"
-       Content-Length:
-       - '38'
-       Connection:
-       - keep-alive
-       Cache-Control:
-       - no-cache
-       Access-Control-Allow-Origin:
-       - '*'
-       Access-Control-Allow-Methods:
-       - GET
-     body:
-       encoding: UTF-8
-       string: '[[{"text":"hey"}],"13940637933539]'
-     http_version:
-   recorded_at: Wed, 05 Mar 2014 23:56:33 GMT
- - request:
-     method: get
-     uri: http://pubsub.pubnub.com/subscribe/demo/demo/0/13940416024250966?auth=demoish_authkey&pnsdk=PubNub-Ruby/3.5.0&uuid=rubytests
-     body:
-       encoding: US-ASCII
-       string: ''
-     headers:
-       Accept-Encoding:
-       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-       Accept:
-       - '*/*'
-       User-Agent:
-       - Ruby
-       Connection:
-       - keep-alive
-       Keep-Alive:
-       - 30
-   response:
-     status:
-       code: 200
-       message: OK
-     headers:
-       Date:
-       - Wed, 05 Mar 2014 23:56:33 GMT
-       Content-Type:
-       - text/javascript; charset="UTF-8"
-       Content-Length:
-       - '38'
-       Connection:
-       - keep-alive
-       Cache-Control:
-       - no-cache
-       Access-Control-Allow-Origin:
-       - '*'
-       Access-Control-Allow-Methods:
-       - GET
-     body:
-       encoding: UTF-8
-       string: '[[{"text":"hey"}],"13940637933539567"]'
-     http_version:
-   recorded_at: Wed, 05 Mar 2014 23:56:33 GMT
+  recorded_at: Wed, 22 Jan 2014 22:32:56 GMT
 recorded_with: VCR 2.8.0
