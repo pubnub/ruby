@@ -223,7 +223,7 @@ module Pubnub
       @env = set_default_values(@env)
       @env.delete_if { |k,v| v.blank? } # nillify if blank
       @async_events = Array.new
-      $logger.debug("\n\nCreated new Pubnub::Client instance")
+      $logger.debug("Created new Pubnub::Client instance. VERSION #{Pubnub::VERSION}")
     end
 
     def create_connections_pools(options)
