@@ -1,3 +1,5 @@
+# Please direct all Support Questions and Concerns to Support@PubNub.com
+
 ##### YOU MUST HAVE A PUBNUB ACCOUNT TO USE THE API.
 ##### http://www.pubnub.com/account
 
@@ -499,3 +501,5 @@ end
 
 Pubnub.start
 ```
+
+# Please direct all Support Questions and Concerns to Support@PubNub.com
