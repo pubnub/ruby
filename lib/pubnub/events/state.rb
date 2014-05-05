@@ -7,7 +7,6 @@ module Pubnub
 
     def initialize(options, app)
       super
-      raise ArgumentError.new(:object => self, :message => 'State requires :uuid argument') if options[:uuid].blank?
 
       @uuid_looking_for = options[:uuid]
       @uuid = app.uuid
@@ -44,7 +43,7 @@ module Pubnub
       envelopes << Envelope.new(
         {
             :channel => @channel,
-            :payload => response[:payload]      
+            :payload => response['payload']      
         },
         app
       )
