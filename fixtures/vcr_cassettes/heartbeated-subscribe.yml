@@ -43,7 +43,7 @@ http_interactions:
   recorded_at: Thu, 27 Mar 2014 21:52:00 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/v2/presence/sub-key/demo-36/channel/ruby_test/heartbeat?pnsdk=PubNub-Ruby/3.5.1&state=%7B%7D&uuid=0bf9787a-92fd-4eff-b4e6-7ebda6482827
+    uri: http://pubsub.pubnub.com/v2/presence/sub-key/demo-36/channel/ruby_test/heartbeat?pnsdk=PubNub-Ruby/3.5.1&uuid=0bf9787a-92fd-4eff-b4e6-7ebda6482827
     body:
       encoding: US-ASCII
       string: ''

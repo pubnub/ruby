@@ -16,7 +16,7 @@ module Pubnub
     attr_reader :env
     attr_accessor :single_event_connections_pool, :subscribe_event_connections_pool, :uuid, :async_events
 
-    EVENTS = %w(publish subscribe presence leave history here_now audit grant revoke time heartbeat)
+    EVENTS = %w(publish subscribe presence leave history here_now audit grant revoke time heartbeat where_now state)
     VERSION = Pubnub::VERSION
 
     EVENTS.each do |event_name|
@@ -35,11 +35,27 @@ module Pubnub
 
     def initialize(options)
       validate!(options)
-      setup_app(options)
-      # From this moment we have to use @env in that method instead of options
+      setup_app(options) # After that we have to use @env in that method instead of options
       create_connections_pools(@env)
       create_subscriptions_pools(@env)
       start_event_machine(@env)
+    end
+
+    def state_for(origin = DEFAULT_ORIGIN)
+      @env[:state][origin]
+    end
+
+    def set_state(state, channel, origin = DEFAULT_ORIGIN)
+      raise 'You can set state only as hash' unless (state.is_a?(Hash) || state.is_a?(NilClass))
+      @env[:state] = Hash.new         if @env[:state].nil?
+      @env[:state][origin] = Hash.new if @env[:state][origin].nil?
+      @env[:state][origin][channel] = state
+    end
+
+    def add_to_state(hash, channel, origin = DEFAULT_ORIGIN)
+      raise 'You can add to state only hash' unless hash.is_a?(Hash)
+      @env[:state][origin][channel] = Hash.new if @env[:state][channel].nil?
+      @env[:state][origin][channel].merge!(hash)
     end
 
     def shutdown(stop_em = false)
