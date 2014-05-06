@@ -49,7 +49,7 @@ module Pubnub
       raise 'You can set state only as hash' unless (state.is_a?(Hash) || state.is_a?(NilClass))
       @env[:state] = Hash.new         if @env[:state].nil?
       @env[:state][origin] = Hash.new if @env[:state][origin].nil?
-      @env[:state][origin][channel] = state
+      @env[:state][origin][channel.to_s] = state
     end
 
     def add_to_state(hash, channel, origin = DEFAULT_ORIGIN)

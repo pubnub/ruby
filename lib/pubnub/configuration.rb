@@ -1,7 +1,7 @@
 module Pubnub
   module Configuration
     DEFAULT_ERROR_CALLBACK             = lambda { |err| puts err.inspect }
-    DEFAULT_CONNECT_CALLBACK           = lambda { |msg| puts msg.inspect }
+    DEFAULT_CONNECT_CALLBACK           = lambda { |msg| msg.inspect }
     DEFAULT_SSL                        = false
     DEFAULT_CONNECTION_PORT            = 80
     DEFAULT_NON_SUBSCRIBE_TIMEOUT      = 310

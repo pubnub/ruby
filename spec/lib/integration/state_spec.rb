@@ -23,11 +23,61 @@ describe 'state metadata in subscribe requests' do
     @pn.uuid = 'rubytestuuid'
   end
 
-  it 'sets proper data via subscribe request' do
-    VCR.use_cassette("revoke-ssl-block-valid-200-sync", :record => :none) do
-      @pn.subscribe(:channel => :whatever, :state => { :whatever => { :key => :value } } )
-      eventually do
+  context 'sync' do
+    it 'sets/gets proper data via subscribe request' do
+      VCR.use_cassette("state-set-state-via-subscribe", :record => :none) do
+        @pn.subscribe(:channel => :whatever, :state => { :whatever => { :key => :value } }, :http_sync => true )
+        enve = @pn.state(:channel => :whatever, :uuid => :rubytestuuid, :http_sync => true)
         
+        enve.size.should eq 1
+        enve.first.response.should eq "{\"status\": 200, \"message\": \"OK\", \"payload\": {\"key\": \"value\"}, \"service\": \"Presence\"}"
+      end
+    end
+
+    it 'sets/gets proper data via client method using symbol' do
+      VCR.use_cassette("state-set-state-via-client", :record => :none) do
+        @pn.set_state({ :key => :value }, :whatever)
+        @pn.subscribe(:channel => :whatever, :http_sync => true )
+
+        enve = @pn.state(:channel => :whatever, :uuid => :rubytestuuid, :http_sync => true)
+        
+        enve.size.should eq 1
+        enve.first.response.should eq "{\"status\": 200, \"message\": \"OK\", \"payload\": {\"key\": \"value\"}, \"service\": \"Presence\"}"
+      end
+    end
+
+    it 'sets/gets proper data via client method using string' do
+      VCR.use_cassette("state-set-state-via-client", :record => :none) do
+        @pn.set_state({ :key => :value }, :whatever)
+        @pn.subscribe(:channel => :whatever, :http_sync => true )
+
+        enve = @pn.state(:channel => 'whatever', :uuid => :rubytestuuid, :http_sync => true)
+        
+        enve.size.should eq 1
+        enve.first.response.should eq "{\"status\": 200, \"message\": \"OK\", \"payload\": {\"key\": \"value\"}, \"service\": \"Presence\"}"
+      end
+    end
+  end
+
+  context 'async' do
+    it 'sets/gets proper data via subscribe request' do
+      VCR.use_cassette("state-async-set-state-via-subscribe", :record => :none) do
+        @pn.subscribe(:channel => :whatever, :state => { :whatever => { :key => :value } } ){|e|}
+        enve = @pn.state(:channel => :whatever, :uuid => :rubytestuuid, :http_sync => true)
+        
+        enve.size.should eq 1
+        enve.first.response.should eq "{\"status\": 200, \"message\": \"OK\", \"payload\": {\"key\": \"value\"}, \"service\": \"Presence\"}"
+      end
+    end
+
+    it 'sets/gets proper data via client' do
+      VCR.use_cassette("state-async-set-state-via-subbedclient", :record => :none) do
+        @pn.subscribe(:channel => :whatever){|e|}
+        @pn.set_state({ :key => :value }, :whatever)
+        enve = @pn.state(:channel => :whatever, :uuid => :rubytestuuid, :http_sync => true)
+        
+        enve.size.should eq 1
+        enve.first.response.should eq "{\"status\": 200, \"message\": \"OK\", \"payload\": {\"key\": \"value\"}, \"service\": \"Presence\"}"
       end
     end
   end
