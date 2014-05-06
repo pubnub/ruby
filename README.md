@@ -23,7 +23,7 @@ Every event you will fire could be fired asynchronous ro synchonous just by pass
 set to true to that event. Asynchronous events will not block your main thread and will be fired withing new thread.
 
 #### Message Handling: callback, block, return
-You could pass to every even callback as callback or just by block that will get envelope with message. Callback will be fired for every message that will event get in response. Synchornous events will return array of envelopes (if you passed callback to sychronous event it will be called too!).
+Results are provided via block, callback, and return, depending on how you structure the call. Callback will be fired for every message that will event get in response. Synchornous events will return array of envelopes (if you passed callback to sychronous event it will be called too!).
 
 ### Code Examples
 
