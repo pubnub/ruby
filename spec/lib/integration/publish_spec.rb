@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe '#publish' do
   before(:each) do
+
+    EM.stop if EM.reactor_running?
+    while EM.reactor_running? do end
+    sleep(0.1)
+    
     @envelopes = Array.new
     @error_envelopes = Array.new
 

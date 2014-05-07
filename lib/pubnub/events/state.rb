@@ -1,5 +1,5 @@
 module Pubnub
-  class Heartbeat
+  class State
     include Pubnub::Event
     include Pubnub::SingleEvent
     include Pubnub::Formatter
@@ -7,13 +7,17 @@ module Pubnub
 
     def initialize(options, app)
       super
-      @event = 'heartbeat'
-      @allow_multiple_channels = true
-      @doesnt_require_callback = true
+
+      @uuid_looking_for = options[:uuid]
+      @uuid = app.uuid
     end
 
-    def fire(app)
+    def validate!
       super
+
+      # check channel/channels
+      raise ArgumentError.new(:object => self, :message => 'State requires :channel argument') unless @channel
+      raise ArgumentError.new(:object => self, :message => 'Invalid channel format! Should be type of: String or Symbol') unless @channel.is_a?(String) or @channel.is_a?(Symbol)
     end
 
     private
@@ -22,22 +26,13 @@ module Pubnub
       '/' + [
           'v2',
           'presence',
-          'sub-key',
+          'sub_key',
           @subscribe_key,
           'channel',
-          @channel.join(','),
-          'heartbeat'
+          @channel,
+          'uuid',
+          @uuid_looking_for
       ].join('/')
-    end
-
-    def parameters(app)
-      parameters = super(app)
-      parameters.merge!({:state => encode_state(app.env[:state][@origin])}) if app.env[:state] && app.env[:state][@origin]
-      parameters
-    end
-
-    def encode_state(state)
-      URI.encode_www_form_component(state.to_json).gsub('+', '%20')
     end
 
     def format_envelopes(response, app, error)
@@ -46,11 +41,11 @@ module Pubnub
 
       envelopes = Array.new
       envelopes << Envelope.new(
-          {
-              :message           => parsed_response,
-              :response_message  => parsed_response
-          },
-          app
+        {
+            :channel => @channel,
+            :payload => response['payload']      
+        },
+        app
       )
 
       envelopes = add_common_data_to_envelopes(envelopes, response, app, error)
@@ -58,6 +53,5 @@ module Pubnub
       envelopes
 
     end
-
   end
 end

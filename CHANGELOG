@@ -1,3 +1,9 @@
+3.6.2 Release
+. Added state functionality
+
+3.6.1 Release
+. Added where_now event
+
 3.6.0 Release
 . Exposed HTTP/S Proxy Support
 

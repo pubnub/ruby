@@ -426,6 +426,38 @@ pubnub.revoke(:channel => 'hidden_system'){ |envelope| puts envelope.msg }
 pubnub.revoke(:channel => 'hidden_system', :auth_key => :lemon){ |envelope| puts envelope.msg }
 ```
 
+### State
+State can is stored on server for subscribed uuid, you can pass state in few ways and you can get it from server.
+
+#### Setting state
+```ruby
+# You can set state in a few ways
+# Using subscribe
+pubnub.subscribe(:channel => 'my_channel', :state => {:my_channel => {:key => :value}}){ |e| puts e.msg }
+# Be aware that state have to be hash of hashes where keys are subscribed channel names
+
+# Using client method #state
+pubnub.set_state({:key => :value}, :my_channel)
+
+# If you're using multiple origin
+pubnub.set_state({:key => :value}, :my_channel, origin_one)
+pubnub.set_state({:another_key => :another_value}, :my_channel, origin_two)
+
+# You can also update already existing state
+pubnub.add_to_state({:key_two => :value_two}, :my_channel)
+
+# That would of course work for multiple origins too
+pubnub.add_to_state({:key_two => :value_two}, :my_channel, origin_one)
+pubnub.add_to_state({:key_antoher => :value_another}, :my_channel, origin_two)
+
+```
+
+#### Getting state
+```ruby
+# All you need to know is just uuid and channel
+pubnub.state(:uuid => 'uuid_client_that_i_am_searching_for', :http_sync => true)
+```
+
 ### Other
 
 Advanced usage examples can be found also in the examples directory.
