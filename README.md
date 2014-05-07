@@ -427,7 +427,7 @@ pubnub.revoke(:channel => 'hidden_system', :auth_key => :lemon){ |envelope| puts
 ```
 
 ### State
-State can is stored on server for subscribed uuid, you can pass state in few ways and you can get it from server.
+State is stored on the server for subscribed uuid, you can pass state in few ways and you can get it from server.
 
 #### Setting state
 ```ruby
