@@ -79,6 +79,27 @@ module Pubnub
       $logger.info('Pubnub'){'Bye!'}
     end
 
+    def stop_async
+      $logger.debug('Pubnub'){'Pubnub::Client#stop_async | fired'}
+      @env[:subscribe_railgun].cancel unless @env[:subscribe_railgun].blank?
+      @env[:respirator].cancel        unless @env[:respirator].blank?
+      @env[:subscribe_railgun].cancel unless @env[:subscribe_railgun].blank?
+
+      @env[:subscribe_railgun] = nil
+      @env[:respirator] = nil
+      @env[:subscribe_railgun] = nil
+
+      EM.stop
+
+      $logger.debug('Pubnub'){'Pubnub::Client#stop_async | timers killed'}
+    end
+
+    def restore_async
+      start_event_machine
+      start_subscribe unless @env[:subscriptions].blank?
+      start_railgun
+    end
+
     def start_respirator
       $logger.debug('Pubnub'){'Pubnub::Client#start_respirator | fired'}
       if @env[:heartbeat]
