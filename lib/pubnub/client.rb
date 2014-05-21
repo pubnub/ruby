@@ -38,7 +38,7 @@ module Pubnub
       setup_app(options) # After that we have to use @env in that method instead of options
       create_connections_pools(@env)
       create_subscriptions_pools(@env)
-      start_event_machine(@env)
+      # start_event_machine(@env)
     end
 
     def state_for(origin = DEFAULT_ORIGIN)
