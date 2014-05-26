@@ -216,6 +216,7 @@ module Pubnub
     alias_method :cipher_key=, :set_cipher_key
 
     def start_railgun
+      start_event_machine(@env)
       if @env[:railgun]
         $logger.debug('Pubnub'){'Pubnub::Client#start_railgun | Railgun already initialized'}
       else
