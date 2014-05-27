@@ -36,11 +36,10 @@ describe Pubnub::Client do
       end
     end
 
-    it 'starts EventMachine reactor in a separate thread' do
+    it 'doesnt start EventMachine reactor' do
       pubnub = Pubnub.new(:subscribe_key => 'key')
       sleep(0.1)
-      expect(EM.reactor_running?).to be true
-      expect(EM.reactor_thread).not_to be eq Thread.current
+      expect(EM.reactor_running?).to be false
     end
 
   end

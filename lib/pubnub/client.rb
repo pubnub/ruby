@@ -38,7 +38,7 @@ module Pubnub
       setup_app(options) # After that we have to use @env in that method instead of options
       create_connections_pools(@env)
       create_subscriptions_pools(@env)
-      start_event_machine(@env)
+      # start_event_machine(@env)
     end
 
     def state_for(origin = DEFAULT_ORIGIN)
@@ -79,6 +79,27 @@ module Pubnub
       $logger.info('Pubnub'){'Bye!'}
     end
 
+    def stop_async
+      $logger.debug('Pubnub'){'Pubnub::Client#stop_async | fired'}
+      @env[:subscribe_railgun].cancel unless @env[:subscribe_railgun].blank?
+      @env[:respirator].cancel        unless @env[:respirator].blank?
+      @env[:subscribe_railgun].cancel unless @env[:subscribe_railgun].blank?
+
+      @env[:subscribe_railgun] = nil
+      @env[:respirator] = nil
+      @env[:subscribe_railgun] = nil
+
+      EM.stop
+
+      $logger.debug('Pubnub'){'Pubnub::Client#stop_async | timers killed'}
+    end
+
+    def restore_async
+      start_event_machine
+      start_subscribe unless @env[:subscriptions].blank?
+      start_railgun
+    end
+
     def start_respirator
       $logger.debug('Pubnub'){'Pubnub::Client#start_respirator | fired'}
       if @env[:heartbeat]
@@ -115,6 +136,12 @@ module Pubnub
         end
       end
 
+      if @env[:subscribe_railgun] && @subscribe_deffered_thread
+        $logger.debug('Pubnub'){'Pubnub::Client#start_subscribe | Aborting previous request'}
+        @subscribe_deffered_thread.kill
+        Thread.pass until @subscribe_deffered_thread.status == false
+      end
+
       @env[:wait_for_response] = Hash.new unless @wait_for_response
       @env[:subscribe_railgun] = EM.add_periodic_timer(PERIODIC_TIMER_INTERVAL) do
         begin
@@ -127,6 +154,7 @@ module Pubnub
               $logger.debug('Pubnub'){"timetoken: #{@env[:timetoken]}"}
 
               EM.defer do
+                @subscribe_deffered_thread = Thread.current
                 subscribe.start_event(self) if subscribe
                 # @env[:wait_for_response][origin] = false # moved to Event
               end
@@ -137,7 +165,7 @@ module Pubnub
           $logger.error('Pubnub'){e}
           $logger.error('Pubnub'){e.backtrace}
         end
-      end unless @env[:subscribe_railgun]
+      end unless @env[:subscribe_railgun]# || @env[:subscribe_railgun].cancelled?
     end
 
     def subscription_running?
@@ -188,6 +216,7 @@ module Pubnub
     alias_method :cipher_key=, :set_cipher_key
 
     def start_railgun
+      start_event_machine(@env)
       if @env[:railgun]
         $logger.debug('Pubnub'){'Pubnub::Client#start_railgun | Railgun already initialized'}
       else
