@@ -23,7 +23,7 @@ module Pubnub
       # Check channels
       raise ArgumentError.new(:object => self, :message => 'Subscribe requires :channel or :channels argument') unless @channel
 
-      # check callback
+      # Check callback
       raise ArgumentError.new(:object => self, :message => 'Callback parameter is required while using async subscribe') if !@http_sync && @callback.blank?
 
     end
