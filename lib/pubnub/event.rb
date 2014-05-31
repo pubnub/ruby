@@ -272,10 +272,19 @@ module Pubnub
                 @channel.delete(channel)
                 $logger.error('Pubnub'){"Already subscribed to channel #{channel}, you have to leave that channel first"}
               end
+            end
+
+            @channel.each do |channel|
               $logger.debug('Pubnub'){'SubscribeEvent#add_channel | Adding channel'}
               app.env[:subscriptions][@origin].add_channel(channel, app)
             end
-            app.start_respirator
+
+            if @channel.empty?
+              false
+            else
+              app.start_respirator
+              true
+            end
           end
 
           if app.env[:subscriptions][@origin].nil?
