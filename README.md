@@ -16,7 +16,7 @@ PubNub 3.5.0 is NOT compatible with earlier than 3.4 versions of Pubnub Ruby Cli
 PubNub 3.5.0 is compatible with 3.4 version.
 
 #### Asynchronous vs Synchronous Responses
-Every event you will fire could be fired asynchronous ro synchonous just by passing 
+Every event you will fire could be fired asynchronous or synchonous just by passing 
 ```ruby
 :http_sync
 ```
