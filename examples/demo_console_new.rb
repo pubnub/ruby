@@ -222,6 +222,20 @@ class DemoConsole
       when :Revoke
         options = ask_about(:sync, :channel, :subscribe_key, :read, :write)
         @pubnub.revoke(options)
+      when :set_uuid
+        print 'Your new uuid: '.white
+        @pubnub.set_uuid(gets.chomp!)
+      when :set_auth_key
+        print 'Your new auth_key: '.white
+        @pubnub.set_uuid(gets.chomp!)
+      when :show_state
+        ap @pubnub.env[:state]
+      when :set_state
+        print 'Channel: '.white
+        channel = gets.chomp!
+        print 'State: '.white
+        state = eval(gets.chomp!)
+        @pubnub.set_state(state, channel)
       end
       choice = nil
     end
@@ -247,6 +261,64 @@ class DemoConsole
           print 'Specify channel(s): '.white
           options[:channel] = gets.chomp!
         end
+
+      when :limit
+        while options[:limit].blank?
+          print 'History limit?: '.white
+          options[:limit] = gets.chomp!
+        end
+
+      when :reverse
+        while options[:reverse].blank?
+          print 'In reverse order?: '.white
+          options[:reverse] = gets.chomp!
+        end
+
+      when :history_start
+        unless options[:reverse]
+          while options[:start].blank?
+            print 'History start timetoken: '.white
+            options[:start] = gets.chomp!
+          end
+        end
+
+      when :history_end
+        unless options[:reverse]
+          while options[:end].blank?
+            print 'History start timetoken: '.white
+            options[:end] = gets.chomp!
+          end
+        end
+
+        when :uuid
+          while options[:uuid].blank?
+            print 'Enter uuid: '.white
+            options[:uuid] = gets.chomp!
+          end
+
+        when :heartbeat
+          while options[:heartbeat].blank?
+            print 'Enter heartbeat rate: '.white
+            options[:heartbeat] = gets.chomp!
+          end
+
+        when :subscribe_key
+          while options[:subscribe_key].blank?
+            print 'Enter subscribe key: '.white
+            options[:subscribe_key] = gets.chomp!
+          end
+
+        when :read
+          while options[:read].blank?
+            print 'Read? '.white
+            options[:read] = acceptance
+          end
+
+        when :write
+          while options[:write].blank?
+            print 'Write? '.white
+            options[:write] = acceptance
+          end
       end
     end
     options.merge({:callback => method(:callback)})
