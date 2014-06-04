@@ -24,7 +24,7 @@ module Pubnub
     end
 
     EVENTS.each do |event_name|
-      define_method event_name do |params, &block|
+      define_method event_name do |params = {}, &block|
         params[:callback] = block if params[:callback].nil?
         event = Pubnub.const_get(classify_method(event_name)).new(params, self)
         $logger.debug('Pubnub'){'Created event ' + event.class.to_s}
