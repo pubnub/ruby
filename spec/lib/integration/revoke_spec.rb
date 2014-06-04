@@ -33,6 +33,17 @@ describe "#revoke" do
   end
   context "uses ssl" do
     before(:each) { @ssl = true }
+    it "Generates valid url for application level" do
+      VCR.use_cassette("revoke-application-level", :record => :none) do
+        @pn.revoke(:http_sync => true, &@callback)
+
+        @after_callback.should eq true
+        @response_output.seek 0
+        @response_output.read.should eq '{"status":200,"service":"Access Manager","message":"Success","payload":{"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe","r":0,"ttl":1440,"w":0,"level":"subkey"}}'
+        @message_output.seek 0
+        @message_output.read.should eq 'Success'
+      end
+    end
     context "passess callback as block" do
       context "gets valid json in response" do
         context "gets status 200 in response" do
