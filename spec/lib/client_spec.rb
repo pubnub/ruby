@@ -39,7 +39,7 @@ describe Pubnub::Client do
     it 'doesnt start EventMachine reactor' do
       pubnub = Pubnub.new(:subscribe_key => 'key')
       sleep(0.1)
-      expect(EM.reactor_running?).to be false
+      expect(EM.reactor_running?).to eq(false)
     end
 
   end
