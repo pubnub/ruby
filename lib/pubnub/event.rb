@@ -451,15 +451,20 @@ module Pubnub
         )
       else
         $logger.debug('Pubnub'){'Subscribe#format_envelopes | Not timetoken update'}
+
+        if parsed_response[2]
+          channels = parsed_response[2].split(',')
+        else
+          channels = @channel
+        end
+
         parsed_response[0].size.times do |i|
-          if parsed_response[2].is_a? Array
-            channel = parsed_response[2][i]
-          elsif parsed_response[2].is_a? String
-            channel = parsed_response[2]
+          if channels.size <= 1
+            channel = channels.first
           else
-            channel = @channel.first
+            channel = channels[i]
           end
-          $logger.debug('Pubnub'){'Subscribe#format_envelopes | Channel created'}
+          $logger.debug('Pubnub'){"Subscribe#format_envelopes | Channel #{channel} created"}
 
           $logger.debug('Pubnub'){"#{parsed_response}"}
 
