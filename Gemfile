@@ -8,4 +8,5 @@ group :development do
   gem 'rr'
   gem 'pry'
   gem 'webmock'
+  gem 'awesome_print'
 end
