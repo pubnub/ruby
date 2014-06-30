@@ -313,6 +313,9 @@ pubnub = Pubnub.new(
 )
 ```
 
+###### Custom logger
+You can pass your custom logger as :logger key while creating new Pubnub instance. Logger invocations has set progname 'Pubnub'.
+
 ##### Publish
 ```ruby
 # Message could be any object that have .to_json method
