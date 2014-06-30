@@ -36,19 +36,36 @@ module Pubnub
       envelopes = start_event(app)
     end
 
-    def start_event(app, count = 0)
-      if count <= app.env[:max_retries]
-        $logger.debug('Pubnub'){'Event#start_event | sending request'}
-        $logger.debug('Pubnub'){"Event#start_event | tt: #{@timetoken}; ctt #{app.env[:timetoken]}"}
+    def send_request(app)
+      if app.disabled_persistent_connection?
+        @response = Net::HTTP.get_response uri(app)
+      else
         @response = get_connection(app).request(uri(app))
       end
+    end
 
-      error = response_error(@response, app)
+    def start_event(app, count = 0)
+      begin
+        if count <= app.env[:max_retries]
+          $logger.debug('Pubnub'){'Event#start_event | sending request'}
+          $logger.debug('Pubnub'){"Event#start_event | tt: #{@timetoken}; ctt #{app.env[:timetoken]}"}
+          @response = send_request(app)
+        end
 
-      if ![error].flatten.include?(:json) || count > app.env[:max_retries]
-        handle_response(@response, app, error)
-      else
-        start_event(app, count + 1)
+        error = response_error(@response, app)
+
+        if ![error].flatten.include?(:json) || count > app.env[:max_retries]
+          handle_response(@response, app, error)
+        else
+          start_event(app, count + 1)
+        end
+      rescue => e
+        $logger.error('Pubnub'){e.inspect}
+        if count <= app.env[:max_retries]
+          start_event(app, count + 1)
+        else
+          $logger.error('Pubnub'){"Aborting #{self.class} event due to network errors and reaching max retries"}
+        end
       end
     end
 
@@ -238,11 +255,14 @@ module Pubnub
     end
 
     def new_connection(app)
-      connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
-      connection.idle_timeout = app.env[:timeout]
-      connection.read_timeout = app.env[:timeout]
-      connection.proxy_from_env
-      connection
+      unless app.disabled_persistent_connection?
+        connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
+        connection.idle_timeout   = app.env[:subscribe_timeout]
+        connection.read_timeout   = app.env[:subscribe_timeout]
+        @connect_callback.call "New subscribe connection to #{@origin}"
+        connection.proxy_from_env
+        connection
+      end
     end
   end
 
@@ -456,15 +476,20 @@ module Pubnub
         )
       else
         $logger.debug('Pubnub'){'Subscribe#format_envelopes | Not timetoken update'}
+
+        if parsed_response[2]
+          channels = parsed_response[2].split(',')
+        else
+          channels = @channel
+        end
+
         parsed_response[0].size.times do |i|
-          if parsed_response[2].is_a? Array
-            channel = parsed_response[2][i]
-          elsif parsed_response[2].is_a? String
-            channel = parsed_response[2]
+          if channels.size <= 1
+            channel = channels.first
           else
-            channel = @channel.first
+            channel = channels[i]
           end
-          $logger.debug('Pubnub'){'Subscribe#format_envelopes | Channel created'}
+          $logger.debug('Pubnub'){"Subscribe#format_envelopes | Channel #{channel} created"}
 
           $logger.debug('Pubnub'){"#{parsed_response}"}
 
@@ -492,12 +517,15 @@ module Pubnub
     end
 
     def new_connection(app)
-      connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
-      connection.idle_timeout   = app.env[:subscribe_timeout]
-      connection.read_timeout   = app.env[:subscribe_timeout]
-      @connect_callback.call "New subscribe connection to #{@origin}"
-      connection.proxy_from_env   
-      connection
+      unless app.disabled_persistent_connection?
+        connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
+        connection.idle_timeout   = app.env[:subscribe_timeout]
+        connection.read_timeout   = app.env[:subscribe_timeout]
+        @connect_callback.call "New subscribe connection to #{@origin}"
+        connection.proxy_from_env
+        connection
+      end
+
     end
   end
 end

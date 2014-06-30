@@ -232,6 +232,10 @@ module Pubnub
       end
     end
 
+    def disabled_persistent_connection?
+      @env[:disable_persistent_connection].present?
+    end
+
     private
 
     def leave_all
