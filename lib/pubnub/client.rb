@@ -143,29 +143,31 @@ module Pubnub
       end
 
       @env[:wait_for_response] = Hash.new unless @wait_for_response
-      @env[:subscribe_railgun] = EM.add_periodic_timer(PERIODIC_TIMER_INTERVAL) do
-        begin
-          @env[:subscriptions].each do |origin, subscribe|
-            unless @env[:wait_for_response][origin]
-              @env[:wait_for_response][origin] = true
+      unless @env[:subscribe_railgun]
+        @env[:subscribe_railgun] = EM.add_periodic_timer(PERIODIC_TIMER_INTERVAL) do
+          begin
+            @env[:subscriptions].each do |origin, subscribe|
+              unless @env[:wait_for_response][origin]
+                @env[:wait_for_response][origin] = true
 
-              $logger.debug('Pubnub'){'Async subscription running'}
-              $logger.debug('Pubnub'){"origin: #{origin}"}
-              $logger.debug('Pubnub'){"timetoken: #{@env[:timetoken]}"}
+                $logger.debug('Pubnub'){'Async subscription running'}
+                $logger.debug('Pubnub'){"origin: #{origin}"}
+                $logger.debug('Pubnub'){"timetoken: #{@env[:timetoken]}"}
 
-              EM.defer do
-                @subscribe_deffered_thread = Thread.current
-                subscribe.start_event(self) if subscribe
-                # @env[:wait_for_response][origin] = false # moved to Event
+                EM.defer do
+                  @subscribe_deffered_thread = Thread.current
+                  subscribe.start_event(self) if subscribe
+                  # @env[:wait_for_response][origin] = false # moved to Event
+                end
+
               end
-
             end
+          rescue => e
+            $logger.error('Pubnub'){e}
+            $logger.error('Pubnub'){e.backtrace}
           end
-        rescue => e
-          $logger.error('Pubnub'){e}
-          $logger.error('Pubnub'){e.backtrace}
         end
-      end unless @env[:subscribe_railgun]# || @env[:subscribe_railgun].cancelled?
+      end
     end
 
     def subscription_running?
