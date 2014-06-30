@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    pubnub (3.5.5)
-      eventmachine
-      json
-      net-http-persistent
+    pubnub (3.6.4)
+      eventmachine (~> 1.0)
+      json (~> 1.8)
+      net-http-persistent (~> 2.9)
 
 GEM
   remote: https://rubygems.org/
@@ -44,6 +44,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  bundler (~> 1.6)
   pry
   pubnub!
   rr

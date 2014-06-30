@@ -10,7 +10,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - "*/*"
+      - '*/*'
       User-Agent:
       - Ruby
       Connection:
@@ -33,7 +33,7 @@ http_interactions:
       Cache-Control:
       - no-cache
       Access-Control-Allow-Origin:
-      - "*"
+      - '*'
       Access-Control-Allow-Methods:
       - GET
     body:
@@ -51,7 +51,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - "*/*"
+      - '*/*'
       User-Agent:
       - Ruby
       Connection:
@@ -74,7 +74,7 @@ http_interactions:
       Cache-Control:
       - no-cache
       Access-Control-Allow-Origin:
-      - "*"
+      - '*'
       Access-Control-Allow-Methods:
       - GET
     body:
@@ -92,7 +92,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - "*/*"
+      - '*/*'
       User-Agent:
       - Ruby
       Connection:
@@ -115,7 +115,7 @@ http_interactions:
       Cache-Control:
       - no-cache
       Access-Control-Allow-Origin:
-      - "*"
+      - '*'
       Access-Control-Allow-Methods:
       - GET
     body:
@@ -133,7 +133,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - "*/*"
+      - '*/*'
       User-Agent:
       - Ruby
       Connection:
@@ -156,7 +156,7 @@ http_interactions:
       Cache-Control:
       - no-cache
       Access-Control-Allow-Origin:
-      - "*"
+      - '*'
       Access-Control-Allow-Methods:
       - GET
     body:
@@ -174,7 +174,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - "*/*"
+      - '*/*'
       User-Agent:
       - Ruby
       Connection:
@@ -197,7 +197,7 @@ http_interactions:
       Cache-Control:
       - no-cache
       Access-Control-Allow-Origin:
-      - "*"
+      - '*'
       Access-Control-Allow-Methods:
       - GET
     body:
@@ -215,7 +215,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - "*/*"
+      - '*/*'
       User-Agent:
       - Ruby
       Connection:
@@ -236,7 +236,7 @@ http_interactions:
       Connection:
       - keep-alive
       Access-Control-Allow-Origin:
-      - "*"
+      - '*'
       Access-Control-Allow-Methods:
       - GET
       Cache-Control:
@@ -262,7 +262,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - "*/*"
+      - '*/*'
       User-Agent:
       - Ruby
       Connection:
@@ -283,7 +283,7 @@ http_interactions:
       Connection:
       - keep-alive
       Access-Control-Allow-Origin:
-      - "*"
+      - '*'
       Access-Control-Allow-Methods:
       - GET
       Cache-Control:
@@ -309,7 +309,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - "*/*"
+      - '*/*'
       User-Agent:
       - Ruby
       Connection:
@@ -332,7 +332,7 @@ http_interactions:
       Cache-Control:
       - no-cache
       Access-Control-Allow-Origin:
-      - "*"
+      - '*'
       Access-Control-Allow-Methods:
       - GET
     body:
@@ -350,7 +350,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - "*/*"
+      - '*/*'
       User-Agent:
       - Ruby
       Connection:
@@ -373,7 +373,7 @@ http_interactions:
       Cache-Control:
       - no-cache
       Access-Control-Allow-Origin:
-      - "*"
+      - '*'
       Access-Control-Allow-Methods:
       - GET
     body:
@@ -391,7 +391,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - "*/*"
+      - '*/*'
       User-Agent:
       - Ruby
       Connection:
@@ -414,7 +414,7 @@ http_interactions:
       Cache-Control:
       - no-cache
       Access-Control-Allow-Origin:
-      - "*"
+      - '*'
       Access-Control-Allow-Methods:
       - GET
     body:
@@ -432,7 +432,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - "*/*"
+      - '*/*'
       User-Agent:
       - Ruby
       Connection:
@@ -453,7 +453,7 @@ http_interactions:
       Connection:
       - keep-alive
       Access-Control-Allow-Origin:
-      - "*"
+      - '*'
       Access-Control-Allow-Methods:
       - GET
       Cache-Control:
@@ -479,7 +479,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - "*/*"
+      - '*/*'
       User-Agent:
       - Ruby
       Connection:
@@ -500,7 +500,7 @@ http_interactions:
       Connection:
       - keep-alive
       Access-Control-Allow-Origin:
-      - "*"
+      - '*'
       Access-Control-Allow-Methods:
       - GET
       Cache-Control:
@@ -526,7 +526,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - "*/*"
+      - '*/*'
       User-Agent:
       - Ruby
       Connection:
@@ -547,7 +547,7 @@ http_interactions:
       Connection:
       - keep-alive
       Access-Control-Allow-Origin:
-      - "*"
+      - '*'
       Access-Control-Allow-Methods:
       - GET
       Cache-Control:
@@ -573,7 +573,7 @@ http_interactions:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
-      - "*/*"
+      - '*/*'
       User-Agent:
       - Ruby
       Connection:
@@ -594,7 +594,7 @@ http_interactions:
       Connection:
       - keep-alive
       Access-Control-Allow-Origin:
-      - "*"
+      - '*'
       Access-Control-Allow-Methods:
       - GET
       Cache-Control:
@@ -610,4 +610,78 @@ http_interactions:
       string: '{"status": 200, "message": "OK", "service": "Presence"}'
     http_version: 
   recorded_at: Mon, 05 May 2014 14:16:32 GMT
-recorded_with: VCR 2.9.0
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/subscribe/demo/ping_3/0/14039847413557067?auth=demoish_authkey&pnsdk=PubNub-Ruby/3.6.4&uuid=rubytests
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 30 Jun 2014 16:13:20 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[["ping_3.php says 1404144491","ping_3.php says 1404144494","ping_3.php
+        says 1404144497","ping_3.php says 1404144500","ping_3.php says 1404144503","ping_3.php
+        says 1404144506","ping_3.php says 1404144509","ping_3.php says 1404144512","ping_3.php
+        says 1404144516","ping_3.php says 1404144519","ping_3.php says 1404144522","ping_3.php
+        says 1404144525","ping_3.php says 1404144528","ping_3.php says 1404144531","ping_3.php
+        says 1404144534","ping_3.php says 1404144537","ping_3.php says 1404144540","ping_3.php
+        says 1404144543","ping_3.php says 1404144546","ping_3.php says 1404144549","ping_3.php
+        says 1404144553","ping_3.php says 1404144556","ping_3.php says 1404144559","ping_3.php
+        says 1404144562","ping_3.php says 1404144565","ping_3.php says 1404144568","ping_3.php
+        says 1404144571","ping_3.php says 1404144574","ping_3.php says 1404144577","ping_3.php
+        says 1404144580","ping_3.php says 1404144583","ping_3.php says 1404144587","ping_3.php
+        says 1404144590","ping_3.php says 1404144593","ping_3.php says 1404144596","ping_3.php
+        says 1404144599","ping_3.php says 1404144602","ping_3.php says 1404144606","ping_3.php
+        says 1404144609","ping_3.php says 1404144612","ping_3.php says 1404144615","ping_3.php
+        says 1404144618","ping_3.php says 1404144621","ping_3.php says 1404144624","ping_3.php
+        says 1404144627","ping_3.php says 1404144631","ping_3.php says 1404144634","ping_3.php
+        says 1404144637","ping_3.php says 1404144640","ping_3.php says 1404144643","ping_3.php
+        says 1404144646","ping_3.php says 1404144649","ping_3.php says 1404144652","ping_3.php
+        says 1404144655","ping_3.php says 1404144659","ping_3.php says 1404144662","ping_3.php
+        says 1404144665","ping_3.php says 1404144668","ping_3.php says 1404144671","ping_3.php
+        says 1404144674","ping_3.php says 1404144677","ping_3.php says 1404144680","ping_3.php
+        says 1404144683","ping_3.php says 1404144686","ping_3.php says 1404144689","ping_3.php
+        says 1404144692","ping_3.php says 1404144696","ping_3.php says 1404144699","ping_3.php
+        says 1404144702","ping_3.php says 1404144705","ping_3.php says 1404144708","ping_3.php
+        says 1404144711","ping_3.php says 1404144714","ping_3.php says 1404144717","ping_3.php
+        says 1404144720","ping_3.php says 1404144723","ping_3.php says 1404144726","ping_3.php
+        says 1404144730","ping_3.php says 1404144733","ping_3.php says 1404144736","ping_3.php
+        says 1404144739","ping_3.php says 1404144742","ping_3.php says 1404144745","ping_3.php
+        says 1404144748","ping_3.php says 1404144751","ping_3.php says 1404144754","ping_3.php
+        says 1404144757","ping_3.php says 1404144760","ping_3.php says 1404144763","ping_3.php
+        says 1404144767","ping_3.php says 1404144770","ping_3.php says 1404144773","ping_3.php
+        says 1404144776","ping_3.php says 1404144779","ping_3.php says 1404144782","ping_3.php
+        says 1404144785","ping_3.php says 1404144788","ping_3.php says 1404144791","ping_3.php
+        says 1404144794","ping_3.php says 1404144797"],"14041447980996919"]'
+    http_version: 
+  recorded_at: Mon, 30 Jun 2014 16:13:18 GMT
+recorded_with: VCR 2.9.2
