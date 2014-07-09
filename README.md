@@ -453,6 +453,31 @@ You can also give no specific channel. Then you'll get global HereNow event resp
 pubnub.here_now { |envelope| puts envelope.msg['channels'] }
 ```
 
+
+##### Heartbeat
+
+You can set/update heartbeat rate in seconds while creating Pubnub object
+```ruby
+pubnub = Pubnub.new(:subscribe_key => 'demo', :heartbeat => 60)
+```
+
+Update it via heartbeat= and set_heartbeat()
+```ruby
+pubnub.heartbeat = 120
+pubnub.set_heartbeat 240
+```
+
+Read it via heartbeat and get_heartbeat()
+```ruby
+pubnub.heartbeat
+pubnub.get_heartbeat
+```
+
+Heartbeat is used to check if client is still online,
+if client would disconnect without leave event, and there will be lack of heartbeat in given interval
+server will fire leave event for disconnected client uuid.
+
+
 #### Pam
 PAM allows you to grant read and write access basing on channels and auth_keys.
 Every pam event requires :secret_key (Remember! You should set it while initializing pubnub)
@@ -513,29 +538,6 @@ pubnub.add_to_state({:key_antoher => :value_another}, :my_channel, origin_two)
 # All you need to know is just uuid and channel
 pubnub.state(:uuid => 'uuid_client_that_i_am_searching_for', :http_sync => true)
 ```
-
-### Heartbeat
-
-You can set/update heartbeat rate in seconds while creating Pubnub object
-```ruby
-pubnub = Pubnub.new(:subscribe_key => 'demo', :heartbeat => 60)
-```
-
-Update it via heartbeat= and set_heartbeat()
-```ruby
-pubnub.heartbeat = 120
-pubnub.set_heartbeat 240
-```
-
-Read it via heartbeat and get_heartbeat()
-```ruby
-pubnub.heartbeat
-pubnub.get_heartbeat
-```
-
-Heartbeat is used to check if client is still online,
-if client would disconnect without leave event, and there will be lack of heartbeat in given interval
-server will fire leave event for disconnected client uuid.
 
 ### Other
 
