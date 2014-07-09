@@ -234,8 +234,12 @@ class DemoConsole
         print 'Channel: '.white
         channel = gets.chomp!
         print 'State: '.white
-        state = eval(gets.chomp!)
-        @pubnub.set_state(state, channel)
+        begin
+          state = eval(gets.chomp!)
+          @pubnub.set_state(state, channel)
+        rescue
+          print 'ERROR! Invalid state.'.bg_red.white
+        end
       end
       choice = nil
     end
