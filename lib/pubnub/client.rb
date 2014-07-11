@@ -213,6 +213,7 @@ module Pubnub
         $logger.debug('Pubnub'){'Pubnub::Client#start_event_machine | EM already running'}
       else
         Thread.new { EM.run {} }
+        Thread.pass until EM.reactor_running?
         $logger.debug('Pubnub'){'Pubnub::Client#start_event_machine | EM started in new thread'}
       end
     end
