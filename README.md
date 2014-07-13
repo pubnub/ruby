@@ -482,6 +482,8 @@ server will fire leave event for disconnected client uuid.
 PAM allows you to grant read and write access basing on channels and auth_keys.
 Every pam event requires :secret_key (Remember! You should set it while initializing pubnub)
 
+PAM actions could take :presence option instead of @channel, that will grant/revoke/audit permissions on given presence channel.
+
 ##### Audit
 ```ruby
 pubnub.audit(:channel => 'hidden_system'){ |envelope| puts envelope.msg }

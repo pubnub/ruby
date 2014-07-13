@@ -684,4 +684,78 @@ http_interactions:
         says 1404144794","ping_3.php says 1404144797"],"14041447980996919"]'
     http_version: 
   recorded_at: Mon, 30 Jun 2014 16:13:18 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/subscribe/demo/ping_3/0/14041447980996919?auth=demoish_authkey&pnsdk=PubNub-Ruby/3.6.5&uuid=rubytests
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 13 Jul 2014 12:40:47 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[["ping_3.php says 1405254939","ping_3.php says 1405254942","ping_3.php
+        says 1405254945","ping_3.php says 1405254948","ping_3.php says 1405254951","ping_3.php
+        says 1405254954","ping_3.php says 1405254957","ping_3.php says 1405254961","ping_3.php
+        says 1405254964","ping_3.php says 1405254967","ping_3.php says 1405254970","ping_3.php
+        says 1405254973","ping_3.php says 1405254976","ping_3.php says 1405254979","ping_3.php
+        says 1405254982","ping_3.php says 1405254985","ping_3.php says 1405254988","ping_3.php
+        says 1405254991","ping_3.php says 1405254995","ping_3.php says 1405254998","ping_3.php
+        says 1405255001","ping_3.php says 1405255004","ping_3.php says 1405255007","ping_3.php
+        says 1405255010","ping_3.php says 1405255013","ping_3.php says 1405255016","ping_3.php
+        says 1405255019","ping_3.php says 1405255022","ping_3.php says 1405255025","ping_3.php
+        says 1405255029","ping_3.php says 1405255032","ping_3.php says 1405255035","ping_3.php
+        says 1405255038","ping_3.php says 1405255041","ping_3.php says 1405255044","ping_3.php
+        says 1405255047","ping_3.php says 1405255050","ping_3.php says 1405255053","ping_3.php
+        says 1405255056","ping_3.php says 1405255059","ping_3.php says 1405255062","ping_3.php
+        says 1405255066","ping_3.php says 1405255069","ping_3.php says 1405255072","ping_3.php
+        says 1405255075","ping_3.php says 1405255078","ping_3.php says 1405255081","ping_3.php
+        says 1405255084","ping_3.php says 1405255087","ping_3.php says 1405255091","ping_3.php
+        says 1405255094","ping_3.php says 1405255097","ping_3.php says 1405255100","ping_3.php
+        says 1405255103","ping_3.php says 1405255106","ping_3.php says 1405255109","ping_3.php
+        says 1405255112","ping_3.php says 1405255115","ping_3.php says 1405255118","ping_3.php
+        says 1405255121","ping_3.php says 1405255124","ping_3.php says 1405255128","ping_3.php
+        says 1405255131","ping_3.php says 1405255134","ping_3.php says 1405255137","ping_3.php
+        says 1405255140","ping_3.php says 1405255143","ping_3.php says 1405255146","ping_3.php
+        says 1405255149","ping_3.php says 1405255152","ping_3.php says 1405255155","ping_3.php
+        says 1405255158","ping_3.php says 1405255161","ping_3.php says 1405255165","ping_3.php
+        says 1405255168","ping_3.php says 1405255171","ping_3.php says 1405255174","ping_3.php
+        says 1405255177","ping_3.php says 1405255180","ping_3.php says 1405255183","ping_3.php
+        says 1405255186","ping_3.php says 1405255189","ping_3.php says 1405255192","ping_3.php
+        says 1405255195","ping_3.php says 1405255199","ping_3.php says 1405255202","ping_3.php
+        says 1405255205","ping_3.php says 1405255208","ping_3.php says 1405255211","ping_3.php
+        says 1405255214","ping_3.php says 1405255217","ping_3.php says 1405255220","ping_3.php
+        says 1405255223","ping_3.php says 1405255226","ping_3.php says 1405255229","ping_3.php
+        says 1405255232","ping_3.php says 1405255236","ping_3.php says 1405255239","ping_3.php
+        says 1405255242","ping_3.php says 1405255245"],"14052552454093233"]'
+    http_version: 
+  recorded_at: Sun, 13 Jul 2014 12:40:47 GMT
 recorded_with: VCR 2.9.2
