@@ -41,6 +41,48 @@ module Pubnub
       # start_event_machine(@env)
     end
 
+    def paged_history(options = {}, &block)
+      channel  = options[:channel]
+      page     = options[:page]      || 1
+      limit    = options[:limit]     || 100
+      callback = options[:callback]  || block
+      sync     = options[:http_sync] ? true : false
+      start_tt = options[:start]     || nil
+      end_tt   = options[:end]       || nil
+
+      current_start_tt = start_tt
+
+      if sync
+
+          puts "page = #{page}"
+          envelopes = nil
+          page.times do
+            envelopes = self.history(:channel => channel, :http_sync => true, :count => limit, :start => current_start_tt, :end => end_tt)
+            current_start_tt = envelopes.last.history_start.to_i - 1
+          end
+
+          envelopes.each do |envelope|
+            callback.call envelope
+          end if callback
+
+
+      else
+        EM.defer do
+          until msgs.size <= page * entries
+            msgs.merge!(self.history(:channel => channel, :http_sync => true, :start => start_tt, :end => end_tt, :limit => entries))
+          end
+
+          msgs.reverse[0..entries].each do |envelope|
+            callback.call envelope
+          end
+
+        end
+      end
+
+      envelopes
+
+    end
+
     def state_for(origin = DEFAULT_ORIGIN)
       @env[:state][origin]
     end
