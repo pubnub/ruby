@@ -37,17 +37,23 @@ module Pubnub
     end
 
     def start_event(app, count = 0)
-      if count <= app.env[:max_retries]
-        $logger.debug('Pubnub'){'Event#start_event | sending request'}
-        $logger.debug('Pubnub'){"Event#start_event | tt: #{@timetoken}; ctt #{app.env[:timetoken]}"}
-        @response = get_connection(app).request(uri(app))
-      end
+      begin
+        if count <= app.env[:max_retries]
+          $logger.debug('Pubnub'){'Event#start_event | sending request'}
+          $logger.debug('Pubnub'){"Event#start_event | tt: #{@timetoken}; ctt #{app.env[:timetoken]}"}
+          @response = get_connection(app).request(uri(app))
+        end
 
-      error = response_error(@response, app)
+        error = response_error(@response, app)
 
-      if ![error].flatten.include?(:json) || count > app.env[:max_retries]
-        handle_response(@response, app, error)
-      else
+        if ![error].flatten.include?(:json) || count > app.env[:max_retries]
+          handle_response(@response, app, error)
+        else
+          start_event(app, count + 1)
+        end
+      rescue => e
+        $logger.error('Pubnub'){e}
+        $logger.error('Pubnub'){e.inspect}
         start_event(app, count + 1)
       end
     end
