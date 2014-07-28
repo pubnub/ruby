@@ -1,3 +1,7 @@
+3.5.7 - 70e74cdfa21785ccbd7389ca59d952cd8ff34b3a
+. Handle non-fatal net-http errors better
+. Call Thread.pass unless EM is started
+
 3.5.3 Release
 . Fixed issues with PAM where grant/revoke/audit may not use the correct auth key (when explicitly provided)
 
