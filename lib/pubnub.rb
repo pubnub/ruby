@@ -17,7 +17,7 @@ require 'eventmachine'
 require 'net/http/persistent'
 require 'logger'
 
-require 'version'
+require 'pubnub/version'
 
 require 'pubnub/client'
 
