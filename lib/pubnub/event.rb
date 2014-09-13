@@ -10,9 +10,9 @@ module Pubnub
       @message          = options[:message]
       @http_sync        = options[:http_sync]
       @callback         = options[:callback]
-      @error_callback   = options[:error_callback]  || app.env[:error_callback]
-      @connect_callback = options[:error_callback]  || app.env[:connect_callback]
-      @ssl              = options[:ssl]             || app.env[:ssl]
+      @error_callback   = options[:error_callback]   || app.env[:error_callback]
+      @connect_callback = options[:connect_callback] || app.env[:connect_callback]
+      @ssl              = options[:ssl]              || app.env[:ssl]
 
       @cipher_key       = app.env[:cipher_key]
       @secret_key       = app.env[:secret_key]
