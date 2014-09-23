@@ -6,3 +6,4 @@ pubnub-*.gem
 log/*
 *.log
 examples/test.rb
+coverage
