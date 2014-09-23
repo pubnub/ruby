@@ -103,15 +103,18 @@ module Pubnub
     end
 
     def fire_callbacks(envelopes, app)
-      $logger.debug('Pubnub'){'Firing callbacks'}
-      envelopes.each do |envelope|
-        @callback.call(envelope)       if !envelope.error && @callback && !envelope.timetoken_update
-        #if envelope.timetoken_update || envelope.timetoken.to_i > app.env[:timetoken].to_i
-        #  update_timetoken(app, envelope.timetoken)
-        #end
+      unless envelopes.blank?
+        $logger.debug('Pubnub'){'Firing callbacks'}
+        envelopes.each do |envelope|
+          @callback.call(envelope)       if !envelope.error && @callback && !envelope.timetoken_update
+          #if envelope.timetoken_update || envelope.timetoken.to_i > app.env[:timetoken].to_i
+          #  update_timetoken(app, envelope.timetoken)
+          #end
+        end
+        @error_callback.call(envelopes.first) if envelopes.first.error
+      else
+        $logger.debug('Pubnub'){'No envelopes for callback'}
       end
-      @error_callback.call(envelopes.first) if envelopes.first.error
-
     end
 
     def update_timetoken(app, timetoken)
@@ -129,8 +132,8 @@ module Pubnub
         envelope.status        = response.code.to_i
       end
 
-      envelopes.last.last   = true
-      envelopes.first.first = true
+      envelopes.last.last   = true if envelopes.last
+      envelopes.first.first = true if envelopes.first
 
       envelopes = insert_errors(envelopes, error, app) if error
 
