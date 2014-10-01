@@ -1,4 +1,4 @@
-require '../lib/pubnub'
+require 'pubnub'
 require 'awesome_print'
 
 class String
@@ -107,6 +107,9 @@ class DemoConsole
   end
 
   def welcome
+    puts `clear`
+    puts "You have loaded #{Pubnub::VERSION} gem"
+    gets
     puts `clear`
     print_pubnub
     puts 'Hello in interactive PubNub console!'.white
@@ -342,7 +345,7 @@ class DemoConsole
      |____|   |____/|___  /\____|__  /____/|___  /   /______  / /\ \_____  /
                         \/         \/          \/           \/  \/       \/ 
 
-                                                   Pubnub 3.6.x Demo Console
+                                                         Pubnub Demo Console
     '.red
   end
 
