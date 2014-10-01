@@ -1,4 +1,4 @@
-require 'pubnub'
+require '../lib/pubnub'
 require 'awesome_print'
 
 class String
@@ -208,7 +208,7 @@ class DemoConsole
         options = ask_about(:sync, :channel, :uuid)
         @pubnub.state(options)
       when :Heartbeat
-        options = ask_about(:sync, :heartbeat)
+        options = ask_about(:sync, :heartbeat, :channel)
         @pubnub.heartbeat(options)
       when :Time
         options = ask_about(:sync)
@@ -237,8 +237,9 @@ class DemoConsole
         begin
           state = eval(gets.chomp!)
           @pubnub.set_state(state, channel)
-        rescue
+        rescue => e
           print 'ERROR! Invalid state.'.bg_red.white
+          print e
         end
       end
       choice = nil
