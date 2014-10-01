@@ -31,6 +31,31 @@ describe "#grant" do
     Pubnub::Grant.any_instance.stub(:signature).and_return 'kdDh/sFC3rSR%2Bt5AEymIc57d1velIr562V7usa5M4k0='
 
   end
+
+  it 'Works with given multiple channels as string' do
+    VCR.use_cassette("grant-multiple-channels", :record => :none) do
+      @pn.grant(:ssl => true, :http_sync => true, :channel => "demo,demo1,demo2", :auth_key => "authkey", :write => true, :read => true, &@callback)
+
+      @after_callback.should eq true
+      @response_output.seek 0
+      @response_output.read.should eq '{"status":200,"message":"Success","payload":{"auths":{"authkey":{"r":1,"w":1}},"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe","ttl":3600,"channel":"demo,demo1,demo2","level":"user"},"service":"Access Manager"}'
+      @message_output.seek 0
+      @message_output.read.should eq 'Success'
+    end
+  end
+
+  it 'Works with given multiple channels as array' do
+    VCR.use_cassette("grant-multiple-channels", :record => :none) do
+      @pn.grant(:ssl => true, :http_sync => true, :channel => ['demo', 'demo1', 'demo2'], :auth_key => "authkey", :write => true, :read => true, &@callback)
+
+      @after_callback.should eq true
+      @response_output.seek 0
+      @response_output.read.should eq '{"status":200,"message":"Success","payload":{"auths":{"authkey":{"r":1,"w":1}},"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe","ttl":3600,"channel":"demo,demo1,demo2","level":"user"},"service":"Access Manager"}'
+      @message_output.seek 0
+      @message_output.read.should eq 'Success'
+    end
+  end
+
   context "uses ssl" do
     before(:each) { @ssl = true }
     it "Generates valid url for application level" do

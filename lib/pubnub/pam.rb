@@ -19,14 +19,14 @@ module Pubnub
       parsed_response['message'] if parsed_response
     end
 
-    def channel(parsed_response)
+    def channel(_parsed_response)
       @channel.first
     end
 
     def parameters(app, signature = false)
       params = super(app)
       params.merge!({ :timestamp => @timestamp })
-      params.merge!({ :channel   => @channel.first }) unless @channel.first.blank?
+      params.merge!({ :channel   => @channel.join(',') }) unless @channel.first.blank?
       params.merge!({ :signature => signature(app) }) unless signature
       params
     end

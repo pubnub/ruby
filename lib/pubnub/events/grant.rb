@@ -9,7 +9,7 @@ module Pubnub
     def initialize(options, app)
       super
       @event = 'grant'
-      @allow_multiple_channels = false
+      @allow_multiple_channels = true
       @timestamp = current_time
 
       @write = options[:write]
