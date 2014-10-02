@@ -364,7 +364,12 @@ module Pubnub
     def parameters(app)
       parameters = super(app)
       parameters.merge!({:heartbeat => app.env[:heartbeat]}) if app.env[:heartbeat]
+      parameters.merge!({:state => encode_state(app.env[:state][@origin])}) if app.env[:state] && app.env[:state][@origin]
       parameters
+    end
+
+    def encode_state(state)
+      URI.encode_www_form_component(state.to_json).gsub('+', '%20')
     end
 
     def update_app_timetoken(envelopes, app)
