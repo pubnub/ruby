@@ -255,14 +255,11 @@ module Pubnub
     end
 
     def new_connection(app)
-      unless app.disabled_persistent_connection?
-        connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
-        connection.idle_timeout   = app.env[:subscribe_timeout]
-        connection.read_timeout   = app.env[:subscribe_timeout]
-        @connect_callback.call "New subscribe connection to #{@origin}"
-        connection.proxy_from_env
-        connection
-      end
+      connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
+      connection.idle_timeout = app.env[:timeout]
+      connection.read_timeout = app.env[:timeout]
+      connection.proxy_from_env
+      connection
     end
   end
 
@@ -364,13 +361,8 @@ module Pubnub
 
     def parameters(app)
       parameters = super(app)
-      parameters.merge!({:heartbeat => app.env[:heartbeat]})                 if app.env[:heartbeat]
-      parameters.merge!({:state  => encode_state(app.env[:state][@origin])}) if app.env[:state] && app.env[:state][@origin]
+      parameters.merge!({:heartbeat => app.env[:heartbeat]}) if app.env[:heartbeat]
       parameters
-    end
-
-    def encode_state(state)
-      URI.encode_www_form_component(state.to_json).gsub('+', '%20')
     end
 
     def update_app_timetoken(envelopes, app)
@@ -517,15 +509,12 @@ module Pubnub
     end
 
     def new_connection(app)
-      unless app.disabled_persistent_connection?
-        connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
-        connection.idle_timeout   = app.env[:subscribe_timeout]
-        connection.read_timeout   = app.env[:subscribe_timeout]
-        @connect_callback.call "New subscribe connection to #{@origin}"
-        connection.proxy_from_env
-        connection
-      end
-
+      connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
+      connection.idle_timeout   = app.env[:subscribe_timeout]
+      connection.read_timeout   = app.env[:subscribe_timeout]
+      @connect_callback.call "New subscribe connection to #{@origin}"
+      connection.proxy_from_env   
+      connection
     end
   end
 end

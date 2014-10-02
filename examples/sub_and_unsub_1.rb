@@ -23,7 +23,8 @@ sleep(5)
 puts("Subscribing on ch ping_3 via a CSV list of channels.")
 
 ## You can pass a string, or a CSV string of the new channel(s)
-p.subscribe(:channel => "ping_3,a", :http_sync => false){ |envelope| puts "block 1: channel: #{envelope.channel}: #{envelope.message}" }
+# p.subscribe(:channel => "ping_3,a", :http_sync => false){ |envelope| puts "block 1: channel: #{envelope.channel}: #{envelope.message}" }
+p.subscribe(:channel => "ping_3", :http_sync => false){ |envelope| puts "block 1: channel: #{envelope.channel}: #{envelope.message}" }
 sleep(3)
 
 ## You can also pass an array of channels to subscribe
