@@ -102,6 +102,7 @@ module Pubnub
 
       $logger.debug('Pubnub'){'Event#handle_response'}
       envelopes = format_envelopes(response, app, error)
+      $logger.debug('Pubnub'){"Response: #{response.body}"} if (response && response.body)
       update_app_timetoken(envelopes, app)
       fire_callbacks(envelopes,app)
       @finished = true
