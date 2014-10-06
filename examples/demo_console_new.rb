@@ -68,13 +68,13 @@ class DemoConsole
       puts `clear`
       print_pubnub
       puts 'Okey, now you have to provide me your data or accept default:'.green
-      print 'origin [pubsub.pubnub.com]: '.black
+      print 'origin [pubsub.pubnub.com]: '
       @origin = gets.chomp!
-      print 'subscribe_key [demo]: '.black
+      print 'subscribe_key [demo]: '
       @subscribe_key = gets.chomp!
-      print 'publish_key [demo]: '.black
+      print 'publish_key [demo]: '
       @publish_key = gets.chomp!
-      print 'secret_key (nil by default): '.black
+      print 'secret_key (nil by default): '
       @secret_key = gets.chomp!
 
       @origin        = 'pubsub.pubnub.com' if @origin.blank?
@@ -115,8 +115,8 @@ class DemoConsole
     puts "You have loaded #{Pubnub::VERSION} gem"
     puts `clear`
     print_pubnub
-    puts 'Hello in interactive PubNub console!'.black
-    puts 'Feel free to play around with it!'.black
+    puts 'Hello in interactive PubNub console!'
+    puts 'Feel free to play around with it!'
     puts '--'
     puts '[Hit ENTER to continue]'
     gets
@@ -127,9 +127,9 @@ class DemoConsole
     print_pubnub
     puts 'Before we start, you have to select demo app keys or add your own.'.green
     print "\n"
-    puts '1. Basic demo keys  -- You will be limited to standard events, no PAM features'.black
-    puts '2. PAM supprot keys -- You can check out all pubnub features, including PAM'.black
-    puts '3. Custom keys      -- If you already have your own keys, you can set them here'.black
+    puts '1. Basic demo keys  -- You will be limited to standard events, no PAM features'
+    puts '2. PAM supprot keys -- You can check out all pubnub features, including PAM'
+    puts '3. Custom keys      -- If you already have your own keys, you can set them here'
     print "\n"
     print 'Your choice: '.green
     gets.chomp!
@@ -139,9 +139,9 @@ class DemoConsole
     puts `clear`
     print_pubnub
     puts 'You can set up now your uuid and auth_key: '.green
-    print 'uuid [random_default]: '.black
+    print 'uuid [random_default]: '
     @uuid = gets.chomp!
-    print 'auth_key (blank by default): '.black
+    print 'auth_key (blank by default): '
     @auth_key = gets.chomp
   end
 
@@ -156,31 +156,31 @@ class DemoConsole
   def start_console
     puts `clear`
     print_pubnub
-    puts 'CONSOLE STARTED!'.black.bg_green
+    puts 'CONSOLE STARTED!'.bg_green
     exit = false
     choice = false
     until exit
       until OPTIONS.keys.include?(choice)
         puts 'Choose your next operation (type \'exit\' to exit):'.green
         puts 'Events:'.green
-        puts '1.  Publish'.black
-        puts '2.  Subscribe'.black
-        puts '3.  Presence'.black
-        puts '4.  Leave (unsubscribe)'.black
-        puts '5.  History'.black
-        puts '6.  HereNow'.black
-        puts '7.  WhereNow'.black
-        puts '8.  State'.black
-        puts '9.  Heartbeat'.black
-        puts '10. Time'.black
-        puts '11. Audit'.black  if @secret_key
-        puts '12. Grant'.black  if @secret_key
-        puts '13. Revoke'.black if @secret_key
+        puts '1.  Publish'
+        puts '2.  Subscribe'
+        puts '3.  Presence'
+        puts '4.  Leave (unsubscribe)'
+        puts '5.  History'
+        puts '6.  HereNow'
+        puts '7.  WhereNow'
+        puts '8.  State'
+        puts '9.  Heartbeat'
+        puts '10. Time'
+        puts '11. Audit'  if @secret_key
+        puts '12. Grant'  if @secret_key
+        puts '13. Revoke' if @secret_key
         puts "\nPubnub::Client interaction:".green
-        puts 'A. Set UUID'.black
-        puts 'B. Set auth_key'.black
-        puts 'C. Check state'.black
-        puts 'D. Set state'.black
+        puts 'A. Set UUID'
+        puts 'B. Set auth_key'
+        puts 'C. Check state'
+        puts 'D. Set state'
         print "\nYour choice: ".red
         choice = gets.chomp!.to_s.upcase.to_sym
       end
@@ -229,22 +229,22 @@ class DemoConsole
         options = ask_about(:sync, :channel, :subscribe_key, :read, :write)
         @pubnub.revoke(options)
       when :set_uuid
-        print 'Your new uuid: '.black
+        print 'Your new uuid: '
         @pubnub.set_uuid(gets.chomp!)
       when :set_auth_key
-        print 'Your new auth_key: '.black
+        print 'Your new auth_key: '
         @pubnub.set_uuid(gets.chomp!)
       when :show_state
         ap @pubnub.env[:state]
       when :set_state
-        print 'Channel: '.black
+        print 'Channel: '
         channel = gets.chomp!
-        print 'State: '.black
+        print 'State: '
         begin
           state = eval(gets.chomp!)
           @pubnub.set_state(state, channel)
         rescue => e
-          print 'ERROR! Invalid state.'.bg_red.black
+          print 'ERROR! Invalid state.'.bg_red
           print e
         end
       end
@@ -258,41 +258,41 @@ class DemoConsole
     things.each do |thing|
       case thing
       when :sync
-        print 'Should event be async? '.black
+        print 'Should event be async? '
         options[:http_sync] = !acceptance
 
       when :message
         while options[:message].blank?
-          puts 'Write below message to publish:'.black
+          puts 'Write below message to publish:'
           options[:message] = gets.chomp!
         end
 
       when :channel
         while options[:channel].blank?
-          print 'Specify channel(s): '.black
+          print 'Specify channel(s): '
           options[:channel] = gets.chomp!
         end
 
       when :optional_channel
-          print 'Specify channel(s) or leave blank for all channels (global here now): '.black
+          print 'Specify channel(s) or leave blank for all channels (global here now): '
           options[:channel] = gets.chomp!
 
       when :limit
         while options[:limit].blank?
-          print 'History limit?: '.black
+          print 'History limit?: '
           options[:limit] = gets.chomp!
         end
 
       when :reverse
         while options[:reverse].blank?
-          print 'In reverse order?: '.black
+          print 'In reverse order?: '
           options[:reverse] = gets.chomp!
         end
 
       when :history_start
         unless options[:reverse]
           while options[:start].blank?
-            print 'History start timetoken: '.black
+            print 'History start timetoken: '
             options[:start] = gets.chomp!
           end
         end
@@ -300,38 +300,38 @@ class DemoConsole
       when :history_end
         unless options[:reverse]
           while options[:end].blank?
-            print 'History start timetoken: '.black
+            print 'History start timetoken: '
             options[:end] = gets.chomp!
           end
         end
 
         when :uuid
           while options[:uuid].blank?
-            print 'Enter uuid: '.black
+            print 'Enter uuid: '
             options[:uuid] = gets.chomp!
           end
 
         when :heartbeat
           while options[:heartbeat].blank?
-            print 'Enter heartbeat rate: '.black
+            print 'Enter heartbeat rate: '
             options[:heartbeat] = gets.chomp!
           end
 
         when :subscribe_key
           while options[:subscribe_key].blank?
-            print 'Enter subscribe key: '.black
+            print 'Enter subscribe key: '
             options[:subscribe_key] = gets.chomp!
           end
 
         when :read
           while options[:read].blank?
-            print 'Read? '.black
+            print 'Read? '
             options[:read] = acceptance
           end
 
         when :write
           while options[:write].blank?
-            print 'Write? '.black
+            print 'Write? '
             options[:write] = acceptance
           end
       end
@@ -361,11 +361,11 @@ class DemoConsole
   end
 
   def connect_callback(data)
-    puts 'Connection established'.bg_green.black
+    puts 'Connection established'.bg_green
   end
 
   def error_callback(error)
-    puts 'ERROR'.bg_red.black
+    puts 'ERROR'.bg_red
     ap error
   end
 end
