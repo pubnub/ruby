@@ -1,356 +1,373 @@
 require 'pubnub'
+require 'awesome_print'
 
-keys_option = nil
-
-puts 'How do you want to set up app keys?'
-puts 'd. Default [D]EMO keys (default)'
-puts 'p. Default [p]am keys'
-puts 'c. want to enter [c]ustom keys'
-puts 'Enter your choice:'
-
-keys_option = gets.chomp!.downcase
-keys_option = 'd' if keys_option.blank? || !%w(d p c).include?(keys_option)
-
-
-case keys_option
-  when 'd'
-    origin = 'demo.pubnub.com'
-    sub_key = 'demo'
-    pub_key = 'demo'
-    sec_key = nil
-
-  when 'p'
-    origin = 'pubsub.pubnub.com'
-    sub_key	= 'sub-c-a478dd2a-c33d-11e2-883f-02ee2ddab7fe'
-    pub_key	= 'pub-c-a2650a22-deb1-44f5-aa87-1517049411d5'
-    sec_key	= 'sec-c-YjFmNzYzMGMtYmI3NC00NzJkLTlkYzYtY2MwMzI4YTJhNDVh'
-
-  when 'c'
-    puts 'Provide origin [demo.pubnub.com]:'
-    origin = gets.chomp!.downcase
-    origin = 'demo.pubnub.com' if origin.blank?
-    puts 'Provide subscribe key [demo]:'
-    sub_key = gets.chomp!
-    sub_key = 'demo' if sub_key.blank?
-
-    puts 'Provide publish key [demo]:'
-    pub_key = gets.chomp!
-    pub_key = 'demo' if pub_key.blank?
-
-    puts 'Provide secret key (optional):'
-    sec_key = gets.chomp!
-    sec_key = nil if sec_key.blank?
+class String
+  def black;          "\033[30m#{self}\033[0m" end
+  def red;            "\033[31m#{self}\033[0m" end
+  def green;          "\033[32m#{self}\033[0m" end
+  def brown;         "\033[33m#{self}\033[0m" end
+  def blue;           "\033[34m#{self}\033[0m" end
+  def magenta;        "\033[35m#{self}\033[0m" end
+  def cyan;           "\033[36m#{self}\033[0m" end
+  def gray;           "\033[37m#{self}\033[0m" end
+  def bg_black;       "\033[40m#{self}\0330m"  end
+  def bg_red;         "\033[41m#{self}\033[0m" end
+  def bg_green;       "\033[42m#{self}\033[0m" end
+  def bg_brown;       "\033[43m#{self}\033[0m" end
+  def bg_blue;        "\033[44m#{self}\033[0m" end
+  def bg_magenta;     "\033[45m#{self}\033[0m" end
+  def bg_cyan;        "\033[46m#{self}\033[0m" end
+  def bg_gray;        "\033[47m#{self}\033[0m" end
+  def bold;           "\033[1m#{self}\033[22m" end
+  def reverse_color;  "\033[7m#{self}\033[27m" end
 end
 
-puts 'Provide auth key or skip? (default: skip)'
-auth_key = gets.chomp!
+class DemoConsole
 
-puts 'Do you want your connection to be ssl? [y/N]'
-ssl = gets.chomp!.upcase
-ssl = 'N' if ssl != 'Y'
-ssl = ssl == 'Y' ? true : false
+  OPTIONS = {
+      :'1'  => :Publish,
+      :'2'  => :Subscribe,
+      :'3'  => :Presence,
+      :'4'  => :Leave,
+      :'5'  => :History,
+      :'6'  => :HereNow,
+      :'7'  => :WhereNow,
+      :'8'  => :State,
+      :'9'  => :Heartbeat,
+      :'10' => :Time,
+      :'11' => :Audit,
+      :'12' => :Grant,
+      :'13' => :Revoke,
+      :A    => :set_uuid,
+      :B    => :set_auth_key,
+      :C    => :show_state,
+      :D    => :set_state,
+      :EXIT => :exit
+  }
 
-puts "\nUsing following keys:"
-puts "Subscribe key: #{sub_key}"
-puts "Publish key:   #{pub_key}"
-puts "Secret key:    #{sec_key}" if sec_key
-puts "Auth key:      #{auth_key}" if auth_key
+  def initialize
 
+    welcome
+    
+    keys_option = select_keys
 
-p = Pubnub.new(
-    :ssl              => ssl,
-    :subscribe_key    => sub_key,
-    :secret_key       => sec_key,
-    :publish_key      => pub_key,
-    :auth_key         => auth_key,
-    :origin           => origin,
-    :error_callback   => lambda { |msg|
-      puts "Error callback says: #{msg.inspect}"
-    },
-    :connect_callback => lambda { |msg|
-      puts "Connect callback says: #{msg.inspect}"
-    }
-)
+    case keys_option.to_s
+    when '1'
+      @origin        = 'pubsub.pubnub.com'
+      @subscribe_key = 'demo'
+      @publish_key   = 'demo'
+      @secret_key    = nil
 
-puts("\nUse PubNub AES encryption? Leave blank for now, else enter your cipher key.")
-aes = gets.chomp!
+    when '2'
+      @origin        = 'pubsub.pubnub.com'
+      @subscribe_key = 'sub-c-a478dd2a-c33d-11e2-883f-02ee2ddab7fe'
+      @publish_key   = 'pub-c-a2650a22-deb1-44f5-aa87-1517049411d5'
+      @secret_key    = 'sec-c-YjFmNzYzMGMtYmI3NC00NzJkLTlkYzYtY2MwMzI4YTJhNDVh'
 
-unless aes.blank?
-  p.cipher_key = aes
-end
+    when '3'
+      puts `clear`
+      print_pubnub
+      puts 'Okey, now you have to provide me your data or accept default:'.green
+      print 'origin [pubsub.pubnub.com]: '
+      @origin = gets.chomp!
+      print 'subscribe_key [demo]: '
+      @subscribe_key = gets.chomp!
+      print 'publish_key [demo]: '
+      @publish_key = gets.chomp!
+      print 'secret_key (nil by default): '
+      @secret_key = gets.chomp!
 
-default_cb = lambda { |envelope|
-  puts "\n/------------------"
-  puts "#{envelope.inspect}"
-  puts "channel: #{envelope.channel}"
-  puts "msg: #{envelope.message}"
-  puts "payload: #{envelope.payload}" if envelope.payload
-  puts '------------------/'
-}
+      @origin        = 'pubsub.pubnub.com' if @origin.blank?
+      @subscribe_key = 'demo'           if @subscribe_key.blank?
+      @publish_key   = 'demo'           if @publish_key.blank?
+      @secret_key    = nil                 if @secret_key.blank?
+    else
+      @origin        = 'pubsub.pubnub.com'
+      @subscribe_key = 'demo'
+      @publish_key   = 'demo'
+      @secret_key    = nil
+    end
 
-while(true)
+    set_uuid_and_auth
 
-  sync_or_async = false
-  while !%w(S A).include? sync_or_async
-    puts('Should next operation be [S]ync or [A]sync?')
-    sync_or_async = gets.chomp!.upcase
-    sync_or_async = 'A' if sync_or_async.blank?
+    my_logger = Logger.new(STDOUT)
+
+    @pubnub = Pubnub.new(
+
+      :subscribe_key  => @subscribe_key,
+      :publish_key    => @publish_key,
+      :secret_key     => @secret_key,
+      :error_callback => method(:error_callback),
+      :auth_key       => @auth_key,
+      :logger => my_logger
+    )
+
+    @pubnub.set_uuid(@uuid) unless @uuid.blank?
+
+    ap @pubnub
+
+    start_console
+
   end
 
-  block_or_parameter = false
-  while !%w(B P).include? block_or_parameter
-    puts('Do you want pass callback as [B]lock or [P]arameter?')
-    block_or_parameter = gets.chomp!.upcase
-    block_or_parameter = 'B' if block_or_parameter.blank?
+  def welcome
+    puts `clear`
+    puts "You have loaded #{Pubnub::VERSION} gem"
+    puts `clear`
+    print_pubnub
+    puts 'Hello in interactive PubNub console!'
+    puts 'Feel free to play around with it!'
+    puts '--'
+    puts '[Hit ENTER to continue]'
+    gets
+    puts `clear`
   end
 
-  puts('1. subscribe')
-  puts('2. unsubscribe (leave)')
-  puts('3. publish')
-  puts('4. history')
-  puts('5. presence')
-  puts('6. here_now')
-  puts('7. time')
-  puts('8. audit') if sec_key
-  puts('9. grant') if sec_key
-  puts('10. revoke') if sec_key
-  puts("\n\n")
-  puts('Enter a selection')
-  choice = gets.chomp!
+  def select_keys
+    print_pubnub
+    puts 'Before we start, you have to select demo app keys or add your own.'.green
+    print "\n"
+    puts '1. Basic demo keys  -- You will be limited to standard events, no PAM features'
+    puts '2. PAM supprot keys -- You can check out all pubnub features, including PAM'
+    puts '3. Custom keys      -- If you already have your own keys, you can set them here'
+    print "\n"
+    print 'Your choice: '.green
+    gets.chomp!
+  end
 
-  case choice
-    when '1' #SUBSCRIBE
+  def set_uuid_and_auth
+    puts `clear`
+    print_pubnub
+    puts 'You can set up now your uuid and auth_key: '.green
+    print 'uuid [random_default]: '
+    @uuid = gets.chomp!
+    print 'auth_key (blank by default): '
+    @auth_key = gets.chomp
+  end
 
-      puts('Enter channel')
-      channel = gets.chomp!
+  def set_uuid(uuid)
+    @pubnub.set_uuid(uuid)
+  end
 
-      if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.subscribe(:channel => channel, :callback => default_cb, :http_sync => false, :ssl => ssl)
-      elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
-        p.subscribe(:channel => channel, :http_sync => false, :ssl => ssl, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
-      elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.subscribe(:channel => channel, :callback => default_cb, :http_sync => true, :ssl => ssl)
-      elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
-        p.subscribe(:channel => channel, :http_sync => true, :ssl => ssl, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+  def set_auth_key(auth_key)
+    @pubnub.set_auth_key(auth_key)
+  end
+
+  def start_console
+    puts `clear`
+    print_pubnub
+    puts 'CONSOLE STARTED!'.bg_green
+    exit = false
+    choice = false
+    until exit
+      until OPTIONS.keys.include?(choice)
+        puts 'Choose your next operation (type \'exit\' to exit):'.green
+        puts 'Events:'.green
+        puts '1.  Publish'
+        puts '2.  Subscribe'
+        puts '3.  Presence'
+        puts '4.  Leave (unsubscribe)'
+        puts '5.  History'
+        puts '6.  HereNow'
+        puts '7.  WhereNow'
+        puts '8.  State'
+        puts '9.  Heartbeat'
+        puts '10. Time'
+        puts '11. Audit'  if @secret_key
+        puts '12. Grant'  if @secret_key
+        puts '13. Revoke' if @secret_key
+        puts "\nPubnub::Client interaction:".green
+        puts 'A. Set UUID'
+        puts 'B. Set auth_key'
+        puts 'C. Check state'
+        puts 'D. Set state'
+        print "\nYour choice: ".red
+        choice = gets.chomp!.to_s.upcase.to_sym
       end
+      choice = OPTIONS[choice]
 
-
-    when '2' #UNSUBSCRIBE
-
-      puts('Enter channel')
-      channel = gets.chomp!
-
-      if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.unsubscribe(:channel => channel, :callback => default_cb, :http_sync => false, :ssl => ssl)
-      elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
-        p.unsubscribe(:channel => channel, :http_sync => false, :ssl => ssl, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
-      elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.unsubscribe(:channel => channel, :callback => default_cb, :http_sync => true, :ssl => ssl)
-      elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
-        p.unsubscribe(:channel => channel, :http_sync => true, :ssl => ssl, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+      case choice
+      when :exit
+        exit = true      
+      when :Publish
+        options = ask_about(:sync, :message, :channel)
+        @pubnub.publish(options)
+      when :Subscribe
+        options = ask_about(:sync, :channel)
+        @pubnub.subscribe(options)
+      when :Presence
+        options = ask_about(:sync, :channel)
+        @pubnub.presence(options)
+      when :Leave
+        options = ask_about(:sync, :channel)
+        @pubnub.leave(options)
+      when :History
+        options = ask_about(:sync, :channel, :reverse, :history_start, :history_end)
+        @pubnub.history(options)
+      when :HereNow
+        options = ask_about(:sync, :optional_channel)
+        @pubnub.here_now(options)
+      when :WhereNow
+        options = ask_about(:sync, :uuid)
+        @pubnub.where_now(options)
+      when :State
+        options = ask_about(:sync, :channel, :uuid)
+        @pubnub.state(options)
+      when :Heartbeat
+        options = ask_about(:sync, :heartbeat, :channel)
+        @pubnub.heartbeat(options)
+      when :Time
+        options = ask_about(:sync)
+        @pubnub.time(options)
+      when :Audit
+        options = ask_about(:sync, :channel, :subscribe_key)
+        @pubnub.audit(options)
+      when :Grant
+        options = ask_about(:sync, :channel, :subscribe_key, :read, :write)
+        @pubnub.grant(options)
+      when :Revoke
+        options = ask_about(:sync, :channel, :subscribe_key, :read, :write)
+        @pubnub.revoke(options)
+      when :set_uuid
+        print 'Your new uuid: '
+        @pubnub.set_uuid(gets.chomp!)
+      when :set_auth_key
+        print 'Your new auth_key: '
+        @pubnub.set_uuid(gets.chomp!)
+      when :show_state
+        ap @pubnub.env[:state]
+      when :set_state
+        print 'Channel: '
+        channel = gets.chomp!
+        print 'State: '
+        begin
+          state = eval(gets.chomp!)
+          @pubnub.set_state(state, channel)
+        rescue => e
+          print 'ERROR! Invalid state.'.bg_red
+          print e
+        end
       end
+      choice = nil
+    end
+  end
 
-    when '3' #PUBLISH
+  # that adds callback method as :callback in options
+  def ask_about(*things)
+    options = {}
+    things.each do |thing|
+      case thing
+      when :sync
+        print 'Should event be async? '
+        options[:http_sync] = !acceptance
 
-      puts('Enter channel')
-      channel = gets.chomp!
+      when :message
+        while options[:message].blank?
+          puts 'Write below message to publish:'
+          options[:message] = gets.chomp!
+        end
 
-      puts('Enter message')
-      message = gets.chomp!
+      when :channel
+        while options[:channel].blank?
+          print 'Specify channel(s): '
+          options[:channel] = gets.chomp!
+        end
 
-      if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.publish(:message => message, :channel => channel, :callback => default_cb, :http_sync => false, :ssl => ssl)
-      elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
-        p.publish(:message => message, :channel => channel, :http_sync => false, :ssl => ssl, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
-      elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.publish(:message => message, :channel => channel, :callback => default_cb, :http_sync => true, :ssl => ssl)
-      elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
-        p.publish(:message => message, :channel => channel, :http_sync => true, :ssl => ssl, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
-      end
+      when :optional_channel
+          print 'Specify channel(s) or leave blank for all channels (global here now): '
+          options[:channel] = gets.chomp!
 
-    when '4' #HISTORY
-      puts('Enter channel')
-      channel = gets.chomp!
+      when :limit
+        while options[:limit].blank?
+          print 'History limit?: '
+          options[:limit] = gets.chomp!
+        end
 
-      puts('Enter count')
-      count = gets.chomp!
-      if (count == '') then count = nil end
+      when :reverse
+        while options[:reverse].blank?
+          print 'In reverse order?: '
+          options[:reverse] = gets.chomp!
+        end
 
-      puts('Enter start')
-      history_start = gets.chomp!
-      if (history_start == '') then history_start = nil end
+      when :history_start
+        unless options[:reverse]
+          while options[:start].blank?
+            print 'History start timetoken: '
+            options[:start] = gets.chomp!
+          end
+        end
 
-      puts('Enter end')
-      history_end = gets.chomp!
-      if (history_end == '') then history_end = nil end
+      when :history_end
+        unless options[:reverse]
+          while options[:end].blank?
+            print 'History start timetoken: '
+            options[:end] = gets.chomp!
+          end
+        end
 
-      puts('Enter reverse (y/n)')
-      reverse = gets.chomp!
-      if (reverse == "" || reverse == "n") then reverse = false else reverse = true end
+        when :uuid
+          while options[:uuid].blank?
+            print 'Enter uuid: '
+            options[:uuid] = gets.chomp!
+          end
 
-      if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.history(:channel => channel,
-                  :count => count,
-                  :start => history_start,
-                  :end => history_end,
-                  :reverse => reverse,
-                  :callback => default_cb,
-                  :http_sync => false,
-                  :ssl => ssl) do |envelope| puts(envelope.inspect) end
-      elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
-        p.history(:channel => channel,
-                  :count => count,
-                  :start => history_start,
-                  :end => history_end,
-                  :reverse => reverse,
-                  :http_sync => false,
-                  :ssl => ssl, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
-      elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.history(:channel => channel,
-                  :count => count,
-                  :start => history_start,
-                  :end => history_end,
-                  :reverse => reverse,
-                  :callback => default_cb,
-                  :http_sync => true,
-                  :ssl => ssl, &default_cb)# do |envelope| puts(envelope.inspect) end
-      elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
-        p.history(:channel => channel,
-                  :count => count,
-                  :start => history_start,
-                  :end => history_end,
-                  :reverse => true,
-                  :http_sync => false,
-                  :ssl => ssl, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
-      end
+        when :heartbeat
+          while options[:heartbeat].blank?
+            print 'Enter heartbeat rate: '
+            options[:heartbeat] = gets.chomp!
+          end
 
-    when '5' #PRESENCE
-      puts('Enter channel')
-      channel = gets.chomp!
+        when :subscribe_key
+          while options[:subscribe_key].blank?
+            print 'Enter subscribe key: '
+            options[:subscribe_key] = gets.chomp!
+          end
 
-      if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.presence(:channel => channel, :callback => default_cb, :http_sync => false, :ssl => ssl)
-      elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
-        p.presence(:channel => channel, :http_sync => false, :ssl => ssl, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
-      elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.presence(:channel => channel, :callback => default_cb, :http_sync => true, :ssl => ssl)
-      elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
-        p.presence(:channel => channel, :http_sync => true, :ssl => ssl, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
-      end
+        when :read
+          while options[:read].blank?
+            print 'Read? '
+            options[:read] = acceptance
+          end
 
-    when '6' #HERE_NOW
-      puts('Enter channel')
-      channel = gets.chomp!
-
-      if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.here_now(:channel => channel, :callback => default_cb, :http_sync => false, :ssl => ssl)
-      elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
-        p.here_now(:channel => channel, :http_sync => false, :ssl => ssl, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
-      elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.here_now(:channel => channel, :callback => default_cb, :http_sync => true, :ssl => ssl)
-      elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
-        p.here_now(:channel => channel, :http_sync => true, :ssl => ssl, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
-      end
-
-
-    when '7' #TIME
-      if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.time(:callback => default_cb, :http_sync => false, :ssl => ssl)
-      elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
-        p.time(:http_sync => false, :ssl => ssl, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
-      elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.time(:callback => default_cb, :http_sync => true, :ssl => ssl)
-      elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
-        p.time(:http_sync => true, :ssl => ssl, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
-      end
-
-    when '8' # AUDIT
-      puts 'Enter channel for channel level'
-      channel = gets.chomp!
-      channel = nil if channel.blank?
-
-      puts 'Enter auth key'
-      auth_key = gets.chomp!
-      auth_key = nil if auth_key.blank?
-
-      if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.audit(:callback => default_cb, :http_sync => false, :ssl => ssl, :channel => channel, :auth_key => auth_key)
-      elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
-        p.audit(:http_sync => false, :ssl => ssl, :channel => channel, :auth_key => auth_key, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
-      elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.audit(:callback => default_cb, :http_sync => true, :ssl => ssl, :channel => channel, :auth_key => auth_key)
-      elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
-        p.audit(:http_sync => true, :ssl => ssl, :channel => channel, :auth_key => auth_key, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
-      end
-
-    when '9' # GRANT
-      puts 'Enter channel for channel level'
-      channel = gets.chomp!
-      channel = nil if channel.blank?
-
-      puts 'Enter auth key'
-      auth_key = gets.chomp!
-      auth_key = nil if auth_key.blank?
-
-      read = nil
-      while !%w(1 0).include? read
-        puts 'Read? [0/1]'
-        read = gets.chomp!
-      end
-
-      write = nil
-      while !%w(1 0).include? write
-        puts 'Write? [0/1]'
-        write = gets.chomp!
-      end
-
-      puts 'TTL [3600]:'
-      ttl = gets.chomp!
-      ttl = 3600 if ttl.blank?
-
-      if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.grant(:callback => default_cb, :http_sync => false, :ssl => ssl, :channel => channel, :read => read, :write => write, :ttl => ttl, :auth_key => auth_key)
-      elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
-        p.grant(:http_sync => false, :ssl => ssl, :channel => channel, :read => read, :write => write, :ttl => ttl, :auth_key => auth_key, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
-      elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.grant(:callback => default_cb, :http_sync => true, :ssl => ssl, :channel => channel, :read => read, :write => write, :ttl => ttl, :auth_key => auth_key)
-      elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
-        p.grant(:http_sync => true, :ssl => ssl, :channel => channel, :read => read, :write => write, :ttl => ttl, :auth_key => auth_key, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
-      end
-
-    when '10' # REVOKE
-      puts 'Enter channel for channel level'
-      channel = gets.chomp!
-      channel = nil if channel.blank?
-
-      puts 'Enter auth key'
-      auth_key = gets.chomp!
-      auth_key = nil if auth_key.blank?
-
-      read = nil
-      while !%w(1 0).include? read
-        puts 'Revoke read? [0/1]'
-        read = gets.chomp!
-      end
-
-      write = nil
-      while !%w(1 0).include? write
-        puts 'Revoke write? [0/1]'
-        write = gets.chomp!
-      end
-
-      puts 'TTL [3600]:'
-      ttl = gets.chomp!
-      ttl = 3600 if ttl.blank?
-
-      if sync_or_async == 'A' && block_or_parameter == 'P' #ASYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.revoke(:callback => default_cb, :http_sync => false, :ssl => ssl, :channel => channel, :read => read, :write => write, :ttl => ttl, :auth_key => auth_key)
-      elsif sync_or_async == 'A' && block_or_parameter == 'B' #ASYNC AND CALLBACK AS PASSED AS BLOCK
-        p.revoke(:http_sync => false, :ssl => ssl, :channel => channel, :read => read, :write => write, :ttl => ttl, :auth_key => auth_key, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
-      elsif sync_or_async == 'S' && block_or_parameter == 'P' #SYNC AND CALLBACK AS PASSED AS PARAMETER
-        p.revoke(:callback => default_cb, :http_sync => true, :ssl => ssl, :channel => channel, :read => read, :write => write, :ttl => ttl, :auth_key => auth_key)
-      elsif sync_or_async == 'S' && block_or_parameter == 'B' #SYNC AND CALLBACK AS PASSED AS BLOCK
-        p.revoke(:http_sync => true, :ssl => ssl, :channel => channel, :read => read, :write => write, :ttl => ttl, :auth_key => auth_key, &default_cb)#{ |envelope| puts("\nchannel: #{envelope.channel}: \nmsg: #{envelope.message}") }
+        when :write
+          while options[:write].blank?
+            print 'Write? '
+            options[:write] = acceptance
+          end
       end
     end
+    options.merge({:callback => method(:callback)})
+  end
+
+  def acceptance
+    %w(Y 1).include?(gets.chomp!.to_s.upcase)
+  end
+
+  def print_pubnub
+    puts '
+    __________     ___.     _______       ___.       ________       ________
+    \______   \__ _\_ |__   \      \  __ _\_ |__     \_____  \     /  _____/
+     |     ___/  |  \ __ \  /   |   \|  |  \ __ \      _(__  <    /   __  \ 
+     |    |   |  |  / \_\ \/    |    \  |  / \_\ \    /       \   \  |__\  \
+     |____|   |____/|___  /\____|__  /____/|___  /   /______  / /\ \_____  /
+                        \/         \/          \/           \/  \/       \/ 
+
+                                                         Pubnub Demo Console
+    '.red
+  end
+
+  def callback(envelope)
+    ap envelope
+  end
+
+  def connect_callback(data)
+    puts 'Connection established'.bg_green
+  end
+
+  def error_callback(error)
+    puts 'ERROR'.bg_red
+    ap error
+  end
 end
+
+DemoConsole.new
