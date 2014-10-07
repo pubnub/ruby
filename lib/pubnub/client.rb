@@ -16,7 +16,7 @@ module Pubnub
     attr_reader :env
     attr_accessor :single_event_connections_pool, :subscribe_event_connections_pool, :uuid, :async_events
 
-    EVENTS = %w(publish subscribe presence leave history here_now audit grant revoke time heartbeat where_now state)
+    EVENTS = %w(publish subscribe presence leave history here_now audit grant revoke time heartbeat where_now state set_state)
     VERSION = Pubnub::VERSION
 
     EVENTS.each do |event_name|
@@ -85,15 +85,6 @@ module Pubnub
 
     def state_for(origin = DEFAULT_ORIGIN)
       @env[:state][origin]
-    end
-
-    def set_state(state, channel, origin = DEFAULT_ORIGIN)
-      raise 'You can set state only as hash' unless (state.is_a?(Hash) || state.is_a?(NilClass))
-      @env[:state] = Hash.new         if @env[:state].nil?
-      @env[:state][origin] = Hash.new if @env[:state][origin].nil?
-      @env[:state][origin][channel.to_s] = state
-      leave_all unless @env[:subscriptions].empty?
-      start_subscribe(true) unless @env[:subscriptions].empty?
     end
 
     def add_to_state(hash, channel, origin = DEFAULT_ORIGIN)
