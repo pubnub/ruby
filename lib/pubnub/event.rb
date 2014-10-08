@@ -5,7 +5,7 @@ module Pubnub
 
     def initialize(options, app)
       @app              = app
-      @origin           = options[:origin]          || app.env[:origin]
+      @origin           = options[:origin]           || app.env[:origin]
       @channel          = options[:channel]
       @message          = options[:message]
       @http_sync        = options[:http_sync]
@@ -16,7 +16,7 @@ module Pubnub
 
       @cipher_key       = app.env[:cipher_key]
       @secret_key       = app.env[:secret_key]
-      @auth_key         = options[:auth_key]        || app.env[:auth_key]
+      @auth_key         = options[:auth_key]         || app.env[:auth_key]
       @publish_key      = app.env[:publish_key]
       @subscribe_key    = app.env[:subscribe_key]
 
@@ -66,6 +66,7 @@ module Pubnub
         else
           $logger.error('Pubnub'){"Aborting #{self.class} event due to network errors and reaching max retries"}
         end
+        false
       end
     end
 
@@ -262,7 +263,7 @@ module Pubnub
         connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
         connection.idle_timeout   = app.env[:subscribe_timeout]
         connection.read_timeout   = app.env[:subscribe_timeout]
-        @connect_callback.call "New subscribe connection to #{@origin}"
+        @connect_callback.call "New connection to #{@origin}"
         connection.proxy_from_env
         connection
       end
@@ -519,7 +520,7 @@ module Pubnub
         connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
         connection.idle_timeout   = app.env[:subscribe_timeout]
         connection.read_timeout   = app.env[:subscribe_timeout]
-        @connect_callback.call "New subscribe connection to #{@origin}"
+        @connect_callback.call "New connection to #{@origin}"
         connection.proxy_from_env
         connection
       end

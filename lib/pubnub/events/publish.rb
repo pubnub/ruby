@@ -12,6 +12,7 @@ module Pubnub
       @event = 'publish'
       @allow_multiple_channels = false
 
+      raise ArgumentError.new(:object => self, :message => ':message argument is too big, encoded uri would excess 32k size limit') if uri(app).to_s.bytesize > 32000
     end
 
     def validate!
