@@ -36,12 +36,20 @@ module Pubnub
       envelopes = start_event(app)
     end
 
+    def send_request(app)
+      if app.disabled_persistent_connection?
+        @response = Net::HTTP.get_response uri(app)
+      else
+        @response = get_connection(app).request(uri(app))
+      end
+    end
+
     def start_event(app, count = 0)
       begin
         if count <= app.env[:max_retries]
           $logger.debug('Pubnub'){'Event#start_event | sending request'}
           $logger.debug('Pubnub'){"Event#start_event | tt: #{@timetoken}; ctt #{app.env[:timetoken]}"}
-          @response = get_connection(app).request(uri(app))
+          @response = send_request(app)
         end
 
         error = response_error(@response, app)
@@ -52,9 +60,12 @@ module Pubnub
           start_event(app, count + 1)
         end
       rescue => e
-        $logger.error('Pubnub'){e}
         $logger.error('Pubnub'){e.inspect}
-        start_event(app, count + 1)
+        if count <= app.env[:max_retries]
+          start_event(app, count + 1)
+        else
+          $logger.error('Pubnub'){"Aborting #{self.class} event due to network errors and reaching max retries"}
+        end
       end
     end
 
@@ -247,11 +258,14 @@ module Pubnub
     end
 
     def new_connection(app)
-      connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
-      connection.idle_timeout = app.env[:timeout]
-      connection.read_timeout = app.env[:timeout]
-      connection.proxy_from_env
-      connection
+      unless app.disabled_persistent_connection?
+        connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
+        connection.idle_timeout   = app.env[:subscribe_timeout]
+        connection.read_timeout   = app.env[:subscribe_timeout]
+        @connect_callback.call "New subscribe connection to #{@origin}"
+        connection.proxy_from_env
+        connection
+      end
     end
   end
 
@@ -501,12 +515,15 @@ module Pubnub
     end
 
     def new_connection(app)
-      connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
-      connection.idle_timeout   = app.env[:subscribe_timeout]
-      connection.read_timeout   = app.env[:subscribe_timeout]
-      @connect_callback.call "New subscribe connection to #{@origin}"
-      connection.proxy_from_env   
-      connection
+      unless app.disabled_persistent_connection?
+        connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
+        connection.idle_timeout   = app.env[:subscribe_timeout]
+        connection.read_timeout   = app.env[:subscribe_timeout]
+        @connect_callback.call "New subscribe connection to #{@origin}"
+        connection.proxy_from_env
+        connection
+      end
+
     end
   end
 end
