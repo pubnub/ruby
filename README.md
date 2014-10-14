@@ -3,17 +3,17 @@
 ##### YOU MUST HAVE A PUBNUB ACCOUNT TO USE THE API.
 ##### http://www.pubnub.com/account
 
-## PubNub Gem version 3.5.13
+## PubNub Gem version 3.5.14
 
 www.pubnub.com - PubNub Real-time Push Service in the Cloud.
 
 The PubNub Network is a blazingly fast Global Messaging Service for building real-time web and mobile apps. Thousands of apps and developers rely on PubNub for delivering human-perceptive real-time experiences that scale to millions of users worldwide. PubNub delivers the infrastructure needed to build amazing Mobile, MMO games, social apps, business collaborative solutions, and more.
 
 ### Upgrading from PubNub 3.3.x and Earlier
-PubNub 3.5.13 is NOT compatible with earlier than 3.4 versions of Pubnub Ruby Client.
+PubNub 3.5.14 is NOT compatible with earlier than 3.4 versions of Pubnub Ruby Client.
 
 ### Upgrading from PubNub 3.4
-PubNub 3.5.13 is compatible with 3.4 version.
+PubNub 3.5.14 is compatible with 3.4 version.
 
 #### Asynchronous vs Synchronous Responses
 Every event you will fire could be fired asynchronous or synchonous just by passing 
