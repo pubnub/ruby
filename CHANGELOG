@@ -1,3 +1,10 @@
+3.5.12 - d1054d
+. Fixed connect callback (error_callback was assigned due to typo)
+. Fixed EOFError
+. Allows possibility to disable persistent connection
+. Added client side message size validation
+. Allowed to pass multiple channels to PAM operations
+
 3.5.7 - 70e74cdfa21785ccbd7389ca59d952cd8ff34b3a
 . Handle non-fatal net-http errors better
 . Call Thread.pass unless EM is started
