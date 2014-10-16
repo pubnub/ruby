@@ -202,7 +202,7 @@ class DemoConsole
         options = ask_about(:sync, :channel)
         @pubnub.leave(options)
       when :History
-        options = ask_about(:sync, :channel, :reverse, :history_start, :history_end)
+        options = ask_about(:sync, :channel, :reverse, :history_start, :history_end, :count)
         @pubnub.history(options)
       when :HereNow
         options = ask_about(:sync, :optional_channel)
@@ -305,35 +305,42 @@ class DemoConsole
           end
         end
 
-        when :uuid
-          while options[:uuid].blank?
-            print 'Enter uuid: '
-            options[:uuid] = gets.chomp!
-          end
+      when :count
+        while options[:count].blank?
+          print 'Count [100]: '
+          options[:count] = gets.chomp!
+          options[:count] = 100 if options[:count].blank?
+        end
 
-        when :heartbeat
-          while options[:heartbeat].blank?
-            print 'Enter heartbeat rate: '
-            options[:heartbeat] = gets.chomp!
-          end
+      when :uuid
+        while options[:uuid].blank?
+          print 'Enter uuid: '
+          options[:uuid] = gets.chomp!
+        end
 
-        when :subscribe_key
-          while options[:subscribe_key].blank?
-            print 'Enter subscribe key: '
-            options[:subscribe_key] = gets.chomp!
-          end
+      when :heartbeat
+        while options[:heartbeat].blank?
+          print 'Enter heartbeat rate: '
+          options[:heartbeat] = gets.chomp!
+        end
 
-        when :read
-          while options[:read].blank?
-            print 'Read? '
-            options[:read] = acceptance
-          end
+      when :subscribe_key
+        while options[:subscribe_key].blank?
+          print 'Enter subscribe key: '
+          options[:subscribe_key] = gets.chomp!
+        end
 
-        when :write
-          while options[:write].blank?
-            print 'Write? '
-            options[:write] = acceptance
-          end
+      when :read
+        while options[:read].blank?
+          print 'Read? '
+          options[:read] = acceptance
+        end
+
+      when :write
+        while options[:write].blank?
+          print 'Write? '
+          options[:write] = acceptance
+        end
       end
     end
     options.merge({:callback => method(:callback)})
