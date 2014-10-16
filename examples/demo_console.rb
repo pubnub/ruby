@@ -284,25 +284,25 @@ class DemoConsole
         end
 
       when :reverse
-        while options[:reverse].blank?
+        while options[:reverse].blank? && options[:reverse] != false
           print 'In reverse order?: '
           options[:reverse] = acceptance
         end
 
       when :history_start
         unless options[:reverse]
-          while options[:start].blank?
+          # while options[:start].blank?
             print 'History start timetoken: '
             options[:start] = gets.chomp!
-          end
+          # end
         end
 
       when :history_end
         unless options[:reverse]
-          while options[:end].blank?
-            print 'History start timetoken: '
+          # while options[:end].blank?
+            print 'History end timetoken: '
             options[:end] = gets.chomp!
-          end
+          # end
         end
 
       when :count
@@ -331,13 +331,13 @@ class DemoConsole
         end
 
       when :read
-        while options[:read].blank?
+        while options[:read].blank? && options[:read] != false
           print 'Read? '
           options[:read] = acceptance
         end
 
       when :write
-        while options[:write].blank?
+        while options[:write].blank? && options[:write] != false
           print 'Write? '
           options[:write] = acceptance
         end
