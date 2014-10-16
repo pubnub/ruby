@@ -438,7 +438,7 @@ History envelope also contains .history_start and .history_end values
 
 ##### Paged History
 
-Paginate through your history. You can pass :channel, :page, :limit, :callback, :http_sync, :start and :end options, all of them works like in history event
+Paginate through your history. You can pass `:channel`, `:page`, `:limit`, `:callback`, `:http_sync`, `:start` and `:end` options, all of them works like in history event.
 
 ```ruby
 pubnub.paged_history(
