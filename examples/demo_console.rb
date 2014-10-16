@@ -237,12 +237,12 @@ class DemoConsole
       when :show_state
         ap @pubnub.env[:state]
       when :set_state
-        print 'Channel: '
-        channel = gets.chomp!
+        options = ask_about(:sync, :channel)
         print 'State: '
         begin
           state = eval(gets.chomp!)
-          @pubnub.set_state(state, channel)
+          options.merge!({ :state => state})
+          @pubnub.set_state(options)
         rescue => e
           print 'ERROR! Invalid state.'.bg_red
           print e
