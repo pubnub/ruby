@@ -141,8 +141,8 @@ module Pubnub
         envelope.status        = response.code.to_i
       end
 
-      envelopes.last.last   = true
-      envelopes.first.first = true
+      envelopes.last.last   = true if envelopes.last
+      envelopes.first.first = true if envelopes.first
 
       envelopes = insert_errors(envelopes, error, app) if error
 
