@@ -296,6 +296,14 @@ Envelopes returned by PAM events have additional :service and :payload keys.
 
 #### PAM Usage Examples
 
+######Notice - Whenever you're using PAM event you can pass `presence` key instead of channel.
+
+```ruby
+pubnub.grant(:presence => :demo) do |envelope|
+  puts envelope.message
+end
+```
+
 ##### Audit
 Audits auths for given parameters
 

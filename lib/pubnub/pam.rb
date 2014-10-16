@@ -3,7 +3,7 @@ module Pubnub
     def initialize(options, app)
       super
       if options[:presence].present?
-        @channel = options[:presence].to_s + '-pnpres'
+        @channel = format_channels(options[:presence].to_s + '-pnpres')
       end
       @auth_key = options[:auth_key]
     end
