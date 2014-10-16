@@ -286,7 +286,7 @@ class DemoConsole
       when :reverse
         while options[:reverse].blank?
           print 'In reverse order?: '
-          options[:reverse] = gets.chomp!
+          options[:reverse] = acceptance
         end
 
       when :history_start
