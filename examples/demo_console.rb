@@ -30,14 +30,15 @@ class DemoConsole
       :'3'  => :Presence,
       :'4'  => :Leave,
       :'5'  => :History,
-      :'6'  => :HereNow,
-      :'7'  => :WhereNow,
-      :'8'  => :State,
-      :'9'  => :Heartbeat,
-      :'10' => :Time,
-      :'11' => :Audit,
-      :'12' => :Grant,
-      :'13' => :Revoke,
+      :'6'  => :PagedHistory,
+      :'7'  => :HereNow,
+      :'8'  => :WhereNow,
+      :'9'  => :State,
+      :'10'  => :Heartbeat,
+      :'11' => :Time,
+      :'12' => :Audit,
+      :'13' => :Grant,
+      :'14' => :Revoke,
       :A    => :set_uuid,
       :B    => :set_auth_key,
       :C    => :show_state,
@@ -99,7 +100,7 @@ class DemoConsole
       :secret_key     => @secret_key,
       :error_callback => method(:error_callback),
       :auth_key       => @auth_key,
-      :logger => my_logger
+      # :logger         => my_logger
     )
 
     @pubnub.set_uuid(@uuid) unless @uuid.blank?
@@ -168,14 +169,15 @@ class DemoConsole
         puts '3.  Presence'
         puts '4.  Leave (unsubscribe)'
         puts '5.  History'
-        puts '6.  HereNow'
-        puts '7.  WhereNow'
-        puts '8.  State'
-        puts '9.  Heartbeat'
-        puts '10. Time'
-        puts '11. Audit'  if @secret_key
-        puts '12. Grant'  if @secret_key
-        puts '13. Revoke' if @secret_key
+        puts '6.  Paged History'
+        puts '7.  HereNow'
+        puts '8.  WhereNow'
+        puts '9.  State'
+        puts '10.  Heartbeat'
+        puts '11. Time'
+        puts '12. Audit'  if @secret_key
+        puts '13. Grant'  if @secret_key
+        puts '14. Revoke' if @secret_key
         puts "\nPubnub::Client interaction:".green
         puts 'A. Set UUID'
         puts 'B. Set auth_key'
@@ -204,6 +206,9 @@ class DemoConsole
       when :History
         options = ask_about(:sync, :channel, :reverse, :history_start, :history_end, :count)
         @pubnub.history(options)
+      when :PagedHistory
+        options = ask_about(:sync, :channel, :reverse, :history_start, :history_end, :limit, :page)
+        @pubnub.paged_history(options)
       when :HereNow
         options = ask_about(:sync, :optional_channel)
         @pubnub.here_now(options)
@@ -341,6 +346,18 @@ class DemoConsole
           print 'Write? '
           options[:write] = acceptance
         end
+
+      when :limit
+        while options[:limit].blank?
+          print 'limit: '
+          options[:limit] = gets.chomp!.to_i
+        end
+
+      when :page
+        while options[:page].blank?
+          print 'page: '
+          options[:page] = gets.chomp!.to_i
+        end
       end
     end
     options.merge({:callback => method(:callback)})
@@ -364,7 +381,7 @@ class DemoConsole
   end
 
   def callback(envelope)
-    ap envelope
+    puts envelope.message
   end
 
   def connect_callback(data)
