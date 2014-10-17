@@ -42,6 +42,7 @@ module Pubnub
         end unless @skip_remove
       end
       super
+      app.start_subscribe
     end
 
     private

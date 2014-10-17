@@ -103,6 +103,7 @@ module Pubnub
 
       $logger.debug('Pubnub'){'Event#handle_response'}
       envelopes = format_envelopes(response, app, error)
+      $logger.debug('Pubnub'){"Response: #{response.body}"} if (response && response.body)
       update_app_timetoken(envelopes, app)
       fire_callbacks(envelopes,app)
       @finished = true
@@ -118,7 +119,7 @@ module Pubnub
       unless envelopes.blank?
         $logger.debug('Pubnub'){'Firing callbacks'}
         envelopes.each do |envelope|
-          @callback.call(envelope)       if !envelope.error && @callback && !envelope.timetoken_update
+          @callback.call(envelope)       if envelope && !envelope.error && @callback && !envelope.timetoken_update
           #if envelope.timetoken_update || envelope.timetoken.to_i > app.env[:timetoken].to_i
           #  update_timetoken(app, envelope.timetoken)
           #end
@@ -261,9 +262,8 @@ module Pubnub
     def new_connection(app)
       unless app.disabled_persistent_connection?
         connection = Net::HTTP::Persistent.new "pubnub_ruby_client_v#{Pubnub::VERSION}"
-        connection.idle_timeout   = app.env[:subscribe_timeout]
-        connection.read_timeout   = app.env[:subscribe_timeout]
-        @connect_callback.call "New connection to #{@origin}"
+        connection.idle_timeout = app.env[:timeout]
+        connection.read_timeout = app.env[:timeout]
         connection.proxy_from_env
         connection
       end
@@ -369,7 +369,12 @@ module Pubnub
     def parameters(app)
       parameters = super(app)
       parameters.merge!({:heartbeat => app.env[:heartbeat]}) if app.env[:heartbeat]
+      parameters.merge!({:state => encode_state(app.env[:state][@origin])}) if app.env[:state] && app.env[:state][@origin]
       parameters
+    end
+
+    def encode_state(state)
+      URI.encode_www_form_component(state.to_json).gsub('+', '%20')
     end
 
     def update_app_timetoken(envelopes, app)
@@ -524,7 +529,6 @@ module Pubnub
         connection.proxy_from_env
         connection
       end
-
     end
   end
 end

@@ -2,6 +2,9 @@ module Pubnub
   module PAM
     def initialize(options, app)
       super
+      if options[:presence].present?
+        @channel += format_channels(options[:presence]).map { |c| c + '-pnpres' }
+      end
       @auth_key = options[:auth_key]
     end
 

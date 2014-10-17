@@ -10,11 +10,13 @@ module Pubnub
       super
       @event = 'subscribe'
       @allow_multiple_channels = true
+      @state = options[:state]
 
     end
 
     def fire(app)
       app.update_timetoken(0)
+      add_state(@state, app) if @state
       super
     end
 
@@ -30,5 +32,10 @@ module Pubnub
 
     private
 
+    def add_state(state, app)
+      app.env[:state]          = {} unless app.env[:state]
+      app.env[:state][@origin] = {} unless app.env[:state][@origin]
+      app.env[:state][@origin][@channel] = state
+    end
   end
 end

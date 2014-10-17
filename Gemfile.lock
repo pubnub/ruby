@@ -44,6 +44,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  bundler (~> 1.6)
   pry
   pubnub!
   rr

@@ -30,7 +30,7 @@ describe 'hearbeat' do
   it 'is called every heartbeat/2 - 1 seconds' do
     @pn = Pubnub.new(:subscribe_key => 'demo-36', :heartbeat => '12')
 
-    VCR.use_cassette("heartbeat-test", :record => :all) do
+    VCR.use_cassette("heartbeat-test", :record => :none) do
       @pn.subscribe(:channel => 'rubyheartbeatdemo'){|e| }
       eventually do
         @pn.env[:heartbeat].to_i.should      eq 12

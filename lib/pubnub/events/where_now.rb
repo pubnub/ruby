@@ -1,19 +1,22 @@
 module Pubnub
-  class Heartbeat
+  class WhereNow
     include Pubnub::Event
     include Pubnub::SingleEvent
     include Pubnub::Formatter
     include Pubnub::Validator
 
     def initialize(options, app)
+      @uuid_looking_for = options[:uuid]
+      @uuid = app.uuid
+      @event = 'where_now'
       super
-      @event = 'heartbeat'
-      @allow_multiple_channels = true
-      @doesnt_require_callback = true
     end
 
-    def fire(app)
+    def validate!
       super
+
+      # check uuid
+      raise ArgumentError.new(:object => self, :message => 'where_now requires :uuid argument') unless @uuid_looking_for
     end
 
     private
@@ -24,24 +27,12 @@ module Pubnub
           'presence',
           'sub-key',
           @subscribe_key,
-          'channel',
-          @channel.join(','),
-          'heartbeat'
+          'uuid',
+          @uuid_looking_for
       ].join('/')
     end
 
-    def parameters(app)
-      parameters = super(app)
-      parameters.merge!({:state => encode_state(app.env[:state][@origin])}) if app.env[:state] && app.env[:state][@origin]
-      parameters
-    end
-
-    def encode_state(state)
-      URI.encode_www_form_component(state.to_json).gsub('+', '%20')
-    end
-
     def format_envelopes(response, app, error)
-
       parsed_response = Parser.parse_json(response.body) if Parser.valid_json?(response.body)
 
       envelopes = Array.new
@@ -56,8 +47,6 @@ module Pubnub
       envelopes = add_common_data_to_envelopes(envelopes, response, app, error)
 
       envelopes
-
     end
-
   end
 end

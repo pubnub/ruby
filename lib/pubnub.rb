@@ -6,7 +6,7 @@
 ## http://www.pubnub.com/
 
 ## -----------------------------------
-## PubNub 3.5.1 Real-time Push Cloud API
+## PubNub Real-time Push Cloud API
 ## -----------------------------------
 
 require 'json'
@@ -18,7 +18,6 @@ require 'net/http/persistent'
 require 'logger'
 
 require 'pubnub/version'
-
 require 'pubnub/client'
 
 

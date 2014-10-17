@@ -16,7 +16,7 @@ module Pubnub
     attr_reader :env
     attr_accessor :single_event_connections_pool, :subscribe_event_connections_pool, :uuid, :async_events
 
-    EVENTS = %w(publish subscribe presence leave history here_now audit grant revoke time heartbeat)
+    EVENTS = %w(publish subscribe presence leave history here_now audit grant revoke time heartbeat where_now state set_state)
     VERSION = Pubnub::VERSION
 
     EVENTS.each do |event_name|
@@ -35,11 +35,56 @@ module Pubnub
 
     def initialize(options)
       validate!(options)
-      setup_app(options)
-      # From this moment we have to use @env in that method instead of options
+      setup_app(options) # After that we have to use @env in that method instead of options
       create_connections_pools(@env)
       create_subscriptions_pools(@env)
-      start_event_machine(@env)
+      # start_event_machine(@env)
+    end
+
+    def paged_history(options = {}, &block)
+      channel  = options[:channel]
+      page     = options[:page]      || 1
+      limit    = options[:limit]     || 100
+      callback = options[:callback]  || block
+      sync     = options[:http_sync] ? true : false
+      start_tt = options[:start]     || nil
+      end_tt   = options[:end]       || nil
+
+      current_start_tt = start_tt
+
+      if sync
+
+          puts "page = #{page}"
+          envelopes = nil
+          page.times do
+            envelopes = self.history(:channel => channel, :http_sync => true, :count => limit, :start => current_start_tt, :end => end_tt)
+            current_start_tt = envelopes.last.history_start.to_i - 1
+          end
+
+          envelopes.each do |envelope|
+            callback.call envelope
+          end if callback
+
+
+      else
+        EM.defer do
+          until msgs.size <= page * entries
+            msgs.merge!(self.history(:channel => channel, :http_sync => true, :start => start_tt, :end => end_tt, :limit => entries))
+          end
+
+          msgs.reverse[0..entries].each do |envelope|
+            callback.call envelope
+          end
+
+        end
+      end
+
+      envelopes
+
+    end
+
+    def state_for(origin = DEFAULT_ORIGIN)
+      @env[:state][origin]
     end
 
     def shutdown(stop_em = false)
@@ -61,6 +106,27 @@ module Pubnub
       EM.stop if stop_em
 
       $logger.info('Pubnub'){'Bye!'}
+    end
+
+    def stop_async
+      $logger.debug('Pubnub'){'Pubnub::Client#stop_async | fired'}
+      @env[:subscribe_railgun].cancel unless @env[:subscribe_railgun].blank?
+      @env[:respirator].cancel        unless @env[:respirator].blank?
+      @env[:subscribe_railgun].cancel unless @env[:subscribe_railgun].blank?
+
+      @env[:subscribe_railgun] = nil
+      @env[:respirator] = nil
+      @env[:subscribe_railgun] = nil
+
+      EM.stop
+
+      $logger.debug('Pubnub'){'Pubnub::Client#stop_async | timers killed'}
+    end
+
+    def restore_async
+      start_event_machine
+      start_subscribe unless @env[:subscriptions].blank?
+      start_railgun
     end
 
     def start_respirator
@@ -99,29 +165,38 @@ module Pubnub
         end
       end
 
+      if @env[:subscribe_railgun] && @subscribe_deffered_thread
+        $logger.debug('Pubnub'){'Pubnub::Client#start_subscribe | Aborting previous request'}
+        @subscribe_deffered_thread.kill
+        Thread.pass until @subscribe_deffered_thread.status == false
+      end
+
       @env[:wait_for_response] = Hash.new unless @wait_for_response
-      @env[:subscribe_railgun] = EM.add_periodic_timer(PERIODIC_TIMER_INTERVAL) do
-        begin
-          @env[:subscriptions].each do |origin, subscribe|
-            unless @env[:wait_for_response][origin]
-              @env[:wait_for_response][origin] = true
+      unless @env[:subscribe_railgun]
+        @env[:subscribe_railgun] = EM.add_periodic_timer(PERIODIC_TIMER_INTERVAL) do
+          begin
+            @env[:subscriptions].each do |origin, subscribe|
+              unless @env[:wait_for_response][origin]
+                @env[:wait_for_response][origin] = true
 
-              $logger.debug('Pubnub'){'Async subscription running'}
-              $logger.debug('Pubnub'){"origin: #{origin}"}
-              $logger.debug('Pubnub'){"timetoken: #{@env[:timetoken]}"}
+                $logger.debug('Pubnub'){'Async subscription running'}
+                $logger.debug('Pubnub'){"origin: #{origin}"}
+                $logger.debug('Pubnub'){"timetoken: #{@env[:timetoken]}"}
 
-              EM.defer do
-                subscribe.start_event(self) if subscribe
-                # @env[:wait_for_response][origin] = false # moved to Event
+                EM.defer do
+                  @subscribe_deffered_thread = Thread.current
+                  subscribe.start_event(self) if subscribe
+                  # @env[:wait_for_response][origin] = false # moved to Event
+                end
+
               end
-
             end
+          rescue => e
+            $logger.error('Pubnub'){e}
+            $logger.error('Pubnub'){e.backtrace}
           end
-        rescue => e
-          $logger.error('Pubnub'){e}
-          $logger.error('Pubnub'){e.backtrace}
         end
-      end unless @env[:subscribe_railgun]
+      end
     end
 
     def subscription_running?
@@ -172,6 +247,7 @@ module Pubnub
     alias_method :cipher_key=, :set_cipher_key
 
     def start_railgun
+      start_event_machine(@env)
       if @env[:railgun]
         $logger.debug('Pubnub'){'Pubnub::Client#start_railgun | Railgun already initialized'}
       else

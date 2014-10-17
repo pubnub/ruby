@@ -3,17 +3,17 @@
 ##### YOU MUST HAVE A PUBNUB ACCOUNT TO USE THE API.
 ##### http://www.pubnub.com/account
 
-## PubNub Gem version 3.5.14
+## PubNub Gem version 3.6.6
 
 www.pubnub.com - PubNub Real-time Push Service in the Cloud.
 
 The PubNub Network is a blazingly fast Global Messaging Service for building real-time web and mobile apps. Thousands of apps and developers rely on PubNub for delivering human-perceptive real-time experiences that scale to millions of users worldwide. PubNub delivers the infrastructure needed to build amazing Mobile, MMO games, social apps, business collaborative solutions, and more.
 
 ### Upgrading from PubNub 3.3.x and Earlier
-PubNub 3.5.14 is NOT compatible with earlier than 3.4 versions of Pubnub Ruby Client.
+PubNub 3.6.6 is NOT compatible with earlier than 3.4 versions of Pubnub Ruby Client.
 
-### Upgrading from PubNub 3.4
-PubNub 3.5.14 is compatible with 3.4 version.
+### Upgrading from PubNub 3.4 and higher versions
+PubNub 3.6.6 is compatible with 3.4 version.
 
 #### Asynchronous vs Synchronous Responses
 Every event you will fire could be fired asynchronous or synchonous just by passing 
@@ -194,6 +194,40 @@ pubnub.subscribe(
 )
 ```
 
+#### Leave
+Unsubscribes from given channel and fires leave event. You need to be subscribed (only async counts) to channel that you want to leave
+
+```ruby
+pubnub.subscribe(
+    :channel  => :hello_world,
+    :callback => @my_callback
+)
+
+pubnub.leave(
+    :channel => :hello_world,
+    :callback => @my_callback
+)
+```
+
+If you want to force leave channel that you're not subscribed to, you can pass :force option to event
+
+```ruby
+# Wrong
+pubnub.leave(
+    :channel => :not_subbed_channel,
+    :callback => @my_callback
+)
+# We'll get error:
+Pubnub::ArgumentError: You cannot leave channel that is not subscribed
+
+# Good
+p.leave(
+    :channel => :force_leave,
+    :force => true,
+    :callback => @my_callback
+)
+```
+
 #### History
 Retrieve previously published messages (requires activation via admin.pubnub.com)
 Optional start, end, and reverse option usage can be found in the tests.
@@ -226,6 +260,16 @@ pubnub.here_now(
 )
 ```
 
+#### WhereNow
+See where is clien with specific uuid
+
+```ruby
+p.where_now(
+    :uuid => :my_friend,
+    :callback => @my_callback
+)
+```
+
 #### UUID
 
 Session-UUID is automatic, so you will probably not end up ever using this. But if you need a UUID...
@@ -251,6 +295,16 @@ Developers can grant fine-grained Publish/Subscribe permissions for their real-t
 Envelopes returned by PAM events have additional :service and :payload keys.
 
 #### PAM Usage Examples
+
+######Notice!
+
+Whenever you're using PAM event you can pass `presence` key instead of channel.
+
+```ruby
+pubnub.grant(:presence => :demo) do |envelope|
+  puts envelope.message
+end
+```
 
 ##### Audit
 Audits auths for given parameters
@@ -312,6 +366,9 @@ pubnub = Pubnub.new(
   :secret_key                 => 0
 )
 ```
+
+###### Custom logger
+You can pass your custom logger as :logger key while creating new Pubnub instance. Logger invocations has set progname 'Pubnub'.
 
 ##### Publish
 ```ruby
@@ -379,6 +436,19 @@ pubnub.history(
 ```
 History envelope also contains .history_start and .history_end values
 
+##### Paged History
+
+Paginate through your history. You can pass `:channel`, `:page`, `:limit`, `:callback`, `:http_sync`, `:start` and `:end` options, all of them works like in history event.
+
+```ruby
+pubnub.paged_history(
+  :channel   => :actions,
+  :limit     => 10,
+  :page      => 3,
+  :http_sync => true
+)
+```
+
 ##### Presence
 Presence works exactly the same way as subscribe, it just adds '-pnpres' to channel name.
 ```ruby
@@ -399,9 +469,44 @@ pubnub.here_now(
   puts envelope.msg['occupancy']
 end
 ```
+
+You can also give no specific channel. Then you'll get global HereNow event response which holds all channels.
+
+```ruby
+pubnub.here_now { |envelope| puts envelope.msg['channels'] }
+```
+
+
+##### Heartbeat
+
+You can set/update heartbeat rate in seconds while creating Pubnub object
+```ruby
+pubnub = Pubnub.new(:subscribe_key => 'demo', :heartbeat => 60)
+```
+
+Update it via heartbeat= and set_heartbeat()
+```ruby
+pubnub.heartbeat = 120
+pubnub.set_heartbeat 240
+```
+
+Read it via heartbeat and get_heartbeat()
+```ruby
+pubnub.heartbeat
+pubnub.get_heartbeat
+```
+
+Heartbeat is used to check if client is still online,
+if client would disconnect without leave event, and there will be lack of heartbeat in given interval
+server will fire leave event for disconnected client uuid.
+
+
 #### Pam
 PAM allows you to grant read and write access basing on channels and auth_keys.
 Every pam event requires :secret_key (Remember! You should set it while initializing pubnub)
+
+PAM actions could take :presence option, that will grant/revoke/audit permissions on given presence channel.
+:presence option can be used along with :channel.
 
 ##### Audit
 ```ruby
@@ -426,6 +531,27 @@ pubnub.revoke(:channel => 'hidden_system'){ |envelope| puts envelope.msg }
 
 # Auth key level
 pubnub.revoke(:channel => 'hidden_system', :auth_key => :lemon){ |envelope| puts envelope.msg }
+```
+
+### State
+State is stored on the server for subscribed uuid, you can pass state in few ways and you can get it from server.
+
+#### Setting state
+```ruby
+# You can set state in a few ways
+# Using subscribe
+pubnub.subscribe(:channel => 'my_channel', :state => {:my_channel => {:key => :value}}){ |e| puts e.msg }
+# Be aware that state have to be hash of hashes where keys are subscribed channel names
+
+# Using event #set_state
+pubnub.set_state(:state => {:key => :value}, :channel => :my_channel, :http_sync => true)
+
+```
+
+#### Getting state
+```ruby
+# All you need to know is just uuid and channel
+pubnub.state(:uuid => 'uuid_client_that_i_am_searching_for', :http_sync => true)
 ```
 
 ### Other
