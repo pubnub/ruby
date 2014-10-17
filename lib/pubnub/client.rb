@@ -87,14 +87,6 @@ module Pubnub
       @env[:state][origin]
     end
 
-    def add_to_state(hash, channel, origin = DEFAULT_ORIGIN)
-      raise 'You can add to state only hash' unless hash.is_a?(Hash)
-      @env[:state][origin][channel] = Hash.new if @env[:state][channel].nil?
-      @env[:state][origin][channel].merge!(hash)
-      leave_all unless @env[:subscriptions].empty?
-      start_subscribe(true) unless @env[:subscriptions].empty?
-    end
-
     def shutdown(stop_em = false)
       @single_event_connections_pool.each do |origin, conn|
         conn.shutdown_in_all_threads

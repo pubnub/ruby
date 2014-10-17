@@ -36,7 +36,7 @@ describe 'state metadata in subscribe requests' do
 
     it 'sets/gets proper data via client method using symbol' do
       VCR.use_cassette("state-set-state-via-client", :record => :none) do
-        @pn.set_state({ :key => :value }, :whatever)
+        @pn.set_state(:state => { :key => :value }, :channel => :whatever, :http_sync => true)
         @pn.subscribe(:channel => :whatever, :http_sync => true )
 
         enve = @pn.state(:channel => :whatever, :uuid => :rubytestuuid, :http_sync => true)
@@ -47,14 +47,14 @@ describe 'state metadata in subscribe requests' do
     end
 
     it 'sets/gets proper data via client method using string' do
-      VCR.use_cassette("state-set-state-via-client", :record => :none) do
-        @pn.set_state({ :key => :value }, :whatever)
+      VCR.use_cassette("state-set-state-via-client-2", :record => :once) do
+        @pn.set_state(:state => { :key => :value }, :channel => :whatever, :http_sync => true)
         @pn.subscribe(:channel => :whatever, :http_sync => true )
 
         enve = @pn.state(:channel => 'whatever', :uuid => :rubytestuuid, :http_sync => true)
         
         enve.size.should eq 1
-        enve.first.response.should eq "{\"status\": 200, \"message\": \"OK\", \"payload\": {\"key\": \"value\"}, \"service\": \"Presence\"}"
+        enve.first.response.should eq "{\"status\": 200, \"uuid\": \"rubytestuuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {\"key\": \"value\"}, \"channel\": \"whatever\"}"
       end
     end
   end
@@ -71,13 +71,13 @@ describe 'state metadata in subscribe requests' do
     end
 
     it 'sets/gets proper data via client' do
-      VCR.use_cassette("state-async-set-state-via-subbedclient", :record => :none) do
+      VCR.use_cassette("state-async-set-state-via-subbedclient-2", :record => :once) do
         @pn.subscribe(:channel => :whatever){|e|}
-        @pn.set_state({ :key => :value }, :whatever)
+        @pn.set_state(:state => { :key => :value }, :channel => :whatever, :http_sync => true)
         enve = @pn.state(:channel => :whatever, :uuid => :rubytestuuid, :http_sync => true)
         
         enve.size.should eq 1
-        enve.first.response.should eq "{\"status\": 200, \"message\": \"OK\", \"payload\": {\"key\": \"value\"}, \"service\": \"Presence\"}"
+        enve.first.response.should eq "{\"status\": 200, \"uuid\": \"rubytestuuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {\"key\": \"value\"}, \"channel\": \"whatever\"}"
       end
     end
   end

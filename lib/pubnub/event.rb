@@ -117,7 +117,7 @@ module Pubnub
     def fire_callbacks(envelopes, app)
       $logger.debug('Pubnub'){'Firing callbacks'}
       envelopes.each do |envelope|
-        @callback.call(envelope)       if !envelope.error && @callback && !envelope.timetoken_update
+        @callback.call(envelope)       if envelope && !envelope.error && @callback && !envelope.timetoken_update
         #if envelope.timetoken_update || envelope.timetoken.to_i > app.env[:timetoken].to_i
         #  update_timetoken(app, envelope.timetoken)
         #end

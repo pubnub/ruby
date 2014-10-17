@@ -505,7 +505,8 @@ server will fire leave event for disconnected client uuid.
 PAM allows you to grant read and write access basing on channels and auth_keys.
 Every pam event requires :secret_key (Remember! You should set it while initializing pubnub)
 
-PAM actions could take :presence option instead of @channel, that will grant/revoke/audit permissions on given presence channel.
+PAM actions could take :presence option, that will grant/revoke/audit permissions on given presence channel.
+:presence option can be used along with :channel.
 
 ##### Audit
 ```ruby
@@ -542,19 +543,8 @@ State is stored on the server for subscribed uuid, you can pass state in few way
 pubnub.subscribe(:channel => 'my_channel', :state => {:my_channel => {:key => :value}}){ |e| puts e.msg }
 # Be aware that state have to be hash of hashes where keys are subscribed channel names
 
-# Using client method #state
-pubnub.set_state({:key => :value}, :my_channel)
-
-# If you're using multiple origin
-pubnub.set_state({:key => :value}, :my_channel, origin_one)
-pubnub.set_state({:another_key => :another_value}, :my_channel, origin_two)
-
-# You can also update already existing state
-pubnub.add_to_state({:key_two => :value_two}, :my_channel)
-
-# That would of course work for multiple origins too
-pubnub.add_to_state({:key_two => :value_two}, :my_channel, origin_one)
-pubnub.add_to_state({:key_antoher => :value_another}, :my_channel, origin_two)
+# Using event #set_state
+pubnub.set_state(:state => {:key => :value}, :channel => :my_channel, :http_sync => true)
 
 ```
 

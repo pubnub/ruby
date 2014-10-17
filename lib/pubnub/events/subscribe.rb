@@ -33,9 +33,9 @@ module Pubnub
     private
 
     def add_state(state, app)
-      state.each do |k,v|
-        app.set_state(v,k,@origin)
-      end
+      app.env[:state]          = {} unless app.env[:state]
+      app.env[:state][@origin] = {} unless app.env[:state][@origin]
+      app.env[:state][@origin][@channel] = state
     end
   end
 end
