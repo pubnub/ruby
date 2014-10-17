@@ -122,7 +122,7 @@ module Pubnub
         #  update_timetoken(app, envelope.timetoken)
         #end
       end
-      @error_callback.call(envelopes.first) if envelopes.first.error
+      @error_callback.call(envelopes.first) if !envelopes.blank? && envelopes.first.error
 
     end
 
