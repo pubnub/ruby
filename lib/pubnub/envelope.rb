@@ -13,6 +13,7 @@ module Pubnub
         :object,
         :payload,
         :response,
+        :parsed_response,
         :response_message,
         :service,
         :status,

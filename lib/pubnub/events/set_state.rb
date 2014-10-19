@@ -51,23 +51,17 @@ module Pubnub
       ].join('/')
     end
 
-    def payload(parsed_response)
-      parsed_response['payload'] if parsed_response
-    end
-
-    def message(parsed_response)
-      parsed_response['message'] if parsed_response
-    end
-
     def format_envelopes(response, app, error)
 
       parsed_response = Parser.parse_json(response.body) if Parser.valid_json?(response.body)
 
       envelopes = Array.new
       envelopes << Envelope.new({
-              :message           => message(parsed_response),
-              :channel           => @channel,
-              :payload           => payload(parsed_response)
+          :parsed_response => parsed_response,
+          :payload => (parsed_response['payload'] if parsed_response),
+          :service => (parsed_response['service'] if parsed_response),
+          :message => (parsed_response['message'] if parsed_response),
+          :status  => (parsed_response['status']  if parsed_response)
       }, app)
 
       envelopes = add_common_data_to_envelopes(envelopes, response, app, error)

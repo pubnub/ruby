@@ -5,7 +5,7 @@ class String
   def black;          "\033[30m#{self}\033[0m" end
   def red;            "\033[31m#{self}\033[0m" end
   def green;          "\033[32m#{self}\033[0m" end
-  def brown;         "\033[33m#{self}\033[0m" end
+  def brown;          "\033[33m#{self}\033[0m" end
   def blue;           "\033[34m#{self}\033[0m" end
   def magenta;        "\033[35m#{self}\033[0m" end
   def cyan;           "\033[36m#{self}\033[0m" end
@@ -34,7 +34,7 @@ class DemoConsole
       :'7'  => :HereNow,
       :'8'  => :WhereNow,
       :'9'  => :State,
-      :'10'  => :Heartbeat,
+      :'10' => :Heartbeat,
       :'11' => :Time,
       :'12' => :Audit,
       :'13' => :Grant,
@@ -49,7 +49,7 @@ class DemoConsole
   def initialize
 
     welcome
-    
+
     keys_option = select_keys
 
     case keys_option.to_s
@@ -173,7 +173,7 @@ class DemoConsole
         puts '7.  HereNow'
         puts '8.  WhereNow'
         puts '9.  State'
-        puts '10.  Heartbeat'
+        puts '10. Heartbeat'
         puts '11. Time'
         puts '12. Audit'  if @secret_key
         puts '13. Grant'  if @secret_key
@@ -190,7 +190,7 @@ class DemoConsole
 
       case choice
       when :exit
-        exit = true      
+        exit = true
       when :Publish
         options = ask_about(:sync, :message, :channel)
         @pubnub.publish(options)
@@ -371,17 +371,17 @@ class DemoConsole
     puts '
     __________     ___.     _______       ___.       ________       ________
     \______   \__ _\_ |__   \      \  __ _\_ |__     \_____  \     /  _____/
-     |     ___/  |  \ __ \  /   |   \|  |  \ __ \      _(__  <    /   __  \ 
+     |     ___/  |  \ __ \  /   |   \|  |  \ __ \      _(__  <    /   __  \
      |    |   |  |  / \_\ \/    |    \  |  / \_\ \    /       \   \  |__\  \
      |____|   |____/|___  /\____|__  /____/|___  /   /______  / /\ \_____  /
-                        \/         \/          \/           \/  \/       \/ 
+                        \/         \/          \/           \/  \/       \/
 
                                                          Pubnub Demo Console
     '.red
   end
 
   def callback(envelope)
-    puts envelope.message
+    ap envelope.inspect
   end
 
   def connect_callback(data)

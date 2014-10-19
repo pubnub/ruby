@@ -38,8 +38,11 @@ module Pubnub
       envelopes = Array.new
       envelopes << Envelope.new(
           {
-              :message           => parsed_response,
-              :response_message  => parsed_response
+              :parsed_response => parsed_response,
+              :payload => (parsed_response['payload'] if parsed_response),
+              :service => (parsed_response['service'] if parsed_response),
+              :message => (parsed_response['message'] if parsed_response),
+              :status  => (parsed_response['status']  if parsed_response)
           },
           app
       )

@@ -14,18 +14,6 @@ module Pubnub
       Base64.urlsafe_encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha256'), @secret_key.to_s, message)).strip
     end
 
-    def payload(parsed_response)
-      parsed_response['payload'] if parsed_response
-    end
-
-    def message(parsed_response)
-      parsed_response['message'] if parsed_response
-    end
-
-    def channel(_parsed_response)
-      @channel.first
-    end
-
     def parameters(app, signature = false)
       params = super(app)
       params.merge!({ :timestamp => @timestamp })
@@ -51,9 +39,12 @@ module Pubnub
       envelopes = Array.new
       envelopes << Envelope.new(
           {
-              :payload => payload(parsed_response),
-              :message => message(parsed_response),
-              :channel => channel(parsed_response)
+              :parsed_response => parsed_response,
+              :payload => (parsed_response['payload'] if parsed_response),
+              :message => (parsed_response['message'] if parsed_response),
+              :channel => (parsed_response['channel'] if parsed_response),
+              :service => (parsed_response['service'] if parsed_response),
+              :status  => (parsed_response['status']  if parsed_response)
           },
           app
       )

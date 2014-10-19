@@ -12,7 +12,10 @@ module Pubnub
       @event = 'publish'
       @allow_multiple_channels = false
 
-      raise ArgumentError.new(:object => self, :message => ':message argument is too big, encoded uri would excess 32k size limit') if uri(app).to_s.bytesize > 32000
+      $logger.info('Pubnub'){ "Bytesize: #{uri(app).to_s.bytesize}" }
+      $logger.info('Pubnub'){ "Lenght:   #{uri(app).to_s.length}" }
+
+      # raise ArgumentError.new(:object => self, :message => ':message argument is too big, encoded uri would excess 32k size limit') if uri(app).to_s.bytesize > 32000
     end
 
     def validate!
@@ -54,6 +57,7 @@ module Pubnub
       envelopes = Array.new
       envelopes << Envelope.new(
         {
+            :parsed_response => parsed_response,
             :message           => @message,
             :published_message => @message,
             :channel           => @channel,
