@@ -3,7 +3,7 @@
 ##### YOU MUST HAVE A PUBNUB ACCOUNT TO USE THE API.
 ##### http://www.pubnub.com/account
 
-## PubNub Gem version 3.6.6
+## PubNub Gem version 3.6.7
 
 www.pubnub.com - PubNub Real-time Push Service in the Cloud.
 
@@ -144,10 +144,10 @@ envelope = pubnub.grant(channel: :some_channel, http_sync: true)
 Same as Grant.
 
 ### Upgrading from PubNub 3.3.x and Earlier
-PubNub 3.6.6 is NOT compatible with earlier than 3.4 versions of Pubnub Ruby Client.
+PubNub 3.6.7 is NOT compatible with earlier than 3.4 versions of Pubnub Ruby Client.
 
 ### Upgrading from PubNub 3.4 and higher versions
-PubNub 3.6.6 is compatible with 3.4 version.
+PubNub 3.6.7 is compatible with 3.4 version.
 
 #### Asynchronous vs Synchronous Responses
 Every event you will fire could be fired asynchronous or synchonous just by passing 
