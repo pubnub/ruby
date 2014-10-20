@@ -123,7 +123,7 @@ envelope = pubnub.grant(channel: :some_channel, read: 1, write: 1, http_sync: tr
 #  .../cut/...
 #]
 #
-# Old one envelope held just @payload as parsed_response as @message and @channel
+# Old one envelope held just @payload, @channel and parsed_response as @message
 #
 ```
 
