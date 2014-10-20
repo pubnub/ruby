@@ -126,7 +126,7 @@ envelope = pubnub.grant(channel: :some_channel, http_sync: true)
 # @service that holds service name
 #
 # So getting back to example, we will get:
-[#<Pubnub::Envelope:0x007fa38517d740
+#[#<Pubnub::Envelope:0x007fa38517d740
 #  .../cut/...
 #  @message="Success",
 #  @parsed_response=
