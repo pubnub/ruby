@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    pubnub (3.5.14)
-      eventmachine
-      json
-      net-http-persistent
+    pubnub (3.6.7)
+      eventmachine (~> 1.0)
+      json (~> 1.8)
+      net-http-persistent (~> 2.9)
 
 GEM
   remote: https://rubygems.org/

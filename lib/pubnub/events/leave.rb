@@ -41,8 +41,9 @@ module Pubnub
           @left = true
         end unless @skip_remove
       end
-      super
+      envelopes = super
       app.start_subscribe
+      envelopes
     end
 
     private
@@ -68,9 +69,10 @@ module Pubnub
           {
               :parsed_response => parsed_response,
               :action  => (parsed_response['action']   if parsed_response),
-              :message => (parsed_response['message'] if parsed_response),
-              :uuid    => (parsed_response['uuid']    if parsed_response),
-              :status  => (parsed_response['status']  if parsed_response)
+              :message => (parsed_response['message']  if parsed_response),
+              :uuid    => (parsed_response['uuid']     if parsed_response),
+              :status  => (parsed_response['status']   if parsed_response),
+              :service => (parsed_response['service']  if parsed_response)
           },
           app
       )

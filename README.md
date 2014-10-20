@@ -9,6 +9,140 @@ www.pubnub.com - PubNub Real-time Push Service in the Cloud.
 
 The PubNub Network is a blazingly fast Global Messaging Service for building real-time web and mobile apps. Thousands of apps and developers rely on PubNub for delivering human-perceptive real-time experiences that scale to millions of users worldwide. PubNub delivers the infrastructure needed to build amazing Mobile, MMO games, social apps, business collaborative solutions, and more.
 
+# New in 3.6
+
+Made response format compatible across all operations. This may break existing parsing, please be sure to modify your code accordingly.
+
+### Examples of affected operations
+#### WhereNow
+```ruby
+envelope = pubnub.where_now(uuid: :some_uuid, http_sync: true)
+
+# Returns array with single envelope with:
+# @message that holds message from server
+# @parsed_response that holds parsed response form server
+# @payload extracted payload from server response
+# @response that holds unparsed response from server (String)
+# @service that holds service name
+
+# So getting back to example, we will get:
+#[#<Pubnub::Envelope:0x007f9141c24e88
+#  .../cut/...
+#  @message="OK",
+#  @parsed_response={"status"=>200, "message"=>"OK", "payload"=>{"channels"=>[]}, "service"=>"Presence"},
+#  @payload={"channels"=>[]},
+#  @response="{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": []}, \"service\": \"Presence\"}",
+#  @service="Presence",
+#  .../cut/...
+#]
+
+```
+
+#### Leave
+```ruby
+envelope = pubnub.leave(channel: :some_channel, http_sync: true)
+
+# Returns array with single envelope with:
+# @message that holds message from server
+# @parsed_response that holds parsed response form server
+# @response that holds unparsed response from server (String)
+# @service that holds service name
+
+# So getting back to example, we will get:
+#[#<Pubnub::Envelope:0x007fa3850184e0
+#  .../cut/...
+#  @message="OK",
+#  @parsed_response={"status"=>200, "action"=>"leave", "message"=>"OK", "service"=>"Presence"},
+#  @response="{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}",
+#  @service="Presence",
+#  .../cut/...
+#]
+
+```
+
+#### State
+envelope = pubnub.state(channel: :some_channel, uuid: :some_uuid, http_sync: true)
+
+# Returns array with single envelope with:
+# @channel that holds channel name
+# @message that holds message from server
+# @parsed_response that holds parsed response form server
+# @payload extracted payload from server response
+# @response that holds unparsed response from server (String)
+# @service that holds service name
+#
+# So getting back to example, we will get:
+#[#<Pubnub::Envelope:0x007fa38542e098
+#  .../cut/...
+#  @channel="some_channel",
+#  @message="OK",
+#  @parsed_response={"status"=>200, "uuid"=>"some_uuid", "service"=>"Presence", "message"=>"OK", "payload"=>{"one"=>1}, "channel"=>"some_channel"},
+#  @payload={"one"=>1},
+#  @response="{\"status\": 200, \"uuid\": \"some_uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {\"one\": 1}, \"channel\": \"some_channel\"}",
+#  @service="Presence",
+#  .../cut/...
+#]
+
+#### PAM operations
+
+##### Grant
+envelope = pubnub.grant(channel: :some_channel, read: 1, write: 1, http_sync: true)
+
+# Returns array with single envelope with:
+# @message that holds message from server
+# @parsed_response that holds parsed response form server
+# @payload extracted payload from server response
+# @response that holds unparsed response from server (String)
+# @service that holds service name
+#
+# So getting back to example, we will get:
+#[#<Pubnub::Envelope:0x007fa381a4f9f8
+#  .../cut/...
+#  @message="Success",
+#  @parsed_response=
+#   {"status"=>200,
+#    "service"=>"Access Manager",
+#    "message"=>"Success",
+#    "payload"=>{"channels"=>{"some_channel"=>{"r"=>1, "w"=>1}}, "subscribe_key"=>"sub-c", "ttl"=>1440, "level"=>"channel"}},
+#  @payload={"channels"=>{"some_channel"=>{"r"=>1, "w"=>1}}, "subscribe_key"=>"sub-c", "ttl"=>1440, "level"=>"channel"},
+#  @response=
+#   "{\"status\":200,\"service\":\"Access Manager\",\"message\":\"Success\",\"payload\":{\"channels\":{\"some_channel\":{\"r\":1,\"w\":1}},\"subscribe_key\":\"sub-c\",\"ttl\":1440,\"level\":\"channel\"}}",
+#  @service="Access Manager",
+#  .../cut/...
+#]
+
+
+##### Audit
+envelope = pubnub.grant(channel: :some_channel, http_sync: true)
+
+# Returns array with single envelope with:
+# @message that holds message from server
+# @parsed_response that holds parsed response form server
+# @payload extracted payload from server response
+# @response that holds unparsed response from server (String)
+# @service that holds service name
+#
+# So getting back to example, we will get:
+[#<Pubnub::Envelope:0x007fa38517d740
+#  .../cut/...
+#  @message="Success",
+#  @parsed_response=
+#   {"status"=>200,
+#    "service"=>"Access Manager",
+#    "message"=>"Success",
+#    "payload"=>{"channels"=>{"some_channel"=>{"r"=>1, "w"=>1, "ttl"=>1435}}, "subscribe_key"=>"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe", "level"=>"channel"}},
+#  @payload={"channels"=>{"some_channel"=>{"r"=>1, "w"=>1, "ttl"=>1435}}, "subscribe_key"=>"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe", "level"=>"channel"},
+#  @response=
+#   "{\"status\":200,\"service\":\"Access Manager\",\"message\":\"Success\",\"payload\":{\"channels\":{\"some_channel\":{\"r\":1,\"w\":1,\"ttl\":1435}},\"subscribe_key\":\"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe\",\"level\":\"channel\"}}",
+#  @response_message=nil,
+#  @service="Access Manager",
+#  .../cut/...
+#]
+
+##### Revoke
+
+Same as Grant.
+
 ### Upgrading from PubNub 3.3.x and Earlier
 PubNub 3.6.6 is NOT compatible with earlier than 3.4 versions of Pubnub Ruby Client.
 
@@ -261,7 +395,7 @@ pubnub.here_now(
 ```
 
 #### WhereNow
-See where is clien with specific uuid
+See where is client with specific uuid
 
 ```ruby
 p.where_now(
