@@ -61,6 +61,7 @@ envelope = pubnub.leave(channel: :some_channel, http_sync: true)
 ```
 
 #### State
+```ruby
 envelope = pubnub.state(channel: :some_channel, uuid: :some_uuid, http_sync: true)
 
 # Returns array with single envelope with:
@@ -82,10 +83,11 @@ envelope = pubnub.state(channel: :some_channel, uuid: :some_uuid, http_sync: tru
 #  @service="Presence",
 #  .../cut/...
 #]
-
+```
 #### PAM operations
 
 ##### Grant
+```ruby
 envelope = pubnub.grant(channel: :some_channel, read: 1, write: 1, http_sync: true)
 
 # Returns array with single envelope with:
@@ -110,9 +112,10 @@ envelope = pubnub.grant(channel: :some_channel, read: 1, write: 1, http_sync: tr
 #  @service="Access Manager",
 #  .../cut/...
 #]
-
+```
 
 ##### Audit
+```ruby
 envelope = pubnub.grant(channel: :some_channel, http_sync: true)
 
 # Returns array with single envelope with:
@@ -138,7 +141,7 @@ envelope = pubnub.grant(channel: :some_channel, http_sync: true)
 #  @service="Access Manager",
 #  .../cut/...
 #]
-
+```
 ##### Revoke
 
 Same as Grant.
