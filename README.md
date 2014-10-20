@@ -35,6 +35,9 @@ envelope = pubnub.where_now(uuid: :some_uuid, http_sync: true)
 #  @service="Presence",
 #  .../cut/...
 #]
+#
+# Old one envelope held just parsed_response as @message and @response_message
+#
 
 ```
 
@@ -57,6 +60,9 @@ envelope = pubnub.leave(channel: :some_channel, http_sync: true)
 #  @service="Presence",
 #  .../cut/...
 #]
+#
+# Old one envelope held just parsed_response as @message and @response_message
+#
 
 ```
 
@@ -81,8 +87,12 @@ envelope = pubnub.state(channel: :some_channel, uuid: :some_uuid, http_sync: tru
 #  @payload={"one"=>1},
 #  @response="{\"status\": 200, \"uuid\": \"some_uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {\"one\": 1}, \"channel\": \"some_channel\"}",
 #  @service="Presence",
+#  @channel="some_channel",
 #  .../cut/...
 #]
+#
+# Old one envelope held just @payload and @channel
+#
 ```
 #### PAM operations
 
@@ -112,6 +122,9 @@ envelope = pubnub.grant(channel: :some_channel, read: 1, write: 1, http_sync: tr
 #  @service="Access Manager",
 #  .../cut/...
 #]
+#
+# Old one envelope held just @payload as parsed_response as @message and @channel
+#
 ```
 
 ##### Audit
@@ -141,6 +154,9 @@ envelope = pubnub.grant(channel: :some_channel, http_sync: true)
 #  @service="Access Manager",
 #  .../cut/...
 #]
+#
+# Old one envelope held just @payload as parsed_response as @message and @channel
+#
 ```
 ##### Revoke
 

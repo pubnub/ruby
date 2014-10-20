@@ -40,9 +40,9 @@ describe "#here_now" do
                 
                 @after_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '{"uuids":["rubytests"],"occupancy":1}'
+                @response_output.read.should eq "{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [\"rubytest\"], \"occupancy\": 1}"
                 @message_output.seek 0
-                @message_output.read.should eq '{"uuids"=>["rubytests"], "occupancy"=>1}'
+                @message_output.read.should eq 'OK'
               end
             end
           end
@@ -54,9 +54,9 @@ describe "#here_now" do
                 eventually do
                   @after_callback.should eq true
                   @response_output.seek 0
-                  @response_output.read.should eq '{"uuids":["rubytests"],"occupancy":1}'
+                  @response_output.read.should eq "{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [\"rubytest\"], \"occupancy\": 1}"
                   @message_output.seek 0
-                  @message_output.read.should eq '{"uuids"=>["rubytests"], "occupancy"=>1}'
+                  @message_output.read.should eq 'OK'
                 end
               end
             end
@@ -70,7 +70,7 @@ describe "#here_now" do
                 
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '{"uuids":["rubytests"],"occupancy":1}'
+                @response_output.read.should eq "{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [\"rubytest\"], \"occupancy\": 1}"
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
@@ -84,7 +84,7 @@ describe "#here_now" do
                 eventually do
                   @after_error_callback.should eq true
                   @response_output.seek 0
-                  @response_output.read.should eq '{"uuids":["rubytests"],"occupancy":1}'
+                  @response_output.read.should eq "{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [\"rubytest\"], \"occupancy\": 1}"
                   @message_output.seek 0
                   @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end
@@ -166,9 +166,9 @@ describe "#here_now" do
 
                 @after_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '{"uuids":["rubytests"],"occupancy":1}'
+                @response_output.read.should eq "{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [\"rubytest\"], \"occupancy\": 1}"
                 @message_output.seek 0
-                @message_output.read.should eq '{"uuids"=>["rubytests"], "occupancy"=>1}'
+                @message_output.read.should eq 'OK'
               end
             end
           end
@@ -180,9 +180,9 @@ describe "#here_now" do
                 eventually do
                   @after_callback.should eq true
                   @response_output.seek 0
-                  @response_output.read.should eq '{"uuids":["rubytests"],"occupancy":1}'
+                  @response_output.read.should eq "{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [\"rubytest\"], \"occupancy\": 1}"
                   @message_output.seek 0
-                  @message_output.read.should eq '{"uuids"=>["rubytests"], "occupancy"=>1}'
+                  @message_output.read.should eq 'OK'
                 end
               end
             end
@@ -196,7 +196,7 @@ describe "#here_now" do
                 
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '{"uuids":["rubytests"],"occupancy":1}'
+                @response_output.read.should eq "{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [\"rubytest\"], \"occupancy\": 1}"
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
@@ -210,7 +210,7 @@ describe "#here_now" do
                 eventually do
                   @after_error_callback.should eq true
                   @response_output.seek 0
-                  @response_output.read.should eq '{"uuids":["rubytests"],"occupancy":1}'
+                  @response_output.read.should eq "{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [\"rubytest\"], \"occupancy\": 1}"
                   @message_output.seek 0
                   @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end
@@ -295,9 +295,9 @@ describe "#here_now" do
                 
                 @after_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '{"uuids":["rubytests"],"occupancy":1}'
+                @response_output.read.should eq "{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [\"rubytest\"], \"occupancy\": 1}"
                 @message_output.seek 0
-                @message_output.read.should eq '{"uuids"=>["rubytests"], "occupancy"=>1}'
+                @message_output.read.should eq 'OK'
               end
             end
           end
@@ -309,9 +309,9 @@ describe "#here_now" do
                 eventually do
                   @after_callback.should eq true
                   @response_output.seek 0
-                  @response_output.read.should eq '{"uuids":["rubytests"],"occupancy":1}'
+                  @response_output.read.should eq "{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [\"rubytest\"], \"occupancy\": 1}"
                   @message_output.seek 0
-                  @message_output.read.should eq '{"uuids"=>["rubytests"], "occupancy"=>1}'
+                  @message_output.read.should eq 'OK'
                 end
               end
             end
@@ -325,7 +325,7 @@ describe "#here_now" do
 
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '{"uuids":["rubytests"],"occupancy":1}'
+                @response_output.read.should eq "{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [\"rubytest\"], \"occupancy\": 1}"
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
@@ -339,7 +339,7 @@ describe "#here_now" do
                 eventually do
                   @after_error_callback.should eq true
                   @response_output.seek 0
-                  @response_output.read.should eq '{"uuids":["rubytests"],"occupancy":1}'
+                  @response_output.read.should eq "{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [\"rubytest\"], \"occupancy\": 1}"
                   @message_output.seek 0
                   @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end
@@ -423,9 +423,9 @@ describe "#here_now" do
                 
                 @after_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '{"uuids":["rubytests"],"occupancy":1}'
+                @response_output.read.should eq "{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [\"rubytest\"], \"occupancy\": 1}"
                 @message_output.seek 0
-                @message_output.read.should eq '{"uuids"=>["rubytests"], "occupancy"=>1}'
+                @message_output.read.should eq 'OK'
               end
             end
           end
@@ -437,9 +437,9 @@ describe "#here_now" do
                 eventually do
                   @after_callback.should eq true
                   @response_output.seek 0
-                  @response_output.read.should eq '{"uuids":["rubytests"],"occupancy":1}'
+                  @response_output.read.should eq "{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [\"rubytest\"], \"occupancy\": 1}"
                   @message_output.seek 0
-                  @message_output.read.should eq '{"uuids"=>["rubytests"], "occupancy"=>1}'
+                  @message_output.read.should eq 'OK'
                 end
               end
             end
@@ -453,7 +453,7 @@ describe "#here_now" do
                 
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '{"uuids":["rubytests"],"occupancy":1}'
+                @response_output.read.should eq "{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [\"rubytest\"], \"occupancy\": 1}"
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
@@ -467,7 +467,7 @@ describe "#here_now" do
                 eventually do
                   @after_error_callback.should eq true
                   @response_output.seek 0
-                  @response_output.read.should eq '{"uuids":["rubytests"],"occupancy":1}'
+                  @response_output.read.should eq "{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [\"rubytest\"], \"occupancy\": 1}"
                   @message_output.seek 0
                   @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end

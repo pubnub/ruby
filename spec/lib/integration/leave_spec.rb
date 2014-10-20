@@ -39,9 +39,9 @@ describe "#leave" do
                 
                 @after_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '{"action": "leave"}'
+                @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                 @message_output.seek 0
-                @message_output.read.should eq '{"action"=>"leave"}'
+                @message_output.read.should eq 'OK'
               end
             end
           end
@@ -53,9 +53,9 @@ describe "#leave" do
                 eventually do
                   @after_callback.should eq true
                   @response_output.seek 0
-                  @response_output.read.should eq '{"action": "leave"}'
+                  @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                   @message_output.seek 0
-                  @message_output.read.should eq '{"action"=>"leave"}'
+                  @message_output.read.should eq 'OK'
                 end
               end
             end
@@ -69,7 +69,7 @@ describe "#leave" do
                 
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '{"action": "leave"}'
+                @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
@@ -83,7 +83,7 @@ describe "#leave" do
                 eventually do
                   @after_error_callback.should eq true
                   @response_output.seek 0
-                  @response_output.read.should eq '{"action": "leave"}'
+                  @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                   @message_output.seek 0
                   @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end
@@ -165,9 +165,9 @@ describe "#leave" do
                 
                 @after_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '{"action": "leave"}'
+                @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                 @message_output.seek 0
-                @message_output.read.should eq '{"action"=>"leave"}'
+                @message_output.read.should eq 'OK'
               end
             end
           end
@@ -179,9 +179,9 @@ describe "#leave" do
                 eventually do
                   @after_callback.should eq true
                   @response_output.seek 0
-                  @response_output.read.should eq '{"action": "leave"}'
+                  @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                   @message_output.seek 0
-                  @message_output.read.should eq '{"action"=>"leave"}'
+                  @message_output.read.should eq 'OK'
                 end
               end
             end
@@ -195,7 +195,7 @@ describe "#leave" do
                 
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '{"action": "leave"}'
+                @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
@@ -209,7 +209,7 @@ describe "#leave" do
                 eventually do
                   @after_error_callback.should eq true
                   @response_output.seek 0
-                  @response_output.read.should eq '{"action": "leave"}'
+                  @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                   @message_output.seek 0
                   @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end
@@ -294,9 +294,9 @@ describe "#leave" do
                 
                 @after_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '{"action": "leave"}'
+                @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                 @message_output.seek 0
-                @message_output.read.should eq '{"action"=>"leave"}'
+                @message_output.read.should eq 'OK'
               end
             end
           end
@@ -308,9 +308,9 @@ describe "#leave" do
                 eventually do
                   @after_callback.should eq true
                   @response_output.seek 0
-                  @response_output.read.should eq '{"action": "leave"}'
+                  @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                   @message_output.seek 0
-                  @message_output.read.should eq '{"action"=>"leave"}'
+                  @message_output.read.should eq 'OK'
                 end
               end
             end
@@ -324,7 +324,7 @@ describe "#leave" do
                 
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '{"action": "leave"}'
+                @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
@@ -338,7 +338,7 @@ describe "#leave" do
                 eventually do
                   @after_error_callback.should eq true
                   @response_output.seek 0
-                  @response_output.read.should eq '{"action": "leave"}'
+                  @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                   @message_output.seek 0
                   @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end
@@ -420,9 +420,9 @@ describe "#leave" do
                 
                 @after_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '{"action": "leave"}'
+                @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                 @message_output.seek 0
-                @message_output.read.should eq '{"action"=>"leave"}'
+                @message_output.read.should eq 'OK'
               end
             end
           end
@@ -434,9 +434,9 @@ describe "#leave" do
                 eventually do
                   @after_callback.should eq true
                   @response_output.seek 0
-                  @response_output.read.should eq '{"action": "leave"}'
+                  @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                   @message_output.seek 0
-                  @message_output.read.should eq '{"action"=>"leave"}'
+                  @message_output.read.should eq 'OK'
                 end
               end
             end
@@ -450,7 +450,7 @@ describe "#leave" do
                 
                 @after_error_callback.should eq true
                 @response_output.seek 0
-                @response_output.read.should eq '{"action": "leave"}'
+                @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                 @message_output.seek 0
                 @message_output.read.should eq '[0,"Non 2xx server response."]'
               end
@@ -464,7 +464,7 @@ describe "#leave" do
                 eventually do
                   @after_error_callback.should eq true
                   @response_output.seek 0
-                  @response_output.read.should eq '{"action": "leave"}'
+                  @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                   @message_output.seek 0
                   @message_output.read.should eq '[0,"Non 2xx server response."]'
                 end

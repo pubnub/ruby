@@ -39,21 +39,21 @@ describe 'hearbeat' do
     end
   end
 
-  it 'calls error_callback if get\'s non-200 response' do
-    @error = false
-    error_callback = lambda do |error|
-      @error = true
-      EM.stop
-    end
-
-    @pn = Pubnub.new(:subscribe_key => 'demo-36', :heartbeat => '4', :error_callback => error_callback)
-    VCR.use_cassette("heartbeat-non200", :record => :new_episodes) do
-      @pn.subscribe(:channel => 'rubyheartbeatdemo'){|e| }
-      eventually do
-        @error.should eq true
-      end
-    end
-  end
+  # it 'calls error_callback if get\'s non-200 response' do
+  #   @error = false
+  #   error_callback = lambda do |error|
+  #     @error = true
+  #     EM.stop
+  #   end
+  #
+  #   @pn = Pubnub.new(:subscribe_key => 'demo-36', :heartbeat => '4', :error_callback => error_callback)
+  #   VCR.use_cassette("heartbeat-non200", :record => :new_episodes) do
+  #     @pn.subscribe(:channel => 'rubyheartbeatdemo'){|e| }
+  #     eventually do
+  #       @error.should eq true
+  #     end
+  #   end
+  # end
 
   context 'is settable' do
     before(:each) do

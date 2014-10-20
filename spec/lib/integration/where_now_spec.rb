@@ -41,7 +41,7 @@ describe '#where_now' do
                   @response_output.seek 0
                   @response_output.read.should eq '{"status": 200, "message": "OK", "payload": {"channels": []}, "service": "Presence"}'
                   @message_output.seek 0
-                  @message_output.read.should eq '{"status"=>200, "message"=>"OK", "payload"=>{"channels"=>[]}, "service"=>"Presence"}'
+                  @message_output.read.should eq 'OK'
                 end
               end
             end
@@ -56,7 +56,7 @@ describe '#where_now' do
                   @response_output.seek 0
                   @response_output.read.should eq '{"status": 200, "message": "OK", "payload": {"channels": []}, "service": "Presence"}'
                   @message_output.seek 0
-                  @message_output.read.should eq '{"status"=>200, "message"=>"OK", "payload"=>{"channels"=>[]}, "service"=>"Presence"}'
+                  @message_output.read.should eq 'OK'
                 end
               end
             end
@@ -181,7 +181,7 @@ describe '#where_now' do
                   @response_output.seek 0
                   @response_output.read.should eq '{"status": 200, "message": "OK", "payload": {"channels": []}, "service": "Presence"}'
                   @message_output.seek 0
-                  @message_output.read.should eq '{"status"=>200, "message"=>"OK", "payload"=>{"channels"=>[]}, "service"=>"Presence"}'
+                  @message_output.read.should eq 'OK'
                 end
               end
             end
@@ -196,7 +196,7 @@ describe '#where_now' do
                   @response_output.seek 0
                   @response_output.read.should eq '{"status": 200, "message": "OK", "payload": {"channels": []}, "service": "Presence"}'
                   @message_output.seek 0
-                  @message_output.read.should eq '{"status"=>200, "message"=>"OK", "payload"=>{"channels"=>[]}, "service"=>"Presence"}'
+                  @message_output.read.should eq 'OK'
                 end
               end
 

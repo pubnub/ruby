@@ -42,7 +42,7 @@ describe "#here_now" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status": 200, "message": "OK", "service": "Presence", "uuids": [], "occupancy": 0}'
                 @message_output.seek 0
-                @message_output.read.should eq '{"status"=>200, "message"=>"OK", "service"=>"Presence", "uuids"=>[], "occupancy"=>0}'
+                @message_output.read.should eq 'OK'
               end
             end
           end
@@ -56,7 +56,7 @@ describe "#here_now" do
                   @response_output.seek 0
                   @response_output.read.should eq '{"status": 200, "message": "OK", "service": "Presence", "uuids": [], "occupancy": 0}'
                   @message_output.seek 0
-                  @message_output.read.should eq '{"status"=>200, "message"=>"OK", "service"=>"Presence", "uuids"=>[], "occupancy"=>0}'
+                  @message_output.read.should eq 'OK'
                 end
               end
             end
@@ -168,7 +168,7 @@ describe "#here_now" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status": 200, "message": "OK", "service": "Presence", "uuids": [], "occupancy": 0}'
                 @message_output.seek 0
-                @message_output.read.should eq '{"status"=>200, "message"=>"OK", "service"=>"Presence", "uuids"=>[], "occupancy"=>0}'
+                @message_output.read.should eq 'OK'
               end
             end
           end
@@ -182,7 +182,7 @@ describe "#here_now" do
                   @response_output.seek 0
                   @response_output.read.should eq '{"status": 200, "message": "OK", "service": "Presence", "uuids": [], "occupancy": 0}'
                   @message_output.seek 0
-                  @message_output.read.should eq '{"status"=>200, "message"=>"OK", "service"=>"Presence", "uuids"=>[], "occupancy"=>0}'
+                  @message_output.read.should eq 'OK'
                 end
               end
             end
@@ -230,7 +230,7 @@ describe "#here_now" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status": 200, "message": "OK", "service": "Presence", "uuids": [], "occupancy": 0'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+                @message_output.read.should eq "[0,\"Invalid JSON in response.\"]"
               end
             end
           end
@@ -244,7 +244,7 @@ describe "#here_now" do
                   @response_output.seek 0
                   @response_output.read.should eq '{"status": 200, "message": "OK", "service": "Presence", "uuids": [], "occupancy": 0'
                   @message_output.seek 0
-                  @message_output.read.should eq '[0,"Invalid JSON in response."]'
+                  @message_output.read.should eq "[0,\"Invalid JSON in response.\"]"
                 end
               end
             end
@@ -297,7 +297,7 @@ describe "#here_now" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status": 200, "message": "OK", "service": "Presence", "uuids": [], "occupancy": 0}'
                 @message_output.seek 0
-                @message_output.read.should eq '{"status"=>200, "message"=>"OK", "service"=>"Presence", "uuids"=>[], "occupancy"=>0}'
+                @message_output.read.should eq 'OK'
               end
             end
           end
@@ -311,7 +311,7 @@ describe "#here_now" do
                   @response_output.seek 0
                   @response_output.read.should eq '{"status": 200, "message": "OK", "service": "Presence", "uuids": [], "occupancy": 0}'
                   @message_output.seek 0
-                  @message_output.read.should eq '{"status"=>200, "message"=>"OK", "service"=>"Presence", "uuids"=>[], "occupancy"=>0}'
+                  @message_output.read.should eq 'OK'
                 end
               end
             end
@@ -423,7 +423,7 @@ describe "#here_now" do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status": 200, "message": "OK", "service": "Presence", "uuids": [], "occupancy": 0}'
                 @message_output.seek 0
-                @message_output.read.should eq '{"status"=>200, "message"=>"OK", "service"=>"Presence", "uuids"=>[], "occupancy"=>0}'
+                @message_output.read.should eq 'OK'
               end
             end
           end
@@ -437,7 +437,7 @@ describe "#here_now" do
                   @response_output.seek 0
                   @response_output.read.should eq '{"status": 200, "message": "OK", "service": "Presence", "uuids": [], "occupancy": 0}'
                   @message_output.seek 0
-                  @message_output.read.should eq '{"status"=>200, "message"=>"OK", "service"=>"Presence", "uuids"=>[], "occupancy"=>0}'
+                  @message_output.read.should eq 'OK'
                 end
               end
             end

@@ -42,7 +42,7 @@ http_interactions:
       - Pubnub Presence
     body:
       encoding: UTF-8
-      string: '{"uuids":["rubytests"],"occupancy":1}'
+      string: "{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [\"rubytest\"], \"occupancy\": 1}"
     http_version: 
   recorded_at: Wed, 22 Jan 2014 22:36:05 GMT
 recorded_with: VCR 2.8.0
