@@ -133,10 +133,10 @@ envelope = pubnub.grant(channel: :some_channel, http_sync: true)
 #   {"status"=>200,
 #    "service"=>"Access Manager",
 #    "message"=>"Success",
-#    "payload"=>{"channels"=>{"some_channel"=>{"r"=>1, "w"=>1, "ttl"=>1435}}, "subscribe_key"=>"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe", "level"=>"channel"}},
-#  @payload={"channels"=>{"some_channel"=>{"r"=>1, "w"=>1, "ttl"=>1435}}, "subscribe_key"=>"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe", "level"=>"channel"},
+#    "payload"=>{"channels"=>{"some_channel"=>{"r"=>1, "w"=>1, "ttl"=>1435}}, "subscribe_key"=>"sub-c", "level"=>"channel"}},
+#  @payload={"channels"=>{"some_channel"=>{"r"=>1, "w"=>1, "ttl"=>1435}}, "subscribe_key"=>"sub-c", "level"=>"channel"},
 #  @response=
-#   "{\"status\":200,\"service\":\"Access Manager\",\"message\":\"Success\",\"payload\":{\"channels\":{\"some_channel\":{\"r\":1,\"w\":1,\"ttl\":1435}},\"subscribe_key\":\"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe\",\"level\":\"channel\"}}",
+#   "{\"status\":200,\"service\":\"Access Manager\",\"message\":\"Success\",\"payload\":{\"channels\":{\"some_channel\":{\"r\":1,\"w\":1,\"ttl\":1435}},\"subscribe_key\":\"sub-c\",\"level\":\"channel\"}}",
 #  @response_message=nil,
 #  @service="Access Manager",
 #  .../cut/...
