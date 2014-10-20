@@ -1,9 +1,12 @@
 # Please direct all Support Questions and Concerns to Support@PubNub.com
 
+## PubNub Gem version 3.6.7
+
 ##### YOU MUST HAVE A PUBNUB ACCOUNT TO USE THE API.
 ##### http://www.pubnub.com/account
 
 www.pubnub.com - PubNub Real-time Push Service in the Cloud.
+
 
 The PubNub Network is a blazingly fast Global Messaging Service for building real-time web and mobile apps. Thousands of apps and developers rely on PubNub for delivering human-perceptive real-time experiences that scale to millions of users worldwide. PubNub delivers the infrastructure needed to build amazing Mobile, MMO games, social apps, business collaborative solutions, and more.
 
@@ -19,7 +22,7 @@ PubNub 3.6.7 is NOT compatible with earlier than 3.4 versions of Pubnub Ruby Cli
 ### Upgrading from PubNub 3.4 and higher versions
 PubNub 3.6.7 is compatible with 3.4 version.
 
-## PubNub Gem version 3.6.7
+## Important Notice about Blocking vs Non-Blocking Calls
 
 #### Asynchronous vs Synchronous Requests
 Every operation is by default asyncronous. Asynchronous operations will not block your main thread and will be fired within a new thread.
