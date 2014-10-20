@@ -3,8 +3,6 @@
 ##### YOU MUST HAVE A PUBNUB ACCOUNT TO USE THE API.
 ##### http://www.pubnub.com/account
 
-## PubNub Gem version 3.6.7
-
 www.pubnub.com - PubNub Real-time Push Service in the Cloud.
 
 The PubNub Network is a blazingly fast Global Messaging Service for building real-time web and mobile apps. Thousands of apps and developers rely on PubNub for delivering human-perceptive real-time experiences that scale to millions of users worldwide. PubNub delivers the infrastructure needed to build amazing Mobile, MMO games, social apps, business collaborative solutions, and more.
@@ -13,7 +11,7 @@ The PubNub Network is a blazingly fast Global Messaging Service for building rea
 
 We've made the response format compatible across all operations. This may break existing parsing of whereNow, leave, state, and PAM responses. So if you are monitoring these operation responses, please be sure to modify your code accordingly.
 
-Examples of affected operations can be found here.
+Examples of affected operations can be found [here](3.5_to_3.6_upgrade_notes.md).
 
 ### Upgrading from PubNub 3.3.x and Earlier
 PubNub 3.6.7 is NOT compatible with earlier than 3.4 versions of Pubnub Ruby Client.
@@ -21,12 +19,18 @@ PubNub 3.6.7 is NOT compatible with earlier than 3.4 versions of Pubnub Ruby Cli
 ### Upgrading from PubNub 3.4 and higher versions
 PubNub 3.6.7 is compatible with 3.4 version.
 
-#### Asynchronous vs Synchronous Responses
-Every event you will fire could be fired asynchronous or synchonous just by passing 
+## PubNub Gem version 3.6.7
+
+#### Asynchronous vs Synchronous Requests
+Every operation is by default asyncronous. Asynchronous operations will not block your main thread and will be fired within a new thread.
+
+This can cause issues under certain situations, depending on your implementation. To work around this, you can force an operation to run syncronously (block) via the :http_sync option:
+
 ```ruby
-:http_sync
+:http_sync => true
 ```
-set to true to that event. Asynchronous events will not block your main thread and will be fired withing new thread.
+
+Unless otherwise specified, this option is default implied false (all calls by default will be async).
 
 #### Message Handling: callback, block, return
 Results are provided via block, callback, and return, depending on how you structure the call. Callback will be fired for every message that will event get in response. Synchornous events will return array of envelopes (if you passed callback to sychronous event it will be called too!).
@@ -132,7 +136,6 @@ envelopes.each do |envelope|
 end
 ```
 
-
 #### The Envelope Object
 The callback (or block) will receive the message(s) in the form of an envelope hash. An envelope will contain the following keys:
 
@@ -148,7 +151,7 @@ The callback (or block) will receive the message(s) in the form of an envelope h
 
 Don't confuse the **message** with the **response**. In a given callback cycle, the **response** will always be the same, as its the raw server response. It may consist of one or more messages.
 
-Internally, the block or callback is iterates over the response array, similar to:
+Internally, the block or callback iterates over the response array, similar to:
 
 ```ruby
 envelopes.each do |envelope|
@@ -156,7 +159,7 @@ envelopes.each do |envelope|
 end
 ```
 
-In a given callback cycle, the **envelope** will be the currently iterated envelopes item of the response.
+In a given callback cycle, the **envelope** will be the current element of the response array.
 
 ### Simple Usage Examples
 
@@ -278,7 +281,7 @@ p.where_now(
 
 #### UUID
 
-Session-UUID is automatic, so you will probably not end up ever using this. But if you need a UUID...
+UUID is set in the initializer. A unique one is created, unless you specify one explicitly. To retrieve the current UUID:
 
 ```ruby
 pubnub.uuid
@@ -296,18 +299,27 @@ pubnub.time("callback" => @my_callback)
 
 ### PAM
 
-Developers can grant fine-grained Publish/Subscribe permissions for their real-time apps and data, without hosting authentication services Access control can be granted at various levels.
+Developers can grant/revoke/audit fine-grained permissions for their real-time apps and data at various levels.
 
 Envelopes returned by PAM events have additional :service and :payload keys.
 
 #### PAM Usage Examples
 
-######Notice!
-
-Whenever you're using PAM event you can pass `presence` key instead of channel.
+When you issue a PAM operation, you can pass the `presence` key, the 'channel' key, or both. 
 
 ```ruby
+# Will grant :r and :w permissions to demo-pnpres channel
 pubnub.grant(:presence => :demo) do |envelope|
+  puts envelope.message
+end
+
+# Will grant :r and :w permissions to demo channel
+pubnub.grant(:channel => :demo) do |envelope|
+  puts envelope.message
+end
+
+# Will grant :r and :w permissions to demo and demo-pnpres channels
+pubnub.grant(:presence => :demo, :channel => :demo) do |envelope|
   puts envelope.message
 end
 ```
@@ -339,7 +351,7 @@ end
 ```
 
 ##### Revoke
-Revokes right to read and write
+Revokes right to read and write. Same as granting r:0 w:0.
 
 ```ruby
 pubnub.revoke(:channel => :forbidden) do |envelope|
@@ -350,7 +362,6 @@ pubnub.grant(:channel => :forbidden, :auth_key => :godzilla) do |envelope|
   puts envelope.payload
 end
 ```
-
 
 ### Advanced Usage Examples
 
@@ -379,7 +390,8 @@ You can pass your custom logger as :logger key while creating new Pubnub instanc
 ##### Publish
 ```ruby
 # Message could be any object that have .to_json method
-# You do not need to jsonify message before sending
+# You do not need to jsonify message before sending!
+
 # This time publish event will block main thread until callback will finish as we set :http_sync to true
 pubnub.publish(
   :messsage => message,
@@ -458,7 +470,7 @@ pubnub.paged_history(
 ##### Presence
 Presence works exactly the same way as subscribe, it just adds '-pnpres' to channel name.
 ```ruby
-pubnub.subscribe(
+pubnub.presence(
   :channel => :mars
 ) do |envelope|
   show_in_roster(envelope.uuid)
@@ -485,7 +497,10 @@ pubnub.here_now { |envelope| puts envelope.msg['channels'] }
 
 ##### Heartbeat
 
-You can set/update heartbeat rate in seconds while creating Pubnub object
+Heartbeat (expressed in seconds) is used to signal to the server that the client is still online. If the client disconnects without a leave event, others observing presence on the channel will not notice that this client has left the channel until a maximum of heartbeat interval seconds.
+
+You normally will never need to touch this value, unless your Ruby client resides on a poor or mobile connection.
+
 ```ruby
 pubnub = Pubnub.new(:subscribe_key => 'demo', :heartbeat => 60)
 ```
@@ -501,11 +516,6 @@ Read it via heartbeat and get_heartbeat()
 pubnub.heartbeat
 pubnub.get_heartbeat
 ```
-
-Heartbeat is used to check if client is still online,
-if client would disconnect without leave event, and there will be lack of heartbeat in given interval
-server will fire leave event for disconnected client uuid.
-
 
 #### Pam
 PAM allows you to grant read and write access basing on channels and auth_keys.
@@ -530,7 +540,7 @@ pubnub.grant(:channel => 'hidden_system', :read => true, :write => false, :auth_
 ```
 
 ##### Revoke
-Works like grant but revokes all previously given privilages
+Revoke is equal to grant with w false, read false
 ```ruby
 # Channel level
 pubnub.revoke(:channel => 'hidden_system'){ |envelope| puts envelope.msg }
