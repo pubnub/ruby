@@ -16,7 +16,7 @@ module Pubnub
     attr_reader :env
     attr_accessor :single_event_connections_pool, :subscribe_event_connections_pool, :uuid, :async_events
 
-    EVENTS = %w(publish subscribe presence leave history here_now audit grant revoke time heartbeat where_now state set_state)
+    EVENTS = %w(publish subscribe presence leave history here_now audit grant revoke time heartbeat where_now state set_state channel_registration)
     VERSION = Pubnub::VERSION
 
     EVENTS.each do |event_name|
