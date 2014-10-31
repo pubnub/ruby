@@ -38,9 +38,17 @@ module Pubnub
             'v2',
             'presence',
             'sub-key',
-            @subscribe_key
+            @subscribe_key,
+            ('channel' if @channel_group),
+            (',' if @channel_group)
         ].join('/')
       end
+    end
+
+    def parameters(app)
+      parameters = super(app)
+      parameters.merge!({'channel-group' => format_channel_group(@channel_group, false).join(',')}) unless @channel_group.blank?
+      parameters
     end
 
     def format_envelopes(response, app, error)
@@ -50,11 +58,10 @@ module Pubnub
       envelopes << Envelope.new(
           {
               :parsed_response => parsed_response,
-              :occupancy       => (parsed_response['occupancy'] if parsed_response),
-              :service         => (parsed_response['service']   if parsed_response),
-              :message         => (parsed_response['message']   if parsed_response),
-              :uuid            => (parsed_response['uuids']     if parsed_response),
-              :status          => (parsed_response['status']    if parsed_response)
+              :payload => (parsed_response['payload'] if parsed_response),
+              :service => (parsed_response['service'] if parsed_response),
+              :message => (parsed_response['message'] if parsed_response),
+              :status  => (parsed_response['status']  if parsed_response)
           },
           app
       )

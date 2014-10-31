@@ -16,9 +16,10 @@ module Pubnub
 
     def parameters(app, signature = false)
       params = super(app)
-      params.merge!({ :timestamp => @timestamp })
-      params.merge!({ :channel   => @channel.join(',') }) unless @channel.first.blank?
-      params.merge!({ :signature => signature(app) }) unless signature
+      params.merge!({ :timestamp     => @timestamp })
+      params.merge!({ :channel_group => @channel_group.join(',') }) unless @channel_group.blank?
+      params.merge!({ :channel       => @channel.join(',') })       unless @channel.first.blank?
+      params.merge!({ :signature     => signature(app) })           unless signature
       params
     end
 

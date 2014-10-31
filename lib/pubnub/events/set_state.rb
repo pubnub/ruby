@@ -25,15 +25,16 @@ module Pubnub
       raise 'You can set state only as hash' unless (@state.is_a?(Hash) || @state.is_a?(NilClass))
 
       # check channel/channels
-      raise ArgumentError.new(:object => self, :message => 'SetState requires :channel or :channels argument') unless @channel
-      raise ArgumentError.new(:object => self, :message => 'Invalid channel(s) format! Should be type of: String, Symbol, or Array of both') unless valid_channel?
+      # raise ArgumentError.new(:object => self, :message => 'SetState requires :channel or :channels argument') unless @channel
+      # raise ArgumentError.new(:object => self, :message => 'Invalid channel(s) format! Should be type of: String, Symbol, or Array of both') unless valid_channel?
     end
 
     private
 
     def parameters(app)
       parameters = super(app)
-      parameters.merge!({:state => encode_state(@state)})
+      parameters.merge!({ :state => encode_state(@state)})
+      parameters.merge!({ :channel_group => format_channel_group(@channel_group).join(',') }) unless @channel_group.blank?
       parameters
     end
 
@@ -44,7 +45,7 @@ module Pubnub
           'sub-key',
           @subscribe_key,
           'channel',
-          @channel,
+          channels_for_url(@channel),
           'uuid',
           app.env[:uuid],
           'data'

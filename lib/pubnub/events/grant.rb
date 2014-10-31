@@ -12,9 +12,10 @@ module Pubnub
       @allow_multiple_channels = true
       @timestamp = current_time
 
-      @write = options[:write]
-      @read  = options[:read]
-      @ttl   = options[:ttl]   || Pubnub::Configuration::DEFAULT_TTL
+      @write  = options[:write]
+      @read   = options[:read]
+      @manage = options[:manage]
+      @ttl    = options[:ttl]   || Pubnub::Configuration::DEFAULT_TTL
     end
 
     def validate!
@@ -34,15 +35,17 @@ module Pubnub
     private
 
     def parameters(app, signature = false)
-      write = [0, '0', false].include?(@write) ? 0 : 1
-      read =  [0, '0', false].include?(@read) ? 0 : 1
+      write  = [0, '0', false].include?(@write)  ? 0 : 1
+      read   = [0, '0', false].include?(@read)   ? 0 : 1
+      manage = [0, '0', false].include?(@manage) ? 0 : 1 unless @channel_group.blank?
 
       {
           :timestamp => @timestamp,
           :w         => write,
           :r         => read,
+          :m         => manage,
           :ttl       => @ttl
-      }.merge(super(app, signature))
+      }.delete_if {|k, v| v.nil? }.merge(super(app, signature))
     end
 
     def path(app)
@@ -54,6 +57,5 @@ module Pubnub
           @subscribe_key
       ].join('/')
     end
-
   end
 end

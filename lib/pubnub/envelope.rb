@@ -3,6 +3,7 @@ module Pubnub
 
     INSTANCE_VARIABLES = [
         :channel,
+        :channel_group,
         :error,
         :error_message,
         :first,

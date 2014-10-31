@@ -16,11 +16,17 @@ module Pubnub
       super
 
       # check channel/channels
-      raise ArgumentError.new(:object => self, :message => 'State requires :channel argument') unless @channel
-      raise ArgumentError.new(:object => self, :message => 'Invalid channel format! Should be type of: String or Symbol') unless @channel.is_a?(String) or @channel.is_a?(Symbol)
+      # raise ArgumentError.new(:object => self, :message => 'State requires :channel argument') unless @channel
+      # raise ArgumentError.new(:object => self, :message => 'Invalid channel format! Should be type of: String or Symbol') unless @channel.is_a?(String) or @channel.is_a?(Symbol)
     end
 
     private
+
+    def parameters(app)
+      parameters = super(app)
+      parameters.merge!({ :channel_group => format_channel_group(@channel_group).join(',') }) unless @channel_group.blank?
+      parameters
+    end
 
     def path(app)
       '/' + [
@@ -29,7 +35,7 @@ module Pubnub
           'sub_key',
           @subscribe_key,
           'channel',
-          @channel,
+          channels_for_url(@channel),
           'uuid',
           @uuid_looking_for
       ].join('/')

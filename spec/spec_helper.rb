@@ -28,7 +28,6 @@ WebMock.disable_net_connect!
 RSpec.configure do |config|
   config.include AsyncHelper
   config.mock_framework = :rspec
-  config.color_enabled = true
   config.tty = true
 end
 

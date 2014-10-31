@@ -19,8 +19,8 @@ module Pubnub
       super
 
       # check channel
-      raise ArgumentError.new(:object => self, :message => 'Leave requires :channel argument') unless @channel
-      raise ArgumentError.new(:object => self, :message => 'Invalid channel format! Should be type of: String, Symbol, or Array of both') unless valid_channel?
+      # raise ArgumentError.new(:object => self, :message => 'Leave requires :channel argument') unless @channel
+      # raise ArgumentError.new(:object => self, :message => 'Invalid channel format! Should be type of: String, Symbol, or Array of both') unless valid_channel?
     end
 
     def fire(app)
@@ -35,12 +35,24 @@ module Pubnub
             $logger.debug('Pubnub'){"#{app.env[:subscriptions][@origin].get_channels.to_s}.include? #{channel}"}
             raise ArgumentError.new(:object => self, :message => 'You cannot leave channel that is not subscribed') unless app.env[:subscriptions][@origin].get_channels.include?(channel)
           end
+
+          @channel_group.each do |channel_group|
+            $logger.debug('Pubnub'){"#{app.env[:subscriptions][@origin].get_channel_groups.to_s}.include? #{channel_group}"}
+            raise ArgumentError.new(:object => self, :message => 'You cannot leave channel group that is not subscribed') unless app.env[:subscriptions][@origin].get_channel_groups.include?(channel_group)
+          end
         end unless @force
+
         @channel.each do |channel|
           app.env[:subscriptions][@origin].remove_channel(channel, app) if app.env[:subscriptions][@origin]
           @left = true
         end unless @skip_remove
+
+        @channel_group.each do |channel_group|
+          app.env[:subscriptions][@origin].remove_channel_group(channel_group, app) if app.env[:subscriptions][@origin]
+          @left = true
+        end unless @skip_remove
       end
+
       envelopes = super
       app.start_subscribe
       envelopes
@@ -49,13 +61,19 @@ module Pubnub
     private
 
     def path(app)
+      if @channel == [''] || @channel.blank?
+        channel = [',']
+      else
+        channel = @channel
+      end
+
       '/' + [
           'v2',
           'presence',
           'sub-key',
           @subscribe_key,
           'channel',
-          @channel.join(','),
+          channel.join(','),
           'leave'
       ].join('/')
     end

@@ -19,13 +19,19 @@ module Pubnub
     private
 
     def path(app)
+      if @channel == [''] || @channel.blank?
+        channel = [',']
+      else
+        channel = @channel
+      end
+
       '/' + [
           'v2',
           'presence',
           'sub-key',
           @subscribe_key,
           'channel',
-          @channel.join(','),
+          channel.join(','),
           'heartbeat'
       ].join('/')
     end

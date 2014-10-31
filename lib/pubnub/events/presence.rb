@@ -8,7 +8,8 @@ module Pubnub
 
     def initialize(options, app)
       super
-      @channel = @channel.map {|c| c + '-pnpres'}
+      @channel       = @channel.map       {|c| c + '-pnpres'}
+      @channel_group = @channel_group.map {|c| c + '-pnpres'}
       @event = 'presence'
       @allow_multiple_channels = true
 
@@ -23,8 +24,8 @@ module Pubnub
       super
 
       # Check channels
-      raise ArgumentError.new(:object => self, :message => 'Presence requires :channel or :channels argument') unless @channel
-      raise ArgumentError.new(:object => self, :message => 'Invalid channel(s) format! Should be type of: String, Symbol, or Array of both') unless valid_channel?
+      # raise ArgumentError.new(:object => self, :message => 'Presence requires :channel, :channels or :channel_group argument')               unless @channel || @channel_group
+      # raise ArgumentError.new(:object => self, :message => 'Invalid channel(s) format! Should be type of: String, Symbol, or Array of both') unless valid_channel?
 
     end
 

@@ -6,97 +6,142 @@ module Pubnub
     include Pubnub::Validator
 
     def initialize(options, app)
-      @namespace = options[:namespace]
-      @group     = options[:group]
-      @channel   = options[:channel]
-      @action    = options[:action]
-      @cloak     = options[:cloak]
+      @group  = options[:group]
+      @action = options[:action]
+      @cloak  = options[:cloak]
       super
 
-      # We need to set empty channel [""] as nil
-      @channel.delete_if(&:blank?)
-      @channel = nil if @channel.blank?
+      @channel = nil if @channel.size == 1 && @channel.first.empty?
+      format_group if @group
 
-      @allow_multiple_channels = true
       @event = 'channel_registration'
-    end
-
-    def validate!
-      super
-      # Possible combination
-      # [:get] -> # Get all namespaces
-      # [namespace, :get] -> # Get all channel group names
-      # [namespace, group, :get] -> Get all channels for a given channel group
-      # [namespace, group, channels, :add] -> Add channel(s) to group
-      # [namespace, group, channels, :remove] -> Remove channel(s) from group
-      # [namespace, group, :remove] -> Remove group (and all channels)
-      # [namespace, :remove] -> Remove namespace (and all group names and all channels)
-
-      case @action
-        when :namespaces
-
-        when :groups
-
-        when :get
-          if !@channel.blank? || (@namespace.blank? || !@group.blank?) || !@cloak.blank?
-            fail ArgumentError.new(:object => self, :message => 'Given options for ChannelRegistration:get are invalid'), 'Given options for ChannelRegistration:get are invalid'
-          end
-
-        when :add
-          if @namespace.blank? || @group.blank? || @channel.blank?
-            fail ArgumentError.new(:object => self, :message => 'Given options for ChannelRegistration:add are invalid'), 'Given options for ChannelRegistration:add are invalid'
-          end
-
-        when :remove
-          if !@cloak.blank? || @namespace.blank? || (!@channel.blank? && @group.blank?)
-            fail ArgumentError.new(:object => self, :message => 'Given options for ChannelRegistration:remove are invalid'), 'Given options for ChannelRegistration:add are invalid'
-          end
-
-        when :set_cloak
-          if @cloak.blank? || @namespace.blank? || @group.blank? || !@channel
-            fail ArgumentError.new(:object => self, :message => 'Given options for ChannelRegistration:remove are invalid'), 'Given options for ChannelRegistration:remove are invalid'
-          end
-
-        else
-          fail ArgumentError.new(:object => self, :message => 'ChannelRegistration requires proper :action key'), 'ChannelRegistration requires proper :action key'
-
-      end
-
     end
 
     private
 
+    def format_group
+      @namespace_id, @group_id = @group.split(':')
+    end
+
     def parameters(app)
       parameters = super(app)
-      parameters.merge!({cloak:  @cloak})   if @cloak
-      parameters.merge!({add:    @channel}) if @action == :add    && @channel
-      parameters.merge!({remove: @channel}) if @action == :remove && @channel
+      parameters.merge!({cloak:  @cloak})             if @cloak
+      parameters.merge!({add:    @channel.join(',')}) if @action == :add    && @channel
+      parameters.merge!({remove: @channel.join(',')}) if @action == :remove && @channel
       parameters
     end
 
     def path(app)
+
+      # Per Sub-key/namespace channel registration
+
+      # # Get all namespaces
+      # GET /v1/channel-registration/sub-key/<sub_key>/namespace
+      # OK
+
+      # # Get all channel group names
+      # GET /v1/channel-registration/sub-key/<sub_key>/namespace/<namespace_id>/channel-group
+      # OK
+
+      # # Get all channels for a given channel group
+      # GET /v1/channel-registration/sub-key/<sub_key>/namespace/<namespace_id>/channel-group/<group_name>
+      # OK
+
+      # # Set the source cloak flag (defaults to True)
+      # GET /v1/channel-registration/sub-key/<sub_key>/namespace/<namespace_id>/channel-group/<group_name>?cloak=[True|False|1|0]
+      # OK
+
+      # # Add channel(s) to group
+      # GET /v1/channel-registration/sub-key/<sub_key>/namespace/<namespace_id>/channel-group/<group_name>?add=ch1,ch2
+      # OK
+
+      # # Can add channels and set source cloak flag simultaneously
+      # GET /v1/channel-registration/sub-key/<sub_key>/namespace/<namespace_id>/channel-group/<group_name>?add=ch1,ch2&cloak=False
+      # OK
+
+      # # Remove channel(s) from group
+      # GET /v1/channel-registration/sub-key/<sub_key>/namespace/<namespace_id>/channel-group/<group_name>?remove=ch1,ch2
+      # OK
+
+      # # Remove group (and all channels)
+      # GET /v1/channel-registration/sub-key/<sub_key>/namespace/<namespace_id>/channel-group/<group_name>/remove
+      # OK
+
+      # # Remove namespace (and all group names and all channels)
+      # GET /v1/channel-registration/sub-key/<sub_key>/namespace/<namespace_id>/remove
+      # OK
+
+      # Per Sub-key channel registration
+
+      # # Get all channel group names
+      # GET /v1/channel-registration/sub-key/<sub_key>/channel-group
+      # OK
+
+      # # Get all channels for a group
+      # GET /v1/channel-registration/sub-key/<sub_key>/channel-group/<group_name>
+      # OK
+
+      # # Set the source cloak flag (defaults to True)
+      # GET /v1/channel-registration/sub-key/<sub_key>/channel-group/<group_name>?cloak=[True|False|1|0]
+      # OK
+
+      # # Add channel(s) to a group
+      # GET /v1/channel-registration/sub-key/<sub_key>/channel-group/<group_name>?add=ch1,ch2
+      # OK
+
+      # # Remove channel(s) from a group
+      # GET /v1/channel-registration/sub-key/<sub_key>/channel-group/<group_name>?remove=ch1,ch2
+      # OK
+
+      # # Remove a group (and all channels)
+      # GET /v1/channel-registration/sub-key/<sub_key>/channel-group/<group_name>/remove
+      # OK
+
       head = "/v1/channel-registration/sub-key/#{@subscribe_key}/"
       body = ''
       case @action
-        when :namespaces
-
-        when :groups
-
+        when :list_groups
+          body << [
+            'channel-group'
+          ].join('/')
+        when :list_namespaces
+          body << [
+            'namespace'
+          ].join('/')
+          
         when :get
           body << [
-            ('namespace' if @namespace),
-            @namespace,
-            ('channel-group' if (@namespace || @group)),
-            @group
-          ].delete_if(&:blank?).join('/')
+            ('namespace' unless @namespace_id.blank?),
+            @namespace_id,
+            'channel-group',
+            @group_id
+          ].delete_if { |e| e.blank? }.join('/')
+
         when :add
           body << [
+              ('namespace' unless @namespace_id.blank?),
+              @namespace_id,
+              'channel-group',
+              @group_id
+          ].delete_if { |e| e.blank? }.join('/')
 
-          ].join('/')
         when :remove
-          body << [].join('/')
+          body << [
+              ('namespace' unless @namespace_id.blank?),
+              @namespace_id,
+              ('channel-group' unless @group_id.blank?),
+              @group_id,
+              ('remove' if @channel.nil?)
+          ].delete_if { |e| e.blank? }.join('/')
+
         when :set_cloak
-          body << [].join('/')
+          body << [
+              ('namespace' unless @namespace_id.blank?),
+              @namespace_id,
+              'channel-group',
+              @group_id
+          ].delete_if { |e| e.blank? }.join('/')
+
         else
           fail ArgumentError.new(:object => self, :message => 'ChannelRegistration requires proper :action key'), 'ChannelRegistration requires proper :action key'
       end
