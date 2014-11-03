@@ -1,6 +1,6 @@
 # Please direct all Support Questions and Concerns to Support@PubNub.com
 
-## PubNub Gem version 3.6.7
+## PubNub Gem version 3.7.0beta0
 
 ##### YOU MUST HAVE A PUBNUB ACCOUNT TO USE THE API.
 ##### http://www.pubnub.com/account
@@ -17,17 +17,17 @@ We've made the response format compatible across all operations. This may break 
 Examples of affected operations can be found [here](3.5_to_3.6_upgrade_notes.md).
 
 ### Upgrading from PubNub 3.3.x and Earlier
-PubNub 3.6.7 is NOT compatible with earlier than 3.4 versions of Pubnub Ruby Client.
+PubNub 3.7.0beta0 is NOT compatible with earlier than 3.4 versions of Pubnub Ruby Client.
 
 ### Upgrading from PubNub 3.4 and higher versions
-PubNub 3.6.7 is compatible with 3.4 version.
+PubNub 3.7.0beta0 is compatible with 3.4 version.
 
 ## Important Notice about Blocking vs Non-Blocking Calls
 
 #### Asynchronous vs Synchronous Requests
-Every operation is by default asyncronous. Asynchronous operations will not block your main thread and will be fired within a new thread.
+Every operation is by default asynchronous. Asynchronous operations will not block your main thread and will be fired within a new thread.
 
-This can cause issues under certain situations, depending on your implementation. To work around this, you can force an operation to run syncronously (block) via the :http_sync option:
+This can cause issues under certain situations, depending on your implementation. To work around this, you can force an operation to run synchronously (block) via the :http_sync option:
 
 ```ruby
 :http_sync => true
@@ -36,7 +36,7 @@ This can cause issues under certain situations, depending on your implementation
 Unless otherwise specified, this option is default implied false (all calls by default will be async).
 
 #### Message Handling: callback, block, return
-Results are provided via block, callback, and return, depending on how you structure the call. Callback will be fired for every message that will event get in response. Synchornous events will return array of envelopes (if you passed callback to sychronous event it will be called too!).
+Results are provided via block, callback, and return, depending on how you structure the call. Callback will be fired for every message that will event get in response. Synchronous events will return array of envelopes (if you passed callback to sychronous event it will be called too!).
 
 ### Code Examples
 
@@ -207,7 +207,9 @@ pubnub.subscribe(
 ```
 
 #### Leave
-Unsubscribes from given channel and fires leave event. You need to be subscribed (only async counts) to channel that you want to leave
+Unsubscribes from given channel (`:channel`) or channel group (`:group`) and 
+fires leave event. You need to be subscribed (only async counts) to channel that 
+You want to leave.
 
 ```ruby
 pubnub.subscribe(
@@ -262,12 +264,27 @@ pubnub.presence(
 )
 ```
 
+```ruby
+pubnub.presence(
+    :group    => 'foo:',
+    :callback => @my_callback
+)
+```
+
 #### HereNow
-See who is "here now" in a channel at this very moment.
+See who is "here now" in a channel (:channel) or channel group (:group) at this
+very moment.
 
 ```ruby
 pubnub.here_now(
     :channel  => channel,
+    :callback => @my_callback
+)
+```
+
+```ruby
+pubnub.here_now(
+    :group    => channel_group,
     :callback => @my_callback
 )
 ```
@@ -300,6 +317,95 @@ Get the current PubNub time. This is great to use as a "PubNub Ping"
 pubnub.time("callback" => @my_callback)
 ```
 
+### Channel Groups
+
+Channel grouping is new feature introduced in Pubnub 3.7. It allows to group
+channels into channel-groups and channel-groups into namespaces. For example you
+can add `weather` and `sport` channel to `news` channel group, and `news` and
+`local_ads` to `tv` namespace. Namespaces and channel groups are described as 
+`namespace:channel_group` e.g. `tv:news`. All channel-groups in namespace are 
+described as `namespace:` e.g. `tv:`. Non-namespaced channel groups are desrbed 
+as `:non-namespaced-channel-group` eg. `:global_alerts`.
+
+All channel groups specific operations can be issued with
+`#channel_registration` method.
+
+#### Getting info
+
+##### Getting all namespaces
+
+```ruby
+# Response envelope will hold info as hash in payload attribute. 
+pubnub.channel_registration(action: :list_namespaces, http_sync: true)
+```
+
+##### Getting all non-namespaced channel groups
+
+```ruby
+# Response envelope will hold info as hash in payload attribute.
+pubnub.channel_registration(action: :list_groups, http_sync: true)
+```
+
+##### Getting all channel groups in given namespace
+
+```ruby
+# Response envelope will hold info as hash in payload attribute.
+pubnub.channel_registration(action: :get, group: 'foo:', http_sync: true)
+```
+
+##### Getting all channels in channel group
+
+```ruby
+# Response envelope will hold info as hash in payload attribute.
+pubnub.channel_registration(action: :get, group: 'foo:foo', http_sync: true)
+```
+
+#### Adding
+
+##### Add channel to namespaced channel group
+
+```ruby
+pubnub.channel_registration(action: :add, group: 'foo:new_group', channel: :bot, http_sync: true)
+```
+
+##### Add channel to non-namespaced channel group
+
+```ruby
+pubnub.channel_registration(action: :add, group: ':new_group', channel: :bot, http_sync: true)
+```
+
+#### Removing
+
+##### Remove namespace and all channel groups
+
+```ruby
+pubnub.channel_registration(action: :remove, group: 'foo:', http_sync: true)
+```
+
+##### Remove namespaced channel group
+
+```ruby
+pubnub.channel_registration(action: :remove, group: 'foo:cg', http_sync: true)
+```
+
+##### Remove non-namespaced channel group
+
+```ruby
+pubnub.channel_registration(action: :remove, group: ':cg', http_sync: true)
+```
+
+##### Remove channel from namespaced channel group
+
+```ruby
+pubnub.channel_registration(action: :remove, group: 'foo:cg', channel: :to_remove, http_sync: true)
+```
+
+##### Remove channel from non-namespaced channel group
+
+```ruby
+pubnub.channel_registration(action: :remove, group: ':cg', channel: :to_remove, http_sync: true)
+```
+
 ### PAM
 
 Developers can grant/revoke/audit fine-grained permissions for their real-time apps and data at various levels.
@@ -325,6 +431,15 @@ end
 pubnub.grant(:presence => :demo, :channel => :demo) do |envelope|
   puts envelope.message
 end
+
+# For channel groups, all above work.
+# But channel groups additionally have :manage option.
+
+# Will grant :r, :w and :m permissions to foo:foo
+pubnub.grant(:group => 'foo:foo') do |envelope|
+  puts envelope.message
+end
+
 ```
 
 ##### Audit
@@ -431,6 +546,19 @@ pubnub.subscribe(
   puts envelope.message['demage']
 end
 ```
+
+###### Channel groups
+You can subscribe to channel group same way as You're subscribing to channels.
+
+```ruby
+pubnub.subscribe(group: 'foo:foo', channel: :ping_3, callback: callback)
+```
+
+Response envelopes will hold channel and channel_group values. So, if You want
+to subscribe to channel group and your callback need to know where are envelopes
+from, You can check it using `envelope.channel_group`. Of course You can
+subscribe to channel group and plain channel at once.
+
 
 ##### History
 History returns :count messages from given channel.
@@ -572,6 +700,10 @@ pubnub.set_state(:state => {:key => :value}, :channel => :my_channel, :http_sync
 # All you need to know is just uuid and channel
 pubnub.state(:uuid => 'uuid_client_that_i_am_searching_for', :http_sync => true)
 ```
+
+#### State and channel groups
+State works fine with channel groups too! Just pass the `:group` key when
+setting or do it while subscribing.
 
 ### Other
 
