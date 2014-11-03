@@ -1,3 +1,6 @@
+3.7.0 Release
+. Added channel groups features
+
 3.6.7 Release
 . Envelopes formatting changes
 
