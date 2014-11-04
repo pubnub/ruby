@@ -217,7 +217,8 @@ module Pubnub
 
       empty_if_blank = {
           :auth => @auth_key,
-          :uuid => app.env[:uuid]
+          :uuid => app.env[:uuid],
+          :heartbeat => app.env[:heartbeat]
       }
 
       empty_if_blank.delete_if {|k, v| v.blank? }
