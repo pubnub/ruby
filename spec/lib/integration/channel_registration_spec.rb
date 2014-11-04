@@ -124,6 +124,24 @@ describe '#channel_registration' do
           expect(envelopes.first.error).to eq false
         end
       end
+
+      it 'removes cg from ns' do
+        VCR.use_cassette('cg/remove-cg-from-ns-csv', :record => :once) do
+          envelopes = pubnub_client.channel_registration(action: :remove, group: 'foo:foo', http_sync: true)
+          expect(envelopes.first.status).to eq 200
+          expect(envelopes.first.message).to eq 'OK'
+          expect(envelopes.first.error).to eq false
+        end
+      end
+
+      it 'removes ns' do
+        VCR.use_cassette('cg/remove-ns-csv', :record => :once) do
+          envelopes = pubnub_client.channel_registration(action: :remove, group: 'foo:', http_sync: true)
+          expect(envelopes.first.status).to eq 200
+          expect(envelopes.first.message).to eq 'OK'
+          expect(envelopes.first.error).to eq false
+        end
+      end
     end
   end
 
@@ -265,6 +283,28 @@ describe '#channel_registration' do
       it 'removes channel from cg if given channel csv' do
         VCR.use_cassette('cg/remove-c-as-csv', :record => :once) do
           pubnub_client.channel_registration(action: :remove, group: 'foo:foo', channel: 'one,two', http_sync: false, callback: callback)
+          eventually do
+            expect(@envelopes.first.status).to eq 200
+            expect(@envelopes.first.message).to eq 'OK'
+            expect(@envelopes.first.error).to eq false
+          end
+        end
+      end
+
+      it 'removes cg from ns' do
+        VCR.use_cassette('cg/remove-cg-from-ns-csv', :record => :once) do
+          pubnub_client.channel_registration(action: :remove, group: 'foo:foo', http_sync: false, callback: callback)
+          eventually do
+            expect(@envelopes.first.status).to eq 200
+            expect(@envelopes.first.message).to eq 'OK'
+            expect(@envelopes.first.error).to eq false
+          end
+        end
+      end
+
+      it 'removes ns' do
+        VCR.use_cassette('cg/remove-ns-csv', :record => :once) do
+          pubnub_client.channel_registration(action: :remove, group: 'foo:', http_sync: false, callback: callback)
           eventually do
             expect(@envelopes.first.status).to eq 200
             expect(@envelopes.first.message).to eq 'OK'

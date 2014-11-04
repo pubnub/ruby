@@ -26,8 +26,8 @@ module Pubnub
     def parameters(app)
       parameters = super(app)
       parameters.merge!({cloak:  @cloak})             if @cloak
-      parameters.merge!({add:    @channel.join(',')}) if @action == :add    && @channel
-      parameters.merge!({remove: @channel.join(',')}) if @action == :remove && @channel
+      parameters.merge!({add:    @channel.join(',')}) if @action == :add    && !@channel.blank?
+      parameters.merge!({remove: @channel.join(',')}) if @action == :remove && !@channel.blank?
       parameters
     end
 
@@ -131,7 +131,7 @@ module Pubnub
               @namespace_id,
               ('channel-group' unless @group_id.blank?),
               @group_id,
-              ('remove' if @channel.nil?)
+              ('remove' if @channel.blank?)
           ].delete_if { |e| e.blank? }.join('/')
 
         when :set_cloak
