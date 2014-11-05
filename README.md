@@ -543,7 +543,7 @@ pubnub.subscribe(
 ) do |envelope|
   puts envelope.message['attacker']
   puts envelope.message['defender']
-  puts envelope.message['demage']
+  puts envelope.message['damage']
 end
 ```
 
