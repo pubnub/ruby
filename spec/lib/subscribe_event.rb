@@ -13,4 +13,11 @@ describe 'Pubnub::SubscribeEvent' do
       end
     end
   end
+
+
+  it 'should encode the URI correctly' do
+    @pn = Pubnub.new(:subscribe_key => 'demo-36', :publish_key => 'demo-36')
+    @pn.subscribe(:http_sync => true, :channel => 'demo:demo'){|e| }
+  end
+
 end
