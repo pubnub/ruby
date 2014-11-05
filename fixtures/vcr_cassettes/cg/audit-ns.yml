@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/v1/auth/audit/sub-key/sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe?channel_group=foo:&pnsdk=PubNub-Ruby/3.7.0beta0&signature=N3GzhxXRMRa1ENvlyfTyrbCGv0WKctB0-PeLaBYzYDs=&timestamp=1415191768&uuid=c89b3ad8-1a7a-415f-b3ea-1b26eea22507
+    uri: http://pubsub.pubnub.com/v1/auth/audit/sub-key/sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe?channel_group=foo:&pnsdk=PubNub-Ruby/3.7.0beta0&signature=sig&timestamp=1234567890&uuid=c89b3ad8-1a7a-415f-b3ea-1b26eea22507
     body:
       encoding: US-ASCII
       string: ''

@@ -35,12 +35,54 @@ describe 'channel groups specific events' do
     end
   end
 
+  context '#leave' do
+    before :each do
+      @pubnub_client = Pubnub.new(subscribe_key: 'demo', publish_key: 'demo')
+    end
+
+    it 'leaves cg' do
+      VCR.use_cassette('cg/leave-cg', :record => :once) do
+        @pubnub_client.subscribe(channel: :bot, group: 'foo:foo', callback: callback)
+        sleep(1)
+        @pubnub_client.leave(channel: :bot, group: 'foo:foo', callback: callback)
+        sleep(1)
+        expect(@pubnub_client.env[:subscriptions].empty?).to eq true
+      end
+    end
+
+    it 'leaves cg and channel' do
+      VCR.use_cassette('cg/leave-cg-c', :record => :once) do
+        @pubnub_client.subscribe(group: 'foo:foo', callback: callback)
+        sleep(1)
+        @pubnub_client.leave(group: 'foo:foo', callback: callback)
+        sleep(1)
+        expect(@pubnub_client.env[:subscriptions].empty?).to eq true
+      end
+    end
+  end
+
+  context '#here_now' do
+    before :each do
+      @pubnub_client = Pubnub.new(subscribe_key: 'demo', publish_key: 'demo')
+    end
+
+    it 'can check cg' do
+      VCR.use_cassette('cg/here_now-cg', :record => :once) do
+        envelopes = @pubnub_client.here_now(group: 'foo:', http_sync: true)
+        expect(envelopes.first.message).to eq 'OK'
+
+      end
+    end
+  end
+
   context 'PAM' do
 
     before :each do
       @pubnub_client = Pubnub.new(:subscribe_key => 'sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe', :publish_key => 'pub-c-15d6fd3c-05de-4abc-8eba-6595a441959d', :secret_key => 'sec-c-ZWYwMGJiZTYtMTQwMC00NDQ5LWI0NmEtMzZiM2M5NThlOTJh')
       Pubnub::Grant.any_instance.stub(:current_time).and_return 1234567890
       Pubnub::Grant.any_instance.stub(:signature).and_return 'sig'
+      Pubnub::Audit.any_instance.stub(:current_time).and_return 1234567890
+      Pubnub::Audit.any_instance.stub(:signature).and_return 'sig'
     end
 
     context '#grant' do
