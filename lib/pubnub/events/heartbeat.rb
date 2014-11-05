@@ -38,8 +38,9 @@ module Pubnub
 
     def parameters(app)
       parameters = super(app)
-      parameters.merge!({:state => encode_state(app.env[:state][@origin])}) if app.env[:state] && app.env[:state][@origin]
-      parameters.merge!({:heartbeat => app.env[:heartbeat]})                if app.env[:heartbeat]
+      parameters.merge!({:state => encode_state(app.env[:state][@origin])})                        if app.env[:state] && app.env[:state][@origin]
+      parameters.merge!({:heartbeat => app.env[:heartbeat]})                                       if app.env[:heartbeat]
+      parameters.merge!({'channel-group' => format_channel_group(@channel_group, true).join(',')}) unless @channel_group.blank?
       parameters
     end
 
