@@ -202,7 +202,9 @@ module Pubnub
 
     def uri(app)
       $logger.debug('Pubnub'){"#{self.class}#uri #{[origin(app), path(app), '?', params_hash_to_url_params(parameters(app))].join}"}
-      URI [origin(app), path(app), '?', params_hash_to_url_params(parameters(app))].join
+      uri = URI [origin(app), path(app), '?', params_hash_to_url_params(parameters(app))].join
+      puts uri.to_s
+      uri
     end
 
     def origin(app)

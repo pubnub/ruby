@@ -46,6 +46,12 @@ describe 'Pubnub::Formatter' do
       encoded = @formater.encode_channel('Some Channel with+special+chars=[];!@#$%^&*()')
       encoded.should eq 'Some%20Channel%20with%2Bspecial%2Bchars%3D%5B%5D%3B%21%40%23%24%25%5E%26*%28%29'
     end
+
+    it 'encodes channel with colon' do
+      encoded = @formater.encode_channel('test1:test2')
+      encoded.should eq 'test1%3Atest2'
+    end
+
   end
 
 end
