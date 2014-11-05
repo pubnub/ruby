@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/v1/auth/grant/sub-key/sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe?channel_group=foo:&m=1&pnsdk=PubNub-Ruby/3.7.0beta0&r=1&signature=sig&timestamp=1234567890&ttl=1440&uuid=c9c2b3c9-5a9b-4f9d-8b55-49c3eefe2dbf&w=1
+    uri: http://pubsub.pubnub.com/v1/auth/grant/sub-key/sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe?channel-group=foo:&m=1&pnsdk=PubNub-Ruby/3.7.0beta0&r=1&signature=sig&timestamp=1234567890&ttl=1440&uuid=a22ad367-6b45-419d-ae17-6ae02bfeb59f&w=1
     body:
       encoding: US-ASCII
       string: ''
@@ -23,11 +23,11 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 05 Nov 2014 12:20:11 GMT
+      - Wed, 05 Nov 2014 15:33:39 GMT
       Content-Type:
       - text/javascript; charset=UTF-8
       Content-Length:
-      - '180'
+      - '215'
       Connection:
       - keep-alive
       Cache-Control:
@@ -38,7 +38,7 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '{"status":200,"service":"Access Manager","message":"Success","payload":{"level":"subkey","m":1,"r":1,"w":1,"ttl":1440,"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe"}}'
+      string: '{"status":200,"service":"Access Manager","message":"Success","payload":{"channel-groups":{"foo:":{"r":1,"m":1,"w":1}},"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe","ttl":1440,"level":"channel-group"}}'
     http_version: 
-  recorded_at: Wed, 05 Nov 2014 12:20:17 GMT
+  recorded_at: Wed, 05 Nov 2014 15:33:39 GMT
 recorded_with: VCR 2.9.2

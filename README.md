@@ -693,6 +693,9 @@ pubnub.subscribe(:channel => 'my_channel', :state => {:my_channel => {:key => :v
 # Using event #set_state
 pubnub.set_state(:state => {:key => :value}, :channel => :my_channel, :http_sync => true)
 
+# or with channel groups
+pubnub.set_state(:state => {:key => :value}, :group => 'foo:foo', :http_sync => true)
+
 ```
 
 #### Getting state

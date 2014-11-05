@@ -15,6 +15,10 @@ module Pubnub
         app.env[:state][@origin][channel.to_s] = @state
       end
 
+      @channel_group.each do |channel|
+        app.env[:state][@origin][channel.to_s] = @state
+      end
+
       @allow_multiple_channels = true
       @event = 'set_state'
     end
@@ -34,7 +38,7 @@ module Pubnub
     def parameters(app)
       parameters = super(app)
       parameters.merge!({ :state => encode_state(@state)})
-      parameters.merge!({ :channel_group => format_channel_group(@channel_group).join(',') }) unless @channel_group.blank?
+      parameters.merge!({ 'channel-group' => format_channel_group(@channel_group).join(',') }) unless @channel_group.blank?
       parameters
     end
 

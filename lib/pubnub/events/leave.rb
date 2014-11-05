@@ -62,7 +62,7 @@ module Pubnub
 
     def parameters(app)
       params = super(app)
-      params.merge!({ :channel_group => @channel_group.join(',') }) unless @channel_group.blank?
+      params.merge!({ 'channel-group' => @channel_group.join(',') }) unless @channel_group.blank?
       params
     end
 
