@@ -222,6 +222,10 @@ module Pubnub
     alias_method :session_uuid=, :set_uuid
     alias_method :uuid=, :set_uuid
 
+    def uuid
+      @env[:uuid]
+    end
+
     def set_auth_key(auth_key)
       leave_all unless @env[:subscriptions].empty?
       @env[:auth_key] = auth_key
