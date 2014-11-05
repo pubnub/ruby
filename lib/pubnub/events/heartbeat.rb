@@ -39,6 +39,7 @@ module Pubnub
     def parameters(app)
       parameters = super(app)
       parameters.merge!({:state => encode_state(app.env[:state][@origin])}) if app.env[:state] && app.env[:state][@origin]
+      parameters.merge!({:heartbeat => app.env[:heartbeat]})                if app.env[:heartbeat]
       parameters
     end
 
