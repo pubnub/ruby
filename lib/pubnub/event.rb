@@ -25,7 +25,7 @@ module Pubnub
       validate!
       @original_channel = format_channels(@channel, false)
       @channel          = format_channels(@channel)
-      @channel_group    = format_channel_group(options[:channel_group], false)
+      @channel_group    = format_channel_group(options[:group], false)
       $logger.debug('Pubnub'){"Event#initialize | Initialized #{self.class.to_s}"}
     end
 
@@ -409,7 +409,7 @@ module Pubnub
     def parameters(app)
       parameters = super(app)
       parameters.merge!({:heartbeat => app.env[:heartbeat]}) if app.env[:heartbeat]
-      parameters.merge!({'channel-group' => format_channel_group(@channel_group).join(',')}) unless @channel_group.blank?
+      parameters.merge!({'channel-group' => format_channel_group(@channel_group, true).join(',')}) unless @channel_group.blank?
       parameters.merge!({:state => encode_state(app.env[:state][@origin])}) if app.env[:state] && app.env[:state][@origin]
       parameters
     end
