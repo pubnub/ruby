@@ -433,7 +433,7 @@ module Pubnub
     end
 
     def path(app)
-      path = URI.escape("/subscribe/#{@subscribe_key}/#{channels_for_url(@channel)}/0/#{@timetoken}").gsub(/\?/,'%3F')
+      path = "/subscribe/#{@subscribe_key}/#{channels_for_url(@channel)}/0/#{@timetoken}".gsub(/\?/,'%3F')
     end
 
     def timetoken(parsed_response)
