@@ -35,10 +35,11 @@ class DemoConsole
       :'8'  => :WhereNow,
       :'9'  => :State,
       :'10' => :Heartbeat,
-      :'11' => :Time,
-      :'12' => :Audit,
-      :'13' => :Grant,
-      :'14' => :Revoke,
+      :'11' => :ChannelRegistration,
+      :'12' => :Time,
+      :'13' => :Audit,
+      :'14' => :Grant,
+      :'15' => :Revoke,
       :A    => :set_uuid,
       :B    => :set_auth_key,
       :C    => :show_state,
@@ -174,10 +175,11 @@ class DemoConsole
         puts '8.  WhereNow'
         puts '9.  State'
         puts '10. Heartbeat'
-        puts '11. Time'
-        puts '12. Audit'  if @secret_key
-        puts '13. Grant'  if @secret_key
-        puts '14. Revoke' if @secret_key
+        puts '11. ChannelRegistration'
+        puts '12. Time'
+        puts '13. Audit'  if @secret_key
+        puts '14. Grant'  if @secret_key
+        puts '15. Revoke' if @secret_key
         puts "\nPubnub::Client interaction:".green
         puts 'A. Set UUID'
         puts 'B. Set auth_key'
@@ -195,13 +197,13 @@ class DemoConsole
         options = ask_about(:sync, :message, :channel)
         @pubnub.publish(options)
       when :Subscribe
-        options = ask_about(:sync, :channel)
+        options = ask_about(:sync, :channel, :group)
         @pubnub.subscribe(options)
       when :Presence
-        options = ask_about(:sync, :channel)
+        options = ask_about(:sync, :channel, :group)
         @pubnub.presence(options)
       when :Leave
-        options = ask_about(:sync, :channel)
+        options = ask_about(:sync, :channel, :group)
         @pubnub.leave(options)
       when :History
         options = ask_about(:sync, :channel, :reverse, :history_start, :history_end, :count)
@@ -210,7 +212,7 @@ class DemoConsole
         options = ask_about(:sync, :channel, :reverse, :history_start, :history_end, :limit, :page)
         @pubnub.paged_history(options)
       when :HereNow
-        options = ask_about(:sync, :optional_channel)
+        options = ask_about(:sync, :optional_channel, :group)
         @pubnub.here_now(options)
       when :WhereNow
         options = ask_about(:sync, :uuid)
@@ -221,17 +223,20 @@ class DemoConsole
       when :Heartbeat
         options = ask_about(:sync, :heartbeat, :channel)
         @pubnub.heartbeat(options)
+      when :ChannelRegistration
+        options = ask_about(:sync, :action, :group, :channel)
+        @pubnub.channel_registration(options)
       when :Time
         options = ask_about(:sync)
         @pubnub.time(options)
       when :Audit
-        options = ask_about(:sync, :channel, :subscribe_key)
+        options = ask_about(:sync, :channel, :group, :auth_key)
         @pubnub.audit(options)
       when :Grant
-        options = ask_about(:sync, :channel, :subscribe_key, :read, :write)
+        options = ask_about(:sync, :channel, :group, :auth_key, :read, :write, :manage)
         @pubnub.grant(options)
       when :Revoke
-        options = ask_about(:sync, :channel, :subscribe_key, :read, :write)
+        options = ask_about(:sync, :channel, :group, :auth_key, :read, :write, :manage)
         @pubnub.revoke(options)
       when :set_uuid
         print 'Your new uuid: '
@@ -266,6 +271,31 @@ class DemoConsole
         print 'Should event be async? '
         options[:http_sync] = !acceptance
 
+      when :action
+        while options[:action].blank?
+          puts 'Specify action:'
+          puts '1. :list_namespaces'
+          puts '2. :list_groups'
+          puts '3. :get'
+          puts '4. :add'
+          puts '5. :remove'
+          puts 'Action: '
+          case gets.chomp!.to_i
+            when 1
+              options[:action] = :list_namespaces
+            when 2
+              options[:action] = :list_groups
+            when 3
+              options[:action] = :get
+            when 4
+              options[:action] = :add
+            when 5
+              options[:action] = :remove
+            else
+              options[:action] = nil
+          end
+        end
+
       when :message
         while options[:message].blank?
           puts 'Write below message to publish:'
@@ -273,10 +303,12 @@ class DemoConsole
         end
 
       when :channel
-        while options[:channel].blank?
-          print 'Specify channel(s): '
-          options[:channel] = gets.chomp!
-        end
+        print 'Specify channel(s): '
+        options[:channel] = gets.chomp!
+
+        when :group
+          print 'Specify channel group(s): '
+          options[:group] = gets.chomp!
 
       when :optional_channel
           print 'Specify channel(s) or leave blank for all channels (global here now): '
@@ -329,10 +361,10 @@ class DemoConsole
           options[:heartbeat] = gets.chomp!
         end
 
-      when :subscribe_key
-        while options[:subscribe_key].blank?
-          print 'Enter subscribe key: '
-          options[:subscribe_key] = gets.chomp!
+      when :auth_key
+        while options[:auth_key].blank?
+          print 'Enter auth key: '
+          options[:auth_key] = gets.chomp!
         end
 
       when :read
@@ -345,6 +377,12 @@ class DemoConsole
         while options[:write].blank? && options[:write] != false
           print 'Write? '
           options[:write] = acceptance
+        end
+
+      when :manage
+        while options[:manage].blank? && options[:manage] != false
+          print 'Manage? '
+          options[:manage] = acceptance
         end
 
       when :limit
