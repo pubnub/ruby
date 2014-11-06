@@ -55,7 +55,6 @@ my_logger = Logger.new(STDOUT)
 pubnub = Pubnub.new(
     :subscribe_key    => 'demo',
     :publish_key      => 'demo',
-    :origin           => origin,
     :error_callback   => lambda { |msg|
       puts "Error callback says: #{msg.inspect}"
     },
