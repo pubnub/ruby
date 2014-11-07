@@ -313,6 +313,15 @@ module Pubnub
               app.env[:subscriptions][@origin].add_channel(channel, app)
             end
 
+            @channel_group.each do |cg|
+              if app.env[:subscriptions][@origin].get_channel_groups.include?(cg)
+                @channel_group.delete(cg)
+                $logger.error('Pubnub'){"Already subscribed to channel group #{cg}, you have to leave that channel first"}
+              else
+                app.env[:subscriptions][@origin].add_channel_group(cg, app)
+              end
+            end
+
             if @channel.empty?
               false
             else
@@ -372,6 +381,11 @@ module Pubnub
 
     def set_timetoken(timetoken)
       @timetoken = timetoken
+    end
+
+    def add_channel_group(cg, app)
+      @channel_group << cg
+      $logger.debug('Pubnub'){'SubscribeEvent#add_channel | Added channel'}
     end
 
     def add_channel(channel, app)
