@@ -323,8 +323,8 @@ channels into channel-groups and channel-groups into namespaces. For example you
 can add `weather` and `sport` channel to `news` channel group, and `news` and
 `local_ads` to `tv` namespace. Namespaces and channel groups are described as 
 `namespace:channel_group` e.g. `tv:news`. All channel-groups in namespace are 
-described as `namespace:` e.g. `tv:`. Non-namespaced channel groups are desrbed 
-as `:non-namespaced-channel-group` eg. `:global_alerts`.
+described as `namespace:` e.g. `tv:`. Non-namespaced channel groups are
+described as `non-namespaced-channel-group` eg. `global_alerts`.
 
 All channel groups specific operations can be issued with
 `#channel_registration` method.
@@ -370,7 +370,7 @@ pubnub.channel_registration(action: :add, group: 'foo:new_group', channel: :bot,
 ##### Add channel to non-namespaced channel group
 
 ```ruby
-pubnub.channel_registration(action: :add, group: ':new_group', channel: :bot, http_sync: true)
+pubnub.channel_registration(action: :add, group: 'new_group', channel: :bot, http_sync: true)
 ```
 
 #### Removing
@@ -390,7 +390,7 @@ pubnub.channel_registration(action: :remove, group: 'foo:cg', http_sync: true)
 ##### Remove non-namespaced channel group
 
 ```ruby
-pubnub.channel_registration(action: :remove, group: ':cg', http_sync: true)
+pubnub.channel_registration(action: :remove, group: 'cg', http_sync: true)
 ```
 
 ##### Remove channel from namespaced channel group
@@ -402,7 +402,7 @@ pubnub.channel_registration(action: :remove, group: 'foo:cg', channel: :to_remov
 ##### Remove channel from non-namespaced channel group
 
 ```ruby
-pubnub.channel_registration(action: :remove, group: ':cg', channel: :to_remove, http_sync: true)
+pubnub.channel_registration(action: :remove, group: 'cg', channel: :to_remove, http_sync: true)
 ```
 
 ### PAM
