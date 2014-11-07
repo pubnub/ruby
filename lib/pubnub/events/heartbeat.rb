@@ -27,14 +27,14 @@ module Pubnub
       raise ArgumentError.new(:object => self, :message => 'Callback parameter is required while using async heartbeat') if !@http_sync && @callback.blank?
 
       # Channel group
-      if @channel_group.class == Array
-        @channel_group.each do |cg|
-          raise ArgumentError.new(:object => self, :message => ':group argument has to be in format "ns:cg", "ns:" or ":cg"') if cg.count(':') != 1
-        end
-      elsif !@channel_group.blank?
-        number_of_groups = @channel_group.to_s.split(',').size # In case it will be given as csv
-        raise ArgumentError.new(:object => self, :message => ':group argument has to be in format "ns:cg", "ns:" or ":cg"') if @channel_group.to_s.count(':') != number_of_groups
-      end
+      # if @channel_group.class == Array
+      #   @channel_group.each do |cg|
+      #     raise ArgumentError.new(:object => self, :message => ':group argument has to be in format "ns:cg", "ns:" or ":cg"') if cg.count(':') != 1
+      #   end
+      # elsif !@channel_group.blank?
+      #   number_of_groups = @channel_group.to_s.split(',').size # In case it will be given as csv
+      #   raise ArgumentError.new(:object => self, :message => ':group argument has to be in format "ns:cg", "ns:" or ":cg"') if @channel_group.to_s.count(':') != number_of_groups
+      # end
     end
 
     def path(app)

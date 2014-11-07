@@ -26,16 +26,21 @@ module Pubnub
       # Channel group
       if @channel_group.class == Array
         @channel_group.each do |cg|
-          raise ArgumentError.new(:object => self, :message => ':group argument has to be in format "ns:cg", "ns:" or ":cg"') if cg.count(':') != 1
+          # raise ArgumentError.new(:object => self, :message => ':group argument has to be in format "ns:cg", "ns:" or ":cg"') if cg.count(':') != 1
         end
       elsif !@channel_group.blank?
         number_of_groups = @channel_group.to_s.split(',').size # In case it will be given as csv
-        raise ArgumentError.new(:object => self, :message => ':group argument has to be in format "ns:cg", "ns:" or ":cg"') if @channel_group.to_s.count(':') != number_of_groups
+        # raise ArgumentError.new(:object => self, :message => ':group argument has to be in format "ns:cg", "ns:" or ":cg"') if @channel_group.to_s.count(':') != number_of_groups
       end
     end
 
     def format_group
-      @namespace_id, @group_id = @group.split(':')
+      if @group.to_s.count(':') > 0
+        @namespace_id, @group_id = @group.to_s.split(':')
+      else
+        @namespace_id = nil
+        @group_id     = @group.to_s
+      end
     end
 
     def parameters(app)

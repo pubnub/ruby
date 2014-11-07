@@ -37,7 +37,7 @@ module Pubnub
         raise ArgumentError.new(:object => self, :message => 'Invalid channel group format! Should be type of: String, Symbol') unless [String, Symbol, NilClass].include?(@channel_group.class)
 
         # check channel_group
-        raise ArgumentError.new(:object => self, :message => ':group argument has to be in format "ns:cg", "ns:" or ":cg"') if @channel_group.count(':') != 1
+        # raise ArgumentError.new(:object => self, :message => ':group argument has to be in format "ns:cg", "ns:" or ":cg"') if @channel_group.count(':') != 1
       end
     end
 
