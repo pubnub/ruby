@@ -7,6 +7,7 @@ module Pubnub
       @app              = app
       @origin           = options[:origin]           || app.env[:origin]
       @channel          = options[:channel]
+      @channel_group    = options[:group]
       @message          = options[:message]
       @http_sync        = options[:http_sync]
       @callback         = options[:callback]
@@ -20,12 +21,16 @@ module Pubnub
       @publish_key      = app.env[:publish_key]
       @subscribe_key    = app.env[:subscribe_key]
 
+      @write  = options[:write]
+      @read   = options[:read]
+      @manage = options[:manage]
+
       @response         = nil
       @timetoken        = app.env[:timetoken] || 0
       validate!
-      @original_channel = format_channels(@channel, false)
       @channel          = format_channels(@channel)
       @channel_group    = format_channel_group(options[:group], false)
+      @original_channel = format_channels(@channel, false)
       $logger.debug('Pubnub'){"Event#initialize | Initialized #{self.class.to_s}"}
     end
 

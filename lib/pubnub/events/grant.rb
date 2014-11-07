@@ -12,9 +12,6 @@ module Pubnub
       @allow_multiple_channels = true
       @timestamp = current_time
 
-      @write  = options[:write]
-      @read   = options[:read]
-      @manage = options[:manage]
       @ttl    = options[:ttl]   || Pubnub::Configuration::DEFAULT_TTL
     end
 
@@ -26,9 +23,20 @@ module Pubnub
 
       raise ArgumentError.new(:object => self, :message => 'write parameter accept only one of: 1, "1", 0, "0", true, false values') unless [nil, 1, '1', 0, '0', true, false].include?(@write)
       raise ArgumentError.new(:object => self, :message => 'read parameter accept only: 1, "1", 0, "0", true, false values') unless [nil, 1, '1', 0, '0', true, false].include?(@read)
+      raise ArgumentError.new(:object => self, :message => 'manage parameter accept only: 1, "1", 0, "0", true, false values') unless [nil, 1, '1', 0, '0', true, false].include?(@manage)
 
       raise ArgumentError.new(:object => self, :message => 'ttl parameter is too big, max value is: 525600') unless @ttl.to_i <= 525600 || @ttl.nil?
       raise ArgumentError.new(:object => self, :message => 'ttl parameter can\'t be negative')               unless @ttl.to_i >= 0      || @ttl.nil?
+
+      # Channel group
+      if @channel_group.class == Array
+        @channel_group.each do |cg|
+          raise ArgumentError.new(:object => self, :message => ':group argument has to be in format "ns:cg", "ns:" or ":cg"') if cg.count(':') != 1
+        end
+      elsif !@channel_group.blank?
+        number_of_groups = @channel_group.to_s.split(',').size # In case it will be given as csv
+        raise ArgumentError.new(:object => self, :message => ':group argument has to be in format "ns:cg", "ns:" or ":cg"') if @channel_group.to_s.count(':') != number_of_groups
+      end
 
     end
 

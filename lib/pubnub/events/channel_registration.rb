@@ -19,6 +19,21 @@ module Pubnub
 
     private
 
+    def validate!
+      # Callback
+      raise ArgumentError.new(:object => self, :message => 'Callback parameter is required while using async channel_registration') if !@http_sync && @callback.blank?
+
+      # Channel group
+      if @channel_group.class == Array
+        @channel_group.each do |cg|
+          raise ArgumentError.new(:object => self, :message => ':group argument has to be in format "ns:cg", "ns:" or ":cg"') if cg.count(':') != 1
+        end
+      elsif !@channel_group.blank?
+        number_of_groups = @channel_group.to_s.split(',').size # In case it will be given as csv
+        raise ArgumentError.new(:object => self, :message => ':group argument has to be in format "ns:cg", "ns:" or ":cg"') if @channel_group.to_s.count(':') != number_of_groups
+      end
+    end
+
     def format_group
       @namespace_id, @group_id = @group.split(':')
     end
@@ -32,71 +47,6 @@ module Pubnub
     end
 
     def path(app)
-
-      # Per Sub-key/namespace channel registration
-
-      # # Get all namespaces
-      # GET /v1/channel-registration/sub-key/<sub_key>/namespace
-      # OK
-
-      # # Get all channel group names
-      # GET /v1/channel-registration/sub-key/<sub_key>/namespace/<namespace_id>/channel-group
-      # OK
-
-      # # Get all channels for a given channel group
-      # GET /v1/channel-registration/sub-key/<sub_key>/namespace/<namespace_id>/channel-group/<group_name>
-      # OK
-
-      # # Set the source cloak flag (defaults to True)
-      # GET /v1/channel-registration/sub-key/<sub_key>/namespace/<namespace_id>/channel-group/<group_name>?cloak=[True|False|1|0]
-      # OK
-
-      # # Add channel(s) to group
-      # GET /v1/channel-registration/sub-key/<sub_key>/namespace/<namespace_id>/channel-group/<group_name>?add=ch1,ch2
-      # OK
-
-      # # Can add channels and set source cloak flag simultaneously
-      # GET /v1/channel-registration/sub-key/<sub_key>/namespace/<namespace_id>/channel-group/<group_name>?add=ch1,ch2&cloak=False
-      # OK
-
-      # # Remove channel(s) from group
-      # GET /v1/channel-registration/sub-key/<sub_key>/namespace/<namespace_id>/channel-group/<group_name>?remove=ch1,ch2
-      # OK
-
-      # # Remove group (and all channels)
-      # GET /v1/channel-registration/sub-key/<sub_key>/namespace/<namespace_id>/channel-group/<group_name>/remove
-      # OK
-
-      # # Remove namespace (and all group names and all channels)
-      # GET /v1/channel-registration/sub-key/<sub_key>/namespace/<namespace_id>/remove
-      # OK
-
-      # Per Sub-key channel registration
-
-      # # Get all channel group names
-      # GET /v1/channel-registration/sub-key/<sub_key>/channel-group
-      # OK
-
-      # # Get all channels for a group
-      # GET /v1/channel-registration/sub-key/<sub_key>/channel-group/<group_name>
-      # OK
-
-      # # Set the source cloak flag (defaults to True)
-      # GET /v1/channel-registration/sub-key/<sub_key>/channel-group/<group_name>?cloak=[True|False|1|0]
-      # OK
-
-      # # Add channel(s) to a group
-      # GET /v1/channel-registration/sub-key/<sub_key>/channel-group/<group_name>?add=ch1,ch2
-      # OK
-
-      # # Remove channel(s) from a group
-      # GET /v1/channel-registration/sub-key/<sub_key>/channel-group/<group_name>?remove=ch1,ch2
-      # OK
-
-      # # Remove a group (and all channels)
-      # GET /v1/channel-registration/sub-key/<sub_key>/channel-group/<group_name>/remove
-      # OK
-
       head = "/v1/channel-registration/sub-key/#{@subscribe_key}/"
       body = ''
       case @action
