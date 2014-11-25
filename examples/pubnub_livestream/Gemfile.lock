@@ -8,14 +8,13 @@ GIT
 
 GIT
   remote: git://github.com/pubnub/ruby.git
-  revision: 8ef5b518b2beae05fff0c4bd20e6a80eb94770c2
-  branch: 3.5.0beta
+  revision: 56d4b50781f65602f5629ea71bd08740790d41ab
+  branch: master
   specs:
-    pubnub (3.5.0beta)
-      eventmachine
-      faraday (~> 0.9)
-      json
-      net-http-persistent
+    pubnub (3.6.9)
+      eventmachine (~> 1.0)
+      json (~> 1.8)
+      net-http-persistent (~> 2.9)
 
 GEM
   remote: https://rubygems.org/
@@ -58,8 +57,6 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
-    faraday (0.9.0)
-      multipart-post (>= 1.2, < 3)
     haml (4.0.5)
       tilt
     hike (1.2.3)
@@ -71,14 +68,13 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    libv8 (3.16.14.3)
+    libv8 (3.16.14.7)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.8.4)
-    multipart-post (2.0.0)
     net-http-persistent (2.9.4)
     polyglot (0.3.4)
     rack (1.5.2)
