@@ -486,15 +486,15 @@ HereNow shows us who is currently subscribing channel and how much clients are o
 pubnub.here_now(
   :channel => :pamam_moon_iv
 ) do |envelope|
-  puts envelope.msg['uuids']
-  puts envelope.msg['occupancy']
+  puts envelope.parsed_response['uuids']
+  puts envelope.parsed_response['occupancy']
 end
 ```
 
 You can also give no specific channel. Then you'll get global HereNow event response which holds all channels.
 
 ```ruby
-pubnub.here_now { |envelope| puts envelope.msg['channels'] }
+pubnub.here_now { |envelope| puts envelope.parsed_response['channels'] }
 ```
 
 
