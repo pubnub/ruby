@@ -2,46 +2,211 @@ require 'spec_helper'
 
 describe Pubnub::Client do
   it 'has valid version constant' do
-    expect(Pubnub::Client::VERSION).to match(/\d+\.\d+\..+/)
+    expect(Pubnub::Client::VERSION).to match match(/\d+\.\d+\..+/)
   end
 
-  context '#inititalize' do
+  context '#initialize' do
+    it 'returns new Pubnub::Client' do
+      pubnub = Pubnub.new(subscribe_key: :key)
+      expect(pubnub.is_a?(Pubnub::Client)).to eq true
+    end
+
     it 'requires arguments' do
-      expect{ Pubnub.new() }.to raise_error
+      expect { Pubnub.new }.to raise_error(Pubnub::InitializationError)
     end
 
-    context 'parameter :subscribe_key' do
-      it 'is required' do
-        expect{ Pubnub.new(:http_sync => true) }.to raise_error(Pubnub::InitializationError)
+    it 'sets Pubnub.client as self' do
+      pubnub = Pubnub.new(subscribe_key: :key)
+      expect(Pubnub.client).to eq pubnub
+    end
+
+    it 'by default sets Pubnub.logger that logs to pubnub.log' do
+      _pubnub = Pubnub.new(subscribe_key: :key)
+      expect(Pubnub.logger.instance_eval('@logdev').filename).to eq 'pubnub.log'
+    end
+
+    it 'sets Pubnub.logger to new one if given' do
+      _rd, wr = IO.pipe
+
+      logger = Logger.new(wr)
+      _pubnub = Pubnub.new(subscribe_key: :key, logger: logger)
+      expect(Pubnub.logger).to eq(logger)
+    end
+
+    it 'creates required pools' do
+      pubnub = Pubnub.new(subscribe_key: 'key')
+
+      # Connections
+      expect(pubnub.env[:single_event_conn_pool]).to eq({})
+      expect(pubnub.env[:subscribe_event_conn_pool]).to eq({})
+
+      # Callback and error callbacks
+      expect(pubnub.env[:cb_pool]).to eq({})
+      expect(pubnub.env[:e_cb_pool]).to eq({})
+
+      # Subscriptions
+      expect(pubnub.env[:subscription_pool]).to eq({})
+    end
+
+    context 'parameters' do
+
+      it 'changes string keys to sym keys' do
+        pubnub = Pubnub.new('subscribe_key' => 'key')
+        pubnub.env.each_key do |key|
+          expect(key.class).to eq Symbol
+        end
       end
 
-      it 'must be valid' do
-        expect{ Pubnub.new(:subscribe_key => 123) }.to raise_error(Pubnub::InitializationError)
-        expect{ Pubnub.new(:subscribe_key => [] ) }.to raise_error(Pubnub::InitializationError)
-        expect{ Pubnub.new(:subscribe_key => {} ) }.to raise_error(Pubnub::InitializationError)
+      it 'removes empty parameters' do
+        pubnub = Pubnub.new(publish_key: '', subscribe_key: 'key')
+        expect(pubnub.env[:publish_key]).to eq(nil)
+      end
 
-        expect{ Pubnub.new(:subscribe_key => 'key') }.not_to raise_error
-        expect{ Pubnub.new(:subscribe_key => :key ) }.not_to raise_error
+      it 'does not remove non-empty parameters' do
+        pubnub = Pubnub.new(publish_key: '', subscribe_key: 'key')
+        expect(pubnub.env[:subscribe_key]).to eq('key')
+      end
+
+      context 'validates' do
+        context 'parameter :origin' do
+          it 'must be valid' do
+            expect { Pubnub.new(origin: 123, subscribe_key: 'key') }
+            .to raise_error(Pubnub::InitializationError)
+
+            expect { Pubnub.new(origin: %w('a', 'b'), subscribe_key: 'key') }
+            .to raise_error(Pubnub::InitializationError)
+
+            expect { Pubnub.new(origin: { a: :b }, subscribe_key: 'key') }
+            .to raise_error(Pubnub::InitializationError)
+
+            expect { Pubnub.new(origin: nil, subscribe_key: 'key') }
+            .not_to raise_error
+
+            expect { Pubnub.new(origin: '', subscribe_key: 'key') }
+            .not_to raise_error
+
+            expect { Pubnub.new(origin: 'http://a.com', subscribe_key: 'key') }
+            .not_to raise_error
+          end
+        end
+
+        context 'parameter :subscribe_key' do
+          it 'is required' do
+            expect { Pubnub.new(http_sync: true) }
+            .to raise_error(Pubnub::InitializationError)
+          end
+
+          it 'must be valid' do
+            expect { Pubnub.new(subscribe_key: 123) }
+            .to raise_error(Pubnub::InitializationError)
+
+            expect { Pubnub.new(subscribe_key: []) }
+            .to raise_error(Pubnub::InitializationError)
+
+            expect { Pubnub.new(subscribe_key: {}) }
+            .to raise_error(Pubnub::InitializationError)
+
+            expect { Pubnub.new(subscribe_key: 'key') }.not_to raise_error
+            expect { Pubnub.new(subscribe_key: :key) }.not_to raise_error
+          end
+        end
+
+        context 'parameter :publish_key' do
+          it 'must be valid' do
+            expect do
+              Pubnub.new(subscribe_key: 'valid', publish_key: ['invalid'])
+            end.to raise_error(Pubnub::InitializationError)
+
+            expect do
+              Pubnub.new(
+                  subscribe_key: 'valid',
+                  publish_key: { invalid: 'yeah' }
+              )
+            end.to raise_error(Pubnub::InitializationError)
+
+            expect do
+              Pubnub.new(subscribe_key: 'valid', publish_key: ['invalid'])
+            end.to raise_error(Pubnub::InitializationError)
+
+            expect do
+              Pubnub.new(subscribe_key: 'valid', publish_key: 'key')
+            end.not_to raise_error
+
+            expect do
+              Pubnub.new(subscribe_key: 'valid', publish_key: :key)
+            end.not_to raise_error
+          end
+        end
       end
     end
-
-    context 'parameter :publish_key' do
-      it 'must be valid' do
-        expect{ Pubnub.new(:subscribe_key => 'valid', :publish_key => ['invalid']) }.to raise_error(Pubnub::InitializationError)
-        expect{ Pubnub.new(:subscribe_key => 'valid', :publish_key => {'invalid' => 'yeah'}) }.to raise_error(Pubnub::InitializationError)
-        expect{ Pubnub.new(:subscribe_key => 'valid', :publish_key => ['invalid']) }.to raise_error(Pubnub::InitializationError)
-
-        expect{ Pubnub.new(:subscribe_key => 'valid', :publish_key => 'key') }.not_to raise_error
-        expect{ Pubnub.new(:subscribe_key => 'valid', :publish_key => :key ) }.not_to raise_error
-      end
-    end
-
-    it 'doesnt start EventMachine reactor' do
-      pubnub = Pubnub.new(:subscribe_key => 'key')
-      sleep(0.1)
-      expect(EM.reactor_running?).to eq(false)
-    end
-
   end
+
+  context 'timetoken manipulation' do
+    let(:pubnub_client) { Pubnub.new(subscribe_key: 'demo') }
+
+    context '#timetoken' do
+      it 'returns timetoken hold in env' do
+        pubnub_client.env[:timetoken] = '0987654321'
+        expect(pubnub_client.timetoken).to eq '0987654321'
+      end
+    end
+
+    context '#timetoken=' do
+      it 'sets given timetoken in env' do
+        pubnub_client.timetoken = '1234567890'
+        expect(pubnub_client.env[:timetoken]).to eq '1234567890'
+      end
+    end
+  end
+
+  # context 'connections pool' do
+  #   let(:pubnub_client) { Pubnub.new(subscribe_key: 'demo', publish_key: 'demo') }
+  #
+  #   around(:each) do |example|
+  #     Celluloid.boot
+  #     example.run
+  #     Celluloid.shutdown
+  #   end
+  #
+  #   context '#connection_for' do
+  #     it 'returns connection for non-subscribe events' do
+  #       VCR.use_cassette('client/connection-for-non-subscribe', :record => :once) do
+  #         pubnub_client.publish(message: :test, channel: :test, http_sync: true)
+  #       end
+  #
+  #       expect(pubnub_client.env[:single_event_conn_pool]['pubsub.pubnub.com'].is_a?(Net::HTTP::Persistent)).to eq true
+  #     end
+  #
+  #     it 'returns connection for subscribe events' do
+  #       VCR.use_cassette('client/connection-for-subscribe', :record => :once) do
+  #         pubnub_client.subscribe(channel: :test, http_sync: true)
+  #       end
+  #
+  #       expect(pubnub_client.env[:subscribe_event_conn_pool]['pubsub.pubnub.com'].is_a?(Net::HTTP::Persistent)).to eq true
+  #     end
+  #   end
+  #
+  #   context '#setup_conn_for' do
+  #     it 'creates connection for non-subscribe events' do
+  #       expect(pubnub_client.env[:single_event_conn_pool]['pubsub.pubnub.com'].is_a?(NilClass)).to eq true
+  #
+  #       VCR.use_cassette('client/connection-for-non-subscribe', :record => :once) do
+  #         pubnub_client.publish(message: :test, channel: :test, http_sync: true)
+  #       end
+  #
+  #       expect(pubnub_client.env[:single_event_conn_pool]['pubsub.pubnub.com'].is_a?(Net::HTTP::Persistent)).to eq true
+  #     end
+  #
+  #     it 'creates connection for subscribe events' do
+  #       expect(pubnub_client.env[:subscribe_event_conn_pool]['pubsub.pubnub.com'].is_a?(NilClass)).to eq true
+  #
+  #       VCR.use_cassette('client/connection-for-subscribe', :record => :once) do
+  #         pubnub_client.subscribe(channel: :test, http_sync: true)
+  #       end
+  #
+  #       expect(pubnub_client.env[:subscribe_event_conn_pool]['pubsub.pubnub.com'].is_a?(Net::HTTP::Persistent)).to eq true
+  #     end
+  #   end
+  # end
 
 end

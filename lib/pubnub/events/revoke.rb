@@ -1,56 +1,45 @@
+# Toplevel Pubnub module
 module Pubnub
+  # Holds revoke functionality
   class Revoke
+    include Celluloid
     include Pubnub::Event
     include Pubnub::SingleEvent
-    include Pubnub::Formatter
-    include Pubnub::Validator
     include Pubnub::PAM
 
     def initialize(options, app)
       super
-      @event = 'grant'
-      @allow_multiple_channels = true
-
       @timestamp = current_time
 
-      @write = options[:write]
-      @read  = options[:read]
-      @ttl   = options[:ttl]   || Pubnub::Configuration::DEFAULT_TTL
-    end
-
-    def validate!
-      super
-
-      raise ArgumentError.new(:object => self, :message => 'publish_key is required by Revoke') unless @publish_key
-      raise ArgumentError.new(:object => self, :message => 'Parameter secret_key is required by Revoke') if !@secret_key || @secret_key == 0
-
-      raise ArgumentError.new(:object => self, :message => 'ttl parameter is too big, max value is: 525600') unless @ttl.to_i <= 525600 || @ttl.nil?
-      raise ArgumentError.new(:object => self, :message => 'ttl parameter is too small, min value is: 1')  unless @ttl.to_i >= 1 || @ttl.nil?
+      @ttl = options[:ttl] || Pubnub::Configuration::DEFAULT_TTL
     end
 
     private
 
-    def parameters(app, signature = false)
-      write = 0
-      read  = 0
+    def parameters(signature = false)
+      write  = [0, '0', false].include?(@write)  ? 1 : 0
+      read   = [0, '0', false].include?(@read)   ? 1 : 0
+      unless @channel_group.blank?
+        manage = [0, '0', false].include?(@manage) ? 1 : 0
+      end
 
       {
-          :timestamp => @timestamp,
-          :w         => write,
-          :r         => read,
-          :ttl       => @ttl
-      }.merge(super(app, signature))
+        timestamp: @timestamp,
+        w: write,
+        r: read,
+        m: manage,
+        ttl: @ttl
+      }.delete_if { |_k, v| v.nil? }.merge(super(signature))
     end
 
-    def path(app)
+    def path
       '/' + [
-          'v1',
-          'auth',
-          'grant',
-          'sub-key',
-          @subscribe_key
+        'v1',
+        'auth',
+        'grant',
+        'sub-key',
+        @subscribe_key
       ].join('/')
     end
-
   end
 end

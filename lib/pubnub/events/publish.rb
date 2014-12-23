@@ -1,76 +1,68 @@
+# Toplevel Pubnub module
 module Pubnub
+  # Holds publish functionality
   class Publish
+    include Celluloid
     include Pubnub::Event
     include Pubnub::SingleEvent
-    include Pubnub::Formatter
-    include Pubnub::Validator
-
-
-    def initialize(options, app)
-      super
-      @channel = @channel.first
-      @event = 'publish'
-      @allow_multiple_channels = false
-
-      $logger.info('Pubnub'){ "Bytesize: #{uri(app).to_s.bytesize}" }
-      $logger.info('Pubnub'){ "Lenght:   #{uri(app).to_s.length}" }
-
-      # raise ArgumentError.new(:object => self, :message => ':message argument is too big, encoded uri would excess 32k size limit') if uri(app).to_s.bytesize > 32000
-    end
-
-    def validate!
-      super
-      # check message
-      raise ArgumentError.new(:object => self, :message => 'Publish requires :message argument') unless @message
-
-      # check channel/channels
-      raise ArgumentError.new(:object => self, :message => 'Publish requires :channel or :channels argument') unless @channel
-      raise ArgumentError.new(:object => self, :message => 'Invalid channel(s) format! Should be type of: String, Symbol, or Array of both') unless valid_channel?
-    end
 
     private
 
-    def path(app)
+    def path
       '/' + [
-          'publish',
-          @publish_key,
-          @subscribe_key,
-          if !@auth_key.blank? then @secret_key else '0' end,
-          @channel,
-          '0',
-          format_message(@message)
+        'publish',
+        @publish_key,
+        @subscribe_key,
+        (@auth_key.blank? ? '0' : @secret_key),
+        @channel,
+        '0',
+        Formatter.format_message(@message, @cipher_key)
       ].join('/')
     end
 
     def timetoken(parsed_response)
-      parsed_response[2] if parsed_response.is_a? Array
+      parsed_response[2]
+    rescue
+      nil
     end
 
     def response_message(parsed_response)
-      parsed_response[1] if parsed_response.is_a? Array
+      parsed_response[1]
+    rescue
+      nil
     end
 
-    def format_envelopes(response, app, error)
+    def format_envelopes(response)
+      parsed_response, error = Formatter.parse_json(response.body)
 
-      parsed_response = Parser.parse_json(response.body) if Parser.valid_json?(response.body)
+      error = response if parsed_response && response.code != '200'
 
-      envelopes = Array.new
-      envelopes << Envelope.new(
-        {
-            :parsed_response => parsed_response,
-            :message           => @message,
-            :published_message => @message,
-            :channel           => @channel,
-            :response_message  => response_message(parsed_response),
-            :timetoken         => timetoken(parsed_response)
-        },
-        app
+      envelopes = if error
+                    [error_envelope(parsed_response, error)]
+                  else
+                    [valid_envelope(parsed_response)]
+                  end
+
+      add_common_data_to_envelopes(envelopes, response)
+    end
+
+    def valid_envelope(parsed_response)
+      Envelope.new(
+          parsed_response:  parsed_response,
+          message:          @message,
+          channel:          @channel.first,
+          response_message: response_message(parsed_response),
+          timetoken:        timetoken(parsed_response)
       )
+    end
 
-      envelopes = add_common_data_to_envelopes(envelopes, response, app, error)
-
-      envelopes
-
+    def error_envelope(parsed_response, error)
+      ErrorEnvelope.new(
+          error:            error,
+          response_message: response_message(parsed_response),
+          channel:          @channel.first,
+          timetoken:        timetoken(parsed_response)
+      )
     end
   end
 end

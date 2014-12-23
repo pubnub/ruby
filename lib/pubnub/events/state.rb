@@ -1,9 +1,12 @@
+# Toplevel Pubnub module
 module Pubnub
+  # Holds state functionality
   class State
+    include Celluloid
     include Pubnub::Event
     include Pubnub::SingleEvent
-    include Pubnub::Formatter
-    include Pubnub::Validator
+
+    private
 
     def initialize(options, app)
       super
@@ -12,57 +15,61 @@ module Pubnub
       @uuid = app.uuid
     end
 
-    def validate!
-      super
-
-      # check channel/channels
-      # raise ArgumentError.new(:object => self, :message => 'State requires :channel argument') unless @channel
-      # raise ArgumentError.new(:object => self, :message => 'Invalid channel format! Should be type of: String or Symbol') unless @channel.is_a?(String) or @channel.is_a?(Symbol)
-    end
-
     private
 
-    def parameters(app)
-      parameters = super(app)
-      parameters.merge!({ 'channel-group' => format_channel_group(@channel_group).join(',') }) unless @channel_group.blank?
+    def parameters
+      parameters = super
+      parameters.merge!(
+          'channel-group' => format_channel_group(@channel_group)
+                                 .join(',')
+      ) unless @channel_group.blank?
       parameters
     end
 
-    def path(app)
+    def path
       '/' + [
-          'v2',
-          'presence',
-          'sub_key',
-          @subscribe_key,
-          'channel',
-          channels_for_url(@channel),
-          'uuid',
-          @uuid_looking_for
+        'v2',
+        'presence',
+        'sub_key',
+        @subscribe_key,
+        'channel',
+        channels_for_url(@channel),
+        'uuid',
+        @uuid_looking_for
       ].join('/')
     end
 
-    def format_envelopes(response, app, error)
+    def format_envelopes(response)
+      parsed_response, error = Formatter.parse_json(response.body)
 
-      parsed_response = Parser.parse_json(response.body) if Parser.valid_json?(response.body)
+      error = response if parsed_response && response.code != '200'
 
-      envelopes = Array.new
-      envelopes << Envelope.new(
-        {
-            :parsed_response => parsed_response,
-            :channel  => (parsed_response['channel']  if parsed_response),
-            :payload  => (parsed_response['payload']  if parsed_response),
-            :service  => (parsed_response['service']  if parsed_response),
-            :message  => (parsed_response['message']  if parsed_response),
-            :uuid     => (parsed_response['uuid']     if parsed_response),
-            :status   => (parsed_response['status']   if parsed_response)
-        },
-        app
+      envelopes = if error
+                    [error_envelope(parsed_response, error)]
+                  else
+                    [valid_envelope(parsed_response)]
+                  end
+
+      add_common_data_to_envelopes(envelopes, response)
+    end
+
+    def valid_envelope(parsed_response)
+      Envelope.new(
+          parsed_response: parsed_response,
+          channel: parsed_response['channel'],
+          payload: parsed_response['payload'],
+          service: parsed_response['service'],
+          message: parsed_response['message'],
+          uuid:    parsed_response['uuid'],
+          status:  parsed_response['status']
       )
+    end
 
-      envelopes = add_common_data_to_envelopes(envelopes, response, app, error)
-
-      envelopes
-
+    def error_envelope(parsed_response, error)
+      ErrorEnvelope.new(
+          error:            error,
+          response_message: response_message(parsed_response)
+      )
     end
   end
 end

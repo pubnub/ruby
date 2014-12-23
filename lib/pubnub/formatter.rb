@@ -1,70 +1,77 @@
+# Toplevel Pubnub module
 module Pubnub
+  # Bunch of useful methods that are used in many parts of Pubnub and and can be
+  # usable for any app that uses Pubnub library
   module Formatter
-    # Formats channels as array of channels as strings
-    def format_channels(channels, should_encode = true)
-      channel_array = case channels.class.to_s
-                        when 'String'
-                          channels.split(',')
-                        when 'Array'
-                          channels.map { |channel| channel.to_s }
-                        when 'NilClass'
-                          []
-                        else
-                          [channels.to_s]
-                      end
+    class << self
+      # Returns array of encoded channels if should_encode is true,
+      # otherwise returns just array of channels
+      def format_channel(channel, should_encode = true)
+        make_channel_array(channel).map do |chan|
+          if should_encode
+            encode(chan)
+          else
+            chan
+          end
+        end
+      end
 
-      channel_array = channel_array.map { |channel| encode_channel(channel) } if should_encode
-      channel_array
-    end
-
-    def format_channel_group(channel_group, should_encode = true)
-      channel_group_array = case channel_group.class.to_s
-                              when 'String'
-                                channel_group.split(',')
-                              when 'Array'
-                                channel_group.map { |channel| channel.to_s }
-                              when 'NilClass'
-                                []
-                              else
-                                [channel_group.to_s]
-                            end
-
-      channel_group_array = channel_group_array.map { |channel| encode_channel(channel) } if should_encode
-      channel_group_array
-    end
-
-    def encode_channel(channel)
-      URI.encode_www_form_component(channel).gsub('+', '%20')
-    end
-
-    def format_message(message)
-      if @cipher_key
-        pc = Pubnub::Crypto.new(@cipher_key)
-        begin
+      # Transforms message to json and encode it
+      def format_message(message, cipher_key)
+        if cipher_key
+          pc = Pubnub::Crypto.new(cipher_key)
           message = pc.encrypt(message)
           URI.escape(message.to_json)
-        rescue => error
-          @error_callback.call 'bug'
+        else
+          Formatter.encode(message.to_json)
         end
-      else
-        URI.encode_www_form_component(message.to_json).gsub('+', '%20')
+      end
+
+      # Quite lazy way, but good enough for current usage
+      def classify_method(method)
+        method.split('_').map(&:capitalize).join
+      end
+
+      def encode(string)
+        URI.encode_www_form_component(string).gsub('+', '%20')
+      end
+
+      def make_channel_array(channel)
+        if %w(String Symbol).include?(channel.class.to_s)
+          channel.to_s.split(',')
+        elsif channel.class.to_s == 'Array'
+          channel.map(&:to_s)
+        elsif channel.class.to_s == 'NilClass'
+          []
+        else
+          fail Pubnub::ArgumentError.new(
+              message: 'Channel has to be String, Symbol or Array'
+               ), 'Channel has to be String, Symbol or Array'
+        end
+      end
+
+      # Parses string to JSON
+      def parse_json(string)
+        [JSON.parse(string), nil]
+      rescue JSON::ParserError => error
+        [nil, error]
+      end
+
+      # Formats hash to params string
+      def params_hash_to_url_params(hash)
+        params = ''
+        hash.each do |key, value|
+          params << "#{key}=#{value}&"
+        end
+        params.chop! if params[-1] == '&'
+      end
+
+      # Returns string with all channels separated by comma or single coma
+      def channels_for_url(channels)
+        channel = channels.join(',')
+        channel = ',' if channel.empty?
+        channel
       end
     end
-
-    def params_hash_to_url_params(hash)
-      params = String.new
-      hash.each do |key, value|
-        params << "#{key}=#{value}&"
-      end
-      params.chop! if params[-1] == '&'
-      params
-    end
-
-    def channels_for_url(channels)
-      channel = channels.join(',')
-      channel = ',' if channel.empty?
-      channel
-    end
-
   end
 end

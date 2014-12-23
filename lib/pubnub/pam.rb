@@ -1,59 +1,85 @@
+# Toplevel Pubnub module
 module Pubnub
+  # PAM module holds shared functionality for all PAM requests
   module PAM
     def initialize(options, app)
       super
       if options[:presence].present?
-        @channel += format_channels(options[:presence]).map { |c| c + '-pnpres' }
+        @channel += format_channels(options[:presence]).map do |c|
+          c + '-pnpres'
+        end
       end
       @auth_key = options[:auth_key]
     end
 
-    def signature(app)
-      channel = @original_channel.first
-      message = "#{@subscribe_key}\n#{@publish_key}\n#{@event}\n#{variables_for_signature(app)}"
-      Base64.urlsafe_encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha256'), @secret_key.to_s, message)).strip
+    def signature
+      message = [
+        @subscribe_key,
+        @publish_key,
+        @event,
+        variables_for_signature
+      ].join("\n")
+      Base64.urlsafe_encode64(
+          OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha256'),
+                               @secret_key.to_s, message)
+      ).strip
     end
 
-    def parameters(app, signature = false)
-      params = super(app)
-      params.merge!({ :timestamp     => @timestamp })
-      params.merge!({ 'channel-group' => @channel_group.join(',') }) unless @channel_group.blank?
-      params.merge!({ :channel       => @channel.join(',') })       unless @channel.first.blank?
-      params.merge!({ :signature     => signature(app) })           unless signature
+    def parameters(set_signature = false)
+      params = super()
+
+      unless @channel_group.blank?
+        params.merge!('channel-group' => @channel_group.join(','))
+      end
+
+      params.merge!(timestamp: @timestamp)
+      params.merge!(channel:   @channel.join(',')) unless @channel.first.blank?
+      params.merge!(signature: signature)          unless set_signature
       params
     end
 
-    def variables_for_signature(app)
-      parameters(app, true).map{|k,v|
-        "#{k.to_s}=#{CGI.escape(v.to_s).gsub('+','%20')}"
-      }.sort.join('&')
+    def variables_for_signature
+      parameters(true).map do|k, v|
+        "#{k}=#{CGI.escape(v.to_s).gsub('+', '%20')}"
+      end.sort.join('&')
     end
 
     def current_time
       ::Time.now.to_i
     end
 
-    def format_envelopes(response, app, error)
+    def format_envelopes(response)
+      parsed_response, error = Formatter.parse_json(response.body)
 
-      parsed_response = Parser.parse_json(response.body) if Parser.valid_json?(response.body)
+      error = response if parsed_response && response.code != '200'
 
-      envelopes = Array.new
-      envelopes << Envelope.new(
-          {
-              :parsed_response => parsed_response,
-              :payload => (parsed_response['payload'] if parsed_response),
-              :message => (parsed_response['message'] if parsed_response),
-              :channel => (parsed_response['channel'] if parsed_response),
-              :service => (parsed_response['service'] if parsed_response),
-              :status  => (parsed_response['status']  if parsed_response)
-          },
-          app
+      envelopes = if error
+                    [error_envelope(parsed_response, error)]
+                  else
+                    [valid_envelope(parsed_response)]
+                  end
+
+      add_common_data_to_envelopes(envelopes, response)
+    end
+
+    def valid_envelope(parsed_response)
+      Envelope.new(
+          parsed_response: parsed_response,
+          payload:         parsed_response['payload'],
+          service:         parsed_response['service'],
+          message:         parsed_response['message'],
+          status:          parsed_response['status'],
+          uuids:           parsed_response['uuids']
       )
+    end
 
-      envelopes = add_common_data_to_envelopes(envelopes, response, app, error)
-
-      envelopes
-
+    def error_envelope(parsed_response, error)
+      ErrorEnvelope.new(
+          error:            error,
+          response_message: response_message(parsed_response),
+          channel:          @channel.first,
+          timetoken:        timetoken(parsed_response)
+      )
     end
   end
 end

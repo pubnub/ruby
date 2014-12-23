@@ -1,47 +1,49 @@
+# Toplevel Pubnub module
 module Pubnub
+  # Every message from server is formatted into easy to use Envelope object
   class Envelope
+    attr_accessor :first, :last, :object, :response, :parsed_response, :status
+    attr_accessor :channel, :message, :payload, :service, :timetoken
+    attr_accessor :response_message, :error, :action, :uuid, :service, :uuids
+    attr_accessor :timetoken_update
 
-    INSTANCE_VARIABLES = [
-        :channel,
-        :channel_group,
-        :error,
-        :error_message,
-        :first,
-        :history_end,
-        :history_start,
-        :last,
-        :message,
-        :object,
-        :payload,
-        :response,
-        :parsed_response,
-        :response_message,
-        :service,
-        :status,
-        :timetoken,
-        :timetoken_update
-    ]
+    # subscribe, presence specific
+    attr_accessor :timetoken_update
 
-    INSTANCE_VARIABLES.each do |var_name|
-      attr_accessor var_name
-    end
+    # history specific
+    attr_accessor :history_start, :history_end
 
+    # aliases
     alias_method 'msg', 'message'
     alias_method 'status_code', 'status'
 
-    def initialize(parameters, app)
-      INSTANCE_VARIABLES.each do |var_name|
-        instance_variable_set("@#{var_name.to_s}", parameters[var_name])
+    def initialize(parameters)
+      parameters.each do |parameter, value|
+        instance_variable_set("@#{parameter}", value)
       end
     end
 
-    def is_last?
-      @last ? true : false
+    def mark_as_timetoken
+      if (@parsed_response[0].empty?) &&
+         (@parsed_response[1].size == 17)
+        @timetoken_update = true
+      else
+        @timetoken_update = false
+      end
+    rescue
+      @timetoken_update = false
     end
 
-    def is_first?
-      @first ? true : false
+    def error?
+      error ? true : false
     end
 
+    def last?
+      last
+    end
+
+    def first?
+      first
+    end
   end
 end

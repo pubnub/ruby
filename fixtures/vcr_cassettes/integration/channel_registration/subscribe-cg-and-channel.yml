@@ -1,0 +1,85 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/subscribe/demo/bot/0/0?channel-group=foo:foo&pnsdk=PubNub-Ruby/3.7.0beta0&uuid=0a42a66b-0dca-4566-8e36-695125d50c1f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 05 Nov 2014 11:49:34 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '24'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[[],"14151881738727981"]'
+    http_version: 
+  recorded_at: Wed, 05 Nov 2014 11:49:39 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/subscribe/demo/bot/0/14151881738727981?channel-group=foo:foo&pnsdk=PubNub-Ruby/3.7.0beta0&uuid=0a42a66b-0dca-4566-8e36-695125d50c1f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 05 Nov 2014 11:49:35 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '80'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[["*****.......... 3520 - 2014-11-05 03:49:35"],"14151881750508799","bot","bot"]'
+    http_version: 
+  recorded_at: Wed, 05 Nov 2014 11:49:40 GMT
+recorded_with: VCR 2.9.2

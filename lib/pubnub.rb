@@ -1,26 +1,16 @@
-## www.pubnub.com - PubNub realtime push service in the cloud.
-## http://www.pubnub.com/blog/ruby-push-api - Ruby Push API Blog
-
-## PubNub Real Time Push APIs and Notifications Framework
-## Copyright (c) 2014 PubNub
-## http://www.pubnub.com/
-
-## -----------------------------------
-## PubNub Real-time Push Cloud API
-## -----------------------------------
-
 require 'json'
 require 'base64'
 require 'open-uri'
 require 'openssl'
-require 'eventmachine'
+require 'celluloid'
+require 'timers'
 require 'net/http/persistent'
 require 'logger'
 
 require 'pubnub/version'
 require 'pubnub/client'
 
-
+# Adding blank? method to Object
 class Object
   def blank?
     respond_to?(:empty?) ? empty? : !self
@@ -31,21 +21,14 @@ class Object
   end
 end
 
-class Proc
-  def try(*a, &b)
-    if a.empty? && block_given?
-      yield self
-    else
-      __send__(*a, &b)
-    end
-  end
-end
-
+# Toplevel Pubnub module
+# TODO: YARDOC
 module Pubnub
   class << self
+    attr_accessor :logger, :client
+
     def new(options = {})
       Pubnub::Client.new(options)
     end
   end
 end
-

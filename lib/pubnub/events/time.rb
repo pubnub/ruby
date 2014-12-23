@@ -1,52 +1,52 @@
+# Toplevel Pubnub module
 module Pubnub
+  # Holds time functionality
   class Time
+    include Celluloid
     include Pubnub::Event
     include Pubnub::SingleEvent
-    include Pubnub::Formatter
-    include Pubnub::Validator
-
-    def initialize(options, app)
-      super
-      @channel = @channel.first
-      @event = 'time'
-      @doesnt_require_callback = true
-    end
-
-    def validate!
-      super
-      # check callback
-      raise ArgumentError.new(:object => self, :message => 'Callback parameter is required while using async time') if !@http_sync && @callback.blank?
-    end
 
     private
 
-    def path(app)
+    def path
       '/time/0'
     end
 
     def timetoken(parsed_response)
-      parsed_response.first if parsed_response.is_a? Array
+      parsed_response.first
+    rescue
+      nil
     end
 
-    def format_envelopes(response, app, error)
+    def format_envelopes(response)
+      parsed_response, error = Formatter.parse_json(response.body)
 
-      parsed_response = Parser.parse_json(response.body) if Parser.valid_json?(response.body)
+      error = response if parsed_response && response.code != '200'
 
-      envelopes = Array.new
-      envelopes << Envelope.new(
-          {
-              :message           => timetoken(parsed_response),
-              :response_message  => timetoken(parsed_response),
-              :timetoken         => timetoken(parsed_response)
-          },
-          app
+      envelopes = if error
+                    [error_envelope(parsed_response, error)]
+                  else
+                    [valid_envelope(parsed_response)]
+                  end
+
+      add_common_data_to_envelopes(envelopes, response)
+    end
+
+    def valid_envelope(parsed_response)
+      Envelope.new(
+          parsed_response: parsed_response,
+          message:          timetoken(parsed_response),
+          response_message: timetoken(parsed_response),
+          timetoken:        timetoken(parsed_response)
       )
-
-      envelopes = add_common_data_to_envelopes(envelopes, response, app, error)
-
-      envelopes
-
     end
 
+    def error_envelope(parsed_response, error)
+      ErrorEnvelope.new(
+          error:            error,
+          response_message: parsed_response,
+          timetoken:        timetoken(parsed_response)
+      )
+    end
   end
 end

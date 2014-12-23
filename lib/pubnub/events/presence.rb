@@ -1,36 +1,15 @@
+# Toplevel Pubnub module
 module Pubnub
+  # Holds presence functionality, beware, most of presence functionality is
+  # held by SubscribeEvent
   class Presence
+    include Celluloid
     include Pubnub::Event
     include Pubnub::SubscribeEvent
-    include Pubnub::Formatter
-    include Pubnub::Validator
 
-
-    def initialize(options, app)
-      super
-      @channel       = @channel.map       {|c| c + '-pnpres'}
-      @channel_group = @channel_group.map {|c| c + '-pnpres'}
-      @event = 'presence'
-      @allow_multiple_channels = true
-
+    def format_channels
+      @channel = Formatter.format_channel(@channel || @channels)
+      @channel = @channel.map { |c| c + '-pnpres' }
     end
-
-    def fire(app)
-      app.update_timetoken(0)
-      super
-    end
-
-    def validate!
-      super
-
-      # Check channels
-      # raise ArgumentError.new(:object => self, :message => 'Presence requires :channel, :channels or :channel_group argument')               unless @channel || @channel_group
-      # raise ArgumentError.new(:object => self, :message => 'Invalid channel(s) format! Should be type of: String, Symbol, or Array of both') unless valid_channel?
-
-    end
-
-    private
-
-
   end
 end
