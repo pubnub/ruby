@@ -1,3 +1,6 @@
+3.6.10 Release
+. Envelope formatting fix
+
 3.6.9 Release
 . Double channel encoding fix
 

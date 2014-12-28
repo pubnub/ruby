@@ -48,8 +48,7 @@ module Pubnub
             :service => (parsed_response['service']  if parsed_response),
             :message => (parsed_response['message']  if parsed_response),
             :uuid    => (parsed_response['uuid']     if parsed_response),
-            :status  => (parsed_response['status']   if parsed_response),
-            :status  => (parsed_response['channel']  if parsed_response)
+            :status  => (parsed_response['status']   if parsed_response)
         },
         app
       )
