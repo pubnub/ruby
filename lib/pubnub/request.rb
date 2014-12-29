@@ -10,26 +10,16 @@ module Pubnub
 
       @connection = Net::HTTP::Persistent.new 'PubNub'
       @connection.proxy_from_env
-
-      async.wait_for_event
     end
 
-    def wait_for_event
-      loop do
-        Pubnub.logger.debug('Pubnub') { 'Waiting for event' }
+    def send_request(event)
+      Pubnub.logger.debug('Pubnub') { "Sending request for #{event.class}" }
 
-        event = receive { |msg| msg.is_a? Event }
+      @connection.read_timeout = event.read_timeout
+      @connection.open_timeout = event.open_timeout
+      @connection.idle_timeout = event.idle_timeout
 
-        @connection.read_timeout = event.read_timeout
-        @connection.open_timeout = event.open_timeout
-        @connection.idle_timeout = event.idle_timeout
-
-        response = @connection.request(event.uri)
-
-        event.mailbox << response
-
-        Pubnub.logger.debug('Pubnub') { 'Sent response back to event' }
-      end
+      @connection.request(event.uri)
     end
   end
 end

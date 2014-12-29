@@ -7,14 +7,9 @@ module Pubnub
     include Pubnub::SingleEvent
 
     def fire
-      begin
-        @app.env[:subscription_pool][@origin]
-            .mailbox << Message::RemoveSubscription.new(self)
-      rescue => error
-        raise error, error.message unless error.class == NoMethodError
-      end
-
+      @app.env[:subscription_pool][@origin].remove(Celluloid::Actor.current)
       super
+      @app.env[:subscription_pool][@origin].async.fire
     end
 
     private

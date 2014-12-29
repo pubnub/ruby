@@ -1,0 +1,7 @@
+AllCops:
+  Exclude:
+    - 'spec/**/*'
+    - 'examples/**/*'
+
+Metrics/MethodLength:
+  Max: 10

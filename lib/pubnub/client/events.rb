@@ -31,8 +31,8 @@ module Pubnub
               event.async.fire
             else
               Pubnub.logger.debug('Pubnub') { 'Subscription already running' }
-              @env[:subscription_pool][event.origin]
-                  .mailbox << Message::AddSubscription.new(event)
+              @env[:subscription_pool][event.origin].add(event)
+              @env[:subscription_pool][event.origin].async.fire
             end
           else
             event.async.fire

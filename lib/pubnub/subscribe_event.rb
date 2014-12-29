@@ -15,25 +15,51 @@ module Pubnub
     end
 
     def fire
-      Pubnub.logger.debug('Pubnub') { "Fired event #{self.class}" }
+      unless @stop
+        Pubnub.logger.debug('Pubnub') { "Fired event #{self.class}" }
 
-      send_request
+        message = send_request
 
-      message = receive do |msg|
-        msg.is_a?(Net::HTTPResponse) || msg.is_a?(Message::InternalMessage)
+        fire_heartbeat if @heartbeat && !@http_sync && !@heart
+
+        envelopes = fire_callbacks(handle(message))
+
+        finalize_event(envelopes)
+
+        if @stop
+          clean
+        else
+          async.fire unless @http_sync
+        end
+
+        envelopes
+      end
+    end
+
+    def add(event)
+      Pubnub.logger.debug('Pubnub') { "#{self.class}#add" }
+      kill_requester
+      event.channel.each do |channel|
+        add_channel channel
+        add_cb channel, event.callback, event.error_callback
+      end
+      restart_heartbeat if @heart
+    end
+
+    def remove(event)
+      Pubnub.logger.debug('Pubnub') { "#{self.class}#remove" }
+      kill_requester
+      event.channel.each do |channel|
+        remove_channel channel
+        remove_cb channel
       end
 
-      fire_heartbeat if @heartbeat && !@http_sync && !@heart
-
-      envelopes = determine_action(message)
-
-      if @stop
-        clean
+      if @channel.empty?
+        @stop = true
+        stop_heartbeat if @heart
       else
-        async.fire unless @http_sync
+        restart_heartbeat if @heart
       end
-
-      envelopes
     end
 
     private
@@ -48,7 +74,7 @@ module Pubnub
     def stop_heartbeat
       Pubnub.logger.debug('Pubnub') { "#{self.class}#stop_heartbeat" }
 
-      Celluloid::Actor.kill(@heart)
+      Celluloid::Actor.kill(@heart) if @heart
       @heart = nil
     end
 
@@ -58,22 +84,7 @@ module Pubnub
     end
 
     def send_request
-      requester.mailbox << Celluloid::Actor.current
-    end
-
-    def determine_action(message)
-      if message.is_a? Message::Stop
-        stop
-        message
-      elsif message.is_a? Message::AddSubscription
-        add(message)
-      elsif message.is_a? Message::RemoveSubscription
-        remove(message)
-      else
-        envelopes = fire_callbacks(handle(message))
-        finalize_event(envelopes)
-        envelopes
-      end
+      requester.send_request(Celluloid::Actor.current)
     end
 
     def clean
@@ -84,32 +95,6 @@ module Pubnub
       stop_heartbeat
       kill_requester
       @stop = true
-    end
-
-    def add(message)
-      Pubnub.logger.debug('Pubnub') { "#{self.class}#add" }
-      kill_requester
-      message.event.channel.each do |channel|
-        add_channel channel
-        add_cb channel, message.event.callback, message.event.error_callback
-      end
-      restart_heartbeat
-    end
-
-    def remove(message)
-      Pubnub.logger.debug('Pubnub') { "#{self.class}#remove" }
-      kill_requester
-      message.event.channel.each do |channel|
-        remove_channel channel
-        remove_cb channel
-      end
-
-      if @channel.empty?
-        @stop = true
-        stop_heartbeat
-      else
-        restart_heartbeat
-      end
     end
 
     def remove_channel(channel)

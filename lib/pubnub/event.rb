@@ -18,26 +18,11 @@ module Pubnub
     def fire
       Pubnub.logger.debug('Pubnub') { "Fired event #{self.class}" }
 
-      requester.mailbox << Celluloid::Actor.current
+      message = requester.send_request(Celluloid::Actor.current)
 
-      Pubnub.logger.debug('Pubnub') { "Sent #{self.class} to requester" }
-
-      message = receive do |msg|
-        msg.is_a?(Net::HTTPResponse) || msg.is_a?(Message)
-      end
-
-      if message.is_a? Message::Stop
-
-        Pubnub.logger.info('Pubnub') do
-          "Stopped event #{self.class}: #{message.reason}"
-        end
-
-        message
-      else
-        envelopes = fire_callbacks(handle(message))
-        finalize_event(envelopes)
-        envelopes
-      end
+      envelopes = fire_callbacks(handle(message))
+      finalize_event(envelopes)
+      envelopes
     end
 
     def uri
