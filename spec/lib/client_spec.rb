@@ -15,11 +15,6 @@ describe Pubnub::Client do
       expect { Pubnub.new }.to raise_error(Pubnub::InitializationError)
     end
 
-    it 'sets Pubnub.client as self' do
-      pubnub = Pubnub.new(subscribe_key: :key)
-      expect(Pubnub.client).to eq pubnub
-    end
-
     it 'by default sets Pubnub.logger that logs to pubnub.log' do
       _pubnub = Pubnub.new(subscribe_key: :key)
       expect(Pubnub.logger.instance_eval('@logdev').filename).to eq 'pubnub.log'
