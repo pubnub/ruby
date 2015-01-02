@@ -84,6 +84,10 @@ module Pubnub
       @env[:uuid]
     end
 
+    def events
+      @env[:events]
+    end
+
     private
 
     def validate!(options)
@@ -108,6 +112,9 @@ module Pubnub
     end
 
     def setup_pools
+      # Event pool
+      @env[:events] = []
+
       # Connection pools
       @env[:single_event_conn_pool]    = {}
       @env[:subscribe_event_conn_pool] = {}

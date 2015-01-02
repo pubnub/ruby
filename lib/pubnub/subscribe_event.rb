@@ -15,7 +15,7 @@ module Pubnub
     end
 
     def fire
-      unless @stop
+      unless @finalized
         Pubnub.logger.debug('Pubnub') { "Fired event #{self.class}" }
 
         message = send_request
@@ -26,7 +26,7 @@ module Pubnub
 
         finalize_event(envelopes)
 
-        if @stop
+        if @finalized
           clean
         else
           async.fire unless @http_sync
@@ -55,7 +55,7 @@ module Pubnub
       end
 
       if @channel.empty?
-        @stop = true
+        @finalized = true
         stop_heartbeat if @heart
       else
         restart_heartbeat if @heart
@@ -94,7 +94,7 @@ module Pubnub
     def stop
       stop_heartbeat
       kill_requester
-      @stop = true
+      @finalized = true
     end
 
     def remove_channel(channel)

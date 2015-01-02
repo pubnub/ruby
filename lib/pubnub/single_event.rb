@@ -9,6 +9,8 @@ module Pubnub
     end
 
     # Just stubs
+    def finalize_event(_envelopes); end
+
     def path; end
 
     def timetoken(_parsed_response); end

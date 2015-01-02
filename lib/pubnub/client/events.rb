@@ -33,6 +33,7 @@ module Pubnub
               Pubnub.logger.debug('Pubnub') { 'Subscription already running' }
               @env[:subscription_pool][event.origin].add(event)
               @env[:subscription_pool][event.origin].async.fire
+              event.terminate
             end
           else
             event.async.fire

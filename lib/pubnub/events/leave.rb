@@ -7,12 +7,24 @@ module Pubnub
     include Pubnub::SingleEvent
 
     def fire
-      @app.env[:subscription_pool][@origin].remove(Celluloid::Actor.current)
+      remove_subscription
       super
-      @app.env[:subscription_pool][@origin].async.fire
+      restart_subscription
     end
 
     private
+
+    def remove_subscription
+      @app.env[:subscription_pool][@origin].remove(Celluloid::Actor.current)
+    rescue NoMethodError => _error
+      Pubnub.logger.error('Pubnub') { 'Tried to remove from non-existing subscription' }
+    end
+
+    def restart_subscription
+      @app.env[:subscription_pool][@origin].async.fire
+    rescue NoMethodError => _error
+      Pubnub.logger.error('Pubnub') { 'Tried to restart non-existing subscription' }
+    end
 
     def path
       '/' + [

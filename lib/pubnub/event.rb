@@ -23,6 +23,8 @@ module Pubnub
       envelopes = fire_callbacks(handle(message))
       finalize_event(envelopes)
       envelopes
+    ensure
+      terminate unless @stay_alive
     end
 
     def uri
@@ -32,6 +34,14 @@ module Pubnub
       uri += '?' + Formatter.params_hash_to_url_params(parameters)
       Pubnub.logger.debug('Pubnub') { "Requested URI: #{uri}" }
       URI uri
+    end
+
+    def finalized?
+      @finalized || @stop
+    end
+
+    def sync?
+      @http_sync
     end
 
     private
@@ -107,17 +117,5 @@ module Pubnub
     def encode_state(state)
       URI.encode_www_form_component(state.to_json).gsub('+', '%20')
     end
-
-    # It's a stub, proper format_envelopes methods are implemented in
-    # corresponding event classes
-    def format_envelopes(_response); end
-
-    # It's a stub for events that have to do some additional stuff after
-    # getting response
-    def finalize_event(_envelopes); end
-
-    # It's a stub, proper requester methods are in SingleEvent and
-    # SubscribeEvent modules
-    def requester; end
   end
 end
