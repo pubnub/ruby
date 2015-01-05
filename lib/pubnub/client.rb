@@ -44,7 +44,9 @@ module Pubnub
     end
 
     def requester(origin, event_type, sync)
-      Pubnub.logger.debug('Pubnub') { "Looking for requester for #{event_type}" }
+      Pubnub.logger.debug('Pubnub') do
+        "Looking for requester for #{event_type}"
+      end
       if sync
         Request.new
       else

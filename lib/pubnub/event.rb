@@ -41,7 +41,7 @@ module Pubnub
     end
 
     def sync?
-      @http_sync
+      @http_sync ? true : false
     end
 
     private
