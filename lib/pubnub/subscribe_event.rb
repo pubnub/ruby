@@ -18,9 +18,9 @@ module Pubnub
       unless @finalized
         Pubnub.logger.debug('Pubnub') { "Fired event #{self.class}" }
 
-        message = send_request
-
         fire_heartbeat if @heartbeat && !@http_sync && !@heart
+
+        message = send_request
 
         envelopes = fire_callbacks(handle(message))
 

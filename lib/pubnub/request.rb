@@ -20,8 +20,6 @@ module Pubnub
       @connection.idle_timeout = event.idle_timeout
 
       @connection.request(event.uri)
-    ensure
-      terminate if event.sync?
     end
   end
 end

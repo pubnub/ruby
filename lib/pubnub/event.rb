@@ -18,13 +18,16 @@ module Pubnub
     def fire
       Pubnub.logger.debug('Pubnub') { "Fired event #{self.class}" }
 
-      message = requester.send_request(Celluloid::Actor.current)
+      sender = requester
+
+      message = sender.send_request(Celluloid::Actor.current)
 
       envelopes = fire_callbacks(handle(message))
       finalize_event(envelopes)
       envelopes
     ensure
-      terminate unless @stay_alive
+      sender.terminate if @http_sync
+      terminate        unless @stay_alive
     end
 
     def uri
