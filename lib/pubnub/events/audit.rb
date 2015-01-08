@@ -7,11 +7,6 @@ module Pubnub
     include Pubnub::SingleEvent
     include Pubnub::PAM
 
-    def initialize(options, app)
-      super
-      @timestamp = current_time
-    end
-
     private
 
     def parameters(signature = false)

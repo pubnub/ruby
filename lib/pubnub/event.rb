@@ -12,6 +12,8 @@ module Pubnub
       @app = app
       create_variables_from_options(app.env.merge(options))
       format_channels
+      format_group
+      set_timestamp
       Pubnub.logger.debug('Pubnub') { "Initialized #{self.class}" }
     end
 
@@ -51,6 +53,7 @@ module Pubnub
 
     def format_channels
       @channel = Formatter.format_channel(@channel || @channels)
+      @channel += Formatter.format_presence_channel(@presence)
     end
 
     def fire_callbacks(envelopes)
@@ -110,11 +113,31 @@ module Pubnub
       variables = %w(origin channel channels message http_sync callback
                      connect_callback ssl cipher_key secret_key auth_key
                      publish_key subscribe_key timetoken error_callback
-                     open_timeout read_timeout idle_timeout heartbeat)
+                     open_timeout read_timeout idle_timeout heartbeat
+                     group action read write manage ttl presence start
+                     end count reverse)
 
       variables.each do |variable|
         instance_variable_set('@' + variable, options[variable.to_sym])
       end
+    end
+
+    def format_group
+      if @group.to_s.count(':') > 0
+        @namespace_id, @group_id = @group.to_s.split(':')
+      else
+        @namespace_id = nil
+        @group_id     = @group.to_s
+      end
+    end
+
+    # TODO: refactor this nicely and change test stubs
+    def set_timestamp
+      @timestamp = current_time
+    end
+
+    def current_time
+      ::Time.now.to_i
     end
 
     def encode_state(state)

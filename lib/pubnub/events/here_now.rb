@@ -33,17 +33,17 @@ module Pubnub
         'presence',
         'sub-key',
         @subscribe_key,
-        ('channel' if @channel_group),
-        (',' if @channel_group)
+        ('channel' if @group),
+        (',' if @group)
       ].join('/')
     end
 
     def parameters
       parameters = super
       parameters.merge!(
-          'channel-group' => format_channel_group(@channel_group, false)
+          'channel-group' => format_channel_group(@group, false)
                                  .join(',')
-      ) unless @channel_group.blank?
+      ) unless @group.blank?
       parameters
     end
 

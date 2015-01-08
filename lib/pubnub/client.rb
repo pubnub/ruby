@@ -57,9 +57,10 @@ module Pubnub
 
     def kill_requester(origin, event_type)
       Pubnub.logger.debug('Pubnub') { 'Killing requester' }
-      Celluloid::Actor.kill(
-          @env[:requesters_pool][origin][event_type]
-      )
+      @env[:requesters_pool][origin][event_type].async.terminate
+      # Celluloid::Actor.kill(
+      #     @env[:requesters_pool][origin][event_type]
+      # )
       @env[:requesters_pool][origin][event_type] = nil
     rescue
       Pubnub.logger.debug('Pubnub') { 'There\'s no requester' }

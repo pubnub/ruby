@@ -9,7 +9,6 @@ module Pubnub
           c + '-pnpres'
         end
       end
-      @auth_key = options[:auth_key]
     end
 
     def signature
@@ -28,8 +27,8 @@ module Pubnub
     def parameters(set_signature = false)
       params = super()
 
-      unless @channel_group.blank?
-        params.merge!('channel-group' => @channel_group.join(','))
+      unless @group.blank?
+        params.merge!('channel-group' => @group.join(','))
       end
 
       params.merge!(timestamp: @timestamp)
@@ -42,10 +41,6 @@ module Pubnub
       parameters(true).map do|k, v|
         "#{k}=#{CGI.escape(v.to_s).gsub('+', '%20')}"
       end.sort.join('&')
-    end
-
-    def current_time
-      ::Time.now.to_i
     end
 
     def format_envelopes(response)

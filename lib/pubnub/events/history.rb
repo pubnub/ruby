@@ -6,14 +6,6 @@ module Pubnub
     include Pubnub::Event
     include Pubnub::SingleEvent
 
-    def initialize(options, app)
-      super
-      @start   = options[:start]
-      @end     = options[:end]
-      @count   = options[:count]
-      @reverse = options[:reverse]
-    end
-
     private
 
     def timetoken(parsed_response)

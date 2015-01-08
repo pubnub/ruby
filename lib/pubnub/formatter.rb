@@ -16,6 +16,12 @@ module Pubnub
         end
       end
 
+      def format_presence_channel(presence)
+        format_channel(
+            make_channel_array(presence).map { |p| p + '-pnpres' }
+        )
+      end
+
       # Transforms message to json and encode it
       def format_message(message, cipher_key)
         if cipher_key

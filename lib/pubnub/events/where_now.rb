@@ -7,9 +7,9 @@ module Pubnub
     include Pubnub::SingleEvent
 
     def initialize(options, app)
-      @uuid_looking_for = options[:uuid]
-      @uuid = app.uuid
       super
+      @uuid_looking_for = options[:uuid]
+      @uuid             = app.uuid
     end
 
     private

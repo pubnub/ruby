@@ -6,30 +6,10 @@ module Pubnub
     include Pubnub::Event
     include Pubnub::SingleEvent
 
-    def initialize(options, app)
-      @group  = options[:group]
-      @action = options[:action]
-      # @cloak  = options[:cloak]
-      super
-
-      @channel = nil if @channel.size == 1 && @channel.first.empty?
-      format_group if @group
-    end
-
     private
-
-    def format_group
-      if @group.to_s.count(':') > 0
-        @namespace_id, @group_id = @group.to_s.split(':')
-      else
-        @namespace_id = nil
-        @group_id     = @group.to_s
-      end
-    end
 
     def parameters
       parameters = super
-      # parameters.merge!({cloak:  @cloak})             if @cloak
       if @action == :add    && !@channel.blank?
         parameters.merge!(add:    @channel.join(','))
       end

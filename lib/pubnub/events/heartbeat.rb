@@ -10,19 +10,13 @@ module Pubnub
     private
 
     def path
-      if @channel == [''] || @channel.blank?
-        channel = [',']
-      else
-        channel = @channel
-      end
-
       '/' + [
         'v2',
         'presence',
         'sub-key',
         @subscribe_key,
         'channel',
-        channel.join(','),
+        Formatter.channels_for_url(@channel),
         'heartbeat'
       ].join('/')
     end
@@ -34,9 +28,9 @@ module Pubnub
       end
       parameters.merge!(heartbeat: @heartbeat)
       parameters.merge!(
-          'channel-group' => format_channel_group(@channel_group, true)
+          'channel-group' => format_channel_group(@group, true)
                                  .join(',')
-      ) unless @channel_group.blank?
+      ) unless @group.blank?
       parameters
     end
 

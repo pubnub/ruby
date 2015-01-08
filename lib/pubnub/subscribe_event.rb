@@ -26,11 +26,7 @@ module Pubnub
 
         finalize_event(envelopes)
 
-        if @finalized
-          clean
-        else
-          async.fire unless @http_sync
-        end
+        async.fire unless @http_sync
 
         envelopes
       end
@@ -55,11 +51,18 @@ module Pubnub
       end
 
       if @channel.empty?
-        @finalized = true
-        stop_heartbeat if @heart
+        finish
       else
         restart_heartbeat if @heart
       end
+    end
+
+    def leave_all
+      Pubnub.logger.debug('Pubnub') { 'Leaving all subscriptions' }
+      @channel.each do |channel|
+        @app.leave(channel: channel, skip_restart: true, http_sync: true)
+      end
+      finish
     end
 
     private
@@ -87,14 +90,13 @@ module Pubnub
       requester.send_request(Celluloid::Actor.current)
     end
 
-    def clean
-      @app.env[:subscription_pool][@origin] = nil
-    end
-
-    def stop
-      stop_heartbeat
+    def finish
+      Pubnub.logger.debug('Pubnub') { 'Stopping subscription' }
+      stop_heartbeat if @heart
       kill_requester
       @finalized = true
+      @app.env[:subscription_pool][@origin] = nil
+      terminate
     end
 
     def remove_channel(channel)

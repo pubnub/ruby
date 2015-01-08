@@ -9,9 +9,7 @@ module Pubnub
 
     def initialize(options, app)
       super
-      @timestamp = current_time
-
-      @ttl = options[:ttl] || Pubnub::Configuration::DEFAULT_TTL
+      @ttl ||= Pubnub::Configuration::DEFAULT_TTL
     end
 
     private
@@ -19,7 +17,7 @@ module Pubnub
     def parameters(signature = false)
       write  = [0, '0', false].include?(@write)  ? 1 : 0
       read   = [0, '0', false].include?(@read)   ? 1 : 0
-      unless @channel_group.blank?
+      unless @group.blank?
         manage = [0, '0', false].include?(@manage) ? 1 : 0
       end
 

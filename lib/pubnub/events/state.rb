@@ -10,9 +10,8 @@ module Pubnub
 
     def initialize(options, app)
       super
-
       @uuid_looking_for = options[:uuid]
-      @uuid = app.uuid
+      @uuid             = app.uuid
     end
 
     private
@@ -20,9 +19,9 @@ module Pubnub
     def parameters
       parameters = super
       parameters.merge!(
-          'channel-group' => format_channel_group(@channel_group)
+          'channel-group' => format_channel_group(@group)
                                  .join(',')
-      ) unless @channel_group.blank?
+      ) unless @group.blank?
       parameters
     end
 
