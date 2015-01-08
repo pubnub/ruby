@@ -74,7 +74,8 @@ module Pubnub
 
       empty_if_blank = {
         auth: @auth_key,
-        uuid: @app.env[:uuid]
+        uuid: @app.env[:uuid],
+        'channel-group' => @group
       }
 
       empty_if_blank.delete_if { |_k, v| v.blank? }

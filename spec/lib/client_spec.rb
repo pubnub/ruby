@@ -36,7 +36,7 @@ describe Pubnub::Client do
       expect(pubnub.env[:subscribe_event_conn_pool]).to eq({})
 
       # Callback and error callbacks
-      expect(pubnub.env[:cb_pool]).to eq({})
+      expect(pubnub.env[:c_cb_pool]).to eq({})
       expect(pubnub.env[:e_cb_pool]).to eq({})
 
       # Subscriptions

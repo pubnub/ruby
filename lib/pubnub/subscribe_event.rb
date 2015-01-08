@@ -9,9 +9,10 @@ module Pubnub
       @heartbeat = @app.env[:heartbeat]
       setup_cb_pools
       @channel.each do |channel|
-        @cb_pool[channel]   = @callback
+        @c_cb_pool[channel] = @callback
         @e_cb_pool[channel] = @error_callback
       end
+      @g_cb_pool[@group] = @callback if @group
     end
 
     def fire
@@ -108,18 +109,19 @@ module Pubnub
     end
 
     def add_cb(channel, cb, e_cb)
-      @cb_pool[channel]   = cb
+      @c_cb_pool[channel]   = cb
       @e_cb_pool[channel] = e_cb
     end
 
     def remove_cb(channel)
-      @cb_pool[channel]   = nil
+      @c_cb_pool[channel]   = nil
       @e_cb_pool[channel] = nil
     end
 
     def setup_cb_pools
-      @cb_pool   ||= {}
-      @e_cb_pool ||= {}
+      @g_cb_pool ||= {} # group
+      @c_cb_pool ||= {} # channel
+      @e_cb_pool ||= {} # error
     end
 
     def requester
@@ -137,9 +139,17 @@ module Pubnub
         Pubnub.logger.debug('Pubnub') { "Firing callbacks for #{self.class}" }
         envelopes.each do |envelope|
           if !envelope.error && !envelope.message.nil?
-            @cb_pool[envelope.channel].call envelope
+            if envelope.group
+              @g_cb_pool[envelope.group].call envelope
+            else
+              @c_cb_pool[envelope.channel].call envelope
+            end
           elsif envelope.error
-            @e_cb_pool[envelope.channel].call envelope
+            if @e_cb_pool[envelope.channel]
+              @e_cb_pool[envelope.channel].call(envelope)
+            else
+              @app.env[:error_callback].call(envelope)
+            end
           end
         end
       end
@@ -223,15 +233,25 @@ module Pubnub
       end
     end
 
-    def format_channel_group(_parsed_response)
+    def format_channel_group(parsed_response)
       Pubnub.logger.debug('Pubnub') { 'Formatting channel group' }
+      envelopes = []
+      parsed_response.first.size.times do |i|
+        envelopes << valid_envelope(parsed_response,
+                                    parsed_response[0][i],
+                                    parsed_response[3].split(',')[i],
+                                    parsed_response[2].split(',')[i]
+        )
+      end
+      envelopes
     end
 
-    def valid_envelope(parsed_response, msg = nil, channel = nil)
+    def valid_envelope(parsed_response, msg = nil, channel = nil, group = nil)
       Envelope.new(
           parsed_response:  parsed_response,
           message:          msg,
           channel:          channel,
+          group:            group,
           response_message: parsed_response,
           timetoken:        timetoken(parsed_response)
       )

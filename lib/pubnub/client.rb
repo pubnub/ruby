@@ -124,7 +124,7 @@ module Pubnub
       @env[:heartbeat_event_conn_pool] = {}
 
       # Callback pools
-      @env[:cb_pool]   = {}
+      @env[:c_cb_pool]   = {}
       @env[:e_cb_pool] = {}
 
       # Subscription&heartbeat pools
