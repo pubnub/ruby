@@ -12,7 +12,10 @@ module Pubnub
         @c_cb_pool[channel] = @callback
         @e_cb_pool[channel] = @error_callback
       end
-      @g_cb_pool[@group] = @callback if @group
+
+      @group.each do |group|
+        @g_cb_pool[group] = @callback
+      end
     end
 
     def fire
@@ -168,6 +171,14 @@ module Pubnub
         0,
         (@app.env[:timetoken] || 0)
       ].join('/').gsub(/\?/, '%3F')
+    end
+
+    def parameters
+      params = super
+      unless @group.empty?
+        params.merge!({ 'channel-group' => @group.join(',') })
+      end
+      params
     end
 
     def timetoken(parsed_response)

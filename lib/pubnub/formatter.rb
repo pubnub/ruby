@@ -16,6 +16,12 @@ module Pubnub
         end
       end
 
+      def format_group(group, should_encode = true)
+        format_channel(group, should_encode).map do |g|
+          g.gsub '%3A', ':'
+        end
+      end
+
       def format_presence_channel(presence)
         format_channel(
             make_channel_array(presence).map { |p| p + '-pnpres' }

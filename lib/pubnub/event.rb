@@ -74,8 +74,7 @@ module Pubnub
 
       empty_if_blank = {
         auth: @auth_key,
-        uuid: @app.env[:uuid],
-        'channel-group' => @group
+        uuid: @app.env[:uuid]
       }
 
       empty_if_blank.delete_if { |_k, v| v.blank? }
@@ -124,11 +123,13 @@ module Pubnub
     end
 
     def format_group
-      if @group.to_s.count(':') > 0
-        @namespace_id, @group_id = @group.to_s.split(':')
+      @group = Formatter.format_group(@group)
+
+      if @group.first.to_s.count(':') > 0
+        @namespace_id, @group_id = @group.first.to_s.split(':')
       else
         @namespace_id = nil
-        @group_id     = @group.to_s
+        @group_id     = @group.first.to_s
       end
     end
 
