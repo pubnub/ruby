@@ -41,7 +41,11 @@ module Pubnub
       kill_requester
       event.channel.each do |channel|
         add_channel channel
-        add_cb channel, event.callback, event.error_callback
+        add_c_cb channel, event.callback, event.error_callback
+      end
+      event.group.each do |group|
+        add_group group
+        add_g_cb group, event.callback, event.error_callback
       end
       restart_heartbeat if @heart
     end
@@ -51,10 +55,15 @@ module Pubnub
       kill_requester
       event.channel.each do |channel|
         remove_channel channel
-        remove_cb channel
+        remove_c_cb channel
       end
 
-      if @channel.empty?
+      event.group.each do |group|
+        remove_group group
+        remove_g_cb group
+      end
+
+      if @channel.empty? && @group.empty?
         finish
       else
         restart_heartbeat if @heart
@@ -107,18 +116,34 @@ module Pubnub
       @channel.delete(channel)
     end
 
+    def remove_group(group)
+      @group.delete(group)
+    end
+
     def add_channel(channel)
       @channel << channel
     end
 
-    def add_cb(channel, cb, e_cb)
-      @c_cb_pool[channel]   = cb
+    def add_group(group)
+      @group << group
+    end
+
+    def add_c_cb(channel, cb, e_cb)
+      @c_cb_pool[channel] = cb
       @e_cb_pool[channel] = e_cb
     end
 
-    def remove_cb(channel)
+    def add_g_cb(group, cb, _e_cb)
+      @g_cb_pool[group] = cb
+    end
+
+    def remove_c_cb(channel)
       @c_cb_pool[channel]   = nil
       @e_cb_pool[channel] = nil
+    end
+
+    def remove_g_cb(group)
+      @g_cb_pool[group] = nil
     end
 
     def setup_cb_pools
