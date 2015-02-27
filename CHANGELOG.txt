@@ -1,3 +1,6 @@
+3.7.1 Release
+. Fixed memory leak
+
 3.7.0 Release
 . Added channel groups features
 
