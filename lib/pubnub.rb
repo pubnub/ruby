@@ -43,6 +43,8 @@ end
 
 module Pubnub
   class << self
+    attr_accessor :logger
+
     def new(options = {})
       Pubnub::Client.new(options)
     end

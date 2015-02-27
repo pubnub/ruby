@@ -32,10 +32,10 @@ module Pubnub
       error_message << "ERROR MESSAGE: #{@message}\n"
       error_message << "ERROR BACKTRACE: #{self.backtrace}"
 
-      if $logger.blank?
+      if Pubnub.logger.blank?
         puts error_message
       else
-        $logger.error('Pubnub'){error_message}
+        Pubnub.logger.error(:pubnub){error_message}
       end
     end
 

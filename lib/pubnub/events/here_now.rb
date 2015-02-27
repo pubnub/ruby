@@ -40,7 +40,7 @@ module Pubnub
             @channel
         ].join('/')
       else
-        $logger.debug('Pubnub'){'Global here_now'}
+        Pubnub.logger.debug(:pubnub){'Global here_now'}
         '/' + [
             'v2',
             'presence',

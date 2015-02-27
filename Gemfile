@@ -9,4 +9,6 @@ group :development do
   gem 'pry'
   gem 'webmock'
   gem 'awesome_print'
+  gem 'ruby-prof'
+  gem 'memory_profiler'
 end

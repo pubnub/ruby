@@ -12,8 +12,8 @@ module Pubnub
       @event = 'publish'
       @allow_multiple_channels = false
 
-      $logger.info('Pubnub'){ "Bytesize: #{uri(app).to_s.bytesize}" }
-      $logger.info('Pubnub'){ "Length:   #{uri(app).to_s.length}" }
+      Pubnub.logger.info(:pubnub){ "Bytesize: #{uri(app).to_s.bytesize}" }
+      Pubnub.logger.info(:pubnub){ "Length:   #{uri(app).to_s.length}" }
 
       # raise ArgumentError.new(:object => self, :message => ':message argument is too big, encoded uri would excess 32k size limit') if uri(app).to_s.bytesize > 32000
     end

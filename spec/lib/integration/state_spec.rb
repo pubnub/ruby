@@ -6,14 +6,14 @@ describe 'state metadata in subscribe requests' do
     @message_output = StringIO.new
 
     @callback = lambda { |envelope|
-      $logger.debug 'FIRING CALLBACK FROM TEST'
+      Pubnub.logger.debug 'FIRING CALLBACK FROM TEST'
       @response_output.write envelope.response
       @message_output.write envelope.msg
       @after_callback = true
     }
 
     @error_callback = lambda { |envelope|
-      $logger.debug 'FIRING ERROR CALLBACK FROM TEST'
+      Pubnub.logger.debug 'FIRING ERROR CALLBACK FROM TEST'
       @response_output.write envelope.response
       @message_output.write envelope.msg
       @after_error_callback = true
