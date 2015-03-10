@@ -1,14 +1,13 @@
 # Toplevel Pubnub module
 module Pubnub
   # PAM module holds shared functionality for all PAM requests
-  module PAM
+  class PAM < SingleEvent
     def initialize(options, app)
       super
-      if options[:presence].present?
-        @channel += format_channels(options[:presence]).map do |c|
-          c + '-pnpres'
-        end
-      end
+
+      @channel += format_channels(options[:presence]).map do |c|
+        c + '-pnpres'
+      end if options[:presence].present?
     end
 
     def signature
@@ -26,11 +25,7 @@ module Pubnub
 
     def parameters(set_signature = false)
       params = super()
-
-      unless @group.blank?
-        params.merge!('channel-group' => @group.join(','))
-      end
-
+      params.merge!('channel-group' => @group.join(',')) unless @group.blank?
       params.merge!(timestamp: @timestamp)
       params.merge!(channel:   @channel.join(',')) unless @channel.first.blank?
       params.merge!(signature: signature)          unless set_signature

@@ -2,9 +2,7 @@
 module Pubnub
   # Holds subscribe functionality, beware, most of subscribe functionality is
   # held by SubscribeEvent
-  class Subscribe
+  class Subscribe < SubscribeEvent
     include Celluloid
-    include Pubnub::Event
-    include Pubnub::SubscribeEvent
   end
 end

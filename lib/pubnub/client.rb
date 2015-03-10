@@ -8,6 +8,10 @@ require 'pubnub/message'
 
 require 'pubnub/event'
 require 'pubnub/single_event'
+require 'pubnub/subscribe_event/formatter'
+require 'pubnub/subscribe_event/heartbeat'
+require 'pubnub/subscribe_event/adding'
+require 'pubnub/subscribe_event/removing'
 require 'pubnub/subscribe_event'
 require 'pubnub/pam'
 require 'pubnub/heart'
@@ -22,6 +26,7 @@ require 'pubnub/validators/common_validator'
 require 'pubnub/validators/client'
 require 'pubnub/validators/publish'
 require 'pubnub/validators/subscribe'
+
 # Toplevel Pubnub module
 module Pubnub
   # Pubnub client Class
@@ -144,8 +149,7 @@ module Pubnub
     end
 
     def default_values
-      {
-        origin: DEFAULT_ORIGIN,
+      { origin: DEFAULT_ORIGIN,
         error_callback: DEFAULT_ERROR_CALLBACK,
         connection_callback: DEFAULT_CONNECT_CALLBACK,
         open_timeout: DEFAULT_OPEN_TIMEOUT,
@@ -153,8 +157,7 @@ module Pubnub
         idle_timeout: DEFAULT_IDLE_TIMEOUT,
         s_open_timeout: DEFAULT_S_OPEN_TIMEOUT,
         s_read_timeout: DEFAULT_S_READ_TIMEOUT,
-        s_idle_timeout: DEFAULT_S_IDLE_TIMEOUT
-      }
+        s_idle_timeout: DEFAULT_S_IDLE_TIMEOUT }
     end
 
     def clean_env

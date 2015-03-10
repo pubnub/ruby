@@ -1,10 +1,8 @@
 # Toplevel Pubnub module
 module Pubnub
   # Holds heartbeat functionality
-  class Heartbeat
+  class Heartbeat < SingleEvent
     include Celluloid
-    include Pubnub::Event
-    include Pubnub::SingleEvent
     include Pubnub::Formatter
 
     private

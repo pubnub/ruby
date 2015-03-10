@@ -1,10 +1,8 @@
 # Toplevel Pubnub module
 module Pubnub
   # Holds publish functionality
-  class Publish
+  class Publish < SingleEvent
     include Celluloid
-    include Pubnub::Event
-    include Pubnub::SingleEvent
 
     private
 

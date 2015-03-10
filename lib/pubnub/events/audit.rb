@@ -1,11 +1,8 @@
 # Toplevel Pubnub module
 module Pubnub
   # Holds here_now functionality
-  class Audit
+  class Audit < PAM
     include Celluloid
-    include Pubnub::Event
-    include Pubnub::SingleEvent
-    include Pubnub::PAM
 
     private
 

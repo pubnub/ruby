@@ -1,10 +1,8 @@
 # Toplevel Pubnub module
 module Pubnub
   # Holds here_now functionality
-  class HereNow
+  class HereNow < SingleEvent
     include Celluloid
-    include Pubnub::Event
-    include Pubnub::SingleEvent
 
     private
 

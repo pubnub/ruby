@@ -27,15 +27,8 @@ module Pubnub
       decode_cipher = OpenSSL::Cipher::Cipher.new(@alg).decrypt
       decode_cipher.key = @key
       decode_cipher.iv  = @iv
-      begin
-        undecoded_text = Base64.decode64(cipher_text)
-        plain_text = decode_cipher.update(undecoded_text)
-        plain_text << decode_cipher.final
-      rescue => e
-        Pubnub.error('Pubnub') { "DECRYPTION ERROR #{e}" }
-        plain_text = '"DECRYPTION ERROR"'
-      end
 
+      plain_text = decryption(cipher_text, decode_cipher)
       load_json(plain_text)
 
       Pubnub.logger.debug('Pubnub') { 'Finished decrypting' }
@@ -44,6 +37,15 @@ module Pubnub
     end
 
     private
+
+    def decryption(cipher_text, decode_cipher)
+      undecoded_text = Base64.decode64(cipher_text)
+      plain_text = decode_cipher.update(undecoded_text)
+      plain_text << decode_cipher.final
+    rescue => e
+      Pubnub.error('Pubnub') { "DECRYPTION ERROR #{e}" }
+      '"DECRYPTION ERROR"'
+    end
 
     def load_json(text)
       JSON.load(text)

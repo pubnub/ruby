@@ -2,7 +2,7 @@
 module Pubnub
   # Event module holds most basic and required infrastructure for every pubnub
   # event, there are also SingleEvent module and SubscribeEvent module
-  module Event
+  class Event
     attr_reader :origin, :callback, :error_callback, :channel,
                 :open_timeout, :read_timeout, :idle_timeout, :group
 

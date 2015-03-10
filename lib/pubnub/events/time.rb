@@ -1,10 +1,8 @@
 # Toplevel Pubnub module
 module Pubnub
   # Holds time functionality
-  class Time
+  class Time < SingleEvent
     include Celluloid
-    include Pubnub::Event
-    include Pubnub::SingleEvent
 
     private
 

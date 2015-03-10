@@ -14,6 +14,8 @@ module Pubnub
         end
       end
 
+      private
+
       def setup_conn_for_single_event(event)
         conn = Net::HTTP::Persistent.new "pn_client_v#{Pubnub::VERSION}"
         conn.proxy_from_env
@@ -42,24 +44,37 @@ module Pubnub
       end
 
       def connection_for(event)
-        if event.is_a? SingleEvent
-          @env[:single_event_conn_pool][event.origin] ||
-              setup_conn_for(event)
-        elsif event.is_a? SubscribeEvent
-          @env[:subscribe_event_conn_pool][event.origin] ||
-              setup_conn_for(event)
-        elsif event.is_a? HeartbeatEvent
-          @env[:heartbeat_event_conn_pool][event.origin] ||
-              setup_conn_for(event)
-        else
-          fail(Pubnub::Error.new(
-                  env: @env,
-                  operation: 'Pubnub.client#connection_for',
-                  app: self,
-                  error_type: 'Internal Error',
-                  message: 'Can\'t recognize event'
-              ), 'Can\'t recognize event')
+        case event.class
+        when SingleEvent then single_event_connection
+        when SubscribeEvent then subscribe_event_connection
+        when HeartbeatEvent then heartbeat_event_connection
+        else rise_connection_for_error
         end
+      end
+
+      def rise_connection_for_error
+        fail(Pubnub::Error.new(
+                 env: @env,
+                 operation: 'Pubnub.client#connection_for',
+                 app: self,
+                 error_type: 'Internal Error',
+                 message: 'Can\'t recognize event'
+             ), 'Can\'t recognize event')
+      end
+
+      def single_event_connection
+        @env[:single_event_conn_pool][event.origin] ||
+            setup_conn_for(event)
+      end
+
+      def subscribe_event_connection
+        @env[:subscribe_event_conn_pool][event.origin] ||
+            setup_conn_for(event)
+      end
+
+      def heartbeat_event_connection
+        @env[:heartbeat_event_conn_pool][event.origin] ||
+            setup_conn_for(event)
       end
     end
   end

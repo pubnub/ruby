@@ -1,10 +1,8 @@
 # Toplevel Pubnub module
 module Pubnub
   # Holds state functionality
-  class State
+  class State < SingleEvent
     include Celluloid
-    include Pubnub::Event
-    include Pubnub::SingleEvent
 
     private
 

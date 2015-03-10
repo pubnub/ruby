@@ -1,7 +1,7 @@
 # Toplevel Pubnub module
 module Pubnub
   # SingleEvent module holds infrastructure for non-subscribe events
-  module SingleEvent
+  class SingleEvent < Event
     private
 
     def requester

@@ -3,5 +3,5 @@ AllCops:
     - 'spec/**/*'
     - 'examples/**/*'
 
-Metrics/MethodLength:
-  Max: 10
+Metrics/ClassLength:
+  Max: 150

@@ -1,10 +1,8 @@
 # Toplevel Pubnub module
 module Pubnub
   # Holds history functionality
-  class History
+  class History < SingleEvent
     include Celluloid
-    include Pubnub::Event
-    include Pubnub::SingleEvent
 
     private
 
@@ -56,15 +54,13 @@ module Pubnub
 
     def valid_envelopes(parsed_response)
       parsed_response.first.map do |message|
-        Envelope.new(
-                    parsed_response:  parsed_response,
-                    message:          message,
-                    channel:          @channel.first,
-                    response_message: response_message(parsed_response),
-                    timetoken:        timetoken(parsed_response),
-                    history_start:    parsed_response[1],
-                    history_end:      parsed_response[2]
-        )
+        Envelope.new(parsed_response:  parsed_response,
+                     message:          message,
+                     channel:          @channel.first,
+                     response_message: response_message(parsed_response),
+                     timetoken:        timetoken(parsed_response),
+                     history_start:    parsed_response[1],
+                     history_end:      parsed_response[2])
       end
     end
 

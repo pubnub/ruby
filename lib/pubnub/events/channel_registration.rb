@@ -1,10 +1,8 @@
 # Toplevel Pubnub module
 module Pubnub
   # Holds channel_registration functionality
-  class ChannelRegistration
+  class ChannelRegistration < SingleEvent
     include Celluloid
-    include Pubnub::Event
-    include Pubnub::SingleEvent
 
     private
 
@@ -23,58 +21,64 @@ module Pubnub
 
     def path
       head = "/v1/channel-registration/sub-key/#{@subscribe_key}/"
-      body = ''
-      case @action
-      when :list_groups
-        body << [
-          'channel-group'
-        ].join('/')
-      when :list_namespaces
-        body << [
-          'namespace'
-        ].join('/')
 
-      when :get
-        body << [
-          ('namespace' unless @namespace_id.blank?),
-          @namespace_id,
-          'channel-group',
-          @group_id
-        ].delete_if(&:blank?).join('/')
-
-      when :add
-        body << [
-          ('namespace' unless @namespace_id.blank?),
-          @namespace_id,
-          'channel-group',
-          @group_id
-        ].delete_if(&:blank?).join('/')
-
-      when :remove
-        body << [
-          ('namespace' unless @namespace_id.blank?),
-          @namespace_id,
-          ('channel-group' unless @group_id.blank?),
-          @group_id,
-          ('remove' if @channel.blank?)
-        ].delete_if(&:blank?).join('/')
-
-      when :set_cloak
-        body << [
-          ('namespace' unless @namespace_id.blank?),
-          @namespace_id,
-          'channel-group',
-          @group_id
-        ].delete_if(&:blank?).join('/')
-
-      else
-        fail ArgumentError.new(
-               object: self,
-               message: 'ChannelRegistration requires proper :action key'
-            ), 'ChannelRegistration requires proper :action key'
+      body = case @action
+             when :list_groups then body_list_groups
+             when :list_namespaces then body_list_namespaces
+             when :get then body_get
+             when :add then body_add
+             when :remove then body_remove
+             else raise_action_key_error
       end
 
       head + body
+    end
+
+    def raise_action_key_error
+      fail ArgumentError.new(
+               object: self,
+               message: 'ChannelRegistration requires proper :action key'
+           ), 'ChannelRegistration requires proper :action key'
+    end
+
+    def body_list_groups
+      [
+        'channel-group'
+      ].join('/')
+    end
+
+    def body_list_namespaces
+      [
+        'namespace'
+      ].join('/')
+    end
+
+    def body_get
+      [
+        ('namespace' unless @namespace_id.blank?),
+        @namespace_id,
+        'channel-group',
+        @group_id
+      ].delete_if(&:blank?).join('/')
+    end
+
+    def body_add
+      [
+        ('namespace' unless @namespace_id.blank?),
+        @namespace_id,
+        'channel-group',
+        @group_id
+      ].delete_if(&:blank?).join('/')
+    end
+
+    def body_remove
+      [
+        ('namespace' unless @namespace_id.blank?),
+        @namespace_id,
+        ('channel-group' unless @group_id.blank?),
+        @group_id,
+        ('remove' if @channel.blank?)
+      ].delete_if(&:blank?).join('/')
     end
 
     def format_envelopes(response)

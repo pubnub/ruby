@@ -49,16 +49,14 @@ module Pubnub
       end
 
       def make_channel_array(channel)
-        if %w(String Symbol).include?(channel.class.to_s)
-          channel.to_s.split(',')
-        elsif channel.class.to_s == 'Array'
-          channel.map(&:to_s)
-        elsif channel.class.to_s == 'NilClass'
-          []
-        else
-          fail Pubnub::ArgumentError.new(
-              message: 'Channel has to be String, Symbol or Array'
-               ), 'Channel has to be String, Symbol or Array'
+        case channel.class.to_s
+        when 'String' then channel.to_s.split(',')
+        when 'Symbol' then channel.to_s.split(',')
+        when 'Array' then channel.map(&:to_s)
+        when 'NilClass' then []
+        else fail Pubnub::ArgumentError.new(
+                      message: 'Channel has to be String, Symbol or Array'
+                  ), 'Channel has to be String, Symbol or Array'
         end
       end
 

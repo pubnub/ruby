@@ -1,10 +1,8 @@
 # Toplevel Pubnub module
 module Pubnub
   # Holds leave functionality
-  class Leave
+  class Leave < SingleEvent
     include Celluloid
-    include Pubnub::Event
-    include Pubnub::SingleEvent
 
     def fire
       remove_subscription

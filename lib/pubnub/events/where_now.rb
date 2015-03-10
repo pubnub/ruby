@@ -1,10 +1,8 @@
 # Toplevel Pubnub module
 module Pubnub
   # Holds where_now functionality
-  class WhereNow
+  class WhereNow < SingleEvent
     include Celluloid
-    include Pubnub::Event
-    include Pubnub::SingleEvent
 
     def initialize(options, app)
       super

@@ -2,10 +2,8 @@
 module Pubnub
   # Holds presence functionality, beware, most of presence functionality is
   # held by SubscribeEvent
-  class Presence
+  class Presence < SubscribeEvent
     include Celluloid
-    include Pubnub::Event
-    include Pubnub::SubscribeEvent
 
     def format_channels
       @channel = Formatter.format_channel(@channel || @channels)
