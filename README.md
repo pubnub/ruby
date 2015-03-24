@@ -331,13 +331,6 @@ All channel groups specific operations can be issued with
 
 #### Getting info
 
-##### Getting all namespaces
-
-```ruby
-# Response envelope will hold info as hash in payload attribute. 
-pubnub.channel_registration(action: :list_namespaces, http_sync: true)
-```
-
 ##### Getting all non-namespaced channel groups
 
 ```ruby
