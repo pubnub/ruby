@@ -1,4 +1,4 @@
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
   # Holds where_now functionality
   class WhereNow < SingleEvent

@@ -1,4 +1,4 @@
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
   # Bunch of useful methods that are used in many parts of Pubnub and and can be
   # usable for any app that uses Pubnub library
@@ -81,6 +81,13 @@ module Pubnub
         channel = channels.join(',')
         channel = ',' if channel.empty?
         channel
+      end
+
+      # Checks if json in string is valid
+      def valid_json?(string)
+        JSON.parse(string) ? true : false
+      rescue JSON::ParserError
+        false
       end
     end
   end

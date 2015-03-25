@@ -1,4 +1,4 @@
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
   # Pubnub client Class
   class Client

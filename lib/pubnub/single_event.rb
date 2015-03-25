@@ -1,11 +1,11 @@
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
   # SingleEvent module holds infrastructure for non-subscribe events
   class SingleEvent < Event
     private
 
-    def requester
-      @app.requester(@origin, :single_event, @http_sync)
+    def request_dispatcher
+      @app.request_dispatcher(@origin, :single_event, @http_sync)
     end
 
     # Just stubs

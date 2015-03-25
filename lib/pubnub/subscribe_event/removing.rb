@@ -1,4 +1,4 @@
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
   class SubscribeEvent < Event
     # Holds methods connected with channels and cg removal
@@ -34,7 +34,7 @@ module Pubnub
       private
 
       def kill_requester
-        @app.kill_requester(@origin, :subscribe_event)
+        @app.kill_request_dispatcher(@origin, :subscribe_event)
       end
 
       def remove_g_cb(group)

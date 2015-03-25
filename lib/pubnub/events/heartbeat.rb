@@ -1,4 +1,4 @@
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
   # Holds heartbeat functionality
   class Heartbeat < SingleEvent

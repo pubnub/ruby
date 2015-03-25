@@ -1,4 +1,4 @@
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
   # Internal Crypto class used for message encryption and decryption
   class Crypto

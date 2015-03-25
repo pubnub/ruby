@@ -1,4 +1,4 @@
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
   class SubscribeEvent < Event
     # Holds SubscribeEvent functionality connected with heartbeat

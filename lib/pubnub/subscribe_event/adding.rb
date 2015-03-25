@@ -1,4 +1,4 @@
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
   class SubscribeEvent < Event
     # Holds methods connected with channels and cg adding
@@ -19,7 +19,7 @@ module Pubnub
 
       def add(event)
         Pubnub.logger.debug('Pubnub') { "#{self.class}#add" }
-        kill_requester
+        @app.kill_request_dispatcher(@origin, :subscribe_event)
 
         add_channels(event)
         add_groups(event)

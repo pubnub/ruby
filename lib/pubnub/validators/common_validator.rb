@@ -1,4 +1,4 @@
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
   # Validator module that holds all validators modules
   module Validator
@@ -8,14 +8,14 @@ module Pubnub
       def validate_origin(origin, required = false)
         fail(
             InitializationError.new,
-            'Missing required :origin parameter.'
+            'Missing required :origins_pool parameter.'
         ) if !origin && required
 
         fail(
             InitializationError.new,
-            'Origin parameter is not valid. \
-                   Should be type of String.'
-        ) unless origin.is_a?(String) || origin.blank?
+            'origins_pool parameter is not valid. \
+                   Should be type of Array.'
+        ) unless origin.is_a?(Array) || origin.blank?
       end
 
       # Validates given subscribe key

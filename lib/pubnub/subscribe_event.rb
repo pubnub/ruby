@@ -51,7 +51,7 @@ module Pubnub
     private
 
     def send_request
-      requester.send_request(Celluloid::Actor.current)
+      request_dispatcher.send_request(Celluloid::Actor.current)
     end
 
     def setup_cb_pools
@@ -60,8 +60,8 @@ module Pubnub
       @e_cb_pool ||= {} # error
     end
 
-    def requester
-      @app.requester(@origin, :subscribe_event, @http_sync)
+    def request_dispatcher
+      @app.request_dispatcher(@origin, :subscribe_event, @http_sync)
     end
 
     def fire_callbacks(envelopes)
@@ -108,7 +108,7 @@ module Pubnub
       '/' + [
         'subscribe',
         @subscribe_key,
-        Formatter.channels_for_url(@channel),
+        Pubnub::Formatter.channels_for_url(@channel),
         0,
         (@app.env[:timetoken] || 0)
       ].join('/').gsub(/\?/, '%3F')

@@ -1,4 +1,4 @@
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
   # Every message from server is formatted into easy to use Envelope object
   class Envelope

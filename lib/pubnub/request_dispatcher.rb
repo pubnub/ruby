@@ -1,15 +1,14 @@
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
-  # Request actor that sends requests and sends back responses to actors as
-  # messages
-  class Request
+  # Request actor configures request to send and sends it.
+  class RequestDispatcher
     include Celluloid
 
     def initialize
-      Pubnub.logger.debug('Pubnub') { 'Created new Request' }
-
       @connection = Net::HTTP::Persistent.new 'PubNub'
       @connection.proxy_from_env
+
+      Pubnub.logger.debug('Pubnub') { 'Created new Request' }
     end
 
     def send_request(event)

@@ -1,4 +1,4 @@
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
   # Holds leave functionality
   class Leave < SingleEvent
@@ -15,7 +15,7 @@ module Pubnub
     def remove_subscription
       @app.env[:subscription_pool][@origin].remove(Celluloid::Actor.current)
     rescue NoMethodError => _error
-      Pubnub.logger.error('Pubnub') do
+      Pubnub.logger.error('Pubnub::Leave') do
         'Tried to remove from non-existing subscription'
       end
     end
@@ -23,7 +23,7 @@ module Pubnub
     def restart_subscription
       @app.env[:subscription_pool][@origin].async.fire
     rescue NoMethodError => _error
-      Pubnub.logger.error('Pubnub') do
+      Pubnub.logger.error('Pubnub::Leave') do
         'Tried to restart non-existing subscription'
       end
     end

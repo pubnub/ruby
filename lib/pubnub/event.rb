@@ -1,4 +1,4 @@
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
   # Event module holds most basic and required infrastructure for every pubnub
   # event, there are also SingleEvent module and SubscribeEvent module
@@ -11,16 +11,17 @@ module Pubnub
     def initialize(options, app)
       @app = app
       create_variables_from_options(app.env.merge(options))
+      @origin = @app.current_origin
       format_channels
       format_group
       set_timestamp
-      Pubnub.logger.debug('Pubnub') { "Initialized #{self.class}" }
+      Pubnub.logger.debug('Pubnub::Event') { "Initialized #{self.class}" }
     end
 
     def fire
-      Pubnub.logger.debug('Pubnub') { "Fired event #{self.class}" }
+      Pubnub.logger.debug('Pubnub::Event') { "Fired event #{self.class}" }
 
-      sender = requester
+      sender = request_dispatcher
 
       message = sender.send_request(Celluloid::Actor.current)
 
@@ -37,7 +38,7 @@ module Pubnub
       uri += @origin
       uri += path
       uri += '?' + Formatter.params_hash_to_url_params(parameters)
-      Pubnub.logger.debug('Pubnub') { "Requested URI: #{uri}" }
+      Pubnub.logger.debug('Pubnub::Event') { "Requested URI: #{uri}" }
       URI uri
     end
 
@@ -57,7 +58,7 @@ module Pubnub
     end
 
     def fire_callbacks(envelopes)
-      Pubnub.logger.debug('Pubnub') { "Firing callbacks for #{self.class}" }
+      Pubnub.logger.debug('Pubnub::Event') { "Firing callbacks for #{self.class}" }
       envelopes.each do |envelope|
         if !envelope.error && @callback && !envelope.timetoken_update
           @callback.call envelope
@@ -83,7 +84,7 @@ module Pubnub
     end
 
     def add_common_data_to_envelopes(envelopes, response)
-      Pubnub.logger.debug('Pubnub') { 'Event#add_common_data_to_envelopes' }
+      Pubnub.logger.debug('Pubnub::Event') { 'Event#add_common_data_to_envelopes' }
 
       envelopes.each do |envelope|
         envelope.response      = response.body
@@ -99,7 +100,7 @@ module Pubnub
     end
 
     def handle(response)
-      Pubnub.logger.debug('Pubnub') { 'Event#handle' }
+      Pubnub.logger.debug('Pubnub::Event') { 'Event#handle' }
 
       @response  = response
       @envelopes = format_envelopes response
@@ -110,7 +111,7 @@ module Pubnub
     end
 
     def create_variables_from_options(options)
-      variables = %w(origin channel channels message http_sync callback
+      variables = %w(channel channels message http_sync callback
                      connect_callback ssl cipher_key secret_key auth_key
                      publish_key subscribe_key timetoken error_callback
                      open_timeout read_timeout idle_timeout heartbeat

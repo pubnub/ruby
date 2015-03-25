@@ -1,4 +1,4 @@
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
   class SubscribeEvent < Event
     # Holds methods for formatting and parsing responses in subscribe_event
@@ -89,7 +89,7 @@ module Pubnub
       end
 
       def format_envelopes(response)
-        parsed_response, error = Formatter.parse_json(response.body)
+        parsed_response, error = Pubnub::Formatter.parse_json(response.body)
 
         error = response if parsed_response && response.code != '200'
 

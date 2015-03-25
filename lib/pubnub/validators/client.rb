@@ -1,4 +1,4 @@
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
   # Validator module that holds all validators modules
   module Validator
@@ -7,7 +7,7 @@ module Pubnub
       class << self
         include CommonValidator
         def validate!(parameters)
-          validate_origin parameters[:origin], true
+          validate_origin parameters[:origins_pool], true
           validate_subscribe_key parameters[:subscribe_key], true
           validate_publish_key parameters[:publish_key]
         end

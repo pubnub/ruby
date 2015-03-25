@@ -3,7 +3,7 @@ require 'pubnub/uuid'
 require 'pubnub/formatter'
 require 'pubnub/crypto'
 require 'pubnub/configuration'
-require 'pubnub/request'
+require 'pubnub/request_dispatcher'
 require 'pubnub/message'
 
 require 'pubnub/event'
@@ -27,9 +27,9 @@ require 'pubnub/validators/client'
 require 'pubnub/validators/publish'
 require 'pubnub/validators/subscribe'
 
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
-  # Pubnub client Class
+  # Pubnub client Class.
   class Client
     include Configuration
     include Connections
@@ -39,67 +39,102 @@ module Pubnub
 
     VERSION = Pubnub::VERSION
 
+    # TODO: docs
     def initialize(options)
       env_hash = symbolize_options_keys(options)
       setup_app env_hash
       clean_env
       prepare_env
       validate! @env
-      Pubnub.logger.debug('Pubnub') { 'Created new Pubnub::Client instance' }
+      Pubnub.logger.debug('Pubnub::Client') do
+        'Created new Pubnub::Client instance'
+      end
     end
 
-    def requester(origin, event_type, sync)
-      Pubnub.logger.debug('Pubnub') do
+    # Kills currently running subscription and starts it again.
+    # Usable when @env[:origins_pool] changes.
+    def restart_subscription
+      # TODO: implement
+    end
+
+    # Same as #restart_subscription but set timetoken to 0.
+    def reset_subscription
+      @env[:timetoken] = 0
+      # TODO: implement
+    end
+
+    # TODO: docs
+    # TODO: implement
+    def subscribed?
+    end
+
+    # Returns appropriate RequestDispatcher.
+    # It returns always new RequestDispatcher for sync events.
+    # For async events it checks if there's already RequestDispatcher
+    # created and returns it if created, otherwise creates it, assigns
+    # it in @env and returns newly created dispatcher.
+    def request_dispatcher(origin, event_type, sync)
+      Pubnub.logger.debug('Pubnub::Client') do
         "Looking for requester for #{event_type}"
       end
+      # TODO: why am I returning always new displatcher for sync events?
       if sync
-        Request.new
+        RequestDispatcher.new
       else
-        @env[:requesters_pool][origin] ||= {}
-        @env[:requesters_pool][origin][event_type] ||= Request.new
+        @env[:req_dispatchers_pool][origin] ||= {}
+        @env[:req_dispatchers_pool][origin][event_type] ||=
+            RequestDispatcher.new
       end
     end
 
-    def kill_requester(origin, event_type)
-      Pubnub.logger.debug('Pubnub') { 'Killing requester' }
-      @env[:requesters_pool][origin][event_type].async.terminate
-      # Celluloid::Actor.kill(
-      #     @env[:requesters_pool][origin][event_type]
-      # )
-      @env[:requesters_pool][origin][event_type] = nil
+    # TODO: docs
+    def kill_request_dispatcher(origin, event_type)
+      Pubnub.logger.debug('Pubnub::Client') { 'Killing requester' }
+      @env[:req_dispatchers_pool][origin][event_type].async.terminate
+      @env[:req_dispatchers_pool][origin][event_type] = nil
     rescue
-      Pubnub.logger.debug('Pubnub') { 'There\'s no requester' }
+      Pubnub.logger.debug('Pubnub::Client') { 'There\'s no requester' }
     end
 
     # TODO: document breaking change set_uuid to change_uuid
     def change_uuid(uuid)
-      # leave_all unless @env[:subscriptions].empty?
+      leave_all if subscribed?
       @env[:uuid] = uuid
-      # start_subscribe(true) unless @env[:subscriptions].empty?
+      reset_subscription
     end
     alias_method :session_uuid=, :change_uuid
     alias_method :uuid=, :change_uuid
 
+    # TODO: docs
+    def current_origin
+      @env[:origins_pool].first
+    end
+    alias_method :origin, :current_origin
+
+    # TODO: docs
     def timetoken
       @env[:timetoken]
     end
 
+    # TODO: docs
     def timetoken=(timetoken)
       @env[:timetoken] = timetoken
     end
 
+    # TODO: docs
     def uuid
       @env[:uuid]
     end
 
+    # TODO: docs
     def events
       @env[:events]
     end
 
     private
 
-    def validate!(options)
-      Validator::Client.validate! options
+    def validate!(env)
+      Validator::Client.validate! env
     end
 
     def setup_app(options)
@@ -124,20 +159,20 @@ module Pubnub
       @env[:events] = []
 
       # Connection pools
-      @env[:single_event_conn_pool]    = {}
+      @env[:single_event_conn_pool] = {}
       @env[:subscribe_event_conn_pool] = {}
       @env[:heartbeat_event_conn_pool] = {}
 
-      # Callback pools
-      @env[:c_cb_pool]   = {}
+      # Callback pools.
+      @env[:c_cb_pool] = {}
       @env[:e_cb_pool] = {}
 
-      # Subscription&heartbeat pools
+      # Subscription and heartbeat pools.
       @env[:subscription_pool] = {}
       @env[:heartbeat_pool] = {}
 
-      # Requesters pool
-      @env[:requesters_pool] = {}
+      # Requests pool.
+      @env[:req_dispatchers_pool] = {}
     end
 
     def symbolize_options_keys(options)
@@ -149,7 +184,7 @@ module Pubnub
     end
 
     def default_values
-      { origin: DEFAULT_ORIGIN,
+      { origins_pool: DEFAULT_ORIGINS_POOL,
         error_callback: DEFAULT_ERROR_CALLBACK,
         connection_callback: DEFAULT_CONNECT_CALLBACK,
         open_timeout: DEFAULT_OPEN_TIMEOUT,

@@ -1,4 +1,4 @@
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
   # Holds presence functionality, beware, most of presence functionality is
   # held by SubscribeEvent

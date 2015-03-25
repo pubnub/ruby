@@ -10,7 +10,7 @@ require 'logger'
 require 'pubnub/version'
 require 'pubnub/client'
 
-# Adding blank? method to Object
+# Adding blank? and present? methods to Object.
 class Object
   def blank?
     respond_to?(:empty?) ? empty? : !self
@@ -21,12 +21,12 @@ class Object
   end
 end
 
-# Toplevel Pubnub module
-# TODO: YARDOC
+# Toplevel Pubnub module.
 module Pubnub
   class << self
     attr_accessor :logger, :client
 
+    # TODO: docs
     def new(options = {})
       Pubnub::Client.new(options)
     end

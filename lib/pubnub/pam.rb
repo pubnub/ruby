@@ -1,4 +1,4 @@
-# Toplevel Pubnub module
+# Toplevel Pubnub module.
 module Pubnub
   # PAM module holds shared functionality for all PAM requests
   class PAM < SingleEvent
