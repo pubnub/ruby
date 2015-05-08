@@ -1,6 +1,5 @@
 module Pubnub
   module Event
-
     attr_reader :fired, :finished
 
     def initialize(options, app)
@@ -467,7 +466,7 @@ module Pubnub
             if envelope.channel_group && app.env[:callbacks_pool][:channel_group][@origin][envelope.channel_group]
               app.env[:callbacks_pool][:channel_group][@origin][envelope.channel_group][:callback].call(envelope) if !envelope.error && !envelope.timetoken_update
             else
-              app.env[:callbacks_pool][:channel][@origin][envelope.channel][:callback].call(envelope) if !envelope.error && !envelope.timetoken_update
+              app.env[:callbacks_pool][:channel][@origin][encode_channel(envelope.channel)][:callback].call(envelope) if !envelope.error && !envelope.timetoken_update
             end
           end
           $logger.debug('Pubnub'){'We can send next request now'}

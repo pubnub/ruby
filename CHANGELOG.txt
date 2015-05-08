@@ -1,3 +1,6 @@
+3.7.1 Release
+. Fixed issue when some channels names weren't resolved properly to call callback
+
 3.7.0 Release
 . Added channel groups features
 

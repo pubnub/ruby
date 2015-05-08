@@ -61,8 +61,8 @@ module Pubnub
     end
 
     def channels_for_url(channels)
-      channel = channels.join(',')
-      channel = ',' if channel.empty?
+      channel = channels.join('%2C')
+      channel = '%2C' if channel.empty?
       channel
     end
 
