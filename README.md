@@ -1,6 +1,6 @@
 # Please direct all Support Questions and Concerns to Support@PubNub.com
 
-## PubNub Gem version 3.7.1
+## PubNub Gem version 3.7.2
 
 ##### YOU MUST HAVE A PUBNUB ACCOUNT TO USE THE API.
 ##### http://www.pubnub.com/account
@@ -17,10 +17,10 @@ We've made the response format compatible across all operations. This may break 
 Examples of affected operations can be found [here](3.5_to_3.6_upgrade_notes.md).
 
 ### Upgrading from PubNub 3.3.x and Earlier
-PubNub 3.7.1 is NOT compatible with earlier than 3.4 versions of Pubnub Ruby Client.
+PubNub 3.7.2 is NOT compatible with earlier than 3.4 versions of Pubnub Ruby Client.
 
 ### Upgrading from PubNub 3.4 and higher versions
-PubNub 3.7.1 is compatible with 3.4 version.
+PubNub 3.7.2 is compatible with 3.4 version.
 
 ## Important Notice about Blocking vs Non-Blocking Calls
 
@@ -319,80 +319,43 @@ pubnub.time("callback" => @my_callback)
 ### Channel Groups
 
 Channel grouping is new feature introduced in Pubnub 3.7. It allows to group
-channels into channel-groups and channel-groups into namespaces. For example you
-can add `weather` and `sport` channel to `news` channel group, and `news` and
-`local_ads` to `tv` namespace. Namespaces and channel groups are described as 
-`namespace:channel_group` e.g. `tv:news`. All channel-groups in namespace are 
-described as `namespace:` e.g. `tv:`. Non-namespaced channel groups are
-described as `non-namespaced-channel-group` eg. `global_alerts`.
+channels into channel-groups. For example you can add `weather` and `sport`
+channel to `news` channel group.
 
 All channel groups specific operations can be issued with
 `#channel_registration` method.
 
 #### Getting info
 
-##### Getting all non-namespaced channel groups
+##### Getting all channel groups
 
 ```ruby
 # Response envelope will hold info as hash in payload attribute.
 pubnub.channel_registration(action: :list_groups, http_sync: true)
 ```
 
-##### Getting all channel groups in given namespace
-
-```ruby
-# Response envelope will hold info as hash in payload attribute.
-pubnub.channel_registration(action: :get, group: 'foo:', http_sync: true)
-```
-
 ##### Getting all channels in channel group
 
 ```ruby
 # Response envelope will hold info as hash in payload attribute.
-pubnub.channel_registration(action: :get, group: 'foo:foo', http_sync: true)
+pubnub.channel_registration(action: :get, group: 'foo', http_sync: true)
 ```
 
 #### Adding
 
-##### Add channel to namespaced channel group
-
-```ruby
-pubnub.channel_registration(action: :add, group: 'foo:new_group', channel: :bot, http_sync: true)
-```
-
-##### Add channel to non-namespaced channel group
+##### Add channel to channel group
 
 ```ruby
 pubnub.channel_registration(action: :add, group: 'new_group', channel: :bot, http_sync: true)
 ```
 
-#### Removing
-
-##### Remove namespace and all channel groups
-
-```ruby
-pubnub.channel_registration(action: :remove, group: 'foo:', http_sync: true)
-```
-
-##### Remove namespaced channel group
-
-```ruby
-pubnub.channel_registration(action: :remove, group: 'foo:cg', http_sync: true)
-```
-
-##### Remove non-namespaced channel group
+##### Remove channel group
 
 ```ruby
 pubnub.channel_registration(action: :remove, group: 'cg', http_sync: true)
 ```
 
-##### Remove channel from namespaced channel group
-
-```ruby
-pubnub.channel_registration(action: :remove, group: 'foo:cg', channel: :to_remove, http_sync: true)
-```
-
-##### Remove channel from non-namespaced channel group
+##### Remove channel from channel group
 
 ```ruby
 pubnub.channel_registration(action: :remove, group: 'cg', channel: :to_remove, http_sync: true)
