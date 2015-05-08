@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pubnub (3.7.0beta0)
+    pubnub (3.7.0)
       eventmachine (~> 1.0)
       json (~> 1.8)
       net-http-persistent (~> 2.9)
@@ -15,8 +15,8 @@ GEM
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     diff-lcs (1.2.5)
-    eventmachine (1.0.3)
-    json (1.8.1)
+    eventmachine (1.0.7)
+    json (1.8.2)
     method_source (0.8.2)
     net-http-persistent (2.9.4)
     pry (0.10.0)
