@@ -57,7 +57,7 @@ module Pubnub
           page.times do
             envelopes << self.history(:channel => channel, :http_sync => true, :count => limit, :start => current_start_tt, :end => end_tt)
             envelopes.flatten!
-            current_start_tt = envelopes.last.history_end.to_i - 1
+            current_start_tt = envelopes.last.history_end.to_i + 1
           end
 
           envelopes.flatten!
