@@ -53,34 +53,25 @@ module Pubnub
       current_start_tt = start_tt
 
       if sync
-
-          puts "page = #{page}"
-          envelopes = nil
+          envelopes = []
           page.times do
-            envelopes = self.history(:channel => channel, :http_sync => true, :count => limit, :start => current_start_tt, :end => end_tt)
-            current_start_tt = envelopes.last.history_start.to_i - 1
+            envelopes << self.history(:channel => channel, :http_sync => true, :count => limit, :start => current_start_tt, :end => end_tt)
+            envelopes.flatten!
+            current_start_tt = envelopes.last.history_end.to_i - 1
           end
 
+          envelopes.flatten!
           envelopes.each do |envelope|
             callback.call envelope
           end if callback
-
-
+          envelopes
       else
         EM.defer do
-          until msgs.size <= page * entries
-            msgs.merge!(self.history(:channel => channel, :http_sync => true, :start => start_tt, :end => end_tt, :limit => entries))
-          end
-
-          msgs.reverse[0..entries].each do |envelope|
-            callback.call envelope
-          end
-
+          sync_options = options.dup
+          sync_options[:http_sync] = true
+          envelopes = self.paged_history(sync_options, &block)
         end
       end
-
-      envelopes
-
     end
 
     def state_for(origin = DEFAULT_ORIGIN)
