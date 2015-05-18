@@ -1,3 +1,6 @@
+3.7.3 Release
+. Fixed paged_history
+
 3.7.2 Release
 . Fixed issue when some channels names weren't resolved properly to call callback
 
