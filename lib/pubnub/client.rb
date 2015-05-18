@@ -53,23 +53,33 @@ module Pubnub
       current_start_tt = start_tt
 
       if sync
-          envelopes = []
-          page.times do
-            envelopes << self.history(:channel => channel, :http_sync => true, :count => limit, :start => current_start_tt, :end => end_tt)
-            envelopes.flatten!
-            current_start_tt = envelopes.last.history_end.to_i + 1
-          end
-
+        envelopes = []
+        page.times do |i|
+          Pubnub.logger.debug(:pubnub){"\n\nFetching page no. #{i}"}
+          Pubnub.logger.debug(:pubnub){"Current start tt #{current_start_tt}\n"}
+          envelopes << history(:channel => channel, :http_sync => true, :count => limit, :start => current_start_tt, :end => end_tt)
           envelopes.flatten!
-          envelopes.each do |envelope|
-            callback.call envelope
-          end if callback
-          envelopes
+
+          Pubnub.logger.debug(:pubnub){"\n\nHistroy start: #{envelopes.last.history_start}"}
+          Pubnub.logger.debug(:pubnub){"History end: #{envelopes.last.history_end}\n"}
+          current_start_tt = envelopes.last.history_start.to_i
+
+          unless i == page - 1
+            envelopes = []
+          end
+        end
+
+        envelopes.flatten!
+        envelopes.each do |envelope|
+          callback.call envelope
+        end if callback
+        envelopes
       else
+        start_event_machine
         EM.defer do
           sync_options = options.dup
           sync_options[:http_sync] = true
-          envelopes = self.paged_history(sync_options, &block)
+          self.paged_history(sync_options, &block)
         end
       end
     end
