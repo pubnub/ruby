@@ -6,12 +6,12 @@ module Pubnub
     # management. Must be plugged into Client class, uses @env
     module Connections
       def setup_conn_for(event)
-        # TODO: DOCUMENT BREAKING CHANGE: TIMEOUTS
         if event.is_a? SingleEvent
           setup_conn_for_single_event(event)
         elsif event.is_a? SubscribeEvent
           setup_conn_for_subscribe_event(event)
         end
+        @env[:connection_callback].call 'Connected!' if @env[:connection_callback]
       end
 
       private

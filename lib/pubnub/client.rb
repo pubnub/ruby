@@ -145,7 +145,12 @@ module Pubnub
 
     def prepare_env
       assign_defaults
+      generate_uuid if @env[:uuid].blank?
       setup_pools
+    end
+
+    def generate_uuid
+      @env[:uuid] = UUID.generate
     end
 
     def assign_defaults

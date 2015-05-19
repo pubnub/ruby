@@ -34,7 +34,7 @@ shared_examples 'an event' do
       messages = rd.read
 
       expect(messages)
-      .to match(/D,\s.*\]\sDEBUG\s--\sPubnub: Initialized\s#{described_class}/)
+      .to match(/.*Initialized\s#{described_class}.*/)
     end
 
 

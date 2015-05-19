@@ -26,8 +26,7 @@ module Pubnub
       end
       parameters.merge!(heartbeat: @heartbeat)
       parameters.merge!(
-          'channel-group' => format_channel_group(@group, true)
-                                 .join(',')
+          'channel-group' => @group.join(',')
       ) unless @group.blank?
       parameters
     end
