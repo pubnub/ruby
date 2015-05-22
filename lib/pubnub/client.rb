@@ -227,6 +227,10 @@ module Pubnub
       @env[:uuid]
     end
 
+    def auth_key
+      @env[:auth_key]
+    end
+
     def set_auth_key(auth_key)
       leave_all unless @env[:subscriptions].empty?
       @env[:auth_key] = auth_key

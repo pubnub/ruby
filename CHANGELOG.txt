@@ -1,3 +1,6 @@
+3.7.4 Release
+. Added #auth_key
+
 3.7.3 Release
 . Fixed paged_history
 

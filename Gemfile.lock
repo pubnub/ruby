@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pubnub (3.7.2)
+    pubnub (3.7.3)
       eventmachine (~> 1.0)
       json (~> 1.8)
       net-http-persistent (~> 2.9)
