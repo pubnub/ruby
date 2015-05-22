@@ -21,6 +21,7 @@ require 'pubnub/error_envelope'
 
 require 'pubnub/client/connections'
 require 'pubnub/client/events'
+require 'pubnub/client/paged_history'
 
 require 'pubnub/validators/common_validator'
 require 'pubnub/validators/client'
@@ -34,6 +35,7 @@ module Pubnub
     include Configuration
     include Connections
     include Events
+    include PagedHistory
 
     attr_reader :env
 

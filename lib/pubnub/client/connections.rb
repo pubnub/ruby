@@ -11,7 +11,13 @@ module Pubnub
         elsif event.is_a? SubscribeEvent
           setup_conn_for_subscribe_event(event)
         end
-        @env[:connection_callback].call 'Connected!' if @env[:connection_callback]
+        begin
+          @env[:connection_callback].call 'Connected!' if @env[:connection_callback]
+        rescue => error
+          Pubnub.logger.error('Pubnub::Client') do
+            "Error while calling connection callback #{error.inspect}"
+          end
+        end
       end
 
       private

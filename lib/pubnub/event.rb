@@ -52,6 +52,12 @@ module Pubnub
 
     private
 
+    def secure_call(cb, arg)
+      cb.call arg
+    rescue => error
+      Pubnub.logger.error('Pubnub::Event') { "Error while calling callback #{error.inspect}" }
+    end
+
     def format_channels
       @channel = Formatter.format_channel(@channel || @channels)
       @channel += Formatter.format_presence_channel(@presence)
@@ -61,9 +67,9 @@ module Pubnub
       Pubnub.logger.debug('Pubnub::Event') { "Firing callbacks for #{self.class}" }
       envelopes.each do |envelope|
         if !envelope.error && @callback && !envelope.timetoken_update
-          @callback.call envelope
+          secure_call @callback, envelope
         end
-        @error_callback.call envelope if envelope.error
+        secure_call(@error_callback, envelope) if envelope.error
       end
       envelopes
     end

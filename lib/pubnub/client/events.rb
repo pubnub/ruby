@@ -28,15 +28,15 @@ module Pubnub
             if @env[:subscription_pool][event.origin].nil?
               Pubnub.logger.debug('Pubnub') { 'First subscription' }
               @env[:subscription_pool][event.origin] = event
-              event.async.fire
+              event.future.fire
             else
               Pubnub.logger.debug('Pubnub') { 'Subscription already running' }
               @env[:subscription_pool][event.origin].add(event)
-              @env[:subscription_pool][event.origin].async.fire
+              @env[:subscription_pool][event.origin].future.fire
               event.terminate
             end
           else
-            event.async.fire
+            event.future.fire
           end
         end
       end

@@ -86,17 +86,17 @@ module Pubnub
 
     def fire_success_callback(envelope)
       if envelope.group
-        @g_cb_pool[envelope.group].call envelope
+        secure_call @g_cb_pool[envelope.group], envelope
       else
-        @c_cb_pool[envelope.channel].call envelope
+        secure_call @c_cb_pool[envelope.channel], envelope
       end
     end
 
     def fire_error_callback(envelope)
       if @e_cb_pool[envelope.channel]
-        @e_cb_pool[envelope.channel].call(envelope)
+        secure_call @e_cb_pool[envelope.channel], envelope
       else
-        @app.env[:error_callback].call(envelope)
+        secure_call @app.env[:error_callback], envelope
       end
     end
 
