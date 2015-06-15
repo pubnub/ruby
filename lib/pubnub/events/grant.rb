@@ -5,6 +5,7 @@ module Pubnub
     include Celluloid
 
     def initialize(options, app)
+      @event = :grant
       super
       @ttl ||= Pubnub::Configuration::DEFAULT_TTL
     end

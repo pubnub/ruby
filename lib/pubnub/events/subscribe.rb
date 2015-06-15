@@ -4,5 +4,10 @@ module Pubnub
   # held by SubscribeEvent
   class Subscribe < SubscribeEvent
     include Celluloid
+
+    def initialize(options, app)
+      @event = :subscribe
+      super
+    end
   end
 end

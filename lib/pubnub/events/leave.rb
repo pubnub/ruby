@@ -4,6 +4,11 @@ module Pubnub
   class Leave < SingleEvent
     include Celluloid
 
+    def initialize(options, app)
+      @event = :leave
+      super
+    end
+
     def fire
       remove_subscription
       super

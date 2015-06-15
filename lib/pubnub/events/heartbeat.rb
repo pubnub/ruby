@@ -5,6 +5,11 @@ module Pubnub
     include Celluloid
     include Pubnub::Formatter
 
+    def initialize(options, app)
+      @event = :heartbeat
+      super
+    end
+
     private
 
     def path

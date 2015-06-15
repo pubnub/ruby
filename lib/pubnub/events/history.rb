@@ -4,6 +4,11 @@ module Pubnub
   class History < SingleEvent
     include Celluloid
 
+    def initialize(options, app)
+      @event = :history
+      super
+    end
+
     private
 
     def timetoken(parsed_response)

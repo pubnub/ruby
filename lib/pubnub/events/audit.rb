@@ -4,6 +4,11 @@ module Pubnub
   class Audit < PAM
     include Celluloid
 
+    def initialize(options, app)
+      @event = :audit
+      super
+    end
+
     private
 
     def parameters(signature = false)

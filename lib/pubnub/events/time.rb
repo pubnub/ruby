@@ -3,7 +3,10 @@ module Pubnub
   # Holds time functionality
   class Time < SingleEvent
     include Celluloid
-
+    def initialize(options, app)
+      @event = :time
+      super
+    end
     private
 
     def path

@@ -4,6 +4,11 @@ module Pubnub
   class ChannelRegistration < SingleEvent
     include Celluloid
 
+    def initialize(options, app)
+      @event = :channel_registration
+      super
+    end
+
     private
 
     def parameters

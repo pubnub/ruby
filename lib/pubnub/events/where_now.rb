@@ -8,6 +8,7 @@ module Pubnub
       super
       @uuid_looking_for = options[:uuid]
       @uuid             = app.uuid
+      @event            = :where_now
     end
 
     private

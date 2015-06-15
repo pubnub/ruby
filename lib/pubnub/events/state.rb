@@ -4,6 +4,11 @@ module Pubnub
   class State < SingleEvent
     include Celluloid
 
+    def initialize(options, app)
+      @event = :state
+      super
+    end
+
     private
 
     def initialize(options, app)

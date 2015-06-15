@@ -4,6 +4,11 @@ module Pubnub
   class Publish < SingleEvent
     include Celluloid
 
+    def initialize(options, app)
+      @event = :publish
+      super
+    end
+
     private
 
     def path

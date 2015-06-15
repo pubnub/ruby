@@ -4,6 +4,11 @@ module Pubnub
   class HereNow < SingleEvent
     include Celluloid
 
+    def initialize(options, app)
+      @event = :here_now
+      super
+
+    end
     private
 
     def path
