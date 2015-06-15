@@ -26,7 +26,7 @@ end
 pubnub = Pubnub.new(
     :publish_key => 'pub-c-ef1905bd-3c9c-4bc7-9f20-f6ee1f50f79b',
     :subscribe_key => 'sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f',
-    :secret_key => 'sec-c-ZWYwMGJiZTYtMTQwMC00NDQ5LWI0NmEtMzZiM2M5NThlOTJh',
+    :secret_key => 'sec-c-OTA5NzI1YTMtOWEyNy00NTQzLTkzNzMtMjY3ZDlkYzk0NGU3',
     :error_callback => @error_callback
 )
 
@@ -42,39 +42,41 @@ pubnub = Pubnub.new(
 # Prepare possibilities
 
 events = {
-    # audit: {
-    #     http_sync: [true, false],
-    #     callback: [:block, :parameter],
-    #     channel: ['demo_channel']
-    # },
+    audit: {
+        http_sync: [true, false],
+        callback: [:block, :parameter],
+        channel: ['channel', :channel],
+        'auth-key' => ['key', :key, 'key1, key2']
+    },
     # channel_registration: {
     #     http_sync: [true, false],
     #     callback: [:block, :parameter],
     # },
-    # grant: {
-    #     http_sync: [true, false],
-    #     callback: [:block, :parameter],
-    #     read: [true, false, :nil],
-    #     write: [true, false, :nil],
-    #     ttl: [0, 600, :nil],
-    #     channel: ['demo_channel']
-    # },
+    grant: {
+        http_sync: [true, false],
+        callback: [:block, :parameter],
+        read: [true, false, :nil],
+        write: [true, false, :nil],
+        ttl: [0, 600, :nil],
+        channel: ['demo_channel']
+    },
     # heartbeat: {
     #     http_sync: [true, false],
     #     callback: [:block, :parameter],
     # },
-    # here_now: {
-    #     http_sync: [true, false],
-    #     callback: [:block, :parameter],
-    # },
+    here_now: {
+        http_sync: [true, false],
+        callback: [:block, :parameter],
+        channel: [:nil, :channel, 'channel']
+    },
     history: {
         http_sync: [true, false],
         callback: [:block, :parameter],
         channel: [:channel, 'channel'],
         limit: [1, 10, 100],
         reverse: [true, false, :nil],
-        start: [:nil, 14341271962242699, '14341271962242699'],
-        end: [:nil, 14341271962242699, '14341271962242699']
+        start: [:nil, 14343715741034989, '14343716038522123'],
+        end: [:nil, 14343715741034989, '14343716038522123']
     },
     # leave: {
     #     http_sync: [true, false],
@@ -83,13 +85,17 @@ events = {
     publish: {
         http_sync: [true, false],
         callback: [:block, :parameter],
-        message: [:message, 'message', %w(me ssage), 100],
+        message: [:message, 'message', %w(me ssage), 100, {key: :value}],
         channel: ['channel', :channel]
     },
-    # revoke: {
-    #     http_sync: [true, false],
-    #     callback: [:block, :parameter],
-    # },
+    revoke: {
+        http_sync: [true, false],
+        callback: [:block, :parameter],
+        read: [true, false, :nil],
+        write: [true, false, :nil],
+        ttl: [0, 600, :nil],
+        channel: ['demo_channel']
+    },
     # state: {
     #     http_sync: [true, false],
     #     callback: [:block, :parameter],
@@ -117,11 +123,11 @@ events.each do |event, options|
     # Prepare values
     options_text = []
     parameters = []
-    cassette_name = "#{event}"
+    cassette_name = "#{event}-#{rand(10000)}"
     current_options.each_with_index do |current_option, j|
       unless current_option == :nil
         options_text << "#{options.keys[j]}: #{current_option}"
-        parameters << "#{options.keys[j]}: #{format_value(current_option)}"
+        parameters << "'#{options.keys[j]}' => #{format_value(current_option)}"
         cassette_name << "_#{options.keys[j]}_#{current_option}"
       end
     end
@@ -218,7 +224,7 @@ describe Pubnub::#{Pubnub::Formatter.classify_method(event.to_s)} do
     @pubnub = Pubnub.new(
       :publish_key => 'pub-c-ef1905bd-3c9c-4bc7-9f20-f6ee1f50f79b',
       :subscribe_key => 'sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f',
-      :secret_key => 'sec-c-ZWYwMGJiZTYtMTQwMC00NDQ5LWI0NmEtMzZiM2M5NThlOTJh',
+      :secret_key => 'sec-c-OTA5NzI1YTMtOWEyNy00NTQzLTkzNzMtMjY3ZDlkYzk0NGU3',
       :error_callback => @error_callback
     )
 

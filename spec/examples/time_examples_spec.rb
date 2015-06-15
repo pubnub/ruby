@@ -14,7 +14,7 @@ describe Pubnub::Time do
     @pubnub = Pubnub.new(
       :publish_key => 'pub-c-ef1905bd-3c9c-4bc7-9f20-f6ee1f50f79b',
       :subscribe_key => 'sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f',
-      :secret_key => 'sec-c-ZWYwMGJiZTYtMTQwMC00NDQ5LWI0NmEtMzZiM2M5NThlOTJh',
+      :secret_key => 'sec-c-OTA5NzI1YTMtOWEyNy00NTQzLTkzNzMtMjY3ZDlkYzk0NGU3',
       :error_callback => @error_callback
     )
 
@@ -26,34 +26,34 @@ describe Pubnub::Time do
   end
 
   it 'http_sync: true, callback: block' do
-VCR.use_cassette('test_examples/time_http_sync_true_callback_block', record: :once) do
-event = @pubnub.time(http_sync: true, &@callback)
-expect(event.map{ |e| e.response}).to eq ["[14341128698333736]"]
-expect(event.map{ |e| e.message}).to eq [14341128698333736]
+VCR.use_cassette('test_examples/time-4260_http_sync_true_callback_block', record: :once) do
+event = @pubnub.time('http_sync' => true, 'callback' => :block)
+expect(event.value.map{ |e| e.response}).to eq ["[14343735276879564]"]
+expect(event.value.map{ |e| e.message}).to eq [14343735276879564]
 end
 end
 
 it 'http_sync: true, callback: parameter' do
-VCR.use_cassette('test_examples/time_http_sync_true_callback_parameter', record: :once) do
-event = @pubnub.time(http_sync: true, callback: @callback)
-expect(event.map{ |e| e.response}).to eq ["[14341178749616890]"]
-expect(event.map{ |e| e.message}).to eq [14341178749616890]
+VCR.use_cassette('test_examples/time-1996_http_sync_true_callback_parameter', record: :once) do
+event = @pubnub.time('http_sync' => true, 'callback' => :parameter)
+expect(event.value.map{ |e| e.response}).to eq ["[14343735281008065]"]
+expect(event.value.map{ |e| e.message}).to eq [14343735281008065]
 end
 end
 
 it 'http_sync: false, callback: block' do
-VCR.use_cassette('test_examples/time_http_sync_false_callback_block', record: :once) do
-event = @pubnub.time(http_sync: false, &@callback)
-expect(event.value.map{ |e| e.response}).to eq ["[14341178799797610]"]
-expect(event.value.map{ |e| e.message}).to eq [14341178799797610]
+VCR.use_cassette('test_examples/time-8609_http_sync_false_callback_block', record: :once) do
+event = @pubnub.time('http_sync' => false, 'callback' => :block)
+expect(event.value.map{ |e| e.response}).to eq ["[14343735285165444]"]
+expect(event.value.map{ |e| e.message}).to eq [14343735285165444]
 end
 end
 
 it 'http_sync: false, callback: parameter' do
-VCR.use_cassette('test_examples/time_http_sync_false_callback_parameter', record: :once) do
-event = @pubnub.time(http_sync: false, callback: @callback)
-expect(event.value.map{ |e| e.response}).to eq ["[14341187343149655]"]
-expect(event.value.map{ |e| e.message}).to eq [14341187343149655]
+VCR.use_cassette('test_examples/time-5928_http_sync_false_callback_parameter', record: :once) do
+event = @pubnub.time('http_sync' => false, 'callback' => :parameter)
+expect(event.value.map{ |e| e.response}).to eq ["[14343735289402911]"]
+expect(event.value.map{ |e| e.message}).to eq [14343735289402911]
 end
 end
 
