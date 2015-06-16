@@ -1,3 +1,9 @@
+## Celluloid Beta version
+We're happy to announce new ruby Pubnub client version is ready for public beta - you can find in celluloid branch in this repository.
+It uses celluloid instead of eventmachine and it's compatible with Ruby 2.0+, JRuby 1.7+, and Rubinius 2.0.
+Basic usage remains unchanged and it's backward compatible so you don't have to change your code!
+Give it a try and share with us your thoughts!
+
 # Please direct all Support Questions and Concerns to Support@PubNub.com
 
 ## PubNub Gem version 3.7.4
