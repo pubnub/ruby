@@ -12,10 +12,10 @@ describe Pubnub::Time do
     }
 
     @pubnub = Pubnub.new(
-      :publish_key => 'pub-c-ef1905bd-3c9c-4bc7-9f20-f6ee1f50f79b',
-      :subscribe_key => 'sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f',
-      :secret_key => 'sec-c-OTA5NzI1YTMtOWEyNy00NTQzLTkzNzMtMjY3ZDlkYzk0NGU3',
-      :error_callback => @error_callback
+        :publish_key => 'pub-c-ef1905bd-3c9c-4bc7-9f20-f6ee1f50f79b',
+        :subscribe_key => 'sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f',
+        :secret_key => 'sec-c-OTA5NzI1YTMtOWEyNy00NTQzLTkzNzMtMjY3ZDlkYzk0NGU3',
+        :error_callback => @error_callback
     )
 
     @pubnub_wo_pam_client = Pubnub.new(
@@ -33,36 +33,36 @@ describe Pubnub::Time do
   end
 
   it 'http_sync: true, callback: block' do
-VCR.use_cassette('test_examples/time-428_http_sync_true_callback_block', record: :once) do
-event = @pubnub.time('http_sync' => true, &@callback)
-expect(event.value.map{ |e| e.response}).to eq ["[14356719940240853]"]
-expect(event.value.map{ |e| e.message}).to eq [14356719940240853]
-end
-end
+    VCR.use_cassette('test_examples/time-428_http_sync_true_callback_block', record: :once) do
+      event = @pubnub.time('http_sync' => true, &@callback)
+      expect(event.value.map { |e| e.response }).to eq ["[14356719940240853]"]
+      expect(event.value.map { |e| e.message }).to eq [14356719940240853]
+    end
+  end
 
-it 'http_sync: true, callback: parameter' do
-VCR.use_cassette('test_examples/time-381_http_sync_true_callback_parameter', record: :once) do
-event = @pubnub.time('http_sync' => true, 'callback' => :parameter)
-expect(event.value.map{ |e| e.response}).to eq ["[14356719944430349]"]
-expect(event.value.map{ |e| e.message}).to eq [14356719944430349]
-end
-end
+  it 'http_sync: true, callback: parameter' do
+    VCR.use_cassette('test_examples/time-381_http_sync_true_callback_parameter', record: :once) do
+      event = @pubnub.time('http_sync' => true, 'callback' => :parameter)
+      expect(event.value.map { |e| e.response }).to eq ["[14356719944430349]"]
+      expect(event.value.map { |e| e.message }).to eq [14356719944430349]
+    end
+  end
 
-it 'http_sync: false, callback: block' do
-VCR.use_cassette('test_examples/time-4764_http_sync_false_callback_block', record: :once) do
-event = @pubnub.time('http_sync' => false, &@callback)
-expect(event.value.map{ |e| e.response}).to eq ["[14356719948566824]"]
-expect(event.value.map{ |e| e.message}).to eq [14356719948566824]
-end
-end
+  it 'http_sync: false, callback: block' do
+    VCR.use_cassette('test_examples/time-4764_http_sync_false_callback_block', record: :once) do
+      event = @pubnub.time('http_sync' => false, &@callback)
+      expect(event.value.map { |e| e.response }).to eq ["[14356719948566824]"]
+      expect(event.value.map { |e| e.message }).to eq [14356719948566824]
+    end
+  end
 
-it 'http_sync: false, callback: parameter' do
-VCR.use_cassette('test_examples/time-1151_http_sync_false_callback_parameter', record: :once) do
-event = @pubnub.time('http_sync' => false, 'callback' => :parameter)
-expect(event.value.map{ |e| e.response}).to eq ["[14356719955166949]"]
-expect(event.value.map{ |e| e.message}).to eq [14356719955166949]
-end
-end
+  it 'http_sync: false, callback: parameter' do
+    VCR.use_cassette('test_examples/time-1151_http_sync_false_callback_parameter', record: :once) do
+      event = @pubnub.time('http_sync' => false, 'callback' => :parameter)
+      expect(event.value.map { |e| e.response }).to eq ["[14356719955166949]"]
+      expect(event.value.map { |e| e.message }).to eq [14356719955166949]
+    end
+  end
 
 
 end
