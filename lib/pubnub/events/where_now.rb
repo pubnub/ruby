@@ -6,7 +6,7 @@ module Pubnub
 
     def initialize(options, app)
       super
-      @uuid_looking_for = options[:uuid]
+      @uuid_looking_for = options[:uuid] || options['uuid']
       @uuid             = app.uuid
       @event            = :where_now
     end

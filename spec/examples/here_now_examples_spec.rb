@@ -18,7 +18,14 @@ describe Pubnub::HereNow do
       :error_callback => @error_callback
     )
 
-    @pubnub.uuid = 'f0ac67ef-912f-4797-be67-a59745107306'
+    @pubnub_wo_pam_client = Pubnub.new(
+        :publish_key => 'pub-c-bda4e37b-f383-4acf-affd-cd8e66ed523b',
+        :subscribe_key => 'sub-c-243e56aa-1b13-11e5-a5e2-02ee2ddab7fe',
+        :secret_key => 'sec-c-OThjZDUyNjktY2ZlMS00MDc2LWJkODYtMmU4ZTk2MjY5ZGQ5',
+        :uuid => 'gentest'
+    )
+
+    @pubnub.uuid = 'gentest'
 
     Celluloid.boot
     example.run
@@ -26,98 +33,98 @@ describe Pubnub::HereNow do
   end
 
   it 'http_sync: true, callback: block' do
-VCR.use_cassette('test_examples/here_now-5135_http_sync_true_callback_block', record: :once) do
-event = @pubnub.here_now('http_sync' => true, 'callback' => :block)
-expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-expect(event.value.map{ |e| e.message}).to eq ["No valid channels specified"]
+VCR.use_cassette('test_examples/here_now-9205_http_sync_true_callback_block', record: :once) do
+event = @pubnub.here_now('http_sync' => true, &@callback)
+expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": {}, \"total_channels\": 0, \"total_occupancy\": 0}, \"service\": \"Presence\"}"]
+expect(event.value.map{ |e| e.message}).to eq ["OK"]
 end
 end
 
 it 'http_sync: true, callback: block, channel: channel' do
-VCR.use_cassette('test_examples/here_now-9252_http_sync_true_callback_block_channel_channel', record: :once) do
-event = @pubnub.here_now('http_sync' => true, 'callback' => :block, 'channel' => :channel)
-expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-expect(event.value.map{ |e| e.message}).to eq ["No valid channels specified"]
+VCR.use_cassette('test_examples/here_now-9778_http_sync_true_callback_block_channel_channel', record: :once) do
+event = @pubnub.here_now('http_sync' => true, 'channel' => :channel, &@callback)
+expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [], \"occupancy\": 0}"]
+expect(event.value.map{ |e| e.message}).to eq ["OK"]
 end
 end
 
 it 'http_sync: true, callback: block, channel: channel' do
-VCR.use_cassette('test_examples/here_now-1480_http_sync_true_callback_block_channel_channel', record: :once) do
-event = @pubnub.here_now('http_sync' => true, 'callback' => :block, 'channel' => 'channel')
-expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-expect(event.value.map{ |e| e.message}).to eq ["No valid channels specified"]
+VCR.use_cassette('test_examples/here_now-2912_http_sync_true_callback_block_channel_channel', record: :once) do
+event = @pubnub.here_now('http_sync' => true, 'channel' => 'channel', &@callback)
+expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [], \"occupancy\": 0}"]
+expect(event.value.map{ |e| e.message}).to eq ["OK"]
 end
 end
 
 it 'http_sync: true, callback: parameter' do
-VCR.use_cassette('test_examples/here_now-3794_http_sync_true_callback_parameter', record: :once) do
+VCR.use_cassette('test_examples/here_now-7690_http_sync_true_callback_parameter', record: :once) do
 event = @pubnub.here_now('http_sync' => true, 'callback' => :parameter)
-expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-expect(event.value.map{ |e| e.message}).to eq ["No valid channels specified"]
+expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": {}, \"total_channels\": 0, \"total_occupancy\": 0}, \"service\": \"Presence\"}"]
+expect(event.value.map{ |e| e.message}).to eq ["OK"]
 end
 end
 
 it 'http_sync: true, callback: parameter, channel: channel' do
-VCR.use_cassette('test_examples/here_now-8138_http_sync_true_callback_parameter_channel_channel', record: :once) do
+VCR.use_cassette('test_examples/here_now-281_http_sync_true_callback_parameter_channel_channel', record: :once) do
 event = @pubnub.here_now('http_sync' => true, 'callback' => :parameter, 'channel' => :channel)
-expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-expect(event.value.map{ |e| e.message}).to eq ["No valid channels specified"]
+expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [], \"occupancy\": 0}"]
+expect(event.value.map{ |e| e.message}).to eq ["OK"]
 end
 end
 
 it 'http_sync: true, callback: parameter, channel: channel' do
-VCR.use_cassette('test_examples/here_now-2439_http_sync_true_callback_parameter_channel_channel', record: :once) do
+VCR.use_cassette('test_examples/here_now-550_http_sync_true_callback_parameter_channel_channel', record: :once) do
 event = @pubnub.here_now('http_sync' => true, 'callback' => :parameter, 'channel' => 'channel')
-expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-expect(event.value.map{ |e| e.message}).to eq ["No valid channels specified"]
+expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [], \"occupancy\": 0}"]
+expect(event.value.map{ |e| e.message}).to eq ["OK"]
 end
 end
 
 it 'http_sync: false, callback: block' do
-VCR.use_cassette('test_examples/here_now-3327_http_sync_false_callback_block', record: :once) do
-event = @pubnub.here_now('http_sync' => false, 'callback' => :block)
-expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-expect(event.value.map{ |e| e.message}).to eq ["No valid channels specified"]
+VCR.use_cassette('test_examples/here_now-9354_http_sync_false_callback_block', record: :once) do
+event = @pubnub.here_now('http_sync' => false, &@callback)
+expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": {}, \"total_channels\": 0, \"total_occupancy\": 0}, \"service\": \"Presence\"}"]
+expect(event.value.map{ |e| e.message}).to eq ["OK"]
 end
 end
 
 it 'http_sync: false, callback: block, channel: channel' do
-VCR.use_cassette('test_examples/here_now-4005_http_sync_false_callback_block_channel_channel', record: :once) do
-event = @pubnub.here_now('http_sync' => false, 'callback' => :block, 'channel' => :channel)
-expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-expect(event.value.map{ |e| e.message}).to eq ["No valid channels specified"]
+VCR.use_cassette('test_examples/here_now-7991_http_sync_false_callback_block_channel_channel', record: :once) do
+event = @pubnub.here_now('http_sync' => false, 'channel' => :channel, &@callback)
+expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [], \"occupancy\": 0}"]
+expect(event.value.map{ |e| e.message}).to eq ["OK"]
 end
 end
 
 it 'http_sync: false, callback: block, channel: channel' do
-VCR.use_cassette('test_examples/here_now-3418_http_sync_false_callback_block_channel_channel', record: :once) do
-event = @pubnub.here_now('http_sync' => false, 'callback' => :block, 'channel' => 'channel')
-expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-expect(event.value.map{ |e| e.message}).to eq ["No valid channels specified"]
+VCR.use_cassette('test_examples/here_now-9135_http_sync_false_callback_block_channel_channel', record: :once) do
+event = @pubnub.here_now('http_sync' => false, 'channel' => 'channel', &@callback)
+expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [], \"occupancy\": 0}"]
+expect(event.value.map{ |e| e.message}).to eq ["OK"]
 end
 end
 
 it 'http_sync: false, callback: parameter' do
-VCR.use_cassette('test_examples/here_now-6720_http_sync_false_callback_parameter', record: :once) do
+VCR.use_cassette('test_examples/here_now-2298_http_sync_false_callback_parameter', record: :once) do
 event = @pubnub.here_now('http_sync' => false, 'callback' => :parameter)
-expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-expect(event.value.map{ |e| e.message}).to eq ["No valid channels specified"]
+expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": {}, \"total_channels\": 0, \"total_occupancy\": 0}, \"service\": \"Presence\"}"]
+expect(event.value.map{ |e| e.message}).to eq ["OK"]
 end
 end
 
 it 'http_sync: false, callback: parameter, channel: channel' do
-VCR.use_cassette('test_examples/here_now-6091_http_sync_false_callback_parameter_channel_channel', record: :once) do
+VCR.use_cassette('test_examples/here_now-3758_http_sync_false_callback_parameter_channel_channel', record: :once) do
 event = @pubnub.here_now('http_sync' => false, 'callback' => :parameter, 'channel' => :channel)
-expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-expect(event.value.map{ |e| e.message}).to eq ["No valid channels specified"]
+expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [], \"occupancy\": 0}"]
+expect(event.value.map{ |e| e.message}).to eq ["OK"]
 end
 end
 
 it 'http_sync: false, callback: parameter, channel: channel' do
-VCR.use_cassette('test_examples/here_now-5965_http_sync_false_callback_parameter_channel_channel', record: :once) do
+VCR.use_cassette('test_examples/here_now-772_http_sync_false_callback_parameter_channel_channel', record: :once) do
 event = @pubnub.here_now('http_sync' => false, 'callback' => :parameter, 'channel' => 'channel')
-expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-expect(event.value.map{ |e| e.message}).to eq ["No valid channels specified"]
+expect(event.value.map{ |e| e.response}).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [], \"occupancy\": 0}"]
+expect(event.value.map{ |e| e.message}).to eq ["OK"]
 end
 end
 

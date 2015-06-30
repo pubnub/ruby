@@ -12,7 +12,6 @@ module Pubnub
     private
 
     def path
-      binding.pry
       if @channel.first.blank?
         global_path
       else
@@ -39,7 +38,7 @@ module Pubnub
         @subscribe_key,
         ('channel' unless @group.blank?),
         (',' unless @group.blank?)
-      ].join('/')
+      ].delete_if {|e| e.nil? }.join('/')
     end
 
     def parameters

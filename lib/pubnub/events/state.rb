@@ -13,7 +13,7 @@ module Pubnub
 
     def initialize(options, app)
       super
-      @uuid_looking_for = options[:uuid]
+      @uuid_looking_for = options[:uuid] || options['uuid']
       @uuid             = app.uuid
     end
 
@@ -34,7 +34,7 @@ module Pubnub
         'sub_key',
         @subscribe_key,
         'channel',
-        channels_for_url(@channel),
+        Formatter.channels_for_url(@channel),
         'uuid',
         @uuid_looking_for
       ].join('/')

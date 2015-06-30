@@ -2,16 +2,19 @@ require 'pry'
 require 'vcr'
 require 'pubnub'
 
-VCR.configure do |c|
-  c.cassette_library_dir = 'fixtures/vcr_cassettes'
-  c.hook_into :webmock
-  c.default_cassette_options = {
-      match_requests_on: [:method,
-                          VCR.request_matchers.uri_without_param(:pnsdk, :uuid)]
-  }
+# Toplevel Pubnub module.
+module Pubnub
+  # Event module holds most basic and required infrastructure for every pubnub
+  # event, there are also SingleEvent module and SubscribeEvent module
+  class Event
+    def set_timestamp
+      @timestamp = current_time
+      $timestamp = current_time
+    end
+  end
 end
 
-def format_value value
+def format_value(value)
   if value.is_a? String
     "'#{value}'"
   elsif value.is_a? Symbol
@@ -21,14 +24,44 @@ def format_value value
   end
 end
 
+# Other client to create some presence and messages
+pubnub_client = Pubnub.new(
+    :publish_key => 'pub-c-ef1905bd-3c9c-4bc7-9f20-f6ee1f50f79b',
+    :subscribe_key => 'sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f',
+    :secret_key => 'sec-c-OTA5NzI1YTMtOWEyNy00NTQzLTkzNzMtMjY3ZDlkYzk0NGU3',
+    :uuid => 'john'
+)
+
+100.times do |i|
+  pubnub_client.publish(channel: :channel, message: i, http_sync: true)
+end
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'fixtures/vcr_cassettes'
+  c.hook_into :webmock
+  c.default_cassette_options = {
+      match_requests_on: [:method,
+                          VCR.request_matchers.uri_without_param(:pnsdk, :uuid)]
+  }
+end
+
 # Prepare client
 
 pubnub = Pubnub.new(
     :publish_key => 'pub-c-ef1905bd-3c9c-4bc7-9f20-f6ee1f50f79b',
     :subscribe_key => 'sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f',
     :secret_key => 'sec-c-OTA5NzI1YTMtOWEyNy00NTQzLTkzNzMtMjY3ZDlkYzk0NGU3',
-    :error_callback => @error_callback
+    :error_callback => @error_callback,
+    :uuid => 'gentest'
 )
+
+pubnub_wo_pam_client = Pubnub.new(
+    :publish_key => 'pub-c-bda4e37b-f383-4acf-affd-cd8e66ed523b',
+    :subscribe_key => 'sub-c-243e56aa-1b13-11e5-a5e2-02ee2ddab7fe',
+    :secret_key => 'sec-c-OThjZDUyNjktY2ZlMS00MDc2LWJkODYtMmU4ZTk2MjY5ZGQ5',
+    :uuid => 'gentest'
+)
+
 
 @callback = lambda { |envelope|
   @response_output.write envelope.response
@@ -48,10 +81,13 @@ events = {
         channel: ['channel', :channel],
         'auth-key' => ['key', :key, 'key1, key2']
     },
-    # channel_registration: {
-    #     http_sync: [true, false],
-    #     callback: [:block, :parameter],
-    # },
+    channel_registration: {
+        http_sync: [true, false],
+        callback: [:block, :parameter],
+        channel: ['gchannel', :gchannel],
+        group: ['group', :group],
+        action: [:list_groups, 'list_groups', :get, 'get', :add, 'add', :remove]
+    },
     grant: {
         http_sync: [true, false],
         callback: [:block, :parameter],
@@ -60,10 +96,6 @@ events = {
         ttl: [0, 600, :nil],
         channel: ['demo_channel']
     },
-    # heartbeat: {
-    #     http_sync: [true, false],
-    #     callback: [:block, :parameter],
-    # },
     here_now: {
         http_sync: [true, false],
         callback: [:block, :parameter],
@@ -75,13 +107,9 @@ events = {
         channel: [:channel, 'channel'],
         limit: [1, 10, 100],
         reverse: [true, false, :nil],
-        start: [:nil, 14343715741034989, '14343716038522123'],
-        end: [:nil, 14343715741034989, '14343716038522123']
+        start: [:nil, 14350501874493930, '14350501874493930'],
+        end: [:nil, 14350503487714362, '14350503487714362']
     },
-    # leave: {
-    #     http_sync: [true, false],
-    #     callback: [:block, :parameter],
-    # },
     publish: {
         http_sync: [true, false],
         callback: [:block, :parameter],
@@ -96,18 +124,21 @@ events = {
         ttl: [0, 600, :nil],
         channel: ['demo_channel']
     },
-    # state: {
-    #     http_sync: [true, false],
-    #     callback: [:block, :parameter],
-    # },
+    state: {
+        http_sync: [true, false],
+        callback: [:block, :parameter],
+        uuid: ['uuid', :uuid],
+        channel: ['channel', :channel, :nil]
+    },
     time: {
         http_sync: [true, false],
         callback: [:block, :parameter],
     },
-    # where_now: {
-    #     http_sync: [true, false],
-    #     callback: [:block, :parameter]
-    # }
+    where_now: {
+        http_sync: [true, false],
+        callback: [:block, :parameter],
+        uuid: ['john', :john]
+    }
 }
 
 events.each do |event, options|
@@ -145,27 +176,32 @@ events.each do |event, options|
 
       puts "working for parameters     : #{parameters.join(', ')}"
 
-      parameters_prim.delete_if {|p| p.index('callback: ')}
-      parameters_prim << 'callback: @callback'
+      parameters_prim.delete_if {|p| p.index('callback')}
+      parameters_prim << "'callback' => @callback"
 
-      puts "working for parameters_prim: #{parameters.join(', ')}"
+      puts "working for parameters_prim: #{parameters_prim.join(', ')}"
 
-
-      fired_event = pubnub.send(event.to_s, eval("{#{parameters_prim.join(', ')}}"))
+      if event == :channel_registration
+        fired_event = pubnub_wo_pam_client.send(event.to_s, eval("{#{parameters_prim.join(', ')}}"))
+      else
+        fired_event = pubnub.send(event.to_s, eval("{#{parameters_prim.join(', ')}}"))
+      end
 
       fired_event = fired_event.value if fired_event.is_a? Celluloid::Future
 
       @expected_response = fired_event.map{ |e| e.response}.to_s
       @expected_message = fired_event.map{ |e| e.message}.to_s
 
+      puts "TIMESTAMP #{$timestamp}"
+
     end
 
-    if parameters.index('callback: :block')
+    if parameters.index("'callback' => :block")
       callback_block = true
-      parameters.delete_if { |p| p == 'callback: :block' }
+      parameters.delete_if { |p| p == "'callback' => :block" }
     else
       callback_block = false
-      parameters.map! { |p| p == 'callback: :parameter' ? 'callback: @callback' : p }
+      parameters.map! { |p| p == "'callback': :parameter" ? "'callback' => @callback" : p }
     end
 
     if parameters.index('http_sync: true')
@@ -174,20 +210,30 @@ events.each do |event, options|
       http_sync = false
     end
 
+    example_text << "\nPubnub::#{Pubnub::Formatter.classify_method(event.to_s)}.any_instance.stub(:current_time).and_return #{$timestamp}" if %w(audit revoke grant).include?(event.to_s)
 
     example_text <<   "\nVCR.use_cassette('test_examples/#{cassette_name}', record: :once) do"
 
-    if callback_block
-      example_text <<     "\nevent = @pubnub.#{event}(#{parameters.join(', ')}, &@callback)"
+    if event == :channel_registration
+      if callback_block
+        example_text <<     "\nevent = @pubnub_wo_pam_client.#{event}(#{parameters.join(', ')}, &@callback)"
+      else
+        example_text <<     "\nevent = @pubnub_wo_pam_client.#{event}(#{parameters.join(', ')})"
+      end
     else
-      example_text <<     "\nevent = @pubnub.#{event}(#{parameters.join(', ')})"
+      if callback_block
+        example_text <<     "\nevent = @pubnub.#{event}(#{parameters.join(', ')}, &@callback)"
+      else
+        example_text <<     "\nevent = @pubnub.#{event}(#{parameters.join(', ')})"
+      end
     end
 
+
     if http_sync
-      example_text << "\nexpect(event.map{ |e| e.response}).to eq #{@expected_response}"
+      example_text << "\nexpect(event.map{ |e| e.response}).to eq #{@expected_response}" unless event == :history
       example_text << "\nexpect(event.map{ |e| e.message}).to eq #{@expected_message}"
     else
-      example_text << "\nexpect(event.value.map{ |e| e.response}).to eq #{@expected_response}"
+      example_text << "\nexpect(event.value.map{ |e| e.response}).to eq #{@expected_response}" unless event == :history
       example_text << "\nexpect(event.value.map{ |e| e.message}).to eq #{@expected_message}"
     end
 
@@ -228,7 +274,14 @@ describe Pubnub::#{Pubnub::Formatter.classify_method(event.to_s)} do
       :error_callback => @error_callback
     )
 
-    @pubnub.uuid = 'f0ac67ef-912f-4797-be67-a59745107306'
+    @pubnub_wo_pam_client = Pubnub.new(
+        :publish_key => 'pub-c-bda4e37b-f383-4acf-affd-cd8e66ed523b',
+        :subscribe_key => 'sub-c-243e56aa-1b13-11e5-a5e2-02ee2ddab7fe',
+        :secret_key => 'sec-c-OThjZDUyNjktY2ZlMS00MDc2LWJkODYtMmU4ZTk2MjY5ZGQ5',
+        :uuid => 'gentest'
+    )
+
+    @pubnub.uuid = 'gentest'
 
     Celluloid.boot
     example.run

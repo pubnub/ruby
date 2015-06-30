@@ -18,7 +18,7 @@ module Pubnub
         variables_for_signature
       ].join("\n")
       Base64.urlsafe_encode64(
-          OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha256'),
+          OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'),
                                @secret_key.to_s, message)
       ).strip
     end

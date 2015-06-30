@@ -37,7 +37,7 @@ module Pubnub
     def parameters
       params = super
       params.merge!(start:   @start) if @start
-      params.merge!(end:     @end) if @end
+      params.merge!(end:     @end)   if @end
       params.merge!(count:   @count) if @count
       params.merge!(reverse: 'true') if @reverse
       params

@@ -30,11 +30,11 @@ module Pubnub
       envelopes
     ensure
       sender.terminate if @http_sync
-      terminate        unless @stay_alive
+      terminate unless @stay_alive
     end
 
     def uri
-      uri  = @ssl ? 'https://' : 'http://'
+      uri = @ssl ? 'https://' : 'http://'
       uri += @origin
       uri += path
       uri += '?' + Formatter.params_hash_to_url_params(parameters)
@@ -76,12 +76,12 @@ module Pubnub
 
     def parameters
       required = {
-        pnsdk: "PubNub-Ruby/#{Pubnub::VERSION}"
+          pnsdk: "PubNub-Ruby/#{Pubnub::VERSION}"
       }
 
       empty_if_blank = {
-        auth: @auth_key,
-        uuid: @app.env[:uuid]
+          auth: @auth_key,
+          uuid: @app.env[:uuid]
       }
 
       empty_if_blank.delete_if { |_k, v| v.blank? }
@@ -93,13 +93,13 @@ module Pubnub
       Pubnub.logger.debug('Pubnub::Event') { 'Event#add_common_data_to_envelopes' }
 
       envelopes.each do |envelope|
-        envelope.response      = response.body
-        envelope.object        = response
-        envelope.status        = response.code.to_i
+        envelope.response = response.body
+        envelope.object = response
+        envelope.status = response.code.to_i
         envelope.mark_as_timetoken
       end
 
-      envelopes.last.last   = true if envelopes.last
+      envelopes.last.last = true if envelopes.last
       envelopes.first.first = true if envelopes.first
 
       envelopes
@@ -108,7 +108,7 @@ module Pubnub
     def handle(response)
       Pubnub.logger.debug('Pubnub::Event') { 'Event#handle' }
 
-      @response  = response
+      @response = response
       @envelopes = format_envelopes response
     end
 
@@ -124,8 +124,10 @@ module Pubnub
                      group action read write manage ttl presence start
                      end count reverse)
 
+      options = options.inject({}) { |memo, (k, v)| memo[k.to_sym] = v; memo }
+
       variables.each do |variable|
-        instance_variable_set('@' + variable, options[variable.to_sym])
+        instance_variable_set('@' + variable, options[variable.to_sym]) unless variable.nil?
       end
     end
 
@@ -136,7 +138,7 @@ module Pubnub
         @namespace_id, @group_id = @group.first.to_s.split(':')
       else
         @namespace_id = nil
-        @group_id     = @group.first.to_s
+        @group_id = @group.first.to_s
       end
     end
 

@@ -7,6 +7,7 @@ module Pubnub
     def initialize(options, app)
       @event = :channel_registration
       super
+      @action = @action.to_sym unless @action.nil?
     end
 
     private
