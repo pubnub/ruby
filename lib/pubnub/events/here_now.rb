@@ -46,9 +46,9 @@ module Pubnub
             'presence',
             'sub-key',
             @subscribe_key,
-            ('channel' if @channel_group),
-            (',' if @channel_group)
-        ].join('/')
+            ('channel' unless @channel_group.blank?),
+            (',' unless @channel_group.blank?)
+        ].delete_if{|e| e.nil? }.join('/')
       end
     end
 

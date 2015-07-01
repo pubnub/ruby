@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pubnub (3.7.3)
+    pubnub (3.7.4)
       eventmachine (~> 1.0)
       json (~> 1.8)
       net-http-persistent (~> 2.9)
@@ -16,7 +16,7 @@ GEM
       safe_yaml (~> 1.0.0)
     diff-lcs (1.2.5)
     eventmachine (1.0.7)
-    json (1.8.2)
+    json (1.8.3)
     memory_profiler (0.0.4)
     method_source (0.8.2)
     net-http-persistent (2.9.4)
@@ -55,3 +55,6 @@ DEPENDENCIES
   ruby-prof
   vcr
   webmock
+
+BUNDLED WITH
+   1.10.3
