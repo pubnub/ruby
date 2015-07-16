@@ -344,13 +344,17 @@ module Pubnub
             app.env[:callbacks_pool]                                = Hash.new        if app.env[:callbacks_pool].nil?
             app.env[:callbacks_pool][:channel]                      = Hash.new        if app.env[:callbacks_pool][:channel].nil?
             app.env[:callbacks_pool][:channel_group]                = Hash.new        if app.env[:callbacks_pool][:channel_group].nil?
+            app.env[:callbacks_pool][:wildcard_channel]                = Hash.new        if app.env[:callbacks_pool][:wildcard_channel].nil?
             app.env[:callbacks_pool][:channel][@origin]             = Hash.new        if app.env[:callbacks_pool][:channel][@origin].nil?
             app.env[:callbacks_pool][:channel_group][@origin]       = Hash.new        if app.env[:callbacks_pool][:channel_group][@origin].nil?
+            app.env[:callbacks_pool][:wildcard_channel][@origin]       = Hash.new        if app.env[:callbacks_pool][:wildcard_channel][@origin].nil?
             app.env[:error_callbacks_pool]                          = Hash.new        if app.env[:error_callbacks_pool].nil?
             app.env[:error_callbacks_pool][:channel]                = Hash.new        if app.env[:error_callbacks_pool][:channel].nil?
             app.env[:error_callbacks_pool][:channel][@origin]       = @error_callback if app.env[:error_callbacks_pool][:channel][@origin].nil?
+            app.env[:error_callbacks_pool][:wildcard_channel][@origin]       = @error_callback if app.env[:error_callbacks_pool][:channel][@origin].nil?
             app.env[:error_callbacks_pool][:channel_group]          = Hash.new        if app.env[:error_callbacks_pool][:channel_group].nil?
             app.env[:error_callbacks_pool][:channel_group][@origin] = @error_callback if app.env[:error_callbacks_pool][:channel_group][@origin].nil?
+            app.env[:error_callbacks_pool][:wildcard_channel][@origin] = @error_callback if app.env[:error_callbacks_pool][:wildcard_channel][@origin].nil?
 
             @channel.each do |channel|
               app.env[:callbacks_pool][:channel][@origin][channel]            = Hash.new
@@ -360,6 +364,11 @@ module Pubnub
             @channel_group.each do |channel_group|
               app.env[:callbacks_pool][:channel_group][@origin][channel_group]            = Hash.new
               app.env[:callbacks_pool][:channel_group][@origin][channel_group][:callback] = @callback unless app.env[:callbacks_pool][:channel_group][@origin][:callback]
+            end
+
+            @wildcard_channel.each do |wildcard_channel|
+              app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel]            = Hash.new
+              app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel][:callback] = @callback unless app.env[:callbacks_pool][:wildcard_channel][@origin][:callback]
             end
 
           else
@@ -377,6 +386,14 @@ module Pubnub
 
               app.env[:callbacks_pool][:channel_group][@origin][channel_group][:callback]       = @callback       unless app.env[:callbacks_pool][:channel_group][@origin][:callback]
               app.env[:callbacks_pool][:channel_group][@origin][channel_group][:error_callback] = @error_callback unless app.env[:callbacks_pool][:channel_group][@origin][:error_callback]
+            end
+
+            @wildcard_channel.each do |wildcard_channel|
+              app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel] = Hash.new
+              app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel] = Hash.new
+
+              app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel][:callback]       = @callback       unless app.env[:callbacks_pool][:wildcard_channel][@origin][:callback]
+              app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel][:error_callback] = @error_callback unless app.env[:callbacks_pool][:wildcard_channel][@origin][:error_callback]
             end
           end
 
@@ -473,10 +490,13 @@ module Pubnub
         begin
           Pubnub.logger.debug(:pubnub){'Event#fire_callbacks async'}
           envelopes.each do |envelope|
-            if envelope.channel_group && app.env[:callbacks_pool][:channel_group][@origin][envelope.channel_group]
+            binding.pry
+            if envelope.channel_group && app.env[:callbacks_pool][:channel_group][@origin][envelope.channel_group] # WITH GROUP
               app.env[:callbacks_pool][:channel_group][@origin][envelope.channel_group][:callback].call(envelope) if !envelope.error && !envelope.timetoken_update
-            else
+            elsif app.env[:callbacks_pool][:channel][@origin][encode_channel(envelope.channel)] # CHANNEL SUBSCRIBE
               app.env[:callbacks_pool][:channel][@origin][encode_channel(envelope.channel)][:callback].call(envelope) if !envelope.error && !envelope.timetoken_update
+            elsif app.env[:callbacks_pool][:wildcard_channel][@origin][envelope.wildcard_channel]
+              binding.pry
             end
           end
           Pubnub.logger.debug(:pubnub){'We can send next request now'}
@@ -504,7 +524,7 @@ module Pubnub
     end
 
     def path(app)
-      path = "/subscribe/#{@subscribe_key}/#{channels_for_url(@channel)}/0/#{@timetoken}".gsub(/\?/,'%3F')
+      path = "/subscribe/#{@subscribe_key}/#{channels_for_url(@channel + @wildcard_channel)}/0/#{@timetoken}".gsub(/\?/,'%3F')
     end
 
     def timetoken(parsed_response)
@@ -588,6 +608,11 @@ module Pubnub
           channel       = parsed_response[3].split(',')[i]
           channel_group = parsed_response[2].split(',')[i]
 
+          if channel_group.index('.')
+            wildcard_channel = channel_group
+            channel_group = nil
+          end
+
           Pubnub.logger.debug(:pubnub){"#{parsed_response}"}
 
           envelopes << Envelope.new(
@@ -595,6 +620,7 @@ module Pubnub
                   :message           => message(parsed_response, i, channel, app),
                   :channel           => channel,
                   :channel_group     => channel_group,
+                  :wildcard_channel  => wildcard_channel,
                   :response_message  => parsed_response,
                   :timetoken         => timetoken(parsed_response)
               },

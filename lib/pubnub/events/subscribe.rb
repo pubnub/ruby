@@ -12,6 +12,8 @@ module Pubnub
       @allow_multiple_channels = true
       @state = options[:state]
 
+      @wildcard_channel = @channel.select{ |e| e.index('.') }
+      @channel -= @wildcard_channel
     end
 
     def fire(app)
