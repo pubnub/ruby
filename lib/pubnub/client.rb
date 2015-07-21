@@ -95,7 +95,6 @@ module Pubnub
       Pubnub.logger.debug('Pubnub::Client') do
         "Looking for requester for #{event_type}"
       end
-      # TODO: why am I returning always new displatcher for sync events?
       if sync
         RequestDispatcher.new
       else

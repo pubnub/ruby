@@ -129,6 +129,12 @@ module Pubnub
       variables.each do |variable|
         instance_variable_set('@' + variable, options[variable.to_sym]) unless variable.nil?
       end
+
+      if @event == :subscribe || @event == :presence
+        @open_timeout = options[:s_open_timeout]
+        @read_timeout = options[:s_read_timeout]
+        @idle_timeout = options[:s_idle_timeout]
+      end
     end
 
     def format_group
