@@ -9,12 +9,12 @@ module Pubnub
 
       # Require events classes and dynamically define methods for them
       EVENTS.each do |event_name|
-        require File.join(
-                  'lib',
-                  'pubnub',
-                  'events',
-                  event_name
-                )
+        # require File.join(
+        #           'lib',
+        #           'pubnub',
+        #           'events',
+        #           event_name
+        #         )
 
         define_method event_name do |options = {}, &block|
           options[:callback] = block if options[:callback].nil?

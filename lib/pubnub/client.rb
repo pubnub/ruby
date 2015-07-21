@@ -28,6 +28,22 @@ require 'pubnub/validators/client'
 require 'pubnub/validators/publish'
 require 'pubnub/validators/subscribe'
 
+require 'pubnub/events/audit'
+require 'pubnub/events/channel_registration'
+require 'pubnub/events/grant'
+require 'pubnub/events/heartbeat'
+require 'pubnub/events/here_now'
+require 'pubnub/events/history'
+require 'pubnub/events/leave'
+require 'pubnub/events/presence'
+require 'pubnub/events/publish'
+require 'pubnub/events/revoke'
+require 'pubnub/events/state'
+require 'pubnub/events/subscribe'
+require 'pubnub/events/time'
+require 'pubnub/events/where_now'
+
+
 # Toplevel Pubnub module.
 module Pubnub
   # Pubnub client Class.
