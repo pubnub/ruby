@@ -10,13 +10,14 @@ module Pubnub
       @message          = options[:message]
       @http_sync        = options[:http_sync]
       @callback         = options[:callback]
-      @error_callback   = options[:error_callback]   || app.env[:error_callback]
-      @connect_callback = options[:connect_callback] || app.env[:connect_callback]
-      @ssl              = options[:ssl]              || app.env[:ssl]
+      @error_callback   = options[:error_callback]    || app.env[:error_callback]
+      @presence_callback= options[:presence_callback] || app.env[:presence_callback]
+      @connect_callback = options[:connect_callback]  || app.env[:connect_callback]
+      @ssl              = options[:ssl]               || app.env[:ssl]
 
       @cipher_key       = app.env[:cipher_key]
       @secret_key       = app.env[:secret_key]
-      @auth_key         = options[:auth_key]         || app.env[:auth_key]
+      @auth_key         = options[:auth_key]          || app.env[:auth_key]
       @publish_key      = app.env[:publish_key]
       @subscribe_key    = app.env[:subscribe_key]
 
@@ -52,17 +53,16 @@ module Pubnub
 
     def start_event(app, count = 0)
       begin
+        @response = nil
         if count <= app.env[:max_retries]
           Pubnub.logger.debug(:pubnub){'Event#start_event | sending request'}
           Pubnub.logger.debug(:pubnub){"Event#start_event | tt: #{@timetoken}; ctt #{app.env[:timetoken]}"}
           @response = send_request(app)
         end
 
-        # binding.pry
-
         error = response_error(@response, app)
 
-        if ![error].flatten.include?(:json) || count > app.env[:max_retries]
+        if ![error].flatten.include?(:json) || count > app.env[:max_retries] || app.env[:max_retries] == 0
           handle_response(@response, app, error)
         else
           start_event(app, count + 1)
@@ -334,6 +334,15 @@ module Pubnub
               end
             end
 
+            @wildcard_channel.each do |wc|
+              if app.env[:subscriptions][@origin].get_wildcard_channels.include?(wc)
+                @wildcard_channel.delete(wc)
+                Pubnub.logger.error(:pubnub){"Already subscribed to wildcard channel #{wc}, you have to leave that channel first"}
+              else
+                app.env[:subscriptions][@origin].add_wildcard_channel(wc, app)
+              end
+            end
+
             if @channel.empty?
               false
             else
@@ -370,13 +379,14 @@ module Pubnub
             end
 
             @wildcard_channel.each do |wildcard_channel|
-              app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel]            = Hash.new
-              app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel][:callback] = @callback unless app.env[:callbacks_pool][:wildcard_channel][@origin][:callback]
+              app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel]             = Hash.new
+
+              app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel][:callback]  = @callback unless app.env[:callbacks_pool][:wildcard_channel][@origin][:callback]
+              app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel][:presence_callback] = @presence_callback unless app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel][:presence_callback]
             end
 
           else
             @channel.each do |channel|
-              app.env[:callbacks_pool][:channel][@origin][channel] = Hash.new
               app.env[:callbacks_pool][:channel][@origin][channel] = Hash.new
 
               app.env[:callbacks_pool][:channel][@origin][channel][:callback]       = @callback       unless app.env[:callbacks_pool][:channel][@origin][:callback]
@@ -385,7 +395,6 @@ module Pubnub
 
             @channel_group.each do |channel_group|
               app.env[:callbacks_pool][:channel_group][@origin][channel_group] = Hash.new
-              app.env[:callbacks_pool][:channel_group][@origin][channel_group] = Hash.new
 
               app.env[:callbacks_pool][:channel_group][@origin][channel_group][:callback]       = @callback       unless app.env[:callbacks_pool][:channel_group][@origin][:callback]
               app.env[:callbacks_pool][:channel_group][@origin][channel_group][:error_callback] = @error_callback unless app.env[:callbacks_pool][:channel_group][@origin][:error_callback]
@@ -393,10 +402,10 @@ module Pubnub
 
             @wildcard_channel.each do |wildcard_channel|
               app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel] = Hash.new
-              app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel] = Hash.new
 
-              app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel][:callback]       = @callback       unless app.env[:callbacks_pool][:wildcard_channel][@origin][:callback]
-              app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel][:error_callback] = @error_callback unless app.env[:callbacks_pool][:wildcard_channel][@origin][:error_callback]
+              app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel][:callback]          = @callback       unless app.env[:callbacks_pool][:wildcard_channel][@origin][:callback]
+              app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel][:error_callback]    = @error_callback unless app.env[:callbacks_pool][:wildcard_channel][@origin][:error_callback]
+              app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel][:presence_callback] = @presence_callback unless app.env[:callbacks_pool][:wildcard_channel][@origin][wildcard_channel][:presence_callback]
             end
           end
 
@@ -414,7 +423,7 @@ module Pubnub
 
     def add_channel_group(cg, app)
       @channel_group << cg
-      Pubnub.logger.debug(:pubnub){'SubscribeEvent#add_channel | Added channel'}
+      Pubnub.logger.debug(:pubnub){'SubscribeEvent#add_channel_group | Added channel'}
     end
 
     def add_channel(channel, app)
@@ -422,11 +431,16 @@ module Pubnub
       Pubnub.logger.debug(:pubnub){'SubscribeEvent#add_channel | Added channel'}
     end
 
+    def add_wildcard_channel(wc, app)
+      @wildcard_channel << wc
+      Pubnub.logger.debug(:pubnub){'SubscribeEvent#add_wildcard_channel | Added channel'}
+    end
+
     def remove_channel(channel, app)
       @channel = @channel - format_channels(channel)
       Pubnub.logger.debug(:pubnub){'SubscribeEvent#remove_channel | Removed channel'}
       begin
-        shutdown_subscribe(app) if @channel.empty? && @channel_group.empty?
+        shutdown_subscribe(app) if @channel.empty? && @channel_group.empty? && @wildcard_channel.empty?
       rescue => e
         Pubnub.logger.error(:pubnub){e.message}
         Pubnub.logger.error(:pubnub){e.backtrace}
@@ -435,9 +449,20 @@ module Pubnub
 
     def remove_channel_group(channel_group, app)
       @channel_group = @channel_group - format_channel_group(channel_group, false)
-      Pubnub.logger.debug(:pubnub){'SubscribeEvent#remove_channel | Removed channel'}
+      Pubnub.logger.debug(:pubnub){'SubscribeEvent#remove_channel_group | Removed channel'}
       begin
-        shutdown_subscribe(app) if @channel.empty? && @channel_group.empty?
+        shutdown_subscribe(app) if @channel.empty? && @channel_group.empty? && @wildcard_channel.empty?
+      rescue => e
+        Pubnub.logger.error(:pubnub){e.message}
+        Pubnub.logger.error(:pubnub){e.backtrace}
+      end
+    end
+
+    def remove_wildcard_channel(wc, app)
+      @wildcard_channel -= [wc]
+      Pubnub.logger.debug(:pubnub){'SubscribeEvent#remove_wildcard_channel | Removed channel'}
+      begin
+        shutdown_subscribe(app) if @channel.empty? && @channel_group.empty? && @wildcard_channel.empty?
       rescue => e
         Pubnub.logger.error(:pubnub){e.message}
         Pubnub.logger.error(:pubnub){e.backtrace}
@@ -450,6 +475,10 @@ module Pubnub
 
     def get_channel_groups
       @channel_group
+    end
+
+    def get_wildcard_channels
+      @wildcard_channel
     end
 
     private
@@ -493,12 +522,13 @@ module Pubnub
         begin
           Pubnub.logger.debug(:pubnub){'Event#fire_callbacks async'}
           envelopes.each do |envelope|
-            # binding.pry
-            if envelope.channel_group && app.env[:callbacks_pool][:channel_group][@origin][envelope.channel_group] # WITH GROUP
+            if group_envelope?(envelope, app) # WITH GROUP
               app.env[:callbacks_pool][:channel_group][@origin][envelope.channel_group][:callback].call(envelope) if !envelope.error && !envelope.timetoken_update
-            elsif app.env[:callbacks_pool][:channel][@origin][encode_channel(envelope.channel)] # CHANNEL SUBSCRIBE
+            elsif channel_envelope?(envelope, app) # CHANNEL SUBSCRIBE
               app.env[:callbacks_pool][:channel][@origin][encode_channel(envelope.channel)][:callback].call(envelope) if !envelope.error && !envelope.timetoken_update
-            elsif app.env[:callbacks_pool][:wildcard_channel][@origin][envelope.wildcard_channel]
+            elsif wc_pnpres_envelope(envelope, app) # wildcard pnpres
+              app.env[:callbacks_pool][:wildcard_channel][@origin][encode_channel(envelope.wildcard_channel)][:presence_callback].call(envelope) if !envelope.error && !envelope.timetoken_update
+            elsif wc_envelope?(envelope, app) # wildcard
               app.env[:callbacks_pool][:wildcard_channel][@origin][encode_channel(envelope.wildcard_channel)][:callback].call(envelope) if !envelope.error && !envelope.timetoken_update
             end
           end
@@ -512,6 +542,30 @@ module Pubnub
         end
       end unless envelopes.nil?
 
+    end
+
+    def group_envelope?(envelope, app)
+      envelope.channel_group && app.env[:callbacks_pool][:channel_group][@origin][envelope.channel_group]
+    rescue
+      false
+    end
+
+    def channel_envelope?(envelope, app)
+      app.env[:callbacks_pool][:channel][@origin][encode_channel(envelope.channel)]
+    rescue
+      false
+    end
+
+    def wc_pnpres_envelope(envelope, app)
+      app.env[:callbacks_pool][:wildcard_channel][@origin][envelope.wildcard_channel][:presence_callback] && (envelope.channel.index('-pnpres') || envelope.wildcard_channel.index('-pnpres'))
+    rescue
+      false
+    end
+
+    def wc_envelope?(envelope, app)
+      app.env[:callbacks_pool][:wildcard_channel][@origin][envelope.wildcard_channel][:callback]
+    rescue
+      false
     end
 
     def setup_connection(app)
