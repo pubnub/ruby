@@ -8,6 +8,8 @@ module Pubnub
 
     def initialize(options, app)
       super
+      @wildcard_channel = @channel.select{ |e| e.index('.') } || []
+      @channel -= @wildcard_channel
       @event = 'leave'
       @allow_multiple_channels = true
       @doesnt_require_callback = true
@@ -40,6 +42,11 @@ module Pubnub
             Pubnub.logger.debug(:pubnub){"#{app.env[:subscriptions][@origin].get_channel_groups.to_s}.include? #{channel_group}"}
             raise ArgumentError.new(:object => self, :message => 'You cannot leave channel group that is not subscribed') unless app.env[:subscriptions][@origin].get_channel_groups.include?(channel_group)
           end
+
+          @wildcard_channel.each do |wc|
+            Pubnub.logger.debug(:pubnub){"#{app.env[:subscriptions][@origin].get_wildcard_channels.to_s}.include? #{wc}"}
+            raise ArgumentError.new(:object => self, :message => 'You cannot leave wildcard channel that is not subscribed') unless app.env[:subscriptions][@origin].get_wildcard_channels.include?(wc)
+          end
         end unless @force
 
         @channel.each do |channel|
@@ -49,6 +56,11 @@ module Pubnub
 
         @channel_group.each do |channel_group|
           app.env[:subscriptions][@origin].remove_channel_group(channel_group, app) if app.env[:subscriptions][@origin]
+          @left = true
+        end unless @skip_remove
+
+        @wildcard_channel.each do |wc|
+          app.env[:subscriptions][@origin].remove_wildcard_channel(wc, app) if app.env[:subscriptions][@origin]
           @left = true
         end unless @skip_remove
       end
