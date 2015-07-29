@@ -1,3 +1,6 @@
+3.7.7 Release
+. Small wildcard fix
+
 3.7.6 Release
 . Added wildcard subscribe
 
