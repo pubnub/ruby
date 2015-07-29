@@ -12,7 +12,7 @@ module Pubnub
       @channel_group = @channel_group.map {|c| c + '-pnpres'}
       @event = 'presence'
       @allow_multiple_channels = true
-      @wildcard_channel = @channel.select{ |e| e.index('.') } || []
+      @wildcard_channel = @channel.select{ |e| e.index('.*') } || []
       @channel -= @wildcard_channel
     end
 

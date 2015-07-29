@@ -668,7 +668,7 @@ module Pubnub
           channel       = parsed_response[3].split(',')[i]
           channel_group = parsed_response[2].split(',')[i]
 
-          if channel_group.index('.')
+          if channel_group.index('.*')
             wildcard_channel = channel_group
             channel_group = nil
           end

@@ -8,7 +8,7 @@ module Pubnub
 
     def initialize(options, app)
       super
-      @wildcard_channel = @channel.select{ |e| e.index('.') } || []
+      @wildcard_channel = @channel.select{ |e| e.index('.*') } || []
       @channel -= @wildcard_channel
       @event = 'leave'
       @allow_multiple_channels = true
