@@ -75,9 +75,12 @@ GEM
     ffi (1.9.6-java)
     generative (0.2.0)
       rspec (>= 3.0)
+    github-markup (1.4.0)
+    hitimes (1.2.2)
     hitimes (1.2.2-java)
     ice_nine (0.11.0)
     inflecto (0.0.2)
+    json (1.8.3)
     json (1.8.3-java)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
@@ -128,6 +131,7 @@ GEM
       slop (~> 3.4)
       spoon (~> 0.0)
     rainbow (2.0.0)
+    redcarpet (3.3.2)
     rr (1.1.2)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
@@ -168,6 +172,7 @@ GEM
     webmock (1.18.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
+    yard (0.8.7.6)
 
 PLATFORMS
   java
@@ -177,15 +182,18 @@ DEPENDENCIES
   awesome_print
   bundler (~> 1.7)
   generative
+  github-markup
   mutant
   mutant-rspec
   pry
   pubnub!
+  redcarpet
   rr
   rspec
   rubocop
   vcr
   webmock
+  yard
 
 BUNDLED WITH
    1.10.4

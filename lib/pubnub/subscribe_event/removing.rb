@@ -17,12 +17,14 @@ module Pubnub
         end
       end
 
-      def remove(event)
+      def remove(event = nil)
         Pubnub.logger.debug('Pubnub') { "#{self.class}#remove" }
         kill_requester
 
-        remove_channels(event)
-        remove_groups(event)
+        if event
+          remove_channels(event)
+          remove_groups(event)
+        end
 
         if @channel.empty? && @group.empty?
           finish
@@ -54,13 +56,15 @@ module Pubnub
         @channel.delete(channel)
       end
 
-      def finish
+      def finish(remove_itself = true)
         Pubnub.logger.debug('Pubnub') { 'Stopping subscription' }
         stop_heartbeat if @heart
         kill_requester
         @finalized = true
-        @app.env[:subscription_pool][@origin] = nil
-        terminate
+        if remove_itself
+          @app.env[:subscription_pool][@origin] = nil
+          terminate
+        end
       end
     end
   end

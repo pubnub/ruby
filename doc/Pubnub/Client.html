@@ -1,0 +1,1145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: Pubnub::Client
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!Pubnub/Client.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (C)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Pubnub.html" title="Pubnub (module)">Pubnub</a></span></span>
+     &raquo; 
+    <span class="title">Client</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: Pubnub::Client
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Pubnub::Client</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="Client/Connections.html" title="Pubnub::Client::Connections (module)">Connections</a></span>, <span class='object_link'><a href="Client/Events.html" title="Pubnub::Client::Events (module)">Events</a></span>, <span class='object_link'><a href="Client/PagedHistory.html" title="Pubnub::Client::PagedHistory (module)">PagedHistory</a></span>, <span class='object_link'><a href="Configuration.html" title="Pubnub::Configuration (module)">Configuration</a></span></dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/pubnub/client.rb<span class="defines">,<br />
+  lib/pubnub/client/events.rb,<br /> lib/pubnub/client/connections.rb,<br /> lib/pubnub/client/paged_history.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Pubnub client Class</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Client/Connections.html" title="Pubnub::Client::Connections (module)">Connections</a></span>, <span class='object_link'><a href="Client/Events.html" title="Pubnub::Client::Events (module)">Events</a></span>, <span class='object_link'><a href="Client/PagedHistory.html" title="Pubnub::Client::PagedHistory (module)">PagedHistory</a></span>
+    
+  
+    
+  
+</p>
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="VERSION-constant" class="">VERSION =
+          
+        </dt>
+        <dd><pre class="code"><span class='const'>Pubnub</span><span class='op'>::</span><span class='const'>VERSION</span></pre></dd>
+      
+    </dl>
+  
+
+
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Client/Events.html" title="Pubnub::Client::Events (module)">Events</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Client/Events.html#EVENTS-constant" title="Pubnub::Client::Events::EVENTS (constant)">Events::EVENTS</a></span></p>
+
+  
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Configuration.html" title="Pubnub::Configuration (module)">Configuration</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Configuration.html#DEFAULT_CONNECT_CALLBACK-constant" title="Pubnub::Configuration::DEFAULT_CONNECT_CALLBACK (constant)">Pubnub::Configuration::DEFAULT_CONNECT_CALLBACK</a></span>, <span class='object_link'><a href="Configuration.html#DEFAULT_ERROR_CALLBACK-constant" title="Pubnub::Configuration::DEFAULT_ERROR_CALLBACK (constant)">Pubnub::Configuration::DEFAULT_ERROR_CALLBACK</a></span>, <span class='object_link'><a href="Configuration.html#DEFAULT_H_IDLE_TIMEOUT-constant" title="Pubnub::Configuration::DEFAULT_H_IDLE_TIMEOUT (constant)">Pubnub::Configuration::DEFAULT_H_IDLE_TIMEOUT</a></span>, <span class='object_link'><a href="Configuration.html#DEFAULT_H_OPEN_TIMEOUT-constant" title="Pubnub::Configuration::DEFAULT_H_OPEN_TIMEOUT (constant)">Pubnub::Configuration::DEFAULT_H_OPEN_TIMEOUT</a></span>, <span class='object_link'><a href="Configuration.html#DEFAULT_H_READ_TIMEOUT-constant" title="Pubnub::Configuration::DEFAULT_H_READ_TIMEOUT (constant)">Pubnub::Configuration::DEFAULT_H_READ_TIMEOUT</a></span>, <span class='object_link'><a href="Configuration.html#DEFAULT_IDLE_TIMEOUT-constant" title="Pubnub::Configuration::DEFAULT_IDLE_TIMEOUT (constant)">Pubnub::Configuration::DEFAULT_IDLE_TIMEOUT</a></span>, <span class='object_link'><a href="Configuration.html#DEFAULT_OPEN_TIMEOUT-constant" title="Pubnub::Configuration::DEFAULT_OPEN_TIMEOUT (constant)">Pubnub::Configuration::DEFAULT_OPEN_TIMEOUT</a></span>, <span class='object_link'><a href="Configuration.html#DEFAULT_ORIGINS_POOL-constant" title="Pubnub::Configuration::DEFAULT_ORIGINS_POOL (constant)">Pubnub::Configuration::DEFAULT_ORIGINS_POOL</a></span>, <span class='object_link'><a href="Configuration.html#DEFAULT_PORT-constant" title="Pubnub::Configuration::DEFAULT_PORT (constant)">Pubnub::Configuration::DEFAULT_PORT</a></span>, <span class='object_link'><a href="Configuration.html#DEFAULT_READ_TIMEOUT-constant" title="Pubnub::Configuration::DEFAULT_READ_TIMEOUT (constant)">Pubnub::Configuration::DEFAULT_READ_TIMEOUT</a></span>, <span class='object_link'><a href="Configuration.html#DEFAULT_RECONNECT_ATTEMPTS-constant" title="Pubnub::Configuration::DEFAULT_RECONNECT_ATTEMPTS (constant)">Pubnub::Configuration::DEFAULT_RECONNECT_ATTEMPTS</a></span>, <span class='object_link'><a href="Configuration.html#DEFAULT_RECONNECT_INTERVAL-constant" title="Pubnub::Configuration::DEFAULT_RECONNECT_INTERVAL (constant)">Pubnub::Configuration::DEFAULT_RECONNECT_INTERVAL</a></span>, <span class='object_link'><a href="Configuration.html#DEFAULT_S_IDLE_TIMEOUT-constant" title="Pubnub::Configuration::DEFAULT_S_IDLE_TIMEOUT (constant)">Pubnub::Configuration::DEFAULT_S_IDLE_TIMEOUT</a></span>, <span class='object_link'><a href="Configuration.html#DEFAULT_S_OPEN_TIMEOUT-constant" title="Pubnub::Configuration::DEFAULT_S_OPEN_TIMEOUT (constant)">Pubnub::Configuration::DEFAULT_S_OPEN_TIMEOUT</a></span>, <span class='object_link'><a href="Configuration.html#DEFAULT_S_READ_TIMEOUT-constant" title="Pubnub::Configuration::DEFAULT_S_READ_TIMEOUT (constant)">Pubnub::Configuration::DEFAULT_S_READ_TIMEOUT</a></span>, <span class='object_link'><a href="Configuration.html#DEFAULT_TTL-constant" title="Pubnub::Configuration::DEFAULT_TTL (constant)">Pubnub::Configuration::DEFAULT_TTL</a></span>, <span class='object_link'><a href="Configuration.html#PERIODIC_TIMER_INTERVAL-constant" title="Pubnub::Configuration::PERIODIC_TIMER_INTERVAL (constant)">Pubnub::Configuration::PERIODIC_TIMER_INTERVAL</a></span></p>
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#env-instance_method" title="#env (instance method)">- (Object) <strong>env</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute env.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#change_uuid-instance_method" title="#change_uuid (instance method)">- (Object) <strong>change_uuid</strong>(uuid) </a>
+    
+
+    
+      (also: #session_uuid=, #uuid=, #set_uuid=)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#current_origin-instance_method" title="#current_origin (instance method)">- (Object) <strong>current_origin</strong> </a>
+    
+
+    
+      (also: #origin)
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>TODO: docs.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#events-instance_method" title="#events (instance method)">- (Object) <strong>events</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>TODO: docs.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Client) <strong>initialize</strong>(options) </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><h3>Parameters: <em>required</em>.</h3>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#kill_request_dispatcher-instance_method" title="#kill_request_dispatcher (instance method)">- (Object) <strong>kill_request_dispatcher</strong>(origin, event_type) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>TODO: docs.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#request_dispatcher-instance_method" title="#request_dispatcher (instance method)">- (Object) <strong>request_dispatcher</strong>(origin, event_type, sync) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns appropriate RequestDispatcher.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#reset_subscription-instance_method" title="#reset_subscription (instance method)">- (Object) <strong>reset_subscription</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Same as #restart_subscription but set timetoken to 0.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#restart_subscription-instance_method" title="#restart_subscription (instance method)">- (Object) <strong>restart_subscription</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Kills currently running subscription and starts it again.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#subscribed%3F-instance_method" title="#subscribed? (instance method)">- (Boolean) <strong>subscribed?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>TODO: docs TODO: implement.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#timetoken-instance_method" title="#timetoken (instance method)">- (Object) <strong>timetoken</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>TODO: docs.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#timetoken%3D-instance_method" title="#timetoken= (instance method)">- (Object) <strong>timetoken=</strong>(timetoken) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>TODO: docs.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#uuid-instance_method" title="#uuid (instance method)">- (Object) <strong>uuid</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>TODO: docs.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Client/PagedHistory.html" title="Pubnub::Client::PagedHistory (module)">PagedHistory</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Client/PagedHistory.html#paged_history-instance_method" title="Pubnub::Client::PagedHistory#paged_history (method)">#paged_history</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Client/Connections.html" title="Pubnub::Client::Connections (module)">Connections</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Client/Connections.html#setup_conn_for-instance_method" title="Pubnub::Client::Connections#setup_conn_for (method)">#setup_conn_for</a></span></p>
+
+  
+  
+  
+  
+  
+  <div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="Pubnub::Client (class)">Client</a></span></tt>) <strong>initialize</strong>(options) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <h3>Parameters:</h3>
+
+<p><em>required</em></p>
+
+<p>subscribe_key
+:    Whatever</p>
+
+<p><em>example:</em></p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_pubnub'>pubnub</span> <span class='op'>=</span> <span class='const'>Pubnub</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>subscribe_key:</span> <span class='symbol'>:my_sub_key</span><span class='rparen'>)</span>
+</code></pre>
+
+<p><em>optional</em></p>
+
+<h3>Returns:</h3>
+
+<p>Initialized Pubnub::Client prepared to be used.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pubnub/client.rb', line 76</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_env_hash'>env_hash</span> <span class='op'>=</span> <span class='id identifier rubyid_symbolize_options_keys'>symbolize_options_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_setup_app'>setup_app</span> <span class='id identifier rubyid_env_hash'>env_hash</span>
+  <span class='id identifier rubyid_clean_env'>clean_env</span>
+  <span class='id identifier rubyid_prepare_env'>prepare_env</span>
+  <span class='id identifier rubyid_validate!'>validate!</span> <span class='ivar'>@env</span>
+  <span class='const'>Pubnub</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Pubnub::Client</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Created new Pubnub::Client instance. Version: </span><span class='embexpr_beg'>#{</span><span class='const'>Pubnub</span><span class='op'>::</span><span class='const'>VERSION</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="env-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>env</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute env</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pubnub/client.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_env'>env</span>
+  <span class='ivar'>@env</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="change_uuid-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>change_uuid</strong>(uuid) 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='session_uuid=-instance_method'>session_uuid=</span>, <span id='uuid=-instance_method'>uuid=</span>, <span id='set_uuid=-instance_method'>set_uuid=</span></span>
+    </span>
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+132
+133
+134
+135
+136</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pubnub/client.rb', line 132</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_change_uuid'>change_uuid</span><span class='lparen'>(</span><span class='id identifier rubyid_uuid'>uuid</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_leave_all'>leave_all</span> <span class='kw'>if</span> <span class='id identifier rubyid_subscribed?'>subscribed?</span>
+  <span class='ivar'>@env</span><span class='lbracket'>[</span><span class='symbol'>:uuid</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_uuid'>uuid</span>
+  <span class='id identifier rubyid_reset_subscription'>reset_subscription</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="current_origin-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>current_origin</strong> 
+  
+
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='origin-instance_method'>origin</span></span>
+    </span>
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>TODO: docs</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+142
+143
+144</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pubnub/client.rb', line 142</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_current_origin'>current_origin</span>
+  <span class='ivar'>@env</span><span class='lbracket'>[</span><span class='symbol'>:origins_pool</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="events-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>events</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>TODO: docs</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+163
+164
+165</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pubnub/client.rb', line 163</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_events'>events</span>
+  <span class='ivar'>@env</span><span class='lbracket'>[</span><span class='symbol'>:events</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="kill_request_dispatcher-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>kill_request_dispatcher</strong>(origin, event_type) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>TODO: docs</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+124
+125
+126
+127
+128
+129
+130</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pubnub/client.rb', line 124</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_kill_request_dispatcher'>kill_request_dispatcher</span><span class='lparen'>(</span><span class='id identifier rubyid_origin'>origin</span><span class='comma'>,</span> <span class='id identifier rubyid_event_type'>event_type</span><span class='rparen'>)</span>
+  <span class='const'>Pubnub</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Pubnub::Client</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Killing requester</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
+  <span class='ivar'>@env</span><span class='lbracket'>[</span><span class='symbol'>:req_dispatchers_pool</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_origin'>origin</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_event_type'>event_type</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_async'>async</span><span class='period'>.</span><span class='id identifier rubyid_terminate'>terminate</span>
+  <span class='ivar'>@env</span><span class='lbracket'>[</span><span class='symbol'>:req_dispatchers_pool</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_origin'>origin</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_event_type'>event_type</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>nil</span>
+<span class='kw'>rescue</span>
+  <span class='const'>Pubnub</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Pubnub::Client</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>There\&#39;s no requester</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="request_dispatcher-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>request_dispatcher</strong>(origin, event_type, sync) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns appropriate RequestDispatcher.
+It returns always new RequestDispatcher for sync events.
+For async events it checks if there&#39;s already RequestDispatcher
+created and returns it if created, otherwise creates it, assigns
+it in @env and returns newly created dispatcher.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pubnub/client.rb', line 109</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_request_dispatcher'>request_dispatcher</span><span class='lparen'>(</span><span class='id identifier rubyid_origin'>origin</span><span class='comma'>,</span> <span class='id identifier rubyid_event_type'>event_type</span><span class='comma'>,</span> <span class='id identifier rubyid_sync'>sync</span><span class='rparen'>)</span>
+  <span class='const'>Pubnub</span><span class='period'>.</span><span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_debug'>debug</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Pubnub::Client</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Looking for requester for </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_event_type'>event_type</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_sync'>sync</span>
+    <span class='const'>RequestDispatcher</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@env</span><span class='lbracket'>[</span><span class='symbol'>:req_dispatchers_pool</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+    <span class='ivar'>@env</span><span class='lbracket'>[</span><span class='symbol'>:req_dispatchers_pool</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_origin'>origin</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+    <span class='ivar'>@env</span><span class='lbracket'>[</span><span class='symbol'>:req_dispatchers_pool</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_origin'>origin</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='id identifier rubyid_event_type'>event_type</span><span class='rbracket'>]</span> <span class='op'>||=</span>
+        <span class='const'>RequestDispatcher</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reset_subscription-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>reset_subscription</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Same as #restart_subscription but set timetoken to 0.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+94
+95
+96
+97</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pubnub/client.rb', line 94</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_reset_subscription'>reset_subscription</span>
+  <span class='ivar'>@env</span><span class='lbracket'>[</span><span class='symbol'>:timetoken</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='comment'># TODO: implement
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="restart_subscription-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>restart_subscription</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Kills currently running subscription and starts it again.
+Usable when @env[:origins_pool] changes.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+89
+90
+91</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pubnub/client.rb', line 89</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_restart_subscription'>restart_subscription</span>
+  <span class='comment'># TODO: implement
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="subscribed?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>subscribed?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>TODO: docs
+TODO: implement</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+101
+102</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pubnub/client.rb', line 101</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_subscribed?'>subscribed?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="timetoken-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>timetoken</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>TODO: docs</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+148
+149
+150</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pubnub/client.rb', line 148</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_timetoken'>timetoken</span>
+  <span class='ivar'>@env</span><span class='lbracket'>[</span><span class='symbol'>:timetoken</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="timetoken=-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>timetoken=</strong>(timetoken) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>TODO: docs</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+153
+154
+155</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pubnub/client.rb', line 153</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_timetoken='>timetoken=</span><span class='lparen'>(</span><span class='id identifier rubyid_timetoken'>timetoken</span><span class='rparen'>)</span>
+  <span class='ivar'>@env</span><span class='lbracket'>[</span><span class='symbol'>:timetoken</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_timetoken'>timetoken</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="uuid-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>) <strong>uuid</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>TODO: docs</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+158
+159
+160</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/pubnub/client.rb', line 158</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_uuid'>uuid</span>
+  <span class='ivar'>@env</span><span class='lbracket'>[</span><span class='symbol'>:uuid</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Tue Aug 18 16:02:32 2015 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.1.6).
+</div>
+
+  </body>
+</html>

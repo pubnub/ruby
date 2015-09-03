@@ -8,6 +8,8 @@ require 'celluloid/test'
 
 require 'pubnub'
 
+Celluloid.task_class = Celluloid::Task::Threaded
+
 # AsyncHelper allows us to wait for async operations
 module AsyncHelper
   def eventually(options = {})

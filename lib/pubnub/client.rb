@@ -43,7 +43,6 @@ require 'pubnub/events/subscribe'
 require 'pubnub/events/time'
 require 'pubnub/events/where_now'
 
-
 # Toplevel Pubnub module.
 module Pubnub
   # Pubnub client Class.
@@ -57,7 +56,87 @@ module Pubnub
 
     VERSION = Pubnub::VERSION
 
-    # TODO: docs
+    # Parameters:
+    # ===========
+    #
+    # <dl>
+    #   <dt>subscribe_key</dt>
+    #   <dd><b>required.</b> Your subscribe key.</dd>
+    #
+    #   <dt>publish_key</dt>
+    #   <dd><b>optional.</b> Your publish key, without it you can't push messages.</dd>
+    #
+    #   <dt>secret_key</dt>
+    #   <dd><b>optional.</b> Your secret key, required for PAM operations.</dd>
+    #
+    #   <dt>auth_key</dt>
+    #   <dd><b>optional.</b> This client auth key.</dd>
+    #
+    #   <dt>cipher_key</dt>
+    #   <dd><b>optional.</b> Required to encrypt messages.</dd>
+    #
+    #   <dt>uuid</dt>
+    #   <dd><b>optional.</b> Sets given uuid as client uuid, does not generates random uuid on init as usually.</dd>
+    #
+    #   <dt>origin</dt>
+    #   <dd><b>optional.</b> Specifies the fully qualified domain name of the PubNub origin. By default this value is set to <code>pubsub.pubnub.com</code> but it should be set to the appropriate origin specified in the PubNub Admin Portal.</dd>
+    #
+    #   <dt>callback</dt>
+    #   <dd><b>optional.</b> Default callback function for all events if not overwrote while firing event.</dd>
+    #
+    #   <dt>error_callback</dt>
+    #   <dd><b>optional.</b> Default error callback.</dd>
+    #
+    #   <dt>connect_callback</dt>
+    #   <dd><b>optional.</b> Callback that is called when connection with origin is established.</dd>
+    #   <dt>ssl</dt>
+    #   <dd><b>optional.</b> Your connection will use ssl if set to true.</dd>
+    #
+    #   <dt>heartbeat</dt>
+    #   <dd><b>optional.</b> Heartbeat interval, if not set heartbeat will not be running.</dd>
+    #
+    #   <dt>subscribe_timeout</dt>
+    #   <dd><b>optional, be careful when modifying this.</b> Timeout for subscribe connection in seconds.</dd>
+    #
+    #   <dt>non_subscribe_timeout</dt>
+    #   <dd><b>optional, be careful when modifying this.</b> Timeout for non-subscribe connection in seconds.</dd>
+    #
+    #   <dt>max_retries</dt>
+    #   <dd><b>optional.</b> How many times client should try to reestablish connection before fail.</dd>
+    #
+    #   <dt>ttl</dt>
+    #   <dd><b>optional.</b> Default ttl for grant and revoke events.</dd>
+    # </dl>
+    # _examples:_
+    # ```ruby
+    # # Minimal initialize
+    # pubnub = Pubnub.new(subscribe_key: :my_sub_key)
+    # ````
+    #
+    # ```ruby
+    # # More complex initialize
+    # pubnub = Pubnub.new(
+    #   subscribe_key: :demo,
+    #   publish_key: :demo,
+    #   secret_key: :secret,
+    #   cipher_key: :other_secret,
+    #   uuid: :mad_max,
+    #   origin: 'custom.pubnub.com',
+    #   callback: -> (envelope) { puts envelope.message },
+    #   error_callback: -> (envelope) { puts envelope.message },
+    #   connect_callback: -> (message) { puts message },
+    #   heartbeat: 60,
+    #   subscribe_timeout: 310,
+    #   non_subscribe_timeout: 10,
+    #   max_retries: 10,
+    #   ttl: 0
+    # )
+    # ```
+    # Returns:
+    # ========
+    #
+    # Initialized Pubnub::Client ready to use.
+    #
     def initialize(options)
       env_hash = symbolize_options_keys(options)
       setup_app env_hash
@@ -69,24 +148,34 @@ module Pubnub
       end
     end
 
-    # Kills currently running subscription and starts it again.
-    # Usable when @env[:origins_pool] changes.
-    def restart_subscription
-      # TODO: implement
-    end
-
-    # Same as #restart_subscription but set timetoken to 0.
-    def reset_subscription
-      @env[:timetoken] = 0
-      # TODO: implement
-    end
-
-    # TODO: docs
-    # TODO: implement
+    # Returns:
+    # ========
+    # True if client is subscribed to at least one channel or channel group, otherwise false.
     def subscribed?
+      if @env[:subscription_pool].empty?
+        false
+      else
+        !@env[:subscription_pool].map(&:empty?).index(false)
+      end
     end
 
-    # Returns appropriate RequestDispatcher.
+    # Parameters:
+    # ===========
+    # <dl>
+    #   <dt>origin</dt>
+    #   <dd>Domain name where connection should be connected.</dd>
+    #
+    #   <dt>event_type</dt>
+    #   <dd>Keyword. :subscribe_event or :single_event.</dd>
+    #
+    #   <dt>sync</dt>
+    #   <dd>Boolean. True if we want dispatcher for sync or sync event, otherwise false.</dd>
+    # </dl>
+    #
+    # Returns:
+    # ========
+    # Appropriate RequestDispatcher.
+    #
     # It returns always new RequestDispatcher for sync events.
     # For async events it checks if there's already RequestDispatcher
     # created and returns it if created, otherwise creates it, assigns
@@ -98,13 +187,26 @@ module Pubnub
       if sync
         RequestDispatcher.new
       else
+        @env[:req_dispatchers_pool] ||= {}
         @env[:req_dispatchers_pool][origin] ||= {}
         @env[:req_dispatchers_pool][origin][event_type] ||=
             RequestDispatcher.new
       end
     end
 
-    # TODO: docs
+    # Parameters:
+    # ===========
+    # <dl>
+    #   <dt>origin</dt>
+    #   <dd>Domain name where connection should be connected.</dd>
+    #
+    #   <dt>event_type</dt>
+    #   <dd>Keyword. :subscribe_event or :single_event.</dd>
+    # </dl>
+    #
+    # Functionality:
+    # ==============
+    # Terminates request dispatcher for given origin and event type. Usable while restarting subscription.
     def kill_request_dispatcher(origin, event_type)
       Pubnub.logger.debug('Pubnub::Client') { 'Killing requester' }
       @env[:req_dispatchers_pool][origin][event_type].async.terminate
@@ -113,37 +215,70 @@ module Pubnub
       Pubnub.logger.debug('Pubnub::Client') { 'There\'s no requester' }
     end
 
-    # TODO: document breaking change set_uuid to change_uuid
+    # Parameters:
+    # ===========
+    # <dl>
+    #   <dt>uuid</dt>
+    #   <dd>New uuid to be set.</dd>
+    # </dl>
+    #
+    # Returns:
+    # ========
+    # New uuid.
+    #
+    # Functionality:
+    # ==============
+    # Can't change uuid while subscribed. You have to leave every subscribed channel.
     def change_uuid(uuid)
-      leave_all if subscribed?
-      @env[:uuid] = uuid
-      reset_subscription
+      Pubnub.logger.debug('Pubnub::Client') { 'Changing uuid' }
+      if subscribed?
+        fail('Cannot change UUID while subscribed.')
+      else
+        @env[:uuid] = uuid
+      end
     end
     alias_method :session_uuid=, :change_uuid
     alias_method :uuid=, :change_uuid
+    alias_method :set_uuid=, :change_uuid
 
-    # TODO: docs
+    # Returns:
+    # ========
+    # Current origin.
     def current_origin
       @env[:origins_pool].first
     end
     alias_method :origin, :current_origin
 
-    # TODO: docs
+    # Returns:
+    # ========
+    # Current client timetoken
     def timetoken
       @env[:timetoken]
     end
 
-    # TODO: docs
+    # Parameters:
+    # ===========
+    # <dl>
+    #   <dt>timetoken</dt>
+    #   <dd>New timetoken.</dd>
+    # </dl>
+    # Returns:
+    # ========
+    # New timetoken.
     def timetoken=(timetoken)
       @env[:timetoken] = timetoken
     end
 
-    # TODO: docs
+    # Returns:
+    # ========
+    # Current uuid.
     def uuid
       @env[:uuid]
     end
 
-    # TODO: docs
+    # Returns:
+    # ========
+    # Array of all current events.
     def events
       @env[:events]
     end

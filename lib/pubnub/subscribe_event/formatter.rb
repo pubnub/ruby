@@ -16,28 +16,38 @@ module Pubnub
       end
 
       def valid_envelope(parsed_response, msg = nil, channel = nil, group = nil)
+        if group && group.index('.*')
+          wildcard_channel = group
+          group = nil
+        end
+
         Envelope.new(
             parsed_response: parsed_response,
             message: msg,
             channel: channel,
             group: group,
+            wildcard_channel: wildcard_channel,
             response_message: parsed_response,
             timetoken: timetoken(parsed_response)
         )
       end
 
-      def envelope_from_channel_group(parsed_response, i)
+      def envelope_from_channel_group_or_wc(parsed_response, i)
         valid_envelope(parsed_response,
                        parsed_response[0][i],
                        parsed_response[3].split(',')[i],
                        parsed_response[2].split(',')[i])
       end
 
-      def format_channel_group(parsed_response)
+      def format_channel_group_or_wc(parsed_response)
         Pubnub.logger.debug('Pubnub') { 'Formatting channel group' }
         envelopes = []
-        parsed_response.first.size.times do |i|
-          envelopes << envelope_from_channel_group(parsed_response, i)
+        if parsed_response.first.empty? # timetoken update
+          envelopes << format_timetoken(parsed_response)
+        else
+          parsed_response.first.size.times do |i|
+            envelopes << envelope_from_channel_group_or_wc(parsed_response, i)
+          end
         end
         envelopes
       end
@@ -84,7 +94,7 @@ module Pubnub
         when 3
           format_multiple_channels(parsed_response)
         when 4
-          format_channel_group(parsed_response)
+          format_channel_group_or_wc(parsed_response)
         end
       end
 

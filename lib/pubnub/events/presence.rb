@@ -9,7 +9,7 @@ module Pubnub
       @event = :presence
       super
     end
-    
+
     def format_channels
       @channel = Formatter.format_channel(@channel || @channels)
       @channel = @channel.map { |c| c + '-pnpres' }

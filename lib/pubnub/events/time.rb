@@ -7,6 +7,7 @@ module Pubnub
       @event = :time
       super
     end
+
     private
 
     def path

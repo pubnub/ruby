@@ -7,8 +7,8 @@ module Pubnub
     def initialize(options, app)
       @event = :here_now
       super
-
     end
+
     private
 
     def path
@@ -38,7 +38,7 @@ module Pubnub
         @subscribe_key,
         ('channel' unless @group.blank?),
         (',' unless @group.blank?)
-      ].delete_if {|e| e.nil? }.join('/')
+      ].delete_if(&:nil?).join('/')
     end
 
     def parameters

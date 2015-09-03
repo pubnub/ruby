@@ -4,7 +4,8 @@ module Pubnub
   # event, there are also SingleEvent module and SubscribeEvent module
   class Event
     attr_reader :origin, :callback, :error_callback, :channel,
-                :open_timeout, :read_timeout, :idle_timeout, :group
+                :open_timeout, :read_timeout, :idle_timeout, :group,
+                :presence_callback
 
     alias_method :channels, :channel
 
@@ -76,12 +77,12 @@ module Pubnub
 
     def parameters
       required = {
-          pnsdk: "PubNub-Ruby/#{Pubnub::VERSION}"
+        pnsdk: "PubNub-Ruby/#{Pubnub::VERSION}"
       }
 
       empty_if_blank = {
-          auth: @auth_key,
-          uuid: @app.env[:uuid]
+        auth: @auth_key,
+        uuid: @app.env[:uuid]
       }
 
       empty_if_blank.delete_if { |_k, v| v.blank? }
@@ -122,9 +123,9 @@ module Pubnub
                      publish_key subscribe_key timetoken error_callback
                      open_timeout read_timeout idle_timeout heartbeat
                      group action read write manage ttl presence start
-                     end count reverse)
+                     end count reverse presence_callback)
 
-      options = options.inject({}) { |memo, (k, v)| memo[k.to_sym] = v; memo }
+      options = options.reduce({}) { |memo, (k, v)| memo[k.to_sym] = v; memo }
 
       variables.each do |variable|
         instance_variable_set('@' + variable, options[variable.to_sym]) unless variable.nil?

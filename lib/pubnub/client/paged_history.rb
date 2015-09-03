@@ -18,13 +18,13 @@ module Pubnub
         if sync
           envelopes = []
           page.times do |i|
-            Pubnub.logger.debug('Pubnub::Client'){"\n\nFetching page no. #{i}"}
-            Pubnub.logger.debug('Pubnub::Client'){"Current start tt #{current_start_tt}\n"}
-            envelopes << history(:channel => channel, :http_sync => true, :count => limit, :start => current_start_tt, :end => end_tt)
+            Pubnub.logger.debug('Pubnub::Client') { "\n\nFetching page no. #{i}" }
+            Pubnub.logger.debug('Pubnub::Client') { "Current start tt #{current_start_tt}\n" }
+            envelopes << history(channel: channel, http_sync: true, count: limit, start: current_start_tt, end: end_tt)
             envelopes.flatten!
 
-            Pubnub.logger.debug('Pubnub::Client'){"\n\nHistroy start: #{envelopes.last.history_start}"}
-            Pubnub.logger.debug('Pubnub::Client'){"History end: #{envelopes.last.history_end}\n"}
+            Pubnub.logger.debug('Pubnub::Client') { "\n\nHistroy start: #{envelopes.last.history_start}" }
+            Pubnub.logger.debug('Pubnub::Client') { "History end: #{envelopes.last.history_end}\n" }
             current_start_tt = envelopes.last.history_start.to_i
 
             unless i == page - 1
@@ -41,7 +41,7 @@ module Pubnub
           Celluloid::Future.new do
             sync_options = options.dup
             sync_options[:http_sync] = true
-            self.paged_history(sync_options, &block)
+            paged_history(sync_options, &block)
           end
         end
       end
