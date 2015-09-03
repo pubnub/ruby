@@ -309,6 +309,7 @@ module Pubnub
       default_values.each do |k, v|
         @env[k] = v unless @env[k]
       end
+      @env[:timetoken] = 0
     end
 
     def setup_pools
