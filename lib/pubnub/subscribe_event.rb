@@ -123,8 +123,8 @@ module Pubnub
       Pubnub.logger.debug('Pubnub') { '#finalize_event' }
       if @app.env[:timetoken] == 0
         begin
-          Pubnub.logger.debug('Pubnub::SubscribeEvent') { 'Calling connection_callback' }
-          @app.env[:connection_callback].call 'Connected!' if @app.env[:connection_callback]
+          Pubnub.logger.debug('Pubnub::SubscribeEvent') { 'Calling connect_callback' }
+          @app.env[:connect_callback].call 'Connected!' if @app.env[:connect_callback]
         rescue => error
           Pubnub.logger.error('Pubnub::SubscribeEvent') do
             "Error while calling connection callback #{error.inspect}"

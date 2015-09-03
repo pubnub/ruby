@@ -344,7 +344,7 @@ module Pubnub
     def default_values
       { origins_pool: DEFAULT_ORIGINS_POOL,
         error_callback: DEFAULT_ERROR_CALLBACK,
-        connection_callback: DEFAULT_CONNECT_CALLBACK,
+        connect_callback: DEFAULT_CONNECT_CALLBACK,
         open_timeout: DEFAULT_OPEN_TIMEOUT,
         read_timeout: DEFAULT_READ_TIMEOUT,
         idle_timeout: DEFAULT_IDLE_TIMEOUT,
