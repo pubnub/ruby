@@ -211,6 +211,7 @@ module Pubnub
     end
 
     def update_timetoken(timetoken)
+      @env[:connect_callback].call "New connection to #{@origin}" if @env[:timetoken] == 0 && @env[:connect_callback]
       @env[:timetoken] = timetoken.to_i
       Pubnub.logger.debug(:pubnub){"Pubnub::Client#update_timetoken | Current timetoken is eq #{@env[:timetoken]}"}
     end
@@ -312,6 +313,7 @@ module Pubnub
       @env = symbolize_options_keys(options)
       @env = set_default_values(@env)
       @env.delete_if { |_,v| v.blank? } # nillify if blank
+      @env[:timetoken] = 0
       @async_events = Array.new
       Pubnub.logger.debug(:pubnub){"\n\nCreated new Pubnub::Client instance"}
     end
