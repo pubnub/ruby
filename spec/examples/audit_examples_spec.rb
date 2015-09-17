@@ -52,7 +52,7 @@ describe Pubnub::Audit do
 
   it 'http_sync: true, callback: block, channel: channel, auth-key: key1, key2' do
     stub_const('Pubnub::VERSION', '4.0.0beta'); Pubnub::Audit.any_instance.stub(:current_time).and_return 1435671452
-    VCR.use_cassette('test_examples/audit-9636_http_sync_true_callback_block_channel_channel_auth-key_key1, key2', record: :once) do
+    VCR.use_cassette('test_examples/audit-9636_http_sync_true_callback_block_channel_channel_auth-key_key1_key2', record: :once) do
       event = @pubnub.audit('http_sync' => true, 'channel' => 'channel', 'auth-key' => 'key1, key2', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\":200,\"service\":\"Access Manager\",\"message\":\"Success\",\"payload\":{\"channels\":{\"channel\":{\"r\":1,\"m\":0,\"w\":1}},\"subscribe_key\":\"sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f\",\"level\":\"channel\"}}"]
       expect(event.value.map { |e| e.message }).to eq ["Success"]
@@ -79,8 +79,8 @@ describe Pubnub::Audit do
 
   it 'http_sync: true, callback: block, channel: channel, auth-key: key1, key2' do
     stub_const('Pubnub::VERSION', '4.0.0beta'); Pubnub::Audit.any_instance.stub(:current_time).and_return 1435671453
-    VCR.use_cassette('test_examples/audit-4057_http_sync_true_callback_block_channel_channel_auth-key_key1, key2', record: :once) do
-      event = @pubnub.audit('http_sync' => true, 'channel' => :channel, 'auth-key' => 'key1, key2', &@callback)
+    VCR.use_cassette('test_examples/audit-4057_http_sync_true_callback_block_channel_channel_auth-key_key1_key2', record: :once) do
+      event = @pubnub.audit('http_sync' => true, 'channel' => :channel, 'auth-key' => 'key1_key2', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\":200,\"service\":\"Access Manager\",\"message\":\"Success\",\"payload\":{\"channels\":{\"channel\":{\"r\":1,\"m\":0,\"w\":1}},\"subscribe_key\":\"sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f\",\"level\":\"channel\"}}"]
       expect(event.value.map { |e| e.message }).to eq ["Success"]
     end
@@ -106,7 +106,7 @@ describe Pubnub::Audit do
 
   it 'http_sync: true, callback: parameter, channel: channel, auth-key: key1, key2' do
     stub_const('Pubnub::VERSION', '4.0.0beta'); Pubnub::Audit.any_instance.stub(:current_time).and_return 1435671455
-    VCR.use_cassette('test_examples/audit-1034_http_sync_true_callback_parameter_channel_channel_auth-key_key1, key2', record: :once) do
+    VCR.use_cassette('test_examples/audit-1034_http_sync_true_callback_parameter_channel_channel_auth-key_key1_key2', record: :once) do
       event = @pubnub.audit('http_sync' => true, 'callback' => :parameter, 'channel' => 'channel', 'auth-key' => 'key1, key2')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\":200,\"service\":\"Access Manager\",\"message\":\"Success\",\"payload\":{\"channels\":{\"channel\":{\"r\":1,\"m\":0,\"w\":1}},\"subscribe_key\":\"sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f\",\"level\":\"channel\"}}"]
       expect(event.value.map { |e| e.message }).to eq ["Success"]
@@ -133,7 +133,7 @@ describe Pubnub::Audit do
 
   it 'http_sync: true, callback: parameter, channel: channel, auth-key: key1, key2' do
     stub_const('Pubnub::VERSION', '4.0.0beta'); Pubnub::Audit.any_instance.stub(:current_time).and_return 1435671456
-    VCR.use_cassette('test_examples/audit-6308_http_sync_true_callback_parameter_channel_channel_auth-key_key1, key2', record: :once) do
+    VCR.use_cassette('test_examples/audit-6308_http_sync_true_callback_parameter_channel_channel_auth-key_key1_key2', record: :once) do
       event = @pubnub.audit('http_sync' => true, 'callback' => :parameter, 'channel' => :channel, 'auth-key' => 'key1, key2')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\":200,\"service\":\"Access Manager\",\"message\":\"Success\",\"payload\":{\"channels\":{\"channel\":{\"r\":1,\"m\":0,\"w\":1}},\"subscribe_key\":\"sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f\",\"level\":\"channel\"}}"]
       expect(event.value.map { |e| e.message }).to eq ["Success"]
@@ -160,7 +160,7 @@ describe Pubnub::Audit do
 
   it 'http_sync: false, callback: block, channel: channel, auth-key: key1, key2' do
     stub_const('Pubnub::VERSION', '4.0.0beta'); Pubnub::Audit.any_instance.stub(:current_time).and_return 1435671459
-    VCR.use_cassette('test_examples/audit-2093_http_sync_false_callback_block_channel_channel_auth-key_key1, key2', record: :once) do
+    VCR.use_cassette('test_examples/audit-2093_http_sync_false_callback_block_channel_channel_auth-key_key1_key2', record: :once) do
       event = @pubnub.audit('http_sync' => false, 'channel' => 'channel', 'auth-key' => 'key1, key2', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\":200,\"service\":\"Access Manager\",\"message\":\"Success\",\"payload\":{\"channels\":{\"channel\":{\"r\":1,\"m\":0,\"w\":1}},\"subscribe_key\":\"sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f\",\"level\":\"channel\"}}"]
       expect(event.value.map { |e| e.message }).to eq ["Success"]
@@ -187,7 +187,7 @@ describe Pubnub::Audit do
 
   it 'http_sync: false, callback: block, channel: channel, auth-key: key1, key2' do
     stub_const('Pubnub::VERSION', '4.0.0beta'); Pubnub::Audit.any_instance.stub(:current_time).and_return 1435671461
-    VCR.use_cassette('test_examples/audit-9364_http_sync_false_callback_block_channel_channel_auth-key_key1, key2', record: :once) do
+    VCR.use_cassette('test_examples/audit-9364_http_sync_false_callback_block_channel_channel_auth-key_key1_key2', record: :once) do
       event = @pubnub.audit('http_sync' => false, 'channel' => :channel, 'auth-key' => 'key1, key2', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\":200,\"service\":\"Access Manager\",\"message\":\"Success\",\"payload\":{\"channels\":{\"channel\":{\"r\":1,\"m\":0,\"w\":1}},\"subscribe_key\":\"sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f\",\"level\":\"channel\"}}"]
       expect(event.value.map { |e| e.message }).to eq ["Success"]
@@ -214,7 +214,7 @@ describe Pubnub::Audit do
 
   it 'http_sync: false, callback: parameter, channel: channel, auth-key: key1, key2' do
     stub_const('Pubnub::VERSION', '4.0.0beta'); Pubnub::Audit.any_instance.stub(:current_time).and_return 1435671462
-    VCR.use_cassette('test_examples/audit-4593_http_sync_false_callback_parameter_channel_channel_auth-key_key1, key2', record: :once) do
+    VCR.use_cassette('test_examples/audit-4593_http_sync_false_callback_parameter_channel_channel_auth-key_key1_key2', record: :once) do
       event = @pubnub.audit('http_sync' => false, 'callback' => :parameter, 'channel' => 'channel', 'auth-key' => 'key1, key2')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\":200,\"service\":\"Access Manager\",\"message\":\"Success\",\"payload\":{\"channels\":{\"channel\":{\"r\":1,\"m\":0,\"w\":1}},\"subscribe_key\":\"sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f\",\"level\":\"channel\"}}"]
       expect(event.value.map { |e| e.message }).to eq ["Success"]
@@ -241,7 +241,7 @@ describe Pubnub::Audit do
 
   it 'http_sync: false, callback: parameter, channel: channel, auth-key: key1, key2' do
     stub_const('Pubnub::VERSION', '4.0.0beta'); Pubnub::Audit.any_instance.stub(:current_time).and_return 1435671464
-    VCR.use_cassette('test_examples/audit-2314_http_sync_false_callback_parameter_channel_channel_auth-key_key1, key2', record: :once) do
+    VCR.use_cassette('test_examples/audit-2314_http_sync_false_callback_parameter_channel_channel_auth-key_key1_key2', record: :once) do
       event = @pubnub.audit('http_sync' => false, 'callback' => :parameter, 'channel' => :channel, 'auth-key' => 'key1, key2')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\":200,\"service\":\"Access Manager\",\"message\":\"Success\",\"payload\":{\"channels\":{\"channel\":{\"r\":1,\"m\":0,\"w\":1}},\"subscribe_key\":\"sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f\",\"level\":\"channel\"}}"]
       expect(event.value.map { |e| e.message }).to eq ["Success"]
