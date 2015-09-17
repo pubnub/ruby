@@ -185,11 +185,16 @@ module Pubnub
         "Looking for requester for #{event_type}"
       end
       if sync
-        RequestDispatcher.new
+        @env[:req_dispatchers_pool] ||= {}
+        @env[:req_dispatchers_pool][:sync] ||= {}
+        @env[:req_dispatchers_pool][:sync][origin] ||= {}
+        @env[:req_dispatchers_pool][:sync][origin][event_type] ||=
+            RequestDispatcher.new
       else
         @env[:req_dispatchers_pool] ||= {}
-        @env[:req_dispatchers_pool][origin] ||= {}
-        @env[:req_dispatchers_pool][origin][event_type] ||=
+        @env[:req_dispatchers_pool][:async] ||= {}
+        @env[:req_dispatchers_pool][:async][origin] ||= {}
+        @env[:req_dispatchers_pool][:async][origin][event_type] ||=
             RequestDispatcher.new
       end
     end

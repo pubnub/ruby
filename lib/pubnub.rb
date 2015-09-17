@@ -4,7 +4,7 @@ require 'open-uri'
 require 'openssl'
 require 'celluloid'
 require 'timers'
-require 'net/http/persistent'
+require 'httpclient'
 require 'logger'
 
 require 'pubnub/version'

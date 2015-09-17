@@ -13,7 +13,7 @@ group :development do
   gem 'rubocop'
   gem 'mutant'
   gem 'mutant-rspec'
-  gem 'yard'
-  gem 'redcarpet'
-  gem 'github-markup'
+  # gem 'yard'
+  # gem 'redcarpet'
+  # gem 'github-markup'
 end

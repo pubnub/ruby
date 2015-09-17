@@ -5,8 +5,7 @@ module Pubnub
     include Celluloid
 
     def initialize
-      @connection = Net::HTTP::Persistent.new 'PubNub'
-      @connection.proxy_from_env
+      @connection = HTTPClient.new
 
       Pubnub.logger.debug('Pubnub') { 'Created new Request' }
     end
@@ -14,11 +13,11 @@ module Pubnub
     def send_request(event)
       Pubnub.logger.debug('Pubnub') { "Sending request for #{event.class}" }
 
-      @connection.read_timeout = event.read_timeout
-      @connection.open_timeout = event.open_timeout
-      @connection.idle_timeout = event.idle_timeout
+      # @connection.read_timeout = event.read_timeout
+      # @connection.open_timeout = event.open_timeout
+      # @connection.idle_timeout = event.idle_timeout
 
-      @connection.request(event.uri)
+      @connection.get(event.uri.to_s)
     end
   end
 end

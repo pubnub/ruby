@@ -30,7 +30,7 @@ module Pubnub
       finalize_event(envelopes)
       envelopes
     ensure
-      sender.terminate if @http_sync
+      # sender.terminate if @http_sync
       terminate unless @stay_alive
     end
 

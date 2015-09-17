@@ -3,8 +3,8 @@ PATH
   specs:
     pubnub (4.0.0beta2)
       celluloid (~> 0.16)
+      httpclient (~> 2.6)
       json (~> 1.8)
-      net-http-persistent (~> 2.9)
 
 GEM
   remote: https://rubygems.org/
@@ -75,9 +75,9 @@ GEM
     ffi (1.9.6-java)
     generative (0.2.0)
       rspec (>= 3.0)
-    github-markup (1.4.0)
     hitimes (1.2.2)
     hitimes (1.2.2-java)
+    httpclient (2.6.0.1)
     ice_nine (0.11.0)
     inflecto (0.0.2)
     json (1.8.3)
@@ -114,7 +114,6 @@ GEM
       mutant (~> 0.6.3)
       rspec-core (>= 2.14.1, < 3.2.0)
     nenv (0.2.0)
-    net-http-persistent (2.9.4)
     parallel (1.3.2)
     parser (2.2.0.pre.4)
       ast (>= 1.1, < 3.0)
@@ -131,7 +130,6 @@ GEM
       slop (~> 3.4)
       spoon (~> 0.0)
     rainbow (2.0.0)
-    redcarpet (3.3.2)
     rr (1.1.2)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
@@ -172,7 +170,6 @@ GEM
     webmock (1.18.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
-    yard (0.8.7.6)
 
 PLATFORMS
   java
@@ -182,18 +179,15 @@ DEPENDENCIES
   awesome_print
   bundler (~> 1.7)
   generative
-  github-markup
   mutant
   mutant-rspec
   pry
   pubnub!
-  redcarpet
   rr
   rspec
   rubocop
   vcr
   webmock
-  yard
 
 BUNDLED WITH
    1.10.4

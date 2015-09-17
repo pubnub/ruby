@@ -27,7 +27,7 @@ module Pubnub
     def format_envelopes(response)
       parsed_response, error = Formatter.parse_json(response.body)
 
-      error = response if parsed_response && response.code != '200'
+      error = response if parsed_response && response.code.to_i != 200
 
       envelopes = if error
                     [error_envelope(parsed_response, error)]
