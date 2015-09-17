@@ -33,7 +33,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: true, callback: block, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/state-3401_http_sync_true_callback_block_uuid_uuid_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1001063', record: :once) do
       event = @pubnub.state('http_sync' => true, 'uuid' => 'uuid', 'channel' => 'channel', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -41,7 +41,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: true, callback: block, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/state-1820_http_sync_true_callback_block_uuid_uuid_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1001055', record: :once) do
       event = @pubnub.state('http_sync' => true, 'uuid' => 'uuid', 'channel' => :channel, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -49,7 +49,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: true, callback: block, uuid: uuid' do
-    VCR.use_cassette('test_examples/state-2693_http_sync_true_callback_block_uuid_uuid', record: :once) do
+    VCR.use_cassette('test_examples/1001061', record: :once) do
       event = @pubnub.state('http_sync' => true, 'uuid' => 'uuid', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["No valid channels specified"]
@@ -57,7 +57,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: true, callback: block, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/state-2349_http_sync_true_callback_block_uuid_uuid_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1001060', record: :once) do
       event = @pubnub.state('http_sync' => true, 'uuid' => :uuid, 'channel' => 'channel', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -65,7 +65,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: true, callback: block, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/state-3519_http_sync_true_callback_block_uuid_uuid_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1001064', record: :once) do
       event = @pubnub.state('http_sync' => true, 'uuid' => :uuid, 'channel' => :channel, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -73,7 +73,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: true, callback: block, uuid: uuid' do
-    VCR.use_cassette('test_examples/state-5621_http_sync_true_callback_block_uuid_uuid', record: :once) do
+    VCR.use_cassette('test_examples/1001067', record: :once) do
       event = @pubnub.state('http_sync' => true, 'uuid' => :uuid, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["No valid channels specified"]
@@ -81,7 +81,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: true, callback: parameter, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/state-1810_http_sync_true_callback_parameter_uuid_uuid_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1001054', record: :once) do
       event = @pubnub.state('http_sync' => true, 'callback' => :parameter, 'uuid' => 'uuid', 'channel' => 'channel')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -89,7 +89,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: true, callback: parameter, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/state-231_http_sync_true_callback_parameter_uuid_uuid_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1001058', record: :once) do
       event = @pubnub.state('http_sync' => true, 'callback' => :parameter, 'uuid' => 'uuid', 'channel' => :channel)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -97,7 +97,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: true, callback: parameter, uuid: uuid' do
-    VCR.use_cassette('test_examples/state-8777_http_sync_true_callback_parameter_uuid_uuid', record: :once) do
+    VCR.use_cassette('test_examples/1001074', record: :once) do
       event = @pubnub.state('http_sync' => true, 'callback' => :parameter, 'uuid' => 'uuid')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["No valid channels specified"]
@@ -105,7 +105,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: true, callback: parameter, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/state-2070_http_sync_true_callback_parameter_uuid_uuid_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1001057', record: :once) do
       event = @pubnub.state('http_sync' => true, 'callback' => :parameter, 'uuid' => :uuid, 'channel' => 'channel')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -113,7 +113,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: true, callback: parameter, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/state-2325_http_sync_true_callback_parameter_uuid_uuid_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1001059', record: :once) do
       event = @pubnub.state('http_sync' => true, 'callback' => :parameter, 'uuid' => :uuid, 'channel' => :channel)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -121,7 +121,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: true, callback: parameter, uuid: uuid' do
-    VCR.use_cassette('test_examples/state-4571_http_sync_true_callback_parameter_uuid_uuid', record: :once) do
+    VCR.use_cassette('test_examples/1001065', record: :once) do
       event = @pubnub.state('http_sync' => true, 'callback' => :parameter, 'uuid' => :uuid)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["No valid channels specified"]
@@ -129,7 +129,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: false, callback: block, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/state-7716_http_sync_false_callback_block_uuid_uuid_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1001070', record: :once) do
       event = @pubnub.state('http_sync' => false, 'uuid' => 'uuid', 'channel' => 'channel', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -137,7 +137,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: false, callback: block, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/state-651_http_sync_false_callback_block_uuid_uuid_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1001068', record: :once) do
       event = @pubnub.state('http_sync' => false, 'uuid' => 'uuid', 'channel' => :channel, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -145,7 +145,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: false, callback: block, uuid: uuid' do
-    VCR.use_cassette('test_examples/state-5318_http_sync_false_callback_block_uuid_uuid', record: :once) do
+    VCR.use_cassette('test_examples/1001066', record: :once) do
       event = @pubnub.state('http_sync' => false, 'uuid' => 'uuid', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["No valid channels specified"]
@@ -153,7 +153,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: false, callback: block, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/state-2873_http_sync_false_callback_block_uuid_uuid_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1001062', record: :once) do
       event = @pubnub.state('http_sync' => false, 'uuid' => :uuid, 'channel' => 'channel', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -161,7 +161,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: false, callback: block, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/state-779_http_sync_false_callback_block_uuid_uuid_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1001072', record: :once) do
       event = @pubnub.state('http_sync' => false, 'uuid' => :uuid, 'channel' => :channel, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -169,7 +169,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: false, callback: block, uuid: uuid' do
-    VCR.use_cassette('test_examples/state-9008_http_sync_false_callback_block_uuid_uuid', record: :once) do
+    VCR.use_cassette('test_examples/1001075', record: :once) do
       event = @pubnub.state('http_sync' => false, 'uuid' => :uuid, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["No valid channels specified"]
@@ -177,7 +177,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: false, callback: parameter, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/state-7355_http_sync_false_callback_parameter_uuid_uuid_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1001069', record: :once) do
       event = @pubnub.state('http_sync' => false, 'callback' => :parameter, 'uuid' => 'uuid', 'channel' => 'channel')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -185,7 +185,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: false, callback: parameter, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/state-1288_http_sync_false_callback_parameter_uuid_uuid_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1001052', record: :once) do
       event = @pubnub.state('http_sync' => false, 'callback' => :parameter, 'uuid' => 'uuid', 'channel' => :channel)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -193,7 +193,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: false, callback: parameter, uuid: uuid' do
-    VCR.use_cassette('test_examples/state-78_http_sync_false_callback_parameter_uuid_uuid', record: :once) do
+    VCR.use_cassette('test_examples/1001073', record: :once) do
       event = @pubnub.state('http_sync' => false, 'callback' => :parameter, 'uuid' => 'uuid')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["No valid channels specified"]
@@ -201,7 +201,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: false, callback: parameter, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/state-1344_http_sync_false_callback_parameter_uuid_uuid_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1001053', record: :once) do
       event = @pubnub.state('http_sync' => false, 'callback' => :parameter, 'uuid' => :uuid, 'channel' => 'channel')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -209,7 +209,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: false, callback: parameter, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/state-1920_http_sync_false_callback_parameter_uuid_uuid_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1001056', record: :once) do
       event = @pubnub.state('http_sync' => false, 'callback' => :parameter, 'uuid' => :uuid, 'channel' => :channel)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -217,7 +217,7 @@ describe Pubnub::State do
   end
 
   it 'http_sync: false, callback: parameter, uuid: uuid' do
-    VCR.use_cassette('test_examples/state-7735_http_sync_false_callback_parameter_uuid_uuid', record: :once) do
+    VCR.use_cassette('test_examples/1001071', record: :once) do
       event = @pubnub.state('http_sync' => false, 'callback' => :parameter, 'uuid' => :uuid)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["No valid channels specified"]

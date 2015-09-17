@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/publish/pub-c-1e88e5ec-5a19-4ff1-a43a-5ad34a98cfd1/sub-c-0687cf3e-2b8e-11e5-b6bc-02ee2ddab7fe/0/channel/0/%22message%22?pnsdk=PubNub-Ruby/4.0.0beta2&uuid=gentest
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 17 Sep 2015 15:48:28 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '30'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[1,"Sent","14425049088905586"]'
+    http_version: 
+  recorded_at: Thu, 17 Sep 2015 15:48:28 GMT
+recorded_with: VCR 2.9.3

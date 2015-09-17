@@ -33,7 +33,7 @@ describe Pubnub::HereNow do
   end
 
   it 'http_sync: true, callback: block' do
-    VCR.use_cassette('test_examples/here_now-9205_http_sync_true_callback_block', record: :once) do
+    VCR.use_cassette('test_examples/1000253', record: :once) do
       event = @pubnub.here_now('http_sync' => true, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": {}, \"total_channels\": 0, \"total_occupancy\": 0}, \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -41,7 +41,7 @@ describe Pubnub::HereNow do
   end
 
   it 'http_sync: true, callback: block, channel: channel' do
-    VCR.use_cassette('test_examples/here_now-9778_http_sync_true_callback_block_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000255', record: :once) do
       event = @pubnub.here_now('http_sync' => true, 'channel' => :channel, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [], \"occupancy\": 0}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -49,7 +49,7 @@ describe Pubnub::HereNow do
   end
 
   it 'http_sync: true, callback: block, channel: channel' do
-    VCR.use_cassette('test_examples/here_now-2912_http_sync_true_callback_block_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000246', record: :once) do
       event = @pubnub.here_now('http_sync' => true, 'channel' => 'channel', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [], \"occupancy\": 0}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -57,7 +57,7 @@ describe Pubnub::HereNow do
   end
 
   it 'http_sync: true, callback: parameter' do
-    VCR.use_cassette('test_examples/here_now-7690_http_sync_true_callback_parameter', record: :once) do
+    VCR.use_cassette('test_examples/1000249', record: :once) do
       event = @pubnub.here_now('http_sync' => true, 'callback' => :parameter)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": {}, \"total_channels\": 0, \"total_occupancy\": 0}, \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -65,7 +65,7 @@ describe Pubnub::HereNow do
   end
 
   it 'http_sync: true, callback: parameter, channel: channel' do
-    VCR.use_cassette('test_examples/here_now-281_http_sync_true_callback_parameter_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000245', record: :once) do
       event = @pubnub.here_now('http_sync' => true, 'callback' => :parameter, 'channel' => :channel)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [], \"occupancy\": 0}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -73,7 +73,7 @@ describe Pubnub::HereNow do
   end
 
   it 'http_sync: true, callback: parameter, channel: channel' do
-    VCR.use_cassette('test_examples/here_now-550_http_sync_true_callback_parameter_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000248', record: :once) do
       event = @pubnub.here_now('http_sync' => true, 'callback' => :parameter, 'channel' => 'channel')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [], \"occupancy\": 0}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -81,7 +81,7 @@ describe Pubnub::HereNow do
   end
 
   it 'http_sync: false, callback: block' do
-    VCR.use_cassette('test_examples/here_now-9354_http_sync_false_callback_block', record: :once) do
+    VCR.use_cassette('test_examples/1000254', record: :once) do
       event = @pubnub.here_now('http_sync' => false, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": {}, \"total_channels\": 0, \"total_occupancy\": 0}, \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -89,7 +89,7 @@ describe Pubnub::HereNow do
   end
 
   it 'http_sync: false, callback: block, channel: channel' do
-    VCR.use_cassette('test_examples/here_now-7991_http_sync_false_callback_block_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000251', record: :once) do
       event = @pubnub.here_now('http_sync' => false, 'channel' => :channel, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [], \"occupancy\": 0}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -97,7 +97,7 @@ describe Pubnub::HereNow do
   end
 
   it 'http_sync: false, callback: block, channel: channel' do
-    VCR.use_cassette('test_examples/here_now-9135_http_sync_false_callback_block_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000252', record: :once) do
       event = @pubnub.here_now('http_sync' => false, 'channel' => 'channel', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [], \"occupancy\": 0}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -105,7 +105,7 @@ describe Pubnub::HereNow do
   end
 
   it 'http_sync: false, callback: parameter' do
-    VCR.use_cassette('test_examples/here_now-2298_http_sync_false_callback_parameter', record: :once) do
+    VCR.use_cassette('test_examples/1000244', record: :once) do
       event = @pubnub.here_now('http_sync' => false, 'callback' => :parameter)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": {}, \"total_channels\": 0, \"total_occupancy\": 0}, \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -113,7 +113,7 @@ describe Pubnub::HereNow do
   end
 
   it 'http_sync: false, callback: parameter, channel: channel' do
-    VCR.use_cassette('test_examples/here_now-3758_http_sync_false_callback_parameter_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000247', record: :once) do
       event = @pubnub.here_now('http_sync' => false, 'callback' => :parameter, 'channel' => :channel)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [], \"occupancy\": 0}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -121,7 +121,7 @@ describe Pubnub::HereNow do
   end
 
   it 'http_sync: false, callback: parameter, channel: channel' do
-    VCR.use_cassette('test_examples/here_now-772_http_sync_false_callback_parameter_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000250', record: :once) do
       event = @pubnub.here_now('http_sync' => false, 'callback' => :parameter, 'channel' => 'channel')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"Presence\", \"uuids\": [], \"occupancy\": 0}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
