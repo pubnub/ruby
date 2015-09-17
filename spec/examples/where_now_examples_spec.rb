@@ -33,7 +33,7 @@ describe Pubnub::WhereNow do
   end
 
   it 'http_sync: true, callback: block, uuid: john' do
-    VCR.use_cassette('test_examples/where_now-8990_http_sync_true_callback_block_uuid_john', record: :once) do
+    VCR.use_cassette('test_examples/1001087', record: :once) do
       event = @pubnub.where_now('http_sync' => true, 'uuid' => 'john', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": []}, \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -41,7 +41,7 @@ describe Pubnub::WhereNow do
   end
 
   it 'http_sync: true, callback: block, uuid: john' do
-    VCR.use_cassette('test_examples/where_now-420_http_sync_true_callback_block_uuid_john', record: :once) do
+    VCR.use_cassette('test_examples/1001082', record: :once) do
       event = @pubnub.where_now('http_sync' => true, 'uuid' => :john, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": []}, \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -49,7 +49,7 @@ describe Pubnub::WhereNow do
   end
 
   it 'http_sync: true, callback: parameter, uuid: john' do
-    VCR.use_cassette('test_examples/where_now-6057_http_sync_true_callback_parameter_uuid_john', record: :once) do
+    VCR.use_cassette('test_examples/1001083', record: :once) do
       event = @pubnub.where_now('http_sync' => true, 'callback' => :parameter, 'uuid' => 'john')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": []}, \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -57,7 +57,7 @@ describe Pubnub::WhereNow do
   end
 
   it 'http_sync: true, callback: parameter, uuid: john' do
-    VCR.use_cassette('test_examples/where_now-4085_http_sync_true_callback_parameter_uuid_john', record: :once) do
+    VCR.use_cassette('test_examples/1001081', record: :once) do
       event = @pubnub.where_now('http_sync' => true, 'callback' => :parameter, 'uuid' => :john)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": []}, \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -65,7 +65,7 @@ describe Pubnub::WhereNow do
   end
 
   it 'http_sync: false, callback: block, uuid: john' do
-    VCR.use_cassette('test_examples/where_now-6464_http_sync_false_callback_block_uuid_john', record: :once) do
+    VCR.use_cassette('test_examples/1001084', record: :once) do
       event = @pubnub.where_now('http_sync' => false, 'uuid' => 'john', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": []}, \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -73,7 +73,7 @@ describe Pubnub::WhereNow do
   end
 
   it 'http_sync: false, callback: block, uuid: john' do
-    VCR.use_cassette('test_examples/where_now-8835_http_sync_false_callback_block_uuid_john', record: :once) do
+    VCR.use_cassette('test_examples/1001086', record: :once) do
       event = @pubnub.where_now('http_sync' => false, 'uuid' => :john, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": []}, \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -81,7 +81,7 @@ describe Pubnub::WhereNow do
   end
 
   it 'http_sync: false, callback: parameter, uuid: john' do
-    VCR.use_cassette('test_examples/where_now-8283_http_sync_false_callback_parameter_uuid_john', record: :once) do
+    VCR.use_cassette('test_examples/1001085', record: :once) do
       event = @pubnub.where_now('http_sync' => false, 'callback' => :parameter, 'uuid' => 'john')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": []}, \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -89,7 +89,7 @@ describe Pubnub::WhereNow do
   end
 
   it 'http_sync: false, callback: parameter, uuid: john' do
-    VCR.use_cassette('test_examples/where_now-1666_http_sync_false_callback_parameter_uuid_john', record: :once) do
+    VCR.use_cassette('test_examples/1001080', record: :once) do
       event = @pubnub.where_now('http_sync' => false, 'callback' => :parameter, 'uuid' => :john)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": []}, \"service\": \"Presence\"}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]

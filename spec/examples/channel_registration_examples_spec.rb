@@ -33,7 +33,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-5870_http_sync_true_callback_block_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000089', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => 'gchannel', 'group' => 'group', 'action' => :list_groups, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -41,7 +41,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-2012_http_sync_true_callback_block_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000036', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => 'gchannel', 'group' => 'group', 'action' => 'list_groups', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -49,7 +49,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-2412_http_sync_true_callback_block_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000043', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => 'gchannel', 'group' => 'group', 'action' => :get, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -57,7 +57,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-8918_http_sync_true_callback_block_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000128', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => 'gchannel', 'group' => 'group', 'action' => 'get', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -65,7 +65,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-6165_http_sync_true_callback_block_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000093', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => 'gchannel', 'group' => 'group', 'action' => :add, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -73,7 +73,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-6773_http_sync_true_callback_block_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000100', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => 'gchannel', 'group' => 'group', 'action' => 'add', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -81,7 +81,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: remove' do
-    VCR.use_cassette('test_examples/channel_registration-7317_http_sync_true_callback_block_channel_gchannel_group_group_action_remove', record: :once) do
+    VCR.use_cassette('test_examples/1000108', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => 'gchannel', 'group' => 'group', 'action' => :remove, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -89,7 +89,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-2453_http_sync_true_callback_block_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000044', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => 'gchannel', 'group' => :group, 'action' => :list_groups, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -97,7 +97,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-8388_http_sync_true_callback_block_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000121', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => 'gchannel', 'group' => :group, 'action' => 'list_groups', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -105,7 +105,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-7451_http_sync_true_callback_block_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000112', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => 'gchannel', 'group' => :group, 'action' => :get, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -113,7 +113,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-7808_http_sync_true_callback_block_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000117', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => 'gchannel', 'group' => :group, 'action' => 'get', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -121,7 +121,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-523_http_sync_true_callback_block_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000079', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => 'gchannel', 'group' => :group, 'action' => :add, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -129,7 +129,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-8689_http_sync_true_callback_block_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000125', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => 'gchannel', 'group' => :group, 'action' => 'add', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -137,7 +137,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: remove' do
-    VCR.use_cassette('test_examples/channel_registration-2205_http_sync_true_callback_block_channel_gchannel_group_group_action_remove', record: :once) do
+    VCR.use_cassette('test_examples/1000041', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => 'gchannel', 'group' => :group, 'action' => :remove, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -145,7 +145,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-5156_http_sync_true_callback_block_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000076', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => :gchannel, 'group' => 'group', 'action' => :list_groups, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -153,7 +153,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-6820_http_sync_true_callback_block_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000101', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => :gchannel, 'group' => 'group', 'action' => 'list_groups', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -161,7 +161,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-3402_http_sync_true_callback_block_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000051', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => :gchannel, 'group' => 'group', 'action' => :get, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -169,7 +169,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-5722_http_sync_true_callback_block_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000088', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => :gchannel, 'group' => 'group', 'action' => 'get', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -177,7 +177,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-3829_http_sync_true_callback_block_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000056', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => :gchannel, 'group' => 'group', 'action' => :add, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -185,7 +185,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-4923_http_sync_true_callback_block_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000070', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => :gchannel, 'group' => 'group', 'action' => 'add', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -193,7 +193,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: remove' do
-    VCR.use_cassette('test_examples/channel_registration-5066_http_sync_true_callback_block_channel_gchannel_group_group_action_remove', record: :once) do
+    VCR.use_cassette('test_examples/1000072', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => :gchannel, 'group' => 'group', 'action' => :remove, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -201,7 +201,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-9090_http_sync_true_callback_block_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000129', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => :gchannel, 'group' => :group, 'action' => :list_groups, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -209,7 +209,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-1965_http_sync_true_callback_block_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000035', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => :gchannel, 'group' => :group, 'action' => 'list_groups', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -217,7 +217,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-1490_http_sync_true_callback_block_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000028', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => :gchannel, 'group' => :group, 'action' => :get, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -225,7 +225,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-2303_http_sync_true_callback_block_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000042', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => :gchannel, 'group' => :group, 'action' => 'get', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -233,7 +233,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-6318_http_sync_true_callback_block_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000095', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => :gchannel, 'group' => :group, 'action' => :add, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -241,7 +241,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-5414_http_sync_true_callback_block_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000083', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => :gchannel, 'group' => :group, 'action' => 'add', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -249,7 +249,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: block, channel: gchannel, group: group, action: remove' do
-    VCR.use_cassette('test_examples/channel_registration-3632_http_sync_true_callback_block_channel_gchannel_group_group_action_remove', record: :once) do
+    VCR.use_cassette('test_examples/1000053', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'channel' => :gchannel, 'group' => :group, 'action' => :remove, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -257,7 +257,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-9973_http_sync_true_callback_parameter_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000135', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => 'group', 'action' => :list_groups)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -265,7 +265,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-6840_http_sync_true_callback_parameter_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000102', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => 'group', 'action' => 'list_groups')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -273,7 +273,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-5252_http_sync_true_callback_parameter_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000080', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => 'group', 'action' => :get)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -281,7 +281,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-5589_http_sync_true_callback_parameter_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000085', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => 'group', 'action' => 'get')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -289,7 +289,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-413_http_sync_true_callback_parameter_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000058', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => 'group', 'action' => :add)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -297,7 +297,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-1595_http_sync_true_callback_parameter_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000030', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => 'group', 'action' => 'add')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -305,7 +305,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: remove' do
-    VCR.use_cassette('test_examples/channel_registration-5948_http_sync_true_callback_parameter_channel_gchannel_group_group_action_remove', record: :once) do
+    VCR.use_cassette('test_examples/1000091', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => 'group', 'action' => :remove)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -313,7 +313,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-6913_http_sync_true_callback_parameter_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000106', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => :group, 'action' => :list_groups)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -321,7 +321,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-3686_http_sync_true_callback_parameter_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000054', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => :group, 'action' => 'list_groups')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -329,7 +329,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-6699_http_sync_true_callback_parameter_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000099', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => :group, 'action' => :get)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -337,7 +337,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-4459_http_sync_true_callback_parameter_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000062', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => :group, 'action' => 'get')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -345,7 +345,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-1474_http_sync_true_callback_parameter_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000027', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => :group, 'action' => :add)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -353,7 +353,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-3794_http_sync_true_callback_parameter_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000055', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => :group, 'action' => 'add')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -361,7 +361,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: remove' do
-    VCR.use_cassette('test_examples/channel_registration-2039_http_sync_true_callback_parameter_channel_gchannel_group_group_action_remove', record: :once) do
+    VCR.use_cassette('test_examples/1000038', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => :group, 'action' => :remove)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -369,7 +369,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-9698_http_sync_true_callback_parameter_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000134', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => :gchannel, 'group' => 'group', 'action' => :list_groups)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -377,7 +377,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-5106_http_sync_true_callback_parameter_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000073', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => :gchannel, 'group' => 'group', 'action' => 'list_groups')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -385,7 +385,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-8150_http_sync_true_callback_parameter_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000120', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => :gchannel, 'group' => 'group', 'action' => :get)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -393,7 +393,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-4185_http_sync_true_callback_parameter_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000059', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => :gchannel, 'group' => 'group', 'action' => 'get')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -401,7 +401,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-6913_http_sync_true_callback_parameter_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000105', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => :gchannel, 'group' => 'group', 'action' => :add)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -409,7 +409,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-8695_http_sync_true_callback_parameter_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000126', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => :gchannel, 'group' => 'group', 'action' => 'add')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -417,7 +417,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: remove' do
-    VCR.use_cassette('test_examples/channel_registration-4811_http_sync_true_callback_parameter_channel_gchannel_group_group_action_remove', record: :once) do
+    VCR.use_cassette('test_examples/1000067', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => :gchannel, 'group' => 'group', 'action' => :remove)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -425,7 +425,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-5271_http_sync_true_callback_parameter_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000081', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => :gchannel, 'group' => :group, 'action' => :list_groups)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -433,7 +433,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-9400_http_sync_true_callback_parameter_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000132', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => :gchannel, 'group' => :group, 'action' => 'list_groups')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -441,7 +441,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-3502_http_sync_true_callback_parameter_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000052', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => :gchannel, 'group' => :group, 'action' => :get)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -449,7 +449,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-8475_http_sync_true_callback_parameter_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000122', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => :gchannel, 'group' => :group, 'action' => 'get')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -457,7 +457,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-1752_http_sync_true_callback_parameter_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000033', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => :gchannel, 'group' => :group, 'action' => :add)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -465,7 +465,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-539_http_sync_true_callback_parameter_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000082', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => :gchannel, 'group' => :group, 'action' => 'add')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -473,7 +473,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: true, callback: parameter, channel: gchannel, group: group, action: remove' do
-    VCR.use_cassette('test_examples/channel_registration-7985_http_sync_true_callback_parameter_channel_gchannel_group_group_action_remove', record: :once) do
+    VCR.use_cassette('test_examples/1000119', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => true, 'callback' => :parameter, 'channel' => :gchannel, 'group' => :group, 'action' => :remove)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -481,7 +481,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-7596_http_sync_false_callback_block_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000115', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => 'gchannel', 'group' => 'group', 'action' => :list_groups, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -489,7 +489,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-6850_http_sync_false_callback_block_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000103', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => 'gchannel', 'group' => 'group', 'action' => 'list_groups', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -497,7 +497,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-3907_http_sync_false_callback_block_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000057', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => 'gchannel', 'group' => 'group', 'action' => :get, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -505,7 +505,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-1644_http_sync_false_callback_block_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000031', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => 'gchannel', 'group' => 'group', 'action' => 'get', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -513,7 +513,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-1844_http_sync_false_callback_block_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000034', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => 'gchannel', 'group' => 'group', 'action' => :add, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -521,7 +521,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-4888_http_sync_false_callback_block_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000069', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => 'gchannel', 'group' => 'group', 'action' => 'add', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -529,7 +529,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: remove' do
-    VCR.use_cassette('test_examples/channel_registration-7569_http_sync_false_callback_block_channel_gchannel_group_group_action_remove', record: :once) do
+    VCR.use_cassette('test_examples/1000114', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => 'gchannel', 'group' => 'group', 'action' => :remove, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -537,7 +537,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-4398_http_sync_false_callback_block_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000061', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => 'gchannel', 'group' => :group, 'action' => :list_groups, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -545,7 +545,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-1378_http_sync_false_callback_block_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000025', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => 'gchannel', 'group' => :group, 'action' => 'list_groups', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -553,7 +553,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-514_http_sync_false_callback_block_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000074', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => 'gchannel', 'group' => :group, 'action' => :get, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -561,7 +561,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-1524_http_sync_false_callback_block_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000029', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => 'gchannel', 'group' => :group, 'action' => 'get', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -569,7 +569,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-1696_http_sync_false_callback_block_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000032', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => 'gchannel', 'group' => :group, 'action' => :add, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -577,7 +577,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-9126_http_sync_false_callback_block_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000130', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => 'gchannel', 'group' => :group, 'action' => 'add', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -585,7 +585,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: remove' do
-    VCR.use_cassette('test_examples/channel_registration-3318_http_sync_false_callback_block_channel_gchannel_group_group_action_remove', record: :once) do
+    VCR.use_cassette('test_examples/1000050', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => 'gchannel', 'group' => :group, 'action' => :remove, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -593,7 +593,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-4355_http_sync_false_callback_block_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000060', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => :gchannel, 'group' => 'group', 'action' => :list_groups, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -601,7 +601,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-8539_http_sync_false_callback_block_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000123', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => :gchannel, 'group' => 'group', 'action' => 'list_groups', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -609,7 +609,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-4880_http_sync_false_callback_block_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000068', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => :gchannel, 'group' => 'group', 'action' => :get, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -617,7 +617,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-2102_http_sync_false_callback_block_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000040', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => :gchannel, 'group' => 'group', 'action' => 'get', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -625,7 +625,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-7698_http_sync_false_callback_block_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000116', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => :gchannel, 'group' => 'group', 'action' => :add, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -633,7 +633,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-201_http_sync_false_callback_block_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000037', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => :gchannel, 'group' => 'group', 'action' => 'add', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -641,7 +641,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: remove' do
-    VCR.use_cassette('test_examples/channel_registration-5912_http_sync_false_callback_block_channel_gchannel_group_group_action_remove', record: :once) do
+    VCR.use_cassette('test_examples/1000090', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => :gchannel, 'group' => 'group', 'action' => :remove, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -649,7 +649,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-142_http_sync_false_callback_block_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000026', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => :gchannel, 'group' => :group, 'action' => :list_groups, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -657,7 +657,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-9633_http_sync_false_callback_block_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000133', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => :gchannel, 'group' => :group, 'action' => 'list_groups', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -665,7 +665,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-6432_http_sync_false_callback_block_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000096', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => :gchannel, 'group' => :group, 'action' => :get, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -673,7 +673,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-3006_http_sync_false_callback_block_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000047', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => :gchannel, 'group' => :group, 'action' => 'get', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -681,7 +681,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-3296_http_sync_false_callback_block_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000049', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => :gchannel, 'group' => :group, 'action' => :add, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -689,7 +689,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-7485_http_sync_false_callback_block_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000113', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => :gchannel, 'group' => :group, 'action' => 'add', &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -697,7 +697,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: block, channel: gchannel, group: group, action: remove' do
-    VCR.use_cassette('test_examples/channel_registration-5152_http_sync_false_callback_block_channel_gchannel_group_group_action_remove', record: :once) do
+    VCR.use_cassette('test_examples/1000075', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'channel' => :gchannel, 'group' => :group, 'action' => :remove, &@callback)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -705,7 +705,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-555_http_sync_false_callback_parameter_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000084', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => 'group', 'action' => :list_groups)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -713,7 +713,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-3183_http_sync_false_callback_parameter_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000048', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => 'group', 'action' => 'list_groups')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -721,7 +721,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-4493_http_sync_false_callback_parameter_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000063', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => 'group', 'action' => :get)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -729,7 +729,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-5234_http_sync_false_callback_parameter_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000078', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => 'group', 'action' => 'get')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -737,7 +737,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-6699_http_sync_false_callback_parameter_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000098', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => 'group', 'action' => :add)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -745,7 +745,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-5212_http_sync_false_callback_parameter_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000077', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => 'group', 'action' => 'add')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -753,7 +753,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: remove' do
-    VCR.use_cassette('test_examples/channel_registration-7939_http_sync_false_callback_parameter_channel_gchannel_group_group_action_remove', record: :once) do
+    VCR.use_cassette('test_examples/1000118', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => 'group', 'action' => :remove)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -761,7 +761,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-6584_http_sync_false_callback_parameter_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000097', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => :group, 'action' => :list_groups)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -769,7 +769,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-4515_http_sync_false_callback_parameter_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000064', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => :group, 'action' => 'list_groups')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -777,7 +777,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-8580_http_sync_false_callback_parameter_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000124', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => :group, 'action' => :get)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -785,7 +785,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-7215_http_sync_false_callback_parameter_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000107', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => :group, 'action' => 'get')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -793,7 +793,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-6200_http_sync_false_callback_parameter_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000094', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => :group, 'action' => :add)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -801,7 +801,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-1133_http_sync_false_callback_parameter_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000024', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => :group, 'action' => 'add')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -809,7 +809,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: remove' do
-    VCR.use_cassette('test_examples/channel_registration-7413_http_sync_false_callback_parameter_channel_gchannel_group_group_action_remove', record: :once) do
+    VCR.use_cassette('test_examples/1000109', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => 'gchannel', 'group' => :group, 'action' => :remove)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -817,7 +817,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-5628_http_sync_false_callback_parameter_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000087', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => :gchannel, 'group' => 'group', 'action' => :list_groups)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -825,7 +825,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-5597_http_sync_false_callback_parameter_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000086', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => :gchannel, 'group' => 'group', 'action' => 'list_groups')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -833,7 +833,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-503_http_sync_false_callback_parameter_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000071', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => :gchannel, 'group' => 'group', 'action' => :get)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -841,7 +841,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-8787_http_sync_false_callback_parameter_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000127', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => :gchannel, 'group' => 'group', 'action' => 'get')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -849,7 +849,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-7451_http_sync_false_callback_parameter_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000111', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => :gchannel, 'group' => 'group', 'action' => :add)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -857,7 +857,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-6852_http_sync_false_callback_parameter_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000104', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => :gchannel, 'group' => 'group', 'action' => 'add')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -865,7 +865,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: remove' do
-    VCR.use_cassette('test_examples/channel_registration-2979_http_sync_false_callback_parameter_channel_gchannel_group_group_action_remove', record: :once) do
+    VCR.use_cassette('test_examples/1000045', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => :gchannel, 'group' => 'group', 'action' => :remove)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -873,7 +873,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-2073_http_sync_false_callback_parameter_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000039', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => :gchannel, 'group' => :group, 'action' => :list_groups)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -881,7 +881,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: list_groups' do
-    VCR.use_cassette('test_examples/channel_registration-915_http_sync_false_callback_parameter_channel_gchannel_group_group_action_list_groups', record: :once) do
+    VCR.use_cassette('test_examples/1000131', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => :gchannel, 'group' => :group, 'action' => 'list_groups')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"namespace\": \"\", \"groups\": []}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -889,7 +889,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-4716_http_sync_false_callback_parameter_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000066', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => :gchannel, 'group' => :group, 'action' => :get)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -897,7 +897,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: get' do
-    VCR.use_cassette('test_examples/channel_registration-4588_http_sync_false_callback_parameter_channel_gchannel_group_group_action_get', record: :once) do
+    VCR.use_cassette('test_examples/1000065', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => :gchannel, 'group' => :group, 'action' => 'get')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"payload\": {\"channels\": [], \"group\": \"group\"}, \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq [nil]
@@ -905,7 +905,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-3001_http_sync_false_callback_parameter_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000046', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => :gchannel, 'group' => :group, 'action' => :add)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -913,7 +913,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: add' do
-    VCR.use_cassette('test_examples/channel_registration-7423_http_sync_false_callback_parameter_channel_gchannel_group_group_action_add', record: :once) do
+    VCR.use_cassette('test_examples/1000110', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => :gchannel, 'group' => :group, 'action' => 'add')
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]
@@ -921,7 +921,7 @@ describe Pubnub::ChannelRegistration do
   end
 
   it 'http_sync: false, callback: parameter, channel: gchannel, group: group, action: remove' do
-    VCR.use_cassette('test_examples/channel_registration-6058_http_sync_false_callback_parameter_channel_gchannel_group_group_action_remove', record: :once) do
+    VCR.use_cassette('test_examples/1000092', record: :once) do
       event = @pubnub_wo_pam_client.channel_registration('http_sync' => false, 'callback' => :parameter, 'channel' => :gchannel, 'group' => :group, 'action' => :remove)
       expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}"]
       expect(event.value.map { |e| e.message }).to eq ["OK"]

@@ -33,7 +33,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: block, message: message, channel: channel' do
-    VCR.use_cassette('test_examples/publish-6985_http_sync_true_callback_block_message_message_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000925', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'message' => :message, 'channel' => 'channel', &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [:message]
@@ -41,7 +41,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: block, message: message, channel: channel' do
-    VCR.use_cassette('test_examples/publish-7211_http_sync_true_callback_block_message_message_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000927', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'message' => :message, 'channel' => :channel, &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [:message]
@@ -49,7 +49,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: block, message: message, channel: channel' do
-    VCR.use_cassette('test_examples/publish-1102_http_sync_true_callback_block_message_message_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000905', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'message' => 'message', 'channel' => 'channel', &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq ["message"]
@@ -57,7 +57,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: block, message: message, channel: channel' do
-    VCR.use_cassette('test_examples/publish-1689_http_sync_true_callback_block_message_message_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000910', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'message' => 'message', 'channel' => :channel, &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq ["message"]
@@ -65,7 +65,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: block, message: ["me", "ssage"], channel: channel' do
-    VCR.use_cassette('test_examples/publish-9165_http_sync_true_callback_block_message__me_ssage__channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000941', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'message' => ["me", "ssage"], 'channel' => 'channel', &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [["me", "ssage"]]
@@ -73,7 +73,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: block, message: ["me", "ssage"], channel: channel' do
-    VCR.use_cassette('test_examples/publish-8280_http_sync_true_callback_block_message__me_ssage__channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000936', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'message' => ["me", "ssage"], 'channel' => :channel, &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [["me", "ssage"]]
@@ -81,7 +81,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: block, message: 100, channel: channel' do
-    VCR.use_cassette('test_examples/publish-1490_http_sync_true_callback_block_message_100_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000907', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'message' => 100, 'channel' => 'channel', &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [100]
@@ -89,7 +89,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: block, message: 100, channel: channel' do
-    VCR.use_cassette('test_examples/publish-1350_http_sync_true_callback_block_message_100_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000906', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'message' => 100, 'channel' => :channel, &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [100]
@@ -97,7 +97,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: block, message: {:key=>:value}, channel: channel' do
-    VCR.use_cassette('test_examples/publish-7674_http_sync_true_callback_block_message__key_value__channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000932', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'message' => {:key => :value}, 'channel' => 'channel', &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [{:key => :value}]
@@ -105,7 +105,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: block, message: {:key=>:value}, channel: channel' do
-    VCR.use_cassette('test_examples/publish-7472_http_sync_true_callback_block_message__key_value__channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000928', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'message' => {:key => :value}, 'channel' => :channel, &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [{:key => :value}]
@@ -113,7 +113,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: parameter, message: message, channel: channel' do
-    VCR.use_cassette('test_examples/publish-8650_http_sync_true_callback_parameter_message_message_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000939', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'callback' => :parameter, 'message' => :message, 'channel' => 'channel')
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [:message]
@@ -121,7 +121,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: parameter, message: message, channel: channel' do
-    VCR.use_cassette('test_examples/publish-7669_http_sync_true_callback_parameter_message_message_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000931', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'callback' => :parameter, 'message' => :message, 'channel' => :channel)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [:message]
@@ -129,7 +129,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: parameter, message: message, channel: channel' do
-    VCR.use_cassette('test_examples/publish-9952_http_sync_true_callback_parameter_message_message_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000943', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'callback' => :parameter, 'message' => 'message', 'channel' => 'channel')
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq ["message"]
@@ -137,7 +137,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: parameter, message: message, channel: channel' do
-    VCR.use_cassette('test_examples/publish-586_http_sync_true_callback_parameter_message_message_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000923', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'callback' => :parameter, 'message' => 'message', 'channel' => :channel)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq ["message"]
@@ -145,7 +145,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: parameter, message: ["me", "ssage"], channel: channel' do
-    VCR.use_cassette('test_examples/publish-6482_http_sync_true_callback_parameter_message__me_ssage__channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000924', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'callback' => :parameter, 'message' => ["me", "ssage"], 'channel' => 'channel')
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [["me", "ssage"]]
@@ -153,7 +153,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: parameter, message: ["me", "ssage"], channel: channel' do
-    VCR.use_cassette('test_examples/publish-5152_http_sync_true_callback_parameter_message__me_ssage__channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000921', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'callback' => :parameter, 'message' => ["me", "ssage"], 'channel' => :channel)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [["me", "ssage"]]
@@ -161,7 +161,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: parameter, message: 100, channel: channel' do
-    VCR.use_cassette('test_examples/publish-4427_http_sync_true_callback_parameter_message_100_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000919', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'callback' => :parameter, 'message' => 100, 'channel' => 'channel')
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [100]
@@ -169,7 +169,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: parameter, message: 100, channel: channel' do
-    VCR.use_cassette('test_examples/publish-3003_http_sync_true_callback_parameter_message_100_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000914', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'callback' => :parameter, 'message' => 100, 'channel' => :channel)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [100]
@@ -177,7 +177,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: parameter, message: {:key=>:value}, channel: channel' do
-    VCR.use_cassette('test_examples/publish-7139_http_sync_true_callback_parameter_message__key_value__channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000926', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'callback' => :parameter, 'message' => {:key => :value}, 'channel' => 'channel')
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [{:key => :value}]
@@ -185,7 +185,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: true, callback: parameter, message: {:key=>:value}, channel: channel' do
-    VCR.use_cassette('test_examples/publish-1642_http_sync_true_callback_parameter_message__key_value__channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000909', record: :once) do
       event = @pubnub.publish('http_sync' => true, 'callback' => :parameter, 'message' => {:key => :value}, 'channel' => :channel)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [{:key => :value}]
@@ -193,7 +193,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: block, message: message, channel: channel' do
-    VCR.use_cassette('test_examples/publish-3307_http_sync_false_callback_block_message_message_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000917', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'message' => :message, 'channel' => 'channel', &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [:message]
@@ -201,7 +201,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: block, message: message, channel: channel' do
-    VCR.use_cassette('test_examples/publish-5102_http_sync_false_callback_block_message_message_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000920', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'message' => :message, 'channel' => :channel, &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [:message]
@@ -209,7 +209,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: block, message: message, channel: channel' do
-    VCR.use_cassette('test_examples/publish-3191_http_sync_false_callback_block_message_message_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000916', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'message' => 'message', 'channel' => 'channel', &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq ["message"]
@@ -217,7 +217,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: block, message: message, channel: channel' do
-    VCR.use_cassette('test_examples/publish-2001_http_sync_false_callback_block_message_message_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000911', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'message' => 'message', 'channel' => :channel, &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq ["message"]
@@ -225,7 +225,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: block, message: ["me", "ssage"], channel: channel' do
-    VCR.use_cassette('test_examples/publish-7844_http_sync_false_callback_block_message__me_ssage__channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000934', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'message' => ["me", "ssage"], 'channel' => 'channel', &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [["me", "ssage"]]
@@ -233,7 +233,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: block, message: ["me", "ssage"], channel: channel' do
-    VCR.use_cassette('test_examples/publish-1073_http_sync_false_callback_block_message__me_ssage__channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000904', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'message' => ["me", "ssage"], 'channel' => :channel, &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [["me", "ssage"]]
@@ -241,7 +241,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: block, message: 100, channel: channel' do
-    VCR.use_cassette('test_examples/publish-7810_http_sync_false_callback_block_message_100_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000933', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'message' => 100, 'channel' => 'channel', &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [100]
@@ -249,7 +249,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: block, message: 100, channel: channel' do
-    VCR.use_cassette('test_examples/publish-5394_http_sync_false_callback_block_message_100_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000922', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'message' => 100, 'channel' => :channel, &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [100]
@@ -257,7 +257,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: block, message: {:key=>:value}, channel: channel' do
-    VCR.use_cassette('test_examples/publish-8308_http_sync_false_callback_block_message__key_value__channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000937', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'message' => {:key => :value}, 'channel' => 'channel', &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [{:key => :value}]
@@ -265,7 +265,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: block, message: {:key=>:value}, channel: channel' do
-    VCR.use_cassette('test_examples/publish-1637_http_sync_false_callback_block_message__key_value__channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000908', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'message' => {:key => :value}, 'channel' => :channel, &@callback)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [{:key => :value}]
@@ -273,7 +273,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: parameter, message: message, channel: channel' do
-    VCR.use_cassette('test_examples/publish-2427_http_sync_false_callback_parameter_message_message_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000913', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'callback' => :parameter, 'message' => :message, 'channel' => 'channel')
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [:message]
@@ -281,7 +281,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: parameter, message: message, channel: channel' do
-    VCR.use_cassette('test_examples/publish-3010_http_sync_false_callback_parameter_message_message_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000915', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'callback' => :parameter, 'message' => :message, 'channel' => :channel)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [:message]
@@ -289,7 +289,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: parameter, message: message, channel: channel' do
-    VCR.use_cassette('test_examples/publish-2323_http_sync_false_callback_parameter_message_message_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000912', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'callback' => :parameter, 'message' => 'message', 'channel' => 'channel')
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq ["message"]
@@ -297,7 +297,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: parameter, message: message, channel: channel' do
-    VCR.use_cassette('test_examples/publish-8174_http_sync_false_callback_parameter_message_message_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000935', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'callback' => :parameter, 'message' => 'message', 'channel' => :channel)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq ["message"]
@@ -305,7 +305,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: parameter, message: ["me", "ssage"], channel: channel' do
-    VCR.use_cassette('test_examples/publish-8877_http_sync_false_callback_parameter_message__me_ssage__channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000940', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'callback' => :parameter, 'message' => ["me", "ssage"], 'channel' => 'channel')
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [["me", "ssage"]]
@@ -313,7 +313,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: parameter, message: ["me", "ssage"], channel: channel' do
-    VCR.use_cassette('test_examples/publish-964_http_sync_false_callback_parameter_message__me_ssage__channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000942', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'callback' => :parameter, 'message' => ["me", "ssage"], 'channel' => :channel)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [["me", "ssage"]]
@@ -321,7 +321,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: parameter, message: 100, channel: channel' do
-    VCR.use_cassette('test_examples/publish-7569_http_sync_false_callback_parameter_message_100_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000929', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'callback' => :parameter, 'message' => 100, 'channel' => 'channel')
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [100]
@@ -329,7 +329,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: parameter, message: 100, channel: channel' do
-    VCR.use_cassette('test_examples/publish-7652_http_sync_false_callback_parameter_message_100_channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000930', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'callback' => :parameter, 'message' => 100, 'channel' => :channel)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [100]
@@ -337,7 +337,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: parameter, message: {:key=>:value}, channel: channel' do
-    VCR.use_cassette('test_examples/publish-3491_http_sync_false_callback_parameter_message__key_value__channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000918', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'callback' => :parameter, 'message' => {:key => :value}, 'channel' => 'channel')
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [{:key => :value}]
@@ -345,7 +345,7 @@ describe Pubnub::Publish do
   end
 
   it 'http_sync: false, callback: parameter, message: {:key=>:value}, channel: channel' do
-    VCR.use_cassette('test_examples/publish-8514_http_sync_false_callback_parameter_message__key_value__channel_channel', record: :once) do
+    VCR.use_cassette('test_examples/1000938', record: :once) do
       event = @pubnub.publish('http_sync' => false, 'callback' => :parameter, 'message' => {:key => :value}, 'channel' => :channel)
       expect(event.value.map { |e| e.response }.first).to match /\[1,\"Sent\",\"\d+\"\]/
       expect(event.value.map { |e| e.message }).to eq [{:key => :value}]
