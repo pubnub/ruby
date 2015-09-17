@@ -15,7 +15,6 @@ Dir.glob(fixtures_path + "*").sort.each do |f|
     puts "Changing #{filename} to #{i}"
 
     File.open(test_file_name, "w") { |file| file.puts new_contents }
-    sleep(0.1)
   end
   i += 1
 end
