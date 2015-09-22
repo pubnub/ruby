@@ -189,13 +189,13 @@ module Pubnub
         @env[:req_dispatchers_pool][:sync] ||= {}
         @env[:req_dispatchers_pool][:sync][origin] ||= {}
         @env[:req_dispatchers_pool][:sync][origin][event_type] ||=
-            RequestDispatcher.new
+            HTTPClient.new
       else
         @env[:req_dispatchers_pool] ||= {}
         @env[:req_dispatchers_pool][:async] ||= {}
         @env[:req_dispatchers_pool][:async][origin] ||= {}
         @env[:req_dispatchers_pool][:async][origin][event_type] ||=
-            RequestDispatcher.new
+            HTTPClient.new
       end
     end
 
@@ -214,7 +214,7 @@ module Pubnub
     # Terminates request dispatcher for given origin and event type. Usable while restarting subscription.
     def kill_request_dispatcher(origin, event_type)
       Pubnub.logger.debug('Pubnub::Client') { 'Killing requester' }
-      @env[:req_dispatchers_pool][origin][event_type].async.terminate
+      # @env[:req_dispatchers_pool][origin][event_type].async.terminate
       @env[:req_dispatchers_pool][origin][event_type] = nil
     rescue
       Pubnub.logger.debug('Pubnub::Client') { 'There\'s no requester' }

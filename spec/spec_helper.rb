@@ -4,6 +4,7 @@ require 'rr'
 require 'stringio'
 require 'webmock/rspec'
 require 'vcr'
+require 'celluloid/current'
 require 'celluloid/test'
 
 require 'pubnub'

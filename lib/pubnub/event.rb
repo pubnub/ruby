@@ -24,14 +24,14 @@ module Pubnub
 
       sender = request_dispatcher
 
-      message = sender.send_request(Celluloid::Actor.current)
+      message = sender.get(uri.to_s)
 
       envelopes = fire_callbacks(handle(message))
       finalize_event(envelopes)
       envelopes
     ensure
       # sender.terminate if @http_sync
-      terminate unless @stay_alive
+      self.terminate unless @stay_alive
     end
 
     def uri

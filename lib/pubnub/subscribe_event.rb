@@ -62,7 +62,7 @@ module Pubnub
     def send_request
       Pubnub.logger.debug('Pubnub') { '#send_request start' }
 
-      request_dispatcher.send_request(Celluloid::Actor.current)
+      request_dispatcher.get(uri.to_s)
     end
 
     def setup_cb_pools
