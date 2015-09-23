@@ -3,7 +3,6 @@ require 'pubnub/uuid'
 require 'pubnub/formatter'
 require 'pubnub/crypto'
 require 'pubnub/configuration'
-require 'pubnub/request_dispatcher'
 require 'pubnub/message'
 
 require 'pubnub/event'
@@ -15,6 +14,7 @@ require 'pubnub/subscribe_event/removing'
 require 'pubnub/subscribe_event'
 require 'pubnub/pam'
 require 'pubnub/heart'
+require 'pubnub/subscriber'
 
 require 'pubnub/envelope'
 require 'pubnub/error_envelope'
@@ -52,7 +52,7 @@ module Pubnub
     include Events
     include PagedHistory
 
-    attr_reader :env
+    attr_reader :env, :subscriber
 
     VERSION = Pubnub::VERSION
 
@@ -184,18 +184,19 @@ module Pubnub
       Pubnub.logger.debug('Pubnub::Client') do
         "Looking for requester for #{event_type}"
       end
+
       if sync
         @env[:req_dispatchers_pool] ||= {}
         @env[:req_dispatchers_pool][:sync] ||= {}
         @env[:req_dispatchers_pool][:sync][origin] ||= {}
         @env[:req_dispatchers_pool][:sync][origin][event_type] ||=
-            HTTPClient.new
+            setup_httpclient(event_type)
       else
         @env[:req_dispatchers_pool] ||= {}
         @env[:req_dispatchers_pool][:async] ||= {}
         @env[:req_dispatchers_pool][:async][origin] ||= {}
         @env[:req_dispatchers_pool][:async][origin][event_type] ||=
-            HTTPClient.new
+            setup_httpclient(event_type)
       end
     end
 
@@ -215,7 +216,8 @@ module Pubnub
     def kill_request_dispatcher(origin, event_type)
       Pubnub.logger.debug('Pubnub::Client') { 'Killing requester' }
       # @env[:req_dispatchers_pool][origin][event_type].async.terminate
-      @env[:req_dispatchers_pool][origin][event_type] = nil
+      @env[:req_dispatchers_pool][:async][origin][event_type].reset_all
+      @env[:req_dispatchers_pool][:async][origin][event_type] = nil
     rescue
       Pubnub.logger.debug('Pubnub::Client') { 'There\'s no requester' }
     end
@@ -290,6 +292,24 @@ module Pubnub
 
     private
 
+    # {connect_timeout send_timeout receive_timeout}
+    def setup_httpclient(event_type)
+      if ENV['HTTP_PROXY']
+        hc = HTTPClient.new(ENV['HTTP_PROXY'])
+      else
+        hc = HTTPClient.new
+      end
+
+      case event_type
+        when :subscribe_event
+          hc.receive_timeout = 310
+        when :single_event
+          hc.receive_timeout = 5
+      end
+
+      hc
+    end
+
     def validate!(env)
       Validator::Client.validate! env
     end
@@ -297,6 +317,7 @@ module Pubnub
     def setup_app(options)
       Pubnub.logger = options[:logger] || Logger.new('pubnub.log')
       Celluloid.logger = Pubnub.logger
+      @subscriber = Subscriber.new(self)
       @env = options
     end
 

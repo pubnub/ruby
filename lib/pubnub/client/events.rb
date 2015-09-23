@@ -17,16 +17,8 @@ module Pubnub
           if options[:http_sync]
             event.fire
           elsif event.is_a? SubscribeEvent
-            if @env[:subscription_pool][event.origin].nil?
-              Pubnub.logger.debug('Pubnub') { 'First subscription' }
-              @env[:subscription_pool][event.origin] = event
-              event.future.fire
-            else
-              Pubnub.logger.debug('Pubnub') { 'Subscription already running' }
-              @env[:subscription_pool][event.origin].add(event)
-              @env[:subscription_pool][event.origin].future.fire
-              event.terminate
-            end
+            @subscriber.add_subscription(event)
+            @subscriber.reset
           else
             event.future.fire
           end

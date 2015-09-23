@@ -6,7 +6,7 @@ module Pubnub
     include Removing
     include Heartbeat
     include Formatter
-    attr_reader :heart
+    attr_reader :heart, :wildcard_channel, :channel, :group, :wc_cb_pool, :c_cb_pool, :g_cb_pool
 
     def initialize(options, app)
       super
@@ -39,6 +39,10 @@ module Pubnub
       fire_heartbeat if @heartbeat && !@http_sync && !@heart
       message = send_request
 
+      if @app.subscriber.current_subscription_id != self.object_id && @http_sync != true
+        return nil
+      end
+
       Pubnub.logger.debug('Pubnub') { 'Fire before fire_callback' }
       envelopes = fire_callbacks(handle(message))
 
@@ -55,6 +59,16 @@ module Pubnub
         @app.leave(channel: channel, skip_restart: true, http_sync: true)
       end
       finish
+    end
+
+    def build(options)
+      @c_cb_pool  = options[:callbacks][:channels]
+      @g_cb_pool  = options[:callbacks][:groups]
+      @wc_cb_pool = options[:callbacks][:wildcard_channels]
+
+      @channel          = options[:channels]
+      @group            = options[:groups]
+      @wildcard_channel = options[:wildcard_channels]
     end
 
     private

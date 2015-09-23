@@ -19,7 +19,7 @@ module Pubnub
 
       def remove(event = nil)
         Pubnub.logger.debug('Pubnub') { "#{self.class}#remove" }
-        kill_requester
+        # kill_requester
 
         if event
           remove_channels(event)
@@ -35,9 +35,9 @@ module Pubnub
 
       private
 
-      def kill_requester
-        @app.kill_request_dispatcher(@origin, :subscribe_event)
-      end
+      # def kill_requester
+      #   @app.kill_request_dispatcher(@origin, :subscribe_event)
+      # end
 
       def remove_g_cb(group)
         @g_cb_pool[group] = nil

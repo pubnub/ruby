@@ -5,7 +5,7 @@ module Pubnub
   class Event
     attr_reader :origin, :callback, :error_callback, :channel,
                 :open_timeout, :read_timeout, :idle_timeout, :group,
-                :presence_callback
+                :presence_callback, :wildcard_channel, :ssl
 
     alias_method :channels, :channel
 
@@ -62,6 +62,7 @@ module Pubnub
     def format_channels
       @channel = Formatter.format_channel(@channel || @channels)
       @channel += Formatter.format_presence_channel(@presence)
+      @wildcard_channel = @channel.select { |e| e.index('.*') } || []
     end
 
     def fire_callbacks(envelopes)

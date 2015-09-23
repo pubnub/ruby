@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pubnub (4.0.0beta2)
+    pubnub (4.0.0beta4)
       celluloid (~> 0.16)
       httpclient (~> 2.6)
       json (~> 1.8)
@@ -9,29 +9,13 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    abstract_type (0.0.7)
-    adamantium (0.2.0)
-      ice_nine (~> 0.11.0)
-      memoizable (~> 0.4.0)
     addressable (2.3.8)
-    anima (0.3.0)
-      abstract_type (~> 0.0.7)
-      adamantium (~> 0.2)
-      equalizer (~> 0.0.11)
-    ast (2.1.0)
-    astrolabe (1.3.1)
-      parser (~> 2.2)
-    awesome_print (1.6.1)
-    celluloid (0.17.1.2)
-      bundler
+    celluloid (0.17.1.3)
       celluloid-essentials
       celluloid-extras
       celluloid-fsm
       celluloid-pool
       celluloid-supervision
-      dotenv
-      nenv
-      rspec-logsplit (>= 0.1.2)
       timers (>= 4.1.1)
     celluloid-essentials (0.20.2.1)
       bundler
@@ -63,62 +47,16 @@ GEM
       nenv
       rspec-logsplit (>= 0.1.2)
       timers (>= 4.1.1)
-    coderay (1.1.0)
-    concord (0.1.5)
-      adamantium (~> 0.2.0)
-      equalizer (~> 0.0.9)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     diff-lcs (1.2.5)
     dotenv (2.0.2)
-    equalizer (0.0.11)
-    generative (0.2.3)
-      rspec (>= 3.0)
     hitimes (1.2.3)
+    hitimes (1.2.3-java)
     httpclient (2.6.0.1)
-    ice_nine (0.11.1)
     json (1.8.3)
-    memoizable (0.4.2)
-      thread_safe (~> 0.3, >= 0.3.1)
-    method_source (0.8.2)
-    morpher (0.2.5)
-      abstract_type (~> 0.0.7)
-      adamantium (~> 0.2.0)
-      anima (~> 0.3.0)
-      ast (~> 2.1.0)
-      concord (~> 0.1.5)
-      equalizer (~> 0.0.9)
-      ice_nine (~> 0.11.0)
-      procto (~> 0.0.2)
-    mutant (0.8.5)
-      abstract_type (~> 0.0.7)
-      adamantium (~> 0.2.0)
-      anima (~> 0.3.0)
-      ast (~> 2.1)
-      concord (~> 0.1.5)
-      diff-lcs (~> 1.2)
-      equalizer (~> 0.0.9)
-      ice_nine (~> 0.11.1)
-      memoizable (~> 0.4.2)
-      morpher (~> 0.2.5)
-      parallel (~> 1.3)
-      parser (~> 2.2.2)
-      procto (~> 0.0.2)
-      unparser (~> 0.2.4)
-    mutant-rspec (0.8.2)
-      mutant (~> 0.8.2)
-      rspec-core (>= 3.2.0, < 3.4.0)
+    json (1.8.3-java)
     nenv (0.2.0)
-    parallel (1.6.1)
-    parser (2.2.2.6)
-      ast (>= 1.1, < 3.0)
-    powerpack (0.1.1)
-    procto (0.0.2)
-    pry (0.10.1)
-      coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
-      slop (~> 3.4)
-    rainbow (2.0.0)
     rr (1.1.2)
     rspec (3.3.0)
       rspec-core (~> 3.3.0)
@@ -134,47 +72,25 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
-    rubocop (0.34.1)
-      astrolabe (~> 1.3)
-      parser (>= 2.2.2.5, < 3.0)
-      powerpack (~> 0.1)
-      rainbow (>= 1.99.1, < 3.0)
-      ruby-progressbar (~> 1.4)
-    ruby-progressbar (1.7.5)
     safe_yaml (1.0.4)
-    slop (3.6.0)
-    thread_safe (0.3.5)
     timers (4.1.1)
       hitimes
-    unparser (0.2.4)
-      abstract_type (~> 0.0.7)
-      adamantium (~> 0.2.0)
-      concord (~> 0.1.5)
-      diff-lcs (~> 1.2.5)
-      equalizer (~> 0.0.9)
-      parser (~> 2.2.2)
-      procto (~> 0.0.2)
     vcr (2.9.3)
     webmock (1.21.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
 
 PLATFORMS
+  java
   ruby
 
 DEPENDENCIES
-  awesome_print
   bundler (~> 1.7)
-  generative
-  mutant
-  mutant-rspec
-  pry
   pubnub!
   rr
   rspec
-  rubocop
   vcr
   webmock
 
 BUNDLED WITH
-   1.10.3
+   1.10.4
