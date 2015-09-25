@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pubnub (3.7.7)
+    pubnub (3.7.9)
       eventmachine (~> 1.0)
       json (~> 1.8)
       net-http-persistent (~> 2.9)
@@ -57,4 +57,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.10.3
+   1.10.6

@@ -44,7 +44,7 @@ module Pubnub
           message = pc.encrypt(message)
           URI.escape(message.to_json)
         rescue => error
-          @error_callback.call 'bug'
+          @error_callback.call error
         end
       else
         URI.encode_www_form_component(message.to_json).gsub('+', '%20')

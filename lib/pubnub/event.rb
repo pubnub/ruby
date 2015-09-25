@@ -34,6 +34,14 @@ module Pubnub
       Pubnub.logger.debug(:pubnub){"Event#initialize | Initialized #{self.class.to_s}"}
     end
 
+    def secure_call(lambda, parameter)
+      begin
+        lambda.call parameter
+      rescue => e
+        Pubnub.logger.error(:pubnub){"Can't fire callback because: #{e}"}
+      end
+    end
+
     def fire(app)
       Pubnub.logger.debug(:pubnub){'Pubnub::Event#fire'}
       @fired = true
@@ -69,10 +77,13 @@ module Pubnub
         end
       rescue => e
         Pubnub.logger.error(:pubnub){e.inspect}
+        sleep app.env[:retries_interval]
         if count <= app.env[:max_retries]
           start_event(app, count + 1)
         else
           Pubnub.logger.error(:pubnub){"Aborting #{self.class} event due to network errors and reaching max retries"}
+          app.env[:subscribe_railgun].cancel if app.env[:subscribe_railgun]
+          app.env[:subscribe_railgun] = nil
         end
         false
       end
@@ -136,12 +147,12 @@ module Pubnub
         Pubnub.logger.debug(:pubnub){'Firing callbacks'}
         # EM.defer do
           envelopes.each do |envelope|
-            @callback.call(envelope)       if envelope && !envelope.error && @callback && !envelope.timetoken_update
+            secure_call(@callback, envelope) if envelope && !envelope.error && @callback && !envelope.timetoken_update
             #if envelope.timetoken_update || envelope.timetoken.to_i > app.env[:timetoken].to_i
             #  update_timetoken(app, envelope.timetoken)
             #end
           end
-          @error_callback.call(envelopes.first) if envelopes.first.error
+        secure_call(@error_callback, envelopes.first) if envelopes.first.error
         # end
       else
         Pubnub.logger.debug(:pubnub){'No envelopes for callback'}
@@ -523,18 +534,37 @@ module Pubnub
           Pubnub.logger.debug(:pubnub){'Event#fire_callbacks async'}
           envelopes.each do |envelope|
             if group_envelope?(envelope, app) # WITH GROUP
-              app.env[:callbacks_pool][:channel_group][@origin][envelope.channel_group][:callback].call(envelope) if !envelope.error && !envelope.timetoken_update
+              secure_call(
+                  app.env[:callbacks_pool][:channel_group][@origin][envelope.channel_group][:callback],
+                  envelope
+              ) if !envelope.error && !envelope.timetoken_update
             elsif channel_envelope?(envelope, app) # CHANNEL SUBSCRIBE
-              app.env[:callbacks_pool][:channel][@origin][encode_channel(envelope.channel)][:callback].call(envelope) if !envelope.error && !envelope.timetoken_update
+              secure_call(
+                  app.env[:callbacks_pool][:channel][@origin][encode_channel(envelope.channel)][:callback],
+                  envelope
+              ) if !envelope.error && !envelope.timetoken_update
             elsif wc_pnpres_envelope(envelope, app) # wildcard pnpres
-              app.env[:callbacks_pool][:wildcard_channel][@origin][encode_channel(envelope.wildcard_channel)][:presence_callback].call(envelope) if !envelope.error && !envelope.timetoken_update
+              secure_call(
+                  app.env[:callbacks_pool][:wildcard_channel][@origin][encode_channel(envelope.wildcard_channel)][:presence_callback],
+                  envelope
+              ) if !envelope.error && !envelope.timetoken_update
             elsif wc_envelope?(envelope, app) # wildcard
-              app.env[:callbacks_pool][:wildcard_channel][@origin][encode_channel(envelope.wildcard_channel)][:callback].call(envelope) if !envelope.error && !envelope.timetoken_update
+              secure_call(
+                  app.env[:callbacks_pool][:wildcard_channel][@origin][encode_channel(envelope.wildcard_channel)][:callback],
+                  envelope
+              ) if !envelope.error && !envelope.timetoken_update
             end
           end
           Pubnub.logger.debug(:pubnub){'We can send next request now'}
-          app.env[:error_callbacks_pool][:channel][@origin].call(envelopes.first)       if envelopes.first.error && !envelopes.first.channel_group
-          app.env[:error_callbacks_pool][:channel_group][@origin].call(envelopes.first) if envelopes.first.error &&  envelopes.first.channel_group
+          secure_call(
+              app.env[:error_callbacks_pool][:channel][@origin],
+              envelopes.first
+          ) if envelopes.first.error && !envelopes.first.channel_group
+
+          secure_call(
+              app.env[:error_callbacks_pool][:channel_group][@origin],
+              envelopes.first
+          ) if envelopes.first.error &&  envelopes.first.channel_group
 
         rescue => error
           Pubnub.logger.error(:pubnub){error}

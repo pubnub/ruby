@@ -335,6 +335,7 @@ module Pubnub
           :subscribe_timeout          => DEFAULT_SUBSCRIBE_TIMEOUT,
           :timeout                    => DEFAULT_NON_SUBSCRIBE_TIMEOUT,
           :max_retries                => MAX_RETRIES,
+          :retries_interval           => RETRIES_INTERVAL,
           :non_subscribe_timeout      => DEFAULT_NON_SUBSCRIBE_TIMEOUT,
           :reconnect_max_attempts     => DEFAULT_RECONNECT_ATTEMPTS,
           :reconnect_retry_interval   => DEFAULT_RECONNECT_INTERVAL,
