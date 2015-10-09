@@ -16,6 +16,7 @@ module Pubnub
       format_channels
       format_group
       set_timestamp
+      validate!
       Pubnub.logger.debug('Pubnub::Event') { "Initialized #{self.class}" }
     end
 
@@ -52,6 +53,11 @@ module Pubnub
     end
 
     private
+
+    def validate!
+      Pubnub.logger.warn('Pubnub::Event') { "No validator run for #{self.class}" }
+      true
+    end
 
     def secure_call(cb, arg)
       cb.call arg
@@ -124,7 +130,7 @@ module Pubnub
                      publish_key subscribe_key timetoken error_callback
                      open_timeout read_timeout idle_timeout heartbeat
                      group action read write manage ttl presence start
-                     end count reverse presence_callback)
+                     end count reverse presence_callback store)
 
       options = options.reduce({}) { |memo, (k, v)| memo[k.to_sym] = v; memo }
 

@@ -3,13 +3,32 @@ module Pubnub
   # Holds publish functionality
   class Publish < SingleEvent
     include Celluloid
+    include Pubnub::Validator::Publish
+
+    attr_reader :store
 
     def initialize(options, app)
       @event = :publish
       super
+      @store = case @store
+                 when false
+                   0
+                 when true
+                   1
+               end
     end
 
     private
+
+    def parameters
+      empty_if_blank = {
+          store: @store,
+      }
+
+      empty_if_blank.delete_if { |_k, v| v.blank? }
+
+      super.merge(empty_if_blank)
+    end
 
     def path
       '/' + [

@@ -4,11 +4,13 @@ module Pubnub
   module Validator
     # Validator for Publish event
     module Publish
-      class << self
-        include CommonValidator
+      include CommonValidator
 
-        def validate!
-        end
+      def validate!
+        fail(
+            ArgumentError.new,
+            ':store parameter invalid (should be true or false).'
+        ) unless @store.nil? || [true, false].include?(@store)
       end
     end
   end
