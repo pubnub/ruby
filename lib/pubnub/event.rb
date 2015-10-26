@@ -32,7 +32,7 @@ module Pubnub
       envelopes
     ensure
       # sender.terminate if @http_sync
-      self.terminate unless @stay_alive
+      terminate unless @stay_alive
     end
 
     def uri
@@ -130,7 +130,7 @@ module Pubnub
                      publish_key subscribe_key timetoken error_callback
                      open_timeout read_timeout idle_timeout heartbeat
                      group action read write manage ttl presence start
-                     end count reverse presence_callback store)
+                     end count reverse presence_callback store skip_validate)
 
       options = options.reduce({}) { |memo, (k, v)| memo[k.to_sym] = v; memo }
 
@@ -138,11 +138,11 @@ module Pubnub
         instance_variable_set('@' + variable, options[variable.to_sym]) unless variable.nil?
       end
 
-      if @event == :subscribe || @event == :presence
-        @open_timeout = options[:s_open_timeout]
-        @read_timeout = options[:s_read_timeout]
-        @idle_timeout = options[:s_idle_timeout]
-      end
+      return if @event != :subscribe && @event != :presence
+
+      @open_timeout = options[:s_open_timeout]
+      @read_timeout = options[:s_read_timeout]
+      @idle_timeout = options[:s_idle_timeout]
     end
 
     def format_group

@@ -11,10 +11,10 @@ module Pubnub
       @event = :publish
       super
       @store = case @store
-                 when false
-                   0
-                 when true
-                   1
+               when false
+                 0
+               when true
+                 1
                end
     end
 
@@ -22,7 +22,7 @@ module Pubnub
 
     def parameters
       empty_if_blank = {
-          store: @store,
+        store: @store
       }
 
       empty_if_blank.delete_if { |_k, v| v.blank? }
@@ -70,20 +70,20 @@ module Pubnub
 
     def valid_envelope(parsed_response)
       Envelope.new(
-          parsed_response:  parsed_response,
-          message:          @message,
-          channel:          @channel.first,
-          response_message: response_message(parsed_response),
-          timetoken:        timetoken(parsed_response)
+        parsed_response:  parsed_response,
+        message:          @message,
+        channel:          @channel.first,
+        response_message: response_message(parsed_response),
+        timetoken:        timetoken(parsed_response)
       )
     end
 
     def error_envelope(parsed_response, error)
       ErrorEnvelope.new(
-          error:            error,
-          response_message: response_message(parsed_response),
-          channel:          @channel.first,
-          timetoken:        timetoken(parsed_response)
+        error:            error,
+        response_message: response_message(parsed_response),
+        channel:          @channel.first,
+        timetoken:        timetoken(parsed_response)
       )
     end
   end

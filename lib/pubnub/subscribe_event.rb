@@ -1,4 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/subscribe_event/adding.rb')
+
 module Pubnub
   # SubscribeEvent module holds infrastructure for subscribe events.
   class SubscribeEvent < Event
@@ -39,7 +40,7 @@ module Pubnub
       fire_heartbeat if @heartbeat && !@http_sync && !@heart
       message = send_request
 
-      if @app.subscriber.current_subscription_id != self.object_id && @http_sync != true
+      if @app.subscriber.current_subscription_id != object_id && @http_sync != true
         return nil
       end
 
@@ -80,10 +81,10 @@ module Pubnub
     end
 
     def setup_cb_pools
-      @g_cb_pool  ||= {} # group
-      @c_cb_pool  ||= {} # channel
+      @g_cb_pool ||= {} # group
+      @c_cb_pool ||= {} # channel
       @wc_cb_pool ||= {} # wildcard
-      @e_cb_pool  ||= {} # error
+      @e_cb_pool ||= {} # error
     end
 
     def request_dispatcher
@@ -116,7 +117,7 @@ module Pubnub
       if envelope.group && @g_cb_pool[envelope.group]
         secure_call @g_cb_pool[envelope.group], envelope
       elsif envelope.wildcard_channel && envelope.channel.index('-pnpres') &&
-          @wc_cb_pool[envelope.wildcard_channel + '-pnpres']
+            @wc_cb_pool[envelope.wildcard_channel + '-pnpres']
         secure_call @wc_cb_pool[envelope.wildcard_channel + '-pnpres'], envelope
       elsif envelope.wildcard_channel && !envelope.channel.index('-pnpres')
         secure_call @wc_cb_pool[envelope.wildcard_channel], envelope

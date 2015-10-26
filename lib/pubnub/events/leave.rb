@@ -10,7 +10,6 @@ module Pubnub
     end
 
     def fire
-
       @app.subscriber.remove_subscription(self)
       @app.subscriber.reset
       super
@@ -46,21 +45,21 @@ module Pubnub
 
     def valid_envelope(parsed_response)
       Envelope.new(
-          parsed_response: parsed_response,
-          action:          parsed_response['action'],
-          message:         parsed_response['message'],
-          uuid:            parsed_response['uuid'],
-          status:          parsed_response['status'],
-          service:         parsed_response['service']
+        parsed_response: parsed_response,
+        action:          parsed_response['action'],
+        message:         parsed_response['message'],
+        uuid:            parsed_response['uuid'],
+        status:          parsed_response['status'],
+        service:         parsed_response['service']
       )
     end
 
     def error_envelope(parsed_response, error)
       ErrorEnvelope.new(
-          error:            error,
-          response_message: response_message(parsed_response),
-          channel:          @channel.first,
-          timetoken:        timetoken(parsed_response)
+        error:            error,
+        response_message: response_message(parsed_response),
+        channel:          @channel.first,
+        timetoken:        timetoken(parsed_response)
       )
     end
   end

@@ -18,8 +18,8 @@ module Pubnub
         variables_for_signature
       ].join("\n")
       Base64.urlsafe_encode64(
-          OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'),
-                               @secret_key.to_s, message)
+        OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'),
+                             @secret_key.to_s, message)
       ).strip
     end
 
@@ -54,21 +54,21 @@ module Pubnub
 
     def valid_envelope(parsed_response)
       Envelope.new(
-          parsed_response: parsed_response,
-          payload:         parsed_response['payload'],
-          service:         parsed_response['service'],
-          message:         parsed_response['message'],
-          status:          parsed_response['status'],
-          uuids:           parsed_response['uuids']
+        parsed_response: parsed_response,
+        payload:         parsed_response['payload'],
+        service:         parsed_response['service'],
+        message:         parsed_response['message'],
+        status:          parsed_response['status'],
+        uuids:           parsed_response['uuids']
       )
     end
 
     def error_envelope(parsed_response, error)
       ErrorEnvelope.new(
-          error:            error,
-          response_message: response_message(parsed_response),
-          channel:          @channel.first,
-          timetoken:        timetoken(parsed_response)
+        error:            error,
+        response_message: response_message(parsed_response),
+        channel:          @channel.first,
+        timetoken:        timetoken(parsed_response)
       )
     end
   end

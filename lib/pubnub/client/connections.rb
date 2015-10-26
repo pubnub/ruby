@@ -53,27 +53,27 @@ module Pubnub
 
       def rise_connection_for_error
         fail(Pubnub::Error.new(
-                 env: @env,
-                 operation: 'Pubnub.client#connection_for',
-                 app: self,
-                 error_type: 'Internal Error',
-                 message: 'Can\'t recognize event'
-             ), 'Can\'t recognize event')
+               env: @env,
+               operation: 'Pubnub.client#connection_for',
+               app: self,
+               error_type: 'Internal Error',
+               message: 'Can\'t recognize event'
+        ), 'Can\'t recognize event')
       end
 
       def single_event_connection
         @env[:single_event_conn_pool][event.origin] ||
-            setup_conn_for(event)
+          setup_conn_for(event)
       end
 
       def subscribe_event_connection
         @env[:subscribe_event_conn_pool][event.origin] ||
-            setup_conn_for(event)
+          setup_conn_for(event)
       end
 
       def heartbeat_event_connection
         @env[:heartbeat_event_conn_pool][event.origin] ||
-            setup_conn_for(event)
+          setup_conn_for(event)
       end
     end
   end

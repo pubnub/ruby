@@ -2,16 +2,16 @@
 module Pubnub
   # Pubnub client Class
   class Client
-    # Module that holds generator for all events
+    # Module that holds paged_history event logic
     module PagedHistory
       def paged_history(options = {}, &block)
-        channel  = options[:channel]
-        page     = options[:page]      || 1
-        limit    = options[:limit]     || 100
-        callback = options[:callback]  || block
-        sync     = options[:http_sync] ? true : false
-        start_tt = options[:start]     || nil
-        end_tt   = options[:end]       || nil
+        channel  = options.fetch(:channel)
+        page     = options.fetch(:page, 1)
+        limit    = options.fetch(:limit, 100)
+        callback = options.fetch(:callback, block)
+        sync     = options[:http_sync]
+        start_tt = options.fetch(:start)
+        end_tt   = options.fetch(:end)
 
         current_start_tt = start_tt
 
@@ -27,9 +27,7 @@ module Pubnub
             Pubnub.logger.debug('Pubnub::Client') { "History end: #{envelopes.last.history_end}\n" }
             current_start_tt = envelopes.last.history_start.to_i
 
-            unless i == page - 1
-              envelopes = []
-            end
+            envelopes = [] unless i == page - 1
           end
 
           envelopes.flatten!

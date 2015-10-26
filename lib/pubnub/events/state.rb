@@ -7,12 +7,6 @@ module Pubnub
     def initialize(options, app)
       @event = :state
       super
-    end
-
-    private
-
-    def initialize(options, app)
-      super
       @uuid_looking_for = options[:uuid] || options['uuid']
       @uuid             = app.uuid
     end
@@ -22,7 +16,7 @@ module Pubnub
     def parameters
       parameters = super
       parameters.merge!(
-          'channel-group' => @group.join(',')
+        'channel-group' => @group.join(',')
       ) unless @group.blank?
       parameters
     end
@@ -56,20 +50,20 @@ module Pubnub
 
     def valid_envelope(parsed_response)
       Envelope.new(
-          parsed_response: parsed_response,
-          channel: parsed_response['channel'],
-          payload: parsed_response['payload'],
-          service: parsed_response['service'],
-          message: parsed_response['message'],
-          uuid:    parsed_response['uuid'],
-          status:  parsed_response['status']
+        parsed_response: parsed_response,
+        channel: parsed_response['channel'],
+        payload: parsed_response['payload'],
+        service: parsed_response['service'],
+        message: parsed_response['message'],
+        uuid:    parsed_response['uuid'],
+        status:  parsed_response['status']
       )
     end
 
     def error_envelope(parsed_response, error)
       ErrorEnvelope.new(
-          error:            error,
-          response_message: response_message(parsed_response)
+        error:            error,
+        response_message: response_message(parsed_response)
       )
     end
   end

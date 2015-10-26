@@ -31,7 +31,7 @@ module Pubnub
       end
       parameters.merge!(heartbeat: @heartbeat)
       parameters.merge!(
-          'channel-group' => @group.join(',')
+        'channel-group' => @group.join(',')
       ) unless @group.blank?
       parameters
     end
@@ -56,17 +56,17 @@ module Pubnub
 
     def valid_envelope(parsed_response)
       Envelope.new(
-          message: parsed_response,
-          response_message: parsed_response
+        message: parsed_response,
+        response_message: parsed_response
       )
     end
 
     def error_envelope(parsed_response, error)
       ErrorEnvelope.new(
-          error:            error,
-          response_message: response_message(parsed_response),
-          channel:          @channel.first,
-          timetoken:        timetoken(parsed_response)
+        error:            error,
+        response_message: response_message(parsed_response),
+        channel:          @channel.first,
+        timetoken:        timetoken(parsed_response)
       )
     end
   end

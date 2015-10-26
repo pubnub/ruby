@@ -25,6 +25,9 @@ require 'pubnub/client/paged_history'
 
 require 'pubnub/validators/common_validator'
 require 'pubnub/validators/client'
+require 'pubnub/validators/audit'
+require 'pubnub/validators/channel_registration'
+require 'pubnub/validators/grant'
 require 'pubnub/validators/publish'
 require 'pubnub/validators/subscribe'
 
@@ -79,7 +82,9 @@ module Pubnub
     #   <dd><b>optional.</b> Sets given uuid as client uuid, does not generates random uuid on init as usually.</dd>
     #
     #   <dt>origin</dt>
-    #   <dd><b>optional.</b> Specifies the fully qualified domain name of the PubNub origin. By default this value is set to <code>pubsub.pubnub.com</code> but it should be set to the appropriate origin specified in the PubNub Admin Portal.</dd>
+    #   <dd><b>optional.</b> Specifies the fully qualified domain name of the PubNub origin.
+    #     By default this value is set to <code>pubsub.pubnub.com</code> but it should be set to the appropriate origin
+    #     specified in the PubNub Admin Portal.</dd>
     #
     #   <dt>callback</dt>
     #   <dd><b>optional.</b> Default callback function for all events if not overwrote while firing event.</dd>
@@ -186,14 +191,10 @@ module Pubnub
       end
 
       if sync
-        @env[:req_dispatchers_pool] ||= {}
-        @env[:req_dispatchers_pool][:sync] ||= {}
         @env[:req_dispatchers_pool][:sync][origin] ||= {}
         @env[:req_dispatchers_pool][:sync][origin][event_type] ||=
             setup_httpclient(event_type)
       else
-        @env[:req_dispatchers_pool] ||= {}
-        @env[:req_dispatchers_pool][:async] ||= {}
         @env[:req_dispatchers_pool][:async][origin] ||= {}
         @env[:req_dispatchers_pool][:async][origin][event_type] ||=
             setup_httpclient(event_type)
@@ -301,10 +302,10 @@ module Pubnub
       end
 
       case event_type
-        when :subscribe_event
-          hc.receive_timeout = 310
-        when :single_event
-          hc.receive_timeout = 5
+      when :subscribe_event
+        hc.receive_timeout = 310
+      when :single_event
+        hc.receive_timeout = 5
       end
 
       hc
@@ -357,6 +358,8 @@ module Pubnub
 
       # Requests pool.
       @env[:req_dispatchers_pool] = {}
+      @env[:req_dispatchers_pool][:sync] = {}
+      @env[:req_dispatchers_pool][:async] = {}
     end
 
     def symbolize_options_keys(options)

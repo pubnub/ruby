@@ -25,9 +25,9 @@ module Pubnub
 
     def beat
       @app.heartbeat(
-          channel:   @channel,
-          heartbeat: @heartbeat,
-          http_sync: true
+        channel:   @channel,
+        heartbeat: @heartbeat,
+        http_sync: true
       )
     end
   end

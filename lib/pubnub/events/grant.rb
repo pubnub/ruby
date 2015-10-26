@@ -3,6 +3,7 @@ module Pubnub
   # Holds grant functionality
   class Grant < PAM
     include Celluloid
+    include Pubnub::Validator::Grant
 
     def initialize(options, app)
       @event = :grant
@@ -13,8 +14,8 @@ module Pubnub
     private
 
     def parameters(signature = false)
-      write  = [0, '0', false].include?(@write)  ? 0 : 1
-      read   = [0, '0', false].include?(@read)   ? 0 : 1
+      write  = [0, '0', false].include?(@write) ? 0 : 1
+      read   = [0, '0', false].include?(@read) ? 0 : 1
       manage = [0, '0', false].include?(@manage) ? 0 : 1 # unless @group.blank?
 
       { timestamp: @timestamp,

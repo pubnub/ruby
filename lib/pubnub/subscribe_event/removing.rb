@@ -61,10 +61,9 @@ module Pubnub
         stop_heartbeat if @heart
         kill_requester
         @finalized = true
-        if remove_itself
-          @app.env[:subscription_pool][@origin] = nil
-          terminate
-        end
+        return if remove_itself
+        @app.env[:subscription_pool][@origin] = nil
+        terminate
       end
     end
   end

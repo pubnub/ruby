@@ -36,18 +36,18 @@ module Pubnub
 
     def valid_envelope(parsed_response)
       Envelope.new(
-          parsed_response: parsed_response,
-          message:          timetoken(parsed_response),
-          response_message: timetoken(parsed_response),
-          timetoken:        timetoken(parsed_response)
+        parsed_response: parsed_response,
+        message:          timetoken(parsed_response),
+        response_message: timetoken(parsed_response),
+        timetoken:        timetoken(parsed_response)
       )
     end
 
     def error_envelope(parsed_response, error)
       ErrorEnvelope.new(
-          error:            error,
-          response_message: parsed_response,
-          timetoken:        timetoken(parsed_response)
+        error:            error,
+        response_message: parsed_response,
+        timetoken:        timetoken(parsed_response)
       )
     end
   end

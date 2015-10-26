@@ -24,7 +24,7 @@ module Pubnub
 
       def format_presence_channel(presence)
         format_channel(
-            make_channel_array(presence).map { |p| p + '-pnpres' }
+          make_channel_array(presence).map { |p| p + '-pnpres' }
         )
       end
 
@@ -55,8 +55,8 @@ module Pubnub
         when 'Array' then channel.map(&:to_s)
         when 'NilClass' then []
         else fail Pubnub::ArgumentError.new(
-                      message: 'Channel has to be String, Symbol or Array'
-                  ), 'Channel has to be String, Symbol or Array'
+          message: 'Channel has to be String, Symbol or Array'
+        ), 'Channel has to be String, Symbol or Array'
         end
       end
 

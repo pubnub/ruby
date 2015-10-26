@@ -3,6 +3,7 @@ module Pubnub
   # Holds channel_registration functionality
   class ChannelRegistration < SingleEvent
     include Celluloid
+    include Pubnub::Validator::ChannelRegistration
 
     def initialize(options, app)
       @event = :channel_registration
@@ -14,7 +15,7 @@ module Pubnub
 
     def parameters
       parameters = super
-      if @action == :add    && !@channel.blank?
+      if @action == :add && !@channel.blank?
         parameters.merge!(add:    @channel.join(','))
       end
 
@@ -35,16 +36,16 @@ module Pubnub
              when :add then body_add
              when :remove then body_remove
              else raise_action_key_error
-      end
+             end
 
       head + body
     end
 
     def raise_action_key_error
       fail ArgumentError.new(
-               object: self,
-               message: 'ChannelRegistration requires proper :action key'
-           ), 'ChannelRegistration requires proper :action key'
+        object: self,
+        message: 'ChannelRegistration requires proper :action key'
+      ), 'ChannelRegistration requires proper :action key'
     end
 
     def body_list_groups
@@ -103,19 +104,19 @@ module Pubnub
 
     def valid_envelope(parsed_response)
       Envelope.new(
-          parsed_response: parsed_response,
-          payload: parsed_response['payload'],
-          service: parsed_response['service'],
-          message: parsed_response['message'],
-          status:  parsed_response['status'],
-          error:   parsed_response['error']
+        parsed_response: parsed_response,
+        payload: parsed_response['payload'],
+        service: parsed_response['service'],
+        message: parsed_response['message'],
+        status:  parsed_response['status'],
+        error:   parsed_response['error']
       )
     end
 
     def error_envelope(parsed_response, error)
       ErrorEnvelope.new(
-          error:            error,
-          response_message: response_message(parsed_response)
+        error:            error,
+        response_message: response_message(parsed_response)
       )
     end
   end

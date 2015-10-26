@@ -71,10 +71,10 @@ module Pubnub
 
     def error_envelope(parsed_response, error)
       ErrorEnvelope.new(
-          error:            error,
-          response_message: response_message(parsed_response),
-          channel:          @channel.first,
-          timetoken:        timetoken(parsed_response)
+        error:            error,
+        response_message: response_message(parsed_response),
+        channel:          @channel.first,
+        timetoken:        timetoken(parsed_response)
       )
     end
   end

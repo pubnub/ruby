@@ -52,7 +52,7 @@ module Pubnub
 
     def response_valid?(response)
       if response.is_a?(Net::HTTPSuccess) &&
-          Formatter.valid_json?(response.body)
+         Formatter.valid_json?(response.body)
         true
       else
         false

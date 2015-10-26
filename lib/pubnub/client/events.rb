@@ -11,7 +11,7 @@ module Pubnub
         define_method event_name do |options = {}, &block|
           options[:callback] = block if options[:callback].nil?
           event = Pubnub.const_get(
-              Formatter.classify_method(event_name)
+            Formatter.classify_method(event_name)
           ).new(options, self)
 
           if options[:http_sync]

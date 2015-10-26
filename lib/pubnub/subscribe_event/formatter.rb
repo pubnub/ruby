@@ -7,11 +7,11 @@ module Pubnub
 
       def error_envelope(parsed_response, error)
         ErrorEnvelope.new(
-            error: error,
-            response_message: parsed_response,
-            message: parsed_response,
-            parsed_response: parsed_response,
-            channel: @channel.first
+          error: error,
+          response_message: parsed_response,
+          message: parsed_response,
+          parsed_response: parsed_response,
+          channel: @channel.first
         )
       end
 
@@ -22,13 +22,13 @@ module Pubnub
         end
 
         Envelope.new(
-            parsed_response: parsed_response,
-            message: msg,
-            channel: channel,
-            group: group,
-            wildcard_channel: wildcard_channel,
-            response_message: parsed_response,
-            timetoken: timetoken(parsed_response)
+          parsed_response: parsed_response,
+          message: msg,
+          channel: channel,
+          group: group,
+          wildcard_channel: wildcard_channel,
+          response_message: parsed_response,
+          timetoken: timetoken(parsed_response)
         )
       end
 
