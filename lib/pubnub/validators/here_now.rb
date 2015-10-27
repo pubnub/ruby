@@ -3,8 +3,8 @@ module Pubnub
   # Validator module that holds all validators modules
   module Validator
     # Validator for HereNow event
-    module Audit
-      include HereNow
+    module HereNow
+      include CommonValidator
 
       def validate!
         return if @skip_validate

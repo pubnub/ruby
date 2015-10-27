@@ -4,6 +4,7 @@ module Pubnub
   # held by SubscribeEvent
   class Presence < SubscribeEvent
     include Celluloid
+    include Pubnub::Validator::Presence
 
     def initialize(options, app)
       @event = :presence

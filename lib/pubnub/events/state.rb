@@ -3,12 +3,13 @@ module Pubnub
   # Holds state functionality
   class State < SingleEvent
     include Celluloid
+    include Pubnub::Validator::State
 
     def initialize(options, app)
       @event = :state
-      super
       @uuid_looking_for = options[:uuid] || options['uuid']
-      @uuid             = app.uuid
+      super
+      @uuid = app.uuid
     end
 
     private

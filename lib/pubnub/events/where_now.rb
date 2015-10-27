@@ -3,6 +3,7 @@ module Pubnub
   # Holds where_now functionality
   class WhereNow < SingleEvent
     include Celluloid
+    include Pubnub::Validator::WhereNow
 
     def initialize(options, app)
       super

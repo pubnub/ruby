@@ -3,6 +3,7 @@ module Pubnub
   # Holds here_now functionality
   class HereNow < SingleEvent
     include Celluloid
+    include Pubnub::Validator::HereNow
 
     def initialize(options, app)
       @event = :here_now

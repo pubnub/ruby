@@ -4,6 +4,7 @@ module Pubnub
   # held by SubscribeEvent
   class Subscribe < SubscribeEvent
     include Celluloid
+    include Pubnub::Validator::Subscribe
 
     def initialize(options, app)
       @event = :subscribe

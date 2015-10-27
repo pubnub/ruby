@@ -3,6 +3,7 @@ module Pubnub
   # Holds leave functionality
   class Leave < SingleEvent
     include Celluloid
+    include Pubnub::Validator::Leave
 
     def initialize(options, app)
       @event = :leave

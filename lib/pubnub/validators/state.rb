@@ -8,19 +8,19 @@ module Pubnub
 
       def validate!
         return if @skip_validate
-        validate_channel!
+        validate_channel_and_uuid!
       end
 
       private
 
-      def validate_channel!
+      def validate_channel_and_uuid!
         fail(
             ArgumentError.new(
                 object: self,
-                message: 'You have to specify single :channel for State event.'
+                message: 'You have to specify single :channel or :uuid for State event.'
             ),
-            'You have to specify single :channel for State event.'
-        ) if @channel.size != 1
+            'You have to specify single :channel or :uuid for State event.'
+        ) if @channel.size == 0 && @uuid_looking_for.nil? || @channel.size > 1
       end
 
     end
