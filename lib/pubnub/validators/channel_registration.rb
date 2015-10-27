@@ -2,7 +2,7 @@
 module Pubnub
   # Validator module that holds all validators modules
   module Validator
-    # Validator for Publish event
+    # Validator for ChannelRegistration event
     module ChannelRegistration
       include CommonValidator
 
