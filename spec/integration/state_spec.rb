@@ -1,66 +1,95 @@
 require 'spec_helper'
-#
-# describe 'state metadata in subscribe requests' do
-#   around(:each) do |example|
-#     @response_output = StringIO.new
-#     @message_output = StringIO.new
-#
-#     @callback = lambda { |envelope|
-#       Pubnub.logger.debug 'FIRING CALLBACK FROM TEST'
-#       Pubnub.logger.debug 'FIRING CALLBACK FROM TEST'
-#       @response_output.write envelope.response
-#       @message_output.write envelope.msg
-#       @after_callback = true
-#     }
-#
-#     @error_callback = lambda { |envelope|
-#       Pubnub.logger.debug 'FIRING ERROR CALLBACK FROM TEST'
-#       @response_output.write envelope.response
-#       @message_output.write envelope.msg
-#       @after_error_callback = true
-#     }
-#
-#     @pn = Pubnub.new(:max_retries => 0, :subscribe_key => 'sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe', :publish_key => 'pub-c-15d6fd3c-05de-4abc-8eba-6595a441959d', :secret_key => 'sec-c-ZWYwMGJiZTYtMTQwMC00NDQ5LWI0NmEtMzZiM2M5NThlOTJh', :error_callback => @error_callback)
-#     @pn.uuid = 'rubytestuuid'
-#
-#     Celluloid.boot
-#     example.run
-#     Celluloid.shutdown
-#   end
-#
-#   context 'sync' do
-#     it 'sets/gets proper data via subscribe request' do
-#       VCR.use_cassette("state-set-state-via-subscribe", :record => :none) do
-#         @pn.subscribe(:channel => :whatever, :state => { :whatever => { :key => :value } }, :http_sync => true )
-#         enve = @pn.state(:channel => :whatever, :uuid => :rubytestuuid, :http_sync => true)
-#
-#         enve.size.should eq 1
-#         enve.first.response.should eq "{\"status\": 200, \"message\": \"OK\", \"payload\": {\"key\": \"value\"}, \"service\": \"Presence\"}"
-#       end
-#     end
-#
-#     it 'sets/gets proper data via client method using symbol' do
-#       VCR.use_cassette("state-set-state-via-client", :record => :none) do
-#         @pn.set_state(:state => { :key => :value }, :channel => :whatever, :http_sync => true)
-#         @pn.subscribe(:channel => :whatever, :http_sync => true )
-#
-#         enve = @pn.state(:channel => :whatever, :uuid => :rubytestuuid, :http_sync => true)
-#
-#         enve.size.should eq 1
-#         enve.first.response.should eq "{\"status\": 200, \"message\": \"OK\", \"payload\": {\"key\": \"value\"}, \"service\": \"Presence\"}"
-#       end
-#     end
-#
-#     it 'sets/gets proper data via client method using string' do
-#       VCR.use_cassette("state-set-state-via-client-2", :record => :once) do
-#         @pn.set_state(:state => { :key => :value }, :channel => :whatever, :http_sync => true)
-#         @pn.subscribe(:channel => :whatever, :http_sync => true )
-#
-#         enve = @pn.state(:channel => 'whatever', :uuid => :rubytestuuid, :http_sync => true)
-#
-#         enve.size.should eq 1
-#         enve.first.response.should eq "{\"status\": 200, \"uuid\": \"rubytestuuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {\"key\": \"value\"}, \"channel\": \"whatever\"}"
-#       end
-#     end
-#   end
-# end
+
+describe Pubnub::SetState do
+  around(:each) do |example|
+    @response_output = StringIO.new
+    @message_output = StringIO.new
+
+    @callback = lambda { |envelope|
+      @response_output.write envelope.response
+      @message_output.write envelope.msg
+      @after_callback = true
+    }
+
+    @pubnub = Pubnub.new(
+        :publish_key => :demo,
+        :subscribe_key => :demo,
+        :error_callback => @error_callback
+    )
+
+    @pubnub.uuid = 'gentest'
+
+    Celluloid.boot
+    example.run
+    Celluloid.shutdown
+  end
+
+  context 'via set_state' do
+    it 'sets client state' do
+      VCR.use_cassette("integration/set_state/1", :record => :once) do
+        enve = @pubnub.set_state(channel: :test_channel, state: {one: :two, three: 4}, http_sync: true)
+        expect(enve.first.response).to eq "{\"status\": 200, \"message\": \"OK\", \"payload\": {\"three\": 4, \"one\": \"two\"}, \"service\": \"Presence\"}"
+        expect(@pubnub.env[:state]).to eq ({"pubsub.pubnub.com"=>{:channel=>{"test_channel"=>{:one=>:two, :three=>4}}, :group=>{}}})
+      end
+    end
+
+    it 'overwrites client state' do
+      VCR.use_cassette("integration/set_state/2", :record => :once) do
+        enve = @pubnub.set_state(channel: :test_channel, state: {one: :two, three: 4}, http_sync: true)
+        expect(enve.first.response).to eq "{\"status\": 200, \"message\": \"OK\", \"payload\": {\"three\": 4, \"one\": \"two\"}, \"service\": \"Presence\"}"
+        expect(@pubnub.env[:state]).to eq ({"pubsub.pubnub.com"=>{:channel=>{"test_channel"=>{:one=>:two, :three=>4}}, :group=>{}}})
+        sleep(0.1)
+        enve = @pubnub.set_state(channel: :test_channel, state: {some: :other, value: 10}, http_sync: true)
+        expect(enve.first.response).to eq "{\"status\": 200, \"message\": \"OK\", \"payload\": {\"some\": \"other\", \"value\": 10}, \"service\": \"Presence\"}"
+        expect(@pubnub.env[:state]).to eq ({"pubsub.pubnub.com"=>{:channel=>{"test_channel"=>{some: :other, value: 10}}, :group=>{}}})
+      end
+    end
+
+    it 'overwrites client state that has been set via subscribe' do
+      VCR.use_cassette("integration/set_state/3", :record => :once) do
+        @pubnub.subscribe(channel: :test_channel, state: {one: :two, three: 4})
+        expect(@pubnub.env[:state]).to eq ({"pubsub.pubnub.com"=>{:channel=>{"test_channel"=>{:one=>:two, :three=>4}}, :group=>{}}})
+
+        enve = @pubnub.set_state(channel: :test_channel, state: {some: :other, value: 10}, http_sync: true)
+        expect(enve.first.response).to eq "{\"status\": 200, \"message\": \"OK\", \"payload\": {\"some\": \"other\", \"value\": 10}, \"service\": \"Presence\"}"
+        expect(@pubnub.env[:state]).to eq ({"pubsub.pubnub.com"=>{:channel=>{"test_channel"=>{some: :other, value: 10}}, :group=>{}}})
+      end
+    end
+  end
+
+  context 'via subscribe' do
+    it 'sets client state' do
+      VCR.use_cassette("integration/set_state/11", :record => :once) do
+        @pubnub.subscribe(channel: :test_channel, state: {one: :two, three: 4})
+        expect(@pubnub.env[:state]).to eq ({"pubsub.pubnub.com"=>{:channel=>{"test_channel"=>{:one=>:two, :three=>4}}, :group=>{}}})
+        enve = @pubnub.state(channel: :test_channel, uuid: @pubnub.uuid, http_sync: true)
+        expect(enve.first.response).to eq "{\"status\": 200, \"uuid\": \"gentest\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {\"three\": 4, \"one\": \"two\"}, \"channel\": \"test_channel\"}"
+      end
+    end
+
+    it 'overwrites client state' do
+      VCR.use_cassette("integration/set_state/12", :record => :once) do
+        @pubnub.subscribe(channel: :test_channel, state: {one: :two, three: 4})
+        expect(@pubnub.env[:state]).to eq ({"pubsub.pubnub.com"=>{:channel=>{"test_channel"=>{:one=>:two, :three=>4}}, :group=>{}}})
+        @pubnub.subscribe(channel: :test_channel, state: {some: :other, value: 10})
+        expect(@pubnub.env[:state]).to eq ({"pubsub.pubnub.com"=>{:channel=>{"test_channel"=>{some: :other, value: 10}}, :group=>{}}})
+        enve = @pubnub.state(channel: :test_channel, uuid: @pubnub.uuid, http_sync: true)
+        expect(enve.first.response).to eq "{\"status\": 200, \"uuid\": \"gentest\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {\"some\": \"other\", \"value\": 10}, \"channel\": \"test_channel\"}"
+      end
+    end
+
+    it 'overwrites client state that has been set via set_state' do
+      VCR.use_cassette("integration/set_state/13", :record => :once) do
+        enve = @pubnub.set_state(channel: :test_channel, state: {some: :other, value: 10}, http_sync: true)
+        expect(@pubnub.env[:state]).to eq ({"pubsub.pubnub.com"=>{:channel=>{"test_channel"=>{:some=>:other, :value=>10}}, :group=>{}}})
+        expect(enve.first.response).to eq "{\"status\": 200, \"message\": \"OK\", \"payload\": {\"some\": \"other\", \"value\": 10}, \"service\": \"Presence\"}"
+        @pubnub.subscribe(channel: :test_channel, state: {one: :two, three: 4})
+        sleep(2)
+        enve = @pubnub.state(channel: :test_channel, uuid: @pubnub.uuid, http_sync: true)
+        expect(enve.first.response).to eq "{\"status\": 200, \"uuid\": \"gentest\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {\"three\": 4, \"one\": \"two\"}, \"channel\": \"test_channel\"}"
+
+      end
+    end
+  end
+
+end

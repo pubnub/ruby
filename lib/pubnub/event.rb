@@ -5,7 +5,7 @@ module Pubnub
   class Event
     attr_reader :origin, :callback, :error_callback, :channel,
                 :open_timeout, :read_timeout, :idle_timeout, :group,
-                :presence_callback, :wildcard_channel, :ssl
+                :presence_callback, :wildcard_channel, :ssl, :state
 
     alias_method :channels, :channel
 
@@ -53,11 +53,6 @@ module Pubnub
     end
 
     private
-
-    def validate!
-      Pubnub.logger.warn('Pubnub::Event') { "No validator run for #{self.class}" }
-      true
-    end
 
     def secure_call(cb, arg)
       cb.call arg
@@ -130,7 +125,8 @@ module Pubnub
                      publish_key subscribe_key timetoken error_callback
                      open_timeout read_timeout idle_timeout heartbeat
                      group action read write manage ttl presence start
-                     end count reverse presence_callback store skip_validate)
+                     end count reverse presence_callback store skip_validate
+                     state)
 
       options = options.reduce({}) { |memo, (k, v)| memo[k.to_sym] = v; memo }
 

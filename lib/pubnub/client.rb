@@ -35,6 +35,7 @@ require 'pubnub/validators/leave'
 require 'pubnub/validators/presence'
 require 'pubnub/validators/publish'
 require 'pubnub/validators/revoke'
+require 'pubnub/validators/set_state'
 require 'pubnub/validators/state'
 require 'pubnub/validators/subscribe'
 require 'pubnub/validators/time'
@@ -50,6 +51,7 @@ require 'pubnub/events/leave'
 require 'pubnub/events/presence'
 require 'pubnub/events/publish'
 require 'pubnub/events/revoke'
+require 'pubnub/events/set_state'
 require 'pubnub/events/state'
 require 'pubnub/events/subscribe'
 require 'pubnub/events/time'
@@ -298,6 +300,21 @@ module Pubnub
     # Array of all current events.
     def events
       @env[:events]
+    end
+
+    def apply_state(event)
+      @env[:state] ||= {}
+      @env[:state][event.origin] ||= {}
+      @env[:state][event.origin][:channel] ||= {}
+      @env[:state][event.origin][:group] ||= {}
+
+      event.channel.each do |channel|
+        @env[:state][event.origin][:channel][channel] = event.state
+      end
+
+      event.group.each do |group|
+        @env[:state][event.origin][:group][group] = event.state
+      end
     end
 
     private

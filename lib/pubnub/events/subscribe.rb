@@ -9,6 +9,7 @@ module Pubnub
     def initialize(options, app)
       @event = :subscribe
       super
+      app.apply_state(self)
     end
   end
 end
