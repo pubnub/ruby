@@ -14,7 +14,6 @@ module Pubnub
       private
 
       def validate_channels!
-        binding.pry
         fail(
             ArgumentError.new(
                 object: self,

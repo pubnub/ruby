@@ -308,16 +308,27 @@ module Pubnub
       @env[:state][event.origin][:channel] ||= {}
       @env[:state][event.origin][:group] ||= {}
 
-      event.channel.each do |channel|
-        @env[:state][event.origin][:channel][channel] = event.state
-      end
+      if event.state
+        event.channel.each do |channel|
+          @env[:state][event.origin][:channel][channel] = event.state
+        end
 
-      event.group.each do |group|
-        @env[:state][event.origin][:group][group] = event.state
+        event.group.each do |group|
+          @env[:state][event.origin][:group][group] = event.state
+        end
       end
     end
 
+    def empty_state?
+      return true unless @env[:state]
+      totally_empty @env[:state]
+    end
+
     private
+
+    def totally_empty(hash)
+      hash.reduce(true) { |acc, (_,v)| acc && v.is_a?(Hash) ? totally_empty(v) : false }
+    end
 
     # {connect_timeout send_timeout receive_timeout}
     def setup_httpclient(event_type)

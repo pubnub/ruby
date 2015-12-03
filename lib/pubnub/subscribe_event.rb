@@ -162,7 +162,7 @@ module Pubnub
     def parameters
       params = super
       params.merge!('channel-group' => @group.join(',')) unless @group.empty?
-      params.merge!(:state => encode_state(@app.env[:state][@origin][:channel].merge(@app.env[:state][@origin][:group]))) if @app.env[:state] && @app.env[:state][@origin]
+      params.merge!(:state => encode_state(@app.env[:state][@origin][:channel].merge(@app.env[:state][@origin][:group]))) unless @app.empty_state?
       params
     end
   end

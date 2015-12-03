@@ -11,7 +11,9 @@ module Pubnub
 
     def initialize(options, app)
       @app = app
-      create_variables_from_options(app.env.merge(options))
+      env = app.env
+      env.delete(:state)
+      create_variables_from_options(env.merge(options))
       @origin = @app.current_origin
       format_channels
       format_group
