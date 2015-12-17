@@ -128,7 +128,7 @@ module Pubnub
                      open_timeout read_timeout idle_timeout heartbeat
                      group action read write manage ttl presence start
                      end count reverse presence_callback store skip_validate
-                     state)
+                     state channel_group)
 
       options = options.reduce({}) { |memo, (k, v)| memo[k.to_sym] = v; memo }
 
@@ -144,6 +144,7 @@ module Pubnub
     end
 
     def format_group
+      @group = @channel_group if @channel_group && @group.blank?
       @group = Formatter.format_group(@group)
 
       if @group.first.to_s.count(':') > 0

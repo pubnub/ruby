@@ -18,6 +18,11 @@ shared_examples 'an event' do
   context '#initialize' do
     let(:pubnub_client) { Pubnub.new(subscribe_key: 'demo') }
 
+    it 'sets :channel_group parameter as @group internal variable' do
+      event = described_class.new({ channel_group: 'somegroup', skip_validate: true }, pubnub_client)
+      expect(event.instance_variable_get(:@group)).to eq ['somegroup']
+    end
+
     it 'sets Pubnub::Client as @app' do
       event = described_class.new({ channel: 'channel', skip_validate: true }, pubnub_client)
       expect(event.instance_variable_get('@app')).to eq pubnub_client
