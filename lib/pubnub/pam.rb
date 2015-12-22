@@ -5,6 +5,8 @@ module Pubnub
     def initialize(options, app)
       super
 
+      @auth_key = options[:auth_key]
+
       @channel += format_channels(options[:presence]).map do |c|
         c + '-pnpres'
       end if options[:presence].present?
