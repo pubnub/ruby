@@ -104,7 +104,14 @@ module Pubnub
     #   <dd><b>optional.</b> Default error callback.</dd>
     #
     #   <dt>connect_callback</dt>
-    #   <dd><b>optional.</b> Callback that is called when connection with origin is established.</dd>
+    #   <dd><b>optional.</b> Callback that is called when connection with origin is established. It should take string as parameter.</dd>
+    #
+    #   <dt>disconnect_callback</dt>
+    #   <dd><b>optional.</b> Callback that is called when connection with origin is teared down (it's called each time when reestablishing connection didn't work). It should take string as parameter.</dd>
+    #
+    #   <dt>reconnect_callback</dt>
+    #   <dd><b>optional.</b> Callback that is called when connection with origin is reestablished. It should take string as parameter.</dd>
+    #
     #   <dt>ssl</dt>
     #   <dd><b>optional.</b> Your connection will use ssl if set to true.</dd>
     #
@@ -416,7 +423,12 @@ module Pubnub
         idle_timeout: DEFAULT_IDLE_TIMEOUT,
         s_open_timeout: DEFAULT_S_OPEN_TIMEOUT,
         s_read_timeout: DEFAULT_S_READ_TIMEOUT,
-        s_idle_timeout: DEFAULT_S_IDLE_TIMEOUT }
+        s_idle_timeout: DEFAULT_S_IDLE_TIMEOUT,
+        reconnect_attempts: DEFAULT_RECONNECT_ATTEMPTS,
+        reconnect_interval: DEFAULT_RECONNECT_INTERVAL,
+        reconnect_callback: DEFAULT_RECONNECT_CALLBACK,
+        disconnect_callback: DEFAULT_DISCONNECT_CALLBACK
+      }
     end
 
     def clean_env

@@ -74,10 +74,27 @@ module Pubnub
 
     private
 
-    def send_request
+    def send_request(retries = 0)
       Pubnub.logger.debug('Pubnub') { '#send_request start' }
 
-      request_dispatcher.get(uri.to_s)
+      begin
+        req = request_dispatcher.get(uri.to_s)
+        @app.env[:reconnect_callback].call('Reconnected') if retries > 0
+      rescue => error
+        Pubnub.logger.warn('Pubnub') { "Connection lost! Reason: #{error}" }
+        retries += 1
+        @app.env[:disconnect_callback].call("Disconnected. Retry no. #{retries}")
+        if retries < @app.env[:reconnect_attempts]
+          Pubnub.logger.warn('Pubnub') { "Sleeping #{@app.env[:reconnect_interval]} before trying to reconnect." }
+          sleep(@app.env[:reconnect_interval])
+          Pubnub.logger.warn('Pubnub') { 'Trying to reconnect.' }
+          req = send_request(retries)
+        else
+          Pubnub.logger.error('Pubnub') { error }
+          raise error
+        end
+      end
+      req
     end
 
     def setup_cb_pools

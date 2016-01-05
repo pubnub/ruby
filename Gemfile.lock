@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pubnub (4.0.0beta8)
+    pubnub (4.0.0beta10)
       celluloid (~> 0.16)
       httpclient (~> 2.6)
       json (~> 1.8)
