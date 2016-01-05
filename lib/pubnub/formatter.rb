@@ -29,13 +29,21 @@ module Pubnub
       end
 
       # Transforms message to json and encode it
-      def format_message(message, cipher_key)
+      def format_message(message, cipher_key, uri_escape = true)
         if cipher_key
           pc = Pubnub::Crypto.new(cipher_key)
           message = pc.encrypt(message)
-          URI.escape(message.to_json)
+          if uri_escape
+            URI.escape(message.to_json)
+          else
+            message.to_json
+          end
         else
-          Formatter.encode(message.to_json)
+          if uri_escape
+            Formatter.encode(message.to_json)
+          else
+            message.to_json
+          end
         end
       end
 

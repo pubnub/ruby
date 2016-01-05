@@ -350,6 +350,7 @@ module Pubnub
         hc.receive_timeout = 310
       when :single_event
         hc.receive_timeout = 5
+        # hc.transparent_gzip_decompression = true
       end
 
       hc

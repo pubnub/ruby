@@ -18,6 +18,27 @@ module Pubnub
                end
     end
 
+    def fire
+      Pubnub.logger.debug('Pubnub::Publish') { "Fired event #{self.class}" }
+
+      sender = request_dispatcher
+
+      if @compressed
+        compressed_body = Formatter.format_message(@message, @cipher_key, false)
+
+        message = sender.post(uri.to_s, body: compressed_body)
+      else
+        message = sender.get(uri.to_s)
+      end
+
+      envelopes = fire_callbacks(handle(message))
+      finalize_event(envelopes)
+      envelopes
+    ensure
+      # sender.terminate if @http_sync
+      terminate unless @stay_alive
+    end
+
     private
 
     def parameters
@@ -31,7 +52,7 @@ module Pubnub
     end
 
     def path
-      '/' + [
+      rpath = [
         'publish',
         @publish_key,
         @subscribe_key,
@@ -39,7 +60,11 @@ module Pubnub
         @channel,
         '0',
         Formatter.format_message(@message, @cipher_key)
-      ].join('/')
+      ]
+
+      rpath.pop if @compressed
+
+      '/' + rpath.join('/')
     end
 
     def timetoken(parsed_response)
