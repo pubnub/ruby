@@ -56,7 +56,7 @@ module Pubnub
         'publish',
         @publish_key,
         @subscribe_key,
-        (@auth_key.blank? ? '0' : @secret_key),
+        '0',
         @channel,
         '0',
         Formatter.format_message(@message, @cipher_key)
