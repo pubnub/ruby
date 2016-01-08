@@ -35,7 +35,7 @@ module Pubnub
           'publish',
           @publish_key,
           @subscribe_key,
-          if !@auth_key.blank? then @secret_key else '0' end,
+          '0',
           @channel,
           '0',
           format_message(@message)
