@@ -1,3 +1,7 @@
+3.7.10 Release
+. Updated publish URI
+. Fixed value returned by Event#start_event. Thanks @ramshenai
+
 3.7.9 Release
 . Secured calling callbacks
 . Reestablishing subscription improved
