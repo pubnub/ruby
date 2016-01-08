@@ -84,8 +84,8 @@ module Pubnub
           Pubnub.logger.error(:pubnub){"Aborting #{self.class} event due to network errors and reaching max retries"}
           app.env[:subscribe_railgun].cancel if app.env[:subscribe_railgun]
           app.env[:subscribe_railgun] = nil
+          false
         end
-        false
       end
     end
 
