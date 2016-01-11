@@ -473,7 +473,7 @@ You can pass your custom logger as :logger key while creating new Pubnub instanc
 
 # This time publish event will block main thread until callback will finish as we set :http_sync to true
 pubnub.publish(
-  :messsage => message,
+  :message => message,
   :channel  => :whatever,
   :http_sync => true )
 ```
