@@ -24,6 +24,9 @@ module Pubnub
           end
         end
       end
+
+      alias_method :unsubscribe, :leave
+
     end
   end
 end

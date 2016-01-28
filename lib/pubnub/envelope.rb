@@ -5,7 +5,7 @@ module Pubnub
     attr_accessor :first, :last, :object, :response, :parsed_response, :status
     attr_accessor :channel, :message, :payload, :service, :timetoken
     attr_accessor :response_message, :error, :action, :uuid, :service, :uuids
-    attr_accessor :timetoken_update, :group, :wildcard_channel
+    attr_accessor :timetoken_update, :group, :wildcard_channel, :id
 
     # subscribe, presence specific
     attr_accessor :timetoken_update
@@ -18,6 +18,7 @@ module Pubnub
     alias_method 'status_code', 'status'
 
     def initialize(parameters)
+      @id = UUID.generate # internal usage only
       parameters.each do |parameter, value|
         instance_variable_set("@#{parameter}", value)
       end
