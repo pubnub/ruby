@@ -329,7 +329,7 @@ module Pubnub
           :connect_callback           => DEFAULT_CONNECT_CALLBACK,
           :ssl                        => DEFAULT_SSL,
           :timetoken                  => DEFAULT_TIMETOKEN,
-          :uuid                       => UUID.new.generate,
+          :uuid                       => SecureRandom.uuid,
           :port                       => DEFAULT_CONNECTION_PORT,
           :origin                     => DEFAULT_ORIGIN,
           :subscribe_timeout          => DEFAULT_SUBSCRIBE_TIMEOUT,
