@@ -15,14 +15,13 @@ module Pubnub
 
       def validate_channels!
         fail(
-            ArgumentError.new(
-                object: self,
-                message: 'You have to specify :channel or :group while using Presence event.'
-            ),
-            'You have to specify :channel or :group while using Presence event.'
+          ArgumentError.new(
+            object: self,
+            message: 'You have to specify :channel or :group while using Presence event.'
+          ),
+          'You have to specify :channel or :group while using Presence event.'
         ) if @channel.size == 0 && @group.size == 0 && @wildcard_channel.size == 0
       end
-
     end
   end
 end

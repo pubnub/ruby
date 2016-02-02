@@ -15,9 +15,9 @@ module Pubnub
 
       def validate_ttl!
         fail(
-            ArgumentError.new,
-            ':ttl has to be kind of Integer'
-        ) if !@ttl.nil? && !@ttl.kind_of?(Integer)
+          ArgumentError.new,
+          ':ttl has to be kind of Integer'
+        ) if !@ttl.nil? && !@ttl.is_a?(Integer)
       end
     end
   end

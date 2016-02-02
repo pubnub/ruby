@@ -15,22 +15,22 @@ module Pubnub
 
     def parameters
       parameters = super
-      parameters.merge!({ :state => encode_state(@state)})
-      parameters.merge!({ 'channel-group' => format_channel_group(@group).join(',') }) unless @group.blank?
+      parameters.merge!(state: encode_state(@state))
+      parameters.merge!('channel-group' => format_channel_group(@group).join(',')) unless @group.blank?
       parameters
     end
 
     def path
       '/' + [
-          'v2',
-          'presence',
-          'sub-key',
-          @subscribe_key,
-          'channel',
-          Formatter.channels_for_url(@channel),
-          'uuid',
-          @app.uuid,
-          'data'
+        'v2',
+        'presence',
+        'sub-key',
+        @subscribe_key,
+        'channel',
+        Formatter.channels_for_url(@channel),
+        'uuid',
+        @app.uuid,
+        'data'
       ].join('/')
     end
 
@@ -50,13 +50,13 @@ module Pubnub
 
     def valid_envelope(parsed_response)
       Envelope.new(
-          parsed_response: parsed_response,
-          channel: parsed_response['channel'],
-          payload: parsed_response['payload'],
-          service: parsed_response['service'],
-          message: parsed_response['message'],
-          uuid:    parsed_response['uuid'],
-          status:  parsed_response['status']
+        parsed_response: parsed_response,
+        channel: parsed_response['channel'],
+        payload: parsed_response['payload'],
+        service: parsed_response['service'],
+        message: parsed_response['message'],
+        uuid:    parsed_response['uuid'],
+        status:  parsed_response['status']
       )
     end
   end

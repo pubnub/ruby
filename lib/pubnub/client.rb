@@ -22,6 +22,7 @@ require 'pubnub/error_envelope'
 require 'pubnub/client/connections'
 require 'pubnub/client/events'
 require 'pubnub/client/paged_history'
+require 'pubnub/client/helpers'
 
 require 'pubnub/validators/common_validator'
 require 'pubnub/validators/client'
@@ -65,6 +66,7 @@ module Pubnub
     include Connections
     include Events
     include PagedHistory
+    include Helpers
 
     attr_reader :env, :subscriber
 
@@ -333,11 +335,6 @@ module Pubnub
 
     private
 
-    def totally_empty(hash)
-      hash.reduce(true) { |acc, (_,v)| acc && v.is_a?(Hash) ? totally_empty(v) : false }
-    end
-
-    # {connect_timeout send_timeout receive_timeout}
     def setup_httpclient(event_type)
       if ENV['HTTP_PROXY']
         hc = HTTPClient.new(ENV['HTTP_PROXY'])
@@ -384,56 +381,12 @@ module Pubnub
       @env[:timetoken] = 0
     end
 
-    def setup_pools
-      # Event pool
-      @env[:events] = []
-
-      # Connection pools
-      @env[:single_event_conn_pool] = {}
-      @env[:subscribe_event_conn_pool] = {}
-      @env[:heartbeat_event_conn_pool] = {}
-
-      # Callback pools.
-      @env[:c_cb_pool] = {}
-      @env[:e_cb_pool] = {}
-
-      # Subscription and heartbeat pools.
-      @env[:subscription_pool] = {}
-      @env[:heartbeat_pool] = {}
-
-      # Requests pool.
-      @env[:req_dispatchers_pool] = {}
-      @env[:req_dispatchers_pool][:sync] = {}
-      @env[:req_dispatchers_pool][:async] = {}
-    end
-
     def symbolize_options_keys(options)
       symbolized_options = {}
       options.each_key do |k|
         symbolized_options.merge!(k.to_sym => options[k])
       end
       symbolized_options
-    end
-
-    def default_values
-      { origins_pool: DEFAULT_ORIGINS_POOL,
-        error_callback: DEFAULT_ERROR_CALLBACK,
-        connect_callback: DEFAULT_CONNECT_CALLBACK,
-        open_timeout: DEFAULT_OPEN_TIMEOUT,
-        read_timeout: DEFAULT_READ_TIMEOUT,
-        idle_timeout: DEFAULT_IDLE_TIMEOUT,
-        s_open_timeout: DEFAULT_S_OPEN_TIMEOUT,
-        s_read_timeout: DEFAULT_S_READ_TIMEOUT,
-        s_idle_timeout: DEFAULT_S_IDLE_TIMEOUT,
-        reconnect_attempts: DEFAULT_RECONNECT_ATTEMPTS,
-        reconnect_interval: DEFAULT_RECONNECT_INTERVAL,
-        reconnect_callback: DEFAULT_RECONNECT_CALLBACK,
-        disconnect_callback: DEFAULT_DISCONNECT_CALLBACK
-      }
-    end
-
-    def clean_env
-      @env.delete_if { |_, v| v.blank? } # nillify if blank
     end
   end
 end

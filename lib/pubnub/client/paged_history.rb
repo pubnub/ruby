@@ -12,36 +12,47 @@ module Pubnub
         sync     = options[:http_sync]
         start_tt = options.fetch(:start)
         end_tt   = options.fetch(:end)
-
-        current_start_tt = start_tt
-
         if sync
-          envelopes = []
-          page.times do |i|
-            Pubnub.logger.debug('Pubnub::Client') { "\n\nFetching page no. #{i}" }
-            Pubnub.logger.debug('Pubnub::Client') { "Current start tt #{current_start_tt}\n" }
-            envelopes << history(channel: channel, http_sync: true, count: limit, start: current_start_tt, end: end_tt)
-            envelopes.flatten!
-
-            Pubnub.logger.debug('Pubnub::Client') { "\n\nHistroy start: #{envelopes.last.history_start}" }
-            Pubnub.logger.debug('Pubnub::Client') { "History end: #{envelopes.last.history_end}\n" }
-            current_start_tt = envelopes.last.history_start.to_i
-
-            envelopes = [] unless i == page - 1
-          end
-
-          envelopes.flatten!
-          envelopes.each do |envelope|
-            callback.call envelope
-          end if callback
-          envelopes
+          sync_paged_history(channel, page, limit, callback, start: start_tt, end: end_tt)
         else
-          Celluloid::Future.new do
-            sync_options = options.dup
-            sync_options[:http_sync] = true
-            paged_history(sync_options, &block)
-          end
+          async_paged_history(options)
         end
+      end
+
+      private
+
+      def sync_paged_history(channel, page, limit, callback, timetokens)
+        envelopes = []
+        page.times do |i|
+          envelopes << history(
+            channel: channel,
+            http_sync: true,
+            count: limit,
+            start: timetokens[:start],
+            end: timetokens[:end]
+          )
+          envelopes.flatten!
+          timetokens[:end] = envelopes.last.history_start.to_i
+          envelopes = [] unless i == page - 1
+        end
+
+        call_callback(envelopes, callback)
+      end
+
+      def async_paged_history(options)
+        Celluloid::Future.new do
+          sync_options = options.dup
+          sync_options[:http_sync] = true
+          paged_history(sync_options, &block)
+        end
+      end
+
+      def call_callback(envelopes, callback)
+        envelopes.flatten!
+        envelopes.each do |envelope|
+          secure_call callback, envelope
+        end if callback
+        envelopes
       end
     end
   end

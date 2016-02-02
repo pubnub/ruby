@@ -15,11 +15,11 @@ module Pubnub
 
       def validate_auth_key!
         fail(
-            ArgumentError.new(
-                object: self,
-                message: 'Invalid :auth_key. You can\'t run audit for multiple channels and keys at once'
-            ),
-            'Invalid :auth_key. You can\'t run audit for multiple channels and keys at once'
+          ArgumentError.new(
+            object: self,
+            message: 'Invalid :auth_key. You can\'t run audit for multiple channels and keys at once'
+          ),
+          'Invalid :auth_key. You can\'t run audit for multiple channels and keys at once'
         ) if @channel.size > 1 && @auth.count(',') > 0
       end
     end

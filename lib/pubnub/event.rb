@@ -25,16 +25,40 @@ module Pubnub
     def fire
       Pubnub.logger.debug('Pubnub::Event') { "Fired event #{self.class}" }
 
-      sender = request_dispatcher
-
-      message = sender.get(uri.to_s)
+      message = send_request
 
       envelopes = fire_callbacks(handle(message))
       finalize_event(envelopes)
       envelopes
     ensure
-      # sender.terminate if @http_sync
       terminate unless @stay_alive
+    end
+
+    def send_request(retries = 0, compressed_body = '')
+      sender = request_dispatcher
+      if compressed_body.empty?
+        sender.get(uri.to_s)
+      else
+        sender.post(uri.to_s, body: compressed_body)
+      end
+
+    rescue => error
+      Pubnub.logger.warn('Pubnub') { "#{@event} failed! Reason: #{error}" }
+      if retries < @app.env[:reconnect_attempts]
+        message = retry_sending_request(retries)
+      else
+        Pubnub.logger.error('Pubnub') { error }
+        raise error
+      end
+      message
+    end
+
+    def retry_sending_request(retries)
+      retries += 1
+      Pubnub.logger.warn('Pubnub') { "Sleeping #{@app.env[:reconnect_interval]} before retrying to run #{@event}." }
+      sleep(@app.env[:reconnect_interval])
+      Pubnub.logger.warn('Pubnub') { 'Trying to reconnect.' }
+      send_request(retries)
     end
 
     def uri

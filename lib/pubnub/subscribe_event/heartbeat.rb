@@ -7,7 +7,7 @@ module Pubnub
 
       def restart_heartbeat
         stop_heartbeat
-        fire_heartbeat
+        consider_heartbeat
       end
 
       def stop_heartbeat
@@ -17,7 +17,9 @@ module Pubnub
         @heart = nil
       end
 
-      def fire_heartbeat
+      def consider_heartbeat
+        return unless @heartbeat && !@http_sync && !@heart
+
         Pubnub.logger.debug('Pubnub') { "#{self.class}#fire_heartbeat" }
 
         @heart = Heart.new(app: @app, heartbeat: @heartbeat, channel: @channel)

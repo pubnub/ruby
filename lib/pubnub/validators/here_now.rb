@@ -15,14 +15,13 @@ module Pubnub
 
       def validate_channel!
         fail(
-            ArgumentError.new(
-                object: self,
-                message: 'Invalid :channel. You can run HereNow globally or for a single channel at once.'
-            ),
-            'Invalid :channel. You can run HereNow globally or for a single channel at once.'
+          ArgumentError.new(
+            object: self,
+            message: 'Invalid :channel. You can run HereNow globally or for a single channel at once.'
+          ),
+          'Invalid :channel. You can run HereNow globally or for a single channel at once.'
         ) if @channel.size > 1
       end
-
     end
   end
 end

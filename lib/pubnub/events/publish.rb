@@ -21,14 +21,11 @@ module Pubnub
     def fire
       Pubnub.logger.debug('Pubnub::Publish') { "Fired event #{self.class}" }
 
-      sender = request_dispatcher
-
       if @compressed
         compressed_body = Formatter.format_message(@message, @cipher_key, false)
-
-        message = sender.post(uri.to_s, body: compressed_body)
+        message = send_request(0, compressed_body)
       else
-        message = sender.get(uri.to_s)
+        message = send_request
       end
 
       envelopes = fire_callbacks(handle(message))

@@ -37,7 +37,7 @@ module Pubnub
 
       Pubnub.logger.debug('Pubnub') { "Fired event #{self.class}" }
 
-      fire_heartbeat if @heartbeat && !@http_sync && !@heart
+      consider_heartbeat
       message = send_request
 
       if @app.subscriber.current_subscription_id != object_id && @http_sync != true
@@ -82,19 +82,23 @@ module Pubnub
         @app.env[:reconnect_callback].call('Reconnected') if retries > 0
       rescue => error
         Pubnub.logger.warn('Pubnub') { "Connection lost! Reason: #{error}" }
-        retries += 1
         @app.env[:disconnect_callback].call("Disconnected. Retry no. #{retries}")
         if retries < @app.env[:reconnect_attempts]
-          Pubnub.logger.warn('Pubnub') { "Sleeping #{@app.env[:reconnect_interval]} before trying to reconnect." }
-          sleep(@app.env[:reconnect_interval])
-          Pubnub.logger.warn('Pubnub') { 'Trying to reconnect.' }
-          req = send_request(retries)
+          req = retry_sending_request(retries)
         else
           Pubnub.logger.error('Pubnub') { error }
           raise error
         end
       end
       req
+    end
+
+    def retry_sending_request(retries)
+      retries += 1
+      Pubnub.logger.warn('Pubnub') { "Sleeping #{@app.env[:reconnect_interval]} before trying to reconnect." }
+      sleep(@app.env[:reconnect_interval])
+      Pubnub.logger.warn('Pubnub') { 'Trying to reconnect.' }
+      send_request(retries)
     end
 
     def setup_cb_pools
@@ -133,8 +137,7 @@ module Pubnub
     def fire_success_callback(envelope)
       if envelope.group && @g_cb_pool[envelope.group]
         secure_call @g_cb_pool[envelope.group], envelope
-      elsif envelope.wildcard_channel && envelope.channel.index('-pnpres') &&
-            @wc_cb_pool[envelope.wildcard_channel + '-pnpres']
+      elsif envelope.wildcard_channel && envelope.channel.index('-pnpres')
         secure_call @wc_cb_pool[envelope.wildcard_channel + '-pnpres'], envelope
       elsif envelope.wildcard_channel && !envelope.channel.index('-pnpres')
         secure_call @wc_cb_pool[envelope.wildcard_channel], envelope
@@ -179,7 +182,9 @@ module Pubnub
     def parameters
       params = super
       params.merge!('channel-group' => @group.join(',')) unless @group.empty?
-      params.merge!(:state => encode_state(@app.env[:state][@origin][:channel].merge(@app.env[:state][@origin][:group]))) unless @app.empty_state?
+      params.merge!(
+        state: encode_state(@app.env[:state][@origin][:channel].merge(@app.env[:state][@origin][:group]))
+      ) unless @app.empty_state?
       params
     end
   end

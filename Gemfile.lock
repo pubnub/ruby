@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pubnub (4.0.0beta12)
+    pubnub (4.0.0beta13)
       celluloid (~> 0.16)
       httpclient (~> 2.6)
       json (~> 1.8)
@@ -14,7 +14,7 @@ GEM
     astrolabe (1.3.1)
       parser (~> 2.2)
     awesome_print (1.6.1)
-    celluloid (0.17.2)
+    celluloid (0.17.3)
       celluloid-essentials
       celluloid-extras
       celluloid-fsm

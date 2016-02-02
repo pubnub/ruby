@@ -11,7 +11,6 @@ module Pubnub
       end
 
       private
-
     end
   end
 end

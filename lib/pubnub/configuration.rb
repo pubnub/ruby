@@ -22,5 +22,24 @@ module Pubnub
     DEFAULT_PORT                       = 80
     PERIODIC_TIMER_INTERVAL            = 0.25
     DEFAULT_TTL                        = 1440
+
+    private
+
+    def default_values
+      { origins_pool: DEFAULT_ORIGINS_POOL,
+        error_callback: DEFAULT_ERROR_CALLBACK,
+        connect_callback: DEFAULT_CONNECT_CALLBACK,
+        open_timeout: DEFAULT_OPEN_TIMEOUT,
+        read_timeout: DEFAULT_READ_TIMEOUT,
+        idle_timeout: DEFAULT_IDLE_TIMEOUT,
+        s_open_timeout: DEFAULT_S_OPEN_TIMEOUT,
+        s_read_timeout: DEFAULT_S_READ_TIMEOUT,
+        s_idle_timeout: DEFAULT_S_IDLE_TIMEOUT,
+        reconnect_attempts: DEFAULT_RECONNECT_ATTEMPTS,
+        reconnect_interval: DEFAULT_RECONNECT_INTERVAL,
+        reconnect_callback: DEFAULT_RECONNECT_CALLBACK,
+        disconnect_callback: DEFAULT_DISCONNECT_CALLBACK
+      }
+    end
   end
 end
