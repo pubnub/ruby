@@ -316,6 +316,14 @@ module Pubnub
       @env[:events]
     end
 
+    def heartbeat
+      @env[:heartbeat]
+    end
+
+    def heartbeat=(value)
+      @env[:heartbeat] = value
+    end
+
     def apply_state(event)
       Pubnub.logger.debug('Pubnub::Client') { 'Apply state' }
       create_state_pools(event)
