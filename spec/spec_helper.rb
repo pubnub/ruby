@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'pry'
 require 'rr'
 require 'stringio'
 require 'webmock/rspec'
