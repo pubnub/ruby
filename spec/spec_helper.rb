@@ -51,7 +51,7 @@ RSpec.configure do |config|
   Celluloid.logger = Logger.new(logfile)
 
   config.around do |example|
-    Timeout.timeout(5) do
+    Timeout.timeout(20) do
       example.run
     end
   end
