@@ -15,7 +15,7 @@ The PubNub Network is a blazingly fast Global Messaging Service for building rea
 
 ### Upgrading from PubNub 3.6.x / 3.7.x
 
-Main change is that we're no longer using EventMachine. Right now Celluloid is used.
+Main change is that we're no longer using EventMachine. Right now Celluloid is used. Public API remain unchanged.
 If you encounter any issues while upgrading from EventMachine version, please contact us at support@pubnub.com you can also find eventmachine version in "eventmachine" branch of this repo.
 
 ### Upgrading from PubNub 3.5.x
