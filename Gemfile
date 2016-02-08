@@ -11,6 +11,8 @@ group :development do
   gem 'webmock'
   gem 'awesome_print'
   gem 'rubocop'
+  gem 'simplecov', require: false
+  gem 'coveralls', require: false
   # gem 'mutant'
   # gem 'mutant-rspec'
   # gem 'yard'

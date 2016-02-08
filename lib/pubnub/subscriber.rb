@@ -64,8 +64,8 @@ module Pubnub
     end
 
     def remove_current_subscription
+      return if @current_subscription_id.nil?
       Pubnub.logger.debug('Pubnub::Subscriber') { 'Removing current subscription' }
-      return nil if @current_subscription_id.nil?
       @current_subscription.async.terminate
       @current_subscription    = nil
       @current_subscription_id = nil

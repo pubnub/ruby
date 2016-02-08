@@ -7,6 +7,7 @@ require 'pubnub/message'
 
 require 'pubnub/event'
 require 'pubnub/single_event'
+require 'pubnub/subscribe_event/callbacks'
 require 'pubnub/subscribe_event/formatter'
 require 'pubnub/subscribe_event/heartbeat'
 require 'pubnub/subscribe_event/adding'
@@ -106,13 +107,17 @@ module Pubnub
     #   <dd><b>optional.</b> Default error callback.</dd>
     #
     #   <dt>connect_callback</dt>
-    #   <dd><b>optional.</b> Callback that is called when connection with origin is established. It should take string as parameter.</dd>
+    #   <dd><b>optional.</b> Callback that is called when connection with origin is established.
+    #                        It should take string as parameter.</dd>
     #
     #   <dt>disconnect_callback</dt>
-    #   <dd><b>optional.</b> Callback that is called when connection with origin is teared down (it's called each time when reestablishing connection didn't work). It should take string as parameter.</dd>
+    #   <dd><b>optional.</b> Callback that is called when connection with origin is teared down
+    #                        (it's called each time when reestablishing connection didn't work).
+    #                        It should take string as parameter.</dd>
     #
     #   <dt>reconnect_callback</dt>
-    #   <dd><b>optional.</b> Callback that is called when connection with origin is reestablished. It should take string as parameter.</dd>
+    #   <dd><b>optional.</b> Callback that is called when connection with origin is reestablished.
+    #                        It should take string as parameter.</dd>
     #
     #   <dt>ssl</dt>
     #   <dd><b>optional.</b> Your connection will use ssl if set to true.</dd>
@@ -168,7 +173,7 @@ module Pubnub
       clean_env
       prepare_env
       validate! @env
-      Pubnub.logger.debug('Pubnub::Client') do
+      Pubnub.logger.info('Pubnub::Client') do
         "Created new Pubnub::Client instance. Version: #{Pubnub::VERSION}"
       end
     end
@@ -312,19 +317,17 @@ module Pubnub
     end
 
     def apply_state(event)
-      @env[:state] ||= {}
-      @env[:state][event.origin] ||= {}
-      @env[:state][event.origin][:channel] ||= {}
-      @env[:state][event.origin][:group] ||= {}
+      Pubnub.logger.debug('Pubnub::Client') { 'Apply state' }
+      create_state_pools(event)
 
-      if event.state
-        event.channel.each do |channel|
-          @env[:state][event.origin][:channel][channel] = event.state
-        end
+      return unless event.state
 
-        event.group.each do |group|
-          @env[:state][event.origin][:group][group] = event.state
-        end
+      event.channel.each do |channel|
+        @env[:state][event.origin][:channel][channel] = event.state
+      end
+
+      event.group.each do |group|
+        @env[:state][event.origin][:group][group] = event.state
       end
     end
 
@@ -334,6 +337,13 @@ module Pubnub
     end
 
     private
+
+    def create_state_pools(event)
+      @env[:state] ||= {}
+      @env[:state][event.origin] ||= {}
+      @env[:state][event.origin][:channel] ||= {}
+      @env[:state][event.origin][:group] ||= {}
+    end
 
     def setup_httpclient(event_type)
       if ENV['HTTP_PROXY']
@@ -347,7 +357,6 @@ module Pubnub
         hc.receive_timeout = 310
       when :single_event
         hc.receive_timeout = 5
-        # hc.transparent_gzip_decompression = true
       end
 
       hc

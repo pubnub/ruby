@@ -13,14 +13,7 @@ describe Pubnub::Subscribe do
       @after_callback = true
     }
 
-    @error_callback = lambda { |envelope|
-      Pubnub.logger.debug 'FIRING ERROR CALLBACK FROM TEST'
-      @response_output.write envelope.response
-      @message_output.write envelope.msg
-      @after_error_callback = true
-    }
-
-    @pn = Pubnub.new(:max_retries => 0, :subscribe_key => :ds, :publish_key => :ds, :secret_key => 'some_secret_key', :error_callback => @error_callback)
+    @pn = Pubnub.new(:max_retries => 0, :subscribe_key => :ds, :publish_key => :ds, :secret_key => 'some_secret_key')
     @pn.uuid = 'rubytests'
 
     Celluloid.boot

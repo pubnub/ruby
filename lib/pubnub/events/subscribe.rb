@@ -11,5 +11,9 @@ module Pubnub
       super
       app.apply_state(self)
     end
+
+    def clear_state
+      @state = nil
+    end
   end
 end

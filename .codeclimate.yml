@@ -1,0 +1,15 @@
+engines:
+  rubocop:
+    enabled: true
+  bundler-audit:
+    enblaed: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+exclude_paths:
+  - spec/
+  - coverage/
+  - fixtures/
+  - doc/

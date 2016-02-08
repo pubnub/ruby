@@ -2,24 +2,24 @@
 http_interactions:
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/v2/presence/sub-key/demo/channel/test_channel/uuid/gentest/data?pnsdk=PubNub-Ruby/4.0.0beta7&state=%7B%22some%22:%22other%22,%22value%22:10%7D&uuid=gentest
+    uri: http://pubsub.pubnub.com/v2/presence/sub-key/demo/channel/test_channel/uuid/gentest/data?pnsdk=PubNub-Ruby/4.0.0beta14&state=%7B%22some%22:%22other%22,%22value%22:10%7D&uuid=gentest
     body:
       encoding: UTF-8
       string: ''
     headers:
       User-Agent:
-      - HTTPClient/1.0 (2.6.0.1, ruby 2.2.2 (2015-04-13))
+      - HTTPClient/1.0 (2.7.1, ruby 2.2.2 (2015-04-13))
       Accept:
       - "*/*"
       Date:
-      - Thu, 29 Oct 2015 17:56:47 GMT
+      - Mon, 08 Feb 2016 11:15:28 GMT
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 29 Oct 2015 17:56:47 GMT
+      - Mon, 08 Feb 2016 11:15:28 GMT
       Content-Type:
       - text/javascript; charset="UTF-8"
       Content-Length:
@@ -43,27 +43,27 @@ http_interactions:
       string: '{"status": 200, "message": "OK", "payload": {"some": "other", "value":
         10}, "service": "Presence"}'
     http_version: 
-  recorded_at: Thu, 29 Oct 2015 17:56:48 GMT
+  recorded_at: Mon, 08 Feb 2016 11:15:29 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/subscribe/demo/test_channel/0/0?pnsdk=PubNub-Ruby/4.0.0beta7&state=%7B%22test_channel%22:%7B%22one%22:%22two%22,%22three%22:4%7D%7D&uuid=gentest
+    uri: http://pubsub.pubnub.com/subscribe/demo/test_channel/0/0?pnsdk=PubNub-Ruby/4.0.0beta14&state=%7B%22test_channel%22:%7B%22one%22:%22two%22,%22three%22:4%7D%7D&uuid=gentest
     body:
       encoding: UTF-8
       string: ''
     headers:
       User-Agent:
-      - HTTPClient/1.0 (2.6.0.1, ruby 2.2.2 (2015-04-13))
+      - HTTPClient/1.0 (2.7.1, ruby 2.2.2 (2015-04-13))
       Accept:
       - "*/*"
       Date:
-      - Thu, 29 Oct 2015 17:56:48 GMT
+      - Mon, 08 Feb 2016 11:15:29 GMT
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 29 Oct 2015 17:56:47 GMT
+      - Mon, 08 Feb 2016 11:15:29 GMT
       Content-Type:
       - text/javascript; charset="UTF-8"
       Content-Length:
@@ -78,29 +78,29 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '[[],"14461414075126453"]'
+      string: '[[],"14549301289829318"]'
     http_version: 
-  recorded_at: Thu, 29 Oct 2015 17:56:48 GMT
+  recorded_at: Mon, 08 Feb 2016 11:15:29 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/v2/presence/sub_key/demo/channel/test_channel/uuid/gentest?pnsdk=PubNub-Ruby/4.0.0beta7&uuid=gentest
+    uri: http://pubsub.pubnub.com/v2/presence/sub_key/demo/channel/test_channel/uuid/gentest?pnsdk=PubNub-Ruby/4.0.0beta14&uuid=gentest
     body:
       encoding: UTF-8
       string: ''
     headers:
       User-Agent:
-      - HTTPClient/1.0 (2.6.0.1, ruby 2.2.2 (2015-04-13))
+      - HTTPClient/1.0 (2.7.1, ruby 2.2.2 (2015-04-13))
       Accept:
       - "*/*"
       Date:
-      - Thu, 29 Oct 2015 17:56:50 GMT
+      - Mon, 08 Feb 2016 11:15:31 GMT
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 29 Oct 2015 17:56:49 GMT
+      - Mon, 08 Feb 2016 11:15:31 GMT
       Content-Type:
       - text/javascript; charset="UTF-8"
       Content-Length:
@@ -124,5 +124,5 @@ http_interactions:
       string: '{"status": 200, "uuid": "gentest", "service": "Presence", "message":
         "OK", "payload": {"some": "other", "value": 10}, "channel": "test_channel"}'
     http_version: 
-  recorded_at: Thu, 29 Oct 2015 17:56:50 GMT
+  recorded_at: Mon, 08 Feb 2016 11:15:31 GMT
 recorded_with: VCR 2.9.3

@@ -5,16 +5,9 @@ describe Pubnub::SetState do
     @response_output = StringIO.new
     @message_output = StringIO.new
 
-    @callback = lambda { |envelope|
-      @response_output.write envelope.response
-      @message_output.write envelope.msg
-      @after_callback = true
-    }
-
     @pubnub = Pubnub.new(
         :publish_key => :demo,
-        :subscribe_key => :demo,
-        :error_callback => @error_callback
+        :subscribe_key => :demo
     )
 
     @pubnub.uuid = 'gentest'
@@ -49,7 +42,6 @@ describe Pubnub::SetState do
       VCR.use_cassette("integration/set_state/3", :record => :once) do
         @pubnub.subscribe(channel: :test_channel, state: {one: :two, three: 4})
         expect(@pubnub.env[:state]).to eq ({"pubsub.pubnub.com"=>{:channel=>{"test_channel"=>{:one=>:two, :three=>4}}, :group=>{}}})
-
         enve = @pubnub.set_state(channel: :test_channel, state: {some: :other, value: 10}, http_sync: true)
         expect(enve.first.response).to eq "{\"status\": 200, \"message\": \"OK\", \"payload\": {\"some\": \"other\", \"value\": 10}, \"service\": \"Presence\"}"
         expect(@pubnub.env[:state]).to eq ({"pubsub.pubnub.com"=>{:channel=>{"test_channel"=>{some: :other, value: 10}}, :group=>{}}})
@@ -78,18 +70,18 @@ describe Pubnub::SetState do
       end
     end
 
-    it 'overwrites client state that has been set via set_state' do
-      VCR.use_cassette("integration/set_state/13", :record => :once) do
-        enve = @pubnub.set_state(channel: :test_channel, state: {some: :other, value: 10}, http_sync: true)
-        expect(@pubnub.env[:state]).to eq ({"pubsub.pubnub.com"=>{:channel=>{"test_channel"=>{:some=>:other, :value=>10}}, :group=>{}}})
-        expect(enve.first.response).to eq "{\"status\": 200, \"message\": \"OK\", \"payload\": {\"some\": \"other\", \"value\": 10}, \"service\": \"Presence\"}"
-        @pubnub.subscribe(channel: :test_channel, state: {one: :two, three: 4})
-        sleep(2)
-        enve = @pubnub.state(channel: :test_channel, uuid: @pubnub.uuid, http_sync: true)
-        expect(enve.first.response).to eq "{\"status\": 200, \"uuid\": \"gentest\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {\"three\": 4, \"one\": \"two\"}, \"channel\": \"test_channel\"}"
-
-      end
-    end
+    # it 'overwrites client state that has been set via set_state' do
+    #   VCR.use_cassette("integration/set_state/13", :record => :once) do
+    #     enve = @pubnub.set_state(channel: :test_channel, state: {some: :other, value: 10}, http_sync: true)
+    #     expect(@pubnub.env[:state]).to eq ({"pubsub.pubnub.com"=>{:channel=>{"test_channel"=>{:some=>:other, :value=>10}}, :group=>{}}})
+    #     expect(enve.first.response).to eq "{\"status\": 200, \"message\": \"OK\", \"payload\": {\"some\": \"other\", \"value\": 10}, \"service\": \"Presence\"}"
+    #     @pubnub.subscribe(channel: :test_channel, state: {one: :two, three: 4})
+    #     sleep(2)
+    #     enve = @pubnub.state(channel: :test_channel, uuid: @pubnub.uuid, http_sync: true)
+    #     expect(enve.first.response).to eq "{\"status\": 200, \"uuid\": \"gentest\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {\"three\": 4, \"one\": \"two\"}, \"channel\": \"test_channel\"}"
+    #
+    #   end
+    # end
   end
 
 end

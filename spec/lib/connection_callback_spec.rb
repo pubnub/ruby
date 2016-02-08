@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe 'Connect, disconnect and reconnect callbacks' do
 
+  around(:each) do |example|
+    Celluloid.boot
+    example.run
+    Celluloid.shutdown
+  end
+
   before(:each) do
     @connect_messages, @reconnect_messages, @disconnect_messages = [], [], []
 

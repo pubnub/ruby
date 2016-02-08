@@ -11,7 +11,7 @@ module Pubnub
 
     def initialize(options, app)
       @app = app
-      env = app.env
+      env = app.env.clone
       env.delete(:state)
       create_variables_from_options(env.merge(options))
       @origin = @app.current_origin
@@ -154,11 +154,10 @@ module Pubnub
                      end count reverse presence_callback store skip_validate
                      state channel_group compressed)
 
-      options = options.reduce({}) { |memo, (k, v)| memo[k.to_sym] = v; memo }
+      # options = options.reduce({}) { |memo, (k, v)| memo[k.to_sym] = v; memo }
+      options = options.each_with_object({}) { |option, obj| obj[option.first.to_sym] = option.last }
 
-      variables.each do |variable|
-        instance_variable_set('@' + variable, options[variable.to_sym]) unless variable.nil?
-      end
+      variables.each { |variable| instance_variable_set('@' + variable, options[variable.to_sym]) unless variable.nil? }
 
       return if @event != :subscribe && @event != :presence
 
@@ -179,7 +178,6 @@ module Pubnub
       end
     end
 
-    # TODO: refactor this nicely and change test stubs
     def set_timestamp
       @timestamp = current_time
     end

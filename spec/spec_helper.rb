@@ -9,6 +9,12 @@ require 'celluloid/test'
 
 require 'pubnub'
 
+require 'simplecov'
+require 'coveralls'
+
+SimpleCov.start
+Coveralls.wear!
+
 Celluloid.task_class = Celluloid::Task::Threaded
 
 # AsyncHelper allows us to wait for async operations

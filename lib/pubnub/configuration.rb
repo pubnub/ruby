@@ -2,7 +2,7 @@
 module Pubnub
   # That module holds default configuration values.
   module Configuration
-    DEFAULT_ERROR_CALLBACK             = ->(err) { puts err.inspect }
+    DEFAULT_ERROR_CALLBACK             = ->(err) { err.inspect }
     DEFAULT_CONNECT_CALLBACK           = ->(msg) { msg.inspect }
     # TODO: check default timeouts
     DEFAULT_READ_TIMEOUT               = 10
