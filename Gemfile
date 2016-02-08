@@ -2,20 +2,17 @@ source 'https://rubygems.org'
 
 gemspec
 
-group :development do
-  gem 'rspec'
-  gem 'generative'
-  gem 'vcr'
-  gem 'rr'
-  gem 'pry'
-  gem 'webmock'
-  gem 'awesome_print'
+group :test do
   gem 'rubocop'
   gem 'simplecov', require: false
   gem 'coveralls', require: false
-  # gem 'mutant'
-  # gem 'mutant-rspec'
-  # gem 'yard'
-  # gem 'redcarpet'
-  # gem 'github-markup'
+  gem 'rspec'
+  gem 'vcr'
+  gem 'rr'
+  gem 'webmock'
+end
+
+group :development do
+  gem 'pry'
+  gem 'awesome_print'
 end

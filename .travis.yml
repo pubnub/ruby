@@ -1,3 +1,8 @@
+sudo: false
+
+before_install:
+  - gem update bundler
+
 language: ruby
 rvm:
  - 2.3.0
@@ -5,5 +10,7 @@ rvm:
  - 2.1.8
  - 2.0.0
  - jruby-19mode
+
+bundler_args: --without development
 
 script: bundle exec rspec
