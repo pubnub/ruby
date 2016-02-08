@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/pubnub/ruby/badge.svg?branch=master)](https://coveralls.io/github/pubnub/ruby?branch=celluloid)
+[![Coverage Status](https://coveralls.io/repos/github/pubnub/ruby/badge.svg?branch=master)](https://coveralls.io/github/pubnub/ruby)
 [![Build Status](https://travis-ci.org/pubnub/ruby.svg?branch=master)](https://travis-ci.org/pubnub/ruby)
 
 # Please direct all Support Questions and Concerns to Support@PubNub.com
