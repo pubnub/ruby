@@ -1114,4 +1114,51 @@ describe Pubnub::Publish do
       end
     end
   end
+
+  context ':meta parameter' do
+    before(:each) do
+      @pubnub = Pubnub.new(
+          :max_retries => 0,
+          :subscribe_key => :demo,
+          :publish_key => :demo,
+          :auth_key => :demoish_authkey,
+          :secret_key => 'some_secret_key',
+          :error_callback => @error_callback
+
+      )
+
+      @pubnub.uuid = 'tester'
+    end
+
+    it 'works fine' do
+      VCR.use_cassette('integration/publish/publish-meta', :record => :once) do
+
+        @pubnub.publish(
+            message: { text: 'sometext' },
+            channel: 'ruby_demo_channel',
+            callback: @callback,
+            http_sync: true,
+            meta: { region: :west }
+        )
+
+        @envelopes.size.should eq 1
+        # @envelopes.first.response_message.should eq 'Sent'
+        # @envelopes.first.status.should eq 200
+        # @envelopes.first.channel.should eq 'ruby_demo_channel'
+        # @envelopes.first.message.should eq({:text => 'sometext'})
+        # @envelopes.first.timetoken.should eq '13936818988607190'
+
+      end
+    end
+
+    it 'is validated' do
+      expect{ @pubnub.publish(
+          message: { text: 'sometext' },
+          channel: 'ruby_demo_channel',
+          callback: @callback,
+          http_sync: true,
+          meta: 123
+      ) }.to raise_error(Pubnub::ArgumentError)
+    end
+  end
 end

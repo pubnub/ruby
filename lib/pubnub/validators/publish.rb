@@ -12,6 +12,7 @@ module Pubnub
         validate_channel!
         validate_message!
         validate_store!
+        validate_meta!
       end
 
       private
@@ -42,6 +43,13 @@ module Pubnub
           ArgumentError.new,
           ':message is required for publish event.'
         ) if @message.nil?
+      end
+
+      def validate_meta!
+        fail(
+            ArgumentError.new,
+            ':meta parameter must me hash.'
+        ) if !@meta.nil? && @meta.class != Hash
       end
     end
   end

@@ -40,7 +40,8 @@ module Pubnub
 
     def parameters
       empty_if_blank = {
-        store: @store
+        store: @store,
+        meta: @meta
       }
 
       empty_if_blank.delete_if { |_k, v| v.blank? }
