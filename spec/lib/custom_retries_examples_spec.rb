@@ -54,7 +54,7 @@ describe 'Custom retries' do
     expect(@success_envelope.response).to eq "[1,\"Sent\",\"14573583203711342\"]"
     expect(@success_envelope.response_message).to eq 'Sent'
     expect(@success_envelope.status).to eq 200
-    expect(@success_envelope.timetoken).to '14573583203711342'
+    expect(@success_envelope.timetoken).to eq '14573583203711342'
   end
 
 end
