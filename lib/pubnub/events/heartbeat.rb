@@ -57,6 +57,8 @@ module Pubnub
 
     def valid_envelope(parsed_response)
       Envelope.new(
+        event: @event,
+        event_options: @given_options,
         message: parsed_response,
         response_message: parsed_response
       )
@@ -64,6 +66,8 @@ module Pubnub
 
     def error_envelope(parsed_response, error)
       ErrorEnvelope.new(
+        event: @event,
+        event_options: @given_options,
         error:            error,
         response_message: response_message(parsed_response),
         channel:          @channel.first,

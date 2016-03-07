@@ -28,16 +28,14 @@ module Pubnub
       Pubnub.logger.debug('Pubnub') { "Fired event #{self.class}" }
 
       consider_heartbeat
+
       message = send_request
 
-      if @app.subscriber.current_subscription_id != object_id && @http_sync != true
-        return nil
-      end
+      return false if @app.subscriber.current_subscription_id != object_id && @http_sync != true
 
       Pubnub.logger.debug('Pubnub') { 'Fire before fire_callback' }
-      envelopes = fire_callbacks(handle(message))
 
-      finalize_event(envelopes)
+      envelopes = finalize_event(fire_callbacks(handle(message)))
 
       async.fire unless @http_sync
 
@@ -98,18 +96,15 @@ module Pubnub
     end
 
     def finalize_event(envelopes)
-      Pubnub.logger.debug('Pubnub') { '#finalize_event' }
       if @app.env[:timetoken] == 0
         begin
-          Pubnub.logger.debug('Pubnub::SubscribeEvent') { 'Calling connect_callback' }
           @app.env[:connect_callback].call 'Connected!' if @app.env[:connect_callback]
         rescue => error
-          Pubnub.logger.error('Pubnub::SubscribeEvent') do
-            "Error while calling connection callback #{error.inspect}"
-          end
+          Pubnub.logger.error('Pubnub::SubscribeEvent') { "Error while calling connection callback #{error.inspect}" }
         end
       end
       @app.timetoken = envelopes.first.timetoken
+      envelopes
     end
 
     def path
@@ -124,7 +119,16 @@ module Pubnub
 
     def parameters
       params = super
+      params = add_group_to_params(params)
+      add_state_to_params(params)
+    end
+
+    def add_group_to_params(params)
       params.merge!('channel-group' => @group.join(',')) unless @group.empty?
+      params
+    end
+
+    def add_state_to_params(params)
       params.merge!(
         state: encode_state(@app.env[:state][@origin][:channel].merge(@app.env[:state][@origin][:group]))
       ) unless @app.empty_state?

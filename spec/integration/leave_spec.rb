@@ -5,21 +5,29 @@ describe Pubnub::Leave do
     @response_output = StringIO.new
     @message_output = StringIO.new
 
-    @callback = lambda { |envelope|
+    success_callback = lambda { |envelope|
       Pubnub.logger.debug 'FIRING CALLBACK FROM TEST'
       @response_output.write envelope.response
       @message_output.write envelope.msg
       @after_callback = true
     }
 
-    @error_callback = lambda { |envelope|
+    error_callback = lambda { |envelope|
       Pubnub.logger.debug 'FIRING ERROR CALLBACK FROM TEST'
       @response_output.write envelope.response
       @message_output.write envelope.msg
       @after_error_callback = true
     }
 
-    @pn = Pubnub.new(:max_retries => 0, :subscribe_key => :demo, :publish_key => :demo, :auth_key => :demoish_authkey, :secret_key => 'some_secret_key', :error_callback => @error_callback)
+    @callback = -> (envelope) do
+      if envelope.error?
+        error_callback.call envelope
+      else
+        success_callback.call envelope
+      end
+    end
+
+    @pn = Pubnub.new(:max_retries => 0, :subscribe_key => :demo, :publish_key => :demo, :auth_key => :demoish_authkey, :secret_key => 'some_secret_key')
     @pn.uuid = 'rubytests'
 
     Celluloid.boot
@@ -56,7 +64,7 @@ describe Pubnub::Leave do
                 @response_output.seek 0
                 @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
+                @message_output.read.should eq 'Non 2xx server response.'
               end
             end
           end
@@ -73,7 +81,7 @@ describe Pubnub::Leave do
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leav'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+                @message_output.read.should eq 'Invalid JSON in response.'
               end
             end
           end
@@ -88,7 +96,7 @@ describe Pubnub::Leave do
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leav'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+                @message_output.read.should eq 'Invalid JSON in response.'
               end
             end
           end
@@ -122,7 +130,7 @@ describe Pubnub::Leave do
                 @response_output.seek 0
                 @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
+                @message_output.read.should eq 'Non 2xx server response.'
               end
             end
           end
@@ -139,7 +147,7 @@ describe Pubnub::Leave do
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leav'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+                @message_output.read.should eq 'Invalid JSON in response.'
               end
             end
           end
@@ -154,7 +162,7 @@ describe Pubnub::Leave do
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leav'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+                @message_output.read.should eq 'Invalid JSON in response.'
               end
             end
           end
@@ -191,7 +199,7 @@ describe Pubnub::Leave do
                 @response_output.seek 0
                 @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
+                @message_output.read.should eq 'Non 2xx server response.'
               end
             end
           end
@@ -208,7 +216,7 @@ describe Pubnub::Leave do
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leav'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+                @message_output.read.should eq 'Invalid JSON in response.'
               end
             end
           end
@@ -223,7 +231,7 @@ describe Pubnub::Leave do
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leav'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+                @message_output.read.should eq 'Invalid JSON in response.'
               end
             end
           end
@@ -257,7 +265,7 @@ describe Pubnub::Leave do
                 @response_output.seek 0
                 @response_output.read.should eq "{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}"
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
+                @message_output.read.should eq 'Non 2xx server response.'
               end
             end
           end
@@ -274,7 +282,7 @@ describe Pubnub::Leave do
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leav'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+                @message_output.read.should eq 'Invalid JSON in response.'
               end
             end
           end
@@ -289,7 +297,7 @@ describe Pubnub::Leave do
                 @response_output.seek 0
                 @response_output.read.should eq '{"action": "leav'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+                @message_output.read.should eq 'Invalid JSON in response.'
               end
             end
           end

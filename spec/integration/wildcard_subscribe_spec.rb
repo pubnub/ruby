@@ -6,12 +6,27 @@ describe Pubnub::Subscribe do
     @response_output = StringIO.new
     @message_output = StringIO.new
 
-    @callback = lambda { |envelope|
+    success_callback = lambda { |envelope|
       Pubnub.logger.debug 'FIRING CALLBACK FROM TEST'
       @response_output.write envelope.response
       @message_output.write envelope.msg
       @after_callback = true
     }
+
+    error_callback = lambda { |envelope|
+      Pubnub.logger.debug 'FIRING ERROR CALLBACK FROM TEST'
+      @response_output.write envelope.response
+      @message_output.write envelope.msg
+      @after_error_callback = true
+    }
+
+    @callback = -> (envelope) do
+      if envelope.error?
+        error_callback.call envelope
+      else
+        success_callback.call envelope
+      end
+    end
 
     @pn = Pubnub.new(:max_retries => 0, :subscribe_key => :ds, :publish_key => :ds, :secret_key => 'some_secret_key')
     @pn.uuid = 'rubytests'

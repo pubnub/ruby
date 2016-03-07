@@ -5,12 +5,20 @@ describe Pubnub::Publish do
     @envelopes = Array.new
     @error_envelopes = Array.new
 
-    @callback = lambda do |envelope|
+    callback = lambda do |envelope|
       @envelopes << envelope
     end
 
-    @error_callback = lambda do |envelope|
+    error_callback = lambda do |envelope|
       @error_envelopes << envelope
+    end
+
+    @callback = -> (envelope) do
+      if envelope.error?
+        error_callback.call envelope
+      else
+        callback.call envelope
+      end
     end
 
     Celluloid.boot
@@ -28,9 +36,7 @@ describe Pubnub::Publish do
               :subscribe_key => :demo,
               :publish_key => :demo,
               :auth_key => :demoish_authkey,
-              :secret_key => 'some_secret_key',
-              :error_callback => @error_callback
-
+              :secret_key => 'some_secret_key'
           )
 
           @pubnub.uuid = 'tester'
@@ -81,7 +87,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
                   @error_envelopes.first.status.should eq 200
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.message.should eq('Invalid JSON in response.')
                   @error_envelopes.first.timetoken.blank?.should eq true
 
                 end
@@ -110,7 +116,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"]')
                   @error_envelopes.first.status.should eq 500
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                  @error_envelopes.first.message.should eq('Non 2xx server response.')
                   @error_envelopes.first.timetoken.should eq '13936818988607190'
 
                 end
@@ -137,7 +143,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
                   @error_envelopes.first.status.should eq 500
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.message.should eq('Invalid JSON in response.')
                   @error_envelopes.first.timetoken.blank?.should eq true
 
                 end
@@ -207,7 +213,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
                   @error_envelopes.first.status.should eq 200
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.message.should eq('Invalid JSON in response.')
                   @error_envelopes.first.timetoken.blank?.should eq true
 
                 end
@@ -236,7 +242,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"]')
                   @error_envelopes.first.status.should eq 500
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                  @error_envelopes.first.message.should eq('Non 2xx server response.')
                   @error_envelopes.first.timetoken.blank?.should eq false
 
                 end
@@ -263,7 +269,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
                   @error_envelopes.first.status.should eq 500
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.message.should eq('Invalid JSON in response.')
                   @error_envelopes.first.timetoken.blank?.should eq true
 
                 end
@@ -334,7 +340,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
                   @error_envelopes.first.status.should eq 200
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.message.should eq('Invalid JSON in response.')
                   @error_envelopes.first.timetoken.blank?.should eq true
 
                 end
@@ -363,7 +369,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"]')
                   @error_envelopes.first.status.should eq 500
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                  @error_envelopes.first.message.should eq('Non 2xx server response.')
                   @error_envelopes.first.timetoken.blank?.should eq false
 
                 end
@@ -390,7 +396,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
                   @error_envelopes.first.status.should eq 500
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.message.should eq('Invalid JSON in response.')
                   @error_envelopes.first.timetoken.blank?.should eq true
 
                 end
@@ -460,7 +466,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
                   @error_envelopes.first.status.should eq 200
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.message.should eq('Invalid JSON in response.')
                   @error_envelopes.first.timetoken.blank?.should eq true
 
                 end
@@ -489,7 +495,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"]')
                   @error_envelopes.first.status.should eq 500
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                  @error_envelopes.first.message.should eq('Non 2xx server response.')
                   @error_envelopes.first.timetoken.blank?.should eq false
 
                 end
@@ -516,7 +522,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
                   @error_envelopes.first.status.should eq 500
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.message.should eq('Invalid JSON in response.')
                   @error_envelopes.first.timetoken.blank?.should eq true
 
                 end
@@ -591,7 +597,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
                   @error_envelopes.first.status.should eq 200
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.message.should eq('Invalid JSON in response.')
                   @error_envelopes.first.timetoken.blank?.should eq true
 
                 end
@@ -620,7 +626,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"]')
                   @error_envelopes.first.status.should eq 500
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                  @error_envelopes.first.message.should eq('Non 2xx server response.')
                   @error_envelopes.first.timetoken.blank?.should eq false
 
                 end
@@ -647,7 +653,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
                   @error_envelopes.first.status.should eq 500
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.message.should eq('Invalid JSON in response.')
                   @error_envelopes.first.timetoken.blank?.should eq true
 
                 end
@@ -719,7 +725,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
                   @error_envelopes.first.status.should eq 200
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.message.should eq('Invalid JSON in response.')
                   @error_envelopes.first.timetoken.blank?.should eq true
 
                 end
@@ -748,7 +754,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"]')
                   @error_envelopes.first.status.should eq 500
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                  @error_envelopes.first.message.should eq('Non 2xx server response.')
                   @error_envelopes.first.timetoken.blank?.should eq false
 
                 end
@@ -775,7 +781,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
                   @error_envelopes.first.status.should eq 500
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.message.should eq('Invalid JSON in response.')
                   @error_envelopes.first.timetoken.blank?.should eq true
 
                 end
@@ -847,7 +853,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
                   @error_envelopes.first.status.should eq 200
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.message.should eq('Invalid JSON in response.')
                   @error_envelopes.first.timetoken.blank?.should eq true
 
                 end
@@ -876,7 +882,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"]')
                   @error_envelopes.first.status.should eq 500
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                  @error_envelopes.first.message.should eq('Non 2xx server response.')
                   @error_envelopes.first.timetoken.blank?.should eq false
 
                 end
@@ -903,7 +909,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13936818988607190"')
                   @error_envelopes.first.status.should eq 500
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.message.should eq('Invalid JSON in response.')
                   @error_envelopes.first.timetoken.blank?.should eq true
 
                 end
@@ -974,7 +980,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
                   @error_envelopes.first.status.should eq 200
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.message.should eq('Invalid JSON in response.')
                   @error_envelopes.first.timetoken.blank?.should eq true
 
                 end
@@ -1003,7 +1009,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"]')
                   @error_envelopes.first.status.should eq 500
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Non 2xx server response."]')
+                  @error_envelopes.first.message.should eq('Non 2xx server response.')
                   @error_envelopes.first.timetoken.blank?.should eq false
 
                 end
@@ -1030,7 +1036,7 @@ describe Pubnub::Publish do
                   @error_envelopes.first.response.should eq('[1,"Sent","13937904716672898"')
                   @error_envelopes.first.status.should eq 500
                   @error_envelopes.first.channel.should eq('ruby_demo_channel')
-                  @error_envelopes.first.message.should eq('[0,"Invalid JSON in response."]')
+                  @error_envelopes.first.message.should eq('Invalid JSON in response.')
                   @error_envelopes.first.timetoken.blank?.should eq true
 
                 end
@@ -1142,11 +1148,11 @@ describe Pubnub::Publish do
         )
 
         @envelopes.size.should eq 1
-        # @envelopes.first.response_message.should eq 'Sent'
-        # @envelopes.first.status.should eq 200
-        # @envelopes.first.channel.should eq 'ruby_demo_channel'
-        # @envelopes.first.message.should eq({:text => 'sometext'})
-        # @envelopes.first.timetoken.should eq '13936818988607190'
+        @envelopes.first.response_message.should eq 'Sent'
+        @envelopes.first.status.should eq 200
+        @envelopes.first.channel.should eq 'ruby_demo_channel'
+        @envelopes.first.message.should eq({:text => 'sometext'})
+        @envelopes.first.timetoken.should eq '14551229878229279'
 
       end
     end

@@ -6,14 +6,14 @@ module Pubnub
       def add_groups(event)
         event.group.each do |group|
           add_group group
-          add_g_cb group, event.callback, event.error_callback
+          add_g_cb group, event.callback
         end
       end
 
       def add_channels(event)
         event.channel.each do |channel|
           add_channel channel
-          add_c_cb channel, event.callback, event.error_callback
+          add_c_cb channel, event.callback
         end
       end
 
@@ -29,13 +29,12 @@ module Pubnub
 
       private
 
-      def add_g_cb(group, cb, _e_cb)
+      def add_g_cb(group, cb)
         @g_cb_pool[group] = cb
       end
 
-      def add_c_cb(channel, cb, e_cb)
+      def add_c_cb(channel, cb)
         @c_cb_pool[channel] = cb
-        @e_cb_pool[channel] = e_cb
       end
 
       def add_group(group)

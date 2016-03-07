@@ -6,22 +6,30 @@ describe Pubnub::Audit do
     @response_output = StringIO.new
     @message_output = StringIO.new
 
-    @callback = lambda { |envelope|
-      Pubnub.logger.debug 'FIRING CALLBACK FROM TEST'
+    success_callback = lambda { |envelope|
       Pubnub.logger.debug 'FIRING CALLBACK FROM TEST'
       @response_output.write envelope.response
       @message_output.write envelope.msg
       @after_callback = true
     }
 
-    @error_callback = lambda { |envelope|
+    error_callback = lambda { |envelope|
       Pubnub.logger.debug 'FIRING ERROR CALLBACK FROM TEST'
       @response_output.write envelope.response
       @message_output.write envelope.msg
       @after_error_callback = true
     }
 
-    @pn = Pubnub.new(:max_retries => 0, :subscribe_key => 'sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe', :publish_key => 'pub-c-15d6fd3c-05de-4abc-8eba-6595a441959d', :secret_key => 'sec-c-ZWYwMGJiZTYtMTQwMC00NDQ5LWI0NmEtMzZiM2M5NThlOTJh', :error_callback => @error_callback)
+    @callback = -> (envelope) do
+      if envelope.error?
+        error_callback.call envelope
+      else
+        success_callback.call envelope
+      end
+    end
+
+
+    @pn = Pubnub.new(:max_retries => 0, :subscribe_key => 'sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe', :publish_key => 'pub-c-15d6fd3c-05de-4abc-8eba-6595a441959d', :secret_key => 'sec-c-ZWYwMGJiZTYtMTQwMC00NDQ5LWI0NmEtMzZiM2M5NThlOTJh')
     @pn.uuid = 'f0ac67ef-912f-4797-be67-a59745107306'
 
     Celluloid.boot
@@ -63,7 +71,7 @@ describe Pubnub::Audit do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,"message":"Success","payload":{"auths":{},"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe","channel":"demo","level":"user"},"service":"Access Manager"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
+                @message_output.read.should eq 'Non 2xx server response.'
               end
             end
           end
@@ -80,7 +88,7 @@ describe Pubnub::Audit do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+                @message_output.read.should eq 'Invalid JSON in response.'
               end
             end
           end
@@ -95,7 +103,7 @@ describe Pubnub::Audit do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+                @message_output.read.should eq 'Invalid JSON in response.'
               end
             end
           end
@@ -129,7 +137,7 @@ describe Pubnub::Audit do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,"message":"Success","payload":{"auths":{},"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe","channel":"demo","level":"user"},"service":"Access Manager"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
+                @message_output.read.should eq 'Non 2xx server response.'
               end
             end
           end
@@ -146,7 +154,7 @@ describe Pubnub::Audit do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+                @message_output.read.should eq 'Invalid JSON in response.'
               end
             end
           end
@@ -161,7 +169,7 @@ describe Pubnub::Audit do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+                @message_output.read.should eq 'Invalid JSON in response.'
               end
             end
           end
@@ -198,7 +206,7 @@ describe Pubnub::Audit do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,"message":"Success","payload":{"auths":{},"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe","channel":"demo","level":"user"},"service":"Access Manager"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
+                @message_output.read.should eq 'Non 2xx server response.'
               end
             end
           end
@@ -215,7 +223,7 @@ describe Pubnub::Audit do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+                @message_output.read.should eq 'Invalid JSON in response.'
               end
             end
           end
@@ -230,7 +238,7 @@ describe Pubnub::Audit do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+                @message_output.read.should eq 'Invalid JSON in response.'
               end
             end
           end
@@ -264,7 +272,7 @@ describe Pubnub::Audit do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,"message":"Success","payload":{"auths":{},"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe","channel":"demo","level":"user"},"service":"Access Manager"}'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Non 2xx server response."]'
+                @message_output.read.should eq 'Non 2xx server response.'
               end
             end
           end
@@ -281,7 +289,7 @@ describe Pubnub::Audit do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+                @message_output.read.should eq 'Invalid JSON in response.'
               end
             end
           end
@@ -296,7 +304,7 @@ describe Pubnub::Audit do
                 @response_output.seek 0
                 @response_output.read.should eq '{"status":200,'
                 @message_output.seek 0
-                @message_output.read.should eq '[0,"Invalid JSON in response."]'
+                @message_output.read.should eq 'Invalid JSON in response.'
               end
             end
           end

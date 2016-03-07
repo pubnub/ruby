@@ -16,18 +16,18 @@ module Pubnub
     private
 
     def set_error_message
-      puts "\n\n#{@error.inspect}\n\n"
+      return if @parsed_response && @parsed_response.is_a?(Hash) && @parsed_response['message']
       @message = case @error.class.to_s
                  when 'JSON::ParserError'
-                   '[0,"Invalid JSON in response."]'
+                   'Invalid JSON in response.'
                  when 'HTTP::Message'
                    if @error.status_code.to_i != 200
-                     '[0,"Non 2xx server response."]'
+                     'Non 2xx server response.'
                    else
-                     '[0,"Unknown error"]'
+                     'Unknown error'
                    end
                  else
-                   '[0,"Unknown error"]'
+                   'Unknown error'
                  end
     end
   end

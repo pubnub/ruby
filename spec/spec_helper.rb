@@ -5,6 +5,7 @@ require 'webmock/rspec'
 require 'vcr'
 require 'celluloid/current'
 require 'celluloid/test'
+require 'pry'
 
 require 'pubnub'
 
@@ -50,11 +51,11 @@ RSpec.configure do |config|
   logfile.sync = true
   Celluloid.logger = Logger.new(logfile)
 
-  config.around do |example|
-    Timeout.timeout(20) do
-      example.run
-    end
-  end
+  # config.around do |example|
+  #   Timeout.timeout(20) do
+  #     example.run
+  #   end
+  # end
 end
 
 VCR.configure do |c|

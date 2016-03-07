@@ -7,6 +7,8 @@ module Pubnub
 
       def error_envelope(parsed_response, error)
         ErrorEnvelope.new(
+          event: @event,
+          event_options: @given_options,
           error: error,
           response_message: parsed_response,
           message: parsed_response,
@@ -22,6 +24,8 @@ module Pubnub
         end
 
         Envelope.new(
+          event: @event,
+          event_options: @given_options,
           parsed_response: parsed_response,
           message: msg,
           channel: channel,

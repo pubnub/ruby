@@ -15,33 +15,18 @@ module Pubnub
 
     def add_subscription(event)
       @ssl = event.ssl
-
       Pubnub.logger.debug('Pubnub::Subscriber') { 'Adding subscription to Subscriber' }
-      @channels += event.channel
-      @groups += event.group
-      @wildcard_channels += event.wildcard_channel
-
-      @callbacks[:channels].merge! event.c_cb_pool
-      @callbacks[:groups].merge! event.g_cb_pool
-      @callbacks[:wildcard_channels].merge! event.wc_cb_pool
+      add_channels event
+      add_groups event
+      add_wildcard_channels event
       Pubnub.logger.debug('Pubnub::Subscriber') { 'Added subscription to Subscriber' }
     end
 
     def remove_subscription(event)
       Pubnub.logger.debug('Pubnub::Subscriber') { 'Removing subscription from Subscriber' }
-
-      @channels -= event.channel
-      @groups -= event.group
-      @wildcard_channels -= event.wildcard_channel
-
-      event.channel.each { |channel| @callbacks[:channels].delete_if { |k, _v| k.to_sym == channel.to_sym } }
-
-      event.group.each { |group| @callbacks[:groups].delete_if { |k, _v| k.to_sym == group.to_sym } }
-
-      event.wildcard_channel.each do |_wildcard_channel|
-        @callbacks[:wildcard_channels].delete_if { |k, _v| k.to_sym == wildcard_channels.to_sym }
-      end
-
+      remove_channels event
+      remove_groups event
+      remove_wildcard_channels event
       Pubnub.logger.debug('Pubnub::Subscriber') { 'Removed subscription from Subscriber' }
     end
 
@@ -53,6 +38,38 @@ module Pubnub
     end
 
     private
+
+    def add_channels(event)
+      @channels += event.channel
+      @callbacks[:channels].merge! event.c_cb_pool
+    end
+
+    def add_groups(event)
+      @groups += event.group
+      @callbacks[:groups].merge! event.g_cb_pool
+    end
+
+    def add_wildcard_channels(event)
+      @wildcard_channels += event.wildcard_channel
+      @callbacks[:wildcard_channels].merge! event.wc_cb_pool
+    end
+
+    def remove_channels(event)
+      @channels -= event.channel
+      event.channel.each { |channel| @callbacks[:channels].delete_if { |k, _v| k.to_sym == channel.to_sym } }
+    end
+
+    def remove_groups(event)
+      @groups -= event.group
+      event.group.each { |group| @callbacks[:groups].delete_if { |k, _v| k.to_sym == group.to_sym } }
+    end
+
+    def remove_wildcard_channels(event)
+      @wildcard_channels -= event.wildcard_channel
+      event.wildcard_channel.each do |_wildcard_channel|
+        @callbacks[:wildcard_channels].delete_if { |k, _v| k.to_sym == wildcard_channels.to_sym }
+      end
+    end
 
     def build_subscription
       @current_subscription = Subscribe.new({ ssl: @ssl }, @app)

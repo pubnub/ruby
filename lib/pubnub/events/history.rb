@@ -60,18 +60,22 @@ module Pubnub
 
     def valid_envelopes(parsed_response)
       parsed_response.first.map do |message|
-        Envelope.new(parsed_response:  parsed_response,
-                     message:          message,
-                     channel:          @channel.first,
-                     response_message: response_message(parsed_response),
-                     timetoken:        timetoken(parsed_response),
-                     history_start:    parsed_response[1],
-                     history_end:      parsed_response[2])
+        Envelope.new(
+          event: @event,
+          event_options: @given_options, parsed_response:  parsed_response,
+          message:          message,
+          channel:          @channel.first,
+          response_message: response_message(parsed_response),
+          timetoken:        timetoken(parsed_response),
+          history_start:    parsed_response[1],
+          history_end:      parsed_response[2])
       end
     end
 
     def error_envelope(parsed_response, error)
       ErrorEnvelope.new(
+        event: @event,
+        event_options: @given_options,
         error:            error,
         response_message: response_message(parsed_response),
         channel:          @channel.first,

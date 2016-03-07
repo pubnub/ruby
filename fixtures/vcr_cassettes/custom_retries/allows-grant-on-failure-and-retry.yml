@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/publish/pub-c-63eb50a0-98ed-43b2-999a-c32efb85c747/sub-c-446d9780-c606-11e5-a316-0619f8945a4f/0/without-access/0/%22I%20want%20to%20publish%20here!%22?pnsdk=PubNub-Ruby/4.0.0&uuid=ruby-test-client
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.7.1, ruby 2.2.2 (2015-04-13))
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 07 Mar 2016 13:44:48 GMT
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Date:
+      - Mon, 07 Mar 2016 13:44:49 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+    body:
+      encoding: UTF-8
+      string: |
+        {"message":"Forbidden","payload":{"channels":["without-access"]},"error":true,"service":"Access Manager","status":403}
+    http_version: 
+  recorded_at: Mon, 07 Mar 2016 13:44:49 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v1/auth/grant/sub-key/sub-c-446d9780-c606-11e5-a316-0619f8945a4f?channel=without-access&m=1&pnsdk=PubNub-Ruby/4.0.0&r=1&signature=7XI4rmBVkF6GFS7CMv92QaUUBv-SIO9eulnAhF7W918=&timestamp=1457358289&ttl=1440&uuid=ruby-test-client&w=1
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.7.1, ruby 2.2.2 (2015-04-13))
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 07 Mar 2016 13:44:49 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 07 Mar 2016 13:44:50 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '213'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+    body:
+      encoding: UTF-8
+      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-c-446d9780-c606-11e5-a316-0619f8945a4f","ttl":1440,"channels":{"without-access":{"r":1,"w":1,"m":1}}},"service":"Access
+        Manager","status":200}'
+    http_version: 
+  recorded_at: Mon, 07 Mar 2016 13:44:49 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/publish/pub-c-63eb50a0-98ed-43b2-999a-c32efb85c747/sub-c-446d9780-c606-11e5-a316-0619f8945a4f/0/without-access/0/%22I%20want%20to%20publish%20here!%22?pnsdk=PubNub-Ruby/4.0.0&uuid=ruby-test-client
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.7.1, ruby 2.2.2 (2015-04-13))
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 07 Mar 2016 13:45:19 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 07 Mar 2016 13:45:20 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '30'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[1,"Sent","14573583203711342"]'
+    http_version: 
+  recorded_at: Mon, 07 Mar 2016 13:45:19 GMT
+recorded_with: VCR 2.9.3

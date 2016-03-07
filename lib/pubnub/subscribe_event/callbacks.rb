@@ -9,7 +9,6 @@ module Pubnub
         @g_cb_pool ||= {} # group
         @c_cb_pool ||= {} # channel
         @wc_cb_pool ||= {} # wildcard
-        @e_cb_pool ||= {} # error
       end
 
       def fire_callbacks(envelopes)
@@ -24,19 +23,11 @@ module Pubnub
 
       def fire_async_callbacks(envelopes)
         envelopes.each do |envelope|
-          if !envelope.error && !envelope.message.nil?
-            fire_success_callback envelope
-          elsif envelope.error
-            fire_error_callback envelope
-          end
+          try_group_cb(envelope)
+          try_wildcard_presence_cb(envelope)
+          try_wildcard_cb(envelope)
+          try_normal_cb(envelope)
         end
-      end
-
-      def fire_success_callback(envelope)
-        try_group_cb(envelope)
-        try_wildcard_presence_cb(envelope)
-        try_wildcard_cb(envelope)
-        try_normal_cb(envelope)
       end
 
       def try_group_cb(envelope)
@@ -58,18 +49,9 @@ module Pubnub
         secure_call(@c_cb_pool[envelope.channel], envelope)
       end
 
-      def fire_error_callback(envelope)
-        if @e_cb_pool[envelope.channel]
-          secure_call @e_cb_pool[envelope.channel], envelope
-        else
-          secure_call @app.env[:error_callback], envelope
-        end
-      end
-
       def add_channel_cb_to_cb_pools
         @channel.each do |channel|
           @c_cb_pool[channel] = @callback
-          @e_cb_pool[channel] = @error_callback
         end
       end
 

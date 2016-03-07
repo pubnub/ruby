@@ -153,7 +153,6 @@ module Pubnub
     #   uuid: :mad_max,
     #   origin: 'custom.pubnub.com',
     #   callback: -> (envelope) { puts envelope.message },
-    #   error_callback: -> (envelope) { puts envelope.message },
     #   connect_callback: -> (message) { puts message },
     #   heartbeat: 60,
     #   subscribe_timeout: 310,

@@ -23,7 +23,7 @@ module Pubnub
 
       if @compressed
         compressed_body = Formatter.format_message(@message, @cipher_key, false)
-        message = send_request(0, compressed_body)
+        message = send_request(compressed_body)
       else
         message = send_request
       end
@@ -93,6 +93,8 @@ module Pubnub
 
     def valid_envelope(parsed_response)
       Envelope.new(
+        event:            @event,
+        event_options:    @given_options,
         parsed_response:  parsed_response,
         message:          @message,
         channel:          @channel.first,
@@ -102,12 +104,19 @@ module Pubnub
     end
 
     def error_envelope(parsed_response, error)
-      ErrorEnvelope.new(
+      options = {
+        event:            @event,
+        event_options:    @given_options,
+        parsed_response:  parsed_response,
         error:            error,
         response_message: response_message(parsed_response),
         channel:          @channel.first,
         timetoken:        timetoken(parsed_response)
-      )
+      }
+
+      options.merge!(parsed_response) if parsed_response.is_a? Hash
+
+      ErrorEnvelope.new(options)
     end
   end
 end

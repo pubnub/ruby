@@ -50,6 +50,8 @@ module Pubnub
 
     def valid_envelope(parsed_response)
       Envelope.new(
+        event: @event,
+        event_options: @given_options,
         parsed_response: parsed_response,
         channel: parsed_response['channel'],
         payload: parsed_response['payload'],
