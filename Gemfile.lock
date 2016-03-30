@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    pubnub (3.8.0)
-      celluloid (~> 0.16)
+    pubnub (3.8.1)
+      celluloid (~> 0.17)
       httpclient (~> 2.6)
       json (~> 1.8)
 
@@ -47,7 +47,6 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     ffi (1.9.10-java)
     hitimes (1.2.3)
-    hitimes (1.2.3-java)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     httpclient (2.7.1)
