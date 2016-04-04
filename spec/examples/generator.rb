@@ -26,9 +26,9 @@ end
 
 # Other client to create some presence and messages
 pubnub_client = Pubnub.new(
-    :publish_key => 'pub-c-ef1905bd-3c9c-4bc7-9f20-f6ee1f50f79b',
-    :subscribe_key => 'sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f',
-    :secret_key => 'sec-c-OTA5NzI1YTMtOWEyNy00NTQzLTkzNzMtMjY3ZDlkYzk0NGU3',
+    :publish_key => 'pub-c-3b7455cb-acfe-4253-9273-f23248b30593',
+    :subscribe_key => 'sub-c-777bcd44-f825-11e5-861b-02ee2ddab7fe',
+    :secret_key => 'sec-c-MjRjYzVmNDUtZDJiNi00YTZmLTlhY2UtMzU3ZWE0ODU3MjMw',
     :uuid => 'john'
 )
 
@@ -48,17 +48,17 @@ end
 # Prepare client
 
 pubnub = Pubnub.new(
-    :publish_key => 'pub-c-ef1905bd-3c9c-4bc7-9f20-f6ee1f50f79b',
-    :subscribe_key => 'sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f',
-    :secret_key => 'sec-c-OTA5NzI1YTMtOWEyNy00NTQzLTkzNzMtMjY3ZDlkYzk0NGU3',
+    :publish_key => 'pub-c-3b7455cb-acfe-4253-9273-f23248b30593',
+    :subscribe_key => 'sub-c-777bcd44-f825-11e5-861b-02ee2ddab7fe',
+    :secret_key => 'sec-c-MjRjYzVmNDUtZDJiNi00YTZmLTlhY2UtMzU3ZWE0ODU3MjMw',
     :error_callback => @error_callback,
     :uuid => 'gentest'
 )
 
 pubnub_wo_pam_client = Pubnub.new(
-    :publish_key => 'pub-c-bda4e37b-f383-4acf-affd-cd8e66ed523b',
-    :subscribe_key => 'sub-c-243e56aa-1b13-11e5-a5e2-02ee2ddab7fe',
-    :secret_key => 'sec-c-OThjZDUyNjktY2ZlMS00MDc2LWJkODYtMmU4ZTk2MjY5ZGQ5',
+    :publish_key => 'pub-c-3b7455cb-acfe-4253-9273-f23248b30593',
+    :subscribe_key => 'sub-c-777bcd44-f825-11e5-861b-02ee2ddab7fe',
+    :secret_key => 'sec-c-MjRjYzVmNDUtZDJiNi00YTZmLTlhY2UtMzU3ZWE0ODU3MjMw',
     :uuid => 'gentest'
 )
 
@@ -142,7 +142,7 @@ events = {
 }
 
 events.each do |event, options|
-  file = File.open("spec/examples/#{event}_examples_spec.rb", 'w')
+  # file = File.open("spec/examples/#{event}_examples_spec.rb", 'w')
 
   all_tests = []
 

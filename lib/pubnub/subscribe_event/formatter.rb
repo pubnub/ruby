@@ -92,14 +92,45 @@ module Pubnub
       end
 
       def format_non_error_envelopes(parsed_response)
-        case parsed_response.size
-        when 2
-          format_single_channel(parsed_response)
-        when 3
-          format_multiple_channels(parsed_response)
-        when 4
-          format_channel_group_or_wc(parsed_response)
+        timetoken_update = parsed_response['t']
+        messages         = parsed_response['m']
+
+        if messages.empty?
+          envelopes = [Envelope.new(
+              event: @event,
+              event_options: @given_options,
+              parsed_response: parsed_response,
+              response_message: parsed_response,
+              timetoken: timetoken_update['t'],
+              region: timetoken_update['r']
+          )]
+        else
+          envelopes = messages.map do |message|
+            Envelope.new(
+                event: @event,
+                event_options: @given_options,
+                parsed_response: parsed_response,
+                message: message['d'],
+                channel: message['c'],
+                group: get_group(message['b']),
+                wildcard_channel: get_wildcard_channel(message['b']),
+                response_message: parsed_response,
+                timetoken: timetoken_update['t'],
+                region: timetoken_update['r']
+            )
+          end
         end
+
+        envelopes
+
+        # case parsed_response.size
+        # when 2
+        #   format_single_channel(parsed_response)
+        # when 3
+        #   format_multiple_channels(parsed_response)
+        # when 4
+        #   format_channel_group_or_wc(parsed_response)
+        # end
       end
 
       def format_envelopes(response)
@@ -114,6 +145,22 @@ module Pubnub
                     end
 
         add_common_data_to_envelopes(envelopes, response)
+      end
+
+      def get_wildcard_channel(subscription_match)
+        if subscription_match[-1] == '*'
+          subscription_match
+        else
+          ''
+        end
+      end
+
+      def get_group(subscription_match)
+        unless subscription_match[-1] == '*'
+          subscription_match
+        else
+          ''
+        end
       end
 
       def timetoken(parsed_response)

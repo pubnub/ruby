@@ -6,7 +6,7 @@ module Pubnub
     attr_accessor :channel, :message, :payload, :service, :timetoken
     attr_accessor :response_message, :error, :action, :uuid, :service, :uuids
     attr_accessor :timetoken_update, :group, :wildcard_channel, :id, :event_options
-    attr_accessor :event
+    attr_accessor :event, :region, :occupancy, :seqn, :ortt
 
     # subscribe, presence specific
     attr_accessor :timetoken_update

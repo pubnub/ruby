@@ -8,12 +8,13 @@ module Pubnub
 
       def validate!
         return if @skip_validate
-        # validate_channels!
+        validate_channels!
       end
 
       private
 
       def validate_channels!
+        binding.pry
         fail(
           ArgumentError.new(
             object: self,

@@ -103,24 +103,33 @@ module Pubnub
           Pubnub.logger.error('Pubnub::SubscribeEvent') { "Error while calling connection callback #{error.inspect}" }
         end
       end
+
       @app.timetoken = envelopes.first.timetoken
+      @app.region    = envelopes.first.region
       envelopes
+
     end
 
     def path
       '/' + [
+        'v2',
         'subscribe',
         @subscribe_key,
         Pubnub::Formatter.channels_for_url(@channel + @wildcard_channel),
-        0,
-        (@app.env[:timetoken] || 0)
+        0
       ].join('/').gsub(/\?/, '%3F')
     end
 
     def parameters
       params = super
+      params = add_timetoken_to_params(params)
       params = add_group_to_params(params)
       add_state_to_params(params)
+    end
+
+    def add_timetoken_to_params(params)
+      params.merge!({ t: {r: @app.current_region, t: @app.timetoken}.to_json })
+      params
     end
 
     def add_group_to_params(params)

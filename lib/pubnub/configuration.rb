@@ -20,6 +20,7 @@ module Pubnub
     DEFAULT_PORT                       = 80
     PERIODIC_TIMER_INTERVAL            = 0.25
     DEFAULT_TTL                        = 1440
+    DEFAULT_REGION                     = '0'
 
     private
 
@@ -35,7 +36,8 @@ module Pubnub
         reconnect_attempts: DEFAULT_RECONNECT_ATTEMPTS,
         reconnect_interval: DEFAULT_RECONNECT_INTERVAL,
         reconnect_callback: DEFAULT_RECONNECT_CALLBACK,
-        disconnect_callback: DEFAULT_DISCONNECT_CALLBACK
+        disconnect_callback: DEFAULT_DISCONNECT_CALLBACK,
+        region: DEFAULT_REGION
       }
     end
   end

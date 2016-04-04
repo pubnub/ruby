@@ -22,6 +22,8 @@ module Pubnub
       end
 
       def fire_async_callbacks(envelopes)
+        binding.pry
+
         envelopes.each do |envelope|
           try_group_cb(envelope)
           try_wildcard_presence_cb(envelope)

@@ -86,7 +86,7 @@ module Pubnub
       @current_subscription.async.terminate
       @current_subscription    = nil
       @current_subscription_id = nil
-      @app.timetoken = nil
+      @app.timetoken = 0
     end
 
     def start_subscription

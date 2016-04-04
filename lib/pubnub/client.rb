@@ -288,6 +288,25 @@ module Pubnub
       @env[:timetoken]
     end
 
+    # Retruns:
+    # ========
+    # Current region or default '0'
+    def current_region
+      @env[:region] || 0
+    end
+
+    # Parameters:
+    # ===========
+    # <dl>
+    #   <dt>region</dt>
+    #   <dd>New region.</dd>
+    # </dl>
+    # Returns:
+    # ========
+    # New region.
+    def region=(region)
+      @env[:region] = region
+    end
     # Parameters:
     # ===========
     # <dl>
@@ -315,7 +334,12 @@ module Pubnub
       @env[:events]
     end
 
-    def heartbeat
+    def sequence_number_for_publish!
+      @env[:sequence_number_for_publish] += 1
+      @env[:sequence_number_for_publish] % 2**32
+    end
+
+    def current_heartbeat
       @env[:heartbeat]
     end
 
@@ -341,6 +365,10 @@ module Pubnub
     def empty_state?
       return true unless @env[:state]
       totally_empty @env[:state]
+    end
+
+    def generate_ortt
+      (::Time.now.to_f*10_000_000).to_i
     end
 
     private
@@ -395,6 +423,7 @@ module Pubnub
         @env[k] = v unless @env[k]
       end
       @env[:timetoken] = 0
+      @env[:sequence_number_for_publish] = 0
     end
 
     def symbolize_options_keys(options)

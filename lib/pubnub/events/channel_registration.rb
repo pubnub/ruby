@@ -104,21 +104,23 @@ module Pubnub
 
     def valid_envelope(parsed_response)
       Envelope.new(
-        event: @event,
-        event_options: @given_options,
+        event:           @event,
+        event_options:   @given_options,
         parsed_response: parsed_response,
-        payload: parsed_response['payload'],
-        service: parsed_response['service'],
-        message: parsed_response['message'],
-        status:  parsed_response['status'],
-        error:   parsed_response['error']
+        payload:         parsed_response['payload'],
+        service:         parsed_response['service'],
+        message:         parsed_response['message'],
+        status:          parsed_response['status'],
+        error:           parsed_response['error'],
+        channel:         @given_options[:channel],
+        group:           @given_options[:group]
       )
     end
 
     def error_envelope(parsed_response, error)
       ErrorEnvelope.new(
-        event: @event,
-        event_options: @given_options,
+        event:            @event,
+        event_options:    @given_options,
         error:            error,
         response_message: response_message(parsed_response)
       )

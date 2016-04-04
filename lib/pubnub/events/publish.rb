@@ -10,6 +10,7 @@ module Pubnub
     def initialize(options, app)
       @event = :publish
       super
+      @sequence_number = nil
       @store = case @store
                when false
                  0
@@ -39,14 +40,22 @@ module Pubnub
     private
 
     def parameters
+      @sequence_number        = sequence_number!
+      @origination_time_token = @app.generate_ortt
+
       empty_if_blank = {
         store: @store,
         meta: @meta
       }
 
       empty_if_blank.delete_if { |_k, v| v.blank? }
-
-      super.merge(empty_if_blank)
+      params = {}
+      params = params.merge(empty_if_blank)
+      params = params.merge({
+                                seqn: @sequence_number,
+                                ortt: {t: @origination_time_token}.to_json
+                            })
+      super.merge(params)
     end
 
     def path
@@ -63,6 +72,10 @@ module Pubnub
       rpath.pop if @compressed
 
       '/' + rpath.join('/')
+    end
+
+    def sequence_number!
+      @app.sequence_number_for_publish!
     end
 
     def timetoken(parsed_response)
@@ -99,7 +112,9 @@ module Pubnub
         message:          @message,
         channel:          @channel.first,
         response_message: response_message(parsed_response),
-        timetoken:        timetoken(parsed_response)
+        timetoken:        timetoken(parsed_response),
+        seqn:             @sequence_number,
+        ortt:             @origination_time_token
       )
     end
 
@@ -111,7 +126,9 @@ module Pubnub
         error:            error,
         response_message: response_message(parsed_response),
         channel:          @channel.first,
-        timetoken:        timetoken(parsed_response)
+        timetoken:        timetoken(parsed_response),
+        seqn:             @sequence_number,
+        ortt:             @origination_time_token
       }
 
       options.merge!(parsed_response) if parsed_response.is_a? Hash

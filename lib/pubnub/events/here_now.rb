@@ -66,14 +66,15 @@ module Pubnub
 
     def valid_envelope(parsed_response)
       Envelope.new(
-        event: @event,
-        event_options: @given_options,
+        event:           @event,
+        event_options:   @given_options,
         parsed_response: parsed_response,
         payload:         parsed_response['payload'],
         service:         parsed_response['service'],
         message:         parsed_response['message'],
         status:          parsed_response['status'],
-        uuids:           parsed_response['uuids']
+        uuids:           parsed_response['uuids'],
+        occupancy:       parsed_response['occupancy']
       )
     end
 
