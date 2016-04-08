@@ -16,7 +16,6 @@ module Pubnub
     private
 
     def set_error_message
-      puts "\n\n#{@error.inspect}\n\n"
       @message = case @error.class.to_s
                  when 'JSON::ParserError'
                    '[0,"Invalid JSON in response."]'
