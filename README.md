@@ -3,7 +3,7 @@
 
 # Please direct all Support Questions and Concerns to Support@PubNub.com
 
-## PubNub Gem version 3.8.2
+## PubNub Gem version 3.8.3
 
 ##### YOU MUST HAVE A PUBNUB ACCOUNT TO USE THE API.
 ##### http://www.pubnub.com/account

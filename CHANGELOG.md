@@ -1,3 +1,6 @@
+##### 3.8.3
+* Restored auth_key and uuid setters. Important notice: they will be removed in v4 of this library.
+
 ##### 3.8.2
 * Added :include_token parameter to history call.
 
