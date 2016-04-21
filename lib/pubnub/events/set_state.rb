@@ -15,7 +15,7 @@ module Pubnub
 
     def parameters
       parameters = super
-      parameters.merge!(state: encode_state(@state))
+      parameters.merge!(state: encode_parameter(@state))
       parameters.merge!('channel-group' => format_channel_group(@group).join(',')) unless @group.blank?
       parameters
     end

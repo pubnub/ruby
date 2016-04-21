@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://pubsub.pubnub.com/v2/subscribe/sub-c-9a20ffa4-0243-11e6-861b-02ee2ddab7fe/rubytest-pnpres,ruby.*/0?channel-group=rubytest&pnsdk=PubNub-Ruby/4.0.0&t=%7B%22r%22:%220%22,%22t%22:0%7D&uuid=9c5f8bd3-fd07-4454-b8a0-d672a9c1f0bc
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.7.1, ruby 2.3.0 (2015-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 21 Apr 2016 07:08:46 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 21 Apr 2016 07:08:35 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '44'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"14612225142089256","r":2},"m":[]}'
+    http_version: 
+  recorded_at: Thu, 21 Apr 2016 07:08:47 GMT
+- request:
+    method: get
+    uri: https://pubsub.pubnub.com/v2/subscribe/sub-c-9a20ffa4-0243-11e6-861b-02ee2ddab7fe/rubytest-pnpres,ruby.*/0?channel-group=rubytest&pnsdk=PubNub-Ruby/4.0.0&t=%7B%22r%22:2,%22t%22:%2214612225142089256%22%7D&uuid=9c5f8bd3-fd07-4454-b8a0-d672a9c1f0bc
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.7.1, ruby 2.3.0 (2015-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 21 Apr 2016 07:08:48 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 21 Apr 2016 07:08:37 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '464'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"14612225164297221","r":2},"m":[{"a":"3","f":0,"i":"secondrubytester","s":947,"o":{"t":"14612225276258550"},"p":{"t":"14612225161504413","r":2},"k":"sub-c-9a20ffa4-0243-11e6-861b-02ee2ddab7fe","c":"ruby.test","d":"test_message","b":"ruby.*"},{"a":"3","f":0,"i":"secondrubytester","s":948,"o":{"t":"14612225279028120"},"p":{"t":"14612225164298386","r":2},"k":"sub-c-9a20ffa4-0243-11e6-861b-02ee2ddab7fe","c":"rubytest","d":"test_message","b":"rubytest"}]}'
+    http_version: 
+  recorded_at: Thu, 21 Apr 2016 07:08:48 GMT
+recorded_with: VCR 3.0.1

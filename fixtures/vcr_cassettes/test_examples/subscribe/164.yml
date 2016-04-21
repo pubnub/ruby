@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://pubsub.pubnub.com/v2/subscribe/sub-c-9a20ffa4-0243-11e6-861b-02ee2ddab7fe/rubytest,rubytest0-pnpres,rubytest1-pnpres/0?channel-group=rubytest&pnsdk=PubNub-Ruby/4.0.0&t=%7B%22r%22:%220%22,%22t%22:0%7D&uuid=ea3bcf33-f47c-4b62-af20-98f6f19c55bb
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.7.1, ruby 2.3.0 (2015-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 20 Apr 2016 22:46:05 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 Apr 2016 22:46:05 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '45'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"14611923646597498","r":12},"m":[]}'
+    http_version: 
+  recorded_at: Wed, 20 Apr 2016 22:46:05 GMT
+- request:
+    method: get
+    uri: https://pubsub.pubnub.com/v2/subscribe/sub-c-9a20ffa4-0243-11e6-861b-02ee2ddab7fe/rubytest,rubytest0-pnpres,rubytest1-pnpres/0?channel-group=rubytest&pnsdk=PubNub-Ruby/4.0.0&t=%7B%22r%22:12,%22t%22:%2214611923646597498%22%7D&uuid=ea3bcf33-f47c-4b62-af20-98f6f19c55bb
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.7.1, ruby 2.3.0 (2015-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 20 Apr 2016 22:46:06 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 Apr 2016 22:46:06 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '1320'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"14611923664139151","r":12},"m":[{"a":"3","f":0,"i":"secondrubytester","s":209,"o":{"t":"14611923659461088"},"p":{"t":"14611923659727966","r":3},"k":"sub-c-9a20ffa4-0243-11e6-861b-02ee2ddab7fe","c":"rubytest","d":"test_message","b":"rubytest"},{"a":"3","f":0,"i":"secondrubytester","s":209,"o":{"t":"14611923659461088"},"p":{"t":"14611923659727966","r":3},"k":"sub-c-9a20ffa4-0243-11e6-861b-02ee2ddab7fe","c":"rubytest","d":"test_message","b":"rubytest"},{"a":"3","f":0,"p":{"t":"14611923659468770","r":2},"k":"sub-c-9a20ffa4-0243-11e6-861b-02ee2ddab7fe","c":"rubytest1-pnpres","d":{"action":
+        "interval", "timestamp": 1461192365, "occupancy": 36},"b":"rubytest1-pnpres"},{"a":"3","f":0,"i":"secondrubytester","s":210,"o":{"t":"14611923660114172"},"p":{"t":"14611923660381385","r":3},"k":"sub-c-9a20ffa4-0243-11e6-861b-02ee2ddab7fe","c":"rubytest","d":"test_message","b":"rubytest"},{"a":"3","f":0,"i":"secondrubytester","s":210,"o":{"t":"14611923660114172"},"p":{"t":"14611923660381385","r":3},"k":"sub-c-9a20ffa4-0243-11e6-861b-02ee2ddab7fe","c":"rubytest","d":"test_message","b":"rubytest"},{"a":"3","f":0,"p":{"t":"14611923662732627","r":1},"k":"sub-c-9a20ffa4-0243-11e6-861b-02ee2ddab7fe","c":"rubytest0-pnpres","d":{"action":
+        "interval", "timestamp": 1461192366, "occupancy": 36},"b":"rubytest0-pnpres"}]}'
+    http_version: 
+  recorded_at: Wed, 20 Apr 2016 22:46:06 GMT
+recorded_with: VCR 3.0.1

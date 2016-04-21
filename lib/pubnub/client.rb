@@ -181,10 +181,28 @@ module Pubnub
     # ========
     # True if client is subscribed to at least one channel or channel group, otherwise false.
     def subscribed?
-      if @env[:subscription_pool].empty?
+      if @subscriber.nil?
         false
       else
-        !@env[:subscription_pool].map(&:empty?).index(false)
+        ![@subscriber.channels, @subscriber.groups, @subscriber.wildcard_channels].flatten.empty?
+      end
+    end
+
+    # Returns:
+    # ========
+    # Hash with two keys: :channel and :group, representing currently subscribed channels and groups.
+    def subscribed_to(separate_wildcard = false)
+      if separate_wildcard
+        {
+            channel: @subscriber.channels,
+            group: @subscriber.groups,
+            wildcard_channel: @subscriber.wildcard_channels
+        }
+      else
+        {
+            channel: @subscriber.channels + @subscriber.wildcard_channels,
+            group: @subscriber.groups
+        }
       end
     end
 

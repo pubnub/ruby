@@ -170,8 +170,8 @@ module Pubnub
       ::Time.now.to_i
     end
 
-    def encode_state(state)
-      URI.encode_www_form_component(state.to_json).gsub('+', '%20')
+    def encode_parameter(parameter)
+      URI.encode_www_form_component(parameter.to_json).gsub('+', '%20')
     end
   end
 end

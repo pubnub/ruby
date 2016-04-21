@@ -39,18 +39,42 @@ module Pubnub
 
     private
 
+    def conflict_with?(event)
+      channels, groups, wildcard_channels = event.channel, event.group, event.wildcard_channel
+
+      checks  = channels.map          { |channel|          subscribed_to?(:channel, channel) }
+      checks += groups.map            { |group|            subscribed_to?(:group, group) }
+      checks += wildcard_channels.map { |wildcard_channel| subscribed_to?(:wildcard_channel, wildcard_channel) }
+
+      raise "Can't subscribe, conflicts with currently running subscription." if checks.include?(true)
+    end
+
+    def subscribed_to?(type, name)
+      case type
+      when :channel
+        @channels.include? name
+      when :group
+        @groups.include? name
+      when :wildcard_channel
+        @wildcard_channels.include? name
+      end
+    end
+
     def add_channels(event)
       @channels += event.channel
+      @channels.uniq!
       @callbacks[:channels].merge! event.c_cb_pool
     end
 
     def add_groups(event)
       @groups += event.group
+      @groups.uniq!
       @callbacks[:groups].merge! event.g_cb_pool
     end
 
     def add_wildcard_channels(event)
       @wildcard_channels += event.wildcard_channel
+      @wildcard_channels.uniq!
       @callbacks[:wildcard_channels].merge! event.wc_cb_pool
     end
 
@@ -66,8 +90,8 @@ module Pubnub
 
     def remove_wildcard_channels(event)
       @wildcard_channels -= event.wildcard_channel
-      event.wildcard_channel.each do |_wildcard_channel|
-        @callbacks[:wildcard_channels].delete_if { |k, _v| k.to_sym == wildcard_channels.to_sym }
+      event.wildcard_channel.each do |wildcard_channel|
+        @callbacks[:wildcard_channels].delete_if { |k, _v| k.to_sym == wildcard_channel.to_sym }
       end
     end
 

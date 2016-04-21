@@ -128,7 +128,7 @@ module Pubnub
     end
 
     def add_timetoken_to_params(params)
-      params.merge!({ t: {r: @app.current_region, t: @app.timetoken}.to_json })
+      params.merge!({ t: encode_parameter({r: @app.current_region, t: @app.timetoken}) })
       params
     end
 
@@ -139,7 +139,7 @@ module Pubnub
 
     def add_state_to_params(params)
       params.merge!(
-        state: encode_state(@app.env[:state][@origin][:channel].merge(@app.env[:state][@origin][:group]))
+        state: encode_parameter(@app.env[:state][@origin][:channel].merge(@app.env[:state][@origin][:group]))
       ) unless @app.empty_state?
       params
     end

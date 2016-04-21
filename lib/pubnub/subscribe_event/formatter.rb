@@ -148,6 +148,7 @@ module Pubnub
       end
 
       def get_wildcard_channel(subscription_match)
+        return '' if subscription_match.nil?
         if subscription_match[-1] == '*'
           subscription_match
         else
@@ -156,6 +157,7 @@ module Pubnub
       end
 
       def get_group(subscription_match)
+        return '' if subscription_match.nil?
         unless subscription_match[-1] == '*'
           subscription_match
         else

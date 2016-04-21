@@ -26,8 +26,7 @@ module Pubnub
     end
 
     def mark_as_timetoken
-      if (@parsed_response[0].empty?) &&
-         (@parsed_response[1].size == 17)
+      if @parsed_response['t'] && @parsed_response['m'].empty?
         @timetoken_update = true
       else
         @timetoken_update = false
