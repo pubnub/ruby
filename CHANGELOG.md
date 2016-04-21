@@ -1,3 +1,6 @@
+##### 4.0.0
+* Removed auth_key and uuid setters
+
 ##### 3.8.3
 * Restored auth_key and uuid setters. Important notice: they will be removed in v4 of this library.
 
