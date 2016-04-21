@@ -20,7 +20,7 @@ describe Pubnub::Audit do
       @after_error_callback = true
     }
 
-    @callback = -> (envelope) do
+    @callback = ->(envelope) do
       if envelope.error?
         error_callback.call envelope
       else

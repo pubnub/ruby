@@ -22,7 +22,7 @@ describe 'Custom retries' do
 
     @error_envelope, @success_envelope = nil, nil
 
-    publish_callback = -> (envelope) do
+    publish_callback = ->(envelope) do
       # Check if envelope is error, when it is, it grants right to publish on given channel (if it was forbidden) and repeats publishing.
       if envelope.error?
         @error_envelope = envelope

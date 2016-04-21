@@ -13,7 +13,7 @@ describe Pubnub::Publish do
       @error_envelopes << envelope
     end
 
-    @callback = -> (envelope) do
+    @callback = ->(envelope) do
       if envelope.error?
         error_callback.call envelope
       else
