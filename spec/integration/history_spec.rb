@@ -306,4 +306,24 @@ describe Pubnub::History do
       end
     end
   end
+
+  context 'specific for include_token' do
+    it 'works fine with include_token' do
+      VCR.use_cassette('integration/history/include_token', :record => :once) do
+        enve = @pn.history(http_sync: true, channel: 'bot', count: 4, callback: @callback, include_token: true)
+
+        enve[0].message.should eq '******......... 3491 - 2016-04-13 03:50:06'
+        enve[0].timetoken.should eq 14605446066210865
+
+        enve[1].message.should eq '*******........ 3492 - 2016-04-13 03:50:07'
+        enve[1].timetoken.should eq 14605446077902610
+
+        enve[2].message.should eq '********....... 3493 - 2016-04-13 03:50:08'
+        enve[2].timetoken.should eq 14605446089621213
+
+        enve[3].message.should eq '*********...... 3494 - 2016-04-13 03:50:10'
+        enve[3].timetoken.should eq 14605446101325777
+      end
+    end
+  end
 end

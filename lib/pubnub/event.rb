@@ -137,7 +137,7 @@ module Pubnub
                      open_timeout read_timeout idle_timeout heartbeat
                      group action read write manage ttl presence start
                      end count reverse presence_callback store skip_validate
-                     state channel_group compressed meta customs)
+                     state channel_group compressed meta customs include_token)
 
       options = options.each_with_object({}) { |option, obj| obj[option.first.to_sym] = option.last }
 

@@ -12,10 +12,20 @@ module Pubnub
 
     private
 
-    def timetoken(parsed_response)
-      parsed_response[2]
-    rescue
-      nil
+    def timetoken(message)
+      if @include_token
+        message['timetoken']
+      else
+        nil
+      end
+    end
+
+    def message(message)
+      if @include_token
+        message['message']
+      else
+        message
+      end
     end
 
     def response_message(parsed_response)
@@ -37,10 +47,11 @@ module Pubnub
 
     def parameters
       params = super
-      params.merge!(start:   @start) if @start
-      params.merge!(end:     @end)   if @end
-      params.merge!(count:   @count) if @count
-      params.merge!(reverse: 'true') if @reverse
+      params.merge!(start:   @start)       if @start
+      params.merge!(end:     @end)         if @end
+      params.merge!(count:   @count)       if @count
+      params.merge!(reverse: 'true')       if @reverse
+      params.merge!(include_token: 'true') if @include_token
       params
     end
 
@@ -60,15 +71,15 @@ module Pubnub
 
     def valid_envelopes(parsed_response)
       parsed_response.first.map do |message|
-        Envelope.new(
-          event: @event,
-          event_options: @given_options, parsed_response:  parsed_response,
-          message:          message,
-          channel:          @channel.first,
-          response_message: response_message(parsed_response),
-          timetoken:        timetoken(parsed_response),
-          history_start:    parsed_response[1],
-          history_end:      parsed_response[2])
+        Envelope.new(event: @event,
+                     event_options: @given_options, parsed_response:  parsed_response,
+                     parsed_response:  parsed_response,
+                     message:          message(message),
+                     channel:          @channel.first,
+                     response_message: response_message(parsed_response),
+                     timetoken:        timetoken(message),
+                     history_start:    parsed_response[1],
+                     history_end:      parsed_response[2])
       end
     end
 
