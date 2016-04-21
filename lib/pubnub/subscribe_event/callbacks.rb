@@ -13,12 +13,27 @@ module Pubnub
 
       def fire_callbacks(envelopes)
         if @http_sync
-          super
+          fire_sync_callbacks(envelopes)
         else
           Pubnub.logger.debug('Pubnub') { "Firing callbacks for #{self.class}" }
           fire_async_callbacks(envelopes)
         end
         envelopes
+      end
+
+      def fire_sync_callbacks(envelopes)
+        envelopes.each do |envelope|
+          fire_respective_callback_for envelope
+        end
+      end
+
+      def fire_respective_callback_for(envelope)
+        return if envelope.timetoken_update
+        if !envelope.wildcard_channel.blank? && envelope.channel.index('-pnpres') && @presence_callback
+          secure_call @presence_callback, envelope
+        else
+          secure_call @callback, envelope
+        end
       end
 
       def fire_async_callbacks(envelopes)

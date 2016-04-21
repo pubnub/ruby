@@ -2565,8 +2565,8 @@ it 'works fine with channel_ruby.*_group__presence__presence_callback_@presence_
     @pubnub.subscribe({:channel=>"ruby.*", :group=>nil, :presence=>nil, :presence_callback=>@presence_callback, :ssl=>true, :http_sync=>true}){ |e| @callback.call(e) }
   end
 sleep 0.1
-expect(@message_output).to          eq ["test_message", {"action"=>"join", "timestamp"=>1461222412, "uuid"=>"b54a8f43-f1b8-483b-8c98-5cef9f20a40c", "occupancy"=>5}]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq ["test_message"]
+expect(@presence_message_output).to eq [{"action"=>"join", "timestamp"=>1461222412, "uuid"=>"b54a8f43-f1b8-483b-8c98-5cef9f20a40c", "occupancy"=>5}]
 end
 it 'works fine with channel_ruby.*_group__presence__presence_callback_@presence_callback_ssl_false_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/425', record: :none) do
@@ -2574,8 +2574,8 @@ it 'works fine with channel_ruby.*_group__presence__presence_callback_@presence_
     @pubnub.subscribe({:channel=>"ruby.*", :group=>nil, :presence=>nil, :presence_callback=>@presence_callback, :ssl=>false, :http_sync=>true}){ |e| @callback.call(e) }
   end
 sleep 0.1
-expect(@message_output).to          eq ["test_message", {"action"=>"join", "timestamp"=>1461222413, "uuid"=>"8aa301e2-af29-4dda-9096-6c2c70f74a33", "occupancy"=>6}]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq ["test_message"]
+expect(@presence_message_output).to eq [{"action"=>"join", "timestamp"=>1461222413, "uuid"=>"8aa301e2-af29-4dda-9096-6c2c70f74a33", "occupancy"=>6}]
 end
 it 'works fine with channel_ruby.*_group__presence__callback_@callback_ssl_true_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/426', record: :none) do
@@ -2601,8 +2601,8 @@ it 'works fine with channel_ruby.*_group__presence__callback_@callback_presence_
     @pubnub.subscribe({:channel=>"ruby.*", :group=>nil, :presence=>nil, :callback=>@callback, :presence_callback=>@presence_callback, :ssl=>true, :http_sync=>true})
   end
 sleep 0.1
-expect(@message_output).to          eq ["test_message", {"action"=>"join", "timestamp"=>1461222424, "uuid"=>"b21951a7-e877-4d02-9e1c-30dd6856b1c7", "occupancy"=>11}]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq ["test_message"]
+expect(@presence_message_output).to eq [{"action"=>"join", "timestamp"=>1461222424, "uuid"=>"b21951a7-e877-4d02-9e1c-30dd6856b1c7", "occupancy"=>11}]
 end
 it 'works fine with channel_ruby.*_group__presence__callback_@callback_presence_callback_@presence_callback_ssl_false_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/431', record: :none) do
@@ -2610,8 +2610,8 @@ it 'works fine with channel_ruby.*_group__presence__callback_@callback_presence_
     @pubnub.subscribe({:channel=>"ruby.*", :group=>nil, :presence=>nil, :callback=>@callback, :presence_callback=>@presence_callback, :ssl=>false, :http_sync=>true})
   end
 sleep 0.1
-expect(@message_output).to          eq ["test_message", {"action"=>"join", "timestamp"=>1461222425, "uuid"=>"e90de25b-c538-485c-9d22-2509d104f0cd", "occupancy"=>12}]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq ["test_message"]
+expect(@presence_message_output).to eq [{"action"=>"join", "timestamp"=>1461222425, "uuid"=>"e90de25b-c538-485c-9d22-2509d104f0cd", "occupancy"=>12}]
 end
 it 'works fine with channel_ruby.*_group__presence_rubytest_ssl_true_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/432', record: :none) do
@@ -2637,8 +2637,8 @@ it 'works fine with channel_ruby.*_group__presence_rubytest_presence_callback_@p
     @pubnub.subscribe({:channel=>"ruby.*", :group=>nil, :presence=>:rubytest, :presence_callback=>@presence_callback, :ssl=>true, :http_sync=>true}){ |e| @callback.call(e) }
   end
 sleep 0.1
-expect(@message_output).to          eq ["test_message", {"action"=>"join", "timestamp"=>1461222435, "uuid"=>"67764ecb-1fbb-4c2e-8e1a-b855315b2770", "occupancy"=>17}]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq ["test_message"]
+expect(@presence_message_output).to eq [{"action"=>"join", "timestamp"=>1461222435, "uuid"=>"67764ecb-1fbb-4c2e-8e1a-b855315b2770", "occupancy"=>17}]
 end
 it 'works fine with channel_ruby.*_group__presence_rubytest_presence_callback_@presence_callback_ssl_false_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/437', record: :none) do
@@ -2646,8 +2646,8 @@ it 'works fine with channel_ruby.*_group__presence_rubytest_presence_callback_@p
     @pubnub.subscribe({:channel=>"ruby.*", :group=>nil, :presence=>:rubytest, :presence_callback=>@presence_callback, :ssl=>false, :http_sync=>true}){ |e| @callback.call(e) }
   end
 sleep 0.1
-expect(@message_output).to          eq ["test_message", {"action"=>"join", "timestamp"=>1461222437, "uuid"=>"c903d9f2-275f-41d5-9180-0ba1bd6db01a", "occupancy"=>18}]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq ["test_message"]
+expect(@presence_message_output).to eq [{"action"=>"join", "timestamp"=>1461222437, "uuid"=>"c903d9f2-275f-41d5-9180-0ba1bd6db01a", "occupancy"=>18}]
 end
 it 'works fine with channel_ruby.*_group__presence_rubytest_callback_@callback_ssl_true_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/438', record: :none) do
@@ -2790,8 +2790,8 @@ it 'works fine with channel_ruby.*_group_rubytest_presence__presence_callback_@p
     @pubnub.subscribe({:channel=>"ruby.*", :group=>:rubytest, :presence=>nil, :presence_callback=>@presence_callback, :ssl=>false, :http_sync=>true}){ |e| @callback.call(e) }
   end
 sleep 0.1
-expect(@message_output).to          eq ["test_message", "test_message", {"action"=>"interval", "timestamp"=>1461222482, "occupancy"=>41}]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq ["test_message", "test_message"]
+expect(@presence_message_output).to eq [{"action"=>"interval", "timestamp"=>1461222482, "occupancy"=>41}]
 end
 it 'works fine with channel_ruby.*_group_rubytest_presence__callback_@callback_ssl_true_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/462', record: :none) do
@@ -3006,8 +3006,8 @@ it 'works fine with channel_ruby.*_group_[:rubytest0, :rubytest1]_presence__pres
     @pubnub.subscribe({:channel=>"ruby.*", :group=>[:rubytest0, :rubytest1], :presence=>nil, :presence_callback=>@presence_callback, :ssl=>false, :http_sync=>true}){ |e| @callback.call(e) }
   end
 sleep 0.1
-expect(@message_output).to          eq ["test_message", "test_message", {"action"=>"interval", "timestamp"=>1461222622, "occupancy"=>78}, "test_message"]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq ["test_message", "test_message", "test_message"]
+expect(@presence_message_output).to eq [{"action"=>"interval", "timestamp"=>1461222622, "occupancy"=>78}]
 end
 it 'works fine with channel_ruby.*_group_[:rubytest0, :rubytest1]_presence__callback_@callback_ssl_true_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/498', record: :none) do
@@ -3033,8 +3033,8 @@ it 'works fine with channel_ruby.*_group_[:rubytest0, :rubytest1]_presence__call
     @pubnub.subscribe({:channel=>"ruby.*", :group=>[:rubytest0, :rubytest1], :presence=>nil, :callback=>@callback, :presence_callback=>@presence_callback, :ssl=>true, :http_sync=>true})
   end
 sleep 0.1
-expect(@message_output).to          eq ["test_message", {"action"=>"interval", "timestamp"=>1461222632, "occupancy"=>83}, "test_message", "test_message"]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq ["test_message", "test_message", "test_message"]
+expect(@presence_message_output).to eq [{"action"=>"interval", "timestamp"=>1461222632, "occupancy"=>83}]
 end
 it 'works fine with channel_ruby.*_group_[:rubytest0, :rubytest1]_presence__callback_@callback_presence_callback_@presence_callback_ssl_false_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/503', record: :none) do
@@ -3249,8 +3249,8 @@ it 'works fine with channel_[:rubytest, "ruby.*"]_group__presence__callback_@cal
     @pubnub.subscribe({:channel=>[:rubytest, "ruby.*"], :group=>nil, :presence=>nil, :callback=>@callback, :presence_callback=>@presence_callback, :ssl=>true, :http_sync=>true})
   end
 sleep 0.1
-expect(@message_output).to          eq ["test_message", "test_message", {"action"=>"interval", "timestamp"=>1461222702, "occupancy"=>119}]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq ["test_message", "test_message"]
+expect(@presence_message_output).to eq [{"action"=>"interval", "timestamp"=>1461222702, "occupancy"=>119}]
 end
 it 'works fine with channel_[:rubytest, "ruby.*"]_group__presence__callback_@callback_presence_callback_@presence_callback_ssl_false_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/539', record: :none) do
@@ -3402,8 +3402,8 @@ it 'works fine with channel_[:rubytest, "ruby.*"]_group__presence_[:rubytest0, :
     @pubnub.subscribe({:channel=>[:rubytest, "ruby.*"], :group=>nil, :presence=>[:rubytest0, :rubytest1], :callback=>@callback, :presence_callback=>@presence_callback, :ssl=>false, :http_sync=>true})
   end
 sleep 0.1
-expect(@message_output).to          eq [{"action"=>"interval", "timestamp"=>1461222792, "occupancy"=>109}]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq []
+expect(@presence_message_output).to eq [{"action"=>"interval", "timestamp"=>1461222792, "occupancy"=>109}]
 end
 it 'works fine with channel_[:rubytest, "ruby.*"]_group_rubytest_presence__ssl_true_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/564', record: :none) do
@@ -3429,8 +3429,8 @@ it 'works fine with channel_[:rubytest, "ruby.*"]_group_rubytest_presence__prese
     @pubnub.subscribe({:channel=>[:rubytest, "ruby.*"], :group=>:rubytest, :presence=>nil, :presence_callback=>@presence_callback, :ssl=>true, :http_sync=>true}){ |e| @callback.call(e) }
   end
 sleep 0.1
-expect(@message_output).to          eq ["test_message", "test_message", {"action"=>"interval", "timestamp"=>1461222802, "occupancy"=>108}, "test_message", "test_message", "test_message"]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq ["test_message", "test_message", "test_message", "test_message", "test_message"]
+expect(@presence_message_output).to eq [{"action"=>"interval", "timestamp"=>1461222802, "occupancy"=>108}]
 end
 it 'works fine with channel_[:rubytest, "ruby.*"]_group_rubytest_presence__presence_callback_@presence_callback_ssl_false_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/569', record: :none) do
@@ -3537,8 +3537,8 @@ it 'works fine with channel_[:rubytest, "ruby.*"]_group_rubytest_presence_rubyte
     @pubnub.subscribe({:channel=>[:rubytest, "ruby.*"], :group=>:rubytest, :presence=>:rubytest, :callback=>@callback, :presence_callback=>@presence_callback, :ssl=>true, :http_sync=>true})
   end
 sleep 0.1
-expect(@message_output).to          eq [{"action"=>"interval", "timestamp"=>1461223072, "occupancy"=>30}]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq []
+expect(@presence_message_output).to eq [{"action"=>"interval", "timestamp"=>1461223072, "occupancy"=>30}]
 end
 it 'works fine with channel_[:rubytest, "ruby.*"]_group_rubytest_presence_rubytest_callback_@callback_presence_callback_@presence_callback_ssl_false_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/587', record: :none) do
@@ -3546,8 +3546,8 @@ it 'works fine with channel_[:rubytest, "ruby.*"]_group_rubytest_presence_rubyte
     @pubnub.subscribe({:channel=>[:rubytest, "ruby.*"], :group=>:rubytest, :presence=>:rubytest, :callback=>@callback, :presence_callback=>@presence_callback, :ssl=>false, :http_sync=>true})
   end
 sleep 0.1
-expect(@message_output).to          eq ["test_message", "test_message", {"action"=>"join", "timestamp"=>1461223143, "uuid"=>"f0d4592b-cdb7-4560-90ee-cf8926a1673e", "occupancy"=>14}, {"action"=>"join", "timestamp"=>1461223143, "uuid"=>"f0d4592b-cdb7-4560-90ee-cf8926a1673e", "occupancy"=>15}, "test_message", "test_message", "test_message"]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq ["test_message", "test_message", {"action"=>"join", "timestamp"=>1461223143, "uuid"=>"f0d4592b-cdb7-4560-90ee-cf8926a1673e", "occupancy"=>15}, "test_message", "test_message", "test_message"]
+expect(@presence_message_output).to eq [{"action"=>"join", "timestamp"=>1461223143, "uuid"=>"f0d4592b-cdb7-4560-90ee-cf8926a1673e", "occupancy"=>14}]
 end
 it 'works fine with channel_[:rubytest, "ruby.*"]_group_rubytest_presence_[:rubytest0, :rubytest1]_ssl_true_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/588', record: :none) do
@@ -3573,8 +3573,8 @@ it 'works fine with channel_[:rubytest, "ruby.*"]_group_rubytest_presence_[:ruby
     @pubnub.subscribe({:channel=>[:rubytest, "ruby.*"], :group=>:rubytest, :presence=>[:rubytest0, :rubytest1], :presence_callback=>@presence_callback, :ssl=>true, :http_sync=>true}){ |e| @callback.call(e) }
   end
 sleep 0.1
-expect(@message_output).to          eq [{"action"=>"join", "timestamp"=>1461223153, "uuid"=>"secondrubytester", "occupancy"=>1}, {"action"=>"join", "timestamp"=>1461223153, "uuid"=>"secondrubytester", "occupancy"=>1}, {"action"=>"join", "timestamp"=>1461223154, "uuid"=>"2913eb01-a4f8-4049-a298-233b37a7db3b", "occupancy"=>19}, {"action"=>"leave", "timestamp"=>1461223154, "uuid"=>"secondrubytester", "occupancy"=>0}]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq [{"action"=>"join", "timestamp"=>1461223153, "uuid"=>"secondrubytester", "occupancy"=>1}, {"action"=>"join", "timestamp"=>1461223153, "uuid"=>"secondrubytester", "occupancy"=>1}, {"action"=>"leave", "timestamp"=>1461223154, "uuid"=>"secondrubytester", "occupancy"=>0}]
+expect(@presence_message_output).to eq [{"action"=>"join", "timestamp"=>1461223154, "uuid"=>"2913eb01-a4f8-4049-a298-233b37a7db3b", "occupancy"=>19}]
 end
 it 'works fine with channel_[:rubytest, "ruby.*"]_group_rubytest_presence_[:rubytest0, :rubytest1]_presence_callback_@presence_callback_ssl_false_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/593', record: :none) do
@@ -3582,8 +3582,8 @@ it 'works fine with channel_[:rubytest, "ruby.*"]_group_rubytest_presence_[:ruby
     @pubnub.subscribe({:channel=>[:rubytest, "ruby.*"], :group=>:rubytest, :presence=>[:rubytest0, :rubytest1], :presence_callback=>@presence_callback, :ssl=>false, :http_sync=>true}){ |e| @callback.call(e) }
   end
 sleep 0.1
-expect(@message_output).to          eq ["test_message", "test_message", {"action"=>"join", "timestamp"=>1461223155, "uuid"=>"0584db48-2d96-4117-a7eb-075828ab11b9", "occupancy"=>20}]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq ["test_message", "test_message"]
+expect(@presence_message_output).to eq [{"action"=>"join", "timestamp"=>1461223155, "uuid"=>"0584db48-2d96-4117-a7eb-075828ab11b9", "occupancy"=>20}]
 end
 it 'works fine with channel_[:rubytest, "ruby.*"]_group_rubytest_presence_[:rubytest0, :rubytest1]_callback_@callback_ssl_true_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/594', record: :none) do
@@ -3609,8 +3609,8 @@ it 'works fine with channel_[:rubytest, "ruby.*"]_group_rubytest_presence_[:ruby
     @pubnub.subscribe({:channel=>[:rubytest, "ruby.*"], :group=>:rubytest, :presence=>[:rubytest0, :rubytest1], :callback=>@callback, :presence_callback=>@presence_callback, :ssl=>true, :http_sync=>true})
   end
 sleep 0.1
-expect(@message_output).to          eq [{"action"=>"interval", "timestamp"=>1461223257, "occupancy"=>25}]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq []
+expect(@presence_message_output).to eq [{"action"=>"interval", "timestamp"=>1461223257, "occupancy"=>25}]
 end
 it 'works fine with channel_[:rubytest, "ruby.*"]_group_rubytest_presence_[:rubytest0, :rubytest1]_callback_@callback_presence_callback_@presence_callback_ssl_false_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/599', record: :none) do
@@ -3618,8 +3618,8 @@ it 'works fine with channel_[:rubytest, "ruby.*"]_group_rubytest_presence_[:ruby
     @pubnub.subscribe({:channel=>[:rubytest, "ruby.*"], :group=>:rubytest, :presence=>[:rubytest0, :rubytest1], :callback=>@callback, :presence_callback=>@presence_callback, :ssl=>false, :http_sync=>true})
   end
 sleep 0.1
-expect(@message_output).to          eq [{"action"=>"interval", "timestamp"=>1461223267, "occupancy"=>23}]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq []
+expect(@presence_message_output).to eq [{"action"=>"interval", "timestamp"=>1461223267, "occupancy"=>23}]
 end
 it 'works fine with channel_[:rubytest, "ruby.*"]_group_[:rubytest0, :rubytest1]_presence__ssl_true_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/600', record: :none) do
@@ -3762,8 +3762,8 @@ it 'works fine with channel_[:rubytest, "ruby.*"]_group_[:rubytest0, :rubytest1]
     @pubnub.subscribe({:channel=>[:rubytest, "ruby.*"], :group=>[:rubytest0, :rubytest1], :presence=>:rubytest, :callback=>@callback, :presence_callback=>@presence_callback, :ssl=>false, :http_sync=>true})
   end
 sleep 0.1
-expect(@message_output).to          eq ["test_message", {"action"=>"interval", "timestamp"=>1461223367, "occupancy"=>41}, {"action"=>"interval", "timestamp"=>1461223367, "occupancy"=>40}]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq ["test_message", {"action"=>"interval", "timestamp"=>1461223367, "occupancy"=>41}]
+expect(@presence_message_output).to eq [{"action"=>"interval", "timestamp"=>1461223367, "occupancy"=>40}]
 end
 it 'works fine with channel_[:rubytest, "ruby.*"]_group_[:rubytest0, :rubytest1]_presence_[:rubytest0, :rubytest1]_ssl_true_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/624', record: :none) do
@@ -3789,8 +3789,8 @@ it 'works fine with channel_[:rubytest, "ruby.*"]_group_[:rubytest0, :rubytest1]
     @pubnub.subscribe({:channel=>[:rubytest, "ruby.*"], :group=>[:rubytest0, :rubytest1], :presence=>[:rubytest0, :rubytest1], :presence_callback=>@presence_callback, :ssl=>true, :http_sync=>true}){ |e| @callback.call(e) }
   end
 sleep 0.1
-expect(@message_output).to          eq [{"action"=>"interval", "timestamp"=>1461223377, "occupancy"=>44}]
-expect(@presence_message_output).to eq []
+expect(@message_output).to          eq []
+expect(@presence_message_output).to eq [{"action"=>"interval", "timestamp"=>1461223377, "occupancy"=>44}]
 end
 it 'works fine with channel_[:rubytest, "ruby.*"]_group_[:rubytest0, :rubytest1]_presence_[:rubytest0, :rubytest1]_presence_callback_@presence_callback_ssl_false_http_sync_true' do
   VCR.use_cassette('test_examples/subscribe/629', record: :none) do
