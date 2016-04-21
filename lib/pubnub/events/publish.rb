@@ -53,7 +53,7 @@ module Pubnub
       params = params.merge(empty_if_blank)
       params = params.merge({
                                 seqn: @sequence_number,
-                                ortt: {t: @origination_time_token}.to_json
+                                ortt: Formatter.encode({t: @origination_time_token}.to_json)
                             })
       super.merge(params)
     end

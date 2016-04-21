@@ -47,6 +47,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     ffi (1.9.10-java)
     hitimes (1.2.3)
+    hitimes (1.2.3-java)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     httpclient (2.7.1)
