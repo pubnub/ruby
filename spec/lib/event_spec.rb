@@ -45,7 +45,7 @@ shared_examples 'an event' do
 
     it 'creates specific instance variables from options' do
       vars = [:@origin, :@channel, :@message, :@http_sync, :@callback,
-              :@connect_callback, :@ssl, :@cipher_key,
+              :@ssl, :@cipher_key,
               :@secret_key, :@auth_key, :@publish_key, :@subscribe_key,
               :@timetoken, :@channels, :@customs]
 

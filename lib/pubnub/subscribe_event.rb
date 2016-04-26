@@ -67,10 +67,10 @@ module Pubnub
 
       begin
         req = request_dispatcher.get(uri.to_s)
-        @app.env[:reconnect_callback].call('Reconnected') if retries > 0
+        # @app.env[:reconnect_callback].call('Reconnected') if retries > 0 TODO: RECONNECT CALLBACK
       rescue => error
         Pubnub.logger.warn('Pubnub') { "Connection lost! Reason: #{error}" }
-        @app.env[:disconnect_callback].call("Disconnected. Retry no. #{retries}")
+        # @app.env[:disconnect_callback].call("Disconnected. Retry no. #{retries}") TODO: DISCONNECT CALLBACK
         if retries < @app.env[:reconnect_attempts]
           req = retry_sending_request(retries)
         else
@@ -97,11 +97,7 @@ module Pubnub
 
     def finalize_event(envelopes)
       if @app.env[:timetoken] == 0
-        begin
-          @app.env[:connect_callback].call 'Connected!' if @app.env[:connect_callback]
-        rescue => error
-          Pubnub.logger.error('Pubnub::SubscribeEvent') { "Error while calling connection callback #{error.inspect}" }
-        end
+        # @app.env[:connect_callback].call 'Connected!' if @app.env[:connect_callback] # TODO: CONNECT CALLBACK
       end
 
       @app.timetoken = envelopes.first.timetoken

@@ -132,7 +132,7 @@ module Pubnub
 
     def create_variables_from_options(options)
       variables = %w(channel channels message http_sync callback
-                     connect_callback ssl cipher_key secret_key auth_key
+                     ssl cipher_key secret_key auth_key
                      publish_key subscribe_key timetoken
                      open_timeout read_timeout idle_timeout heartbeat
                      group action read write manage ttl presence start

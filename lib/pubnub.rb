@@ -27,7 +27,6 @@ module Pubnub
   class << self
     attr_accessor :logger, :client
 
-    # TODO: docs
     def new(options = {})
       Pubnub::Client.new(options)
     end

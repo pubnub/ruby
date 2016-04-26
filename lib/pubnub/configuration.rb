@@ -2,7 +2,6 @@
 module Pubnub
   # That module holds default configuration values.
   module Configuration
-    DEFAULT_CONNECT_CALLBACK           = ->(msg) { msg.inspect }
     DEFAULT_READ_TIMEOUT               = 10
     DEFAULT_OPEN_TIMEOUT               = 10
     DEFAULT_IDLE_TIMEOUT               = 10
@@ -14,8 +13,6 @@ module Pubnub
     DEFAULT_H_IDLE_TIMEOUT             = 10
     DEFAULT_RECONNECT_ATTEMPTS         = 10
     DEFAULT_RECONNECT_INTERVAL         = 10
-    DEFAULT_RECONNECT_CALLBACK         = DEFAULT_CONNECT_CALLBACK
-    DEFAULT_DISCONNECT_CALLBACK        = DEFAULT_CONNECT_CALLBACK
     DEFAULT_ORIGINS_POOL               = ['pubsub.pubnub.com']
     DEFAULT_PORT                       = 80
     PERIODIC_TIMER_INTERVAL            = 0.25
@@ -26,7 +23,6 @@ module Pubnub
 
     def default_values
       { origins_pool: DEFAULT_ORIGINS_POOL,
-        connect_callback: DEFAULT_CONNECT_CALLBACK,
         open_timeout: DEFAULT_OPEN_TIMEOUT,
         read_timeout: DEFAULT_READ_TIMEOUT,
         idle_timeout: DEFAULT_IDLE_TIMEOUT,
@@ -35,8 +31,6 @@ module Pubnub
         s_idle_timeout: DEFAULT_S_IDLE_TIMEOUT,
         reconnect_attempts: DEFAULT_RECONNECT_ATTEMPTS,
         reconnect_interval: DEFAULT_RECONNECT_INTERVAL,
-        reconnect_callback: DEFAULT_RECONNECT_CALLBACK,
-        disconnect_callback: DEFAULT_DISCONNECT_CALLBACK,
         region: DEFAULT_REGION
       }
     end
