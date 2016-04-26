@@ -3,6 +3,7 @@ module Pubnub
   # Module that holds subscriber logic
   class Subscriber
     attr_reader :channels, :groups, :wildcard_channels, :callbacks, :current_subscription_id, :current_subscription
+    attr_reader :listeners
     attr_accessor :ssl
 
     def initialize(app)
@@ -10,7 +11,29 @@ module Pubnub
       @channels = []
       @groups = []
       @wildcard_channels = []
+      @listeners = {}
       @callbacks = { channels: {}, groups: {}, wildcard_channels: {} }
+    end
+
+    def add_listener(options)
+      name     = options[:name].to_sym || UUID.new.to_sym
+      callback = options[:callback]
+
+      fail 'Invalid listener.' unless callback.is_a?(SubscribeCallback)
+      fail 'Listener with such name already exists.' if @listeners.keys.include?(name)
+
+      @listeners[name] = callback
+    end
+
+    def remove_listener(options)
+      name = options[:name]
+      listener = options[:listener]
+
+      fail 'You have to specify name _or_ listener object.' if name && listener
+
+      @listeners.delete_if { |k, _v| k == name } if name
+
+      @listeners.delete_if { |_k, v| v == listener } if listener
     end
 
     def add_subscription(event)
@@ -37,16 +60,36 @@ module Pubnub
       start_subscription
     end
 
+    def fire_async_callbacks(envelopes)
+      Pubnub.logger.debug('Pubnub::Subscriber') { 'Firing callback from listeners' }
+      envelopes.each do |envelope|
+        next if envelope.timetoken_update
+        @listeners.each do |name, callbacks|
+          Pubnub.logger.debug('Pubnub::Subscriber') { "Firing callbacks from listener '#{name}'." }
+          case envelope.operation
+          when :message
+            secure_call callbacks.callbacks[:message], envelope
+          when :presence
+            secure_call callbacks.callbacks[:presence], envelope
+          else
+            secure_call callbacks.callbacks[:status], envelope
+          end
+        end
+      end
+    end
+
     private
 
     def conflict_with?(event)
-      channels, groups, wildcard_channels = event.channel, event.group, event.wildcard_channel
+      channels = event.channel
+      groups = event.group
+      wildcard_channels = event.wildcard_channel
 
       checks  = channels.map          { |channel|          subscribed_to?(:channel, channel) }
       checks += groups.map            { |group|            subscribed_to?(:group, group) }
       checks += wildcard_channels.map { |wildcard_channel| subscribed_to?(:wildcard_channel, wildcard_channel) }
 
-      raise "Can't subscribe, conflicts with currently running subscription." if checks.include?(true)
+      fail "Can't subscribe, conflicts with currently running subscription." if checks.include?(true)
     end
 
     def subscribed_to?(type, name)
@@ -117,6 +160,12 @@ module Pubnub
       Pubnub.logger.debug('Pubnub::Subscriber') { 'Starting subscription' }
       fail 'Cannot start subscription without builded @current_subscription' if @current_subscription.nil?
       @current_subscription.future.fire
+    end
+
+    def secure_call(cb, arg)
+      cb.call arg
+    rescue => error
+      Pubnub.logger.error('Pubnub::Subscriber') { "Error while calling callback #{error.inspect}" }
     end
   end
 end

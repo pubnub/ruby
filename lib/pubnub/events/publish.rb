@@ -51,10 +51,8 @@ module Pubnub
       empty_if_blank.delete_if { |_k, v| v.blank? }
       params = {}
       params = params.merge(empty_if_blank)
-      params = params.merge({
-                                seqn: @sequence_number,
-                                ortt: Formatter.encode({t: @origination_time_token}.to_json)
-                            })
+      params = params.merge(seqn: @sequence_number,
+                            ortt: Formatter.encode({ t: @origination_time_token }.to_json))
       super.merge(params)
     end
 

@@ -6,6 +6,7 @@ require 'vcr'
 require 'celluloid/current'
 require 'celluloid/test'
 require 'pry'
+require 'rspec/wait'
 
 require 'pubnub'
 

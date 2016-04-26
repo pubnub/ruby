@@ -7,6 +7,7 @@ group :test do
   gem 'simplecov', require: false
   gem 'coveralls', require: false
   gem 'rspec'
+  gem 'rspec-wait'
   gem 'vcr'
   gem 'rr'
   gem 'webmock'

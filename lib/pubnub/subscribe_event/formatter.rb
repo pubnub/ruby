@@ -92,31 +92,33 @@ module Pubnub
       end
 
       def format_non_error_envelopes(parsed_response)
+        Pubnub.logger.debug('Pubnub::SubscribeEvent::Formatter') { 'Formatting non-errror envelopes' }
         timetoken_update = parsed_response['t']
         messages         = parsed_response['m']
 
         if messages.empty?
           envelopes = [Envelope.new(
-              event: @event,
-              event_options: @given_options,
-              parsed_response: parsed_response,
-              response_message: parsed_response,
-              timetoken: timetoken_update['t'],
-              region: timetoken_update['r']
+            event: @event,
+            event_options: @given_options,
+            parsed_response: parsed_response,
+            response_message: parsed_response,
+            timetoken: timetoken_update['t'],
+            region: timetoken_update['r']
           )]
         else
           envelopes = messages.map do |message|
             Envelope.new(
-                event: @event,
-                event_options: @given_options,
-                parsed_response: parsed_response,
-                message: message['d'],
-                channel: message['c'],
-                group: get_group(message['b']),
-                wildcard_channel: get_wildcard_channel(message['b']),
-                response_message: parsed_response,
-                timetoken: timetoken_update['t'],
-                region: timetoken_update['r']
+              event: @event,
+              event_options: @given_options,
+              parsed_response: parsed_response,
+              message: message['d'],
+              channel: message['c'],
+              group: get_group(message['b']),
+              wildcard_channel: get_wildcard_channel(message['b']),
+              response_message: parsed_response,
+              timetoken: timetoken_update['t'],
+              region: timetoken_update['r'],
+              operation: get_operation(message)
             )
           end
         end
@@ -145,6 +147,16 @@ module Pubnub
                     end
 
         add_common_data_to_envelopes(envelopes, response)
+      end
+
+      def get_operation(message)
+        if message['c'].index(/pnpres\z/)
+          :presence
+        elsif !message['d'].nil?
+          :message
+        else
+          :status
+        end
       end
 
       def get_wildcard_channel(subscription_match)

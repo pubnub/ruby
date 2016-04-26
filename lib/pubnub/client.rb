@@ -4,6 +4,7 @@ require 'pubnub/formatter'
 require 'pubnub/crypto'
 require 'pubnub/configuration'
 require 'pubnub/message'
+require 'pubnub/subscribe_callback'
 
 require 'pubnub/event'
 require 'pubnub/single_event'
@@ -177,6 +178,14 @@ module Pubnub
       end
     end
 
+    def add_listener(options)
+      @subscriber.add_listener(options)
+    end
+
+    def remove_listener(options)
+      @subscriber.remove_listener(options)
+    end
+
     # Returns:
     # ========
     # True if client is subscribed to at least one channel or channel group, otherwise false.
@@ -194,14 +203,14 @@ module Pubnub
     def subscribed_to(separate_wildcard = false)
       if separate_wildcard
         {
-            channel: @subscriber.channels,
-            group: @subscriber.groups,
-            wildcard_channel: @subscriber.wildcard_channels
+          channel: @subscriber.channels,
+          group: @subscriber.groups,
+          wildcard_channel: @subscriber.wildcard_channels
         }
       else
         {
-            channel: @subscriber.channels + @subscriber.wildcard_channels,
-            group: @subscriber.groups
+          channel: @subscriber.channels + @subscriber.wildcard_channels,
+          group: @subscriber.groups
         }
       end
     end
@@ -325,6 +334,7 @@ module Pubnub
     def region=(region)
       @env[:region] = region
     end
+
     # Parameters:
     # ===========
     # <dl>
@@ -386,7 +396,7 @@ module Pubnub
     end
 
     def generate_ortt
-      (::Time.now.to_f*10_000_000).to_i
+      (::Time.now.to_f * 10_000_000).to_i
     end
 
     private

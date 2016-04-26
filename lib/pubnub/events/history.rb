@@ -13,11 +13,7 @@ module Pubnub
     private
 
     def timetoken(message)
-      if @include_token
-        message['timetoken']
-      else
-        nil
-      end
+      message['timetoken'] if @include_token
     end
 
     def message(message)
@@ -72,7 +68,7 @@ module Pubnub
     def valid_envelopes(parsed_response)
       parsed_response.first.map do |message|
         Envelope.new(event: @event,
-                     event_options: @given_options, parsed_response:  parsed_response,
+                     event_options:    @given_options,
                      parsed_response:  parsed_response,
                      message:          message(message),
                      channel:          @channel.first,

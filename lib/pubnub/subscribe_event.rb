@@ -107,7 +107,6 @@ module Pubnub
       @app.timetoken = envelopes.first.timetoken
       @app.region    = envelopes.first.region
       envelopes
-
     end
 
     def path
@@ -128,7 +127,7 @@ module Pubnub
     end
 
     def add_timetoken_to_params(params)
-      params.merge!({ t: encode_parameter({r: @app.current_region, t: @app.timetoken}) })
+      params.merge!(t: encode_parameter(r: @app.current_region, t: @app.timetoken))
       params
     end
 
