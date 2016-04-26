@@ -27,13 +27,13 @@ module Pubnub
 
     def remove_listener(options)
       name = options[:name]
-      listener = options[:listener]
+      callback = options[:callback]
 
-      fail 'You have to specify name _or_ listener object.' if name && listener
+      fail 'You have to specify name _or_ listener object.' if name && callback
 
-      @listeners.delete_if { |k, _v| k == name } if name
+      @listeners.delete_if { |k, _v| k == name.to_sym } if name
 
-      @listeners.delete_if { |_k, v| v == listener } if listener
+      @listeners.delete_if { |_k, v| v == callback } if callback
     end
 
     def add_subscription(event)
