@@ -5,7 +5,7 @@ module Pubnub
     module Formatter
       private
 
-      def error_envelope(parsed_response, error)
+      def build_error_envelopes(parsed_response, error)
         ErrorEnvelope.new(
           event: @event,
           event_options: @given_options,
@@ -17,170 +17,185 @@ module Pubnub
         )
       end
 
-      def valid_envelope(parsed_response, msg = nil, channel = nil, group = nil)
-        if group && group.index('.*')
-          wildcard_channel = group
-          group = nil
-        end
-
-        Envelope.new(
-          event: @event,
-          event_options: @given_options,
-          parsed_response: parsed_response,
-          message: msg,
-          channel: channel,
-          group: group,
-          wildcard_channel: wildcard_channel,
-          response_message: parsed_response,
-          timetoken: timetoken(parsed_response)
-        )
-      end
-
-      def envelope_from_channel_group_or_wc(parsed_response, i)
-        valid_envelope(parsed_response,
-                       parsed_response[0][i],
-                       parsed_response[3].split(',')[i],
-                       parsed_response[2].split(',')[i])
-      end
-
-      def format_channel_group_or_wc(parsed_response)
-        Pubnub.logger.debug('Pubnub') { 'Formatting channel group' }
-        envelopes = []
-        if parsed_response.first.empty? # timetoken update
-          envelopes << format_timetoken(parsed_response)
-        else
-          parsed_response.first.size.times do |i|
-            envelopes << envelope_from_channel_group_or_wc(parsed_response, i)
-          end
-        end
-        envelopes
-      end
-
-      def envelope_from_multiple(parsed_response, i)
-        valid_envelope(parsed_response,
-                       parsed_response.first[i],
-                       parsed_response.last.split(',')[i])
-      end
-
-      def format_multiple_channels(parsed_response)
-        Pubnub.logger.debug('Pubnub') { 'Formatting multiple channel' }
-        if parsed_response.last == ''
-          [format_timetoken(parsed_response)]
-        else
-          envelopes = []
-          parsed_response.first.size.times do |i|
-            envelopes << envelope_from_multiple(parsed_response, i)
-          end
-          envelopes
-        end
-      end
-
-      def format_single_channel(parsed_response)
-        Pubnub.logger.debug('Pubnub') { 'Formatting single channel' }
-        if parsed_response.first.size != 0
-          parsed_response.first.map do |msg|
-            valid_envelope(parsed_response, msg, @channel.first)
-          end
-        else
-          [format_timetoken(parsed_response)]
-        end
-      end
-
-      def format_timetoken(parsed_response)
-        Pubnub.logger.debug('Pubnub') { 'Formatting timetoken' }
-        valid_envelope(parsed_response)
-      end
-
-      def format_non_error_envelopes(parsed_response)
+      def build_non_error_envelopes(parsed_response, req_res_objects)
         Pubnub.logger.debug('Pubnub::SubscribeEvent::Formatter') { 'Formatting non-errror envelopes' }
-        timetoken_update = parsed_response['t']
-        messages         = parsed_response['m']
+        timetoken = parsed_response['t']
+        messages  = expand_messages_keys(parsed_response['m'])
 
+        # STATUS
         if messages.empty?
-          envelopes = [Envelope.new(
-            event: @event,
-            event_options: @given_options,
-            parsed_response: parsed_response,
-            response_message: parsed_response,
-            timetoken: timetoken_update['t'],
-            region: timetoken_update['r']
-          )]
-        else
+          envelopes = [
+              Envelope.new(
+                  event:         @event,
+                  event_options: @given_options,
+                  timetoken:     expand_timetoken(timetoken),
+                  status: {
+                      code: req_res_objects[:response].code,
+                      client_request: req_res_objects[:request],
+                      server_response: req_res_objects[:response],
+                      data: nil,
+                      category: Pubnub::Constants::STATUS_ACK,
+                      error: false,
+                      auto_retried: true,
+
+                      current_timetoken: timetoken['t'].to_i,
+                      last_timetoken: @app.env[:timetoken].to_i,
+                      subscribed_channels: @app.subscribed_channels,
+                      subscribed_channel_groups: @app.subscribed_groups,
+
+                      config: get_config
+
+                  },
+                  result: {
+                      code: req_res_objects[:response].code,
+                      operation: get_operation,
+                      client_request: req_res_objects[:request],
+                      server_response: req_res_objects[:response],
+
+                      data: nil
+                  }
+              )
+          ]
+        else # RESULT
           envelopes = messages.map do |message|
             Envelope.new(
-              event: @event,
+              event:         @event,
               event_options: @given_options,
-              parsed_response: parsed_response,
-              message: message['d'],
-              channel: message['c'],
-              group: get_group(message['b']),
-              wildcard_channel: get_wildcard_channel(message['b']),
-              response_message: parsed_response,
-              timetoken: timetoken_update['t'],
-              region: timetoken_update['r'],
-              operation: get_operation(message)
-            )
+              timetoken:     expand_timetoken(timetoken),
+              status: {
+                  code: req_res_objects[:response].code,
+                  client_request: req_res_objects[:request],
+                  server_response: req_res_objects[:response],
+                  data: message,
+                  category: Pubnub::Constants::STATUS_ACK,
+                  error: false,
+                  auto_retried: true,
+
+                  current_timetoken: timetoken['t'].to_i,
+                  last_timetoken: @app.env[:timetoken].to_i,
+                  subscribed_channels: @app.subscribed_channels,
+                  subscribed_channel_groups: @app.subscribed_groups,
+
+                  config: get_config
+
+              },
+              result: {
+                  code: req_res_objects[:response].code,
+                  operation: get_operation(message),
+                  client_request: req_res_objects[:request],
+                  server_response: req_res_objects[:response],
+
+                  data: {
+                      message: message[:payload],
+                      subscribed_channel: message[:subscription_match],
+                      actual_channel: message[:channel],
+                      publish_time_object: message[:publish_timetoken],
+                      message_meta_data: message[:user_meta_data],
+                      presence_event: get_presence_event(message),
+                      presence: get_presence_data(message)
+                  }
+              }
+          )
           end
         end
 
-        envelopes
+        validate_envelopes(envelopes)
 
-        # case parsed_response.size
-        # when 2
-        #   format_single_channel(parsed_response)
-        # when 3
-        #   format_multiple_channels(parsed_response)
-        # when 4
-        #   format_channel_group_or_wc(parsed_response)
-        # end
+        envelopes
       end
 
-      def format_envelopes(response)
+      def validate_envelopes(envelopes)
+        # return if envelopes.size == 1 && envelopes.first.timetoken_update?
+
+        results_validation = envelopes.map(&:result).map do |result|
+          Pubnub::Schemas::Envelope::ResultSchema.call result
+        end
+
+        statuses_validation = envelopes.map(&:status).map do |status|
+          Pubnub::Schemas::Envelope::StatusSchema.call status
+        end
+
+        if (results_validation + statuses_validation).map(&:failure?).index(true)
+          Pubnub.logger.error('Pubnub::SubscribeEvent::Formatter') { 'Invalid formatted envelope.' }
+          raise Exception, 'Invalid formatted envelope.'
+        end
+      end
+
+      def get_config
+        {
+            tls:      @app.env[:ssl],
+            uuid:     @app.env[:uuid],
+            auth_key: @app.env[:auth_key],
+            origin:   @app.current_origin
+        }
+      end
+
+      def format_envelopes(response, request)
         parsed_response, error = Pubnub::Formatter.parse_json(response.body)
 
         error = response if parsed_response && response.code.to_i != 200
 
-        envelopes = if error
-                      [error_envelope(parsed_response, error)]
-                    else
-                      format_non_error_envelopes(parsed_response)
-                    end
-
-        add_common_data_to_envelopes(envelopes, response)
-      end
-
-      def get_operation(message)
-        if message['c'].index(/pnpres\z/)
-          :presence
-        elsif !message['d'].nil?
-          :message
+        if error
+          build_error_envelopes(parsed_response, error)
         else
-          :status
+          build_non_error_envelopes(parsed_response, {response: response, request: request})
         end
       end
 
-      def get_wildcard_channel(subscription_match)
-        return '' if subscription_match.nil?
-        if subscription_match[-1] == '*'
-          subscription_match
+      def get_operation(message = nil)
+        if message == nil
+          Pubnub::Constants::OPERATION_TIME
+        elsif message[:channel].to_s.index(/pnpres\z/)
+          Pubnub::Constants::OPERATION_PRESENCE
         else
-          ''
+          Pubnub::Constants::OPERATION_SUBSCRIBE
         end
       end
 
-      def get_group(subscription_match)
-        return '' if subscription_match.nil?
-        unless subscription_match[-1] == '*'
-          subscription_match
-        else
-          ''
-        end
+      def get_presence_data(message)
+        return nil unless get_operation(message) == Pubnub::Constants::OPERATION_PRESENCE
+        {
+            uuid:      message[:payload]['uuid'],
+            timestamp: message[:payload]['timestamp'],
+            state:     message[:payload]['data'],
+            occupancy: message[:payload]['occupancy']
+        }
       end
 
-      def timetoken(parsed_response)
-        parsed_response[1]
+      def get_presence_event(message)
+        return nil unless get_operation(message) == Pubnub::Constants::OPERATION_PRESENCE
+        message[:payload]['action']
       rescue
         nil
+      end
+
+      def expand_messages_keys(messages)
+        messages.map do |m|
+          {
+              shard:                  m['a'],
+              channel:                m['c'],
+              subscription_match:     m['b'],
+              payload:                m['d'],
+              flags:                  m['f'],
+              issuing_client_id:      m['i'],
+              subscribe_key:          m['k'],
+              sequence_number:        m['s'],
+              user_meta_data:         m['u'],
+              replication_map:        m['r'],
+              eat_after_reading:      m['ear'],
+              waypoint_list:          m['w'],
+              origination_time_token: expand_timetoken(m['o']),
+              publish_timetoken:      expand_timetoken(m['p'])
+          }
+        end
+      end
+
+      def expand_timetoken(timetoken)
+        return nil unless timetoken
+        {
+            timetoken:   timetoken['t'],
+            region_code: timetoken['r']
+        }
       end
     end
   end

@@ -40,12 +40,12 @@ module Pubnub
       error = response if parsed_response && response.code.to_i != 200
 
       envelopes = if error
-                    [error_envelope(parsed_response, error)]
+                    [build_error_envelopes(parsed_response, error)]
                   else
                     [valid_envelope(parsed_response)]
                   end
 
-      add_common_data_to_envelopes(envelopes, response)
+      envelopes
     end
 
     def valid_envelope(parsed_response)

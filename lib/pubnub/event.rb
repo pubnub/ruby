@@ -27,9 +27,9 @@ module Pubnub
     def fire
       Pubnub.logger.debug('Pubnub::Event') { "Fired event #{self.class}" }
 
-      message = send_request
+      response = send_request
 
-      envelopes = fire_callbacks(handle(message))
+      envelopes = fire_callbacks(handle(response, uri))
       finalize_event(envelopes)
       envelopes
     ensure
@@ -103,27 +103,9 @@ module Pubnub
       required.merge(empty_if_blank)
     end
 
-    def add_common_data_to_envelopes(envelopes, response)
-      Pubnub.logger.debug('Pubnub::Event') { 'Event#add_common_data_to_envelopes' }
-
-      envelopes.each do |envelope|
-        envelope.response = response.body
-        envelope.object = response
-        envelope.status = response.code.to_i
-        envelope.mark_as_timetoken
-      end
-
-      envelopes.last.last = true if envelopes.last
-      envelopes.first.first = true if envelopes.first
-
-      envelopes
-    end
-
-    def handle(response)
+    def handle(response, request)
       Pubnub.logger.debug('Pubnub::Event') { 'Event#handle' }
-
-      @response  = response
-      @envelopes = format_envelopes response
+      @envelopes = format_envelopes response, request
     end
 
     def connection

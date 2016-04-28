@@ -62,7 +62,7 @@ module Pubnub
                     valid_envelopes(parsed_response)
                   end
 
-      add_common_data_to_envelopes(envelopes, response)
+      envelopes
     end
 
     def valid_envelopes(parsed_response)

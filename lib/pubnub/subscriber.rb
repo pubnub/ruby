@@ -16,7 +16,7 @@ module Pubnub
     end
 
     def add_listener(options)
-      name     = options[:name].to_sym || UUID.new.to_sym
+      name     = (options[:name] || UUID.generate).to_sym
       callback = options[:callback]
 
       fail 'Invalid listener.' unless callback.is_a?(SubscribeCallback)
@@ -63,13 +63,12 @@ module Pubnub
     def fire_async_callbacks(envelopes)
       Pubnub.logger.debug('Pubnub::Subscriber') { 'Firing callback from listeners' }
       envelopes.each do |envelope|
-        next if envelope.timetoken_update
         @listeners.each do |name, callbacks|
           Pubnub.logger.debug('Pubnub::Subscriber') { "Firing callbacks from listener '#{name}'." }
-          case envelope.operation
-          when :message
+          case envelope.result[:operation]
+          when Pubnub::Constants::OPERATION_SUBSCRIBE
             secure_call callbacks.callbacks[:message], envelope
-          when :presence
+          when Pubnub::Constants::OPERATION_PRESENCE
             secure_call callbacks.callbacks[:presence], envelope
           else
             secure_call callbacks.callbacks[:status], envelope

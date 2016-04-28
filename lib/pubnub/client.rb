@@ -2,9 +2,12 @@ require 'pubnub/error'
 require 'pubnub/uuid'
 require 'pubnub/formatter'
 require 'pubnub/crypto'
+require 'pubnub/constants'
 require 'pubnub/configuration'
 require 'pubnub/message'
 require 'pubnub/subscribe_callback'
+
+require 'pubnub/schemas/envelope_schema'
 
 require 'pubnub/event'
 require 'pubnub/single_event'
@@ -186,6 +189,14 @@ module Pubnub
       @subscriber.remove_listener(options)
     end
 
+    def subscribed_channels
+      @subscriber.channels + @subscriber.wildcard_channels
+    end
+
+    def subscribed_groups
+      @subscriber.groups
+    end
+
     # Returns:
     # ========
     # True if client is subscribed to at least one channel or channel group, otherwise false.
@@ -318,8 +329,8 @@ module Pubnub
     # Retruns:
     # ========
     # Current region or default '0'
-    def current_region
-      @env[:region] || 0
+    def region_code
+      @env[:region_code] || 0
     end
 
     # Parameters:
@@ -331,8 +342,8 @@ module Pubnub
     # Returns:
     # ========
     # New region.
-    def region=(region)
-      @env[:region] = region
+    def region_code=(region)
+      @env[:region_code] = region
     end
 
     # Parameters:

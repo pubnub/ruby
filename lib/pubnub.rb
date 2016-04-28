@@ -7,6 +7,7 @@ require 'celluloid/current'
 require 'timers'
 require 'httpclient'
 require 'logger'
+require 'dry-validation'
 
 require 'pubnub/version'
 require 'pubnub/client'

@@ -29,13 +29,13 @@ module Pubnub
 
       consider_heartbeat
 
-      message = send_request
+      response = send_request
 
       return false if @app.subscriber.current_subscription_id != object_id && @http_sync != true
 
       Pubnub.logger.debug('Pubnub') { 'Fire before fire_callback' }
 
-      envelopes = finalize_event(fire_callbacks(handle(message)))
+      envelopes = finalize_event(fire_callbacks(handle(response, uri)))
 
       async.fire unless @http_sync
 
@@ -100,8 +100,9 @@ module Pubnub
         # @app.env[:connect_callback].call 'Connected!' if @app.env[:connect_callback] # TODO: CONNECT CALLBACK
       end
 
-      @app.timetoken = envelopes.first.timetoken
-      @app.region    = envelopes.first.region
+      @app.timetoken   = envelopes.first.timetoken[:timetoken]
+      @app.region_code = envelopes.first.timetoken[:region_code]
+
       envelopes
     end
 
@@ -123,7 +124,7 @@ module Pubnub
     end
 
     def add_timetoken_to_params(params)
-      params.merge!(t: encode_parameter(r: @app.current_region, t: @app.timetoken))
+      params.merge!(t: encode_parameter(r: @app.region_code, t: @app.timetoken))
       params
     end
 

@@ -24,12 +24,12 @@ module Pubnub
 
       if @compressed
         compressed_body = Formatter.format_message(@message, @cipher_key, false)
-        message = send_request(compressed_body)
+        response = send_request(compressed_body)
       else
-        message = send_request
+        response = send_request
       end
 
-      envelopes = fire_callbacks(handle(message))
+      envelopes = fire_callbacks(handle(response, uri))
       finalize_event(envelopes)
       envelopes
     ensure
@@ -99,7 +99,7 @@ module Pubnub
                     [valid_envelope(parsed_response)]
                   end
 
-      add_common_data_to_envelopes(envelopes, response)
+      envelopes
     end
 
     def valid_envelope(parsed_response)
