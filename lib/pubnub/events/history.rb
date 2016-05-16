@@ -51,42 +51,84 @@ module Pubnub
       params
     end
 
-    def format_envelopes(response)
+    def format_envelopes(response, request)
       parsed_response, error = Formatter.parse_json(response.body)
 
       error = response if parsed_response && response.code.to_i != 200
 
-      envelopes = if error
-                    [error_envelope(parsed_response, error)]
-                  else
-                    valid_envelopes(parsed_response)
+      if error
+        error_envelope(parsed_response, error, request: uri, response: response)
+      else
+        valid_envelope(parsed_response, request: request, response: response)
                   end
-
-      envelopes
     end
 
-    def valid_envelopes(parsed_response)
-      parsed_response.first.map do |message|
-        Envelope.new(event: @event,
-                     event_options:    @given_options,
-                     parsed_response:  parsed_response,
-                     message:          message(message),
-                     channel:          @channel.first,
-                     response_message: response_message(parsed_response),
-                     timetoken:        timetoken(message),
-                     history_start:    parsed_response[1],
-                     history_end:      parsed_response[2])
-      end
-    end
+    def valid_envelope(parsed_response, req_res_objects)
+      messages = parsed_response[0]
 
-    def error_envelope(parsed_response, error)
-      ErrorEnvelope.new(
-        event: @event,
+      start = parsed_response[1]
+      finish = parsed_response[2]
+
+      Pubnub::Envelope.new(
+        event:         @event,
         event_options: @given_options,
-        error:            error,
-        response_message: response_message(parsed_response),
-        channel:          @channel.first,
-        timetoken:        timetoken(parsed_response)
+        timetoken:     nil,
+        status: {
+          code: req_res_objects[:response].code,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
+
+          category: Pubnub::Constants::STATUS_ACK,
+          error: false,
+          auto_retried: false,
+
+          data: nil,
+          current_timetoken: nil,
+          last_timetoken: nil,
+          subscribed_channels: nil,
+          subscribed_channel_groups: nil,
+
+          config: get_config
+
+        },
+        result: {
+          code: req_res_objects[:response].code,
+          operation: Pubnub::Constants::OPERATION_HISTORY,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
+
+          data: {
+            messages: messages,
+            end: finish,
+            start: start
+          }
+        }
+      )
+    end
+
+    def error_envelope(_parsed_response, error, req_res_objects)
+      Pubnub::ErrorEnvelope.new(
+          event: @event,
+          event_options: @given_options,
+          timetoken: nil,
+          status: {
+              code: req_res_objects[:response].code,
+              operation: Pubnub::Constants::OPERATION_HEARTBEAT,
+              client_request: req_res_objects[:request],
+              server_response: req_res_objects[:response],
+              data: nil,
+              category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::STATUS_ERROR),
+              error: true,
+              auto_retried: false,
+
+              data: nil,
+              current_timetoken: nil,
+              last_timetoken: nil,
+              subscribed_channels: nil,
+              subscribed_channel_groups: nil,
+
+              config: get_config
+          }
       )
     end
   end

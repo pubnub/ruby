@@ -3,90 +3,42 @@ require 'spec_helper'
 describe Pubnub::Publish do
   it_behaves_like 'an event'
 
-  around(:each) do |example|
+  around :each do |example|
     Celluloid.boot
     example.run
     Celluloid.shutdown
   end
 
-  context '#start_event' do
-    let(:pubnub_client) { Pubnub.new(subscribe_key: 'demo', publish_key: 'demo') }
-    let(:callback)      { ->(_e) {} }
+  context 'given basic parameters' do
+    before :each do
+      @pubnub = Pubnub::Client.new(
+          subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
+          publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
+          secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
+          auth_key: 'ruby-test-auth',
+          uuid: 'ruby-test-uuid'
+      )
+    end
+    it 'works' do
+      VCR.use_cassette('lib/events/publish', record: :once) do
+        envelope = @pubnub.publish(
+            channel: :demo,
+            message: 'whatever'
+        ).value
 
-    it 'fires https request if set' do
-      pubnub_client = Pubnub.new(subscribe_key: 'demo', publish_key: 'demo', ssl: true)
-
-      event = Pubnub::Publish.new(
-          {
-              channel: 'custom_channel',
-              origin: 'pubsub.pubnub.com',
-              message: 'msg',
-              callback: callback
-          }, pubnub_client)
-
-      VCR.use_cassette('publish/basic-ssl', :record => :once) do
-        expect { event.fire }.to_not raise_error
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
       end
     end
 
-    it 'fires http request if set' do
-      event = Pubnub::Publish.new(
-          {
-              channel: 'custom_channel',
-              origin: 'pubsub.pubnub.com',
-              message: 'msg',
-              callback: callback
-          }, pubnub_client)
+    it 'forms valid ErrorEnvelope on error' do
+      VCR.use_cassette('lib/events/publish-error', record: :once) do
+        envelope = @pubnub.publish(
+            channel: :demo,
+            message: 'whatever'
+        ).value
 
-      VCR.use_cassette('publish/basic', :record => :once) do
-        expect { event.fire }.to_not raise_error
-      end
-    end
-
-    it 'returns array with exactly one envelope' do
-      event = Pubnub::Publish.new(
-          {
-              channel: 'custom_channel',
-              origin: 'pubsub.pubnub.com',
-              message: 'msg',
-              callback: callback
-          }, pubnub_client)
-
-      VCR.use_cassette('publish/basic', :record => :once) do
-        result = event.fire
-
-        expect(result.class.to_s).to eq 'Array'
-        expect(result.count).to eq 1
-        result.each do |envelope|
-          expect(envelope.class.to_s).to eq 'Pubnub::Envelope'
-        end
-      end
-    end
-
-    it 'returned envelope is well formatted' do
-      event = Pubnub::Publish.new(
-          {
-              channel: 'custom_channel',
-              origin: 'pubsub.pubnub.com',
-              message: 'msg',
-              callback: callback
-          }, pubnub_client)
-
-      VCR.use_cassette('publish/basic', :record => :once) do
-        result = event.fire
-
-        result.each do |envelope|
-          expect(envelope.class.to_s).to       eq 'Pubnub::Envelope'
-          expect(envelope.message).to          eq 'msg'
-          expect(envelope.channel).to          eq 'custom_channel'
-          expect(envelope.first).to            eq true
-          expect(envelope.last).to             eq true
-          expect(envelope.parsed_response).to  eq [1, 'Sent', '14138972684946929']
-          expect(envelope.response).to         eq '[1,"Sent","14138972684946929"]'
-          expect(envelope.response_message).to eq 'Sent'
-          expect(envelope.status).to           eq 200
-          expect(envelope.timetoken).to        eq '14138972684946929'
-        end
+        expect(envelope.is_a?(Pubnub::ErrorEnvelope)).to eq true
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
       end
     end
   end

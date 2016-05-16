@@ -2,7 +2,7 @@ require 'spec_helper'
 
 shared_examples 'an event' do
 
-  around(:each) do |example|
+  around :each do |example|
     Celluloid.boot
     example.run
     Celluloid.shutdown

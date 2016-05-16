@@ -65,15 +65,97 @@ module Pubnub
       envelopes.each do |envelope|
         @listeners.each do |name, callbacks|
           Pubnub.logger.debug('Pubnub::Subscriber') { "Firing callbacks from listener '#{name}'." }
-          case envelope.result[:operation]
-          when Pubnub::Constants::OPERATION_SUBSCRIBE
-            secure_call callbacks.callbacks[:message], envelope
-          when Pubnub::Constants::OPERATION_PRESENCE
-            secure_call callbacks.callbacks[:presence], envelope
-          else
+          if envelope.is_a?(ErrorEnvelope)
             secure_call callbacks.callbacks[:status], envelope
+          else
+            case envelope.result[:operation]
+              when Pubnub::Constants::OPERATION_SUBSCRIBE
+                secure_call callbacks.callbacks[:message], envelope
+              when Pubnub::Constants::OPERATION_PRESENCE
+                secure_call callbacks.callbacks[:presence], envelope
+              else
+                secure_call callbacks.callbacks[:status], envelope
+            end
           end
         end
+      end
+    end
+
+    def announce_status(options)
+      announcement_type = options[:announcement_type]
+      event             = options[:event]
+      given_options     = options[:given_options]
+      request           = options[:request]
+      _response         = options[:response]
+
+      case announcement_type
+      when Pubnub::Constants::TIMEOUT_ANNOUNCEMENT
+        envelope = ErrorEnvelope.new(
+          event:         event,
+          event_options: given_options,
+          timetoken:     nil,
+          status: {
+            code: nil,
+            client_request: request,
+            server_response: nil,
+            data: nil,
+            category: Pubnub::Constants::STATUS_TIMEOUT,
+            error: true,
+            auto_retried: true,
+
+            current_timetoken:         @app.env[:timetoken].to_i,
+            last_timetoken:            @app.env[:timetoken].to_i,
+            subscribed_channels:       @app.subscribed_channels,
+            subscribed_channel_groups: @app.subscribed_groups,
+
+            config: get_config
+
+          },
+          result: {
+            code: nil,
+            operation: nil,
+            client_request: request,
+            server_response: nil,
+
+            data: nil
+          }
+        )
+      when Pubnub::Constants::RECONNECTED_ANNOUNCEMENT
+        envelope = ErrorEnvelope.new(
+          event:         event,
+          event_options: given_options,
+          timetoken:     nil,
+          status: {
+            code: nil,
+            client_request: request,
+            server_response: nil,
+            data: nil,
+            category: Pubnub::Constants::STATUS_ACK,
+            error: false,
+            auto_retried: true,
+
+            current_timetoken:         @app.env[:timetoken].to_i,
+            last_timetoken:            @app.env[:timetoken].to_i,
+            subscribed_channels:       @app.subscribed_channels,
+            subscribed_channel_groups: @app.subscribed_groups,
+
+            config: get_config
+
+          },
+          result: {
+            code: nil,
+            operation: nil,
+            client_request: request,
+            server_response: nil,
+
+            data: nil
+          }
+        )
+      else
+        Pubnub.logger.warn('Unknown announcement type.')
+      end
+      @listeners.each do |_name, callbacks|
+        secure_call callbacks.callbacks[:status], envelope
       end
     end
 
@@ -165,6 +247,15 @@ module Pubnub
       cb.call arg
     rescue => error
       Pubnub.logger.error('Pubnub::Subscriber') { "Error while calling callback #{error.inspect}" }
+    end
+
+    def get_config
+      {
+        tls:      @app.env[:ssl],
+        uuid:     @app.env[:uuid],
+        auth_key: @app.env[:auth_key],
+        origin:   @app.current_origin
+      }
     end
   end
 end

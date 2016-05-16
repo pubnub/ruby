@@ -8,7 +8,7 @@ module Pubnub
     def initialize(options, app)
       @event = :grant
       super
-      @ttl ||= Pubnub::Configuration::DEFAULT_TTL
+      @ttl ||= Pubnub::Constants::DEFAULT_TTL
     end
 
     private

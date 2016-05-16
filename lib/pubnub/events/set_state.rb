@@ -39,26 +39,30 @@ module Pubnub
 
       error = response if parsed_response && response.code.to_i != 200
 
-      envelopes = if error
-                    [build_error_envelopes(parsed_response, error)]
-                  else
-                    [valid_envelope(parsed_response)]
+      if error
+        build_error_envelopes(parsed_response, error)
+      else
+        valid_envelope(parsed_response, request: uri, response: response)
                   end
-
-      envelopes
     end
 
-    def valid_envelope(parsed_response)
-      Envelope.new(
-        event: @event,
-        event_options: @given_options,
-        parsed_response: parsed_response,
-        channel: parsed_response['channel'],
-        payload: parsed_response['payload'],
-        service: parsed_response['service'],
-        message: parsed_response['message'],
-        uuid:    parsed_response['uuid'],
-        status:  parsed_response['status']
+    def error_envelope(_parsed_response, error, req_res_objects)
+      Pubnub::ErrorEnvelope.new(
+          event: @event,
+          event_options: @given_options,
+          timetoken: nil,
+          status: {
+              code: req_res_objects[:response].code,
+              operation: Pubnub::Constants::OPERATION_HEARTBEAT,
+              client_request: req_res_objects[:request],
+              server_response: req_res_objects[:response],
+              data: nil,
+              category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::STATUS_ERROR),
+              error: true,
+              auto_retried: false,
+
+              config: get_config
+          }
       )
     end
   end

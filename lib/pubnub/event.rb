@@ -78,14 +78,12 @@ module Pubnub
       @wildcard_channel = @channel.select { |e| e.index('.*') } || []
     end
 
-    def fire_callbacks(envelopes)
+    def fire_callbacks(envelope)
       Pubnub.logger.debug('Pubnub::Event') { "Firing callbacks for #{self.class}" }
-      envelopes.each do |envelope|
-        if @callback && !envelope.timetoken_update
-          secure_call @callback, envelope
-        end
+      if @callback
+        secure_call @callback, envelope
       end
-      envelopes
+      envelope
     end
 
     def parameters
@@ -154,6 +152,41 @@ module Pubnub
 
     def encode_parameter(parameter)
       URI.encode_www_form_component(parameter.to_json).gsub('+', '%20')
+    end
+
+    def error_message(parsed_response)
+      parsed_response['message']
+    rescue
+      nil
+    end
+
+    def get_config
+      {
+          tls:      @app.env[:ssl],
+          uuid:     @app.env[:uuid],
+          auth_key: @app.env[:auth_key],
+          origin:   @app.current_origin
+      }
+    end
+
+    def error_envelope(_parsed_response, error, req_res_objects)
+      Pubnub::ErrorEnvelope.new(
+          event: @event,
+          event_options: @given_options,
+          timetoken: nil,
+          status: {
+              code: req_res_objects[:response].code,
+              operation: Pubnub::Constants::OPERATION_HEARTBEAT,
+              client_request: req_res_objects[:request],
+              server_response: req_res_objects[:response],
+              data: nil,
+              category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::STATUS_ERROR),
+              error: true,
+              auto_retried: false,
+
+              config: get_config
+          }
+      )
     end
   end
 end

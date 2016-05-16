@@ -51,12 +51,12 @@ module Pubnub
     end
 
     def build(options)
-      @c_cb_pool  = options[:callbacks][:channels]
-      @g_cb_pool  = options[:callbacks][:groups]
+      @c_cb_pool = options[:callbacks][:channels]
+      @g_cb_pool = options[:callbacks][:groups]
       @wc_cb_pool = options[:callbacks][:wildcard_channels]
 
-      @channel          = options[:channels]
-      @group            = options[:groups]
+      @channel = options[:channels]
+      @group = options[:groups]
       @wildcard_channel = options[:wildcard_channels]
     end
 
@@ -67,10 +67,21 @@ module Pubnub
 
       begin
         req = request_dispatcher.get(uri.to_s)
-        # @app.env[:reconnect_callback].call('Reconnected') if retries > 0 TODO: RECONNECT CALLBACK
+        if retries > 0
+          @app.subscriber.announce_status(announcement_type: Pubnub::Constants::RECONNECTED_ANNOUNCEMENT,
+                                          event: @event,
+                                          given_options: @given_options,
+                                          response: req,
+                                          request: uri)
+        end
+        req
       rescue => error
         Pubnub.logger.warn('Pubnub') { "Connection lost! Reason: #{error}" }
-        # @app.env[:disconnect_callback].call("Disconnected. Retry no. #{retries}") TODO: DISCONNECT CALLBACK
+        @app.subscriber.announce_status(announcement_type: Pubnub::Constants::TIMEOUT_ANNOUNCEMENT,
+                                        event: @event,
+                                        given_options: @given_options,
+                                        response: nil,
+                                        request: uri)
         if retries < @app.env[:reconnect_attempts]
           req = retry_sending_request(retries)
         else
@@ -96,12 +107,10 @@ module Pubnub
     end
 
     def finalize_event(envelopes)
-      if @app.env[:timetoken] == 0
-        # @app.env[:connect_callback].call 'Connected!' if @app.env[:connect_callback] # TODO: CONNECT CALLBACK
+      if envelopes.first.timetoken
+        @app.timetoken = envelopes.first.timetoken[:timetoken]
+        @app.region_code = envelopes.first.timetoken[:region_code]
       end
-
-      @app.timetoken   = envelopes.first.timetoken[:timetoken]
-      @app.region_code = envelopes.first.timetoken[:region_code]
 
       envelopes
     end

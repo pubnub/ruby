@@ -5,7 +5,6 @@ module Pubnub
     # Ruby specific
     attr_accessor :id, :first, :last
     attr_accessor :history_start, :history_end
-    attr_accessor :timetoken_update # TODO: REMOVE AFTER REFACTORING #mark_as_timetoken
 
     # Pubnub Required
     attr_accessor :status, :result, :timetoken
@@ -20,16 +19,12 @@ module Pubnub
       @timetoken     = options[:timetoken]
     end
 
-    def timetoken_update?
-      @status.nil? && @result.nil?
-    end
-
     def repeat(client, changes = {})
       client.send @event, @event_options.merge(changes)
     end
 
     def error?
-      error ? true : false
+      @status[:error]
     end
 
     def last?

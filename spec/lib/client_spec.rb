@@ -154,7 +154,7 @@ describe Pubnub::Client do
   # context 'connections pool' do
   #   let(:pubnub_client) { Pubnub.new(subscribe_key: 'demo', publish_key: 'demo') }
   #
-  #   around(:each) do |example|
+  #   around :each do |example|
   #     Celluloid.boot
   #     example.run
   #     Celluloid.shutdown

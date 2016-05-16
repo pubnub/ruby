@@ -28,8 +28,7 @@ module Pubnub
       end
 
       def fire_respective_callback_for(envelope)
-        return if envelope.timetoken_update
-        if !envelope.wildcard_channel.blank? && envelope.channel.index('-pnpres') && @presence_callback
+        if !envelope.is_a?(ErrorEnvelope) && envelope.result[:data] && !envelope.result[:data][:subscribed_channel].index('*') && envelope.result[:data][:actual_channel].index('-pnpres') && @presence_callback
           secure_call @presence_callback, envelope
         else
           secure_call @callback, envelope
@@ -39,34 +38,6 @@ module Pubnub
       def fire_async_callbacks(envelopes)
         @app.subscriber.fire_async_callbacks(envelopes)
       end
-
-      # def fire_async_callbacks(envelopes)
-      #   envelopes.each do |envelope|
-      #     try_group_cb(envelope)
-      #     try_wildcard_presence_cb(envelope)
-      #     try_wildcard_cb(envelope)
-      #     try_normal_cb(envelope)
-      #   end
-      # end
-      #
-      # def try_group_cb(envelope)
-      #   return unless envelope.group && @g_cb_pool[envelope.group]
-      #   secure_call(@g_cb_pool[envelope.group], envelope)
-      # end
-      #
-      # def try_wildcard_presence_cb(envelope)
-      #   return unless envelope.wildcard_channel && envelope.channel.index('-pnpres')
-      #   secure_call(@wc_cb_pool[envelope.wildcard_channel + '-pnpres'], envelope)
-      # end
-      #
-      # def try_wildcard_cb(envelope)
-      #   return unless envelope.wildcard_channel && !envelope.channel.index('-pnpres')
-      #   secure_call(@wc_cb_pool[envelope.wildcard_channel], envelope)
-      # end
-      #
-      # def try_normal_cb(envelope)
-      #   secure_call(@c_cb_pool[envelope.channel], envelope)
-      # end
 
       def add_channel_cb_to_cb_pools
         @channel.each do |channel|
