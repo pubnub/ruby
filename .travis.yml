@@ -9,9 +9,9 @@ before_install:
 
 language: ruby
 rvm:
- - 2.3.0
- - 2.2.4
- - 2.1.7
+ - 2.3.1
+ - 2.2.5
+ - 2.1.9
  - 2.0.0
  - jruby-9.0.5.0
 
