@@ -65,10 +65,7 @@ module Pubnub
           client_request: req_res_objects[:request],
           server_response: req_res_objects[:response],
 
-          data: {
-            state: parsed_response['state'],
-            channels: parsed_response['channels']
-          }
+          data: parsed_response['payload']
         }
       )
     end

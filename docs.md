@@ -7,7 +7,7 @@ All events accept basic parameters:
 | callback       | optional | lambda accepting one parameter  | Callback that will be called for each envelope. |
 
 ##### Returned values
-For sync methods Envelope object will be returned. For async methods future will be returned, to retreive value Envelope object you have to call `#value` method (thread will be locked untill the value is returned).
+For sync methods Envelope object will be returned (`#subscribe` and `#presence` are exceptions - they will return array of envelopes - envelope for each message). For async methods future will be returned, to retrieve value Envelope object you have to call `#value` method (thread will be locked until the value is returned).
 
 # Add Channels To Channel Group
 ### DESCRIPTION
@@ -32,7 +32,7 @@ future = pubnub.channel_registration(action: :add, channel: :my_channel, channel
 envelopes = pubnub.channel_registration(action: :add, channel: :my_channel, channel_group: :somegroup, http_sync: true)
 
 # Async with callback (callback can be specified also as :callback key)
-future = pubnub.channel_registration(action: :add, channel: :my_channel, channel_group: :somegroup){ |envelope| puts envelope.parsed_response }
+future = pubnub.channel_registration(action: :add, channel: :my_channel, channel_group: :somegroup){ |envelope| puts envelope.status }
 ```
 
 # Audit
@@ -44,37 +44,15 @@ To run `Audit` you can use the following method in the Ruby SDK
 | parameter | required?  |  type |  notes |
 |---------------|---|---|---|
 | auth_key      | Optional | string/symbol  | Specifies the `auth_key` to return PAM attributes for. If only a single `channel` is specified, it is possible to return results for a comma separated list of `auth_keys`. |
-| channel       | Optional | string/symbol  | Specifies `channel` name to return PAM attributes optionally in combination with `auth_key`. If channel is not specified, results for all channels associated with `subscribe_key` are returned. If `auth_key` is not specified, it is possible to return results for a comma separated list of channels. |
+| channel       | Optional | string/symbol  | Specifies `channel` name to return PAM attributes optionally in combination with `auth_key`. If `channel` or `channel_group` is not specified, results for all channels associated with `subscribe_key` are returned. If `auth_key` is not specified, it is possible to return results for a comma separated list of channels. |
+| channel_group | Optional | string/symbol  | Specifies `channel_group` name to return PAM attributes optionally in combination with `auth_key`. |
 
-### BASIC USAGE
+### EXAMPLE USAGE
 ```ruby
 # Reveal PAM permissions for `channel` and all associated `auth_key` entries:
 pubnub.audit(channel: :my_channel, auth_key: :my_authkey) do |envelope|
-  puts envelope.parsed_response
+  puts envelope.result[:data]
 end
-```
-### REST RESPONSE FROM SERVER
-The output below demonstrates the response to a successful call (you can find it in `envelope.parsed_response`):
-```json
-{  
-   "status":200,
-   "message":"Success",
-   "payload":{  
-      "channels":{  
-         "my_channel":{  
-            "auths":{  
-               "my_ro_authkey":{  
-                  "r":1,
-                  "w":0
-               }
-            }
-         }
-      },
-      "subscribe_key":"my_sub_key",
-      "level":"channel"
-   },
-   "service":"Access Manager"
-}
 ```
 
 # Get Authentication Key
@@ -109,7 +87,7 @@ To `get_state` you can use the following method in Ruby SDK
 Returning state information.
 ```ruby
 pubnbu.state(channel: :my_channel, uuid: 'some-uuid') do |envelope|
-  puts envelope.parsed_response
+  puts envelope.result[:data][:state]
 end
 ```
 
@@ -136,7 +114,7 @@ To `grant` permission on a channel or group you can use following method in Ruby
 | parameter | required?  |  type |  notes |
 |---------------|---|---|---|
 | channel    | optional | string / symbol  | Specifies `channel` name to grant permissions to. If `channel` is not specified, the grant applies to all channels associated with the `subscribe_key`. If `auth_key` is not specified, it is possible to grant permissions to multiple channels simultaneously by specifying the channels as a comma separated list. |
-| group      | optional | string / symbol  | Specifies `group` name to grant permissions to. |
+| channel_group | optional | string / symbol  | Specifies `channel_group` name to grant permissions to. |
 | auth_key   | optional | string / symbol  | Specifies `auth_key` to grant permissions to. |
 | read       | optional | boolean          | Read permissions. (default: true) |
 | write      | optional | boolean          | Write permissions. (default: true) |
@@ -153,7 +131,7 @@ You can obtain information about the current state of a channel including a list
 | parameter | required?  |  type |  notes |
 |---------------|---|---|---|
 | channel    | optional | string / symbol  | Specifies the `channel` name to return occupancy results. If channel is not provided, `here_now` will return data for all channels (global `here_now`). |
-| group      | optional | string / symbol  | Specifies the `group` name to return occupancy results. |
+| channel_group      | optional | string / symbol  | Specifies the `channel_group` name to return occupancy results. |
 
 # History
 ### DESCRIPTION
@@ -235,7 +213,7 @@ To `list all channels in a channel group` you can use the following method in th
 | parameter | required?  |  type |  notes |
 |---------------|---|---|---|
 | action    | required | symbol           | To get all channels from a channel group you need to specify action as :get. |
-| group     | required | symbol / string  | Channel group to fetch the channels of. |
+| channel_group     | required | symbol / string  | Channel group to fetch the channels of. |
 
 # Presence to a Channel Group
 
@@ -262,7 +240,7 @@ Listeners are used to handle messages from subscriptions.
 callbacks = Pubnub::SubscribeCallback.new(
   message:  ->(envelope) { puts #{envelope.result[:data][:message]}" },
   presence: ->(envelope) { puts #{envelope.result[:data][:message]}" },
-  status:   ->(envelope) { puts #{envelope.result[:data][:message]}" }
+  status:   ->(envelope) { puts #{envelope.status}" }
 )
 
 pubnub.add_listener(name: 'my_listener', callback: callbacks)
@@ -354,7 +332,7 @@ pubnub.publish(
   channel: 'my_channel',
   message: { text: 'Hi!' }
 ) do |envelope|
-  puts envelope.parsed_response
+  puts envelope.status
 end
 ```
 
@@ -372,7 +350,7 @@ To `remove channels from a channel group` you can use the following method in th
 |---------------|---|---|---|
 | action     | required | symbol             | Use `:remove` to remove channel. |
 | channel    | required | symbol / string    | Specifies `channel` name to remove from channel group. |
-| group      | required | symbol / string    | Specifies `group` name to remove channel from. |
+| channel_group      | required | symbol / string    | Specifies `channel_group` name to remove channel from. |
 
 # Set Authentication Key !!! REMOVE
 
@@ -392,7 +370,7 @@ To `set_state` you can use following method in the Ruby SDK
 ### BASIC USAGE
 ```ruby
 pubnub.set_state(channel: 'my_channel', state: { key: 'value' }) do |envelope|
-  puts envelope.parsed_response
+  puts envelope.state
 end
 ```
 
@@ -406,7 +384,7 @@ To `subscribe` to a channel you can use the following method in the Ruby SDK
 | parameter | required?  |  type |  notes |
 |---------------|---|---|---|
 | channel           | optional | symbol / string / array | Specifies the channel to subscribe to. It is possible to specify multiple channels as an array. It is possible to subscribe to wildcard channels. See Examples for more info. |
-| group             | optional | symbol / string / array | Specifies the group to subscribe to. It is possible to specify multiple groups as an array. See Examples for more info. |
+| channel_group  | optional | symbol / string / array | Specifies the group to subscribe to. It is possible to specify multiple groups as an array. See Examples for more info. |
 | presence          | optional | symbol / string / array | Specifies the channel to presence subscribe to. It is possible to specify multiple channels as an array. See Examples for more info. |
 | callback          | optional | lambda accepting one argument | Callback that is called for each retreived message. *Works only with http_sync set to true.*|
 | presence_callback | optional | lambda accepting one argument | Callback that is called for each presence event **from wildcard subscribe**. *Works only with http_sync set to true.
@@ -418,8 +396,7 @@ The response of the subscription is handled by Listener. Please see the Listener
 ```ruby
 # Subscribe to channel 'my_channel'.
 pubnub.subscribe(
-  channel: :my_channel,
-  callback: ->(envelope) { puts envelope.parsed_response }
+  channel: :my_channel
 )
 ```
 
@@ -484,26 +461,18 @@ Time doesn't accept any other keys than basic ones.
 When subscribed to a single channel or group, this function causes the client to issue a `leave` from the `channel` or group and close any open socket to the PubNub Network. For multiplexed channels, the specified channel(s) or group(s) will be removed and the socket remains open until there are no more channels remaining in the list.
 
 ### METHOD
-```#unsubscribe(channel: channel, group: group)``` aliased to ```leave```
+```#unsubscribe(channel: channel, channel_group: group)``` aliased to ```leave```
 | parameter | required?  |  type |  notes |
 |---------------|---|---|---|
-| channel | optional | symbol / string | Specifies the `channel` to unsubscribe from. (Required if `group` is not specified) |
-| group   | optional | symbol / string | Specifies the `group` to unsubscribe from. (Required if `channel` is not specified) |
+| channel | optional | symbol / string | Specifies the `channel` to unsubscribe from. (Required if `channel_group` is not specified) |
+| channel_group   | optional | symbol / string | Specifies the `channel_group` to unsubscribe from. (Required if `channel` is not specified) |
 
 ### BASIC USAGE
 ```ruby
 pubnub.unsubscribe(
   channel: 'my_channel'
 ) do |envelope|
-  puts envelope.parsed_response
-end
-```
-
-```ruby
-pubnub.unsubscribe(
-  channel: 'chan4,chan6,chan7'
-) do |envelope|
-  puts envelope.parsed_response
+  puts envelope.status
 end
 ```
 
@@ -511,13 +480,13 @@ end
 pubnub.unsubscribe(
   channel: ['chan1','chan2','chan3']
 ) do |envelope|
-  puts envelope.parsed_response
+  puts envelope.status
 end
 ```
 
 ```ruby
 pubnub.leave(channel_group: :cg1) do |envelope| 
-  puts envelope.parsed_response
+  puts envelope.status
 end
 ```
 
@@ -540,6 +509,6 @@ To do `where_now` you can use the following method in the Ruby SDK.
 pubnub.where_now(
   uuid: "my_uuid"
 ) do |envelope|
-  puts envelope.parsed_response
+  puts envelope.result[:data]
 end
 ```

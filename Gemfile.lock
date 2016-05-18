@@ -33,7 +33,7 @@ GEM
     celluloid-supervision (0.20.5)
       timers (>= 4.1.1)
     coderay (1.1.0)
-    concurrent-ruby (1.0.1)
+    concurrent-ruby (1.0.1-java)
     coveralls (0.8.10)
       json (~> 1.8)
       rest-client (>= 1.6.8, < 2)
@@ -72,7 +72,7 @@ GEM
       dry-logic (~> 0.2, >= 0.2.2)
       dry-types (~> 0.6, >= 0.6.0)
     ffi (1.9.10-java)
-    hitimes (1.2.3)
+    hitimes (1.2.3-java)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     httpclient (2.8.0)
@@ -166,4 +166,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.11.2
+   1.12.3
