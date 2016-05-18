@@ -40,14 +40,14 @@ module Pubnub
         key(:config).schema(ConfigSchema)
 
         rule(category_value: [:error, :category]) do |error, category|
-          error.true?.then(category.inclusion?(Pubnub::Constants::STATUS_CATEGORY_ERRORS))
-          error.false?.then(category.inclusion?(Pubnub::Constants::STATUS_CATEGORY_SUCCESSES))
+          error.true?.then(category.included_in?(Pubnub::Constants::STATUS_CATEGORY_ERRORS))
+          error.false?.then(category.included_in?(Pubnub::Constants::STATUS_CATEGORY_SUCCESSES))
         end
       end
 
       ResultSchema = Dry::Validation.Schema do
         key(:code).required(:int?)
-        key(:operation) { inclusion?(Pubnub::Constants::OPERATIONS) }
+        key(:operation) { included_in?(Pubnub::Constants::OPERATIONS) }
         key(:client_request).required
         key(:server_response).required
 
