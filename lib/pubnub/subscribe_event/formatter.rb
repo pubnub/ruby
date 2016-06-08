@@ -32,6 +32,15 @@ module Pubnub
         ]
       end
 
+      def decipher_payload(message)
+        return message[:payload] if message[:channel].end_with?('-pnpres') || @app.env[:cipher_key].nil?
+
+        crypto = Pubnub::Crypto.new(@app.env[:cipher_key].to_s)
+        JSON.parse(crypto.decrypt(message[:payload]), quirks_mode: true)
+      rescue
+        message[:payload]
+      end
+
       def build_non_error_envelopes(parsed_response, req_res_objects)
         Pubnub.logger.debug('Pubnub::SubscribeEvent::Formatter') { 'Formatting non-errror envelopes' }
         timetoken = parsed_response['t']
@@ -101,7 +110,7 @@ module Pubnub
                     server_response: req_res_objects[:response],
 
                     data: {
-                        message: message[:payload],
+                        message: decipher_payload(message),
                         subscribed_channel: message[:subscription_match] || message[:channel],
                         actual_channel: message[:channel],
                         publish_time_object: message[:publish_timetoken],

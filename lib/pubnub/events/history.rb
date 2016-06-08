@@ -121,7 +121,6 @@ module Pubnub
               error: true,
               auto_retried: false,
 
-              data: nil,
               current_timetoken: nil,
               last_timetoken: nil,
               subscribed_channels: nil,

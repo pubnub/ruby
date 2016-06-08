@@ -24,8 +24,9 @@ module Pubnub
           end
         end
       end
-
-      alias_method :unsubscribe, :leave
     end
+
+    # alias_method :unsubscribe, :leave
+    # alias_method :get_state, :state
   end
 end

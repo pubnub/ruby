@@ -34,16 +34,41 @@ module Pubnub
       ].join('/')
     end
 
-    def format_envelopes(response)
+    def format_envelopes(response, request)
       parsed_response, error = Formatter.parse_json(response.body)
 
       error = response if parsed_response && response.code.to_i != 200
 
       if error
-        build_error_envelopes(parsed_response, error)
+        error_envelope(parsed_response, error, request: request, response: response)
       else
-        valid_envelope(parsed_response, request: uri, response: response)
-                  end
+        valid_envelope(parsed_response, request: request, response: response)
+      end
+    end
+
+    def valid_envelope(parsed_response, req_res_objects)
+      Pubnub::Envelope.new(
+          event: @event,
+          event_options: @given_options,
+          timetoken: nil,
+          status: {
+              code: req_res_objects[:response].code,
+              operation: Pubnub::Constants::OPERATION_PUBLISH,
+              client_request: req_res_objects[:request],
+              server_response: req_res_objects[:response],
+              data: nil,
+              category: Pubnub::Constants::STATUS_ACK,
+              error: false,
+              auto_retried: false,
+
+              current_timetoken: nil,
+              last_timetoken: nil,
+              subscribed_channels: nil,
+              subscribed_channel_groups: nil,
+
+              config: get_config
+          }
+      )
     end
 
     def error_envelope(_parsed_response, error, req_res_objects)

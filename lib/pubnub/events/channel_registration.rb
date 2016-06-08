@@ -113,7 +113,7 @@ module Pubnub
         event_options: @given_options,
         timetoken: nil,
         status: {
-          code: req_res_objects[:response].code,
+          code: req_res_objects [:response].code,
           operation: define_operation,
           client_request: req_res_objects[:request],
           server_response: req_res_objects[:response],

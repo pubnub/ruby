@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v2/history/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/4.0.0&reverse=true&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.0, ruby 2.3.0 (2015-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 25 May 2016 15:15:18 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 25 May 2016 15:15:18 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '69'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub
+    body:
+      encoding: UTF-8
+      string: '[[{"text":"Enter Message Here"}],14641838216911695,14641838216911695]'
+    http_version: 
+  recorded_at: Wed, 25 May 2016 15:15:18 GMT
+recorded_with: VCR 3.0.1

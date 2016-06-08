@@ -91,7 +91,7 @@ module Pubnub
 
       # Returns string with all channels separated by comma or single coma
       def channels_for_url(channels)
-        channel = channels.join(',')
+        channel = channels.sort.join(',')
         channel = ',' if channel.empty?
         channel
       end
