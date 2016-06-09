@@ -108,6 +108,127 @@ end
 end
 
 
+it '__channel___demo____http_sync__false___callback__nil_' do
+VCR.use_cassette('examples/presence/__channel___demo____http_sync__false___callback__nil_', record: :none) do
+@msg_envelopes = []
+@presence_envelopes = []
+@status_envelopes = []
+          callbacks = Pubnub::SubscribeCallback.new(
+                                                   message:  ->(envelope) { @msg_envelopes      << envelope },
+                                                   presence: ->(envelope) { @presence_envelopes << envelope },
+                                                   status:   ->(envelope) { @status_envelopes   << envelope }
+          )
+
+@pubnub.add_listener(callback: callbacks)
+@pubnub.presence(channel: 'demo', http_sync: false)
+end
+
+eventually do
+
+
+expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+expect(@status_envelopes[0].status[:error]).to eq(true)
+expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
+expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+end
+
+end
+
+
+it '__channel___demo____http_sync__false___callback___block_' do
+VCR.use_cassette('examples/presence/__channel___demo____http_sync__false___callback___block_', record: :none) do
+@msg_envelopes = []
+@presence_envelopes = []
+@status_envelopes = []
+          callbacks = Pubnub::SubscribeCallback.new(
+                                                   message:  ->(envelope) { @msg_envelopes      << envelope },
+                                                   presence: ->(envelope) { @presence_envelopes << envelope },
+                                                   status:   ->(envelope) { @status_envelopes   << envelope }
+          )
+
+@pubnub.add_listener(callback: callbacks)
+@pubnub.presence(channel: 'demo', http_sync: false)
+end
+
+eventually do
+
+
+expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+expect(@status_envelopes[0].status[:error]).to eq(true)
+expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
+expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+
+expect(@status_envelopes[1].status[:category]).to eq(:timeout)
+expect(@status_envelopes[1].status[:error]).to eq(true)
+expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres"])
+expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+end
+
+end
+
+
+it '__channel___demo____http_sync__false___callback___lambda_' do
+VCR.use_cassette('examples/presence/__channel___demo____http_sync__false___callback___lambda_', record: :none) do
+@msg_envelopes = []
+@presence_envelopes = []
+@status_envelopes = []
+          callbacks = Pubnub::SubscribeCallback.new(
+                                                   message:  ->(envelope) { @msg_envelopes      << envelope },
+                                                   presence: ->(envelope) { @presence_envelopes << envelope },
+                                                   status:   ->(envelope) { @status_envelopes   << envelope }
+          )
+
+@pubnub.add_listener(callback: callbacks)
+@pubnub.presence(channel: 'demo', http_sync: false, callback: @callback)
+end
+
+eventually do
+
+
+expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+expect(@status_envelopes[0].status[:error]).to eq(true)
+expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
+expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+
+expect(@status_envelopes[1].status[:category]).to eq(:timeout)
+expect(@status_envelopes[1].status[:error]).to eq(true)
+expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres"])
+expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+end
+
+end
+
+
 it '__channel___demo______http_sync__true___callback__nil_' do
 VCR.use_cassette('examples/presence/__channel___demo______http_sync__true___callback__nil_', record: :none) do
 @pubnub.presence(channel: 'demo.*', http_sync: true)
@@ -192,6 +313,127 @@ expect(envelopes[0].result[:operation]).to eq(:presence)
 expect(envelopes[0].result[:data]).to eq({:message=>{"action"=>"join", "timestamp"=>1465403702, "uuid"=>"ruby-test-uuid-client-two", "occupancy"=>1}, :subscribed_channel=>"demo.*-pnpres", :actual_channel=>"demo.*-pnpres", :publish_time_object=>{:timetoken=>"14654037023404890", :region_code=>1}, :message_meta_data=>nil, :presence_event=>"join", :presence=>{:uuid=>"ruby-test-uuid-client-two", :timestamp=>1465403702, :state=>nil, :occupancy=>1}})
 
 end
+end
+
+
+it '__channel___demo______http_sync__false___callback__nil_' do
+VCR.use_cassette('examples/presence/__channel___demo______http_sync__false___callback__nil_', record: :none) do
+@msg_envelopes = []
+@presence_envelopes = []
+@status_envelopes = []
+          callbacks = Pubnub::SubscribeCallback.new(
+                                                   message:  ->(envelope) { @msg_envelopes      << envelope },
+                                                   presence: ->(envelope) { @presence_envelopes << envelope },
+                                                   status:   ->(envelope) { @status_envelopes   << envelope }
+          )
+
+@pubnub.add_listener(callback: callbacks)
+@pubnub.presence(channel: 'demo.*', http_sync: false)
+end
+
+eventually do
+
+
+expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+expect(@status_envelopes[0].status[:error]).to eq(true)
+expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
+expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+end
+
+end
+
+
+it '__channel___demo______http_sync__false___callback___block_' do
+VCR.use_cassette('examples/presence/__channel___demo______http_sync__false___callback___block_', record: :none) do
+@msg_envelopes = []
+@presence_envelopes = []
+@status_envelopes = []
+          callbacks = Pubnub::SubscribeCallback.new(
+                                                   message:  ->(envelope) { @msg_envelopes      << envelope },
+                                                   presence: ->(envelope) { @presence_envelopes << envelope },
+                                                   status:   ->(envelope) { @status_envelopes   << envelope }
+          )
+
+@pubnub.add_listener(callback: callbacks)
+@pubnub.presence(channel: 'demo.*', http_sync: false)
+end
+
+eventually do
+
+
+expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+expect(@status_envelopes[0].status[:error]).to eq(true)
+expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
+expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+
+expect(@status_envelopes[1].status[:category]).to eq(:timeout)
+expect(@status_envelopes[1].status[:error]).to eq(true)
+expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
+expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+end
+
+end
+
+
+it '__channel___demo______http_sync__false___callback___lambda_' do
+VCR.use_cassette('examples/presence/__channel___demo______http_sync__false___callback___lambda_', record: :none) do
+@msg_envelopes = []
+@presence_envelopes = []
+@status_envelopes = []
+          callbacks = Pubnub::SubscribeCallback.new(
+                                                   message:  ->(envelope) { @msg_envelopes      << envelope },
+                                                   presence: ->(envelope) { @presence_envelopes << envelope },
+                                                   status:   ->(envelope) { @status_envelopes   << envelope }
+          )
+
+@pubnub.add_listener(callback: callbacks)
+@pubnub.presence(channel: 'demo.*', http_sync: false, callback: @callback)
+end
+
+eventually do
+
+
+expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+expect(@status_envelopes[0].status[:error]).to eq(true)
+expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
+expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+
+expect(@status_envelopes[1].status[:category]).to eq(:timeout)
+expect(@status_envelopes[1].status[:error]).to eq(true)
+expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
+expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+end
+
 end
 
 
@@ -282,6 +524,127 @@ end
 end
 
 
+it '__channel___demo___http_sync__false___callback__nil_' do
+VCR.use_cassette('examples/presence/__channel___demo___http_sync__false___callback__nil_', record: :none) do
+@msg_envelopes = []
+@presence_envelopes = []
+@status_envelopes = []
+          callbacks = Pubnub::SubscribeCallback.new(
+                                                   message:  ->(envelope) { @msg_envelopes      << envelope },
+                                                   presence: ->(envelope) { @presence_envelopes << envelope },
+                                                   status:   ->(envelope) { @status_envelopes   << envelope }
+          )
+
+@pubnub.add_listener(callback: callbacks)
+@pubnub.presence(channel: :demo, http_sync: false)
+end
+
+eventually do
+
+
+expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+expect(@status_envelopes[0].status[:error]).to eq(true)
+expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
+expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+end
+
+end
+
+
+it '__channel___demo___http_sync__false___callback___block_' do
+VCR.use_cassette('examples/presence/__channel___demo___http_sync__false___callback___block_', record: :none) do
+@msg_envelopes = []
+@presence_envelopes = []
+@status_envelopes = []
+          callbacks = Pubnub::SubscribeCallback.new(
+                                                   message:  ->(envelope) { @msg_envelopes      << envelope },
+                                                   presence: ->(envelope) { @presence_envelopes << envelope },
+                                                   status:   ->(envelope) { @status_envelopes   << envelope }
+          )
+
+@pubnub.add_listener(callback: callbacks)
+@pubnub.presence(channel: :demo, http_sync: false)
+end
+
+eventually do
+
+
+expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+expect(@status_envelopes[0].status[:error]).to eq(true)
+expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
+expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+
+expect(@status_envelopes[1].status[:category]).to eq(:timeout)
+expect(@status_envelopes[1].status[:error]).to eq(true)
+expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres"])
+expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+end
+
+end
+
+
+it '__channel___demo___http_sync__false___callback___lambda_' do
+VCR.use_cassette('examples/presence/__channel___demo___http_sync__false___callback___lambda_', record: :none) do
+@msg_envelopes = []
+@presence_envelopes = []
+@status_envelopes = []
+          callbacks = Pubnub::SubscribeCallback.new(
+                                                   message:  ->(envelope) { @msg_envelopes      << envelope },
+                                                   presence: ->(envelope) { @presence_envelopes << envelope },
+                                                   status:   ->(envelope) { @status_envelopes   << envelope }
+          )
+
+@pubnub.add_listener(callback: callbacks)
+@pubnub.presence(channel: :demo, http_sync: false, callback: @callback)
+end
+
+eventually do
+
+
+expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+expect(@status_envelopes[0].status[:error]).to eq(true)
+expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
+expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+
+expect(@status_envelopes[1].status[:category]).to eq(:timeout)
+expect(@status_envelopes[1].status[:error]).to eq(true)
+expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres"])
+expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+end
+
+end
+
+
 it '__channel____demo___demo____demo_______http_sync__true___callback__nil_' do
 VCR.use_cassette('examples/presence/__channel____demo___demo____demo_______http_sync__true___callback__nil_', record: :none) do
 @pubnub.presence(channel: [:demo, "demo", "demo.*"], http_sync: true)
@@ -366,6 +729,149 @@ expect(envelopes[0].result[:operation]).to eq(:presence)
 expect(envelopes[0].result[:data]).to eq({:message=>{"action"=>"join", "timestamp"=>1465403893, "uuid"=>"ruby-test-uuid-client-two", "occupancy"=>1}, :subscribed_channel=>"demo-pnpres", :actual_channel=>"demo-pnpres", :publish_time_object=>{:timetoken=>"14654038934962157", :region_code=>2}, :message_meta_data=>nil, :presence_event=>"join", :presence=>{:uuid=>"ruby-test-uuid-client-two", :timestamp=>1465403893, :state=>nil, :occupancy=>1}})
 
 end
+end
+
+
+it '__channel____demo___demo____demo_______http_sync__false___callback__nil_' do
+VCR.use_cassette('examples/presence/__channel____demo___demo____demo_______http_sync__false___callback__nil_', record: :none) do
+@msg_envelopes = []
+@presence_envelopes = []
+@status_envelopes = []
+          callbacks = Pubnub::SubscribeCallback.new(
+                                                   message:  ->(envelope) { @msg_envelopes      << envelope },
+                                                   presence: ->(envelope) { @presence_envelopes << envelope },
+                                                   status:   ->(envelope) { @status_envelopes   << envelope }
+          )
+
+@pubnub.add_listener(callback: callbacks)
+@pubnub.presence(channel: [:demo, "demo", "demo.*"], http_sync: false)
+end
+
+eventually do
+
+
+expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+expect(@status_envelopes[0].status[:error]).to eq(true)
+expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
+expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+end
+
+end
+
+
+it '__channel____demo___demo____demo_______http_sync__false___callback___block_' do
+VCR.use_cassette('examples/presence/__channel____demo___demo____demo_______http_sync__false___callback___block_', record: :none) do
+@msg_envelopes = []
+@presence_envelopes = []
+@status_envelopes = []
+          callbacks = Pubnub::SubscribeCallback.new(
+                                                   message:  ->(envelope) { @msg_envelopes      << envelope },
+                                                   presence: ->(envelope) { @presence_envelopes << envelope },
+                                                   status:   ->(envelope) { @status_envelopes   << envelope }
+          )
+
+@pubnub.add_listener(callback: callbacks)
+@pubnub.presence(channel: [:demo, "demo", "demo.*"], http_sync: false)
+end
+
+eventually do
+
+
+expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+expect(@status_envelopes[0].status[:error]).to eq(true)
+expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
+expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+
+expect(@status_envelopes[1].status[:category]).to eq(:timeout)
+expect(@status_envelopes[1].status[:error]).to eq(true)
+expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
+expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+
+expect(@status_envelopes[2].status[:category]).to eq(:timeout)
+expect(@status_envelopes[2].status[:error]).to eq(true)
+expect(@status_envelopes[2].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[2].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[2].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[2].status[:subscribed_channels]).to eq(["demo-pnpres"])
+expect(@status_envelopes[2].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[2].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+end
+
+end
+
+
+it '__channel____demo___demo____demo_______http_sync__false___callback___lambda_' do
+VCR.use_cassette('examples/presence/__channel____demo___demo____demo_______http_sync__false___callback___lambda_', record: :none) do
+@msg_envelopes = []
+@presence_envelopes = []
+@status_envelopes = []
+          callbacks = Pubnub::SubscribeCallback.new(
+                                                   message:  ->(envelope) { @msg_envelopes      << envelope },
+                                                   presence: ->(envelope) { @presence_envelopes << envelope },
+                                                   status:   ->(envelope) { @status_envelopes   << envelope }
+          )
+
+@pubnub.add_listener(callback: callbacks)
+@pubnub.presence(channel: [:demo, "demo", "demo.*"], http_sync: false, callback: @callback)
+end
+
+eventually do
+
+
+expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+expect(@status_envelopes[0].status[:error]).to eq(true)
+expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
+expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+
+expect(@status_envelopes[1].status[:category]).to eq(:timeout)
+expect(@status_envelopes[1].status[:error]).to eq(true)
+expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
+expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+
+expect(@status_envelopes[2].status[:category]).to eq(:timeout)
+expect(@status_envelopes[2].status[:error]).to eq(true)
+expect(@status_envelopes[2].status[:auto_retried]).to eq(true)
+expect(@status_envelopes[2].status[:current_timetoken]).to eq(0)
+expect(@status_envelopes[2].status[:last_timetoken]).to eq(0)
+expect(@status_envelopes[2].status[:subscribed_channels]).to eq(["demo-pnpres"])
+expect(@status_envelopes[2].status[:subscribed_channel_groups]).to eq([])
+expect(@status_envelopes[2].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+
+end
+
 end
 
 
