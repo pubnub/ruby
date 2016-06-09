@@ -22,7 +22,7 @@ describe Pubnub::Presence do
   end
 
   it '__channel___demo____http_sync__true___callback__nil_' do
-VCR.use_cassette('examples/presence/__channel___demo____http_sync__true___callback__nil_', record: :none) do
+VCR.use_cassette('examples/presence/8', record: :none) do
 @pubnub.presence(channel: 'demo', http_sync: true)
 envelopes = @pubnub.presence(channel: 'demo', http_sync: true)
 envelopes.each do |envelope|
@@ -51,7 +51,7 @@ end
 
 
 it '__channel___demo____http_sync__true___callback___block_' do
-VCR.use_cassette('examples/presence/__channel___demo____http_sync__true___callback___block_', record: :none) do
+VCR.use_cassette('examples/presence/6', record: :none) do
 @pubnub.presence(channel: 'demo', http_sync: true)
 envelopes = @pubnub.presence(channel: 'demo', http_sync: true, &@callback)
 envelopes.each do |envelope|
@@ -80,7 +80,7 @@ end
 
 
 it '__channel___demo____http_sync__true___callback___lambda_' do
-VCR.use_cassette('examples/presence/__channel___demo____http_sync__true___callback___lambda_', record: :none) do
+VCR.use_cassette('examples/presence/7', record: :none) do
 @pubnub.presence(channel: 'demo', http_sync: true, callback: @callback)
 envelopes = @pubnub.presence(channel: 'demo', http_sync: true, callback: @callback)
 envelopes.each do |envelope|
@@ -230,7 +230,7 @@ end
 
 
 it '__channel___demo______http_sync__true___callback__nil_' do
-VCR.use_cassette('examples/presence/__channel___demo______http_sync__true___callback__nil_', record: :none) do
+VCR.use_cassette('examples/presence/5', record: :none) do
 @pubnub.presence(channel: 'demo.*', http_sync: true)
 envelopes = @pubnub.presence(channel: 'demo.*', http_sync: true)
 envelopes.each do |envelope|
@@ -259,7 +259,7 @@ end
 
 
 it '__channel___demo______http_sync__true___callback___block_' do
-VCR.use_cassette('examples/presence/__channel___demo______http_sync__true___callback___block_', record: :none) do
+VCR.use_cassette('examples/presence/3', record: :none) do
 @pubnub.presence(channel: 'demo.*', http_sync: true)
 envelopes = @pubnub.presence(channel: 'demo.*', http_sync: true, &@callback)
 envelopes.each do |envelope|
@@ -288,7 +288,7 @@ end
 
 
 it '__channel___demo______http_sync__true___callback___lambda_' do
-VCR.use_cassette('examples/presence/__channel___demo______http_sync__true___callback___lambda_', record: :none) do
+VCR.use_cassette('examples/presence/4', record: :none) do
 @pubnub.presence(channel: 'demo.*', http_sync: true, callback: @callback)
 envelopes = @pubnub.presence(channel: 'demo.*', http_sync: true, callback: @callback)
 envelopes.each do |envelope|
@@ -438,7 +438,7 @@ end
 
 
 it '__channel___demo___http_sync__true___callback__nil_' do
-VCR.use_cassette('examples/presence/__channel___demo___http_sync__true___callback__nil_', record: :none) do
+VCR.use_cassette('examples/presence/11', record: :none) do
 @pubnub.presence(channel: :demo, http_sync: true)
 envelopes = @pubnub.presence(channel: :demo, http_sync: true)
 envelopes.each do |envelope|
@@ -467,7 +467,7 @@ end
 
 
 it '__channel___demo___http_sync__true___callback___block_' do
-VCR.use_cassette('examples/presence/__channel___demo___http_sync__true___callback___block_', record: :none) do
+VCR.use_cassette('examples/presence/9', record: :none) do
 @pubnub.presence(channel: :demo, http_sync: true)
 envelopes = @pubnub.presence(channel: :demo, http_sync: true, &@callback)
 envelopes.each do |envelope|
@@ -496,7 +496,7 @@ end
 
 
 it '__channel___demo___http_sync__true___callback___lambda_' do
-VCR.use_cassette('examples/presence/__channel___demo___http_sync__true___callback___lambda_', record: :none) do
+VCR.use_cassette('examples/presence/10', record: :none) do
 @pubnub.presence(channel: :demo, http_sync: true, callback: @callback)
 envelopes = @pubnub.presence(channel: :demo, http_sync: true, callback: @callback)
 envelopes.each do |envelope|
@@ -646,7 +646,7 @@ end
 
 
 it '__channel____demo___demo____demo_______http_sync__true___callback__nil_' do
-VCR.use_cassette('examples/presence/__channel____demo___demo____demo_______http_sync__true___callback__nil_', record: :none) do
+VCR.use_cassette('examples/presence/2', record: :none) do
 @pubnub.presence(channel: [:demo, "demo", "demo.*"], http_sync: true)
 envelopes = @pubnub.presence(channel: [:demo, "demo", "demo.*"], http_sync: true)
 envelopes.each do |envelope|
@@ -675,7 +675,7 @@ end
 
 
 it '__channel____demo___demo____demo_______http_sync__true___callback___block_' do
-VCR.use_cassette('examples/presence/__channel____demo___demo____demo_______http_sync__true___callback___block_', record: :none) do
+VCR.use_cassette('examples/presence/0', record: :none) do
 @pubnub.presence(channel: [:demo, "demo", "demo.*"], http_sync: true)
 envelopes = @pubnub.presence(channel: [:demo, "demo", "demo.*"], http_sync: true, &@callback)
 envelopes.each do |envelope|
@@ -704,7 +704,7 @@ end
 
 
 it '__channel____demo___demo____demo_______http_sync__true___callback___lambda_' do
-VCR.use_cassette('examples/presence/__channel____demo___demo____demo_______http_sync__true___callback___lambda_', record: :none) do
+VCR.use_cassette('examples/presence/1', record: :none) do
 @pubnub.presence(channel: [:demo, "demo", "demo.*"], http_sync: true, callback: @callback)
 envelopes = @pubnub.presence(channel: [:demo, "demo", "demo.*"], http_sync: true, callback: @callback)
 envelopes.each do |envelope|
@@ -810,7 +810,7 @@ expect(@status_envelopes[2].status[:error]).to eq(true)
 expect(@status_envelopes[2].status[:auto_retried]).to eq(true)
 expect(@status_envelopes[2].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[2].status[:last_timetoken]).to eq(0)
-expect(@status_envelopes[2].status[:subscribed_channels]).to eq(["demo-pnpres"])
+expect(@status_envelopes[2].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
 expect(@status_envelopes[2].status[:subscribed_channel_groups]).to eq([])
 expect(@status_envelopes[2].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -865,7 +865,7 @@ expect(@status_envelopes[2].status[:error]).to eq(true)
 expect(@status_envelopes[2].status[:auto_retried]).to eq(true)
 expect(@status_envelopes[2].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[2].status[:last_timetoken]).to eq(0)
-expect(@status_envelopes[2].status[:subscribed_channels]).to eq(["demo-pnpres"])
+expect(@status_envelopes[2].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
 expect(@status_envelopes[2].status[:subscribed_channel_groups]).to eq([])
 expect(@status_envelopes[2].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 

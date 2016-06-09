@@ -22,7 +22,7 @@ describe Pubnub::SetState do
   end
 
   it '__channel___demo___state____some___state____http_sync__true___callback__nil_' do
-VCR.use_cassette('examples/set_state/__channel___demo___state____some___state____http_sync__true___callback__nil_', record: :none) do
+VCR.use_cassette('examples/set_state/23', record: :none) do
 envelope = @pubnub.set_state(channel: :demo, state: {:some=>:state}, http_sync: true)
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
@@ -38,7 +38,7 @@ end
 
 
 it '__channel___demo___state____some___state____http_sync__true___callback___block_' do
-VCR.use_cassette('examples/set_state/__channel___demo___state____some___state____http_sync__true___callback___block_', record: :none) do
+VCR.use_cassette('examples/set_state/21', record: :none) do
 envelope = @pubnub.set_state(channel: :demo, state: {:some=>:state}, http_sync: true, &@callback)
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
@@ -54,7 +54,7 @@ end
 
 
 it '__channel___demo___state____some___state____http_sync__true___callback___lambda_' do
-VCR.use_cassette('examples/set_state/__channel___demo___state____some___state____http_sync__true___callback___lambda_', record: :none) do
+VCR.use_cassette('examples/set_state/22', record: :none) do
 envelope = @pubnub.set_state(channel: :demo, state: {:some=>:state}, http_sync: true, callback: @callback)
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
@@ -70,7 +70,7 @@ end
 
 
 it '__channel___demo___state____some___state____http_sync__false___callback__nil_' do
-VCR.use_cassette('examples/set_state/__channel___demo___state____some___state____http_sync__false___callback__nil_', record: :none) do
+VCR.use_cassette('examples/set_state/20', record: :none) do
 envelope = @pubnub.set_state(channel: :demo, state: {:some=>:state}, http_sync: false)
 envelope = envelope.value
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
@@ -87,7 +87,7 @@ end
 
 
 it '__channel___demo___state____some___state____http_sync__false___callback___block_' do
-VCR.use_cassette('examples/set_state/__channel___demo___state____some___state____http_sync__false___callback___block_', record: :none) do
+VCR.use_cassette('examples/set_state/18', record: :none) do
 envelope = @pubnub.set_state(channel: :demo, state: {:some=>:state}, http_sync: false, &@callback)
 envelope = envelope.value
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
@@ -104,7 +104,7 @@ end
 
 
 it '__channel___demo___state____some___state____http_sync__false___callback___lambda_' do
-VCR.use_cassette('examples/set_state/__channel___demo___state____some___state____http_sync__false___callback___lambda_', record: :none) do
+VCR.use_cassette('examples/set_state/19', record: :none) do
 envelope = @pubnub.set_state(channel: :demo, state: {:some=>:state}, http_sync: false, callback: @callback)
 envelope = envelope.value
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
@@ -121,7 +121,7 @@ end
 
 
 it '__channel___demo___state____some____more___complexe___state____it____is_______http_sync__true___callback__nil_' do
-VCR.use_cassette('examples/set_state/__channel___demo___state____some____more___complexe___state____it____is_______http_sync__true___callback__nil_', record: :none) do
+VCR.use_cassette('examples/set_state/17', record: :none) do
 envelope = @pubnub.set_state(channel: :demo, state: {:some=>{:more=>:complexe, :state=>["it", "is"]}}, http_sync: true)
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
@@ -137,7 +137,7 @@ end
 
 
 it '__channel___demo___state____some____more___complexe___state____it____is_______http_sync__true___callback___block_' do
-VCR.use_cassette('examples/set_state/__channel___demo___state____some____more___complexe___state____it____is_______http_sync__true___callback___block_', record: :none) do
+VCR.use_cassette('examples/set_state/15', record: :none) do
 envelope = @pubnub.set_state(channel: :demo, state: {:some=>{:more=>:complexe, :state=>["it", "is"]}}, http_sync: true, &@callback)
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
@@ -153,7 +153,7 @@ end
 
 
 it '__channel___demo___state____some____more___complexe___state____it____is_______http_sync__true___callback___lambda_' do
-VCR.use_cassette('examples/set_state/__channel___demo___state____some____more___complexe___state____it____is_______http_sync__true___callback___lambda_', record: :none) do
+VCR.use_cassette('examples/set_state/16', record: :none) do
 envelope = @pubnub.set_state(channel: :demo, state: {:some=>{:more=>:complexe, :state=>["it", "is"]}}, http_sync: true, callback: @callback)
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
@@ -169,7 +169,7 @@ end
 
 
 it '__channel___demo___state____some____more___complexe___state____it____is_______http_sync__false___callback__nil_' do
-VCR.use_cassette('examples/set_state/__channel___demo___state____some____more___complexe___state____it____is_______http_sync__false___callback__nil_', record: :none) do
+VCR.use_cassette('examples/set_state/14', record: :none) do
 envelope = @pubnub.set_state(channel: :demo, state: {:some=>{:more=>:complexe, :state=>["it", "is"]}}, http_sync: false)
 envelope = envelope.value
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
@@ -186,7 +186,7 @@ end
 
 
 it '__channel___demo___state____some____more___complexe___state____it____is_______http_sync__false___callback___block_' do
-VCR.use_cassette('examples/set_state/__channel___demo___state____some____more___complexe___state____it____is_______http_sync__false___callback___block_', record: :none) do
+VCR.use_cassette('examples/set_state/12', record: :none) do
 envelope = @pubnub.set_state(channel: :demo, state: {:some=>{:more=>:complexe, :state=>["it", "is"]}}, http_sync: false, &@callback)
 envelope = envelope.value
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
@@ -203,7 +203,7 @@ end
 
 
 it '__channel___demo___state____some____more___complexe___state____it____is_______http_sync__false___callback___lambda_' do
-VCR.use_cassette('examples/set_state/__channel___demo___state____some____more___complexe___state____it____is_______http_sync__false___callback___lambda_', record: :none) do
+VCR.use_cassette('examples/set_state/13', record: :none) do
 envelope = @pubnub.set_state(channel: :demo, state: {:some=>{:more=>:complexe, :state=>["it", "is"]}}, http_sync: false, callback: @callback)
 envelope = envelope.value
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
@@ -220,7 +220,7 @@ end
 
 
 it '__channel___demo____state____some___state____http_sync__true___callback__nil_' do
-VCR.use_cassette('examples/set_state/__channel___demo____state____some___state____http_sync__true___callback__nil_', record: :none) do
+VCR.use_cassette('examples/set_state/11', record: :none) do
 envelope = @pubnub.set_state(channel: 'demo', state: {:some=>:state}, http_sync: true)
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
@@ -236,7 +236,7 @@ end
 
 
 it '__channel___demo____state____some___state____http_sync__true___callback___block_' do
-VCR.use_cassette('examples/set_state/__channel___demo____state____some___state____http_sync__true___callback___block_', record: :none) do
+VCR.use_cassette('examples/set_state/9', record: :none) do
 envelope = @pubnub.set_state(channel: 'demo', state: {:some=>:state}, http_sync: true, &@callback)
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
@@ -252,7 +252,7 @@ end
 
 
 it '__channel___demo____state____some___state____http_sync__true___callback___lambda_' do
-VCR.use_cassette('examples/set_state/__channel___demo____state____some___state____http_sync__true___callback___lambda_', record: :none) do
+VCR.use_cassette('examples/set_state/10', record: :none) do
 envelope = @pubnub.set_state(channel: 'demo', state: {:some=>:state}, http_sync: true, callback: @callback)
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
@@ -268,7 +268,7 @@ end
 
 
 it '__channel___demo____state____some___state____http_sync__false___callback__nil_' do
-VCR.use_cassette('examples/set_state/__channel___demo____state____some___state____http_sync__false___callback__nil_', record: :none) do
+VCR.use_cassette('examples/set_state/8', record: :none) do
 envelope = @pubnub.set_state(channel: 'demo', state: {:some=>:state}, http_sync: false)
 envelope = envelope.value
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
@@ -285,7 +285,7 @@ end
 
 
 it '__channel___demo____state____some___state____http_sync__false___callback___block_' do
-VCR.use_cassette('examples/set_state/__channel___demo____state____some___state____http_sync__false___callback___block_', record: :none) do
+VCR.use_cassette('examples/set_state/6', record: :none) do
 envelope = @pubnub.set_state(channel: 'demo', state: {:some=>:state}, http_sync: false, &@callback)
 envelope = envelope.value
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
@@ -302,7 +302,7 @@ end
 
 
 it '__channel___demo____state____some___state____http_sync__false___callback___lambda_' do
-VCR.use_cassette('examples/set_state/__channel___demo____state____some___state____http_sync__false___callback___lambda_', record: :none) do
+VCR.use_cassette('examples/set_state/7', record: :none) do
 envelope = @pubnub.set_state(channel: 'demo', state: {:some=>:state}, http_sync: false, callback: @callback)
 envelope = envelope.value
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
@@ -319,7 +319,7 @@ end
 
 
 it '__channel___demo____state____some____more___complexe___state____it____is_______http_sync__true___callback__nil_' do
-VCR.use_cassette('examples/set_state/__channel___demo____state____some____more___complexe___state____it____is_______http_sync__true___callback__nil_', record: :none) do
+VCR.use_cassette('examples/set_state/5', record: :none) do
 envelope = @pubnub.set_state(channel: 'demo', state: {:some=>{:more=>:complexe, :state=>["it", "is"]}}, http_sync: true)
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
@@ -335,7 +335,7 @@ end
 
 
 it '__channel___demo____state____some____more___complexe___state____it____is_______http_sync__true___callback___block_' do
-VCR.use_cassette('examples/set_state/__channel___demo____state____some____more___complexe___state____it____is_______http_sync__true___callback___block_', record: :none) do
+VCR.use_cassette('examples/set_state/3', record: :none) do
 envelope = @pubnub.set_state(channel: 'demo', state: {:some=>{:more=>:complexe, :state=>["it", "is"]}}, http_sync: true, &@callback)
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
@@ -351,7 +351,7 @@ end
 
 
 it '__channel___demo____state____some____more___complexe___state____it____is_______http_sync__true___callback___lambda_' do
-VCR.use_cassette('examples/set_state/__channel___demo____state____some____more___complexe___state____it____is_______http_sync__true___callback___lambda_', record: :none) do
+VCR.use_cassette('examples/set_state/4', record: :none) do
 envelope = @pubnub.set_state(channel: 'demo', state: {:some=>{:more=>:complexe, :state=>["it", "is"]}}, http_sync: true, callback: @callback)
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
@@ -367,7 +367,7 @@ end
 
 
 it '__channel___demo____state____some____more___complexe___state____it____is_______http_sync__false___callback__nil_' do
-VCR.use_cassette('examples/set_state/__channel___demo____state____some____more___complexe___state____it____is_______http_sync__false___callback__nil_', record: :none) do
+VCR.use_cassette('examples/set_state/2', record: :none) do
 envelope = @pubnub.set_state(channel: 'demo', state: {:some=>{:more=>:complexe, :state=>["it", "is"]}}, http_sync: false)
 envelope = envelope.value
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
@@ -384,7 +384,7 @@ end
 
 
 it '__channel___demo____state____some____more___complexe___state____it____is_______http_sync__false___callback___block_' do
-VCR.use_cassette('examples/set_state/__channel___demo____state____some____more___complexe___state____it____is_______http_sync__false___callback___block_', record: :none) do
+VCR.use_cassette('examples/set_state/0', record: :none) do
 envelope = @pubnub.set_state(channel: 'demo', state: {:some=>{:more=>:complexe, :state=>["it", "is"]}}, http_sync: false, &@callback)
 envelope = envelope.value
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
@@ -401,7 +401,7 @@ end
 
 
 it '__channel___demo____state____some____more___complexe___state____it____is_______http_sync__false___callback___lambda_' do
-VCR.use_cassette('examples/set_state/__channel___demo____state____some____more___complexe___state____it____is_______http_sync__false___callback___lambda_', record: :none) do
+VCR.use_cassette('examples/set_state/1', record: :none) do
 envelope = @pubnub.set_state(channel: 'demo', state: {:some=>{:more=>:complexe, :state=>["it", "is"]}}, http_sync: false, callback: @callback)
 envelope = envelope.value
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true

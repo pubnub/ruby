@@ -22,7 +22,7 @@ describe Pubnub::Time do
   end
 
   it '__http_sync__true___callback__nil_' do
-VCR.use_cassette('examples/time/__http_sync__true___callback__nil_', record: :none) do
+VCR.use_cassette('examples/time/5', record: :none) do
 envelope = @pubnub.time(http_sync: true)
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
@@ -39,7 +39,7 @@ end
 
 
 it '__http_sync__true___callback___block_' do
-VCR.use_cassette('examples/time/__http_sync__true___callback___block_', record: :none) do
+VCR.use_cassette('examples/time/3', record: :none) do
 envelope = @pubnub.time(http_sync: true, &@callback)
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
@@ -56,7 +56,7 @@ end
 
 
 it '__http_sync__true___callback___lambda_' do
-VCR.use_cassette('examples/time/__http_sync__true___callback___lambda_', record: :none) do
+VCR.use_cassette('examples/time/4', record: :none) do
 envelope = @pubnub.time(http_sync: true, callback: @callback)
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
@@ -73,7 +73,7 @@ end
 
 
 it '__http_sync__false___callback__nil_' do
-VCR.use_cassette('examples/time/__http_sync__false___callback__nil_', record: :none) do
+VCR.use_cassette('examples/time/2', record: :none) do
 envelope = @pubnub.time(http_sync: false)
 envelope = envelope.value
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
@@ -91,7 +91,7 @@ end
 
 
 it '__http_sync__false___callback___block_' do
-VCR.use_cassette('examples/time/__http_sync__false___callback___block_', record: :none) do
+VCR.use_cassette('examples/time/0', record: :none) do
 envelope = @pubnub.time(http_sync: false, &@callback)
 envelope = envelope.value
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
@@ -109,7 +109,7 @@ end
 
 
 it '__http_sync__false___callback___lambda_' do
-VCR.use_cassette('examples/time/__http_sync__false___callback___lambda_', record: :none) do
+VCR.use_cassette('examples/time/1', record: :none) do
 envelope = @pubnub.time(http_sync: false, callback: @callback)
 envelope = envelope.value
 expect(envelope.is_a?(Pubnub::Envelope)).to eq true
