@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/publish/demo/demo/0/ruby_demo_channel/0/%7B%22text%22:%22sometext%22%7D?auth=demoish_authkey&norep=false&pnsdk=PubNub-Ruby/3.8.3&store=0&uuid=tester
+    uri: http://pubsub.pubnub.com/publish/demo/demo/0/ruby_demo_channel/0/%7B%22text%22:%22sometext%22%7D?auth=demoish_authkey&norep=true&pnsdk=PubNub-Ruby/3.8.3&store=0&uuid=tester
     body:
       encoding: UTF-8
       string: ''

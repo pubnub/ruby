@@ -46,7 +46,7 @@ module Pubnub
 
       empty_if_blank.delete_if { |_k, v| v.blank? }
 
-      replication = @replicate == false ? { norep: false } : {}
+      replication = @replicate == false ? { norep: true } : {}
 
       super.merge(empty_if_blank.merge(replication))
     end
