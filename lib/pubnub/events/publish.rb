@@ -46,7 +46,9 @@ module Pubnub
 
       empty_if_blank.delete_if { |_k, v| v.blank? }
 
-      super.merge(empty_if_blank)
+      replication = @replicate == false ? { norep: false } : {}
+
+      super.merge(empty_if_blank.merge(replication))
     end
 
     def path

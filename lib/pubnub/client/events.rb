@@ -26,6 +26,10 @@ module Pubnub
       end
 
       alias_method :unsubscribe, :leave
+
+      def fire(options = {}, &block)
+        self.publish(options.merge(store: false, replicate: false), &block)
+      end
     end
   end
 end
