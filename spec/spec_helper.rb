@@ -12,10 +12,12 @@ require 'spec_expectations'
 require 'pubnub'
 
 require 'simplecov'
-require 'coveralls'
-
 SimpleCov.start
-Coveralls.wear!
+
+if ENV['CI'] == 'true'
+  require 'codecov'
+  SimpleCov.formatter = SimpleCov::Formatter::Codecov
+end
 
 Celluloid.task_class = Celluloid::Task::Threaded
 

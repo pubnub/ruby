@@ -48,7 +48,7 @@ module Pubnub
         meta: @meta
       }
 
-      replication = @replicate == false ? { norep: false } : {}
+      replication = @replicate == false ? { norep: true } : {}
 
       empty_if_blank.delete_if { |_k, v| v.blank? }
       params = {}
