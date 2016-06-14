@@ -1,0 +1,4 @@
+name: ruby
+features:
+  publish:
+   - STORE-FLAG
