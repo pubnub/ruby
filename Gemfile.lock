@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pubnub (4.0.0beta1)
+    pubnub (4.0.0beta2)
       celluloid (~> 0.17)
       dry-validation (~> 0.7)
       httpclient (~> 2.8)
@@ -34,7 +34,6 @@ GEM
       timers (>= 4.1.1)
     coderay (1.1.0)
     concurrent-ruby (1.0.2)
-    concurrent-ruby (1.0.2-java)
     coveralls (0.8.10)
       json (~> 1.8)
       rest-client (>= 1.6.8, < 2)
@@ -75,7 +74,6 @@ GEM
       dry-types (~> 0.6, >= 0.6.0)
     ffi (1.9.10-java)
     hitimes (1.2.4)
-    hitimes (1.2.4-java)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     httpclient (2.8.0)

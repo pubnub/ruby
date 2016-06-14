@@ -42,4 +42,46 @@ describe Pubnub::Publish do
       end
     end
   end
+
+  context 'store, replicate' do
+    before(:each) do
+      @pubnub = Pubnub.new(
+          :max_retries => 0,
+          :subscribe_key => :demo,
+          :publish_key => :demo,
+          :auth_key => :demoish_authkey,
+          :secret_key => 'some_secret_key',
+          :error_callback => @error_callback
+
+      )
+
+      @pubnub.uuid = 'tester'
+    end
+
+    it 'works' do
+      VCR.use_cassette('integration/publish/publish-store-replicate', record: :once) do
+        future = @pubnub.publish(
+            message: { text: 'sometext' },
+            channel: 'ruby_demo_channel',
+            callback: @callback,
+            store: false,
+            replicate: false
+        )
+
+        future.value
+      end
+    end
+
+    it 'works with fire method' do
+      VCR.use_cassette('integration/publish/publish-store-replicate', record: :once) do
+
+        future = @pubnub.fire(
+            message: { text: 'sometext' },
+            channel: 'ruby_demo_channel',
+        )
+
+        future.value
+      end
+    end
+  end
 end
