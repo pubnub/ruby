@@ -1,0 +1,194 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v2/subscribe/demo/demo/0?pnsdk=PubNub-Ruby/4.0.0beta2&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.0, ruby 2.3.0 (2015-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 16 Jun 2016 18:13:31 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 16 Jun 2016 18:13:32 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '45'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"14661008122114187","r":12},"m":[]}'
+    http_version: 
+  recorded_at: Thu, 16 Jun 2016 18:13:32 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v2/subscribe/demo/demo/0?pnsdk=PubNub-Ruby/4.0.0beta2&t=%7B%22r%22:12,%22t%22:%2214661008122114187%22%7D&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.0, ruby 2.3.0 (2015-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 16 Jun 2016 18:13:32 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 16 Jun 2016 18:13:34 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '194'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"14661008143842943","r":12},"m":[{"a":"1","f":514,"i":"3efb92f6-bf02-4373-aafa-996527718ecc","p":{"t":"14661008143738856","r":3},"k":"demo","c":"demo","d":"I1EPtMkUYKN4P0K/dZSLpg=="}]}'
+    http_version: 
+  recorded_at: Thu, 16 Jun 2016 18:13:34 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v2/subscribe/demo/demo,whatever/0?pnsdk=PubNub-Ruby/4.0.0beta2&t=%7B%22r%22:12,%22t%22:0%7D&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.0, ruby 2.3.0 (2015-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 16 Jun 2016 18:14:01 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 16 Jun 2016 18:14:01 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '45'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"14661008417647327","r":12},"m":[]}'
+    http_version: 
+  recorded_at: Thu, 16 Jun 2016 18:14:01 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v2/subscribe/demo/demo,whatever/0?pnsdk=PubNub-Ruby/4.0.0beta2&t=%7B%22r%22:12,%22t%22:%2214661008417647327%22%7D&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.0, ruby 2.3.0 (2015-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 16 Jun 2016 18:14:01 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 16 Jun 2016 18:14:04 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '214'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"14661008441567109","r":12},"m":[{"a":"1","f":514,"i":"3efb92f6-bf02-4373-aafa-996527718ecc","p":{"t":"14661008441569793","r":12},"k":"demo","c":"whatever","d":"I1EPtMkUYKN4P0K/dZSLpg==","b":"whatever"}]}'
+    http_version: 
+  recorded_at: Thu, 16 Jun 2016 18:14:04 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v2/presence/sub-key/demo/channel/demo,whatever/leave?pnsdk=PubNub-Ruby/4.0.0beta2&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.0, ruby 2.3.0 (2015-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 16 Jun 2016 18:14:31 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 16 Jun 2016 18:14:35 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '74'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub Presence
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "action": "leave", "message": "OK", "service": "Presence"}'
+    http_version: 
+  recorded_at: Thu, 16 Jun 2016 18:14:35 GMT
+recorded_with: VCR 3.0.1

@@ -27,7 +27,7 @@ module Pubnub
         'sub-key',
         @subscribe_key,
         'channel',
-        @channel
+        @channel.join(',')
       ].join('/')
     end
 
@@ -77,7 +77,7 @@ module Pubnub
             occupancy: parsed_response['occupancy'],
             total_occupancy: parsed_response['total_occupancy'],
             total_channels: parsed_response['total_channels'],
-            channels: parsed_response['channels'],
+            channels: parsed_response['channels']
           }
         },
 
@@ -103,26 +103,26 @@ module Pubnub
 
     def error_envelope(_parsed_response, error, req_res_objects)
       Pubnub::ErrorEnvelope.new(
-          event: @event,
-          event_options: @given_options,
-          timetoken: nil,
-          status: {
-              code: req_res_objects[:response].code,
-              operation: Pubnub::Constants::OPERATION_HEARTBEAT,
-              client_request: req_res_objects[:request],
-              server_response: req_res_objects[:response],
-              data: nil,
-              category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::STATUS_ERROR),
-              error: true,
-              auto_retried: false,
+        event: @event,
+        event_options: @given_options,
+        timetoken: nil,
+        status: {
+          code: req_res_objects[:response].code,
+          operation: Pubnub::Constants::OPERATION_HEARTBEAT,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
+          data: nil,
+          category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::STATUS_ERROR),
+          error: true,
+          auto_retried: false,
 
-              current_timetoken: nil,
-              last_timetoken: nil,
-              subscribed_channels: nil,
-              subscribed_channel_groups: nil,
+          current_timetoken: nil,
+          last_timetoken: nil,
+          subscribed_channels: nil,
+          subscribed_channel_groups: nil,
 
-              config: get_config
-          }
+          config: get_config
+        }
       )
     end
 

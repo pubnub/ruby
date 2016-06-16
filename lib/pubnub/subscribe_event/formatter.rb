@@ -7,28 +7,28 @@ module Pubnub
 
       def build_error_envelopes(_parsed_response, error, req_res_objects)
         [
-            Pubnub::ErrorEnvelope.new(
-                event: @event,
-                event_options: @given_options,
-                timetoken: nil,
-                status: {
-                    code: req_res_objects[:response].code,
-                    operation: Pubnub::Constants::OPERATION_PUBLISH,
-                    client_request: req_res_objects[:request],
-                    server_response: req_res_objects[:response],
-                    data: nil,
-                    category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::STATUS_ERROR),
-                    error: true,
-                    auto_retried: false,
+          Pubnub::ErrorEnvelope.new(
+            event: @event,
+            event_options: @given_options,
+            timetoken: nil,
+            status: {
+              code: req_res_objects[:response].code,
+              operation: Pubnub::Constants::OPERATION_PUBLISH,
+              client_request: req_res_objects[:request],
+              server_response: req_res_objects[:response],
+              data: nil,
+              category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::STATUS_ERROR),
+              error: true,
+              auto_retried: false,
 
-                    current_timetoken: nil,
-                    last_timetoken: nil,
-                    subscribed_channels: nil,
-                    subscribed_channel_groups: nil,
+              current_timetoken: nil,
+              last_timetoken: nil,
+              subscribed_channels: nil,
+              subscribed_channel_groups: nil,
 
-                    config: get_config
-                }
-            )
+              config: get_config
+            }
+          )
         ]
       end
 
@@ -49,76 +49,76 @@ module Pubnub
         # STATUS
         if messages.empty?
           envelopes = [
-              Pubnub::Envelope.new(
-                  event: @event,
-                  event_options: @given_options,
-                  timetoken: expand_timetoken(timetoken),
-                  status: {
-                      code: req_res_objects[:response].code,
-                      client_request: req_res_objects[:request],
-                      server_response: req_res_objects[:response],
-                      data: nil,
-                      category: Pubnub::Constants::STATUS_ACK,
-                      error: false,
-                      auto_retried: true,
+            Pubnub::Envelope.new(
+              event: @event,
+              event_options: @given_options,
+              timetoken: expand_timetoken(timetoken),
+              status: {
+                code: req_res_objects[:response].code,
+                client_request: req_res_objects[:request],
+                server_response: req_res_objects[:response],
+                data: nil,
+                category: Pubnub::Constants::STATUS_ACK,
+                error: false,
+                auto_retried: true,
 
-                      current_timetoken: timetoken['t'].to_i,
-                      last_timetoken: @app.env[:timetoken].to_i,
-                      subscribed_channels: @app.subscribed_channels,
-                      subscribed_channel_groups: @app.subscribed_groups,
+                current_timetoken: timetoken['t'].to_i,
+                last_timetoken: @app.env[:timetoken].to_i,
+                subscribed_channels: @app.subscribed_channels,
+                subscribed_channel_groups: @app.subscribed_groups,
 
-                      config: get_config
+                config: get_config
 
-                  },
-                  result: {
-                      code: req_res_objects[:response].code,
-                      operation: get_operation,
-                      client_request: req_res_objects[:request],
-                      server_response: req_res_objects[:response],
+              },
+              result: {
+                code: req_res_objects[:response].code,
+                operation: get_operation,
+                client_request: req_res_objects[:request],
+                server_response: req_res_objects[:response],
 
-                      data: nil
-                  }
-              )
+                data: nil
+              }
+            )
           ]
         else # RESULT
           envelopes = messages.map do |message|
             Pubnub::Envelope.new(
-                event: @event,
-                event_options: @given_options,
-                timetoken: expand_timetoken(timetoken),
-                status: {
-                    code: req_res_objects[:response].code,
-                    client_request: req_res_objects[:request],
-                    server_response: req_res_objects[:response],
-                    data: message,
-                    category: Pubnub::Constants::STATUS_ACK,
-                    error: false,
-                    auto_retried: true,
+              event: @event,
+              event_options: @given_options,
+              timetoken: expand_timetoken(timetoken),
+              status: {
+                code: req_res_objects[:response].code,
+                client_request: req_res_objects[:request],
+                server_response: req_res_objects[:response],
+                data: message,
+                category: Pubnub::Constants::STATUS_ACK,
+                error: false,
+                auto_retried: true,
 
-                    current_timetoken: timetoken['t'].to_i,
-                    last_timetoken: @app.env[:timetoken].to_i,
-                    subscribed_channels: @app.subscribed_channels,
-                    subscribed_channel_groups: @app.subscribed_groups,
+                current_timetoken: timetoken['t'].to_i,
+                last_timetoken: @app.env[:timetoken].to_i,
+                subscribed_channels: @app.subscribed_channels,
+                subscribed_channel_groups: @app.subscribed_groups,
 
-                    config: get_config
+                config: get_config
 
-                },
-                result: {
-                    code: req_res_objects[:response].code,
-                    operation: get_operation(message),
-                    client_request: req_res_objects[:request],
-                    server_response: req_res_objects[:response],
+              },
+              result: {
+                code: req_res_objects[:response].code,
+                operation: get_operation(message),
+                client_request: req_res_objects[:request],
+                server_response: req_res_objects[:response],
 
-                    data: {
-                        message: decipher_payload(message),
-                        subscribed_channel: message[:subscription_match] || message[:channel],
-                        actual_channel: message[:channel],
-                        publish_time_object: message[:publish_timetoken],
-                        message_meta_data: message[:user_meta_data],
-                        presence_event: get_presence_event(message),
-                        presence: get_presence_data(message)
-                    }
+                data: {
+                  message: decipher_payload(message),
+                  subscribed_channel: message[:subscription_match] || message[:channel],
+                  actual_channel: message[:channel],
+                  publish_time_object: message[:publish_timetoken],
+                  message_meta_data: message[:user_meta_data],
+                  presence_event: get_presence_event(message),
+                  presence: get_presence_data(message)
                 }
+              }
             )
           end
         end
@@ -170,10 +170,10 @@ module Pubnub
       def get_presence_data(message)
         return nil unless get_operation(message) == Pubnub::Constants::OPERATION_PRESENCE
         {
-            uuid: message[:payload]['uuid'],
-            timestamp: message[:payload]['timestamp'],
-            state: message[:payload]['data'],
-            occupancy: message[:payload]['occupancy']
+          uuid: message[:payload]['uuid'],
+          timestamp: message[:payload]['timestamp'],
+          state: message[:payload]['data'],
+          occupancy: message[:payload]['occupancy']
         }
       end
 
@@ -187,20 +187,20 @@ module Pubnub
       def expand_messages_keys(messages)
         messages.map do |m|
           {
-              shard: m['a'],
-              channel: m['c'],
-              subscription_match: m['b'],
-              payload: m['d'],
-              flags: m['f'],
-              issuing_client_id: m['i'],
-              subscribe_key: m['k'],
-              sequence_number: m['s'],
-              user_meta_data: m['u'],
-              replication_map: m['r'],
-              eat_after_reading: m['ear'],
-              waypoint_list: m['w'],
-              origination_time_token: expand_timetoken(m['o']),
-              publish_timetoken: expand_timetoken(m['p'])
+            shard: m['a'],
+            channel: m['c'],
+            subscription_match: m['b'],
+            payload: m['d'],
+            flags: m['f'],
+            issuing_client_id: m['i'],
+            subscribe_key: m['k'],
+            sequence_number: m['s'],
+            user_meta_data: m['u'],
+            replication_map: m['r'],
+            eat_after_reading: m['ear'],
+            waypoint_list: m['w'],
+            origination_time_token: expand_timetoken(m['o']),
+            publish_timetoken: expand_timetoken(m['p'])
           }
         end
       end
@@ -208,8 +208,8 @@ module Pubnub
       def expand_timetoken(timetoken)
         return nil unless timetoken
         {
-            timetoken: timetoken['t'],
-            region_code: timetoken['r']
+          timetoken: timetoken['t'],
+          region_code: timetoken['r']
         }
       end
     end

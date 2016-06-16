@@ -69,12 +69,12 @@ module Pubnub
             secure_call callbacks.callbacks[:status], envelope
           else
             case envelope.result[:operation]
-              when Pubnub::Constants::OPERATION_SUBSCRIBE
-                secure_call callbacks.callbacks[:message], envelope
-              when Pubnub::Constants::OPERATION_PRESENCE
-                secure_call callbacks.callbacks[:presence], envelope
-              else
-                secure_call callbacks.callbacks[:status], envelope
+            when Pubnub::Constants::OPERATION_SUBSCRIBE
+              secure_call callbacks.callbacks[:message], envelope
+            when Pubnub::Constants::OPERATION_PRESENCE
+              secure_call callbacks.callbacks[:presence], envelope
+            else
+              secure_call callbacks.callbacks[:status], envelope
             end
           end
         end
@@ -161,17 +161,18 @@ module Pubnub
 
     private
 
-    def conflict_with?(event)
-      channels = event.channel
-      groups = event.group
-      wildcard_channels = event.wildcard_channel
-
-      checks  = channels.map          { |channel|          subscribed_to?(:channel, channel) }
-      checks += groups.map            { |group|            subscribed_to?(:group, group) }
-      checks += wildcard_channels.map { |wildcard_channel| subscribed_to?(:wildcard_channel, wildcard_channel) }
-
-      fail "Can't subscribe, conflicts with currently running subscription." if checks.include?(true)
-    end
+    # TODO: remove?
+    # def conflict_with?(event)
+    #   channels = event.channel
+    #   groups = event.group
+    #   wildcard_channels = event.wildcard_channel
+    #
+    #   checks  = channels.map          { |channel|          subscribed_to?(:channel, channel) }
+    #   checks += groups.map            { |group|            subscribed_to?(:group, group) }
+    #   checks += wildcard_channels.map { |wildcard_channel| subscribed_to?(:wildcard_channel, wildcard_channel) }
+    #
+    #   fail "Can't subscribe, conflicts with currently running subscription." if checks.include?(true)
+    # end
 
     def subscribed_to?(type, name)
       case type

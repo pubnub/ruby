@@ -1,6 +1,13 @@
 require 'spec_helper'
 
 describe Pubnub do
+
+  context 'version' do
+    it 'has VERSION' do
+      expect(Pubnub::VERSION).to  match(/\d+\.\d+\..+/)
+    end
+  end
+
   context 'logger' do
     it 'is settable' do
       logger = Logger.new('pubnub.log')

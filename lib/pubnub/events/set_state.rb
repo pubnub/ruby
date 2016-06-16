@@ -46,48 +46,48 @@ module Pubnub
       end
     end
 
-    def valid_envelope(parsed_response, req_res_objects)
+    def valid_envelope(_parsed_response, req_res_objects)
       Pubnub::Envelope.new(
-          event: @event,
-          event_options: @given_options,
-          timetoken: nil,
-          status: {
-              code: req_res_objects[:response].code,
-              operation: Pubnub::Constants::OPERATION_PUBLISH,
-              client_request: req_res_objects[:request],
-              server_response: req_res_objects[:response],
-              data: nil,
-              category: Pubnub::Constants::STATUS_ACK,
-              error: false,
-              auto_retried: false,
+        event: @event,
+        event_options: @given_options,
+        timetoken: nil,
+        status: {
+          code: req_res_objects[:response].code,
+          operation: Pubnub::Constants::OPERATION_PUBLISH,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
+          data: nil,
+          category: Pubnub::Constants::STATUS_ACK,
+          error: false,
+          auto_retried: false,
 
-              current_timetoken: nil,
-              last_timetoken: nil,
-              subscribed_channels: nil,
-              subscribed_channel_groups: nil,
+          current_timetoken: nil,
+          last_timetoken: nil,
+          subscribed_channels: nil,
+          subscribed_channel_groups: nil,
 
-              config: get_config
-          }
+          config: get_config
+        }
       )
     end
 
     def error_envelope(_parsed_response, error, req_res_objects)
       Pubnub::ErrorEnvelope.new(
-          event: @event,
-          event_options: @given_options,
-          timetoken: nil,
-          status: {
-              code: req_res_objects[:response].code,
-              operation: Pubnub::Constants::OPERATION_HEARTBEAT,
-              client_request: req_res_objects[:request],
-              server_response: req_res_objects[:response],
-              data: nil,
-              category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::STATUS_ERROR),
-              error: true,
-              auto_retried: false,
+        event: @event,
+        event_options: @given_options,
+        timetoken: nil,
+        status: {
+          code: req_res_objects[:response].code,
+          operation: Pubnub::Constants::OPERATION_HEARTBEAT,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
+          data: nil,
+          category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::STATUS_ERROR),
+          error: true,
+          auto_retried: false,
 
-              config: get_config
-          }
+          config: get_config
+        }
       )
     end
   end

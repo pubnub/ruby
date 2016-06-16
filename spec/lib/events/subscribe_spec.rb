@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Pubnub::Subscribe do
-  it_behaves_like 'an event'
+  # it_behaves_like 'an event'
 
   around :each do |example|
     Celluloid.boot
@@ -45,6 +45,41 @@ describe Pubnub::Subscribe do
         end
       end
 
+      it 'works with cipher key' do
+        @pubnub = Pubnub::Client.new(
+            subscribe_key: 'demo',
+            publish_key: 'demo',
+            uuid: 'ruby-test-uuid',
+            cipher_key: 'demo'
+        )
+
+        @pubnub.add_listener(callback: @callbacks)
+
+        VCR.use_cassette('lib/events/subscribe-cipher-async', record: :once) do
+          @pubnub.subscribe(channel: :whatever)
+          eventually do
+            expect(@messages.first.result[:data][:message]).to eq('text' => 'hey')
+          end
+        end
+      end
+
+      it 'allows subscribing additional channels' do
+        @pubnub = Pubnub::Client.new(
+            subscribe_key: 'demo',
+            publish_key: 'demo',
+            uuid: 'ruby-test-uuid'
+        )
+
+        VCR.use_cassette('lib/events/subscribe-playing-async', record: :once) do
+          @pubnub.subscribe(channel: :demo)
+          sleep(0.1)
+          @pubnub.subscribe(channel: :whatever)
+          sleep(0.1)
+          @pubnub.leave(channel: [:whatever, :demo])
+        end
+
+      end
+
       it 'fires status callback on error' do
         VCR.use_cassette('lib/events/subscribe-async-error', record: :once) do
           @pubnub = Pubnub::Client.new(
@@ -71,6 +106,23 @@ describe Pubnub::Subscribe do
     end
 
     context 'sync' do
+      it 'works with cipher key' do
+        @pubnub = Pubnub::Client.new(
+            subscribe_key: 'demo',
+            publish_key: 'demo',
+            uuid: 'ruby-test-uuid',
+            cipher_key: 'demo'
+        )
+
+        VCR.use_cassette('lib/events/subscribe-cipher-async', record: :once) do
+          @pubnub.subscribe(channel: :whatever)
+          @messages =  @pubnub.subscribe(channel: :whatever)
+          eventually do
+            expect(@messages.first.result[:data][:message]).to eq('text' => 'hey')
+          end
+        end
+      end
+
       it 'works' do
         VCR.use_cassette('lib/events/subscribe-sync', record: :once) do
           @pubnub = Pubnub::Client.new(

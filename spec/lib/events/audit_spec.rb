@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Pubnub::Audit do
-  # it_behaves_like 'an event'
+  it_behaves_like 'an event'
 
   around :each do |example|
     Celluloid.boot

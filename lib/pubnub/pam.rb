@@ -14,14 +14,14 @@ module Pubnub
 
     def signature
       message = [
-          @subscribe_key,
-          @publish_key,
-          @event,
-          variables_for_signature
+        @subscribe_key,
+        @publish_key,
+        @event,
+        variables_for_signature
       ].join("\n")
       Base64.urlsafe_encode64(
-          OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'),
-                               @secret_key.to_s, message)
+        OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'),
+                             @secret_key.to_s, message)
       ).strip
     end
 
@@ -42,12 +42,12 @@ module Pubnub
 
     def current_operation
       case @event
-        when :audit
-          Pubnub::Constants::OPERATION_AUDIT
-        when :grant
-          Pubnub::Constants::OPERATION_GRANT
-        when :revoke
-          Pubnub::Constants::OPERATION_REVOKE
+      when :audit
+        Pubnub::Constants::OPERATION_AUDIT
+      when :grant
+        Pubnub::Constants::OPERATION_GRANT
+      when :revoke
+        Pubnub::Constants::OPERATION_REVOKE
       end
     end
 
@@ -65,70 +65,70 @@ module Pubnub
 
     def valid_envelope(parsed_response, req_res_objects)
       Pubnub::Envelope.new(
-          event: @event,
-          event_options: @given_options,
-          timetoken: nil,
-          status: {
-              code: req_res_objects[:response].code,
-              client_request: req_res_objects[:request],
-              server_response: req_res_objects[:response],
-              category: Pubnub::Constants::STATUS_ACK,
-              error: false,
-              auto_retried: false,
+        event: @event,
+        event_options: @given_options,
+        timetoken: nil,
+        status: {
+          code: req_res_objects[:response].code,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
+          category: Pubnub::Constants::STATUS_ACK,
+          error: false,
+          auto_retried: false,
 
-              current_timetoken: nil,
-              last_timetoken: nil,
-              subscribed_channels: nil,
-              subscribed_channel_groups: nil,
+          current_timetoken: nil,
+          last_timetoken: nil,
+          subscribed_channels: nil,
+          subscribed_channel_groups: nil,
 
-              data: nil,
+          data: nil,
 
-              config: get_config
+          config: get_config
 
-          },
-          result: {
-              code: req_res_objects[:response].code,
-              operation: current_operation,
-              client_request: req_res_objects[:request],
-              server_response: req_res_objects[:response],
+        },
+        result: {
+          code: req_res_objects[:response].code,
+          operation: current_operation,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
 
-              data: parsed_response['payload']
-          }
+          data: parsed_response['payload']
+        }
       )
     end
 
     def error_envelope(parsed_response, error, req_res_objects)
       ErrorEnvelope.new(
-          event: @event,
-          event_options: @given_options,
-          timetoken: nil,
-          status: {
-              code: req_res_objects[:response].code,
-              client_request: req_res_objects[:request],
-              server_response: req_res_objects[:response],
-              category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::ERROR),
-              error: true,
-              auto_retried: false,
+        event: @event,
+        event_options: @given_options,
+        timetoken: nil,
+        status: {
+          code: req_res_objects[:response].code,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
+          category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::ERROR),
+          error: true,
+          auto_retried: false,
 
-              current_timetoken: nil,
-              last_timetoken: nil,
-              subscribed_channels: nil,
-              subscribed_channel_groups: nil,
+          current_timetoken: nil,
+          last_timetoken: nil,
+          subscribed_channels: nil,
+          subscribed_channel_groups: nil,
 
-              data: nil,
+          data: nil,
 
-              config: get_config
-          },
-          result: {
-              code: req_res_objects[:response].code,
-              operation: current_operation,
-              client_request: req_res_objects[:request],
-              server_response: req_res_objects[:response],
+          config: get_config
+        },
+        result: {
+          code: req_res_objects[:response].code,
+          operation: current_operation,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
 
-              data: {
-                  message: error_message(parsed_response)
-              }
+          data: {
+            message: error_message(parsed_response)
           }
+        }
       )
     end
   end

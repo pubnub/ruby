@@ -9,10 +9,12 @@ require 'pry'
 require 'rspec/wait'
 require 'spec_expectations'
 
-require 'pubnub'
-
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start do
+  add_filter '/spec/'
+end
+
+require 'pubnub'
 
 if ENV['CI'] == 'true'
   require 'codecov'

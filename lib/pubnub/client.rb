@@ -73,7 +73,7 @@ module Pubnub
     include PagedHistory
     include Helpers
 
-    attr_reader :env, :subscriber
+    attr_reader :env, :subscriber, :heart
 
     VERSION = Pubnub::VERSION
 
@@ -369,9 +369,11 @@ module Pubnub
     # Returns:
     # ========
     # Array of all current events.
+    # :nocov:
     def events
       @env[:events]
     end
+    # :nocov:
 
     def sequence_number_for_publish!
       @env[:sequence_number_for_publish] += 1
@@ -379,7 +381,7 @@ module Pubnub
     end
 
     def current_heartbeat
-      @env[:heartbeat]
+      @env[:heartbeat].to_i
     end
 
     def heartbeat=(value)

@@ -97,11 +97,11 @@ module Pubnub
       end
 
       # Checks if json in string is valid
-      def valid_json?(string)
-        JSON.parse(string) ? true : false
-      rescue JSON::ParserError
-        false
-      end
+      # def valid_json?(string)
+      #   JSON.parse(string) ? true : false
+      # rescue JSON::ParserError
+      #   false
+      # end
     end
   end
 end

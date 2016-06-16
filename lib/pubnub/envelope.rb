@@ -27,12 +27,16 @@ module Pubnub
       @status[:error]
     end
 
+    # :nocov:
     def last?
       last
     end
+    # :nocov:
 
+    # :nocov:
     def first?
       first
     end
+    # :nocov:
   end
 end

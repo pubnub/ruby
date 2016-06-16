@@ -17,10 +17,10 @@ module Pubnub
         fail(
           ArgumentError.new(
             object: self,
-            message: 'You have to specify single :channel or :uuid for State event.'
+            message: 'You have to specify :channel or :uuid for State event.'
           ),
-          'You have to specify single :channel or :uuid for State event.'
-        ) if @channel.size == 0 && @uuid_looking_for.nil? || @channel.size > 1
+          'You have to specify :channel or :uuid for State event.'
+        ) if @channel.size == 0 && @uuid_looking_for.nil?
       end
     end
   end
