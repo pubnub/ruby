@@ -57,6 +57,7 @@ describe Pubnub::Subscribe do
 
         VCR.use_cassette('lib/events/subscribe-cipher-async', record: :once) do
           @pubnub.subscribe(channel: :whatever)
+
           eventually do
             expect(@messages.first.result[:data][:message]).to eq('text' => 'hey')
           end
@@ -72,9 +73,9 @@ describe Pubnub::Subscribe do
 
         VCR.use_cassette('lib/events/subscribe-playing-async', record: :once) do
           @pubnub.subscribe(channel: :demo)
-          sleep(0.1)
+          #sleep(0.1)
           @pubnub.subscribe(channel: :whatever)
-          sleep(0.1)
+          #sleep(0.1)
           @pubnub.leave(channel: [:whatever, :demo])
         end
 
@@ -115,8 +116,8 @@ describe Pubnub::Subscribe do
         )
 
         VCR.use_cassette('lib/events/subscribe-cipher-async', record: :once) do
-          @pubnub.subscribe(channel: :whatever)
-          @messages =  @pubnub.subscribe(channel: :whatever)
+          @pubnub.subscribe(channel: :whatever, http_sync: true)
+          @messages =  @pubnub.subscribe(channel: :whatever, http_sync: true)
           eventually do
             expect(@messages.first.result[:data][:message]).to eq('text' => 'hey')
           end
