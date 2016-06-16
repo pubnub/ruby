@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v1/auth/audit/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f?channel=demo&pnsdk=PubNub-Ruby/4.0.0pre0&signature=P3xhzqxwFJSFthJbnByZog-U4j1S5TMFeuUxqKNgMM0=&timestamp=1462972157&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.0, ruby 2.0.0 (2015-04-13))
+      Accept:
+      - '*/*'
+      Date:
+      - Wed, 11 May 2016 13:14:24 GMT
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 11 May 2016 13:14:24 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: |
+        {"message":"Invalid Timestamp","error":true,"service":"Access Manager","status":400}
+    http_version: 
+  recorded_at: Wed, 11 May 2016 13:14:24 GMT
+recorded_with: VCR 3.0.1

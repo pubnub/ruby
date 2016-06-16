@@ -2,8 +2,12 @@ require 'pubnub/error'
 require 'pubnub/uuid'
 require 'pubnub/formatter'
 require 'pubnub/crypto'
+require 'pubnub/constants'
 require 'pubnub/configuration'
 require 'pubnub/message'
+require 'pubnub/subscribe_callback'
+
+require 'pubnub/schemas/envelope_schema'
 
 require 'pubnub/event'
 require 'pubnub/single_event'
@@ -69,7 +73,7 @@ module Pubnub
     include PagedHistory
     include Helpers
 
-    attr_reader :env, :subscriber
+    attr_reader :env, :subscriber, :heart
 
     VERSION = Pubnub::VERSION
 
@@ -152,9 +156,8 @@ module Pubnub
     #   cipher_key: :other_secret,
     #   uuid: :mad_max,
     #   origin: 'custom.pubnub.com',
-    #   callback: -> (envelope) { puts envelope.message },
-    #   error_callback: -> (envelope) { puts envelope.message },
-    #   connect_callback: -> (message) { puts message },
+    #   callback: ->(envelope) { puts envelope.message },
+    #   connect_callback: ->(message) { puts message },
     #   heartbeat: 60,
     #   subscribe_timeout: 310,
     #   non_subscribe_timeout: 10,
@@ -178,14 +181,48 @@ module Pubnub
       end
     end
 
+    def add_listener(options)
+      @subscriber.add_listener(options)
+    end
+
+    def remove_listener(options)
+      @subscriber.remove_listener(options)
+    end
+
+    def subscribed_channels
+      @subscriber.channels + @subscriber.wildcard_channels
+    end
+
+    def subscribed_groups
+      @subscriber.groups
+    end
+
     # Returns:
     # ========
     # True if client is subscribed to at least one channel or channel group, otherwise false.
     def subscribed?
-      if @env[:subscription_pool].empty?
+      if @subscriber.nil?
         false
       else
-        !@env[:subscription_pool].map(&:empty?).index(false)
+        ![@subscriber.channels, @subscriber.groups, @subscriber.wildcard_channels].flatten.empty?
+      end
+    end
+
+    # Returns:
+    # ========
+    # Hash with two keys: :channel and :group, representing currently subscribed channels and groups.
+    def subscribed_to(separate_wildcard = false)
+      if separate_wildcard
+        {
+          channel: @subscriber.channels,
+          group: @subscriber.groups,
+          wildcard_channel: @subscriber.wildcard_channels
+        }
+      else
+        {
+          channel: @subscriber.channels + @subscriber.wildcard_channels,
+          group: @subscriber.groups
+        }
       end
     end
 
@@ -289,6 +326,26 @@ module Pubnub
       @env[:timetoken]
     end
 
+    # Retruns:
+    # ========
+    # Current region or default '0'
+    def region_code
+      @env[:region_code] || 0
+    end
+
+    # Parameters:
+    # ===========
+    # <dl>
+    #   <dt>region</dt>
+    #   <dd>New region.</dd>
+    # </dl>
+    # Returns:
+    # ========
+    # New region.
+    def region_code=(region)
+      @env[:region_code] = region
+    end
+
     # Parameters:
     # ===========
     # <dl>
@@ -312,12 +369,19 @@ module Pubnub
     # Returns:
     # ========
     # Array of all current events.
+    # :nocov:
     def events
       @env[:events]
     end
+    # :nocov:
 
-    def heartbeat
-      @env[:heartbeat]
+    def sequence_number_for_publish!
+      @env[:sequence_number_for_publish] += 1
+      @env[:sequence_number_for_publish] % 2**32
+    end
+
+    def current_heartbeat
+      @env[:heartbeat].to_i
     end
 
     def heartbeat=(value)
@@ -344,20 +408,8 @@ module Pubnub
       totally_empty @env[:state]
     end
 
-    def set_auth_key(key)
-      @env[:auth_key] = key
-    end
-
-    def auth_key=(key)
-      set_auth_key(key)
-    end
-
-    def set_uuid(uuid)
-      @env[:uuid] = uuid
-    end
-
-    def uuid=(uuid)
-      set_uuid(uuid)
+    def generate_ortt
+      (::Time.now.to_f * 10_000_000).to_i
     end
 
     private
@@ -412,6 +464,7 @@ module Pubnub
         @env[k] = v unless @env[k]
       end
       @env[:timetoken] = 0
+      @env[:sequence_number_for_publish] = 0
     end
 
     def symbolize_options_keys(options)

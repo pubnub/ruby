@@ -47,8 +47,8 @@ module Pubnub
 
       def validate_meta!
         fail(
-            ArgumentError.new,
-            ':meta parameter must me hash.'
+          ArgumentError.new,
+          ':meta parameter must me hash.'
         ) if !@meta.nil? && @meta.class != Hash
       end
     end

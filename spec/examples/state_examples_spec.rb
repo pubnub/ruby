@@ -1,228 +1,246 @@
 require 'spec_helper'
 
 describe Pubnub::State do
-  around(:each) do |example|
-    @response_output = StringIO.new
-    @message_output = StringIO.new
+  around :each do |example|
+    @fired = false
 
-    @callback = lambda { |envelope|
-      @response_output.write envelope.response
-      @message_output.write envelope.msg
-      @after_callback = true
-    }
+    @callback = ->(_envelope) do
+      @fired = true
+    end
 
     @pubnub = Pubnub.new(
-        :publish_key => 'pub-c-ef1905bd-3c9c-4bc7-9f20-f6ee1f50f79b',
-        :subscribe_key => 'sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f',
-        :secret_key => 'sec-c-OTA5NzI1YTMtOWEyNy00NTQzLTkzNzMtMjY3ZDlkYzk0NGU3',
-        :error_callback => @error_callback
+      publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
+      subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
+      secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
+      uuid: 'ruby-test-uuid-client-one',
+      auth_key: 'ruby-test-auth-client-one'
     )
-
-    @pubnub_wo_pam_client = Pubnub.new(
-        :publish_key => 'pub-c-bda4e37b-f383-4acf-affd-cd8e66ed523b',
-        :subscribe_key => 'sub-c-243e56aa-1b13-11e5-a5e2-02ee2ddab7fe',
-        :secret_key => 'sec-c-OThjZDUyNjktY2ZlMS00MDc2LWJkODYtMmU4ZTk2MjY5ZGQ5',
-        :uuid => 'gentest'
-    )
-
-    @pubnub.uuid = 'gentest'
 
     Celluloid.boot
     example.run
     Celluloid.shutdown
   end
 
-  it 'http_sync: true, callback: block, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/1001063', record: :once) do
-      event = @pubnub.state('http_sync' => true, 'uuid' => 'uuid', 'channel' => 'channel', &@callback)
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["OK"]
-    end
-  end
+  it '__channel___demo___uuid___ruby-test-uuid____http_sync__true___callback__nil_' do
+VCR.use_cassette('examples/state/11', record: :none) do
+envelope = @pubnub.state(channel: :demo, uuid: 'ruby-test-uuid', http_sync: true)
+expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+expect(envelope.error?).to eq false
 
-  it 'http_sync: true, callback: block, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/1001055', record: :once) do
-      event = @pubnub.state('http_sync' => true, 'uuid' => 'uuid', 'channel' => :channel, &@callback)
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["OK"]
-    end
-  end
+expect(envelope.status[:code]).to eq(200)
+expect(envelope.status[:category]).to eq(:ack)
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
-  it 'http_sync: true, callback: block, uuid: uuid' do
-    VCR.use_cassette('test_examples/1001061', record: :once) do
-      event = @pubnub.state('http_sync' => true, 'uuid' => 'uuid', &@callback)
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["No valid channels specified"]
-    end
-  end
+expect(envelope.result[:code]).to eq(200)
+expect(envelope.result[:operation]).to eq(:get_state)
+expect(envelope.result[:data]).to eq({:state=>{}, :channel=>"demo"})
 
-  it 'http_sync: true, callback: block, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/1001060', record: :once) do
-      event = @pubnub.state('http_sync' => true, 'uuid' => :uuid, 'channel' => 'channel', &@callback)
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["OK"]
-    end
-  end
+end
+end
 
-  it 'http_sync: true, callback: block, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/1001064', record: :once) do
-      event = @pubnub.state('http_sync' => true, 'uuid' => :uuid, 'channel' => :channel, &@callback)
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["OK"]
-    end
-  end
 
-  it 'http_sync: true, callback: block, uuid: uuid' do
-    VCR.use_cassette('test_examples/1001067', record: :once) do
-      event = @pubnub.state('http_sync' => true, 'uuid' => :uuid, &@callback)
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["No valid channels specified"]
-    end
-  end
+it '__channel___demo___uuid___ruby-test-uuid____http_sync__true___callback___block_' do
+VCR.use_cassette('examples/state/9', record: :none) do
+envelope = @pubnub.state(channel: :demo, uuid: 'ruby-test-uuid', http_sync: true, &@callback)
+expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+expect(envelope.error?).to eq false
 
-  it 'http_sync: true, callback: parameter, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/1001054', record: :once) do
-      event = @pubnub.state('http_sync' => true, 'callback' => :parameter, 'uuid' => 'uuid', 'channel' => 'channel')
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["OK"]
-    end
-  end
+expect(envelope.status[:code]).to eq(200)
+expect(envelope.status[:category]).to eq(:ack)
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
-  it 'http_sync: true, callback: parameter, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/1001058', record: :once) do
-      event = @pubnub.state('http_sync' => true, 'callback' => :parameter, 'uuid' => 'uuid', 'channel' => :channel)
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["OK"]
-    end
-  end
+expect(envelope.result[:code]).to eq(200)
+expect(envelope.result[:operation]).to eq(:get_state)
+expect(envelope.result[:data]).to eq({:state=>{}, :channel=>"demo"})
 
-  it 'http_sync: true, callback: parameter, uuid: uuid' do
-    VCR.use_cassette('test_examples/1001074', record: :once) do
-      event = @pubnub.state('http_sync' => true, 'callback' => :parameter, 'uuid' => 'uuid')
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["No valid channels specified"]
-    end
-  end
+end
+end
 
-  it 'http_sync: true, callback: parameter, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/1001057', record: :once) do
-      event = @pubnub.state('http_sync' => true, 'callback' => :parameter, 'uuid' => :uuid, 'channel' => 'channel')
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["OK"]
-    end
-  end
 
-  it 'http_sync: true, callback: parameter, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/1001059', record: :once) do
-      event = @pubnub.state('http_sync' => true, 'callback' => :parameter, 'uuid' => :uuid, 'channel' => :channel)
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["OK"]
-    end
-  end
+it '__channel___demo___uuid___ruby-test-uuid____http_sync__true___callback___lambda_' do
+VCR.use_cassette('examples/state/10', record: :none) do
+envelope = @pubnub.state(channel: :demo, uuid: 'ruby-test-uuid', http_sync: true, callback: @callback)
+expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+expect(envelope.error?).to eq false
 
-  it 'http_sync: true, callback: parameter, uuid: uuid' do
-    VCR.use_cassette('test_examples/1001065', record: :once) do
-      event = @pubnub.state('http_sync' => true, 'callback' => :parameter, 'uuid' => :uuid)
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["No valid channels specified"]
-    end
-  end
+expect(envelope.status[:code]).to eq(200)
+expect(envelope.status[:category]).to eq(:ack)
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
-  it 'http_sync: false, callback: block, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/1001070', record: :once) do
-      event = @pubnub.state('http_sync' => false, 'uuid' => 'uuid', 'channel' => 'channel', &@callback)
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["OK"]
-    end
-  end
+expect(envelope.result[:code]).to eq(200)
+expect(envelope.result[:operation]).to eq(:get_state)
+expect(envelope.result[:data]).to eq({:state=>{}, :channel=>"demo"})
 
-  it 'http_sync: false, callback: block, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/1001068', record: :once) do
-      event = @pubnub.state('http_sync' => false, 'uuid' => 'uuid', 'channel' => :channel, &@callback)
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["OK"]
-    end
-  end
+end
+end
 
-  it 'http_sync: false, callback: block, uuid: uuid' do
-    VCR.use_cassette('test_examples/1001066', record: :once) do
-      event = @pubnub.state('http_sync' => false, 'uuid' => 'uuid', &@callback)
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["No valid channels specified"]
-    end
-  end
 
-  it 'http_sync: false, callback: block, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/1001062', record: :once) do
-      event = @pubnub.state('http_sync' => false, 'uuid' => :uuid, 'channel' => 'channel', &@callback)
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["OK"]
-    end
-  end
+it '__channel___demo___uuid___ruby-test-uuid____http_sync__false___callback__nil_' do
+VCR.use_cassette('examples/state/8', record: :none) do
+envelope = @pubnub.state(channel: :demo, uuid: 'ruby-test-uuid', http_sync: false)
+envelope = envelope.value
+expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+expect(envelope.error?).to eq false
 
-  it 'http_sync: false, callback: block, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/1001072', record: :once) do
-      event = @pubnub.state('http_sync' => false, 'uuid' => :uuid, 'channel' => :channel, &@callback)
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["OK"]
-    end
-  end
+expect(envelope.status[:code]).to eq(200)
+expect(envelope.status[:category]).to eq(:ack)
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
-  it 'http_sync: false, callback: block, uuid: uuid' do
-    VCR.use_cassette('test_examples/1001075', record: :once) do
-      event = @pubnub.state('http_sync' => false, 'uuid' => :uuid, &@callback)
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["No valid channels specified"]
-    end
-  end
+expect(envelope.result[:code]).to eq(200)
+expect(envelope.result[:operation]).to eq(:get_state)
+expect(envelope.result[:data]).to eq({:state=>{}, :channel=>"demo"})
 
-  it 'http_sync: false, callback: parameter, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/1001069', record: :once) do
-      event = @pubnub.state('http_sync' => false, 'callback' => :parameter, 'uuid' => 'uuid', 'channel' => 'channel')
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["OK"]
-    end
-  end
+end
+end
 
-  it 'http_sync: false, callback: parameter, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/1001052', record: :once) do
-      event = @pubnub.state('http_sync' => false, 'callback' => :parameter, 'uuid' => 'uuid', 'channel' => :channel)
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["OK"]
-    end
-  end
 
-  it 'http_sync: false, callback: parameter, uuid: uuid' do
-    VCR.use_cassette('test_examples/1001073', record: :once) do
-      event = @pubnub.state('http_sync' => false, 'callback' => :parameter, 'uuid' => 'uuid')
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["No valid channels specified"]
-    end
-  end
+it '__channel___demo___uuid___ruby-test-uuid____http_sync__false___callback___block_' do
+VCR.use_cassette('examples/state/6', record: :none) do
+envelope = @pubnub.state(channel: :demo, uuid: 'ruby-test-uuid', http_sync: false, &@callback)
+envelope = envelope.value
+expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+expect(envelope.error?).to eq false
 
-  it 'http_sync: false, callback: parameter, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/1001053', record: :once) do
-      event = @pubnub.state('http_sync' => false, 'callback' => :parameter, 'uuid' => :uuid, 'channel' => 'channel')
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["OK"]
-    end
-  end
+expect(envelope.status[:code]).to eq(200)
+expect(envelope.status[:category]).to eq(:ack)
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
-  it 'http_sync: false, callback: parameter, uuid: uuid, channel: channel' do
-    VCR.use_cassette('test_examples/1001056', record: :once) do
-      event = @pubnub.state('http_sync' => false, 'callback' => :parameter, 'uuid' => :uuid, 'channel' => :channel)
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 200, \"uuid\": \"uuid\", \"service\": \"Presence\", \"message\": \"OK\", \"payload\": {}, \"channel\": \"channel\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["OK"]
-    end
-  end
+expect(envelope.result[:code]).to eq(200)
+expect(envelope.result[:operation]).to eq(:get_state)
+expect(envelope.result[:data]).to eq({:state=>{}, :channel=>"demo"})
 
-  it 'http_sync: false, callback: parameter, uuid: uuid' do
-    VCR.use_cassette('test_examples/1001071', record: :once) do
-      event = @pubnub.state('http_sync' => false, 'callback' => :parameter, 'uuid' => :uuid)
-      expect(event.value.map { |e| e.response }).to eq ["{\"status\": 400, \"message\": \"No valid channels specified\", \"service\": \"Presence\"}"]
-      expect(event.value.map { |e| e.message }).to eq ["No valid channels specified"]
-    end
-  end
+end
+end
+
+
+it '__channel___demo___uuid___ruby-test-uuid____http_sync__false___callback___lambda_' do
+VCR.use_cassette('examples/state/7', record: :none) do
+envelope = @pubnub.state(channel: :demo, uuid: 'ruby-test-uuid', http_sync: false, callback: @callback)
+envelope = envelope.value
+expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+expect(envelope.error?).to eq false
+
+expect(envelope.status[:code]).to eq(200)
+expect(envelope.status[:category]).to eq(:ack)
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+expect(envelope.result[:code]).to eq(200)
+expect(envelope.result[:operation]).to eq(:get_state)
+expect(envelope.result[:data]).to eq({:state=>{}, :channel=>"demo"})
+
+end
+end
+
+
+it '__channel___demo____uuid___ruby-test-uuid____http_sync__true___callback__nil_' do
+VCR.use_cassette('examples/state/5', record: :none) do
+envelope = @pubnub.state(channel: 'demo', uuid: 'ruby-test-uuid', http_sync: true)
+expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+expect(envelope.error?).to eq false
+
+expect(envelope.status[:code]).to eq(200)
+expect(envelope.status[:category]).to eq(:ack)
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+expect(envelope.result[:code]).to eq(200)
+expect(envelope.result[:operation]).to eq(:get_state)
+expect(envelope.result[:data]).to eq({:state=>{}, :channel=>"demo"})
+
+end
+end
+
+
+it '__channel___demo____uuid___ruby-test-uuid____http_sync__true___callback___block_' do
+VCR.use_cassette('examples/state/3', record: :none) do
+envelope = @pubnub.state(channel: 'demo', uuid: 'ruby-test-uuid', http_sync: true, &@callback)
+expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+expect(envelope.error?).to eq false
+
+expect(envelope.status[:code]).to eq(200)
+expect(envelope.status[:category]).to eq(:ack)
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+expect(envelope.result[:code]).to eq(200)
+expect(envelope.result[:operation]).to eq(:get_state)
+expect(envelope.result[:data]).to eq({:state=>{}, :channel=>"demo"})
+
+end
+end
+
+
+it '__channel___demo____uuid___ruby-test-uuid____http_sync__true___callback___lambda_' do
+VCR.use_cassette('examples/state/4', record: :none) do
+envelope = @pubnub.state(channel: 'demo', uuid: 'ruby-test-uuid', http_sync: true, callback: @callback)
+expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+expect(envelope.error?).to eq false
+
+expect(envelope.status[:code]).to eq(200)
+expect(envelope.status[:category]).to eq(:ack)
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+expect(envelope.result[:code]).to eq(200)
+expect(envelope.result[:operation]).to eq(:get_state)
+expect(envelope.result[:data]).to eq({:state=>{}, :channel=>"demo"})
+
+end
+end
+
+
+it '__channel___demo____uuid___ruby-test-uuid____http_sync__false___callback__nil_' do
+VCR.use_cassette('examples/state/2', record: :none) do
+envelope = @pubnub.state(channel: 'demo', uuid: 'ruby-test-uuid', http_sync: false)
+envelope = envelope.value
+expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+expect(envelope.error?).to eq false
+
+expect(envelope.status[:code]).to eq(200)
+expect(envelope.status[:category]).to eq(:ack)
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+expect(envelope.result[:code]).to eq(200)
+expect(envelope.result[:operation]).to eq(:get_state)
+expect(envelope.result[:data]).to eq({:state=>{}, :channel=>"demo"})
+
+end
+end
+
+
+it '__channel___demo____uuid___ruby-test-uuid____http_sync__false___callback___block_' do
+VCR.use_cassette('examples/state/0', record: :none) do
+envelope = @pubnub.state(channel: 'demo', uuid: 'ruby-test-uuid', http_sync: false, &@callback)
+envelope = envelope.value
+expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+expect(envelope.error?).to eq false
+
+expect(envelope.status[:code]).to eq(200)
+expect(envelope.status[:category]).to eq(:ack)
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+expect(envelope.result[:code]).to eq(200)
+expect(envelope.result[:operation]).to eq(:get_state)
+expect(envelope.result[:data]).to eq({:state=>{}, :channel=>"demo"})
+
+end
+end
+
+
+it '__channel___demo____uuid___ruby-test-uuid____http_sync__false___callback___lambda_' do
+VCR.use_cassette('examples/state/1', record: :none) do
+envelope = @pubnub.state(channel: 'demo', uuid: 'ruby-test-uuid', http_sync: false, callback: @callback)
+envelope = envelope.value
+expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+expect(envelope.error?).to eq false
+
+expect(envelope.status[:code]).to eq(200)
+expect(envelope.status[:category]).to eq(:ack)
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+expect(envelope.result[:code]).to eq(200)
+expect(envelope.result[:operation]).to eq(:get_state)
+expect(envelope.result[:data]).to eq({:state=>{}, :channel=>"demo"})
+
+end
+end
 
 
 end

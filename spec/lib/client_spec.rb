@@ -1,8 +1,15 @@
 require 'spec_helper'
 
 describe Pubnub::Client do
+
+  around :each do |example|
+    Celluloid.boot
+    example.run
+    Celluloid.shutdown
+  end
+
   it 'has valid version constant' do
-    expect(Pubnub::Client::VERSION).to match match(/\d+\.\d+\..+/)
+    expect(Pubnub::Client::VERSION).to match(/\d+\.\d+\..+/)
   end
 
   context '#initialize' do
@@ -151,10 +158,85 @@ describe Pubnub::Client do
     end
   end
 
+  context 'callback listeners' do
+    let(:pubnub_client) { Pubnub.new(subscribe_key: 'demo') }
+
+    it 'can be added' do
+      callbacks = Pubnub::SubscribeCallback.new(
+          message:  ->(_envelope) {},
+          presence: ->(_envelope) {},
+          status:   ->(_envelope) {}
+      )
+
+      expect(pubnub_client.subscribed?).to eq false
+
+      pubnub_client.add_listener(
+                       callback: callbacks,
+                       name: :callbacks
+      )
+
+      expect(pubnub_client.subscriber.listeners[:callbacks]).not_to be_nil
+
+      expect(pubnub_client.subscribed?).to eq false # we have callbacks but we're not subscribed yet
+    end
+
+    it 'can be removed' do
+      callbacks = Pubnub::SubscribeCallback.new(
+          message:  ->(_envelope) {},
+          presence: ->(_envelope) {},
+          status:   ->(_envelope) {}
+      )
+
+      pubnub_client.add_listener(
+          callback: callbacks,
+          name: :callbacks
+      )
+
+      expect(pubnub_client.subscriber.listeners[:callbacks]).not_to be_nil
+
+      pubnub_client.remove_listener(name: :callbacks)
+
+      expect(pubnub_client.subscriber.listeners[:callbacks]).to be_nil
+
+      pubnub_client.add_listener(
+          callback: callbacks
+      )
+
+      expect(pubnub_client.subscriber.listeners).not_to be_empty
+
+      pubnub_client.remove_listener(callback: callbacks)
+
+      expect(pubnub_client.subscriber.listeners).to be_empty
+    end
+  end
+
+  context 'helper methods' do
+    let(:pubnub_client) { Pubnub.new(subscribe_key: 'demo') }
+
+    it 'can change uuid while not subscribed' do
+      expect(pubnub_client.change_uuid('whatever')).to eq 'whatever'
+    end
+
+    it 'cannot change uuid when subscribed' do
+      pubnub_client.subscribe(channel: :demo)
+
+      expect { pubnub_client.change_uuid('whatever') }.to raise_error(RuntimeError)
+    end
+
+    it 'can show what channels are subscribed' do
+      expect(pubnub_client.subscribed?).to eq(false)
+      pubnub_client.subscribe(channel: ['demo', 'demo.*'], presence: 'demo', group: 'demo')
+      expect(pubnub_client.subscribed?).to eq(true)
+
+      expect(pubnub_client.subscribed_to).to eq(channel: ['demo', 'demo-pnpres', 'demo.*'], group: ['demo'])
+      expect(pubnub_client.subscribed_to(true)).to eq(channel: ['demo', 'demo-pnpres'], wildcard_channel: ['demo.*'], group: ['demo'])
+    end
+  end
+
   # context 'connections pool' do
   #   let(:pubnub_client) { Pubnub.new(subscribe_key: 'demo', publish_key: 'demo') }
   #
-  #   around(:each) do |example|
+  #   around :each do |example|
   #     Celluloid.boot
   #     example.run
   #     Celluloid.shutdown

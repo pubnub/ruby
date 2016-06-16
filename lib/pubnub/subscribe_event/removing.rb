@@ -35,17 +35,12 @@ module Pubnub
 
       private
 
-      # def kill_requester
-      #   @app.kill_request_dispatcher(@origin, :subscribe_event)
-      # end
-
       def remove_g_cb(group)
         @g_cb_pool[group] = nil
       end
 
       def remove_c_cb(channel)
         @c_cb_pool[channel] = nil
-        @e_cb_pool[channel] = nil
       end
 
       def remove_group(group)

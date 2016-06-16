@@ -5,11 +5,16 @@ require 'webmock/rspec'
 require 'vcr'
 require 'celluloid/current'
 require 'celluloid/test'
-
-require 'pubnub'
+require 'pry'
+require 'rspec/wait'
+require 'spec_expectations'
 
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start do
+  add_filter '/spec/'
+end
+
+require 'pubnub'
 
 if ENV['CI'] == 'true'
   require 'codecov'
@@ -21,7 +26,7 @@ Celluloid.task_class = Celluloid::Task::Threaded
 # AsyncHelper allows us to wait for async operations
 module AsyncHelper
   def eventually(options = {})
-    timeout = options[:timeout] || 0.5
+    timeout = options[:timeout] || 20
     interval = options[:interval] || 0.1
     time_limit = Time.now + timeout
     loop_it(interval, time_limit) do yield end
@@ -52,11 +57,11 @@ RSpec.configure do |config|
   logfile.sync = true
   Celluloid.logger = Logger.new(logfile)
 
-  config.around do |example|
-    Timeout.timeout(20) do
-      example.run
-    end
-  end
+  # config.around do |example|
+  #   Timeout.timeout(20) do
+  #     example.run
+  #   end
+  # end
 end
 
 VCR.configure do |c|
@@ -64,6 +69,6 @@ VCR.configure do |c|
   c.hook_into :webmock
   c.default_cassette_options = {
     match_requests_on: [:method,
-                        VCR.request_matchers.uri_without_param(:pnsdk, :uuid)]
+                        VCR.request_matchers.uri_without_param(:pnsdk, :uuid, :ortt, :seqn)]
   }
 end

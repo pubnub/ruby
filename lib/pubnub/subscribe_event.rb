@@ -28,16 +28,14 @@ module Pubnub
       Pubnub.logger.debug('Pubnub') { "Fired event #{self.class}" }
 
       consider_heartbeat
-      message = send_request
 
-      if @app.subscriber.current_subscription_id != object_id && @http_sync != true
-        return nil
-      end
+      response = send_request
+
+      return false if @app.subscriber.current_subscription_id != object_id && @http_sync != true
 
       Pubnub.logger.debug('Pubnub') { 'Fire before fire_callback' }
-      envelopes = fire_callbacks(handle(message))
 
-      finalize_event(envelopes)
+      envelopes = finalize_event(fire_callbacks(handle(response, uri)))
 
       async.fire unless @http_sync
 
@@ -53,12 +51,12 @@ module Pubnub
     end
 
     def build(options)
-      @c_cb_pool  = options[:callbacks][:channels]
-      @g_cb_pool  = options[:callbacks][:groups]
+      @c_cb_pool = options[:callbacks][:channels]
+      @g_cb_pool = options[:callbacks][:groups]
       @wc_cb_pool = options[:callbacks][:wildcard_channels]
 
-      @channel          = options[:channels]
-      @group            = options[:groups]
+      @channel = options[:channels]
+      @group = options[:groups]
       @wildcard_channel = options[:wildcard_channels]
     end
 
@@ -69,10 +67,21 @@ module Pubnub
 
       begin
         req = request_dispatcher.get(uri.to_s)
-        @app.env[:reconnect_callback].call('Reconnected') if retries > 0
+        if retries > 0
+          @app.subscriber.announce_status(announcement_type: Pubnub::Constants::RECONNECTED_ANNOUNCEMENT,
+                                          event: @event,
+                                          given_options: @given_options,
+                                          response: req,
+                                          request: uri)
+        end
+        req
       rescue => error
         Pubnub.logger.warn('Pubnub') { "Connection lost! Reason: #{error}" }
-        @app.env[:disconnect_callback].call("Disconnected. Retry no. #{retries}")
+        @app.subscriber.announce_status(announcement_type: Pubnub::Constants::TIMEOUT_ANNOUNCEMENT,
+                                        event: @event,
+                                        given_options: @given_options,
+                                        response: nil,
+                                        request: uri)
         if retries < @app.env[:reconnect_attempts]
           req = retry_sending_request(retries)
         else
@@ -98,35 +107,44 @@ module Pubnub
     end
 
     def finalize_event(envelopes)
-      Pubnub.logger.debug('Pubnub') { '#finalize_event' }
-      if @app.env[:timetoken] == 0
-        begin
-          Pubnub.logger.debug('Pubnub::SubscribeEvent') { 'Calling connect_callback' }
-          @app.env[:connect_callback].call 'Connected!' if @app.env[:connect_callback]
-        rescue => error
-          Pubnub.logger.error('Pubnub::SubscribeEvent') do
-            "Error while calling connection callback #{error.inspect}"
-          end
-        end
+      if envelopes.first.timetoken
+        @app.timetoken = envelopes.first.timetoken[:timetoken]
+        @app.region_code = envelopes.first.timetoken[:region_code]
       end
-      @app.timetoken = envelopes.first.timetoken
+
+      envelopes
     end
 
     def path
       '/' + [
+        'v2',
         'subscribe',
         @subscribe_key,
         Pubnub::Formatter.channels_for_url(@channel + @wildcard_channel),
-        0,
-        (@app.env[:timetoken] || 0)
+        0
       ].join('/').gsub(/\?/, '%3F')
     end
 
     def parameters
       params = super
+      params = add_timetoken_to_params(params)
+      params = add_group_to_params(params)
+      add_state_to_params(params)
+    end
+
+    def add_timetoken_to_params(params)
+      params.merge!(t: encode_parameter(r: @app.region_code, t: @app.timetoken))
+      params
+    end
+
+    def add_group_to_params(params)
       params.merge!('channel-group' => @group.join(',')) unless @group.empty?
+      params
+    end
+
+    def add_state_to_params(params)
       params.merge!(
-        state: encode_state(@app.env[:state][@origin][:channel].merge(@app.env[:state][@origin][:group]))
+        state: encode_parameter(@app.env[:state][@origin][:channel].merge(@app.env[:state][@origin][:group]))
       ) unless @app.empty_state?
       params
     end

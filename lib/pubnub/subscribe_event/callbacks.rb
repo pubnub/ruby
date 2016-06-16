@@ -9,12 +9,11 @@ module Pubnub
         @g_cb_pool ||= {} # group
         @c_cb_pool ||= {} # channel
         @wc_cb_pool ||= {} # wildcard
-        @e_cb_pool ||= {} # error
       end
 
       def fire_callbacks(envelopes)
         if @http_sync
-          super
+          fire_sync_callbacks(envelopes)
         else
           Pubnub.logger.debug('Pubnub') { "Firing callbacks for #{self.class}" }
           fire_async_callbacks(envelopes)
@@ -22,54 +21,27 @@ module Pubnub
         envelopes
       end
 
-      def fire_async_callbacks(envelopes)
+      def fire_sync_callbacks(envelopes)
         envelopes.each do |envelope|
-          if !envelope.error && !envelope.message.nil?
-            fire_success_callback envelope
-          elsif envelope.error
-            fire_error_callback envelope
-          end
+          fire_respective_callback_for envelope
         end
       end
 
-      def fire_success_callback(envelope)
-        try_group_cb(envelope)
-        try_wildcard_presence_cb(envelope)
-        try_wildcard_cb(envelope)
-        try_normal_cb(envelope)
-      end
-
-      def try_group_cb(envelope)
-        return unless envelope.group && @g_cb_pool[envelope.group]
-        secure_call(@g_cb_pool[envelope.group], envelope)
-      end
-
-      def try_wildcard_presence_cb(envelope)
-        return unless envelope.wildcard_channel && envelope.channel.index('-pnpres')
-        secure_call(@wc_cb_pool[envelope.wildcard_channel + '-pnpres'], envelope)
-      end
-
-      def try_wildcard_cb(envelope)
-        return unless envelope.wildcard_channel && !envelope.channel.index('-pnpres')
-        secure_call(@wc_cb_pool[envelope.wildcard_channel], envelope)
-      end
-
-      def try_normal_cb(envelope)
-        secure_call(@c_cb_pool[envelope.channel], envelope)
-      end
-
-      def fire_error_callback(envelope)
-        if @e_cb_pool[envelope.channel]
-          secure_call @e_cb_pool[envelope.channel], envelope
+      def fire_respective_callback_for(envelope)
+        if !envelope.is_a?(ErrorEnvelope) && envelope.result[:data] && !envelope.result[:data][:subscribed_channel].index('*') && envelope.result[:data][:actual_channel].index('-pnpres') && @presence_callback
+          secure_call @presence_callback, envelope
         else
-          secure_call @app.env[:error_callback], envelope
+          secure_call @callback, envelope
         end
+      end
+
+      def fire_async_callbacks(envelopes)
+        @app.subscriber.fire_async_callbacks(envelopes)
       end
 
       def add_channel_cb_to_cb_pools
         @channel.each do |channel|
           @c_cb_pool[channel] = @callback
-          @e_cb_pool[channel] = @error_callback
         end
       end
 

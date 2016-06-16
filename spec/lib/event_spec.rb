@@ -2,7 +2,7 @@ require 'spec_helper'
 
 shared_examples 'an event' do
 
-  around(:each) do |example|
+  around :each do |example|
     Celluloid.boot
     example.run
     Celluloid.shutdown
@@ -45,9 +45,9 @@ shared_examples 'an event' do
 
     it 'creates specific instance variables from options' do
       vars = [:@origin, :@channel, :@message, :@http_sync, :@callback,
-              :@error_callback, :@connect_callback, :@ssl, :@cipher_key,
+              :@ssl, :@cipher_key,
               :@secret_key, :@auth_key, :@publish_key, :@subscribe_key,
-              :@timetoken, :@channels]
+              :@timetoken, :@channels, :@customs]
 
       event = described_class.new({ channel: 'channel', skip_validate: true }, pubnub_client)
       expect(vars - event.instance_variables).to eq []
