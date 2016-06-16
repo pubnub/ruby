@@ -14,11 +14,18 @@ module Pubnub
       private
 
       def validate_action!
+        validate_action_presence!
+        validate_action_correctness!
+      end
+
+      def validate_action_presence!
         fail(
           ArgumentError.new,
           ':action is required for channel registration event.'
         ) if @action.nil?
+      end
 
+      def validate_action_correctness!
         fail(
           ArgumentError.new(
             object: self,

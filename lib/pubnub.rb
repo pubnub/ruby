@@ -7,6 +7,7 @@ require 'celluloid/current'
 require 'timers'
 require 'httpclient'
 require 'logger'
+require 'dry-validation'
 
 require 'pubnub/version'
 require 'pubnub/client'
@@ -27,7 +28,6 @@ module Pubnub
   class << self
     attr_accessor :logger, :client
 
-    # TODO: docs
     def new(options = {})
       Pubnub::Client.new(options)
     end

@@ -3,14 +3,16 @@ module Pubnub
   # Event module holds most basic and required infrastructure for every pubnub
   # event, there are also SingleEvent module and SubscribeEvent module
   class Event
-    attr_reader :origin, :callback, :error_callback, :channel,
+    attr_reader :origin, :callback, :channel, :fresh_clone,
                 :open_timeout, :read_timeout, :idle_timeout, :group,
-                :presence_callback, :wildcard_channel, :ssl, :state
+                :presence_callback, :wildcard_channel, :ssl, :state,
+                :given_options
 
     alias_method :channels, :channel
 
     def initialize(options, app)
       @app = app
+      @given_options = options
       env = app.env.clone
       env.delete(:state)
       create_variables_from_options(env.merge(options))
@@ -25,40 +27,24 @@ module Pubnub
     def fire
       Pubnub.logger.debug('Pubnub::Event') { "Fired event #{self.class}" }
 
-      message = send_request
+      response = send_request
 
-      envelopes = fire_callbacks(handle(message))
+      envelopes = fire_callbacks(handle(response, uri))
       finalize_event(envelopes)
       envelopes
     ensure
       terminate unless @stay_alive
     end
 
-    def send_request(retries = 0, compressed_body = '')
+    def send_request(compressed_body = '')
       sender = request_dispatcher
       if compressed_body.empty?
         sender.get(uri.to_s)
       else
         sender.post(uri.to_s, body: compressed_body)
       end
-
     rescue => error
-      Pubnub.logger.warn('Pubnub') { "#{@event} failed! Reason: #{error}" }
-      if retries < @app.env[:reconnect_attempts]
-        message = retry_sending_request(retries)
-      else
-        Pubnub.logger.error('Pubnub') { error }
-        raise error
-      end
-      message
-    end
-
-    def retry_sending_request(retries)
-      retries += 1
-      Pubnub.logger.warn('Pubnub') { "Sleeping #{@app.env[:reconnect_interval]} before retrying to run #{@event}." }
-      sleep(@app.env[:reconnect_interval])
-      Pubnub.logger.warn('Pubnub') { 'Trying to reconnect.' }
-      send_request(retries)
+      error
     end
 
     def uri
@@ -92,15 +78,10 @@ module Pubnub
       @wildcard_channel = @channel.select { |e| e.index('.*') } || []
     end
 
-    def fire_callbacks(envelopes)
+    def fire_callbacks(envelope)
       Pubnub.logger.debug('Pubnub::Event') { "Firing callbacks for #{self.class}" }
-      envelopes.each do |envelope|
-        if !envelope.error && @callback && !envelope.timetoken_update
-          secure_call @callback, envelope
-        end
-        secure_call(@error_callback, envelope) if envelope.error
-      end
-      envelopes
+      secure_call @callback, envelope if @callback
+      envelope
     end
 
     def parameters
@@ -118,27 +99,9 @@ module Pubnub
       required.merge(empty_if_blank)
     end
 
-    def add_common_data_to_envelopes(envelopes, response)
-      Pubnub.logger.debug('Pubnub::Event') { 'Event#add_common_data_to_envelopes' }
-
-      envelopes.each do |envelope|
-        envelope.response = response.body
-        envelope.object = response
-        envelope.status = response.code.to_i
-        envelope.mark_as_timetoken
-      end
-
-      envelopes.last.last = true if envelopes.last
-      envelopes.first.first = true if envelopes.first
-
-      envelopes
-    end
-
-    def handle(response)
+    def handle(response, request)
       Pubnub.logger.debug('Pubnub::Event') { 'Event#handle' }
-
-      @response = response
-      @envelopes = format_envelopes response
+      @envelopes = format_envelopes response, request
     end
 
     def connection
@@ -147,12 +110,12 @@ module Pubnub
 
     def create_variables_from_options(options)
       variables = %w(channel channels message http_sync callback
-                     connect_callback ssl cipher_key secret_key auth_key
-                     publish_key subscribe_key timetoken error_callback
+                     ssl cipher_key secret_key auth_key
+                     publish_key subscribe_key timetoken
                      open_timeout read_timeout idle_timeout heartbeat
                      group action read write manage ttl presence start
                      end count reverse presence_callback store skip_validate
-                     state channel_group compressed meta include_token
+                     state channel_group compressed meta customs include_token
                      replicate)
 
       options = options.each_with_object({}) { |option, obj| obj[option.first.to_sym] = option.last }
@@ -186,8 +149,43 @@ module Pubnub
       ::Time.now.to_i
     end
 
-    def encode_state(state)
-      URI.encode_www_form_component(state.to_json).gsub('+', '%20')
+    def encode_parameter(parameter)
+      URI.encode_www_form_component(parameter.to_json).gsub('+', '%20')
+    end
+
+    def error_message(parsed_response)
+      parsed_response['message']
+    rescue
+      nil
+    end
+
+    def get_config
+      {
+        tls:      @app.env[:ssl],
+        uuid:     @app.env[:uuid],
+        auth_key: @app.env[:auth_key],
+        origin:   @app.current_origin
+      }
+    end
+
+    def error_envelope(_parsed_response, error, req_res_objects)
+      Pubnub::ErrorEnvelope.new(
+        event: @event,
+        event_options: @given_options,
+        timetoken: nil,
+        status: {
+          code: req_res_objects[:response].code,
+          operation: Pubnub::Constants::OPERATION_HEARTBEAT,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
+          data: nil,
+          category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::STATUS_ERROR),
+          error: true,
+          auto_retried: false,
+
+          config: get_config
+        }
+      )
     end
   end
 end

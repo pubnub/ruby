@@ -1,4 +1,4 @@
 # Toplevel Pubnub module.
 module Pubnub
-  VERSION = '3.8.4'
+  VERSION = '4.0.0beta2'
 end

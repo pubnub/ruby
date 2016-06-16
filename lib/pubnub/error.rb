@@ -1,7 +1,6 @@
 # Toplevel Pubnub module.
 module Pubnub
   # Some custom pubnub errors
-  # TODO: yardoc
   class Error < StandardError
     attr_reader :env, :message
 

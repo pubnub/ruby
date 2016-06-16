@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v1/auth/audit/sub-key/sub-c-777bcd44-f825-11e5-861b-02ee2ddab7fe?channel=channel&pnsdk=PubNub-Ruby/4.0.0beta1&signature=QR698olnyPFXhTgmHZk3wdj5esQxSAGuOcNUhXgkUt0=&timestamp=1465921213&uuid=gentest
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.0, ruby 2.3.0 (2015-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 14 Jun 2016 16:20:13 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 14 Jun 2016 16:20:13 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '166'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+    body:
+      encoding: UTF-8
+      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-c-777bcd44-f825-11e5-861b-02ee2ddab7fe","channels":{}},"service":"Access
+        Manager","status":200}'
+    http_version: 
+  recorded_at: Tue, 14 Jun 2016 16:20:13 GMT
+recorded_with: VCR 3.0.1

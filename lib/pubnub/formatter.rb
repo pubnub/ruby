@@ -91,17 +91,17 @@ module Pubnub
 
       # Returns string with all channels separated by comma or single coma
       def channels_for_url(channels)
-        channel = channels.join(',')
+        channel = channels.sort.join(',')
         channel = ',' if channel.empty?
         channel
       end
 
       # Checks if json in string is valid
-      def valid_json?(string)
-        JSON.parse(string) ? true : false
-      rescue JSON::ParserError
-        false
-      end
+      # def valid_json?(string)
+      #   JSON.parse(string) ? true : false
+      # rescue JSON::ParserError
+      #   false
+      # end
     end
   end
 end

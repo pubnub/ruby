@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v1/auth/grant/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f?channel=demo&pnsdk=PubNub-Ruby/4.0.0&r=0&signature=1jpNvG2hgZf0LcSLb-IZNz0IGbySa1vF2ST3veXFwO8=&timestamp=1464192907&ttl=1440&uuid=ruby-test-uuid-client-one&w=1
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.0, ruby 2.3.0 (2015-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 25 May 2016 16:15:07 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 25 May 2016 16:15:08 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '203'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+    body:
+      encoding: UTF-8
+      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","ttl":1440,"channels":{"demo":{"r":0,"w":1,"m":0}}},"service":"Access
+        Manager","status":200}'
+    http_version: 
+  recorded_at: Wed, 25 May 2016 16:15:08 GMT
+recorded_with: VCR 3.0.1

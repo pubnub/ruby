@@ -29,48 +29,106 @@ module Pubnub
       params = super()
       params.merge!('channel-group' => @group.join(',')) unless @group.blank?
       params.merge!(timestamp: @timestamp)
-      params.merge!(channel:   @channel.join(',')) unless @channel.first.blank?
-      params.merge!(signature: signature)          unless set_signature
+      params.merge!(channel: @channel.join(',')) unless @channel.first.blank?
+      params.merge!(signature: signature) unless set_signature
       params
     end
 
     def variables_for_signature
-      parameters(true).map do|k, v|
+      parameters(true).map do |k, v|
         "#{k}=#{CGI.escape(v.to_s).gsub('+', '%20')}"
       end.sort.join('&')
     end
 
-    def format_envelopes(response)
+    def current_operation
+      case @event
+      when :audit
+        Pubnub::Constants::OPERATION_AUDIT
+      when :grant
+        Pubnub::Constants::OPERATION_GRANT
+      when :revoke
+        Pubnub::Constants::OPERATION_REVOKE
+      end
+    end
+
+    def format_envelopes(response, request)
       parsed_response, error = Formatter.parse_json(response.body)
 
       error = response if parsed_response && response.code.to_i != 200
 
-      envelopes = if error
-                    [error_envelope(parsed_response, error)]
-                  else
-                    [valid_envelope(parsed_response)]
-                  end
-
-      add_common_data_to_envelopes(envelopes, response)
+      if error
+        error_envelope(parsed_response, error, request: uri, response: response)
+      else
+        valid_envelope(parsed_response, request: request, response: response)
+      end
     end
 
-    def valid_envelope(parsed_response)
-      Envelope.new(
-        parsed_response: parsed_response,
-        payload:         parsed_response['payload'],
-        service:         parsed_response['service'],
-        message:         parsed_response['message'],
-        status:          parsed_response['status'],
-        uuids:           parsed_response['uuids']
+    def valid_envelope(parsed_response, req_res_objects)
+      Pubnub::Envelope.new(
+        event: @event,
+        event_options: @given_options,
+        timetoken: nil,
+        status: {
+          code: req_res_objects[:response].code,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
+          category: Pubnub::Constants::STATUS_ACK,
+          error: false,
+          auto_retried: false,
+
+          current_timetoken: nil,
+          last_timetoken: nil,
+          subscribed_channels: nil,
+          subscribed_channel_groups: nil,
+
+          data: nil,
+
+          config: get_config
+
+        },
+        result: {
+          code: req_res_objects[:response].code,
+          operation: current_operation,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
+
+          data: parsed_response['payload']
+        }
       )
     end
 
-    def error_envelope(parsed_response, error)
+    def error_envelope(parsed_response, error, req_res_objects)
       ErrorEnvelope.new(
-        error:            error,
-        response_message: response_message(parsed_response),
-        channel:          @channel.first,
-        timetoken:        timetoken(parsed_response)
+        event: @event,
+        event_options: @given_options,
+        timetoken: nil,
+        status: {
+          code: req_res_objects[:response].code,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
+          category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::ERROR),
+          error: true,
+          auto_retried: false,
+
+          current_timetoken: nil,
+          last_timetoken: nil,
+          subscribed_channels: nil,
+          subscribed_channel_groups: nil,
+
+          data: nil,
+
+          config: get_config
+        },
+        result: {
+          code: req_res_objects[:response].code,
+          operation: current_operation,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
+
+          data: {
+            message: error_message(parsed_response)
+          }
+        }
       )
     end
   end

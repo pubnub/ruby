@@ -20,7 +20,7 @@ module Pubnub
             message: 'Invalid :auth_key. You can\'t run audit for multiple channels and keys at once'
           ),
           'Invalid :auth_key. You can\'t run audit for multiple channels and keys at once'
-        ) if @channel.size > 1 && @auth.count(',') > 0
+        ) if @channel.size > 1 && @auth.to_s.count(',') > 0
       end
     end
   end

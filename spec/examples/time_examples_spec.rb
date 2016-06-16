@@ -1,68 +1,129 @@
 require 'spec_helper'
 
 describe Pubnub::Time do
-  around(:each) do |example|
-    @response_output = StringIO.new
-    @message_output = StringIO.new
+  around :each do |example|
+    @fired = false
 
-    @callback = lambda { |envelope|
-      @response_output.write envelope.response
-      @message_output.write envelope.msg
-      @after_callback = true
-    }
+    @callback = ->(_envelope) do
+      @fired = true
+    end
 
     @pubnub = Pubnub.new(
-        :publish_key => 'pub-c-ef1905bd-3c9c-4bc7-9f20-f6ee1f50f79b',
-        :subscribe_key => 'sub-c-719173ee-ff28-11e4-ab7c-0619f8945a4f',
-        :secret_key => 'sec-c-OTA5NzI1YTMtOWEyNy00NTQzLTkzNzMtMjY3ZDlkYzk0NGU3',
-        :error_callback => @error_callback
+      publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
+      subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
+      secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
+      uuid: 'ruby-test-uuid-client-one',
+      auth_key: 'ruby-test-auth-client-one'
     )
-
-    @pubnub_wo_pam_client = Pubnub.new(
-        :publish_key => 'pub-c-bda4e37b-f383-4acf-affd-cd8e66ed523b',
-        :subscribe_key => 'sub-c-243e56aa-1b13-11e5-a5e2-02ee2ddab7fe',
-        :secret_key => 'sec-c-OThjZDUyNjktY2ZlMS00MDc2LWJkODYtMmU4ZTk2MjY5ZGQ5',
-        :uuid => 'gentest'
-    )
-
-    @pubnub.uuid = 'gentest'
 
     Celluloid.boot
     example.run
     Celluloid.shutdown
   end
 
-  it 'http_sync: true, callback: block' do
-    VCR.use_cassette('test_examples/1001078', record: :once) do
-      event = @pubnub.time('http_sync' => true, &@callback)
-      expect(event.value.map { |e| e.response }).to eq ["[14356719940240853]"]
-      expect(event.value.map { |e| e.message }).to eq [14356719940240853]
-    end
-  end
+  it '__http_sync__true___callback__nil_' do
+VCR.use_cassette('examples/time/5', record: :none) do
+envelope = @pubnub.time(http_sync: true)
+expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+expect(envelope.error?).to eq false
 
-  it 'http_sync: true, callback: parameter' do
-    VCR.use_cassette('test_examples/1001077', record: :once) do
-      event = @pubnub.time('http_sync' => true, 'callback' => :parameter)
-      expect(event.value.map { |e| e.response }).to eq ["[14356719944430349]"]
-      expect(event.value.map { |e| e.message }).to eq [14356719944430349]
-    end
-  end
+expect(envelope.status[:code]).to eq(200)
+expect(envelope.status[:category]).to eq(:ack)
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
-  it 'http_sync: false, callback: block' do
-    VCR.use_cassette('test_examples/1001079', record: :once) do
-      event = @pubnub.time('http_sync' => false, &@callback)
-      expect(event.value.map { |e| e.response }).to eq ["[14356719948566824]"]
-      expect(event.value.map { |e| e.message }).to eq [14356719948566824]
-    end
-  end
+expect(envelope.result[:code]).to eq(200)
+expect(envelope.result[:operation]).to eq(:time)
 
-  it 'http_sync: false, callback: parameter' do
-    VCR.use_cassette('test_examples/1001076', record: :once) do
-      event = @pubnub.time('http_sync' => false, 'callback' => :parameter)
-      expect(event.value.map { |e| e.response }).to eq ["[14356719955166949]"]
-      expect(event.value.map { |e| e.message }).to eq [14356719955166949]
-    end
-  end
+end
+end
+
+
+it '__http_sync__true___callback___block_' do
+VCR.use_cassette('examples/time/3', record: :none) do
+envelope = @pubnub.time(http_sync: true, &@callback)
+expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+expect(envelope.error?).to eq false
+
+expect(envelope.status[:code]).to eq(200)
+expect(envelope.status[:category]).to eq(:ack)
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+expect(envelope.result[:code]).to eq(200)
+expect(envelope.result[:operation]).to eq(:time)
+
+end
+end
+
+
+it '__http_sync__true___callback___lambda_' do
+VCR.use_cassette('examples/time/4', record: :none) do
+envelope = @pubnub.time(http_sync: true, callback: @callback)
+expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+expect(envelope.error?).to eq false
+
+expect(envelope.status[:code]).to eq(200)
+expect(envelope.status[:category]).to eq(:ack)
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+expect(envelope.result[:code]).to eq(200)
+expect(envelope.result[:operation]).to eq(:time)
+
+end
+end
+
+
+it '__http_sync__false___callback__nil_' do
+VCR.use_cassette('examples/time/2', record: :none) do
+envelope = @pubnub.time(http_sync: false)
+envelope = envelope.value
+expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+expect(envelope.error?).to eq false
+
+expect(envelope.status[:code]).to eq(200)
+expect(envelope.status[:category]).to eq(:ack)
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+expect(envelope.result[:code]).to eq(200)
+expect(envelope.result[:operation]).to eq(:time)
+
+end
+end
+
+
+it '__http_sync__false___callback___block_' do
+VCR.use_cassette('examples/time/0', record: :none) do
+envelope = @pubnub.time(http_sync: false, &@callback)
+envelope = envelope.value
+expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+expect(envelope.error?).to eq false
+
+expect(envelope.status[:code]).to eq(200)
+expect(envelope.status[:category]).to eq(:ack)
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+expect(envelope.result[:code]).to eq(200)
+expect(envelope.result[:operation]).to eq(:time)
+
+end
+end
+
+
+it '__http_sync__false___callback___lambda_' do
+VCR.use_cassette('examples/time/1', record: :none) do
+envelope = @pubnub.time(http_sync: false, callback: @callback)
+envelope = envelope.value
+expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+expect(envelope.error?).to eq false
+
+expect(envelope.status[:code]).to eq(200)
+expect(envelope.status[:category]).to eq(:ack)
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+
+expect(envelope.result[:code]).to eq(200)
+expect(envelope.result[:operation]).to eq(:time)
+
+end
+end
 
 
 end
