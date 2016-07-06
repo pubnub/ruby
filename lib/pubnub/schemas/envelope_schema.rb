@@ -2,42 +2,42 @@ module Pubnub
   module Schemas
     module Envelope
       DataSchema = Dry::Validation.Schema do
-        key(:message).required
-        key(:subscribed_channel).required(:str?)
-        key(:actual_channel).required(:str?)
-        key(:publish_time_object).maybe(:hash?)
-        key(:message_meta_data).maybe(:hash?)
-        key(:presence_event).maybe(:str?)
-        key(:presence).maybe.schema do
-          key(:uuid).required(:str?)
-          key(:timestamp).required(:int?)
-          key(:state).maybe(:hash?)
-          key(:occupancy).required(:int?)
+        required(:message)
+        required(:subscribed_channel).filled(:str?)
+        required(:actual_channel).filled(:str?)
+        optional(:publish_time_object).maybe(:hash?)
+        optional(:message_meta_data).maybe(:hash?)
+        optional(:presence_event).maybe(:str?)
+        optional(:presence).maybe.schema do
+          optional(:uuid).filled(:str?)
+          optional(:timestamp).filled(:int?)
+          optional(:state).maybe(:hash?)
+          optional(:occupancy).filled(:int?)
         end
       end
 
       ConfigSchema = Dry::Validation.Schema do
-        key(:tls).required(:bool?)
-        key(:uuid).required(:str?)
-        key(:auth_key).maybe(:str?)
-        key(:origin).required(:str?)
+        required(:tls).filled(:bool?)
+        required(:uuid).filled(:str?)
+        optional(:auth_key).maybe(:str?)
+        required(:origin).filled(:str?)
       end
 
       StatusSchema = Dry::Validation.Schema do
-        key(:code).required(:int?)
-        key(:client_request).required
-        key(:server_response).required
-        key(:data).maybe
-        key(:category).required
-        key(:error).required(:bool?)
-        key(:auto_retried).required(:bool?)
+        required(:code).filled(:int?)
+        required(:client_request).filled
+        required(:server_response).filled
+        optional(:data).maybe
+        required(:category).filled
+        required(:error).filled(:bool?)
+        required(:auto_retried).filled(:bool?)
 
-        key(:current_timetoken).maybe(:int?)
-        key(:last_timetoken).maybe(:int?)
-        key(:subscribed_channels).maybe(:array?)
-        key(:subscribed_channel_groups).maybe(:array?)
+        optional(:current_timetoken).maybe(:int?)
+        optional(:last_timetoken).maybe(:int?)
+        optional(:subscribed_channels).maybe(:array?)
+        optional(:subscribed_channel_groups).maybe(:array?)
 
-        key(:config).schema(ConfigSchema)
+        required(:config).schema(ConfigSchema)
 
         rule(category_value: [:error, :category]) do |error, category|
           error.true?.then(category.included_in?(Pubnub::Constants::STATUS_CATEGORY_ERRORS))
@@ -46,12 +46,12 @@ module Pubnub
       end
 
       ResultSchema = Dry::Validation.Schema do
-        key(:code).required(:int?)
-        key(:operation) { included_in?(Pubnub::Constants::OPERATIONS) }
-        key(:client_request).required
-        key(:server_response).required
+        required(:code).filled(:int?)
+        required(:operation) { included_in?(Pubnub::Constants::OPERATIONS) }
+        required(:client_request).filled
+        required(:server_response).filled
 
-        key(:data).maybe.schema(DataSchema)
+        required(:data).maybe.schema(DataSchema)
       end
     end
   end

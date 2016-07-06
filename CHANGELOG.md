@@ -1,3 +1,6 @@
+##### 4.0.1
+* Updated dry-validation and EnvelopeSchema
+
 ##### 4.0.0
 * Removed auth_key and uuid setters (#set_auth_key, #auth_key=, #set_uuid, #uuid=)
 * Added #subscribed_to, #current_region, #region=, #current_heartbeat
