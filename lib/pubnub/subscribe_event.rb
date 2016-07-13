@@ -129,7 +129,13 @@ module Pubnub
       params = super
       params = add_timetoken_to_params(params)
       params = add_group_to_params(params)
+      params = add_filter_to_params(params)
       add_state_to_params(params)
+    end
+
+    def add_filter_to_params(params)
+      params.merge!('filter-expr': encode_parameter("(#{@app.subscribe_filter})", false)) if @app.subscribe_filter
+      params
     end
 
     def add_timetoken_to_params(params)

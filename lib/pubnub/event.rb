@@ -149,8 +149,9 @@ module Pubnub
       ::Time.now.to_i
     end
 
-    def encode_parameter(parameter)
-      URI.encode_www_form_component(parameter.to_json).gsub('+', '%20')
+    def encode_parameter(parameter, format_json = true)
+      parameter = format_json ? parameter.to_json : parameter
+      URI.encode_www_form_component(parameter).gsub('+', '%20')
     end
 
     def error_message(parsed_response)
