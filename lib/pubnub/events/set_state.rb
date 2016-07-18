@@ -53,7 +53,7 @@ module Pubnub
         timetoken: nil,
         status: {
           code: req_res_objects[:response].code,
-          operation: Pubnub::Constants::OPERATION_PUBLISH,
+          operation: Pubnub::Constants::OPERATION_SET_STATE,
           client_request: req_res_objects[:request],
           server_response: req_res_objects[:response],
           data: nil,
@@ -78,7 +78,7 @@ module Pubnub
         timetoken: nil,
         status: {
           code: req_res_objects[:response].code,
-          operation: Pubnub::Constants::OPERATION_HEARTBEAT,
+          operation: Pubnub::Constants::OPERATION_SET_STATE,
           client_request: req_res_objects[:request],
           server_response: req_res_objects[:response],
           data: nil,

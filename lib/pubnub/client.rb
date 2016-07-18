@@ -107,22 +107,6 @@ module Pubnub
     #   <dt>callback</dt>
     #   <dd><b>optional.</b> Default callback function for all events if not overwrote while firing event.</dd>
     #
-    #   <dt>error_callback</dt>
-    #   <dd><b>optional.</b> Default error callback.</dd>
-    #
-    #   <dt>connect_callback</dt>
-    #   <dd><b>optional.</b> Callback that is called when connection with origin is established.
-    #                        It should take string as parameter.</dd>
-    #
-    #   <dt>disconnect_callback</dt>
-    #   <dd><b>optional.</b> Callback that is called when connection with origin is teared down
-    #                        (it's called each time when reestablishing connection didn't work).
-    #                        It should take string as parameter.</dd>
-    #
-    #   <dt>reconnect_callback</dt>
-    #   <dd><b>optional.</b> Callback that is called when connection with origin is reestablished.
-    #                        It should take string as parameter.</dd>
-    #
     #   <dt>ssl</dt>
     #   <dd><b>optional.</b> Your connection will use ssl if set to true.</dd>
     #

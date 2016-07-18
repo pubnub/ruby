@@ -4,7 +4,7 @@ module Pubnub
   class Crypto
     def initialize(cipher_key)
       @alg = 'AES-256-CBC'
-      sha256_key = Digest::SHA256.hexdigest(cipher_key)
+      sha256_key = Digest::SHA256.hexdigest(cipher_key.to_s)
       @key = sha256_key.slice(0, 32)
 
       @iv = '0123456789012345'

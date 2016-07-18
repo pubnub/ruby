@@ -28,7 +28,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -44,7 +44,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -60,7 +60,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -77,7 +77,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -94,7 +94,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -111,7 +111,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -127,7 +127,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -143,7 +143,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -159,7 +159,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -176,7 +176,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -193,7 +193,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -210,7 +210,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -226,7 +226,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -242,7 +242,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -258,7 +258,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -275,7 +275,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -292,7 +292,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -309,7 +309,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -325,7 +325,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -341,7 +341,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -357,7 +357,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -374,7 +374,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -391,7 +391,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
@@ -408,7 +408,7 @@ expect(envelope.is_a?(Pubnub::Envelope)).to eq true
 expect(envelope.error?).to eq false
 
 expect(envelope.status[:code]).to eq(200)
-expect(envelope.status[:operation]).to eq(:publish)
+expect(envelope.status[:operation]).to eq(:set_state)
 expect(envelope.status[:category]).to eq(:ack)
 expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
 
