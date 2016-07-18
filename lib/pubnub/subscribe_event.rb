@@ -134,7 +134,7 @@ module Pubnub
     end
 
     def add_filter_to_params(params)
-      params.merge!('filter-expr': encode_parameter("(#{@app.subscribe_filter})", false)) if @app.subscribe_filter
+      params.merge!('filter-expr' => encode_parameter("(#{@app.subscribe_filter})", false)) if @app.subscribe_filter
       params
     end
 
