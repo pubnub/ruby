@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pubnub (4.0.1)
+    pubnub (4.0.2)
       celluloid (~> 0.17)
       dry-validation (~> 0.8)
       httpclient (~> 2.8)

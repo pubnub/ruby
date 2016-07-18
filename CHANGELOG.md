@@ -1,3 +1,6 @@
+##### 4.0.2
+* Added #subscribe_filter for client
+
 ##### 4.0.1
 * Updated dry-validation and EnvelopeSchema
 

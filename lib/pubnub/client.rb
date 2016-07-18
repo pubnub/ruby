@@ -396,6 +396,16 @@ module Pubnub
       (::Time.now.to_f * 10_000_000).to_i
     end
 
+    def subscribe_filter=(filter_expr)
+      @env[:subscribe_filter] = filter_expr
+      @subscriber.reset if subscribed?
+      filter_expr
+    end
+
+    def subscribe_filter
+      @env[:subscribe_filter]
+    end
+
     private
 
     def create_state_pools(event)
