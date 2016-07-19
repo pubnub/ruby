@@ -103,7 +103,7 @@ module Pubnub
         error_envelope(parsed_response, error, request: request, response: response)
       else
         valid_envelope(parsed_response, request: request, response: response)
-                 end
+      end
     end
 
     def valid_envelope(parsed_response, req_res_objects)
@@ -152,7 +152,7 @@ module Pubnub
             client_request: req_res_objects[:request],
             server_response: req_res_objects[:response],
             data: nil,
-            category: :json_parse_error,
+            category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::STATUS_ERROR),
             error: true,
             auto_retried: false,
 
@@ -165,7 +165,7 @@ module Pubnub
           },
 
           result: {
-            data: parsed_response['payload'],
+            data: parsed_response['message'],
             code: req_res_objects[:response].code,
             operation: define_operation,
             client_request: req_res_objects[:request],
@@ -181,7 +181,7 @@ module Pubnub
             code: req_res_objects[:response].code,
             client_request: req_res_objects[:request],
             server_response: req_res_objects[:response],
-            category: nil,
+            category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::STATUS_ERROR),
             error: true,
             auto_retried: false,
 
