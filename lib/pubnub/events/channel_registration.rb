@@ -141,68 +141,28 @@ module Pubnub
     end
 
     def error_envelope(parsed_response, error, req_res_objects)
-      if error
-        Pubnub::ErrorEnvelope.new(
+      Pubnub::ErrorEnvelope.new(
           event: @event,
           event_options: @given_options,
           timetoken: nil,
           status: {
-            code: req_res_objects[:response].code,
-            operation: define_operation,
-            client_request: req_res_objects[:request],
-            server_response: req_res_objects[:response],
-            data: nil,
-            category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::STATUS_ERROR),
-            error: true,
-            auto_retried: false,
+              code: req_res_objects[:response].code,
+              operation: define_operation,
+              client_request: req_res_objects[:request],
+              server_response: req_res_objects[:response],
+              data: nil,
+              category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::STATUS_ERROR),
+              error: true,
+              auto_retried: false,
 
-            current_timetoken: nil,
-            last_timetoken: nil,
-            subscribed_channels: nil,
-            subscribed_channel_groups: nil,
+              current_timetoken: nil,
+              last_timetoken: nil,
+              subscribed_channels: nil,
+              subscribed_channel_groups: nil,
 
-            config: get_config
-          },
-
-          result: {
-            data: parsed_response['message'],
-            code: req_res_objects[:response].code,
-            operation: define_operation,
-            client_request: req_res_objects[:request],
-            server_response: req_res_objects[:response]
+              config: get_config
           }
-        )
-      else
-        ErrorEnvelope.new(
-          event: @event,
-          event_options: @given_options,
-          timetoken: nil,
-          status: {
-            code: req_res_objects[:response].code,
-            client_request: req_res_objects[:request],
-            server_response: req_res_objects[:response],
-            category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::STATUS_ERROR),
-            error: true,
-            auto_retried: false,
-
-            current_timetoken: nil,
-            last_timetoken: nil,
-            subscribed_channels: nil,
-            subscribed_channel_groups: nil,
-
-            config: get_config
-
-          },
-
-          result: {
-            data: parsed_response['payload'],
-            code: req_res_objects[:response].code,
-            operation: define_operation,
-            client_request: req_res_objects[:request],
-            server_response: req_res_objects[:response]
-          }
-        )
-      end
+      )
     end
 
     def define_operation

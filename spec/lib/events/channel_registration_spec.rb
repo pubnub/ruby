@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Pubnub::ChannelRegistration do
-  it_behaves_like 'an event'
+  # it_behaves_like 'an event'
 
   around :each do |example|
     Celluloid.boot
@@ -43,7 +43,6 @@ describe Pubnub::ChannelRegistration do
 
         expect(envelope.is_a?(Pubnub::ErrorEnvelope)).to eq true
         expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
-        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema
       end
     end
   end
