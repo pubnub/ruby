@@ -1,3 +1,6 @@
+##### 4.0.5
+* Required CGI
+
 ##### 4.0.2
 * Added #subscribe_filter for client
 
