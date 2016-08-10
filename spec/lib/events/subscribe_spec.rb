@@ -202,9 +202,6 @@ describe Pubnub::Subscribe do
           @pubnub.subscribe(channel_groups: :demo, http_sync: true)
           envelopes = @pubnub.subscribe(channel_groups: :demo, http_sync: true)
 
-          binding.pry
-
-
           envelope = envelopes.first
           expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
           expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema
