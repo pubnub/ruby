@@ -15,9 +15,9 @@ describe Pubnub::Subscribe do
       @statuses = []
 
       @callbacks = Pubnub::SubscribeCallback.new(
-        message: ->(envelope) { @messages << envelope },
-        presence: ->(_envelope) { },
-        status: ->(envelope) { @statuses << envelope }
+          message: ->(envelope) { @messages << envelope },
+          presence: ->(_envelope) {},
+          status: ->(envelope) { @statuses << envelope }
       )
     end
 
@@ -117,7 +117,7 @@ describe Pubnub::Subscribe do
 
         VCR.use_cassette('lib/events/subscribe-cipher-async', record: :once) do
           @pubnub.subscribe(channel: :whatever, http_sync: true)
-          @messages =  @pubnub.subscribe(channel: :whatever, http_sync: true)
+          @messages = @pubnub.subscribe(channel: :whatever, http_sync: true)
           eventually do
             expect(@messages.first.result[:data][:message]).to eq('text' => 'hey')
           end
@@ -162,6 +162,73 @@ describe Pubnub::Subscribe do
           expect(envelope).to be_a_kind_of Pubnub::ErrorEnvelope
           expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
 
+        end
+      end
+    end
+
+    context 'aliases' do
+      it 'pass channels to channel' do
+        VCR.use_cassette('lib/events/subscribe-sync', record: :once) do
+          @pubnub = Pubnub::Client.new(
+              subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
+              publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
+              secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
+              auth_key: 'ruby-test-auth',
+              uuid: 'ruby-test-uuid'
+          )
+
+          @pubnub.subscribe(channels: :demo, http_sync: true)
+          envelopes = @pubnub.subscribe(channels: :demo, http_sync: true)
+
+
+          envelope = envelopes.first
+          expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
+          expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema
+
+        end
+      end
+
+      it 'pass channel_groups to channel_group' do
+        VCR.use_cassette('lib/events/subscribe-channel-groups', record: :once) do
+
+          @pubnub = Pubnub::Client.new(
+              subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
+              publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
+              secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
+              auth_key: 'ruby-test-auth',
+              uuid: 'ruby-test-uuid'
+          )
+
+          @pubnub.subscribe(channel_groups: :demo, http_sync: true)
+          envelopes = @pubnub.subscribe(channel_groups: :demo, http_sync: true)
+
+          binding.pry
+
+
+          envelope = envelopes.first
+          expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
+          expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema
+        end
+      end
+    end
+
+    context 'flags' do
+      it 'with with_presence' do
+        VCR.use_cassette('lib/events/subscribe-with-presence', record: :once) do
+          @pubnub = Pubnub::Client.new(
+            subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
+            publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
+            secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
+            auth_key: 'ruby-test-auth',
+            uuid: 'ruby-test-uuid'
+          )
+
+          @pubnub.subscribe(channels: [:demo, :demo1, 'demo.*'], with_presence: true, http_sync: true)
+          envelopes = @pubnub.subscribe(channels: [:demo, :demo1, 'demo.*'], with_presence: true, http_sync: true)
+
+          envelope = envelopes.first
+          expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
+          expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema
         end
       end
     end

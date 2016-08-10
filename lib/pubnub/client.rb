@@ -24,7 +24,6 @@ require 'pubnub/subscriber'
 require 'pubnub/envelope'
 require 'pubnub/error_envelope'
 
-require 'pubnub/client/connections'
 require 'pubnub/client/events'
 require 'pubnub/client/paged_history'
 require 'pubnub/client/helpers'
@@ -68,7 +67,6 @@ module Pubnub
   # Pubnub client Class.
   class Client
     include Configuration
-    include Connections
     include Events
     include PagedHistory
     include Helpers

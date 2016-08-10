@@ -3,12 +3,13 @@ module Pubnub
   # Event module holds most basic and required infrastructure for every pubnub
   # event, there are also SingleEvent module and SubscribeEvent module
   class Event
-    attr_reader :origin, :callback, :channel, :fresh_clone,
+    attr_reader :origin, :callback, :channel, :channel_group, :fresh_clone,
                 :open_timeout, :read_timeout, :idle_timeout, :group,
                 :presence_callback, :wildcard_channel, :ssl, :state,
-                :given_options
+                :given_options, :with_presence
 
     alias_method :channels, :channel
+    alias_method :channel_groups, :channel_group
 
     def initialize(options, app)
       @app = app
@@ -73,8 +74,9 @@ module Pubnub
     end
 
     def format_channels
-      @channel = Formatter.format_channel(@channel || @channels)
+      @channel =  Formatter.format_channel(@channel || @channels)
       @channel += Formatter.format_presence_channel(@presence)
+      @channel += Formatter.format_presence_channel(@channel || @channels) if @with_presence
       @wildcard_channel = @channel.select { |e| e.index('.*') } || []
     end
 
@@ -104,9 +106,9 @@ module Pubnub
       @envelopes = format_envelopes response, request
     end
 
-    def connection
-      @app.connection_for(self)
-    end
+    # def connection
+    #   @app.connection_for(self)
+    # end
 
     def create_variables_from_options(options)
       variables = %w(channel channels message http_sync callback
@@ -115,8 +117,8 @@ module Pubnub
                      open_timeout read_timeout idle_timeout heartbeat
                      group action read write manage ttl presence start
                      end count reverse presence_callback store skip_validate
-                     state channel_group compressed meta customs include_token
-                     replicate)
+                     state channel_group channel_groups compressed meta customs include_token
+                     replicate with_presence)
 
       options = options.each_with_object({}) { |option, obj| obj[option.first.to_sym] = option.last }
 
@@ -130,7 +132,7 @@ module Pubnub
     end
 
     def format_group
-      @group = @channel_group if @channel_group && @group.blank?
+      @group = (@channel_group || @channel_groups) if (@channel_group || @channel_groups) && @group.blank?
       @group = Formatter.format_group(@group)
 
       if @group.first.to_s.count(':') > 0

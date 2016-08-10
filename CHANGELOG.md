@@ -1,3 +1,8 @@
+##### 4.0.6
+* channel and channels are the same argument
+* channel_group and channel_groups are the same argument
+* added `with_presence` flag for subscibe, default false.
+
 ##### 4.0.5
 * Required CGI
 
