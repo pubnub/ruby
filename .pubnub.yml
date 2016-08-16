@@ -33,7 +33,8 @@ changelog:
   - version: v3.8.3
     changes:
       - type: improvement
-        text: Restored auth_key and uuid setters. Important notice: they will be removed   
+        text: | 
+          Restored auth_key and uuid setters. Important notice: they will be removed   
   - version: v3.8.2
     changes:
       - type: feature
