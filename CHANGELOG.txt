@@ -1,3 +1,6 @@
+3.7.11 Release
+. Fixed message decoding for history
+
 3.7.10 Release
 . Updated publish URI
 . Fixed value returned by Event#start_event. Thanks @ramshenai

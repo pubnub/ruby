@@ -85,7 +85,14 @@ module Pubnub
             app
         )
       else
+        crypto = Pubnub::Crypto.new(app.env[:cipher_key]) if app.env[:cipher_key]
+
         parsed_response.first.each do |message|
+
+          if crypto && message
+            message = crypto.decrypt(message)
+          end
+
           envelopes << Envelope.new(
               {
                   :message           => message,
