@@ -16,6 +16,9 @@ www.pubnub.com - PubNub Real-time Push Service in the Cloud.
 
 The PubNub Network is a blazingly fast Global Messaging Service for building real-time web and mobile apps. Thousands of apps and developers rely on PubNub for delivering human-perceptive real-time experiences that scale to millions of users worldwide. PubNub delivers the infrastructure needed to build amazing Mobile, MMO games, social apps, business collaborative solutions, and more.
 
+### Travis
+[![Build Status](https://travis-ci.org/pubnub/ruby.svg?branch=master)](https://travis-ci.org/pubnub/ruby)
+
 ### Upgrading from PubNub 3.5.x
 
 We've made the response format compatible across all operations. This may break existing parsing of whereNow, leave, state, and PAM responses. So if you are monitoring these operation responses, please be sure to modify your code accordingly.
