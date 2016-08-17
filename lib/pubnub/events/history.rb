@@ -66,6 +66,11 @@ module Pubnub
     def valid_envelope(parsed_response, req_res_objects)
       messages = parsed_response[0]
 
+      if @app.env[:cipher_key] && messages
+        crypto = Crypto.new(@app.env[:cipher_key])
+        messages = messages.map { |message| crypto.decrypt(message) }
+      end
+
       start = parsed_response[1]
       finish = parsed_response[2]
 

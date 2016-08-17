@@ -1,3 +1,6 @@
+##### 4.0.7
+* Added message decrypting in history
+
 ##### 4.0.6
 * channel and channels are the same argument
 * channel_group and channel_groups are the same argument
