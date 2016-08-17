@@ -1,3 +1,6 @@
+##### 3.8.2
+* Decoding fixed
+
 ##### 3.8.1
 * Updated celluloid dependency
 

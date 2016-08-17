@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pubnub (3.8.1)
+    pubnub (3.8.2)
       celluloid (~> 0.17)
       httpclient (~> 2.6)
       json (~> 1.8)
@@ -29,7 +29,7 @@ GEM
       timers (>= 4.1.1)
     celluloid-pool (0.20.5)
       timers (>= 4.1.1)
-    celluloid-supervision (0.20.5)
+    celluloid-supervision (0.20.6)
       timers (>= 4.1.1)
     coderay (1.1.0)
     coveralls (0.8.10)
@@ -46,10 +46,10 @@ GEM
     domain_name (0.5.25)
       unf (>= 0.0.5, < 1.0.0)
     ffi (1.9.10-java)
-    hitimes (1.2.3)
+    hitimes (1.2.4)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
-    httpclient (2.7.1)
+    httpclient (2.8.1)
     json (1.8.3)
     json (1.8.3-java)
     method_source (0.8.2)
@@ -135,4 +135,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.11.2
+   1.12.5
