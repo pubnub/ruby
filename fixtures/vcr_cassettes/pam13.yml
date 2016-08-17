@@ -1,0 +1,35 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pam-next.devbuild.pubnub.com/v1/auth/grant/sub-key/sub-c-8e798456-4520-11e3-9b46-02ee2ddab7fe?signature=wXymG8ldF7dK%2BHJ9jsgzYZUFqf8M%2BxrbiVvJqtlxjtU=&timestamp=123456&uuid=myuuid
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 08 Nov 2013 03:24:31 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '171'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"message":"Success","payload":{"subscribe_key":"sub-c-8e798456-4520-11e3-9b46-02ee2ddab7fe","r":0,"ttl":1,"w":0,"level":"subkey"},"service":"Access
+        Manager"}'
+    http_version:
+  recorded_at: Fri, 08 Nov 2013 03:24:31 GMT
+recorded_with: VCR 2.6.0

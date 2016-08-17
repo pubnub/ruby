@@ -1,0 +1,35 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pam-next.devbuild.pubnub.com/v1/auth/audit/sub-key/sub-c-8e798456-4520-11e3-9b46-02ee2ddab7fe?signature=TEncfClIUpC2vbwHPHxAJKMMsT3233l%2BL6qDNyFLREA=&timestamp=123456&uuid=myuuid
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 07 Nov 2013 01:18:23 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '165'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"message":"Success","payload":{"channels":{},"subscribe_key":"sub-c-8e798456-4520-11e3-9b46-02ee2ddab7fe","level":"subkey"},"service":"Access
+        Manager"}'
+    http_version:
+  recorded_at: Thu, 07 Nov 2013 01:18:23 GMT
+recorded_with: VCR 2.6.0

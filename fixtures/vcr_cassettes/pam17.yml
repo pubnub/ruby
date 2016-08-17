@@ -1,0 +1,35 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pam-next.devbuild.pubnub.com/v1/auth/grant/sub-key/sub-c-8e798456-4520-11e3-9b46-02ee2ddab7fe?channel=IOS%20Dev&signature=v6ip/u8u8i1b3IlrRxyO77EOa4ZC/7Ww8Cqdm7T6NcA=&timestamp=123456&uuid=myuuid
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 09 Nov 2013 00:37:26 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '197'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"message":"Success","payload":{"channels":{"IOS Dev":{"r":0,"w":0}},"subscribe_key":"sub-c-8e798456-4520-11e3-9b46-02ee2ddab7fe","ttl":1,"level":"channel"},"service":"Access
+        Manager"}'
+    http_version:
+  recorded_at: Sat, 09 Nov 2013 00:37:29 GMT
+recorded_with: VCR 2.6.0

@@ -1,0 +1,81 @@
+3.7.10 Release
+. Updated publish URI
+. Fixed value returned by Event#start_event. Thanks @ramshenai
+
+3.7.9 Release
+. Secured calling callbacks
+. Reestablishing subscription improved
+
+3.7.8 Release
+. Connect callback is fired after subscription starts working
+
+3.7.7 Release
+. Small wildcard fix
+
+3.7.6 Release
+. Added wildcard subscribe
+
+3.7.5 Release
+. Fixed global #here_now
+
+3.7.4 Release
+. Added #auth_key
+
+3.7.3 Release
+. Fixed paged_history
+
+3.7.2 Release
+. Fixed issue when some channels names weren't resolved properly to call callback
+
+3.7.1 Release
+. Fixed memory leak
+
+3.7.0 Release
+. Added channel groups features
+
+3.6.10 Release
+. Envelope formatting fix
+
+3.6.9 Release
+. Double channel encoding fix
+
+3.6.8 Release
+. Heartbeat fix
+
+3.6.7 Release
+. Envelopes formatting changes
+
+3.6.3 Release
+. Fixed issues with PAM where grant/revoke/audit may not use the correct auth key (when explicitly provided)
+
+3.6.2 Release
+. Added state functionality
+
+3.6.1 Release
+. Added where_now event
+
+3.6.0 Release
+. Exposed HTTP/S Proxy Support
+
+3.5.12 - d1054d
+. Fixed connect callback (error_callback was assigned due to typo)
+. Fixed EOFError
+. Allows possibility to disable persistent connection
+. Added client side message size validation
+. Allowed to pass multiple channels to PAM operations
+
+3.5.7 - 70e74cdfa21785ccbd7389ca59d952cd8ff34b3a
+. Handle non-fatal net-http errors better
+. Call Thread.pass unless EM is started
+
+3.5.3 Release
+. Fixed issues with PAM where grant/revoke/audit may not use the correct auth key (when explicitly provided)
+
+3.5.0 Release
+. Exposed HTTP/S Proxy Support
+
+3-17-14 - 3.5.1 Release
+. PAM Support!
+. extensive refactor, removed a lot of dependencies, such as Faraday for HTTP_SYNC mode
+. connection callback can be set per subscribe call
+. fixed issue where EM could silently fail after some time with Passenger

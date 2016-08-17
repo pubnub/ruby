@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://pubsub.pubnub.com/v1/auth/grant/sub-key/sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe?auth=authkey&channel=demo&r=0&signature=kdDh/sFC3rSR%2Bt5AEymIc57d1velIr562V7usa5M4k0=&timestamp=1234567890&ttl=1440&uuid=f0ac67ef-912f-4797-be67-a59745107306&w=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 400
+      message: OK
+    headers:
+      Date:
+      - Thu, 23 Jan 2014 18:42:34 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '208'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"message":"Success","payload":{"auths":{"authkey":{"r":0,"w":0}},"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe","ttl":1,"channel":"demo","level":"user"},"service":"Access
+        Manager"}'
+    http_version: 
+  recorded_at: Thu, 23 Jan 2014 18:42:34 GMT
+recorded_with: VCR 2.8.0

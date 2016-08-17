@@ -1,0 +1,140 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v2/presence/sub-key/sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe/channel/whatever/uuid/rubytestuuid/data?pnsdk=PubNub-Ruby/3.6.7&state=%7B%22key%22:%22value%22%7D&uuid=rubytestuuid
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 17 Oct 2014 11:32:39 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '84'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub Presence
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "message": "OK", "payload": {"key": "value"}, "service":
+        "Presence"}'
+    http_version: 
+  recorded_at: Fri, 17 Oct 2014 11:32:52 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/subscribe/sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe/whatever/0/0?pnsdk=PubNub-Ruby/3.6.7&state=%7B%22whatever%22:%7B%22key%22:%22value%22%7D%7D&uuid=rubytestuuid
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 17 Oct 2014 11:32:40 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '24'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[[],"14135455605598144"]'
+    http_version: 
+  recorded_at: Fri, 17 Oct 2014 11:32:53 GMT
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v2/presence/sub_key/sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe/channel/whatever/uuid/rubytestuuid?pnsdk=PubNub-Ruby/3.6.7&uuid=rubytestuuid
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 17 Oct 2014 11:32:41 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '131'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub Presence
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "uuid": "rubytestuuid", "service": "Presence", "message":
+        "OK", "payload": {"key": "value"}, "channel": "whatever"}'
+    http_version: 
+  recorded_at: Fri, 17 Oct 2014 11:32:54 GMT
+recorded_with: VCR 2.9.2

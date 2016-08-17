@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v1/auth/audit/sub-key/sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe?channel-group=foo:foo&pnsdk=PubNub-Ruby/3.7.0beta0&signature=sig&timestamp=1234567890&uuid=18cad71e-8d61-445f-88f2-7bbe9f3643ed
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - 30
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 05 Nov 2014 15:33:40 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '218'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"service":"Access Manager","message":"Success","payload":{"channel-groups":{"foo:foo":{"r":1,"m":1,"w":1,"ttl":1440}},"subscribe_key":"sub-c-53c3d30a-4135-11e3-9970-02ee2ddab7fe","level":"channel-group"}}'
+    http_version: 
+  recorded_at: Wed, 05 Nov 2014 15:33:40 GMT
+recorded_with: VCR 2.9.2

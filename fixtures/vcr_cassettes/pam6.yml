@@ -1,0 +1,96 @@
+---
+http_interactions:
+#- request:
+#    method: get
+#    uri: http://pubsub.pubnub.com/time/0?auth=myauthkey&uuid=72b57030-281f-0131-e611-20c9d047a189
+#    body:
+#      encoding: US-ASCII
+#      string: ''
+#    headers: {}
+#  response:
+#    status:
+#      code: 200
+#      message: OK
+#    headers:
+#      Date:
+#      - Tue, 05 Nov 2013 08:08:59 GMT
+#      Content-Type:
+#      - text/javascript; charset="UTF-8"
+#      Content-Length:
+#      - '19'
+#      Connection:
+#      - keep-alive
+#      Cache-Control:
+#      - no-cache
+#      Access-Control-Allow-Origin:
+#      - '*'
+#      Access-Control-Allow-Methods:
+#      - GET
+#    body:
+#      encoding: UTF-8
+#      string: '[13836389397686186]'
+#    http_version:
+#  recorded_at: Tue, 05 Nov 2013 08:08:59 GMT
+- request:
+    method: get
+    uri: http://pam-next.devbuild.pubnub.com/subscribe/sub-c-8e798456-4520-11e3-9b46-02ee2ddab7fe/mychannel/0/0?auth=myauthkey&uuid=myuuid
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 05 Nov 2013 08:09:00 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '24'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[[],"13836388950817160"]'
+    http_version:
+  recorded_at: Tue, 05 Nov 2013 08:09:00 GMT
+- request:
+    method: get
+    uri: http://pam-next.devbuild.pubnub.com/subscribe/sub-c-8e798456-4520-11e3-9b46-02ee2ddab7fe/mychannel/0/13836388950817160?auth=myauthkey&uuid=myuuid
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 05 Nov 2013 08:09:04 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '38'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[[{"text":"hey"}],"13836389443379170"]'
+    http_version:
+  recorded_at: Tue, 05 Nov 2013 08:09:04 GMT
+recorded_with: VCR 2.6.0
