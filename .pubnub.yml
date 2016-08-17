@@ -1,70 +1,92 @@
-name: ruby
-version: 4.0.6
-schema: 1
-scm: github.com/pubnub/ruby
-changelog:
-  - version: v4.0.6
-    date: 
-    changes:
-      - type: improvement
-        text: channel and channels are the same argument.
-      - type: improvement
-        text: channel_group and channel_groups are the same argument.
-      - type: improvement
-        text: added `with_presence` flag for subscribe, default false.
-  - version: v4.0.5
-    changes:
-      - type: improvement
-        text: Required CGI.
-  - version: v4.0.2
-    changes:
-      - type: feature
-        text: Added #subscribe_filter for client.
-  - version: v4.0.1
-    changes:
-      - type: improvement
-        text: Updated dry-validation and EnvelopeSchema.
-  - version: v4.0.0
-    changes:
-      - type: feature
-        text: Removed auth_key and uuid setters (#set_auth_key, #auth_key=, #set_uuid, #uuid=).
-      - type: improvement
-        text: Added #subscribed_to, #current_region, #region=, #current_heartbeat.
-  - version: v3.8.3
-    changes:
-      - type: improvement
-        text: Restored auth_key and uuid setters. Important notice: they will be removed   
-  - version: v3.8.2
-    changes:
-      - type: feature
-        text: Added :include_token parameter to history call.
-  - version: v3.8.1
-    changes:
-      - type: improvement
-        text: Updated celluloid dependency.
-  - version: v3.8.0
-    changes:
-      - type: improvement
-        text: Release of celluloid version of pubnub gem. It's complete rewrite but public API doesn't change.
-features:
-  access:
+--- 
+changelog: 
+  - 
+    changes: 
+      - 
+        text: "channel and channels are the same argument."
+        type: improvement
+      - 
+        text: "channel_group and channel_groups are the same argument."
+        type: improvement
+      - 
+        text: "added `with_presence` flag for subscribe, default false."
+        type: improvement
+    date: ~
+    version: v4.0.6
+  - 
+    changes: 
+      - 
+        text: "Required CGI."
+        type: improvement
+    version: v4.0.5
+  - 
+    changes: 
+      - 
+        text: Added
+        type: feature
+    version: v4.0.2
+  - 
+    changes: 
+      - 
+        text: "Updated dry-validation and EnvelopeSchema."
+        type: improvement
+    version: v4.0.1
+  - 
+    changes: 
+      - 
+        text: "Removed auth_key and uuid setters (#set_auth_key,"
+        type: feature
+      - 
+        text: Added
+        type: improvement
+    version: v4.0.0
+  - 
+    changes: 
+      - 
+        text: "Restored auth_key and uuid setters. Important notice: they will be removed"
+        type: improvement
+    version: v3.8.3
+  - 
+    changes: 
+      - 
+        text: "Added :include_token parameter to history call."
+        type: feature
+    version: v3.8.2
+  - 
+    changes: 
+      - 
+        text: "Updated celluloid dependency."
+        type: improvement
+    version: v3.8.1
+  - 
+    changes: 
+      - 
+        text: "Release of celluloid version of pubnub gem. It's complete rewrite but public API doesn't change."
+        type: improvement
+    version: v3.8.0
+features: 
+  access: 
     - GRANT
     - AUDIT
-  channel-groups:
+  channel-groups: 
     - ADD-CHANNELS
     - REMOVE-CHANNELS
     - LIST-GROUPS
     - LIST-CHANNELS-IN-GROUP
-  push:
-    - ADD-DEVICE-TO-CHANNELS
-    - REMOVE-DEVICE-FROM-CHANNELS
-    - LIST-CHANNELS-FROM-DEVICE
-    - REMOVE-DEVICE
-  presence:
+  presence: 
     - HERE-NOW
     - WHERE-NOW
     - SET-STATE
     - GET-STATE
     - HEARTBEAT
-  publish:
-   - STORE-FLAG
+  publish: 
+    - STORE-FLAG
+  push: 
+    - ADD-DEVICE-TO-CHANNELS
+    - REMOVE-DEVICE-FROM-CHANNELS
+    - LIST-CHANNELS-FROM-DEVICE
+    - REMOVE-DEVICE
+name: ruby
+schema: 1
+scm: github.com/pubnub/ruby
+version: "4.0.6"
