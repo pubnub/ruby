@@ -3,6 +3,13 @@ changelog:
   - 
     changes: 
       - 
+        text: "Added message decrypting in history."
+        type: improvement
+    date: ~
+    version: v4.0.7
+  - 
+    changes: 
+      - 
         text: "channel and channels are the same argument."
         type: improvement
       - 
@@ -88,4 +95,4 @@ features:
 name: ruby
 schema: 1
 scm: github.com/pubnub/ruby
-version: "4.0.6"
+version: "4.0.7"
