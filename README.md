@@ -6,7 +6,7 @@
 # Complete Documentation
 Available at https://www.pubnub.com/docs/ruby/api-reference
 
-## PubNub Gem version 4.0.0
+## PubNub Gem version 4.0.8
 
 ##### YOU MUST HAVE A PUBNUB ACCOUNT TO USE THE API.
 ##### http://www.pubnub.com/account
