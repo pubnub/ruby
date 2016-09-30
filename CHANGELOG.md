@@ -1,3 +1,7 @@
+##### 4.0.8
+* Updated dry-validation
+* Dropped support for ruby 2.0
+
 ##### 4.0.7
 * Added message decrypting in history
 
