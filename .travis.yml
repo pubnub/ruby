@@ -1,23 +1,22 @@
 sudo: false
-
+language: ruby
 addons:
-    code_climate:
-        repo_token: 48739096f72763cbed9bd407efd2ed33151ce5663fb3181455128f06d6123ef3
+  code_climate:
+    repo_token: 48739096f72763cbed9bd407efd2ed33151ce5663fb3181455128f06d6123ef3
 
 before_install:
   - gem update bundler
 
-language: ruby
-rvm:
- - 2.3.1
- - 2.2.5
- - 2.1.9
- # - 2.0.0
- - jruby-9.0.5.0
-
-env:
- - JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
-
 bundler_args: --without development
 
 script: bundle exec rspec
+
+matrix:
+  include:
+    - rvm: 2.3.1
+    - rvm: 2.2.5
+    - rvm: 2.1.9
+    - rvm: jruby-9.1.5.0
+      env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
+      jdk: oraclejdk7
+

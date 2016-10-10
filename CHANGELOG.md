@@ -1,3 +1,7 @@
+##### 4.0.9
+* Removed json dependency
+* Updated dependecies
+
 ##### 4.0.8
 * Updated dry-validation
 * Dropped support for ruby 2.0

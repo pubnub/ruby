@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.require_paths   = ['lib']
 
   spec.add_dependency 'celluloid',           '~> 0.17'
-  spec.add_dependency 'json',                '~> 1.8'
+  spec.add_dependency 'json',                '>= 1.8', '< 3'
   spec.add_dependency 'httpclient',          '~> 2.8'
   spec.add_dependency 'dry-validation',      '~> 0.10'
   spec.add_development_dependency 'bundler', '~> 1.7'

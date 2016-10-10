@@ -4,7 +4,7 @@ gemspec
 
 group :test do
   gem 'rubocop'
-  gem 'simplecov', require: false
+  gem 'simplecov', '>= 0.12', require: false
   gem 'codecov', require: false
   gem 'rspec'
   gem 'rspec-wait'
