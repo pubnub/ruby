@@ -13,6 +13,10 @@ module Pubnub
 
     private
 
+    def current_operation
+      Pubnub::Constants::OPERATION_REVOKE
+    end
+
     def parameters(signature = false)
       write  = [0, '0', false].include?(@write) ? 1 : 0
       read   = [0, '0', false].include?(@read) ? 1 : 0

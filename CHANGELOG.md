@@ -1,3 +1,7 @@
+##### 4.0.10
+* Better single events timeout handling
+* DRYed envelope formatting a bit
+
 ##### 4.0.9
 * Removed json dependency
 * Updated dependecies

@@ -57,9 +57,11 @@ RSpec.configure do |config|
   logfile.sync = true
   Celluloid.logger = Logger.new(logfile)
 
-  # config.around do |example|
-  #   Timeout.timeout(20) do
-  #     example.run
+  # config.around(:each) do |example|
+  #   if example.metadata[:disable_vcr]
+  #     WebMock.allow_net_connect!
+  #     VCR.turned_off { example_method.run }
+  #     WebMock.disable_net_connect!
   #   end
   # end
 end

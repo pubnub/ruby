@@ -12,6 +12,10 @@ module Pubnub
 
     private
 
+    def current_operation
+      Pubnub::Constants::OPERATION_AUDIT
+    end
+
     def parameters(signature = false)
       { timestamp: @timestamp }.merge(super(signature))
     end

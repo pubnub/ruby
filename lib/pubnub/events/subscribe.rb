@@ -15,5 +15,11 @@ module Pubnub
     def clear_state
       @state = nil
     end
+
+    private
+
+    def current_operation
+      Pubnub::Constants::OPERATION_SUBSCRIBE
+    end
   end
 end

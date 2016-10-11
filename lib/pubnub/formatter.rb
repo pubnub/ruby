@@ -71,8 +71,8 @@ module Pubnub
       # Parses string to JSON
       def parse_json(string)
         [JSON.parse(string), nil]
-      rescue JSON::ParserError => error
-        [nil, error]
+      rescue JSON::ParserError => _error
+        [nil, JSON::ParserError]
       end
 
       # Formats hash to params string

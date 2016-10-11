@@ -15,5 +15,11 @@ module Pubnub
       @channel = Formatter.format_channel(@channel || @channels)
       @channel = @channel.map { |c| c + '-pnpres' }
     end
+
+    private
+
+    def current_operation
+      Pubnub::Constants::OPERATION_PRESENCE
+    end
   end
 end

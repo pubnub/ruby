@@ -51,18 +51,6 @@ module Pubnub
       end
     end
 
-    def format_envelopes(response, request)
-      parsed_response, error = Formatter.parse_json(response.body)
-
-      error = response if parsed_response && response.code.to_i != 200
-
-      if error
-        error_envelope(parsed_response, error, request: uri, response: response)
-      else
-        valid_envelope(parsed_response, request: request, response: response)
-      end
-    end
-
     def valid_envelope(parsed_response, req_res_objects)
       Pubnub::Envelope.new(
         event: @event,

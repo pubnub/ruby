@@ -106,9 +106,21 @@ module Pubnub
       @envelopes = format_envelopes response, request
     end
 
-    # def connection
-    #   @app.connection_for(self)
-    # end
+    def format_envelopes(response, request)
+      if response.is_a? HTTPClient::ReceiveTimeoutError
+        return error_envelope(nil, response, request: request, response: response)
+      else
+        parsed_response, error = Formatter.parse_json(response.body)
+      end
+
+      error = response if parsed_response && response.code.to_i != 200
+
+      if error
+        error_envelope(parsed_response, error, request: request, response: response)
+      else
+        valid_envelope(parsed_response, request: request, response: response)
+      end
+    end
 
     def create_variables_from_options(options)
       variables = %w(channel channels message http_sync callback
@@ -172,22 +184,34 @@ module Pubnub
     end
 
     def error_envelope(_parsed_response, error, req_res_objects)
-      Pubnub::ErrorEnvelope.new(
-        event: @event,
-        event_options: @given_options,
-        timetoken: nil,
-        status: {
-          code: req_res_objects[:response].code,
-          operation: Pubnub::Constants::OPERATION_HEARTBEAT,
-          client_request: req_res_objects[:request],
-          server_response: req_res_objects[:response],
-          data: nil,
-          category: (error ? Pubnub::Constants::STATUS_NON_JSON_RESPONSE : Pubnub::Constants::STATUS_ERROR),
-          error: true,
-          auto_retried: false,
+      case error
+        when JSON::ParserError
+          error_category = Pubnub::Constants::STATUS_NON_JSON_RESPONSE
+          code = req_res_objects[:response].code
+        when HTTPClient::ReceiveTimeoutError
+          error_category = Pubnub::Constants::STATUS_TIMEOUT
+          code = 408
+        else
+          error_category = Pubnub::Constants::STATUS_ERROR
+          code = req_res_objects[:response].code
+      end
 
-          config: get_config
-        }
+      Pubnub::ErrorEnvelope.new(
+          event: @event,
+          event_options: @given_options,
+          timetoken: nil,
+          status: {
+              code: code,
+              operation: current_operation,
+              client_request: req_res_objects[:request],
+              server_response: req_res_objects[:response],
+              data: nil,
+              category: error_category,
+              error: true,
+              auto_retried: false,
+
+              config: get_config
+          }
       )
     end
   end

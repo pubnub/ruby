@@ -17,10 +17,6 @@ module Pubnub
 
     def response_message(_parsed_response); end
 
-    def format_envelopes(_response); end
-
     def valid_envelope(_parsed_response); end
-
-    def error_envelope(_parsed_response, _error); end
   end
 end
