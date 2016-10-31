@@ -10,7 +10,9 @@ module Pubnub
     def initialize(options, app)
       @event = :publish
       super
-      @sequence_number = nil
+      @sequence_number        = sequence_number!
+      @origination_time_token = @app.generate_ortt
+
       @store = case @store
                when false
                  0
@@ -33,7 +35,6 @@ module Pubnub
       finalize_event(envelopes)
       envelopes
     ensure
-      # sender.terminate if @http_sync
       terminate unless @stay_alive
     end
 
@@ -43,9 +44,8 @@ module Pubnub
       Pubnub::Constants::OPERATION_PUBLISH
     end
 
-    def parameters
-      @sequence_number        = sequence_number!
-      @origination_time_token = @app.generate_ortt
+    def parameters(*_args)
+      params = super
 
       empty_if_blank = {
         store: @store,
@@ -55,12 +55,12 @@ module Pubnub
       replication = @replicate == false ? { norep: true } : {}
 
       empty_if_blank.delete_if { |_k, v| v.blank? }
-      params = {}
+
       params = params.merge(empty_if_blank)
       params = params.merge(replication)
       params = params.merge(seqn: @sequence_number,
-                            ortt: Formatter.encode({ t: @origination_time_token }.to_json))
-      super.merge(params)
+                            ortt: { t: @origination_time_token })
+      params
     end
 
     def path

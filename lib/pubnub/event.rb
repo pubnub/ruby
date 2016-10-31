@@ -49,10 +49,13 @@ module Pubnub
     end
 
     def uri
+      sa_signature = super_admin_signature unless parameters.include?(:signature)
+
       uri = @ssl ? 'https://' : 'http://'
       uri += @origin
       uri += path
       uri += '?' + Formatter.params_hash_to_url_params(parameters)
+      uri += "&signature=#{sa_signature}" if sa_signature
       Pubnub.logger.debug('Pubnub::Event') { "Requested URI: #{uri}" }
       URI uri
     end
@@ -66,6 +69,35 @@ module Pubnub
     end
 
     private
+
+    def super_admin_signature
+      return unless @app.env[:secret_key]
+
+      message = [
+          @app.env[:subscribe_key],
+          @app.env[:publish_key],
+          path,
+          variables_for_signature
+      ].join("\n")
+
+      URI.encode_www_form_component(Base64.encode64(
+          OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'),
+                               @app.env[:secret_key].to_s, message)
+      ).strip).gsub('+', '%20')
+    end
+
+    def variables_for_signature
+      parameters(true).map do |k, v|
+        if %w(meta ortt).include?(k.to_s)
+          encoded_value = URI.encode_www_form_component(v.to_json).gsub('+', '%20')
+          "#{k}=#{encoded_value}"
+        elsif %w(t state filter-expr).include?(k.to_s)
+          "#{k}=#{v}"
+        else
+          "#{k}=#{URI.encode_www_form_component(v.to_s).gsub('+', '%20')}"
+        end
+      end.sort.join('&')
+    end
 
     def secure_call(cb, arg)
       cb.call arg
@@ -86,15 +118,17 @@ module Pubnub
       envelope
     end
 
-    def parameters
+    def parameters(_set_signature = false)
       required = {
-        pnsdk: "PubNub-Ruby/#{Pubnub::VERSION}"
+        pnsdk: @app.sdk_version
       }
 
       empty_if_blank = {
         auth: @auth_key,
         uuid: @app.env[:uuid]
       }
+
+      required.merge!({timestamp: @timestamp}) if @app.env[:secret_key] && ![:grant, :revoke, :audit].include?(@event)
 
       empty_if_blank.delete_if { |_k, v| v.blank? }
 

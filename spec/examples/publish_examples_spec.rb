@@ -11,7 +11,6 @@ describe Pubnub::Publish do
     @pubnub = Pubnub.new(
       publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
       subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-      secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
       uuid: 'ruby-test-uuid-client-one',
       auth_key: 'ruby-test-auth-client-one'
     )
@@ -14281,7 +14280,6 @@ it '__channel___demo___message__100___store__true___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14304,7 +14302,6 @@ it '__channel___demo___message__100___store__true___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14327,7 +14324,6 @@ it '__channel___demo___message__100___store__true___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14350,7 +14346,6 @@ it '__channel___demo___message__100___store__true___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14374,7 +14369,6 @@ it '__channel___demo___message__100___store__true___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14398,7 +14392,6 @@ it '__channel___demo___message__100___store__true___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14422,7 +14415,6 @@ it '__channel___demo___message__100___store__true___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14445,7 +14437,6 @@ it '__channel___demo___message__100___store__true___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14468,7 +14459,6 @@ it '__channel___demo___message__100___store__true___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14491,7 +14481,6 @@ it '__channel___demo___message__100___store__true___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14515,7 +14504,6 @@ it '__channel___demo___message__100___store__true___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14539,7 +14527,6 @@ it '__channel___demo___message__100___store__true___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14563,7 +14550,6 @@ it '__channel___demo___message__100___store__true___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14586,7 +14572,6 @@ it '__channel___demo___message__100___store__true___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14609,7 +14594,6 @@ it '__channel___demo___message__100___store__true___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14632,7 +14616,6 @@ it '__channel___demo___message__100___store__true___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14656,7 +14639,6 @@ it '__channel___demo___message__100___store__true___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14680,7 +14662,6 @@ it '__channel___demo___message__100___store__true___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14704,7 +14685,6 @@ it '__channel___demo___message__100___store__true___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14727,7 +14707,6 @@ it '__channel___demo___message__100___store__true___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14750,7 +14729,6 @@ it '__channel___demo___message__100___store__true___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14773,7 +14751,6 @@ it '__channel___demo___message__100___store__true___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14797,7 +14774,6 @@ it '__channel___demo___message__100___store__true___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14821,7 +14797,6 @@ it '__channel___demo___message__100___store__true___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14845,7 +14820,6 @@ it '__channel___demo___message__100___store__true___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14868,7 +14842,6 @@ it '__channel___demo___message__100___store__true___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14891,7 +14864,6 @@ it '__channel___demo___message__100___store__true___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14914,7 +14886,6 @@ it '__channel___demo___message__100___store__true___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14938,7 +14909,6 @@ it '__channel___demo___message__100___store__true___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14962,7 +14932,6 @@ it '__channel___demo___message__100___store__true___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -14986,7 +14955,6 @@ it '__channel___demo___message__100___store__true___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15009,7 +14977,6 @@ it '__channel___demo___message__100___store__true___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15032,7 +14999,6 @@ it '__channel___demo___message__100___store__true___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15055,7 +15021,6 @@ it '__channel___demo___message__100___store__true___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15079,7 +15044,6 @@ it '__channel___demo___message__100___store__true___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15103,7 +15067,6 @@ it '__channel___demo___message__100___store__true___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15127,7 +15090,6 @@ it '__channel___demo___message__100___store__false___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15150,7 +15112,6 @@ it '__channel___demo___message__100___store__false___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15173,7 +15134,6 @@ it '__channel___demo___message__100___store__false___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15196,7 +15156,6 @@ it '__channel___demo___message__100___store__false___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15220,7 +15179,6 @@ it '__channel___demo___message__100___store__false___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15244,7 +15202,6 @@ it '__channel___demo___message__100___store__false___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15268,7 +15225,6 @@ it '__channel___demo___message__100___store__false___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15291,7 +15247,6 @@ it '__channel___demo___message__100___store__false___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15314,7 +15269,6 @@ it '__channel___demo___message__100___store__false___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15337,7 +15291,6 @@ it '__channel___demo___message__100___store__false___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15361,7 +15314,6 @@ it '__channel___demo___message__100___store__false___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15385,7 +15337,6 @@ it '__channel___demo___message__100___store__false___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15409,7 +15360,6 @@ it '__channel___demo___message__100___store__false___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15432,7 +15382,6 @@ it '__channel___demo___message__100___store__false___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15455,7 +15404,6 @@ it '__channel___demo___message__100___store__false___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15478,7 +15426,6 @@ it '__channel___demo___message__100___store__false___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15502,7 +15449,6 @@ it '__channel___demo___message__100___store__false___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15526,7 +15472,6 @@ it '__channel___demo___message__100___store__false___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15550,7 +15495,6 @@ it '__channel___demo___message__100___store__false___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15573,7 +15517,6 @@ it '__channel___demo___message__100___store__false___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15596,7 +15539,6 @@ it '__channel___demo___message__100___store__false___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15619,7 +15561,6 @@ it '__channel___demo___message__100___store__false___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15643,7 +15584,6 @@ it '__channel___demo___message__100___store__false___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15667,7 +15607,6 @@ it '__channel___demo___message__100___store__false___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15691,7 +15630,6 @@ it '__channel___demo___message__100___store__false___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15714,7 +15652,6 @@ it '__channel___demo___message__100___store__false___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15737,7 +15674,6 @@ it '__channel___demo___message__100___store__false___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15760,7 +15696,6 @@ it '__channel___demo___message__100___store__false___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15784,7 +15719,6 @@ it '__channel___demo___message__100___store__false___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15808,7 +15742,6 @@ it '__channel___demo___message__100___store__false___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15832,7 +15765,6 @@ it '__channel___demo___message__100___store__false___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15855,7 +15787,6 @@ it '__channel___demo___message__100___store__false___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15878,7 +15809,6 @@ it '__channel___demo___message__100___store__false___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15901,7 +15831,6 @@ it '__channel___demo___message__100___store__false___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15925,7 +15854,6 @@ it '__channel___demo___message__100___store__false___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15949,7 +15877,6 @@ it '__channel___demo___message__100___store__false___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15973,7 +15900,6 @@ it '__channel___demo___message__100___store__nil___compressed__true___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -15996,7 +15922,6 @@ it '__channel___demo___message__100___store__nil___compressed__true___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16019,7 +15944,6 @@ it '__channel___demo___message__100___store__nil___compressed__true___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16042,7 +15966,6 @@ it '__channel___demo___message__100___store__nil___compressed__true___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16066,7 +15989,6 @@ it '__channel___demo___message__100___store__nil___compressed__true___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16090,7 +16012,6 @@ it '__channel___demo___message__100___store__nil___compressed__true___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16114,7 +16035,6 @@ it '__channel___demo___message__100___store__nil___compressed__true___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16137,7 +16057,6 @@ it '__channel___demo___message__100___store__nil___compressed__true___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16160,7 +16079,6 @@ it '__channel___demo___message__100___store__nil___compressed__true___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16183,7 +16101,6 @@ it '__channel___demo___message__100___store__nil___compressed__true___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16207,7 +16124,6 @@ it '__channel___demo___message__100___store__nil___compressed__true___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16231,7 +16147,6 @@ it '__channel___demo___message__100___store__nil___compressed__true___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16255,7 +16170,6 @@ it '__channel___demo___message__100___store__nil___compressed__false___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16278,7 +16192,6 @@ it '__channel___demo___message__100___store__nil___compressed__false___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16301,7 +16214,6 @@ it '__channel___demo___message__100___store__nil___compressed__false___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16324,7 +16236,6 @@ it '__channel___demo___message__100___store__nil___compressed__false___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16348,7 +16259,6 @@ it '__channel___demo___message__100___store__nil___compressed__false___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16372,7 +16282,6 @@ it '__channel___demo___message__100___store__nil___compressed__false___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16396,7 +16305,6 @@ it '__channel___demo___message__100___store__nil___compressed__false___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16419,7 +16327,6 @@ it '__channel___demo___message__100___store__nil___compressed__false___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16442,7 +16349,6 @@ it '__channel___demo___message__100___store__nil___compressed__false___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16465,7 +16371,6 @@ it '__channel___demo___message__100___store__nil___compressed__false___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16489,7 +16394,6 @@ it '__channel___demo___message__100___store__nil___compressed__false___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16513,7 +16417,6 @@ it '__channel___demo___message__100___store__nil___compressed__false___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16537,7 +16440,6 @@ it '__channel___demo___message__100___store__nil___compressed__nil___replicate__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16560,7 +16462,6 @@ it '__channel___demo___message__100___store__nil___compressed__nil___replicate__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16583,7 +16484,6 @@ it '__channel___demo___message__100___store__nil___compressed__nil___replicate__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16606,7 +16506,6 @@ it '__channel___demo___message__100___store__nil___compressed__nil___replicate__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16630,7 +16529,6 @@ it '__channel___demo___message__100___store__nil___compressed__nil___replicate__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16654,7 +16552,6 @@ it '__channel___demo___message__100___store__nil___compressed__nil___replicate__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16678,7 +16575,6 @@ it '__channel___demo___message__100___store__nil___compressed__nil___replicate__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16701,7 +16597,6 @@ it '__channel___demo___message__100___store__nil___compressed__nil___replicate__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16724,7 +16619,6 @@ it '__channel___demo___message__100___store__nil___compressed__nil___replicate__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16747,7 +16641,6 @@ it '__channel___demo___message__100___store__nil___compressed__nil___replicate__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16771,7 +16664,6 @@ it '__channel___demo___message__100___store__nil___compressed__nil___replicate__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16795,7 +16687,6 @@ it '__channel___demo___message__100___store__nil___compressed__nil___replicate__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16819,7 +16710,6 @@ it '__channel___demo___message___string____store__true___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16842,7 +16732,6 @@ it '__channel___demo___message___string____store__true___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16865,7 +16754,6 @@ it '__channel___demo___message___string____store__true___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16888,7 +16776,6 @@ it '__channel___demo___message___string____store__true___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16912,7 +16799,6 @@ it '__channel___demo___message___string____store__true___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16936,7 +16822,6 @@ it '__channel___demo___message___string____store__true___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16960,7 +16845,6 @@ it '__channel___demo___message___string____store__true___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -16983,7 +16867,6 @@ it '__channel___demo___message___string____store__true___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17006,7 +16889,6 @@ it '__channel___demo___message___string____store__true___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17029,7 +16911,6 @@ it '__channel___demo___message___string____store__true___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17053,7 +16934,6 @@ it '__channel___demo___message___string____store__true___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17077,7 +16957,6 @@ it '__channel___demo___message___string____store__true___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17101,7 +16980,6 @@ it '__channel___demo___message___string____store__true___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17124,7 +17002,6 @@ it '__channel___demo___message___string____store__true___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17147,7 +17024,6 @@ it '__channel___demo___message___string____store__true___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17170,7 +17046,6 @@ it '__channel___demo___message___string____store__true___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17194,7 +17069,6 @@ it '__channel___demo___message___string____store__true___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17218,7 +17092,6 @@ it '__channel___demo___message___string____store__true___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17242,7 +17115,6 @@ it '__channel___demo___message___string____store__true___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17265,7 +17137,6 @@ it '__channel___demo___message___string____store__true___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17288,7 +17159,6 @@ it '__channel___demo___message___string____store__true___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17311,7 +17181,6 @@ it '__channel___demo___message___string____store__true___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17335,7 +17204,6 @@ it '__channel___demo___message___string____store__true___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17359,7 +17227,6 @@ it '__channel___demo___message___string____store__true___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17383,7 +17250,6 @@ it '__channel___demo___message___string____store__true___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17406,7 +17272,6 @@ it '__channel___demo___message___string____store__true___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17429,7 +17294,6 @@ it '__channel___demo___message___string____store__true___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17452,7 +17316,6 @@ it '__channel___demo___message___string____store__true___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17476,7 +17339,6 @@ it '__channel___demo___message___string____store__true___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17500,7 +17362,6 @@ it '__channel___demo___message___string____store__true___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17524,7 +17385,6 @@ it '__channel___demo___message___string____store__true___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17547,7 +17407,6 @@ it '__channel___demo___message___string____store__true___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17570,7 +17429,6 @@ it '__channel___demo___message___string____store__true___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17593,7 +17451,6 @@ it '__channel___demo___message___string____store__true___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17617,7 +17474,6 @@ it '__channel___demo___message___string____store__true___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17641,7 +17497,6 @@ it '__channel___demo___message___string____store__true___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17665,7 +17520,6 @@ it '__channel___demo___message___string____store__false___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17688,7 +17542,6 @@ it '__channel___demo___message___string____store__false___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17711,7 +17564,6 @@ it '__channel___demo___message___string____store__false___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17734,7 +17586,6 @@ it '__channel___demo___message___string____store__false___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17758,7 +17609,6 @@ it '__channel___demo___message___string____store__false___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17782,7 +17632,6 @@ it '__channel___demo___message___string____store__false___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17806,7 +17655,6 @@ it '__channel___demo___message___string____store__false___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17829,7 +17677,6 @@ it '__channel___demo___message___string____store__false___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17852,7 +17699,6 @@ it '__channel___demo___message___string____store__false___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17875,7 +17721,6 @@ it '__channel___demo___message___string____store__false___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17899,7 +17744,6 @@ it '__channel___demo___message___string____store__false___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17923,7 +17767,6 @@ it '__channel___demo___message___string____store__false___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17947,7 +17790,6 @@ it '__channel___demo___message___string____store__false___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17970,7 +17812,6 @@ it '__channel___demo___message___string____store__false___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -17993,7 +17834,6 @@ it '__channel___demo___message___string____store__false___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18016,7 +17856,6 @@ it '__channel___demo___message___string____store__false___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18040,7 +17879,6 @@ it '__channel___demo___message___string____store__false___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18064,7 +17902,6 @@ it '__channel___demo___message___string____store__false___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18088,7 +17925,6 @@ it '__channel___demo___message___string____store__false___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18111,7 +17947,6 @@ it '__channel___demo___message___string____store__false___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18134,7 +17969,6 @@ it '__channel___demo___message___string____store__false___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18157,7 +17991,6 @@ it '__channel___demo___message___string____store__false___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18181,7 +18014,6 @@ it '__channel___demo___message___string____store__false___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18205,7 +18037,6 @@ it '__channel___demo___message___string____store__false___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18229,7 +18060,6 @@ it '__channel___demo___message___string____store__false___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18252,7 +18082,6 @@ it '__channel___demo___message___string____store__false___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18275,7 +18104,6 @@ it '__channel___demo___message___string____store__false___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18298,7 +18126,6 @@ it '__channel___demo___message___string____store__false___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18322,7 +18149,6 @@ it '__channel___demo___message___string____store__false___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18346,7 +18172,6 @@ it '__channel___demo___message___string____store__false___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18370,7 +18195,6 @@ it '__channel___demo___message___string____store__false___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18393,7 +18217,6 @@ it '__channel___demo___message___string____store__false___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18416,7 +18239,6 @@ it '__channel___demo___message___string____store__false___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18439,7 +18261,6 @@ it '__channel___demo___message___string____store__false___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18463,7 +18284,6 @@ it '__channel___demo___message___string____store__false___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18487,7 +18307,6 @@ it '__channel___demo___message___string____store__false___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18511,7 +18330,6 @@ it '__channel___demo___message___string____store__nil___compressed__true___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18534,7 +18352,6 @@ it '__channel___demo___message___string____store__nil___compressed__true___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18557,7 +18374,6 @@ it '__channel___demo___message___string____store__nil___compressed__true___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18580,7 +18396,6 @@ it '__channel___demo___message___string____store__nil___compressed__true___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18604,7 +18419,6 @@ it '__channel___demo___message___string____store__nil___compressed__true___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18628,7 +18442,6 @@ it '__channel___demo___message___string____store__nil___compressed__true___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18652,7 +18465,6 @@ it '__channel___demo___message___string____store__nil___compressed__true___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18675,7 +18487,6 @@ it '__channel___demo___message___string____store__nil___compressed__true___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18698,7 +18509,6 @@ it '__channel___demo___message___string____store__nil___compressed__true___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18721,7 +18531,6 @@ it '__channel___demo___message___string____store__nil___compressed__true___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18745,7 +18554,6 @@ it '__channel___demo___message___string____store__nil___compressed__true___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18769,7 +18577,6 @@ it '__channel___demo___message___string____store__nil___compressed__true___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18793,7 +18600,6 @@ it '__channel___demo___message___string____store__nil___compressed__false___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18816,7 +18622,6 @@ it '__channel___demo___message___string____store__nil___compressed__false___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18839,7 +18644,6 @@ it '__channel___demo___message___string____store__nil___compressed__false___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18862,7 +18666,6 @@ it '__channel___demo___message___string____store__nil___compressed__false___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18886,7 +18689,6 @@ it '__channel___demo___message___string____store__nil___compressed__false___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18910,7 +18712,6 @@ it '__channel___demo___message___string____store__nil___compressed__false___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18934,7 +18735,6 @@ it '__channel___demo___message___string____store__nil___compressed__false___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18957,7 +18757,6 @@ it '__channel___demo___message___string____store__nil___compressed__false___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -18980,7 +18779,6 @@ it '__channel___demo___message___string____store__nil___compressed__false___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19003,7 +18801,6 @@ it '__channel___demo___message___string____store__nil___compressed__false___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19027,7 +18824,6 @@ it '__channel___demo___message___string____store__nil___compressed__false___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19051,7 +18847,6 @@ it '__channel___demo___message___string____store__nil___compressed__false___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19075,7 +18870,6 @@ it '__channel___demo___message___string____store__nil___compressed__nil___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19098,7 +18892,6 @@ it '__channel___demo___message___string____store__nil___compressed__nil___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19121,7 +18914,6 @@ it '__channel___demo___message___string____store__nil___compressed__nil___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19144,7 +18936,6 @@ it '__channel___demo___message___string____store__nil___compressed__nil___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19168,7 +18959,6 @@ it '__channel___demo___message___string____store__nil___compressed__nil___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19192,7 +18982,6 @@ it '__channel___demo___message___string____store__nil___compressed__nil___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19216,7 +19005,6 @@ it '__channel___demo___message___string____store__nil___compressed__nil___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19239,7 +19027,6 @@ it '__channel___demo___message___string____store__nil___compressed__nil___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19262,7 +19049,6 @@ it '__channel___demo___message___string____store__nil___compressed__nil___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19285,7 +19071,6 @@ it '__channel___demo___message___string____store__nil___compressed__nil___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19309,7 +19094,6 @@ it '__channel___demo___message___string____store__nil___compressed__nil___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19333,7 +19117,6 @@ it '__channel___demo___message___string____store__nil___compressed__nil___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19357,7 +19140,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19380,7 +19162,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19403,7 +19184,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19426,7 +19206,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19450,7 +19229,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19474,7 +19252,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19498,7 +19275,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19521,7 +19297,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19544,7 +19319,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19567,7 +19341,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19591,7 +19364,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19615,7 +19387,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19639,7 +19410,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19662,7 +19432,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19685,7 +19454,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19708,7 +19476,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19732,7 +19499,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19756,7 +19522,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19780,7 +19545,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19803,7 +19567,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19826,7 +19589,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19849,7 +19611,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19873,7 +19634,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19897,7 +19657,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19921,7 +19680,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19944,7 +19702,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19967,7 +19724,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -19990,7 +19746,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20014,7 +19769,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20038,7 +19792,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20062,7 +19815,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20085,7 +19837,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20108,7 +19859,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20131,7 +19881,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20155,7 +19904,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20179,7 +19927,6 @@ it '__channel___demo___message____ar____ray_____store__true___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20203,7 +19950,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20226,7 +19972,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20249,7 +19994,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20272,7 +20016,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20296,7 +20039,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20320,7 +20062,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20344,7 +20085,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20367,7 +20107,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20390,7 +20129,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20413,7 +20151,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20437,7 +20174,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20461,7 +20197,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20485,7 +20220,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20508,7 +20242,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20531,7 +20264,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20554,7 +20286,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20578,7 +20309,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20602,7 +20332,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20626,7 +20355,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20649,7 +20377,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20672,7 +20399,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20695,7 +20421,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20719,7 +20444,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20743,7 +20467,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20767,7 +20490,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20790,7 +20512,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20813,7 +20534,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20836,7 +20556,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20860,7 +20579,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20884,7 +20602,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20908,7 +20625,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20931,7 +20647,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20954,7 +20669,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -20977,7 +20691,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21001,7 +20714,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21025,7 +20737,6 @@ it '__channel___demo___message____ar____ray_____store__false___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21049,7 +20760,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__true___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21072,7 +20782,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__true___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21095,7 +20804,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__true___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21118,7 +20826,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__true___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21142,7 +20849,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__true___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21166,7 +20872,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__true___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21190,7 +20895,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__true___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21213,7 +20917,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__true___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21236,7 +20939,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__true___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21259,7 +20961,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__true___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21283,7 +20984,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__true___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21307,7 +21007,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__true___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21331,7 +21030,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__false__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21354,7 +21052,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__false__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21377,7 +21074,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__false__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21400,7 +21096,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__false__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21424,7 +21119,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__false__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21448,7 +21142,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__false__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21472,7 +21165,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__false__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21495,7 +21187,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__false__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21518,7 +21209,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__false__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21541,7 +21231,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__false__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21565,7 +21254,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__false__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21589,7 +21277,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__false__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21613,7 +21300,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__nil___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21636,7 +21322,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__nil___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21659,7 +21344,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__nil___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21682,7 +21366,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__nil___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21706,7 +21389,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__nil___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21730,7 +21412,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__nil___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21754,7 +21435,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__nil___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21777,7 +21457,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__nil___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21800,7 +21479,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__nil___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21823,7 +21501,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__nil___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21847,7 +21524,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__nil___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21871,7 +21547,6 @@ it '__channel___demo___message____ar____ray_____store__nil___compressed__nil___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21895,7 +21570,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21918,7 +21592,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21941,7 +21614,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21964,7 +21636,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -21988,7 +21659,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22012,7 +21682,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22036,7 +21705,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22059,7 +21727,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22082,7 +21749,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22105,7 +21771,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22129,7 +21794,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22153,7 +21817,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22177,7 +21840,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22200,7 +21862,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22223,7 +21884,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22246,7 +21906,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22270,7 +21929,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22294,7 +21952,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22318,7 +21975,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22341,7 +21997,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22364,7 +22019,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22387,7 +22041,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22411,7 +22064,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22435,7 +22087,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22459,7 +22110,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22482,7 +22132,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22505,7 +22154,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22528,7 +22176,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22552,7 +22199,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22576,7 +22222,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22600,7 +22245,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22623,7 +22267,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22646,7 +22289,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22669,7 +22311,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22693,7 +22334,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22717,7 +22357,6 @@ it '__channel___demo___message____hash___it_is_____store__true___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22741,7 +22380,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22764,7 +22402,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22787,7 +22424,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22810,7 +22446,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22834,7 +22469,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22858,7 +22492,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22882,7 +22515,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22905,7 +22537,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22928,7 +22559,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22951,7 +22581,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22975,7 +22604,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -22999,7 +22627,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23023,7 +22650,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23046,7 +22672,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23069,7 +22694,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23092,7 +22716,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23116,7 +22739,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23140,7 +22762,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23164,7 +22785,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23187,7 +22807,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23210,7 +22829,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23233,7 +22851,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23257,7 +22874,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23281,7 +22897,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23305,7 +22920,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23328,7 +22942,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23351,7 +22964,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23374,7 +22986,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23398,7 +23009,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23422,7 +23032,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23446,7 +23055,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23469,7 +23077,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23492,7 +23099,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23515,7 +23121,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23539,7 +23144,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23563,7 +23167,6 @@ it '__channel___demo___message____hash___it_is_____store__false___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23587,7 +23190,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23610,7 +23212,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23633,7 +23234,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23656,7 +23256,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23680,7 +23279,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23704,7 +23302,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23728,7 +23325,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23751,7 +23347,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23774,7 +23369,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23797,7 +23391,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23821,7 +23414,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23845,7 +23437,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23869,7 +23460,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23892,7 +23482,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23915,7 +23504,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23938,7 +23526,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23962,7 +23549,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -23986,7 +23572,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24010,7 +23595,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24033,7 +23617,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24056,7 +23639,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24079,7 +23661,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24103,7 +23684,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24127,7 +23707,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24151,7 +23730,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24174,7 +23752,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24197,7 +23774,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24220,7 +23796,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24244,7 +23819,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24268,7 +23842,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24292,7 +23865,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24315,7 +23887,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24338,7 +23909,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24361,7 +23931,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24385,7 +23954,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24409,7 +23977,6 @@ it '__channel___demo___message____hash___it_is_____store__nil___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24433,7 +24000,6 @@ it '__channel___demo____message__100___store__true___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24456,7 +24022,6 @@ it '__channel___demo____message__100___store__true___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24479,7 +24044,6 @@ it '__channel___demo____message__100___store__true___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24502,7 +24066,6 @@ it '__channel___demo____message__100___store__true___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24526,7 +24089,6 @@ it '__channel___demo____message__100___store__true___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24550,7 +24112,6 @@ it '__channel___demo____message__100___store__true___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24574,7 +24135,6 @@ it '__channel___demo____message__100___store__true___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24597,7 +24157,6 @@ it '__channel___demo____message__100___store__true___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24620,7 +24179,6 @@ it '__channel___demo____message__100___store__true___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24643,7 +24201,6 @@ it '__channel___demo____message__100___store__true___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24667,7 +24224,6 @@ it '__channel___demo____message__100___store__true___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24691,7 +24247,6 @@ it '__channel___demo____message__100___store__true___compressed__true___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24715,7 +24270,6 @@ it '__channel___demo____message__100___store__true___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24738,7 +24292,6 @@ it '__channel___demo____message__100___store__true___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24761,7 +24314,6 @@ it '__channel___demo____message__100___store__true___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24784,7 +24336,6 @@ it '__channel___demo____message__100___store__true___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24808,7 +24359,6 @@ it '__channel___demo____message__100___store__true___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24832,7 +24382,6 @@ it '__channel___demo____message__100___store__true___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24856,7 +24405,6 @@ it '__channel___demo____message__100___store__true___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24879,7 +24427,6 @@ it '__channel___demo____message__100___store__true___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24902,7 +24449,6 @@ it '__channel___demo____message__100___store__true___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24925,7 +24471,6 @@ it '__channel___demo____message__100___store__true___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24949,7 +24494,6 @@ it '__channel___demo____message__100___store__true___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24973,7 +24517,6 @@ it '__channel___demo____message__100___store__true___compressed__false___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -24997,7 +24540,6 @@ it '__channel___demo____message__100___store__true___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25020,7 +24562,6 @@ it '__channel___demo____message__100___store__true___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25043,7 +24584,6 @@ it '__channel___demo____message__100___store__true___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25066,7 +24606,6 @@ it '__channel___demo____message__100___store__true___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25090,7 +24629,6 @@ it '__channel___demo____message__100___store__true___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25114,7 +24652,6 @@ it '__channel___demo____message__100___store__true___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25138,7 +24675,6 @@ it '__channel___demo____message__100___store__true___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25161,7 +24697,6 @@ it '__channel___demo____message__100___store__true___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25184,7 +24719,6 @@ it '__channel___demo____message__100___store__true___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25207,7 +24741,6 @@ it '__channel___demo____message__100___store__true___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25231,7 +24764,6 @@ it '__channel___demo____message__100___store__true___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25255,7 +24787,6 @@ it '__channel___demo____message__100___store__true___compressed__nil___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25279,7 +24810,6 @@ it '__channel___demo____message__100___store__false___compressed__true___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25302,7 +24832,6 @@ it '__channel___demo____message__100___store__false___compressed__true___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25325,7 +24854,6 @@ it '__channel___demo____message__100___store__false___compressed__true___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25348,7 +24876,6 @@ it '__channel___demo____message__100___store__false___compressed__true___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25372,7 +24899,6 @@ it '__channel___demo____message__100___store__false___compressed__true___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25396,7 +24922,6 @@ it '__channel___demo____message__100___store__false___compressed__true___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25420,7 +24945,6 @@ it '__channel___demo____message__100___store__false___compressed__true___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25443,7 +24967,6 @@ it '__channel___demo____message__100___store__false___compressed__true___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25466,7 +24989,6 @@ it '__channel___demo____message__100___store__false___compressed__true___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25489,7 +25011,6 @@ it '__channel___demo____message__100___store__false___compressed__true___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25513,7 +25034,6 @@ it '__channel___demo____message__100___store__false___compressed__true___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25537,7 +25057,6 @@ it '__channel___demo____message__100___store__false___compressed__true___replica
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25561,7 +25080,6 @@ it '__channel___demo____message__100___store__false___compressed__false___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25584,7 +25102,6 @@ it '__channel___demo____message__100___store__false___compressed__false___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25607,7 +25124,6 @@ it '__channel___demo____message__100___store__false___compressed__false___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25630,7 +25146,6 @@ it '__channel___demo____message__100___store__false___compressed__false___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25654,7 +25169,6 @@ it '__channel___demo____message__100___store__false___compressed__false___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25678,7 +25192,6 @@ it '__channel___demo____message__100___store__false___compressed__false___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25702,7 +25215,6 @@ it '__channel___demo____message__100___store__false___compressed__false___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25725,7 +25237,6 @@ it '__channel___demo____message__100___store__false___compressed__false___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25748,7 +25259,6 @@ it '__channel___demo____message__100___store__false___compressed__false___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25771,7 +25281,6 @@ it '__channel___demo____message__100___store__false___compressed__false___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25795,7 +25304,6 @@ it '__channel___demo____message__100___store__false___compressed__false___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25819,7 +25327,6 @@ it '__channel___demo____message__100___store__false___compressed__false___replic
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25843,7 +25350,6 @@ it '__channel___demo____message__100___store__false___compressed__nil___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25866,7 +25372,6 @@ it '__channel___demo____message__100___store__false___compressed__nil___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25889,7 +25394,6 @@ it '__channel___demo____message__100___store__false___compressed__nil___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25912,7 +25416,6 @@ it '__channel___demo____message__100___store__false___compressed__nil___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25936,7 +25439,6 @@ it '__channel___demo____message__100___store__false___compressed__nil___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25960,7 +25462,6 @@ it '__channel___demo____message__100___store__false___compressed__nil___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -25984,7 +25485,6 @@ it '__channel___demo____message__100___store__false___compressed__nil___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26007,7 +25507,6 @@ it '__channel___demo____message__100___store__false___compressed__nil___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26030,7 +25529,6 @@ it '__channel___demo____message__100___store__false___compressed__nil___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26053,7 +25551,6 @@ it '__channel___demo____message__100___store__false___compressed__nil___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26077,7 +25574,6 @@ it '__channel___demo____message__100___store__false___compressed__nil___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26101,7 +25597,6 @@ it '__channel___demo____message__100___store__false___compressed__nil___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26125,7 +25620,6 @@ it '__channel___demo____message__100___store__nil___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26148,7 +25642,6 @@ it '__channel___demo____message__100___store__nil___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26171,7 +25664,6 @@ it '__channel___demo____message__100___store__nil___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26194,7 +25686,6 @@ it '__channel___demo____message__100___store__nil___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26218,7 +25709,6 @@ it '__channel___demo____message__100___store__nil___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26242,7 +25732,6 @@ it '__channel___demo____message__100___store__nil___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26266,7 +25755,6 @@ it '__channel___demo____message__100___store__nil___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26289,7 +25777,6 @@ it '__channel___demo____message__100___store__nil___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26312,7 +25799,6 @@ it '__channel___demo____message__100___store__nil___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26335,7 +25821,6 @@ it '__channel___demo____message__100___store__nil___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26359,7 +25844,6 @@ it '__channel___demo____message__100___store__nil___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26383,7 +25867,6 @@ it '__channel___demo____message__100___store__nil___compressed__true___replicate
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26407,7 +25890,6 @@ it '__channel___demo____message__100___store__nil___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26430,7 +25912,6 @@ it '__channel___demo____message__100___store__nil___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26453,7 +25934,6 @@ it '__channel___demo____message__100___store__nil___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26476,7 +25956,6 @@ it '__channel___demo____message__100___store__nil___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26500,7 +25979,6 @@ it '__channel___demo____message__100___store__nil___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26524,7 +26002,6 @@ it '__channel___demo____message__100___store__nil___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26548,7 +26025,6 @@ it '__channel___demo____message__100___store__nil___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26571,7 +26047,6 @@ it '__channel___demo____message__100___store__nil___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26594,7 +26069,6 @@ it '__channel___demo____message__100___store__nil___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26617,7 +26091,6 @@ it '__channel___demo____message__100___store__nil___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26641,7 +26114,6 @@ it '__channel___demo____message__100___store__nil___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26665,7 +26137,6 @@ it '__channel___demo____message__100___store__nil___compressed__false___replicat
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26689,7 +26160,6 @@ it '__channel___demo____message__100___store__nil___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26712,7 +26182,6 @@ it '__channel___demo____message__100___store__nil___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26735,7 +26204,6 @@ it '__channel___demo____message__100___store__nil___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26758,7 +26226,6 @@ it '__channel___demo____message__100___store__nil___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26782,7 +26249,6 @@ it '__channel___demo____message__100___store__nil___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26806,7 +26272,6 @@ it '__channel___demo____message__100___store__nil___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26830,7 +26295,6 @@ it '__channel___demo____message__100___store__nil___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26853,7 +26317,6 @@ it '__channel___demo____message__100___store__nil___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26876,7 +26339,6 @@ it '__channel___demo____message__100___store__nil___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26899,7 +26361,6 @@ it '__channel___demo____message__100___store__nil___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26923,7 +26384,6 @@ it '__channel___demo____message__100___store__nil___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26947,7 +26407,6 @@ it '__channel___demo____message__100___store__nil___compressed__nil___replicate_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26971,7 +26430,6 @@ it '__channel___demo____message___string____store__true___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -26994,7 +26452,6 @@ it '__channel___demo____message___string____store__true___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27017,7 +26474,6 @@ it '__channel___demo____message___string____store__true___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27040,7 +26496,6 @@ it '__channel___demo____message___string____store__true___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27064,7 +26519,6 @@ it '__channel___demo____message___string____store__true___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27088,7 +26542,6 @@ it '__channel___demo____message___string____store__true___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27112,7 +26565,6 @@ it '__channel___demo____message___string____store__true___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27135,7 +26587,6 @@ it '__channel___demo____message___string____store__true___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27158,7 +26609,6 @@ it '__channel___demo____message___string____store__true___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27181,7 +26631,6 @@ it '__channel___demo____message___string____store__true___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27205,7 +26654,6 @@ it '__channel___demo____message___string____store__true___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27229,7 +26677,6 @@ it '__channel___demo____message___string____store__true___compressed__true___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27253,7 +26700,6 @@ it '__channel___demo____message___string____store__true___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27276,7 +26722,6 @@ it '__channel___demo____message___string____store__true___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27299,7 +26744,6 @@ it '__channel___demo____message___string____store__true___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27322,7 +26766,6 @@ it '__channel___demo____message___string____store__true___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27346,7 +26789,6 @@ it '__channel___demo____message___string____store__true___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27370,7 +26812,6 @@ it '__channel___demo____message___string____store__true___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27394,7 +26835,6 @@ it '__channel___demo____message___string____store__true___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27417,7 +26857,6 @@ it '__channel___demo____message___string____store__true___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27440,7 +26879,6 @@ it '__channel___demo____message___string____store__true___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27463,7 +26901,6 @@ it '__channel___demo____message___string____store__true___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27487,7 +26924,6 @@ it '__channel___demo____message___string____store__true___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27511,7 +26947,6 @@ it '__channel___demo____message___string____store__true___compressed__false___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27535,7 +26970,6 @@ it '__channel___demo____message___string____store__true___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27558,7 +26992,6 @@ it '__channel___demo____message___string____store__true___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27581,7 +27014,6 @@ it '__channel___demo____message___string____store__true___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27604,7 +27036,6 @@ it '__channel___demo____message___string____store__true___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27628,7 +27059,6 @@ it '__channel___demo____message___string____store__true___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27652,7 +27082,6 @@ it '__channel___demo____message___string____store__true___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27676,7 +27105,6 @@ it '__channel___demo____message___string____store__true___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27699,7 +27127,6 @@ it '__channel___demo____message___string____store__true___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27722,7 +27149,6 @@ it '__channel___demo____message___string____store__true___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27745,7 +27171,6 @@ it '__channel___demo____message___string____store__true___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27769,7 +27194,6 @@ it '__channel___demo____message___string____store__true___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27793,7 +27217,6 @@ it '__channel___demo____message___string____store__true___compressed__nil___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27817,7 +27240,6 @@ it '__channel___demo____message___string____store__false___compressed__true___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27840,7 +27262,6 @@ it '__channel___demo____message___string____store__false___compressed__true___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27863,7 +27284,6 @@ it '__channel___demo____message___string____store__false___compressed__true___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27886,7 +27306,6 @@ it '__channel___demo____message___string____store__false___compressed__true___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27910,7 +27329,6 @@ it '__channel___demo____message___string____store__false___compressed__true___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27934,7 +27352,6 @@ it '__channel___demo____message___string____store__false___compressed__true___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27958,7 +27375,6 @@ it '__channel___demo____message___string____store__false___compressed__true___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -27981,7 +27397,6 @@ it '__channel___demo____message___string____store__false___compressed__true___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28004,7 +27419,6 @@ it '__channel___demo____message___string____store__false___compressed__true___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28027,7 +27441,6 @@ it '__channel___demo____message___string____store__false___compressed__true___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28051,7 +27464,6 @@ it '__channel___demo____message___string____store__false___compressed__true___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28075,7 +27487,6 @@ it '__channel___demo____message___string____store__false___compressed__true___re
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28099,7 +27510,6 @@ it '__channel___demo____message___string____store__false___compressed__false___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28122,7 +27532,6 @@ it '__channel___demo____message___string____store__false___compressed__false___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28145,7 +27554,6 @@ it '__channel___demo____message___string____store__false___compressed__false___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28168,7 +27576,6 @@ it '__channel___demo____message___string____store__false___compressed__false___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28192,7 +27599,6 @@ it '__channel___demo____message___string____store__false___compressed__false___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28216,7 +27622,6 @@ it '__channel___demo____message___string____store__false___compressed__false___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28240,7 +27645,6 @@ it '__channel___demo____message___string____store__false___compressed__false___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28263,7 +27667,6 @@ it '__channel___demo____message___string____store__false___compressed__false___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28286,7 +27689,6 @@ it '__channel___demo____message___string____store__false___compressed__false___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28309,7 +27711,6 @@ it '__channel___demo____message___string____store__false___compressed__false___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28333,7 +27734,6 @@ it '__channel___demo____message___string____store__false___compressed__false___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28357,7 +27757,6 @@ it '__channel___demo____message___string____store__false___compressed__false___r
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28381,7 +27780,6 @@ it '__channel___demo____message___string____store__false___compressed__nil___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28404,7 +27802,6 @@ it '__channel___demo____message___string____store__false___compressed__nil___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28427,7 +27824,6 @@ it '__channel___demo____message___string____store__false___compressed__nil___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28450,7 +27846,6 @@ it '__channel___demo____message___string____store__false___compressed__nil___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28474,7 +27869,6 @@ it '__channel___demo____message___string____store__false___compressed__nil___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28498,7 +27892,6 @@ it '__channel___demo____message___string____store__false___compressed__nil___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28522,7 +27915,6 @@ it '__channel___demo____message___string____store__false___compressed__nil___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28545,7 +27937,6 @@ it '__channel___demo____message___string____store__false___compressed__nil___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28568,7 +27959,6 @@ it '__channel___demo____message___string____store__false___compressed__nil___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28591,7 +27981,6 @@ it '__channel___demo____message___string____store__false___compressed__nil___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28615,7 +28004,6 @@ it '__channel___demo____message___string____store__false___compressed__nil___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28639,7 +28027,6 @@ it '__channel___demo____message___string____store__false___compressed__nil___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28663,7 +28050,6 @@ it '__channel___demo____message___string____store__nil___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28686,7 +28072,6 @@ it '__channel___demo____message___string____store__nil___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28709,7 +28094,6 @@ it '__channel___demo____message___string____store__nil___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28732,7 +28116,6 @@ it '__channel___demo____message___string____store__nil___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28756,7 +28139,6 @@ it '__channel___demo____message___string____store__nil___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28780,7 +28162,6 @@ it '__channel___demo____message___string____store__nil___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28804,7 +28185,6 @@ it '__channel___demo____message___string____store__nil___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28827,7 +28207,6 @@ it '__channel___demo____message___string____store__nil___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28850,7 +28229,6 @@ it '__channel___demo____message___string____store__nil___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28873,7 +28251,6 @@ it '__channel___demo____message___string____store__nil___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28897,7 +28274,6 @@ it '__channel___demo____message___string____store__nil___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28921,7 +28297,6 @@ it '__channel___demo____message___string____store__nil___compressed__true___repl
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28945,7 +28320,6 @@ it '__channel___demo____message___string____store__nil___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28968,7 +28342,6 @@ it '__channel___demo____message___string____store__nil___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -28991,7 +28364,6 @@ it '__channel___demo____message___string____store__nil___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29014,7 +28386,6 @@ it '__channel___demo____message___string____store__nil___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29038,7 +28409,6 @@ it '__channel___demo____message___string____store__nil___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29062,7 +28432,6 @@ it '__channel___demo____message___string____store__nil___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29086,7 +28455,6 @@ it '__channel___demo____message___string____store__nil___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29109,7 +28477,6 @@ it '__channel___demo____message___string____store__nil___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29132,7 +28499,6 @@ it '__channel___demo____message___string____store__nil___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29155,7 +28521,6 @@ it '__channel___demo____message___string____store__nil___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29179,7 +28544,6 @@ it '__channel___demo____message___string____store__nil___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29203,7 +28567,6 @@ it '__channel___demo____message___string____store__nil___compressed__false___rep
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29227,7 +28590,6 @@ it '__channel___demo____message___string____store__nil___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29250,7 +28612,6 @@ it '__channel___demo____message___string____store__nil___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29273,7 +28634,6 @@ it '__channel___demo____message___string____store__nil___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29296,7 +28656,6 @@ it '__channel___demo____message___string____store__nil___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29320,7 +28679,6 @@ it '__channel___demo____message___string____store__nil___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29344,7 +28702,6 @@ it '__channel___demo____message___string____store__nil___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29368,7 +28725,6 @@ it '__channel___demo____message___string____store__nil___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29391,7 +28747,6 @@ it '__channel___demo____message___string____store__nil___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29414,7 +28769,6 @@ it '__channel___demo____message___string____store__nil___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29437,7 +28791,6 @@ it '__channel___demo____message___string____store__nil___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29461,7 +28814,6 @@ it '__channel___demo____message___string____store__nil___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29485,7 +28837,6 @@ it '__channel___demo____message___string____store__nil___compressed__nil___repli
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29509,7 +28860,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29532,7 +28882,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29555,7 +28904,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29578,7 +28926,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29602,7 +28949,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29626,7 +28972,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29650,7 +28995,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29673,7 +29017,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29696,7 +29039,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29719,7 +29061,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29743,7 +29084,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29767,7 +29107,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__true_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29791,7 +29130,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29814,7 +29152,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29837,7 +29174,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29860,7 +29196,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29884,7 +29219,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29908,7 +29242,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29932,7 +29265,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29955,7 +29287,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -29978,7 +29309,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30001,7 +29331,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30025,7 +29354,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30049,7 +29377,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__false
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30073,7 +29400,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30096,7 +29422,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30119,7 +29444,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30142,7 +29466,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30166,7 +29489,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30190,7 +29512,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30214,7 +29535,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30237,7 +29557,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30260,7 +29579,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30283,7 +29601,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30307,7 +29624,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30331,7 +29647,6 @@ it '__channel___demo____message____ar____ray_____store__true___compressed__nil__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30355,7 +29670,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30378,7 +29692,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30401,7 +29714,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30424,7 +29736,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30448,7 +29759,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30472,7 +29782,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30496,7 +29805,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30519,7 +29827,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30542,7 +29849,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30565,7 +29871,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30589,7 +29894,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30613,7 +29917,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__true
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30637,7 +29940,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30660,7 +29962,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30683,7 +29984,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30706,7 +30006,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30730,7 +30029,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30754,7 +30052,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30778,7 +30075,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30801,7 +30097,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30824,7 +30119,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30847,7 +30141,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30871,7 +30164,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30895,7 +30187,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__fals
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30919,7 +30210,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30942,7 +30232,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30965,7 +30254,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -30988,7 +30276,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31012,7 +30299,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31036,7 +30322,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31060,7 +30345,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31083,7 +30367,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31106,7 +30389,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31129,7 +30411,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31153,7 +30434,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31177,7 +30457,6 @@ it '__channel___demo____message____ar____ray_____store__false___compressed__nil_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31201,7 +30480,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31224,7 +30502,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31247,7 +30524,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31270,7 +30546,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31294,7 +30569,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31318,7 +30592,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31342,7 +30615,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31365,7 +30637,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31388,7 +30659,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31411,7 +30681,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31435,7 +30704,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31459,7 +30727,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__true__
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31483,7 +30750,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31506,7 +30772,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31529,7 +30794,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31552,7 +30816,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31576,7 +30839,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31600,7 +30862,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31624,7 +30885,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31647,7 +30907,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31670,7 +30929,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31693,7 +30951,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31717,7 +30974,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31741,7 +30997,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__false_
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31765,7 +31020,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31788,7 +31042,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31811,7 +31064,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31834,7 +31086,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31858,7 +31109,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31882,7 +31132,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31906,7 +31155,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31929,7 +31177,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31952,7 +31199,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31975,7 +31221,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -31999,7 +31244,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32023,7 +31267,6 @@ it '__channel___demo____message____ar____ray_____store__nil___compressed__nil___
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32047,7 +31290,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32070,7 +31312,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32093,7 +31334,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32116,7 +31356,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32140,7 +31379,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32164,7 +31402,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32188,7 +31425,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32211,7 +31447,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32234,7 +31469,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32257,7 +31491,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32281,7 +31514,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32305,7 +31537,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__tr
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32329,7 +31560,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32352,7 +31582,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32375,7 +31604,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32398,7 +31626,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32422,7 +31649,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32446,7 +31672,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32470,7 +31695,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32493,7 +31717,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32516,7 +31739,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32539,7 +31761,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32563,7 +31784,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32587,7 +31807,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__fa
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32611,7 +31830,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32634,7 +31852,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32657,7 +31874,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32680,7 +31896,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32704,7 +31919,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32728,7 +31942,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32752,7 +31965,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32775,7 +31987,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32798,7 +32009,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32821,7 +32031,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32845,7 +32054,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32869,7 +32077,6 @@ it '__channel___demo____message____hash___it_is_____store__true___compressed__ni
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32893,7 +32100,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__t
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32916,7 +32122,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__t
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32939,7 +32144,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__t
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32962,7 +32166,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__t
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -32986,7 +32189,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__t
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33010,7 +32212,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__t
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33034,7 +32235,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__t
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33057,7 +32257,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__t
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33080,7 +32279,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__t
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33103,7 +32301,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__t
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33127,7 +32324,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__t
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33151,7 +32347,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__t
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33175,7 +32370,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__f
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33198,7 +32392,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__f
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33221,7 +32414,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__f
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33244,7 +32436,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__f
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33268,7 +32459,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__f
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33292,7 +32482,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__f
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33316,7 +32505,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__f
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33339,7 +32527,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__f
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33362,7 +32549,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__f
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33385,7 +32571,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__f
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33409,7 +32594,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__f
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33433,7 +32617,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__f
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33457,7 +32640,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__n
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33480,7 +32662,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__n
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33503,7 +32684,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__n
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33526,7 +32706,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__n
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33550,7 +32729,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__n
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33574,7 +32752,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__n
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33598,7 +32775,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__n
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33621,7 +32797,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__n
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33644,7 +32819,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__n
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33667,7 +32841,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__n
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33691,7 +32864,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__n
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33715,7 +32887,6 @@ it '__channel___demo____message____hash___it_is_____store__false___compressed__n
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33739,7 +32910,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33762,7 +32932,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33785,7 +32954,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33808,7 +32976,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33832,7 +32999,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33856,7 +33022,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33880,7 +33045,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33903,7 +33067,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33926,7 +33089,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33949,7 +33111,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33973,7 +33134,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -33997,7 +33157,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__tru
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34021,7 +33180,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34044,7 +33202,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34067,7 +33224,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34090,7 +33246,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34114,7 +33269,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34138,7 +33292,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34162,7 +33315,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34185,7 +33337,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34208,7 +33359,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34231,7 +33381,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34255,7 +33404,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34279,7 +33427,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__fal
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34303,7 +33450,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34326,7 +33472,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34349,7 +33494,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34372,7 +33516,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34396,7 +33539,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34420,7 +33562,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34444,7 +33585,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34467,7 +33607,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34490,7 +33629,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34513,7 +33651,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34537,7 +33674,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')
@@ -34561,7 +33697,6 @@ it '__channel___demo____message____hash___it_is_____store__nil___compressed__nil
 @pubnub = Pubnub.new(
   publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
   subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
-  secret_key: 'sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy',
   uuid: 'ruby-test-uuid-client-one',
   auth_key: 'ruby-test-auth-client-one',
 cipher_key: 'super-secret-cipher-key')

@@ -34,12 +34,6 @@ module Pubnub
       params
     end
 
-    def variables_for_signature
-      parameters(true).map do |k, v|
-        "#{k}=#{CGI.escape(v.to_s).gsub('+', '%20')}"
-      end.sort.join('&')
-    end
-
     def current_operation
       case @event
       when :audit

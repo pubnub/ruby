@@ -45,7 +45,7 @@ module Pubnub
       ].join('/')
     end
 
-    def parameters
+    def parameters(*_args)
       params = super
       params.merge!(start:   @start)       if @start
       params.merge!(end:     @end)         if @end

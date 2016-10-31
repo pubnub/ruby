@@ -112,6 +112,8 @@ module Pubnub
         @app.region_code = envelopes.first.timetoken[:region_code]
       end
 
+      set_timestamp
+
       envelopes
     end
 
@@ -125,7 +127,7 @@ module Pubnub
       ].join('/').gsub(/\?/, '%3F')
     end
 
-    def parameters
+    def parameters(*_args)
       params = super
       params = add_timetoken_to_params(params)
       params = add_group_to_params(params)

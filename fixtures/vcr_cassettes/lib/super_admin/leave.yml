@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v2/presence/sub-key/sub-c-f9f24520-9c56-11e6-a681-02ee2ddab7fe/channel/demo/leave?pnsdk=PubNub-Ruby/4.0.10&signature=6Fhs/rKwSDrfYw/Lp%2B4l8bgyRZcYB5iSBQdf%2Bx2KTBk=&timestamp=1477907746&uuid=ruby-test
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.2.4, ruby 2.3.1 (2016-04-26))
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 31 Oct 2016 09:55:46 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 31 Oct 2016 09:55:47 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '74'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub Presence
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "action": "leave", "message": "OK", "service": "Presence"}'
+    http_version: 
+  recorded_at: Mon, 31 Oct 2016 09:55:47 GMT
+recorded_with: VCR 3.0.1

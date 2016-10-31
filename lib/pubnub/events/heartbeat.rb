@@ -29,7 +29,7 @@ module Pubnub
       ].join('/')
     end
 
-    def parameters
+    def parameters(*_args)
       parameters = super
       if @app.env[:state] && @app.env[:state][@origin]
         parameters.merge!(state: encode_state(@app.env[:state][@origin]))

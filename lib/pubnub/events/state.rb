@@ -18,7 +18,7 @@ module Pubnub
       Pubnub::Constants::OPERATION_GET_STATE
     end
 
-    def parameters
+    def parameters(*_args)
       parameters = super
       parameters.merge!(
         'channel-group' => @group.join(',')

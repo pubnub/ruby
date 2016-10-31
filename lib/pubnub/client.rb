@@ -404,6 +404,10 @@ module Pubnub
       @env[:subscribe_filter]
     end
 
+    def sdk_version
+      "PubNub-Ruby/#{Pubnub::VERSION}"
+    end
+
     private
 
     def create_state_pools(event)

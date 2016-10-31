@@ -1,3 +1,6 @@
+##### 4.0.11
+* Added super admin mode (Enabled when secret key is set on Pubnub::Client init)
+
 ##### 4.0.10
 * Better single events timeout handling
 * DRYed envelope formatting a bit

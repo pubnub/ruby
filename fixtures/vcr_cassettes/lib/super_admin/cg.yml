@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://pubsub.pubnub.com/v1/channel-registration/sub-key/sub-c-f9f24520-9c56-11e6-a681-02ee2ddab7fe/channel-group/demo?add=demo&pnsdk=PubNub-Ruby/4.0.10&signature=SelPXMxzc4/C3yw7gF%2B6jBUTBIHMk9qEG0kscHSDHkM=&timestamp=1477672650&uuid=ruby-test
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.2.4, ruby 2.3.1 (2016-04-26))
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 28 Oct 2016 16:37:30 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 28 Oct 2016 16:37:30 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '79'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "message": "OK", "service": "channel-registry", "error":
+        false}'
+    http_version: 
+  recorded_at: Fri, 28 Oct 2016 16:37:30 GMT
+recorded_with: VCR 3.0.1

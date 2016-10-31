@@ -46,7 +46,7 @@ module Pubnub
       ].delete_if(&:nil?).join('/')
     end
 
-    def parameters
+    def parameters(*_args)
       parameters = super
       parameters.merge!(
         'channel-group' => @group.join(',')

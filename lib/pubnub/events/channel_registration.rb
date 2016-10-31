@@ -13,7 +13,7 @@ module Pubnub
 
     private
 
-    def parameters
+    def parameters(*_args)
       parameters = super
       if @action == :add && !@channel.blank?
         parameters.merge!(add: @channel.join(','))
