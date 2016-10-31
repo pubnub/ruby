@@ -1,5 +1,49 @@
---- 
-changelog: 
+---
+changelog:
+  -
+    changes:
+      -
+        text: "Added alert on catchup failure (REQUEST_MESSAGE_COUNT_EXCEEDED)"
+        type: improvement
+    date: ~
+    version: v4.0.12
+  -
+    changes:
+      -
+        text: "Added super admin mode (Enabled when secret key is set on Pubnub::Client init)"
+        type: improvement
+    date: ~
+    version: v4.0.11
+  -
+    changes:
+      -
+        text: "Better single events timeout handling"
+        type: improvement
+      -
+        text: "DRYed envelope formatting a bit"
+        type: improvement
+    date: ~
+    version: v4.0.10
+  -
+    changes:
+      -
+        text: "Removed json dependency"
+        type: improvement
+      -
+        text: "Updated dependecies"
+        type: improvement
+    date: ~
+    version: v4.0.9
+  -
+    changes:
+      -
+        text: "Updated dry-validation."
+        type: improvement
+      -
+        text: "Dropped support for ruby 2.0."
+        type: improvement
+    date: ~
+    version: v4.0.8
   - 
     changes: 
       - 
@@ -108,7 +152,9 @@ features:
     - SUBSCRIBE-WITH-TIMETOKEN
     - SUBSCRIBE-WILDCARD
     - SUBSCRIBE-FILTER-EXPRESSION
+  notify:
+    - REQUEST-MESSAGE-COUNT-EXCEEDED
 name: ruby
 schema: 1
 scm: github.com/pubnub/ruby
-version: "4.0.7"
+version: "4.0.12"

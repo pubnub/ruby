@@ -151,6 +151,37 @@ module Pubnub
             data: nil
           }
         )
+      when Pubnub::Constants::STATUS_REQUEST_MESSAGE_COUNT_EXCEEDED
+        envelope = Pubnub::Envelope.new(
+            event:         event,
+            event_options: given_options,
+            timetoken:     nil,
+            status: {
+                code: nil,
+                client_request: request,
+                server_response: nil,
+                data: nil,
+                category: Pubnub::Constants::STATUS_REQUEST_MESSAGE_COUNT_EXCEEDED,
+                error: false,
+                auto_retried: true,
+
+                current_timetoken:         @app.env[:timetoken].to_i,
+                last_timetoken:            @app.env[:timetoken].to_i,
+                subscribed_channels:       @app.subscribed_channels,
+                subscribed_channel_groups: @app.subscribed_groups,
+
+                config: get_config
+
+            },
+            result: {
+                code: nil,
+                operation: nil,
+                client_request: request,
+                server_response: nil,
+
+                data: nil
+            }
+        )
       else
         Pubnub.logger.warn('Unknown announcement type.')
       end

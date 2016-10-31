@@ -18,6 +18,7 @@ module Pubnub
     DEFAULT_TTL                        = 1440
     DEFAULT_REGION                     = '0'
     DEFAULT_SSL                        = false
+    REQUEST_MESSAGE_COUNT_THRESHOLD    = 0
 
     # Envelope values
     # Errors
@@ -26,6 +27,7 @@ module Pubnub
     STATUS_NON_JSON_RESPONSE = :non_json_response
     STATUS_ERROR             = :error
     STATUS_API_KEY_ERROR     = :api_key_error
+    STATUS_REQUEST_MESSAGE_COUNT_EXCEEDED = :request_message_count_exceeded
 
     # Successes
     STATUS_ACK = :ack

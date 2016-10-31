@@ -9,6 +9,8 @@ describe 'Super admin mode' do
   end
 
   before(:each) do
+    Pubnub::Client.any_instance.stub(:sdk_version).and_return('PubNub-Ruby/4.0.10')
+
     @messages  = []
     @statuses  = []
     @presences = []

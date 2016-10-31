@@ -18,7 +18,18 @@ module Pubnub
           Pubnub.logger.debug('Pubnub') { "Firing callbacks for #{self.class}" }
           fire_async_callbacks(envelopes)
         end
+
+        request_message_count_exceeded(envelopes.size, envelopes.first.status[:server_response]) if envelopes.size >= @app.env[:request_message_count_threshold] && @app.env[:request_message_count_threshold] != 0
+
         envelopes
+      end
+
+      def request_message_count_exceeded(_size, response)
+        @app.subscriber.announce_status(announcement_type: Pubnub::Constants::STATUS_REQUEST_MESSAGE_COUNT_EXCEEDED,
+                                        event: @event,
+                                        given_options: @given_options,
+                                        response: response,
+                                        request: uri)
       end
 
       def fire_sync_callbacks(envelopes)

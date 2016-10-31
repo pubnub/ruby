@@ -15,7 +15,8 @@ module Pubnub
         reconnect_attempts: Pubnub::Constants::DEFAULT_RECONNECT_ATTEMPTS,
         reconnect_interval: Pubnub::Constants::DEFAULT_RECONNECT_INTERVAL,
         region: Pubnub::Constants::DEFAULT_REGION,
-        ssl: Pubnub::Constants::DEFAULT_SSL
+        ssl: Pubnub::Constants::DEFAULT_SSL,
+        request_message_count_threshold: Pubnub::Constants::REQUEST_MESSAGE_COUNT_THRESHOLD
       }
     end
   end

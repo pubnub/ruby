@@ -1,3 +1,6 @@
+##### 4.0.12
+* Added alert on catchup failure (REQUEST_MESSAGE_COUNT_EXCEEDED)
+
 ##### 4.0.11
 * Added super admin mode (Enabled when secret key is set on Pubnub::Client init)
 
