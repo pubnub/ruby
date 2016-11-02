@@ -1,3 +1,6 @@
+##### 4.0.13
+* Changed init message log level to debug
+
 ##### 4.0.12
 * Added alert on catchup failure (REQUEST_MESSAGE_COUNT_EXCEEDED)
 

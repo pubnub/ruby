@@ -158,7 +158,7 @@ module Pubnub
       clean_env
       prepare_env
       validate! @env
-      Pubnub.logger.info('Pubnub::Client') do
+      Pubnub.logger.debug('Pubnub::Client') do
         "Created new Pubnub::Client instance. Version: #{Pubnub::VERSION}"
       end
     end

@@ -3,6 +3,13 @@ changelog:
   -
     changes:
       -
+        text: "Changed init message log level to debug"
+        type: improvement
+    date: ~
+    version: v4.0.12
+  -
+    changes:
+      -
         text: "Added alert on catchup failure (REQUEST_MESSAGE_COUNT_EXCEEDED)"
         type: improvement
     date: ~
@@ -157,4 +164,4 @@ features:
 name: ruby
 schema: 1
 scm: github.com/pubnub/ruby
-version: "4.0.12"
+version: "4.0.13"
