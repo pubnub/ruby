@@ -16,7 +16,7 @@ matrix:
     - rvm: 2.3.1
     - rvm: 2.2.5
     - rvm: 2.1.9
-    - rvm: jruby-9.1.5.0
-      env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
-      jdk: oraclejdk7
+#    - rvm: jruby-9.1.5.0
+#      env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
+#      jdk: oraclejdk7
 
