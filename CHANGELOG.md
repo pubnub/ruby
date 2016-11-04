@@ -1,3 +1,6 @@
+##### 4.0.14
+* Added ttl parameter for publish
+
 ##### 4.0.13
 * Changed init message log level to debug
 

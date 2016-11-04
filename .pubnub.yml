@@ -3,10 +3,17 @@ changelog:
   -
     changes:
       -
+        text: "Added ttl parameter for publish"
+        type: improvement
+    date: ~
+    version: v4.0.14
+  -
+    changes:
+      -
         text: "Changed init message log level to debug"
         type: improvement
     date: ~
-    version: v4.0.12
+    version: v4.0.13
   -
     changes:
       -
@@ -144,6 +151,7 @@ features:
     - PUBLISH-POST
     - PUBLISH-SYNC
     - PUBLISH-ASYNC
+    - PUBLISH-MESSAGE-TTL
   storage:
     - STORAGE-REVERSE
     - STORAGE-INCLUDE-TIMETOKEN
@@ -164,4 +172,4 @@ features:
 name: ruby
 schema: 1
 scm: github.com/pubnub/ruby
-version: "4.0.13"
+version: "4.0.14"
