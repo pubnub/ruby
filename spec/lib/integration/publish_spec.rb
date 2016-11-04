@@ -36,6 +36,46 @@ describe '#publish' do
           @pubnub.uuid = 'tester'
         end
 
+        it 'publishes with store' do
+          VCR.use_cassette('new_ones/publish/store-true', :record => :once) do
+            @pubnub.publish(
+                       :message  => 'whatever',
+                       :channel  => 'whatever',
+                       :store    => true,
+                       :callback => @callback
+            )
+
+            eventually do
+              @envelopes.size.should eq 1
+              @envelopes.first.response_message.should eq 'Sent'
+              @envelopes.first.status.should eq 200
+              @envelopes.first.channel.should eq 'whatever'
+              @envelopes.first.message.should eq('whatever')
+              @envelopes.first.timetoken.blank?.should eq false
+            end
+          end
+        end
+
+        it 'publishes without store' do
+          VCR.use_cassette('new_ones/publish/store-false', :record => :once) do
+            @pubnub.publish(
+                :message  => 'whatever',
+                :channel  => 'whatever',
+                :store    => false,
+                :callback => @callback
+            )
+
+            eventually do
+              @envelopes.size.should eq 1
+              @envelopes.first.response_message.should eq 'Sent'
+              @envelopes.first.status.should eq 200
+              @envelopes.first.channel.should eq 'whatever'
+              @envelopes.first.message.should eq('whatever')
+              @envelopes.first.timetoken.blank?.should eq false
+            end
+          end
+        end
+
         context 'gets status 200 response' do
           context 'with valid json' do
             context 'its asynchronous' do

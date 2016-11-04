@@ -54,7 +54,7 @@ module Pubnub
     def params_hash_to_url_params(hash)
       params = String.new
       hash.each do |key, value|
-        params << "#{key}=#{value}&"
+        params << "#{key}=#{value}&" unless value.nil?
       end
       params.chop! if params[-1] == '&'
       params

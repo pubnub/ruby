@@ -30,6 +30,12 @@ module Pubnub
 
     private
 
+    def parameters(app)
+      params = super(app)
+      params.merge!({ :store => @store }) if @store
+      params
+    end
+
     def path(app)
       '/' + [
           'publish',

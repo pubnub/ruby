@@ -6,7 +6,7 @@ Give it a try and share with us your thoughts!
 
 # Please direct all Support Questions and Concerns to Support@PubNub.com
 
-## PubNub Gem version 3.7.10
+## PubNub Gem version 3.7.12
 
 ##### YOU MUST HAVE A PUBNUB ACCOUNT TO USE THE API.
 ##### http://www.pubnub.com/account

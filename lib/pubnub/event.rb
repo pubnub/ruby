@@ -31,6 +31,14 @@ module Pubnub
       @channel          = format_channels(@channel)
       @channel_group    = format_channel_group(options[:group], false)
       @original_channel = format_channels(@channel, false)
+
+      case(options[:store])
+        when true
+          @store = 1
+        when false
+          @store = 0
+      end
+
       Pubnub.logger.debug(:pubnub){"Event#initialize | Initialized #{self.class.to_s}"}
     end
 
