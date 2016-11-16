@@ -65,7 +65,7 @@ Following client methods was removed:
 * `#set_uuid`
 * `#uuid=`
 
-Both `auth_key` and `uuid` can't be changed after client is initlialized.
+Both `auth_key` and `uuid` can't be changed after client is initialized.
 
 ### Added methods
 Following client methods was added:
@@ -89,7 +89,7 @@ Following client methods was added:
 * `:ttl` - accepts integer value. Specifies how long published message should be stored in history
 
 #### History
-* `:include_token` - if set to true, messages will be returnet with their timetokens
+* `:include_token` - if set to true, messages will be returned with their timetokens
 
 ## Changes worth mention
 ### REQUEST_MESSGE_COUNT_EXCEEDED
