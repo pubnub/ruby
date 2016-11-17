@@ -32,7 +32,7 @@ listener = Pubnub::SubscribeCallback.new(
 )
 ```
 
-And attaching it to client:
+Attaching it to client:
 ```ruby
 pubnub.add_listener(callback: listener)
 ```
@@ -55,7 +55,7 @@ pubnub.subscribe(channel: :demo)
 ```
 
 ## Presence changes
-Take a look at subscribe changes, presence works exactly te same way, presence messages are passed to `:presence` callback from listeners.
+Take a look at subscribe changes. Presence works exactly te same way, presence messages are passed to `:presence` callback from listeners.
 
 ## Method changes
 ### Removed methods
@@ -68,7 +68,7 @@ Following client methods was removed:
 Both `auth_key` and `uuid` can't be changed after client is initialized.
 
 ### Added methods
-Following client methods was added:
+Following client methods were added:
 * `#subscribed_to` - returns subscribed channels list
 * `#current_region` - returns current region code
 * `#region=` - allows to set region
@@ -81,7 +81,7 @@ Following client methods was added:
 
 ### Added parameters
 #### Subscribe
-* `:with_presence` - can be set as true or false, when sets to true client subscribes to presence channels of given channels as well.
+* `:with_presence` - can be set as true or false. When sets to true client subscribes to presence channels of given channels as well.
 
 #### Publish
 * `:replicate` - if message should be replicated to other regions
@@ -89,11 +89,11 @@ Following client methods was added:
 * `:ttl` - accepts integer value. Specifies how long published message should be stored in history
 
 #### History
-* `:include_token` - if set to true, messages will be returned with their timetokens
+* `:include_token` - if set to true, messages will be returned with their time tokens
 
 ## Changes worth mention
 ### REQUEST_MESSGE_COUNT_EXCEEDED
-When there's **really** high traffic on channel there's chance that subscribe will hit retreival limit (100 messages at once). The REQUEST_MESSGE_COUNT_EXCEEDED status envelope will be passed to all listeners so your system will be informed that there is possiblity there are messages that wasn't retreived. You can then run `history` call to retreive that messages.
+When there's **really** high traffic on channel there's chance that subscribe will hit retrieval limit (100 messages at once). The REQUEST_MESSGE_COUNT_EXCEEDED status envelope will be passed to all listeners when subscribe hit limit. You can then run `history` call to retrieve that messages.
 
 ### Super Admin Mode
 When secret_key is provided Pubnub Client is in super admin mode. PAM restrictions don't affect this client.
