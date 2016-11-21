@@ -80,6 +80,8 @@ module Pubnub
           variables_for_signature
       ].join("\n")
 
+      message = message.gsub(/[!~*'()]/) { |char| '%' + char.ord.to_s(16).upcase }
+
       URI.encode_www_form_component(Base64.encode64(
           OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'),
                                @app.env[:secret_key].to_s, message)
