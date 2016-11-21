@@ -6,7 +6,7 @@ changelog:
         text: "Fixed PAM signature when some special characters are present"
         type: bugfix
     date: ~
-    version: v4.0.14
+    version: v4.0.15
   -
     changes:
       -
@@ -179,4 +179,4 @@ features:
 name: ruby
 schema: 1
 scm: github.com/pubnub/ruby
-version: "4.0.14"
+version: "4.0.15"

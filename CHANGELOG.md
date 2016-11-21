@@ -1,4 +1,4 @@
-##### 4.0.14
+##### 4.0.15
 * Fixed PAM signature when some special characters are present
 
 ##### 4.0.13
