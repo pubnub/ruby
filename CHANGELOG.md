@@ -1,8 +1,9 @@
 ##### 4.0.14
-* Added ttl parameter for publish
+* Fixed PAM signature when some special characters are present
 
 ##### 4.0.13
 * Changed init message log level to debug
+* Added ttl parameter for publish
 
 ##### 4.0.12
 * Added alert on catchup failure (REQUEST_MESSAGE_COUNT_EXCEEDED)

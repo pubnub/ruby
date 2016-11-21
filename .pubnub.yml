@@ -3,6 +3,13 @@ changelog:
   -
     changes:
       -
+        text: "Fixed PAM signature when some special characters are present"
+        type: bugfix
+    date: ~
+    version: v4.0.14
+  -
+    changes:
+      -
         text: "Added ttl parameter for publish"
         type: improvement
     date: ~
