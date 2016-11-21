@@ -1,3 +1,6 @@
+##### 4.0.14
+* Fixed PAM signature when some special characters are present
+
 ##### 4.0.13
 * Added ttl parameter for publish
 
