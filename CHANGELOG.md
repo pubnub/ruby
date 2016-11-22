@@ -1,3 +1,6 @@
+##### 4.0.16
+* Fixed missing channel group parameter in Leave event
+
 ##### 4.0.15
 * Fixed PAM signature when some special characters are present
 

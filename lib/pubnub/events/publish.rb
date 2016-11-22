@@ -97,11 +97,11 @@ module Pubnub
       nil
     end
 
-    def valid_envelope(_parsed_response, req_res_objects)
+    def valid_envelope(parsed_response, req_res_objects)
       Pubnub::Envelope.new(
           event: @event,
           event_options: @given_options,
-          timetoken: nil,
+          timetoken: timetoken(parsed_response),
           status: {
               code: req_res_objects[:response].code,
               operation: Pubnub::Constants::OPERATION_PUBLISH,

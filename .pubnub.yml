@@ -3,6 +3,13 @@ changelog:
   -
     changes:
       -
+        text: "Fixed missing channel group parameter in leave event"
+        type: bugfix
+    date: ~
+    version: v4.0.16
+  -
+    changes:
+      -
         text: "Fixed PAM signature when some special characters are present"
         type: bugfix
     date: ~

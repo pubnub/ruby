@@ -34,6 +34,12 @@ module Pubnub
       ].join('/')
     end
 
+    def parameters(*_args)
+      params = super
+      params.merge!('channel-group' => @group.join(',')) unless @group.empty?
+      params
+    end
+
     def valid_envelope(parsed_response, req_res_objects)
       Pubnub::Envelope.new(
         event: @event,
