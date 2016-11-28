@@ -145,6 +145,8 @@ module Pubnub
     def format_envelopes(response, request)
       if response.is_a? HTTPClient::ReceiveTimeoutError
         return error_envelope(nil, response, request: request, response: response)
+      elsif response.is_a? OpenSSL::SSL::SSLError
+        return error_envelope(nil, response, request: request, response: response)
       else
         parsed_response, error = Formatter.parse_json(response.body)
       end
@@ -227,6 +229,9 @@ module Pubnub
         when HTTPClient::ReceiveTimeoutError
           error_category = Pubnub::Constants::STATUS_TIMEOUT
           code = 408
+        when OpenSSL::SSL::SSLError
+          error_category = Pubnub::Constants::SSL_ERROR
+          code = nil
         else
           error_category = Pubnub::Constants::STATUS_ERROR
           code = req_res_objects[:response].code

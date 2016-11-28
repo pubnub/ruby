@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://pubsub.pubnub.com/publish/pub-c-9bb9ae77-a60c-4788-96ab-75cbe5d5dd11/sub-c-f9f24520-9c56-11e6-a681-02ee2ddab7fe/0/demo/0/%22demo%22?ortt=%7B%22t%22:14803435605315392%7D&pnsdk=PubNub-Ruby/4.0.16&seqn=1&signature=w6a0brZPuamCk5CKFft527nPqGL7ikXocnW2eGdXhfc=&timestamp=1480343560&uuid=ruby-test
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.2.4, ruby 2.3.2 (2016-11-15))
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 28 Nov 2016 14:32:40 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 28 Nov 2016 14:32:40 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '30'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[1,"Sent","14803435607606028"]'
+    http_version: 
+  recorded_at: Mon, 28 Nov 2016 14:32:40 GMT
+recorded_with: VCR 3.0.1
