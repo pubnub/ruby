@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/v2/subscribe/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/,/0?auth=ruby-test-auth&channel-group=demo&pnsdk=PubNub-Ruby/4.0.5&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid
+    uri: http://ps.pndsn.com/v2/subscribe/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/,/0?auth=ruby-test-auth&channel-group=demo&pnsdk=PubNub-Ruby/4.0.5&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid
     body:
       encoding: UTF-8
       string: ''
@@ -39,7 +39,7 @@ http_interactions:
   recorded_at: Wed, 10 Aug 2016 20:56:19 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/v2/subscribe/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/,/0?auth=ruby-test-auth&channel-group=demo&pnsdk=PubNub-Ruby/4.0.5&t=%7B%22r%22:2,%22t%22:%2214708625795088197%22%7D&uuid=ruby-test-uuid
+    uri: http://ps.pndsn.com/v2/subscribe/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/,/0?auth=ruby-test-auth&channel-group=demo&pnsdk=PubNub-Ruby/4.0.5&t=%7B%22r%22:2,%22t%22:%2214708625795088197%22%7D&uuid=ruby-test-uuid
     body:
       encoding: UTF-8
       string: ''

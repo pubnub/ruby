@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/v2/subscribe/sub-c-f9f24520-9c56-11e6-a681-02ee2ddab7fe/demo/0?pnsdk=PubNub-Ruby/4.0.10&signature=4dmtXDIhe78aSSmkfQHsXeu1as0TgYCJZL4j%2BgtARGc=&t=%7B%22r%22:0,%22t%22:0%7D&timestamp=1477921157&uuid=ruby-test
+    uri: http://ps.pndsn.com/v2/subscribe/sub-c-f9f24520-9c56-11e6-a681-02ee2ddab7fe/demo/0?pnsdk=PubNub-Ruby/4.0.10&signature=4dmtXDIhe78aSSmkfQHsXeu1as0TgYCJZL4j%2BgtARGc=&t=%7B%22r%22:0,%22t%22:0%7D&timestamp=1477921157&uuid=ruby-test
     body:
       encoding: UTF-8
       string: ''
@@ -39,7 +39,7 @@ http_interactions:
   recorded_at: Mon, 31 Oct 2016 13:39:17 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/v2/subscribe/sub-c-f9f24520-9c56-11e6-a681-02ee2ddab7fe/demo/0?pnsdk=PubNub-Ruby/4.0.10&signature=I00tErPeMneSwZ97kwKGdbwC7Dp9weu5G9eGpD0EkWI=&t=%7B%22r%22:12,%22t%22:%2214779203266170510%22%7D&timestamp=1477921157&uuid=ruby-test
+    uri: http://ps.pndsn.com/v2/subscribe/sub-c-f9f24520-9c56-11e6-a681-02ee2ddab7fe/demo/0?pnsdk=PubNub-Ruby/4.0.10&signature=I00tErPeMneSwZ97kwKGdbwC7Dp9weu5G9eGpD0EkWI=&t=%7B%22r%22:12,%22t%22:%2214779203266170510%22%7D&timestamp=1477921157&uuid=ruby-test
     body:
       encoding: UTF-8
       string: ''

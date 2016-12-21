@@ -29,7 +29,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -47,7 +47,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -65,7 +65,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -84,7 +84,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -103,7 +103,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -122,7 +122,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -140,7 +140,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -158,7 +158,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -176,7 +176,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -195,7 +195,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -214,7 +214,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -233,7 +233,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -251,7 +251,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -269,7 +269,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -287,7 +287,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -306,7 +306,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -325,7 +325,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -344,7 +344,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -362,7 +362,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -380,7 +380,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -398,7 +398,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -417,7 +417,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -436,7 +436,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -455,7 +455,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_add)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_add)
@@ -473,7 +473,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -491,7 +491,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -509,7 +509,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -528,7 +528,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -547,7 +547,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -566,7 +566,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -584,7 +584,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -602,7 +602,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -620,7 +620,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -639,7 +639,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -658,7 +658,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -677,7 +677,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -695,7 +695,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -713,7 +713,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -731,7 +731,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -750,7 +750,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -769,7 +769,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -788,7 +788,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -806,7 +806,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -824,7 +824,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -842,7 +842,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -861,7 +861,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -880,7 +880,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)
@@ -899,7 +899,7 @@ expect(envelope.error?).to eq false
 expect(envelope.status[:code]).to eq(200)
 expect(envelope.status[:operation]).to eq(:channel_group_remove)
 expect(envelope.status[:category]).to eq(:ack)
-expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:channel_group_remove)

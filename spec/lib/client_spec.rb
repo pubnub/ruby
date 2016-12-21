@@ -248,7 +248,7 @@ describe Pubnub::Client do
   #         pubnub_client.publish(message: :test, channel: :test, http_sync: true)
   #       end
   #
-  #       expect(pubnub_client.env[:single_event_conn_pool]['pubsub.pubnub.com'].is_a?(Net::HTTP::Persistent)).to eq true
+  #       expect(pubnub_client.env[:single_event_conn_pool]['ps.pndsn.com'].is_a?(Net::HTTP::Persistent)).to eq true
   #     end
   #
   #     it 'returns connection for subscribe events' do
@@ -256,29 +256,29 @@ describe Pubnub::Client do
   #         pubnub_client.subscribe(channel: :test, http_sync: true)
   #       end
   #
-  #       expect(pubnub_client.env[:subscribe_event_conn_pool]['pubsub.pubnub.com'].is_a?(Net::HTTP::Persistent)).to eq true
+  #       expect(pubnub_client.env[:subscribe_event_conn_pool]['ps.pndsn.com'].is_a?(Net::HTTP::Persistent)).to eq true
   #     end
   #   end
   #
   #   context '#setup_conn_for' do
   #     it 'creates connection for non-subscribe events' do
-  #       expect(pubnub_client.env[:single_event_conn_pool]['pubsub.pubnub.com'].is_a?(NilClass)).to eq true
+  #       expect(pubnub_client.env[:single_event_conn_pool]['ps.pndsn.com'].is_a?(NilClass)).to eq true
   #
   #       VCR.use_cassette('client/connection-for-non-subscribe', :record => :once) do
   #         pubnub_client.publish(message: :test, channel: :test, http_sync: true)
   #       end
   #
-  #       expect(pubnub_client.env[:single_event_conn_pool]['pubsub.pubnub.com'].is_a?(Net::HTTP::Persistent)).to eq true
+  #       expect(pubnub_client.env[:single_event_conn_pool]['ps.pndsn.com'].is_a?(Net::HTTP::Persistent)).to eq true
   #     end
   #
   #     it 'creates connection for subscribe events' do
-  #       expect(pubnub_client.env[:subscribe_event_conn_pool]['pubsub.pubnub.com'].is_a?(NilClass)).to eq true
+  #       expect(pubnub_client.env[:subscribe_event_conn_pool]['ps.pndsn.com'].is_a?(NilClass)).to eq true
   #
   #       VCR.use_cassette('client/connection-for-subscribe', :record => :once) do
   #         pubnub_client.subscribe(channel: :test, http_sync: true)
   #       end
   #
-  #       expect(pubnub_client.env[:subscribe_event_conn_pool]['pubsub.pubnub.com'].is_a?(Net::HTTP::Persistent)).to eq true
+  #       expect(pubnub_client.env[:subscribe_event_conn_pool]['ps.pndsn.com'].is_a?(Net::HTTP::Persistent)).to eq true
   #     end
   #   end
   # end

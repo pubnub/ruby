@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/v2/subscribe/demo/demo/0?pnsdk=PubNub-Ruby/4.0.11&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test
+    uri: http://ps.pndsn.com/v2/subscribe/demo/demo/0?pnsdk=PubNub-Ruby/4.0.11&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test
     body:
       encoding: UTF-8
       string: ''
@@ -39,7 +39,7 @@ http_interactions:
   recorded_at: Mon, 31 Oct 2016 15:13:17 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/v2/subscribe/demo/demo/0?pnsdk=PubNub-Ruby/4.0.11&t=%7B%22r%22:12,%22t%22:%2214779267970024691%22%7D&uuid=ruby-test
+    uri: http://ps.pndsn.com/v2/subscribe/demo/demo/0?pnsdk=PubNub-Ruby/4.0.11&t=%7B%22r%22:12,%22t%22:%2214779267970024691%22%7D&uuid=ruby-test
     body:
       encoding: UTF-8
       string: ''

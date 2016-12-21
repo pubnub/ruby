@@ -39,7 +39,7 @@ expect(envelopes[0].status[:current_timetoken]).to eq(14654036961931472)
 expect(envelopes[0].status[:last_timetoken]).to eq(14654036098003799)
 expect(envelopes[0].status[:subscribed_channels]).to eq([])
 expect(envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelopes[0].result[:code]).to eq(200)
 expect(envelopes[0].result[:operation]).to eq(:presence)
@@ -68,7 +68,7 @@ expect(envelopes[0].status[:current_timetoken]).to eq(14654036965469160)
 expect(envelopes[0].status[:last_timetoken]).to eq(14654036961931472)
 expect(envelopes[0].status[:subscribed_channels]).to eq([])
 expect(envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelopes[0].result[:code]).to eq(200)
 expect(envelopes[0].result[:operation]).to eq(:presence)
@@ -97,7 +97,7 @@ expect(envelopes[0].status[:current_timetoken]).to eq(14654036986900265)
 expect(envelopes[0].status[:last_timetoken]).to eq(14654036965469160)
 expect(envelopes[0].status[:subscribed_channels]).to eq([])
 expect(envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelopes[0].result[:code]).to eq(200)
 expect(envelopes[0].result[:operation]).to eq(:presence)
@@ -132,7 +132,7 @@ expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
 expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 end
@@ -165,7 +165,7 @@ expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
 expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 
@@ -176,7 +176,7 @@ expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres"])
 expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 end
@@ -209,7 +209,7 @@ expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
 expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 
@@ -220,7 +220,7 @@ expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres"])
 expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 end
@@ -247,7 +247,7 @@ expect(envelopes[0].status[:current_timetoken]).to eq(14654036997432530)
 expect(envelopes[0].status[:last_timetoken]).to eq(14654036987376596)
 expect(envelopes[0].status[:subscribed_channels]).to eq([])
 expect(envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelopes[0].result[:code]).to eq(200)
 expect(envelopes[0].result[:operation]).to eq(:presence)
@@ -276,7 +276,7 @@ expect(envelopes[0].status[:current_timetoken]).to eq(14654037003110327)
 expect(envelopes[0].status[:last_timetoken]).to eq(14654036997432530)
 expect(envelopes[0].status[:subscribed_channels]).to eq([])
 expect(envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelopes[0].result[:code]).to eq(200)
 expect(envelopes[0].result[:operation]).to eq(:presence)
@@ -305,7 +305,7 @@ expect(envelopes[0].status[:current_timetoken]).to eq(14654037024165554)
 expect(envelopes[0].status[:last_timetoken]).to eq(14654037003110327)
 expect(envelopes[0].status[:subscribed_channels]).to eq([])
 expect(envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelopes[0].result[:code]).to eq(200)
 expect(envelopes[0].result[:operation]).to eq(:presence)
@@ -340,7 +340,7 @@ expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
 expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 end
@@ -373,7 +373,7 @@ expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
 expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 
@@ -384,7 +384,7 @@ expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
 expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 end
@@ -417,7 +417,7 @@ expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
 expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 
@@ -428,7 +428,7 @@ expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
 expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 end
@@ -455,7 +455,7 @@ expect(envelopes[0].status[:current_timetoken]).to eq(14654037040157428)
 expect(envelopes[0].status[:last_timetoken]).to eq(14654036986900265)
 expect(envelopes[0].status[:subscribed_channels]).to eq([])
 expect(envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelopes[0].result[:code]).to eq(200)
 expect(envelopes[0].result[:operation]).to eq(:presence)
@@ -484,7 +484,7 @@ expect(envelopes[0].status[:current_timetoken]).to eq(14654050694555754)
 expect(envelopes[0].status[:last_timetoken]).to eq(14654042961245025)
 expect(envelopes[0].status[:subscribed_channels]).to eq([])
 expect(envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelopes[0].result[:code]).to eq(200)
 expect(envelopes[0].result[:operation]).to eq(:presence)
@@ -513,7 +513,7 @@ expect(envelopes[0].status[:current_timetoken]).to eq(14654038904954461)
 expect(envelopes[0].status[:last_timetoken]).to eq(14654037040157428)
 expect(envelopes[0].status[:subscribed_channels]).to eq([])
 expect(envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelopes[0].result[:code]).to eq(200)
 expect(envelopes[0].result[:operation]).to eq(:presence)
@@ -548,7 +548,7 @@ expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
 expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 end
@@ -581,7 +581,7 @@ expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
 expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 
@@ -592,7 +592,7 @@ expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres"])
 expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 end
@@ -625,7 +625,7 @@ expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
 expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 
@@ -636,7 +636,7 @@ expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres"])
 expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 end
@@ -663,7 +663,7 @@ expect(envelopes[0].status[:current_timetoken]).to eq(14654038913920232)
 expect(envelopes[0].status[:last_timetoken]).to eq(14654038905501214)
 expect(envelopes[0].status[:subscribed_channels]).to eq([])
 expect(envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelopes[0].result[:code]).to eq(200)
 expect(envelopes[0].result[:operation]).to eq(:presence)
@@ -692,7 +692,7 @@ expect(envelopes[0].status[:current_timetoken]).to eq(14654038931856126)
 expect(envelopes[0].status[:last_timetoken]).to eq(14654038913920233)
 expect(envelopes[0].status[:subscribed_channels]).to eq([])
 expect(envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelopes[0].result[:code]).to eq(200)
 expect(envelopes[0].result[:operation]).to eq(:presence)
@@ -721,7 +721,7 @@ expect(envelopes[0].status[:current_timetoken]).to eq(14654038935342617)
 expect(envelopes[0].status[:last_timetoken]).to eq(14654038931856126)
 expect(envelopes[0].status[:subscribed_channels]).to eq([])
 expect(envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 expect(envelopes[0].result[:code]).to eq(200)
 expect(envelopes[0].result[:operation]).to eq(:presence)
@@ -756,7 +756,7 @@ expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
 expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 end
@@ -789,7 +789,7 @@ expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
 expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 
@@ -800,7 +800,7 @@ expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
 expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 
@@ -811,7 +811,7 @@ expect(@status_envelopes[2].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[2].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[2].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
 expect(@status_envelopes[2].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[2].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[2].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 end
@@ -844,7 +844,7 @@ expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
 expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[0].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 
@@ -855,7 +855,7 @@ expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
 expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[1].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 
@@ -866,7 +866,7 @@ expect(@status_envelopes[2].status[:current_timetoken]).to eq(0)
 expect(@status_envelopes[2].status[:last_timetoken]).to eq(0)
 expect(@status_envelopes[2].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
 expect(@status_envelopes[2].status[:subscribed_channel_groups]).to eq([])
-expect(@status_envelopes[2].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"pubsub.pubnub.com"})
+expect(@status_envelopes[2].status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-client-one", :auth_key=>"ruby-test-auth-client-one", :origin=>"ps.pndsn.com"})
 
 
 end

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/v2/subscribe/demo/demo/0?pnsdk=PubNub-Ruby/4.0.0beta2&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid
+    uri: http://ps.pndsn.com/v2/subscribe/demo/demo/0?pnsdk=PubNub-Ruby/4.0.0beta2&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid
     body:
       encoding: UTF-8
       string: ''
@@ -39,7 +39,7 @@ http_interactions:
   recorded_at: Thu, 16 Jun 2016 18:13:32 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/v2/subscribe/demo/demo/0?pnsdk=PubNub-Ruby/4.0.0beta2&t=%7B%22r%22:12,%22t%22:%2214661008122114187%22%7D&uuid=ruby-test-uuid
+    uri: http://ps.pndsn.com/v2/subscribe/demo/demo/0?pnsdk=PubNub-Ruby/4.0.0beta2&t=%7B%22r%22:12,%22t%22:%2214661008122114187%22%7D&uuid=ruby-test-uuid
     body:
       encoding: UTF-8
       string: ''
@@ -76,7 +76,7 @@ http_interactions:
   recorded_at: Thu, 16 Jun 2016 18:13:34 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/v2/subscribe/demo/demo,whatever/0?pnsdk=PubNub-Ruby/4.0.0beta2&t=%7B%22r%22:12,%22t%22:0%7D&uuid=ruby-test-uuid
+    uri: http://ps.pndsn.com/v2/subscribe/demo/demo,whatever/0?pnsdk=PubNub-Ruby/4.0.0beta2&t=%7B%22r%22:12,%22t%22:0%7D&uuid=ruby-test-uuid
     body:
       encoding: UTF-8
       string: ''
@@ -113,7 +113,7 @@ http_interactions:
   recorded_at: Thu, 16 Jun 2016 18:14:01 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/v2/subscribe/demo/demo,whatever/0?pnsdk=PubNub-Ruby/4.0.0beta2&t=%7B%22r%22:12,%22t%22:%2214661008417647327%22%7D&uuid=ruby-test-uuid
+    uri: http://ps.pndsn.com/v2/subscribe/demo/demo,whatever/0?pnsdk=PubNub-Ruby/4.0.0beta2&t=%7B%22r%22:12,%22t%22:%2214661008417647327%22%7D&uuid=ruby-test-uuid
     body:
       encoding: UTF-8
       string: ''
@@ -150,7 +150,7 @@ http_interactions:
   recorded_at: Thu, 16 Jun 2016 18:14:04 GMT
 - request:
     method: get
-    uri: http://pubsub.pubnub.com/v2/presence/sub-key/demo/channel/demo,whatever/leave?pnsdk=PubNub-Ruby/4.0.0beta2&uuid=ruby-test-uuid
+    uri: http://ps.pndsn.com/v2/presence/sub-key/demo/channel/demo,whatever/leave?pnsdk=PubNub-Ruby/4.0.0beta2&uuid=ruby-test-uuid
     body:
       encoding: UTF-8
       string: ''
