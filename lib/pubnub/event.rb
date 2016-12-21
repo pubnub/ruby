@@ -38,7 +38,11 @@ module Pubnub
     end
 
     def send_request(compressed_body = '')
+      Pubnub.logger.debug('Pubnub::Event') { '#send_request called' }
+
       sender = request_dispatcher
+      Pubnub.logger.debug('Pubnub::Event') { '#send_request got sender' }
+
       if compressed_body.empty?
         sender.get(uri.to_s)
       else

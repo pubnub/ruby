@@ -5,6 +5,7 @@ module Pubnub
     private
 
     def request_dispatcher
+      Pubnub.logger.debug('Pubnub::SingleEvent'){ '#request_dispatcher called' }
       @app.request_dispatcher(@origin, :single_event, @http_sync)
     end
 

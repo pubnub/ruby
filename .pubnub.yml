@@ -3,6 +3,16 @@ changelog:
   -
     changes:
       -
+        text: "Added a bit more debug logging"
+        type: improvement
+      -
+        text: "Updated default origin"
+        type: improvement
+      date: 21-12-2016
+      version: v4.0.17
+  -
+    changes:
+      -
         text: "Fixed missing channel group parameter in leave event"
         type: bugfix
     date: ~

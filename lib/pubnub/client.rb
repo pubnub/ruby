@@ -231,7 +231,7 @@ module Pubnub
     # it in @env and returns newly created dispatcher.
     def request_dispatcher(origin, event_type, sync)
       Pubnub.logger.debug('Pubnub::Client') do
-        "Looking for requester for #{event_type}"
+        "Looking for requester for #{sync ? 'sync' : 'async'} #{event_type}"
       end
 
       if sync
