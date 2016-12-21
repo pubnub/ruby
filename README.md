@@ -4,7 +4,7 @@
 # Please direct all Support Questions and Concerns to Support@PubNub.com
 
 # Complete Documentation
-Available at https://www.pubnub.com/docs/ruby/api-reference
+Available at https://www.pubnub.com/docs/ruby/pubnub-ruby-sdk-v4 **v4.x**
 
 ## PubNub Gem version 4.0.17
 
