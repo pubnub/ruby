@@ -45,6 +45,19 @@ describe Pubnub::Grant do
         expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema
       end
     end
+
+    it 'forms valid ErrorEnvelope on timeout error' do
+      HTTPClient.any_instance.stub(get: HTTPClient::ReceiveTimeoutError.new)
+
+      envelope = @pubnub.grant(
+          channel: :demo
+      ).value
+
+      expect(envelope.is_a?(Pubnub::ErrorEnvelope)).to eq true
+      expect(envelope.status[:code]).to eq 408
+      expect(envelope.status[:category]).to eq Pubnub::Constants::STATUS_TIMEOUT
+      expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
+    end
   end
 
 end
