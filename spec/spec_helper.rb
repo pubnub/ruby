@@ -17,8 +17,8 @@ end
 require 'pubnub'
 
 if ENV['CI'] == 'true'
-  require 'codecov'
-  SimpleCov.formatter = SimpleCov::Formatter::Codecov
+  require 'codacy-coverage'
+  Codacy::Reporter.start
 end
 
 Celluloid.task_class = Celluloid::Task::Threaded

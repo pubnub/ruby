@@ -32,12 +32,11 @@ GEM
       timers (>= 4.1.1)
     celluloid-supervision (0.20.6)
       timers (>= 4.1.1)
-    codecov (0.1.4)
-      json
+    codacy-coverage (1.1.6)
       simplecov
-      url
     coderay (1.1.0)
     concurrent-ruby (1.0.2)
+    concurrent-ruby (1.0.2-java)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     diff-lcs (1.2.5)
@@ -70,8 +69,10 @@ GEM
       dry-equalizer (~> 0.2)
       dry-logic (~> 0.4, >= 0.4.0)
       dry-types (~> 0.9, >= 0.9.0)
+    ffi (1.9.10)
     ffi (1.9.10-java)
     hitimes (1.2.4)
+    hitimes (1.2.4-java)
     httpclient (2.8.2.4)
     inflecto (0.0.2)
     json (2.0.2)
@@ -124,7 +125,6 @@ GEM
       ffi
     timers (4.1.1)
       hitimes
-    url (0.3.2)
     vcr (3.0.1)
     webmock (1.21.0)
       addressable (>= 2.3.6)
@@ -137,7 +137,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   bundler (~> 1.7)
-  codecov
+  codacy-coverage
   pry
   pubnub!
   rr
@@ -149,4 +149,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.13.6
+   1.14.4
