@@ -17,8 +17,8 @@ end
 require 'pubnub'
 
 if ENV['CI'] == 'true'
-  require 'codecov'
-  SimpleCov.formatter = SimpleCov::Formatter::Codecov
+  require 'codacy-coverage'
+  Codacy::Reporter.start
 end
 
 Celluloid.task_class = Celluloid::Task::Threaded
@@ -69,6 +69,8 @@ end
 VCR.configure do |c|
   c.cassette_library_dir = 'fixtures/vcr_cassettes'
   c.hook_into :webmock
+  c.allow_http_connections_when_no_cassette = false
+  c.ignore_hosts 'api.codacy.com'
   c.default_cassette_options = {
     match_requests_on: [:method,
                         VCR.request_matchers.uri_without_param(:pnsdk, :uuid, :ortt, :seqn)]
