@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pubnub (4.0.17)
+    pubnub (4.0.19)
       celluloid (~> 0.17)
       dry-validation (~> 0.10)
       httpclient (~> 2.8)
@@ -35,13 +35,13 @@ GEM
     codacy-coverage (1.1.6)
       simplecov
     coderay (1.1.0)
-    concurrent-ruby (1.0.4)
-    concurrent-ruby (1.0.4-java)
+    concurrent-ruby (1.0.5)
+    concurrent-ruby (1.0.5-java)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
-    dry-configurable (0.5.0)
+    dry-configurable (0.6.2)
       concurrent-ruby (~> 1.0)
     dry-container (0.6.0)
       concurrent-ruby (~> 1.0)

@@ -1,3 +1,6 @@
+##### 4.0.19
+* Fixed sync subscribe.
+
 ##### 4.0.16
 * Fixed missing channel group parameter in Leave event
 

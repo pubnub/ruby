@@ -3,6 +3,13 @@ changelog:
   -
     changes:
       -
+        text: "Fixed sync subscribe not terminating actors"
+        type: bug
+      date: 02-03-2017
+      version: v4.0.18
+  -
+    changes:
+      -
         text: "Added a bit more debug logging"
         type: improvement
       -
