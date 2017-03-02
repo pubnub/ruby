@@ -344,6 +344,22 @@ module Pubnub
       totally_empty @env[:state]
     end
 
+    def set_auth_key(key)
+      @env[:auth_key] = key
+    end
+
+    def auth_key=(key)
+      set_auth_key(key)
+    end
+
+    def set_uuid(uuid)
+      @env[:uuid] = uuid
+    end
+
+    def uuid=(uuid)
+      set_uuid(uuid)
+    end
+
     private
 
     def create_state_pools(event)

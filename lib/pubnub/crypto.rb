@@ -43,7 +43,7 @@ module Pubnub
       plain_text = decode_cipher.update(undecoded_text)
       plain_text << decode_cipher.final
     rescue => e
-      Pubnub.logger.error('Pubnub') { "DECRYPTION ERROR #{e}" }
+      Pubnub.error('Pubnub') { "DECRYPTION ERROR #{e}" }
       '"DECRYPTION ERROR"'
     end
 

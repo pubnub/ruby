@@ -21,10 +21,6 @@ module Pubnub
           group = nil
         end
 
-        if @app.env[:cipher_key] && msg
-          msg = Pubnub::Crypto.new(@app.env[:cipher_key]).decrypt(msg)
-        end
-
         Envelope.new(
           parsed_response: parsed_response,
           message: msg,
