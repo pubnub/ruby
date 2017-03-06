@@ -5,8 +5,8 @@ changelog:
       -
         text: "Fixed sync subscribe not terminating actors"
         type: bug
-      date: 02-03-2017
-      version: v4.0.18
+    date: 02-03-2017
+    version: v4.0.18
   -
     changes:
       -
@@ -15,8 +15,8 @@ changelog:
       -
         text: "Updated default origin"
         type: improvement
-      date: 21-12-2016
-      version: v4.0.17
+    date: 21-12-2016
+    version: v4.0.17
   -
     changes:
       -
