@@ -1,5 +1,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/pubnub/ruby/badge.svg?branch=master)](https://coveralls.io/github/pubnub/ruby?branch=master)
 [![Build Status](https://travis-ci.org/pubnub/ruby.svg?branch=master)](https://travis-ci.org/pubnub/ruby)
+[![API Testing](https://img.shields.io/badge/API%20Test-RapidAPI-blue.svg)](https://rapidapi.com/package/PubNub/functions?utm_source=PubnubGithub&utm_medium=button&utm_content=Vender_GitHub)
 
 # Please direct all Support Questions and Concerns to Support@PubNub.com
 
