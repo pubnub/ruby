@@ -35,7 +35,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"t":{"t":"14660985132149763","r":12},"m":[]}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 16 Jun 2016 17:35:13 GMT
 - request:
     method: get
@@ -78,7 +78,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"status": 200, "message": "OK", "service": "Presence"}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 16 Jun 2016 17:35:13 GMT
 - request:
     method: get
@@ -121,6 +121,49 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"status": 200, "message": "OK", "service": "Presence"}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 16 Jun 2016 17:35:16 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/presence/sub-key/demo/channel/demo/heartbeat?auth=ruby-test-auth&heartbeat=3&pnsdk=PubNub-Ruby/4.0.19&state=%7B%22channel%22:%7B%7D,%22group%22:%7B%7D%7D&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.3.1 (2017-03-06))
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 13 Mar 2017 14:16:33 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 13 Mar 2017 14:16:34 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '55'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub Presence
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "message": "OK", "service": "Presence"}'
+    http_version:
+  recorded_at: Mon, 13 Mar 2017 14:16:34 GMT
 recorded_with: VCR 3.0.1
