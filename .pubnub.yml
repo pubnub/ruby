@@ -203,4 +203,4 @@ features:
 name: ruby
 schema: 1
 scm: github.com/pubnub/ruby
-version: "4.0.15"
+version: "4.0.19"
