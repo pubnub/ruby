@@ -208,7 +208,7 @@ supported-platforms:
       - Linux 2.6 or later, amd64, 386.
       - Mac OS X 10.8 or later, amd64
       - Windows 7 or later, amd64, 386, use rubyinstaller and dev pack.
-      - Apart from the above, PubNub Ruby SDK works on mostly all platforms where the suppored Ruby versions work. To use ssl connection, Ruby should be compiled with openssl support.
+      - Apart from the above, PubNub Ruby SDK works on mostly all platforms where the supported Ruby versions work. To use ssl connection, Ruby should be compiled with openssl support.
     editors:
       - ruby 2.4.0
       - ruby 2.3.3
