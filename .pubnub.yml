@@ -200,6 +200,21 @@ features:
     - SUBSCRIBE-FILTER-EXPRESSION
   notify:
     - REQUEST-MESSAGE-COUNT-EXCEEDED
+supported-platforms:
+  - 
+    version: PubNub Ruby SDK
+    platforms:
+      - FreeBSD 8-STABLE or later, amd64, 386.
+      - Linux 2.6 or later, amd64, 386.
+      - Mac OS X 10.8 or later, amd64
+      - Windows 7 or later, amd64, 386, use rubyinstaller and dev pack.
+      - Apart from the above list the PubNub Ruby SDK works on mostly all platforms where the suppored Ruby versions work. To use ssl connection, Ruby should be compiled with openssl support.
+    editors:
+      - ruby 2.4.0
+      - ruby 2.3.3
+      - ruby 2.2.6
+      - ruby 2.1.10
+      - jruby-9.1.8.0
 name: ruby
 schema: 1
 scm: github.com/pubnub/ruby
