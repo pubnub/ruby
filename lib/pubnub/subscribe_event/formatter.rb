@@ -34,8 +34,8 @@ module Pubnub
 
       def decipher_payload(message)
         return message[:payload] if message[:channel].end_with?('-pnpres') || (@app.env[:cipher_key].nil? && @cipher_key.nil?)
-
-        crypto = Pubnub::Crypto.new(@cipher_key || @app.env[:cipher_key].to_s)
+        cipher_key = compute_cipher_key(message.reject { |k,v| k == :payload })
+        crypto = Pubnub::Crypto.new(cipher_key)
         JSON.parse(crypto.decrypt(message[:payload]), quirks_mode: true)
       rescue
         message[:payload]

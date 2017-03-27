@@ -71,7 +71,7 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '{"t":{"t":"14654012625002995","r":12},"m":[{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":415,"o":{"t":"14654012598877240"},"p":{"t":"14654012599204336","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo","d":"6e4lfkQt0wcSt3s1i/fsfg==","b":"demo"},{"a":"5","f":0,"p":{"t":"14654012600049268","r":1},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo1-pnpres","d":{"action":
+      string: '{"t":{"t":"14654012625002995","r":12},"m":[{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":415,"o":{"t":"14654012598877240"},"p":{"t":"14654012599204336","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo","d":"+P/LbbzCa1zk0sDK1i6/69V4ROQ8h5MxYRFCpWPlmRM=","b":"demo"},{"a":"5","f":0,"p":{"t":"14654012600049268","r":1},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo1-pnpres","d":{"action":
         "join", "timestamp": 1465401260, "uuid": "ruby-test-uuid-client-two", "occupancy":
         1},"b":"demo1-pnpres"},{"a":"5","f":0,"p":{"t":"14654012618252910","r":1},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo.*-pnpres","d":{"action":
         "join", "timestamp": 1465401261, "uuid": "ruby-test-uuid-client-two", "occupancy":

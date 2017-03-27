@@ -71,7 +71,7 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '{"t":{"t":"14654015809501035","r":12},"m":[{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":839,"o":{"t":"14654015809208140"},"p":{"t":"14654015809529937","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo","d":"6e4lfkQt0wcSt3s1i/fsfg==","b":"demo"}]}'
+      string: '{"t":{"t":"14654015809501035","r":12},"m":[{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":839,"o":{"t":"14654015809208140"},"p":{"t":"14654015809529937","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo","d":"+P/LbbzCa1zk0sDK1i6/69V4ROQ8h5MxYRFCpWPlmRM=","b":"demo"}]}'
     http_version: 
   recorded_at: Wed, 08 Jun 2016 15:59:43 GMT
 recorded_with: VCR 3.0.1
