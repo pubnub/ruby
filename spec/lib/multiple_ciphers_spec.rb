@@ -137,7 +137,7 @@ describe 'Using multiple cipher keys' do
 
     VCR.use_cassette('lib/callable_cipher_key', record: :once) do
       @pubnub.subscribe(channel: :multiple_cipher_test)
-      sleep(0.1)
+      sleep(1)
       expect(@message).to eq('hello ruby!')
     end
   end
