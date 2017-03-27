@@ -33,16 +33,16 @@ module Pubnub
       end
 
       def decipher_payload(message)
-        return message[:payload] if message[:channel].end_with?('-pnpres') || @app.env[:cipher_key].nil?
+        return message[:payload] if message[:channel].end_with?('-pnpres') || (@app.env[:cipher_key].nil? && @cipher_key.nil?)
 
-        crypto = Pubnub::Crypto.new(@app.env[:cipher_key].to_s)
+        crypto = Pubnub::Crypto.new(@cipher_key || @app.env[:cipher_key].to_s)
         JSON.parse(crypto.decrypt(message[:payload]), quirks_mode: true)
       rescue
         message[:payload]
       end
 
       def build_non_error_envelopes(parsed_response, req_res_objects)
-        Pubnub.logger.debug('Pubnub::SubscribeEvent::Formatter') { 'Formatting non-errror envelopes' }
+        Pubnub.logger.debug('Pubnub::SubscribeEvent::Formatter') { 'Formatting non-error envelopes' }
         timetoken = parsed_response['t']
         messages = expand_messages_keys(parsed_response['m'])
 
