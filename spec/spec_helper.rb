@@ -26,7 +26,7 @@ Celluloid.task_class = Celluloid::Task::Threaded
 # AsyncHelper allows us to wait for async operations
 module AsyncHelper
   def eventually(options = {})
-    timeout = options[:timeout] || 20
+    timeout = options[:timeout] || 30
     interval = options[:interval] || 0.1
     time_limit = Time.now + timeout
     loop_it(interval, time_limit) do yield end

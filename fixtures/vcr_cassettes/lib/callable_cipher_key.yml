@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/subscribe/demo/multiple_cipher_test/0?pnsdk=PubNub-Ruby/4.0.19&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ceabc639-8381-4db2-bd4a-61c19cb55006
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.1 (2017-03-22))
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 27 Mar 2017 18:04:48 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 27 Mar 2017 18:04:48 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '45'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"14906377451199800","r":12},"m":[]}'
+    http_version: 
+  recorded_at: Mon, 27 Mar 2017 18:04:48 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/subscribe/demo/multiple_cipher_test/0?pnsdk=PubNub-Ruby/4.0.19&t=%7B%22r%22:12,%22t%22:%2214906377451199800%22%7D&uuid=ceabc639-8381-4db2-bd4a-61c19cb55006
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.1 (2017-03-22))
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 27 Mar 2017 18:04:48 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 27 Mar 2017 18:04:53 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '207'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"14906378930996071","r":12},"m":[{"a":"1","f":514,"i":"some-uuid","s":2,"o":{"t":"14906378931649050"},"p":{"t":"14906378930981019","r":12},"k":"demo","c":"multiple_cipher_test","d":"hello
+        ruby!"}]}'
+    http_version: 
+  recorded_at: Mon, 27 Mar 2017 18:04:53 GMT
+recorded_with: VCR 3.0.1

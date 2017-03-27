@@ -71,7 +71,7 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '{"t":{"t":"14654011022603078","r":12},"m":[{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":249,"o":{"t":"14654010998329280"},"p":{"t":"14654010998651518","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo.ruby","d":"6e4lfkQt0wcSt3s1i/fsfg==","b":"demo.*"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":251,"o":{"t":"14654010998937130"},"p":{"t":"14654010999263489","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo","d":"6e4lfkQt0wcSt3s1i/fsfg==","b":"demo"},{"a":"5","f":0,"p":{"t":"14654011011601364","r":1},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo0-pnpres","d":{"action":
+      string: '{"t":{"t":"14654011022603078","r":12},"m":[{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":249,"o":{"t":"14654010998329280"},"p":{"t":"14654010998651518","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo.ruby","d":"+P/LbbzCa1zk0sDK1i6/69V4ROQ8h5MxYRFCpWPlmRM=","b":"demo.*"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":251,"o":{"t":"14654010998937130"},"p":{"t":"14654010999263489","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo","d":"+P/LbbzCa1zk0sDK1i6/69V4ROQ8h5MxYRFCpWPlmRM=","b":"demo"},{"a":"5","f":0,"p":{"t":"14654011011601364","r":1},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo0-pnpres","d":{"action":
         "leave", "timestamp": 1465401101, "uuid": "ruby-test-uuid-client-two", "occupancy":
         0},"b":"demo0-pnpres"},{"a":"5","f":0,"p":{"t":"14654011014472278","r":2},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo1-pnpres","d":{"action":
         "leave", "timestamp": 1465401101, "uuid": "ruby-test-uuid-client-two", "occupancy":

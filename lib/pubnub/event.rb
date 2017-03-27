@@ -210,6 +210,12 @@ module Pubnub
       URI.encode_www_form_component(parameter).gsub('+', '%20')
     end
 
+    def compute_cipher_key(data)
+      ck = @cipher_key || @app.env[:cipher_key].to_s
+      return ck unless ck.respond_to?(:call)
+      ck.call(data)
+    end
+
     def error_message(parsed_response)
       parsed_response['message']
     rescue
