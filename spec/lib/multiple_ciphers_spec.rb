@@ -125,7 +125,7 @@ describe 'Using multiple cipher keys' do
     )
 
     ciphers = {
-      'some-uuid': 'secret'
+      'some-uuid' => 'secret'
     }
 
     lambda_cipher_key = ->(data) do
