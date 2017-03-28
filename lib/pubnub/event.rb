@@ -172,7 +172,7 @@ module Pubnub
                      group action read write manage ttl presence start
                      end count reverse presence_callback store skip_validate
                      state channel_group channel_groups compressed meta customs include_token
-                     replicate with_presence)
+                     replicate with_presence cipher_key_selector)
 
       options = options.each_with_object({}) { |option, obj| obj[option.first.to_sym] = option.last }
 
@@ -211,7 +211,7 @@ module Pubnub
     end
 
     def compute_cipher_key(data)
-      ck = @cipher_key || @app.env[:cipher_key].to_s
+      ck = @compute_cipher_key || @cipher_key || @app.env[:cipher_key_selector] || @app.env[:cipher_key].to_s
       return ck unless ck.respond_to?(:call)
       ck.call(data)
     end

@@ -132,7 +132,7 @@ describe 'Using multiple cipher keys' do
       ciphers[data[:issuing_client_id]]
     end
 
-    @pubnub = Pubnub.new(subscribe_key: :demo, publish_key: :demo, cipher_key: lambda_cipher_key)
+    @pubnub = Pubnub.new(subscribe_key: :demo, publish_key: :demo, cipher_key_selector: lambda_cipher_key)
     @pubnub.add_listener(callback: cb)
 
     VCR.use_cassette('lib/callable_cipher_key', record: :once) do

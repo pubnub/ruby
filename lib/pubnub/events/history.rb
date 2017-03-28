@@ -58,7 +58,7 @@ module Pubnub
     def valid_envelope(parsed_response, req_res_objects)
       messages = parsed_response[0]
 
-      if (@cipher_key || @app.env[:cipher_key]) && messages
+      if (@cipher_key || @app.env[:cipher_key] || @cipher_key_selector || @app.env[:cipher_key_selector]) && messages
         cipher_key = compute_cipher_key(parsed_response)
         crypto = Crypto.new(cipher_key)
         messages = messages.map { |message| JSON.parse(crypto.decrypt(message), quirks_mode: true) }
