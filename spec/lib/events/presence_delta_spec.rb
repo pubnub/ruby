@@ -24,7 +24,7 @@ describe Pubnub::Presence do
       pubnub.add_listener(callback: @callbacks)
 
       VCR.use_cassette('lib/events/presence_delta', record: :once) do
-        pubnub.presence(channel: :demo) # timestamp
+        pubnub.presence(channel: :demo)
 
         eventually do
           expect(@messages[0].result[:data]).to eq({:message=>{"action"=>"interval", "timestamp"=>1490958575, "occupancy"=>3}, :subscribed_channel=>"demo-pnpres", :actual_channel=>"demo-pnpres", :publish_time_object=>{:timetoken=>"14909585750910131", :region_code=>1}, :message_meta_data=>nil, :presence_event=>"interval", :presence=>{:uuid=>nil, :timestamp=>1490958575, :state=>nil, :occupancy=>3}})

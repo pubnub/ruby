@@ -14,11 +14,11 @@ module Pubnub
       @origination_time_token = @app.generate_ortt
 
       case @store
-        when false
-          @store = 0
-          @ttl = nil
-        when true
-          @store = 1
+      when false
+        @store = 0
+        @ttl = nil
+      when true
+        @store = 1
       end
     end
 
@@ -49,31 +49,31 @@ module Pubnub
       params = super
 
       empty_if_blank = {
-          store: @store,
-          meta: @meta,
-          ttl: @ttl
+        store: @store,
+        meta: @meta,
+        ttl: @ttl
       }
 
-      replication = @replicate == false ? {norep: true} : {}
+      replication = @replicate == false ? { norep: true } : {}
 
       empty_if_blank.delete_if { |_k, v| v.blank? }
 
       params = params.merge(empty_if_blank)
       params = params.merge(replication)
       params = params.merge(seqn: @sequence_number,
-                            ortt: {t: @origination_time_token})
+                            ortt: { t: @origination_time_token })
       params
     end
 
     def path
       rpath = [
-          'publish',
-          @publish_key,
-          @subscribe_key,
-          '0',
-          @channel,
-          '0',
-          Formatter.format_message(@message, @cipher_key)
+        'publish',
+        @publish_key,
+        @subscribe_key,
+        '0',
+        @channel,
+        '0',
+        Formatter.format_message(@message, @cipher_key)
       ]
 
       rpath.pop if @compressed
@@ -99,26 +99,26 @@ module Pubnub
 
     def valid_envelope(parsed_response, req_res_objects)
       Pubnub::Envelope.new(
-          event: @event,
-          event_options: @given_options,
-          timetoken: timetoken(parsed_response),
-          status: {
-              code: req_res_objects[:response].code,
-              operation: Pubnub::Constants::OPERATION_PUBLISH,
-              client_request: req_res_objects[:request],
-              server_response: req_res_objects[:response],
-              data: nil,
-              category: Pubnub::Constants::STATUS_ACK,
-              error: false,
-              auto_retried: false,
+        event: @event,
+        event_options: @given_options,
+        timetoken: timetoken(parsed_response),
+        status: {
+          code: req_res_objects[:response].code,
+          operation: Pubnub::Constants::OPERATION_PUBLISH,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
+          data: nil,
+          category: Pubnub::Constants::STATUS_ACK,
+          error: false,
+          auto_retried: false,
 
-              current_timetoken: nil,
-              last_timetoken: nil,
-              subscribed_channels: nil,
-              subscribed_channel_groups: nil,
+          current_timetoken: nil,
+          last_timetoken: nil,
+          subscribed_channels: nil,
+          subscribed_channel_groups: nil,
 
-              config: get_config
-          }
+          config: get_config
+        }
       )
     end
   end

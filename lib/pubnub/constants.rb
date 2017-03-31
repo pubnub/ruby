@@ -1,4 +1,6 @@
+# Toplevel Pubnub module.
 module Pubnub
+  # Constants module holds all constants and default values.
   module Constants
     # Config constants
     DEFAULT_READ_TIMEOUT               = 10
@@ -33,7 +35,8 @@ module Pubnub
     # Successes
     STATUS_ACK = :ack
 
-    STATUS_CATEGORY_ERRORS    = [STATUS_ACCESS_DENIED, STATUS_TIMEOUT, STATUS_NON_JSON_RESPONSE, STATUS_API_KEY_ERROR, SSL_ERROR]
+    STATUS_CATEGORY_ERRORS    = [STATUS_ACCESS_DENIED, STATUS_TIMEOUT, STATUS_NON_JSON_RESPONSE, STATUS_API_KEY_ERROR,
+                                 SSL_ERROR]
     STATUS_CATEGORY_SUCCESSES = [STATUS_ACK]
 
     # Operations

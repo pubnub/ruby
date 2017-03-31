@@ -85,15 +85,15 @@ module Pubnub
 
     def error_envelope(parsed_response, error, req_res_objects)
       case error
-        when JSON::ParserError
-          error_category = Pubnub::Constants::STATUS_NON_JSON_RESPONSE
-          code = req_res_objects[:response].code
-        when HTTPClient::ReceiveTimeoutError
-          error_category = Pubnub::Constants::STATUS_TIMEOUT
-          code = 408
-        else
-          error_category = Pubnub::Constants::STATUS_ERROR
-          code = req_res_objects[:response].code
+      when JSON::ParserError
+        error_category = Pubnub::Constants::STATUS_NON_JSON_RESPONSE
+        code = req_res_objects[:response].code
+      when HTTPClient::ReceiveTimeoutError
+        error_category = Pubnub::Constants::STATUS_TIMEOUT
+        code = 408
+      else
+        error_category = Pubnub::Constants::STATUS_ERROR
+        code = req_res_objects[:response].code
       end
 
       ErrorEnvelope.new(
