@@ -13,9 +13,9 @@ script: bundle exec rspec
 
 matrix:
   include:
-    - rvm: 2.4.0
-    - rvm: 2.3.3
-    - rvm: 2.2.6
+    - rvm: 2.4.1
+    - rvm: 2.3.4
+    - rvm: 2.2.7
     - rvm: 2.1.10
     - rvm: jruby-9.1.8.0
       env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
