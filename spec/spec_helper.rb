@@ -73,6 +73,6 @@ VCR.configure do |c|
   c.ignore_hosts 'api.codacy.com'
   c.default_cassette_options = {
     match_requests_on: [:method,
-                        VCR.request_matchers.uri_without_param(:pnsdk, :uuid, :ortt, :seqn)]
+                        VCR.request_matchers.uri_without_param(:pnsdk, :uuid, :ortt, :seqn, :t)]
   }
 end
