@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b744287bb0324e2883f95525b12cf19f)](https://www.codacy.com/app/blazeroot/ruby?utm_source=github.com&utm_medium=referral&utm_content=pubnub/ruby&utm_campaign=badger)
 [![Coverage Status](https://coveralls.io/repos/github/pubnub/ruby/badge.svg?branch=master)](https://coveralls.io/github/pubnub/ruby?branch=master)
 [![Build Status](https://travis-ci.org/pubnub/ruby.svg?branch=master)](https://travis-ci.org/pubnub/ruby)
 
