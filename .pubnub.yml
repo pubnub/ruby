@@ -2,6 +2,19 @@
 changelog:
   -
     changes:
+    -
+      text: "origin can now be set in initialized client"
+      type: improvement
+    -
+      text: "presence interval support"
+      type: improvement
+    -
+      text: "allows using multiple cipher keys"
+      type: improvement
+    date: 11-04-2017
+    version: 4.0.20
+  -
+    changes:
       -
         text: "Fixed sync subscribe not terminating actors"
         type: bug
@@ -219,4 +232,4 @@ supported-platforms:
 name: ruby
 schema: 1
 scm: github.com/pubnub/ruby
-version: "4.0.19"
+version: "4.0.20"
