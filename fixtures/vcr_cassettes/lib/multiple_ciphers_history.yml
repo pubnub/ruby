@@ -1,0 +1,163 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/publish/demo/demo/0/multiple_cipher_test/0/%22SiyiTt6E/g36egfcDEavKiHNqBjq0sV4n1AIukd+QPg=%22?ortt=%7B%22t%22:14906293412452538%7D&pnsdk=PubNub-Ruby/4.0.19&seqn=1&uuid=3c65b963-1f7f-4a7b-97d1-e71b684ece5d
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.1 (2017-03-22))
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 27 Mar 2017 15:42:21 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 27 Mar 2017 15:42:21 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '30'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[1,"Sent","14906293411842868"]'
+    http_version: 
+  recorded_at: Mon, 27 Mar 2017 15:42:21 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/history/sub-key/demo/channel/multiple_cipher_test?count=1&pnsdk=PubNub-Ruby/4.0.19&uuid=3c65b963-1f7f-4a7b-97d1-e71b684ece5d
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.1 (2017-03-22))
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 27 Mar 2017 15:42:22 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 27 Mar 2017 15:42:22 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '86'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub
+    body:
+      encoding: UTF-8
+      string: '[["SiyiTt6E/g36egfcDEavKiHNqBjq0sV4n1AIukd+QPg="],14906293411842868,14906293411842868]'
+    http_version: 
+  recorded_at: Mon, 27 Mar 2017 15:42:22 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/publish/demo/demo/0/multiple_cipher_test/0/%22MkZas2KYXTSswsWBK2v+TFREAnNoI72Fi+2yiANzxbI=%22?ortt=%7B%22t%22:14906293424201470%7D&pnsdk=PubNub-Ruby/4.0.19&seqn=2&uuid=3c65b963-1f7f-4a7b-97d1-e71b684ece5d
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.1 (2017-03-22))
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 27 Mar 2017 15:42:22 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 27 Mar 2017 15:42:22 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '30'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[1,"Sent","14906293423103762"]'
+    http_version: 
+  recorded_at: Mon, 27 Mar 2017 15:42:22 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/history/sub-key/demo/channel/multiple_cipher_test?count=1&pnsdk=PubNub-Ruby/4.0.19&uuid=3c65b963-1f7f-4a7b-97d1-e71b684ece5d
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.1 (2017-03-22))
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 27 Mar 2017 15:42:23 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 27 Mar 2017 15:42:23 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '86'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub
+    body:
+      encoding: UTF-8
+      string: '[["MkZas2KYXTSswsWBK2v+TFREAnNoI72Fi+2yiANzxbI="],14906293423103762,14906293423103762]'
+    http_version: 
+  recorded_at: Mon, 27 Mar 2017 15:42:23 GMT
+recorded_with: VCR 3.0.1

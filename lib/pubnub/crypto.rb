@@ -11,7 +11,7 @@ module Pubnub
     end
 
     def encrypt(message)
-      aes = OpenSSL::Cipher::Cipher.new(@alg)
+      aes = OpenSSL::Cipher.new(@alg)
       aes.encrypt
       aes.key = @key
       aes.iv = @iv
@@ -24,7 +24,7 @@ module Pubnub
     end
 
     def decrypt(cipher_text)
-      decode_cipher = OpenSSL::Cipher::Cipher.new(@alg).decrypt
+      decode_cipher = OpenSSL::Cipher.new(@alg).decrypt
       decode_cipher.key = @key
       decode_cipher.iv  = @iv
 
@@ -47,10 +47,10 @@ module Pubnub
       '"DECRYPTION ERROR"'
     end
 
-    def load_json(text)
-      JSON.load(text)
+    def load_json(plain_text)
+      JSON.load(plain_text)
     rescue JSON::ParserError
-      JSON.load("[#{text}]")[0]
+      JSON.load("[#{plain_text}]")[0]
     end
   end
 end

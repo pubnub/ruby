@@ -73,7 +73,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"t":{"t":"14654012655767620","r":12},"m":[{"a":"5","f":0,"p":{"t":"14654012631160116","r":2},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo.*-pnpres","d":{"action":
         "leave", "timestamp": 1465401263, "uuid": "ruby-test-uuid-client-two", "occupancy":
-        1},"b":"demo.*-pnpres"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":417,"o":{"t":"14654012632583702"},"p":{"t":"14654012632906630","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo","d":"6e4lfkQt0wcSt3s1i/fsfg==","b":"demo"},{"a":"5","f":0,"p":{"t":"14654012649000129","r":2},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo.*-pnpres","d":{"action":
+        1},"b":"demo.*-pnpres"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":417,"o":{"t":"14654012632583702"},"p":{"t":"14654012632906630","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo","d":"+P/LbbzCa1zk0sDK1i6/69V4ROQ8h5MxYRFCpWPlmRM=","b":"demo"},{"a":"5","f":0,"p":{"t":"14654012649000129","r":2},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo.*-pnpres","d":{"action":
         "join", "timestamp": 1465401264, "uuid": "ruby-test-uuid-client-two", "occupancy":
         2},"b":"demo.*-pnpres"},{"a":"5","f":0,"p":{"t":"14654012649929288","r":2},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo1-pnpres","d":{"action":
         "join", "timestamp": 1465401264, "uuid": "ruby-test-uuid-client-two", "occupancy":

@@ -71,15 +71,15 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '{"t":{"t":"14654014094364149","r":3},"m":[{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":701,"o":{"t":"14654014078903072"},"p":{"t":"14654014079222820","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo.ruby","d":"6e4lfkQt0wcSt3s1i/fsfg==","b":"demo.*"},{"a":"5","f":0,"p":{"t":"14654014093971052","r":2},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo.*-pnpres","d":{"action":
+      string: '{"t":{"t":"14654014094364149","r":3},"m":[{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":701,"o":{"t":"14654014078903072"},"p":{"t":"14654014079222820","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo.ruby","d":"+P/LbbzCa1zk0sDK1i6/69V4ROQ8h5MxYRFCpWPlmRM=","b":"demo.*"},{"a":"5","f":0,"p":{"t":"14654014093971052","r":2},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo.*-pnpres","d":{"action":
         "leave", "timestamp": 1465401409, "uuid": "ruby-test-uuid-client-two", "occupancy":
         1},"b":"demo.*"},{"a":"5","f":0,"p":{"t":"14654014093971052","r":2},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo.*-pnpres","d":{"action":
         "leave", "timestamp": 1465401409, "uuid": "ruby-test-uuid-client-two", "occupancy":
-        1},"b":"demo.*"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":697,"o":{"t":"14654014077654678"},"p":{"t":"14654014077982507","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo0","d":"6e4lfkQt0wcSt3s1i/fsfg==","b":"demo0"},{"a":"5","f":0,"p":{"t":"14654014086408555","r":1},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo0-pnpres","d":{"action":
+        1},"b":"demo.*"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":697,"o":{"t":"14654014077654678"},"p":{"t":"14654014077982507","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo0","d":"+P/LbbzCa1zk0sDK1i6/69V4ROQ8h5MxYRFCpWPlmRM=","b":"demo0"},{"a":"5","f":0,"p":{"t":"14654014086408555","r":1},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo0-pnpres","d":{"action":
         "join", "timestamp": 1465401408, "uuid": "ruby-test-uuid-client-two", "occupancy":
         2},"b":"demo0-pnpres"},{"a":"5","f":0,"p":{"t":"14654014090416885","r":2},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo0-pnpres","d":{"action":
         "leave", "timestamp": 1465401409, "uuid": "ruby-test-uuid-client-two", "occupancy":
-        1},"b":"demo0-pnpres"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":699,"o":{"t":"14654014078270158"},"p":{"t":"14654014078603674","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo1","d":"6e4lfkQt0wcSt3s1i/fsfg==","b":"demo1"},{"a":"5","f":0,"p":{"t":"14654014085670300","r":1},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo1-pnpres","d":{"action":
+        1},"b":"demo0-pnpres"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":699,"o":{"t":"14654014078270158"},"p":{"t":"14654014078603674","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo1","d":"+P/LbbzCa1zk0sDK1i6/69V4ROQ8h5MxYRFCpWPlmRM=","b":"demo1"},{"a":"5","f":0,"p":{"t":"14654014085670300","r":1},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo1-pnpres","d":{"action":
         "join", "timestamp": 1465401408, "uuid": "ruby-test-uuid-client-two", "occupancy":
         2},"b":"demo1-pnpres"}]}'
     http_version: 

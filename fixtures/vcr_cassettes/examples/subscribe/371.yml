@@ -81,7 +81,7 @@ http_interactions:
         "join", "timestamp": 1465401536, "uuid": "ruby-test-uuid-client-two", "occupancy":
         2},"b":"demo0-pnpres"},{"a":"5","f":0,"p":{"t":"14654015367117735","r":1},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo1-pnpres","d":{"action":
         "leave", "timestamp": 1465401536, "uuid": "ruby-test-uuid-client-two", "occupancy":
-        1},"b":"demo1-pnpres"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":817,"o":{"t":"14654015351458530"},"p":{"t":"14654015351777713","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo","d":"6e4lfkQt0wcSt3s1i/fsfg==","b":"demo"}]}'
+        1},"b":"demo1-pnpres"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":817,"o":{"t":"14654015351458530"},"p":{"t":"14654015351777713","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo","d":"+P/LbbzCa1zk0sDK1i6/69V4ROQ8h5MxYRFCpWPlmRM=","b":"demo"}]}'
     http_version: 
   recorded_at: Wed, 08 Jun 2016 15:58:58 GMT
 recorded_with: VCR 3.0.1

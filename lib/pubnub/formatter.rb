@@ -78,7 +78,7 @@ module Pubnub
       # Formats hash to params string
       def params_hash_to_url_params(hash)
         params = ''
-        hash.sort_by { |k,_v| k.to_s}.to_h.each do |key, value|
+        hash.sort_by { |k, _v| k.to_s }.to_h.each do |key, value|
           if %w(meta ortt).include?(key.to_s)
             encoded_value = URI.encode_www_form_component(value.to_json).gsub('+', '%20')
             params << "#{key}=#{encoded_value}&"

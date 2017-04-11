@@ -26,7 +26,7 @@ Celluloid.task_class = Celluloid::Task::Threaded
 # AsyncHelper allows us to wait for async operations
 module AsyncHelper
   def eventually(options = {})
-    timeout = options[:timeout] || 20
+    timeout = options[:timeout] || 30
     interval = options[:interval] || 0.1
     time_limit = Time.now + timeout
     loop_it(interval, time_limit) do yield end
@@ -73,6 +73,6 @@ VCR.configure do |c|
   c.ignore_hosts 'api.codacy.com'
   c.default_cassette_options = {
     match_requests_on: [:method,
-                        VCR.request_matchers.uri_without_param(:pnsdk, :uuid, :ortt, :seqn)]
+                        VCR.request_matchers.uri_without_param(:pnsdk, :uuid, :ortt, :seqn, :t)]
   }
 end

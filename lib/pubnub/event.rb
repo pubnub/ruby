@@ -1,3 +1,6 @@
+require 'pubnub/event/signature'
+require 'pubnub/event/formatter'
+
 # Toplevel Pubnub module.
 module Pubnub
   # Event module holds most basic and required infrastructure for every pubnub
@@ -10,6 +13,9 @@ module Pubnub
 
     alias_method :channels, :channel
     alias_method :channel_groups, :channel_group
+
+    include Signature
+    include EFormatter
 
     def initialize(options, app)
       @app = app
@@ -74,48 +80,10 @@ module Pubnub
 
     private
 
-    def super_admin_signature
-      return unless @app.env[:secret_key]
-
-      message = [
-          @app.env[:subscribe_key],
-          @app.env[:publish_key],
-          path,
-          variables_for_signature
-      ].join("\n")
-
-      message = message.gsub(/[!~*'()]/) { |char| '%' + char.ord.to_s(16).upcase }
-
-      URI.encode_www_form_component(Base64.encode64(
-          OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'),
-                               @app.env[:secret_key].to_s, message)
-      ).strip).gsub('+', '%20')
-    end
-
-    def variables_for_signature
-      parameters(true).map do |k, v|
-        if %w(meta ortt).include?(k.to_s)
-          encoded_value = URI.encode_www_form_component(v.to_json).gsub('+', '%20')
-          "#{k}=#{encoded_value}"
-        elsif %w(t state filter-expr).include?(k.to_s)
-          "#{k}=#{v}"
-        else
-          "#{k}=#{URI.encode_www_form_component(v.to_s).gsub('+', '%20')}"
-        end
-      end.sort.join('&')
-    end
-
     def secure_call(cb, arg)
       cb.call arg
     rescue => error
       Pubnub.logger.error('Pubnub::Event') { "Error while calling callback #{error.inspect}" }
-    end
-
-    def format_channels
-      @channel =  Formatter.format_channel(@channel || @channels)
-      @channel += Formatter.format_presence_channel(@presence)
-      @channel += Formatter.format_presence_channel(@channel || @channels) if @with_presence
-      @wildcard_channel = @channel.select { |e| e.index('.*') } || []
     end
 
     def fire_callbacks(envelope)
@@ -134,7 +102,7 @@ module Pubnub
         uuid: @app.env[:uuid]
       }
 
-      required.merge!({timestamp: @timestamp}) if @app.env[:secret_key] && ![:grant, :revoke, :audit].include?(@event)
+      required.merge!(timestamp: @timestamp) if @app.env[:secret_key] && ![:grant, :revoke, :audit].include?(@event)
 
       empty_if_blank.delete_if { |_k, v| v.blank? }
 
@@ -146,24 +114,6 @@ module Pubnub
       @envelopes = format_envelopes response, request
     end
 
-    def format_envelopes(response, request)
-      if response.is_a? HTTPClient::ReceiveTimeoutError
-        return error_envelope(nil, response, request: request, response: response)
-      elsif response.is_a? OpenSSL::SSL::SSLError
-        return error_envelope(nil, response, request: request, response: response)
-      else
-        parsed_response, error = Formatter.parse_json(response.body)
-      end
-
-      error = response if parsed_response && response.code.to_i != 200
-
-      if error
-        error_envelope(parsed_response, error, request: request, response: response)
-      else
-        valid_envelope(parsed_response, request: request, response: response)
-      end
-    end
-
     def create_variables_from_options(options)
       variables = %w(channel channels message http_sync callback
                      ssl cipher_key secret_key auth_key
@@ -172,7 +122,7 @@ module Pubnub
                      group action read write manage ttl presence start
                      end count reverse presence_callback store skip_validate
                      state channel_group channel_groups compressed meta customs include_token
-                     replicate with_presence)
+                     replicate with_presence cipher_key_selector)
 
       options = options.each_with_object({}) { |option, obj| obj[option.first.to_sym] = option.last }
 
@@ -183,18 +133,6 @@ module Pubnub
       @open_timeout = options[:s_open_timeout]
       @read_timeout = options[:s_read_timeout]
       @idle_timeout = options[:s_idle_timeout]
-    end
-
-    def format_group
-      @group = (@channel_group || @channel_groups) if (@channel_group || @channel_groups) && @group.blank?
-      @group = Formatter.format_group(@group)
-
-      if @group.first.to_s.count(':') > 0
-        @namespace_id, @group_id = @group.first.to_s.split(':')
-      else
-        @namespace_id = nil
-        @group_id = @group.first.to_s
-      end
     end
 
     def set_timestamp
@@ -208,6 +146,12 @@ module Pubnub
     def encode_parameter(parameter, format_json = true)
       parameter = format_json ? parameter.to_json : parameter
       URI.encode_www_form_component(parameter).gsub('+', '%20')
+    end
+
+    def compute_cipher_key(data)
+      ck = @compute_cipher_key || @cipher_key || @app.env[:cipher_key_selector] || @app.env[:cipher_key].to_s
+      return ck unless ck.respond_to?(:call)
+      ck.call(data)
     end
 
     def error_message(parsed_response)
@@ -227,36 +171,36 @@ module Pubnub
 
     def error_envelope(_parsed_response, error, req_res_objects)
       case error
-        when JSON::ParserError
-          error_category = Pubnub::Constants::STATUS_NON_JSON_RESPONSE
-          code = req_res_objects[:response].code
-        when HTTPClient::ReceiveTimeoutError
-          error_category = Pubnub::Constants::STATUS_TIMEOUT
-          code = 408
-        when OpenSSL::SSL::SSLError
-          error_category = Pubnub::Constants::SSL_ERROR
-          code = nil
-        else
-          error_category = Pubnub::Constants::STATUS_ERROR
-          code = req_res_objects[:response].code
+      when JSON::ParserError
+        error_category = Pubnub::Constants::STATUS_NON_JSON_RESPONSE
+        code = req_res_objects[:response].code
+      when HTTPClient::ReceiveTimeoutError
+        error_category = Pubnub::Constants::STATUS_TIMEOUT
+        code = 408
+      when OpenSSL::SSL::SSLError
+        error_category = Pubnub::Constants::SSL_ERROR
+        code = nil
+      else
+        error_category = Pubnub::Constants::STATUS_ERROR
+        code = req_res_objects[:response].code
       end
 
       Pubnub::ErrorEnvelope.new(
-          event: @event,
-          event_options: @given_options,
-          timetoken: nil,
-          status: {
-              code: code,
-              operation: current_operation,
-              client_request: req_res_objects[:request],
-              server_response: req_res_objects[:response],
-              data: nil,
-              category: error_category,
-              error: true,
-              auto_retried: false,
+        event: @event,
+        event_options: @given_options,
+        timetoken: nil,
+        status: {
+          code: code,
+          operation: current_operation,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
+          data: nil,
+          category: error_category,
+          error: true,
+          auto_retried: false,
 
-              config: get_config
-          }
+          config: get_config
+        }
       )
     end
   end

@@ -13,8 +13,6 @@ Gem::Specification.new do |spec|
   spec.homepage        = 'http://github.com/pubnub/ruby'
   spec.license         = 'MIT'
 
-  spec.post_install_message = %(-----\nUPGRADE NOTICE: Pubnub 3.8.0 and higher versions are using Celluloid instead of EventMachine for asynchronous processing.\n-----)
-
   spec.files           = `git ls-files -z`.split("\x0")
   spec.executables     = spec.files.grep(%r{^bin\/}) { |f| File.basename(f) }
   spec.test_files      = spec.files.grep(%r{^(test|spec|features)\/})
