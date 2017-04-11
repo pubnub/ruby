@@ -14,8 +14,8 @@ module Pubnub
         fail(
           InitializationError.new,
           'origins_pool parameter is not valid. \
-                 Should be type of Array.'
-        ) unless origin.is_a?(Array) || origin.blank?
+                 Should be type of String.'
+        ) unless origin.is_a?(String) || origin.blank?
       end
 
       # Validates given subscribe key

@@ -5,7 +5,7 @@ module Pubnub
     private
 
     def default_values
-      { origins_pool: Pubnub::Constants::DEFAULT_ORIGINS_POOL,
+      { origin: Pubnub::Constants::DEFAULT_ORIGIN,
         open_timeout: Pubnub::Constants::DEFAULT_OPEN_TIMEOUT,
         read_timeout: Pubnub::Constants::DEFAULT_READ_TIMEOUT,
         idle_timeout: Pubnub::Constants::DEFAULT_IDLE_TIMEOUT,

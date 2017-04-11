@@ -14,7 +14,7 @@ module Pubnub
     DEFAULT_H_IDLE_TIMEOUT             = 10
     DEFAULT_RECONNECT_ATTEMPTS         = 10
     DEFAULT_RECONNECT_INTERVAL         = 10
-    DEFAULT_ORIGINS_POOL               = ['ps.pndsn.com']
+    DEFAULT_ORIGIN                     = 'ps.pndsn.com'
     DEFAULT_PORT                       = 80
     PERIODIC_TIMER_INTERVAL            = 0.25
     DEFAULT_TTL                        = 1440

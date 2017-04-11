@@ -38,9 +38,16 @@ module Pubnub
       # ========
       # Current origin.
       def current_origin
-        @env[:origins_pool].first
+        @env[:origin]
       end
       alias_method :origin, :current_origin
+
+      # Returns:
+      # ========
+      # Origin that was set.
+      def origin=(origin)
+        @env[:origin] = origin
+      end
 
       # Returns:
       # ========

@@ -72,19 +72,19 @@ describe Pubnub::Client do
       context 'validates' do
         context 'parameter :origin' do
           it 'must be valid' do
-            expect { Pubnub.new(origins_pool: 123, subscribe_key: 'key') }
+            expect { Pubnub.new(origin: 123, subscribe_key: 'key') }
             .to raise_error(Pubnub::InitializationError)
 
-            expect { Pubnub.new(origins_pool: { a: :b }, subscribe_key: 'key') }
+            expect { Pubnub.new(origin: { a: :b }, subscribe_key: 'key') }
             .to raise_error(Pubnub::InitializationError)
 
-            expect { Pubnub.new(origins_pool: nil, subscribe_key: 'key') }
+            expect { Pubnub.new(origin: nil, subscribe_key: 'key') }
             .not_to raise_error
 
-            expect { Pubnub.new(origins_pool: '', subscribe_key: 'key') }
+            expect { Pubnub.new(origin: '', subscribe_key: 'key') }
             .not_to raise_error
 
-            expect { Pubnub.new(origins_pool: %w(http://a.com), subscribe_key: 'key') }
+            expect { Pubnub.new(origin: 'http://a.com', subscribe_key: 'key') }
             .not_to raise_error
           end
         end
