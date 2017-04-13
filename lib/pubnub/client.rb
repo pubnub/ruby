@@ -317,8 +317,16 @@ module Pubnub
       case event_type
       when :subscribe_event
         hc.receive_timeout = 310
+        unless @env[:disable_keepalive] || @env[:disable_subscribe_keepalive]
+          hc.keep_alive_timeout = 310
+          hc.tcp_keepalive = true
+        end
       when :single_event
         hc.receive_timeout = 5
+        unless @env[:disable_keepalive] || @env[:disable_non_subscribe_keepalive]
+          hc.keep_alive_timeout = 310
+          hc.tcp_keepalive = true
+        end
       end
 
       hc

@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/subscribe/demo/demo/0?pnsdk=PubNub-Ruby/4.0.20&t=%7B%22r%22:0,%22t%22:0%7D&uuid=12ccaa30-98ed-48cc-917a-2f0145ec23c1
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.1 (2017-03-22))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 13 Apr 2017 14:30:23 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 13 Apr 2017 14:30:23 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '45'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"14920929679298175","r":12},"m":[]}'
+    http_version: 
+  recorded_at: Thu, 13 Apr 2017 14:30:23 GMT
+recorded_with: VCR 3.0.1
