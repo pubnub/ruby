@@ -1,5 +1,13 @@
 ---
+version: "4.0.21"
 changelog:
+  -
+    changes:
+    -
+      text: "Fixed signature generation"
+      type: bug
+    date: 18-04-2017
+    version: 4.0.21
   -
     changes:
     -
@@ -232,4 +240,3 @@ supported-platforms:
 name: ruby
 schema: 1
 scm: github.com/pubnub/ruby
-version: "4.0.20"
