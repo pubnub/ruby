@@ -233,54 +233,60 @@ describe Pubnub::Client do
     end
   end
 
-  # context 'connections pool' do
-  #   let(:pubnub_client) { Pubnub.new(subscribe_key: 'demo', publish_key: 'demo') }
-  #
-  #   around :each do |example|
-  #     Celluloid.boot
-  #     example.run
-  #     Celluloid.shutdown
-  #   end
-  #
-  #   context '#connection_for' do
-  #     it 'returns connection for non-subscribe events' do
-  #       VCR.use_cassette('client/connection-for-non-subscribe', :record => :once) do
-  #         pubnub_client.publish(message: :test, channel: :test, http_sync: true)
-  #       end
-  #
-  #       expect(pubnub_client.env[:single_event_conn_pool]['ps.pndsn.com'].is_a?(Net::HTTP::Persistent)).to eq true
-  #     end
-  #
-  #     it 'returns connection for subscribe events' do
-  #       VCR.use_cassette('client/connection-for-subscribe', :record => :once) do
-  #         pubnub_client.subscribe(channel: :test, http_sync: true)
-  #       end
-  #
-  #       expect(pubnub_client.env[:subscribe_event_conn_pool]['ps.pndsn.com'].is_a?(Net::HTTP::Persistent)).to eq true
-  #     end
-  #   end
-  #
-  #   context '#setup_conn_for' do
-  #     it 'creates connection for non-subscribe events' do
-  #       expect(pubnub_client.env[:single_event_conn_pool]['ps.pndsn.com'].is_a?(NilClass)).to eq true
-  #
-  #       VCR.use_cassette('client/connection-for-non-subscribe', :record => :once) do
-  #         pubnub_client.publish(message: :test, channel: :test, http_sync: true)
-  #       end
-  #
-  #       expect(pubnub_client.env[:single_event_conn_pool]['ps.pndsn.com'].is_a?(Net::HTTP::Persistent)).to eq true
-  #     end
-  #
-  #     it 'creates connection for subscribe events' do
-  #       expect(pubnub_client.env[:subscribe_event_conn_pool]['ps.pndsn.com'].is_a?(NilClass)).to eq true
-  #
-  #       VCR.use_cassette('client/connection-for-subscribe', :record => :once) do
-  #         pubnub_client.subscribe(channel: :test, http_sync: true)
-  #       end
-  #
-  #       expect(pubnub_client.env[:subscribe_event_conn_pool]['ps.pndsn.com'].is_a?(Net::HTTP::Persistent)).to eq true
-  #     end
-  #   end
-  # end
+  context 'connections' do
+    it 'are keep_alive by default' do
+      pubnub = Pubnub.new(subscribe_key: :demo, publish_key: :demo)
+
+      VCR.use_cassette('lib/client/keep_alive_default', record: :once) do
+        pubnub.subscribe(channel: :demo)
+        
+        eventually { expect(pubnub.env[:req_dispatchers_pool][:async]['ps.pndsn.com'][:subscribe_event].tcp_keepalive).to eq true }
+        pubnub.leave(channel: :demo)
+        
+      end
+    end
+
+    it 'respect :disable_keep_alive' do
+      pubnub = Pubnub.new(subscribe_key: :demo, publish_key: :demo, disable_keepalive: true)
+
+      VCR.use_cassette('lib/client/keep_alive_disabled', record: :once) do
+        pubnub.subscribe(channel: :demo)
+        
+        eventually { expect(pubnub.env[:req_dispatchers_pool][:async]['ps.pndsn.com'][:subscribe_event].tcp_keepalive).to eq false }
+        pubnub.leave(channel: :demo)
+        
+      end
+    end
+
+    it 'respect :disable_subscribe_keep_alive init parameter' do
+      pubnub = Pubnub.new(subscribe_key: :demo, publish_key: :demo, disable_subscribe_keepalive: true)
+
+      VCR.use_cassette('lib/client/keep_alive_disable_subscribe_keep_alive', record: :once) do
+        pubnub.subscribe(channel: :demo)
+        
+        eventually { expect(pubnub.env[:req_dispatchers_pool][:async]['ps.pndsn.com'][:subscribe_event].tcp_keepalive).to eq false }
+        pubnub.leave(channel: :demo)
+        
+        pubnub.publish(channel: :demo, message: :whatever)
+        eventually { expect(pubnub.env[:req_dispatchers_pool][:async]['ps.pndsn.com'][:single_event].tcp_keepalive).to eq true }
+        
+      end
+    end
+
+    it 'respect :disable_non_subscribe_keep_alive init parameter' do
+      pubnub = Pubnub.new(subscribe_key: :demo, publish_key: :demo, disable_non_subscribe_keepalive: true)
+
+      VCR.use_cassette('lib/client/keep_alive_disable_non_subscribe_keep_alive', record: :once) do
+        pubnub.subscribe(channel: :demo)
+        
+        eventually { expect(pubnub.env[:req_dispatchers_pool][:async]['ps.pndsn.com'][:subscribe_event].tcp_keepalive).to eq true }
+        pubnub.leave(channel: :demo)
+        
+        pubnub.publish(channel: :demo, message: :whatever)
+        eventually { expect(pubnub.env[:req_dispatchers_pool][:async]['ps.pndsn.com'][:single_event].tcp_keepalive).to eq false }
+        
+      end
+    end
+  end
 
 end

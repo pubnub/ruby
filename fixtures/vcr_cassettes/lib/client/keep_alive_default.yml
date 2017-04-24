@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/subscribe/demo/demo/0?pnsdk=PubNub-Ruby/4.0.20&t=%7B%22r%22:0,%22t%22:0%7D&uuid=eb901cf8-6979-4123-9e30-9f3fd60f7c47
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.1 (2017-03-22))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 13 Apr 2017 14:34:53 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 13 Apr 2017 14:34:53 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '45'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"14920940259937049","r":12},"m":[]}'
+    http_version: 
+  recorded_at: Thu, 13 Apr 2017 14:34:53 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/presence/sub-key/demo/channel/demo/leave?pnsdk=PubNub-Ruby/4.0.20&uuid=eb901cf8-6979-4123-9e30-9f3fd60f7c47
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.1 (2017-03-22))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 13 Apr 2017 14:34:54 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 13 Apr 2017 14:34:55 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '74'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub Presence
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "message": "OK", "action": "leave", "service": "Presence"}'
+    http_version: 
+  recorded_at: Thu, 13 Apr 2017 14:34:55 GMT
+recorded_with: VCR 3.0.1

@@ -1,0 +1,157 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/subscribe/demo/demo/0?pnsdk=PubNub-Ruby/4.0.20&t=%7B%22r%22:0,%22t%22:0%7D&uuid=7e7fa6ca-023b-41f1-8153-97b81d27cca0
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.1 (2017-03-22))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 13 Apr 2017 14:35:04 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 13 Apr 2017 14:35:04 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '45'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"14920940259937049","r":12},"m":[]}'
+    http_version: 
+  recorded_at: Thu, 13 Apr 2017 14:35:04 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/presence/sub-key/demo/channel/demo/leave?pnsdk=PubNub-Ruby/4.0.20&uuid=7e7fa6ca-023b-41f1-8153-97b81d27cca0
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.1 (2017-03-22))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 13 Apr 2017 14:35:05 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 13 Apr 2017 14:35:05 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '74'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub Presence
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "message": "OK", "action": "leave", "service": "Presence"}'
+    http_version: 
+  recorded_at: Thu, 13 Apr 2017 14:35:05 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/publish/demo/demo/0/demo/0/%22whatever%22?ortt=%7B%22t%22:14920941061970292%7D&pnsdk=PubNub-Ruby/4.0.20&seqn=1&uuid=7e7fa6ca-023b-41f1-8153-97b81d27cca0
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.1 (2017-03-22))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 13 Apr 2017 14:35:06 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 13 Apr 2017 14:35:06 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '30'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[1,"Sent","14920941063446551"]'
+    http_version: 
+  recorded_at: Thu, 13 Apr 2017 14:35:06 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/subscribe/demo/demo/0?pnsdk=PubNub-Ruby/4.0.20&t=%7B%22r%22:12,%22t%22:%2214920940259937049%22%7D&uuid=7e7fa6ca-023b-41f1-8153-97b81d27cca0
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.1 (2017-03-22))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 13 Apr 2017 14:35:04 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 13 Apr 2017 14:35:06 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '215'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"14920941063440382","r":12},"m":[{"a":"1","f":514,"i":"7e7fa6ca-023b-41f1-8153-97b81d27cca0","s":1,"o":{"t":"14920941061970292"},"p":{"t":"14920941063446551","r":12},"k":"demo","c":"demo","d":"whatever"}]}'
+    http_version: 
+  recorded_at: Thu, 13 Apr 2017 14:35:06 GMT
+recorded_with: VCR 3.0.1
