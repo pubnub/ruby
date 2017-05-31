@@ -9,6 +9,7 @@ describe 'Signatures' do
   end
 
   it 'works all letters channel' do
+    stub_const('Pubnub::VERSION', '4.0.21')
     Pubnub::Grant.any_instance.stub(:current_time).and_return(1496242823)
 
     pubnub = Pubnub.new(
@@ -25,6 +26,7 @@ describe 'Signatures' do
   end
 
   it 'works with wildcard' do
+    stub_const('Pubnub::VERSION', '4.0.21')
     Pubnub::Grant.any_instance.stub(:current_time).and_return(1496242823)
 
     pubnub = Pubnub.new(
@@ -41,6 +43,7 @@ describe 'Signatures' do
   end
 
   it 'works with various special characters' do
+    stub_const('Pubnub::VERSION', '4.0.21')
     Pubnub::Grant.any_instance.stub(:current_time).and_return(1496242824)
 
     pubnub = Pubnub.new(
