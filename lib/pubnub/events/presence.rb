@@ -12,7 +12,7 @@ module Pubnub
     end
 
     def format_channels
-      @channel = Formatter.format_channel(@channel || @channels)
+      @channel = Formatter.format_channel(@channel || @channels, true)
       @channel = @channel.map { |c| c + '-pnpres' }
     end
 

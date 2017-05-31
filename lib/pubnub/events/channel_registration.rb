@@ -16,11 +16,11 @@ module Pubnub
     def parameters(*_args)
       parameters = super
       if @action == :add && !@channel.blank?
-        parameters.merge!(add: @channel.join(','))
+        parameters.merge!(add: Formatter.channels_for_url(@channel))
       end
 
       if @action == :remove && !@channel.blank?
-        parameters.merge!(remove: @channel.join(','))
+        parameters.merge!(remove: Formatter.channels_for_url(@channel))
       end
 
       parameters

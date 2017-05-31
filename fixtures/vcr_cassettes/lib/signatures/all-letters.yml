@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v1/auth/grant/sub-key/sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe?channel=demo&m=1&pnsdk=PubNub-Ruby/4.0.21&r=1&signature=bIANk0l7J3Ya1n1ydlQUa3rX5_tI4tjuSfcQAkYWAAY=&timestamp=1496242823&ttl=1440&uuid=test&w=1
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.1.10 (2016-04-01))
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 31 May 2017 15:00:23 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 31 May 2017 15:00:23 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '203'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+    body:
+      encoding: UTF-8
+      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe","ttl":1440,"channels":{"demo":{"r":1,"w":1,"m":1}}},"service":"Access
+        Manager","status":200}'
+    http_version: 
+  recorded_at: Wed, 31 May 2017 15:00:23 GMT
+recorded_with: VCR 3.0.1

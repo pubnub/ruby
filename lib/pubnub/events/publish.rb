@@ -71,7 +71,7 @@ module Pubnub
         @publish_key,
         @subscribe_key,
         '0',
-        @channel,
+        Formatter.format_channel(@channel, true),
         '0',
         Formatter.format_message(@message, @cipher_key)
       ]

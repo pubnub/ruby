@@ -7,9 +7,9 @@ module Pubnub
 
       @auth_key = options[:auth_key]
 
-      @channel += format_channels(options[:presence]).map do |c|
-        c + '-pnpres'
-      end if options[:presence].present?
+      # @channel += format_channels(options[:presence]).map do |c|
+      #   c + '-pnpres'
+      # end if options[:presence].present?
     end
 
     def signature
@@ -21,7 +21,7 @@ module Pubnub
       ].join("\n")
 
       # Replace ! ~ * ' ( )
-      message = message.gsub(/[!~'()]/) { |char| '%' + char.ord.to_s(16).upcase }
+      message = message.gsub(/[!~'()*]/) { |char| '%' + char.ord.to_s(16).upcase }
 
       Base64.urlsafe_encode64(
         OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'),

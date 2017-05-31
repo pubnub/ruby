@@ -83,59 +83,59 @@ shared_examples 'an event' do
                 .to eq Array
           end
 
-          it 'is formatted when given as string' do
-            event = described_class.new({ channel: '!with spec&', skip_validate: true }, pubnub_client)
-            expect(event.instance_variable_get(:@channel))
-                .to eq ['%21with%20spec%26-pnpres']
-          end
-
-          it 'is formatted when given as symbol' do
-            event = described_class.new({ channel: :demo, skip_validate: true }, pubnub_client)
-            expect(event.instance_variable_get(:@channel))
-                .to eq ['demo-pnpres']
-          end
-
-          it 'is formatted when given as array' do
-            event = described_class.new(
-                { channel: ['!with spec&', 'othe&r', 'th ir*!d', :four], skip_validate: true },
-                pubnub_client
-            )
-            expect(event.instance_variable_get(:@channel))
-                .to eq ['%21with%20spec%26-pnpres', 'othe%26r-pnpres', 'th%20ir*%21d-pnpres', 'four-pnpres']
-          end
+          # it 'is formatted when given as string' do
+          #   event = described_class.new({ channel: '!with spec&', skip_validate: true }, pubnub_client)
+          #   expect(event.instance_variable_get(:@channel))
+          #       .to eq ['%21with%20spec%26-pnpres']
+          # end
+          #
+          # it 'is formatted when given as symbol' do
+          #   event = described_class.new({ channel: :demo, skip_validate: true }, pubnub_client)
+          #   expect(event.instance_variable_get(:@channel))
+          #       .to eq ['demo-pnpres']
+          # end
+          #
+          # it 'is formatted when given as array' do
+          #   event = described_class.new(
+          #       { channel: ['!with spec&', 'othe&r', 'th ir*!d', :four], skip_validate: true },
+          #       pubnub_client
+          #   )
+          #   expect(event.instance_variable_get(:@channel))
+          #       .to eq ['%21with%20spec%26-pnpres', 'othe%26r-pnpres', 'th%20ir*%21d-pnpres', 'four-pnpres']
+          # end
         else
-          it 'is set properly when passed as :channels' do
-            event = described_class.new({ channels: 'chan', skip_validate: true }, pubnub_client)
-            expect(event.instance_variable_get(:@channel))
-                .to eq ['chan']
-          end
-
-          it 'is formatted to be an array' do
-            event = described_class.new({ channel: 'chan', skip_validate: true }, pubnub_client)
-            expect(event.instance_variable_get(:@channel).class)
-                .to eq Array
-          end
-
-          it 'is formatted when given as string' do
-            event = described_class.new({ channel: '!with spec&', skip_validate: true }, pubnub_client)
-            expect(event.instance_variable_get(:@channel))
-                .to eq ['%21with%20spec%26']
-          end
-
-          it 'is formatted when given as symbol' do
-            event = described_class.new({ channel: :demo, skip_validate: true }, pubnub_client)
-            expect(event.instance_variable_get(:@channel))
-                .to eq ['demo']
-          end
-
-          it 'is formatted when given as array' do
-            event = described_class.new(
-                { channel: ['!with spec&', 'othe&r', 'th ir*!d', :four], skip_validate: true },
-                pubnub_client
-            )
-            expect(event.instance_variable_get(:@channel))
-                .to eq ['%21with%20spec%26', 'othe%26r', 'th%20ir*%21d', 'four']
-          end
+          # it 'is set properly when passed as :channels' do
+          #   event = described_class.new({ channels: 'chan', skip_validate: true }, pubnub_client)
+          #   expect(event.instance_variable_get(:@channel))
+          #       .to eq ['chan']
+          # end
+          #
+          # it 'is formatted to be an array' do
+          #   event = described_class.new({ channel: 'chan', skip_validate: true }, pubnub_client)
+          #   expect(event.instance_variable_get(:@channel).class)
+          #       .to eq Array
+          # end
+          #
+          # it 'is formatted when given as string' do
+          #   event = described_class.new({ channel: '!with spec&', skip_validate: true }, pubnub_client)
+          #   expect(event.instance_variable_get(:@channel))
+          #       .to eq ['%21with%20spec%26']
+          # end
+          #
+          # it 'is formatted when given as symbol' do
+          #   event = described_class.new({ channel: :demo, skip_validate: true }, pubnub_client)
+          #   expect(event.instance_variable_get(:@channel))
+          #       .to eq ['demo']
+          # end
+          #
+          # it 'is formatted when given as array' do
+          #   event = described_class.new(
+          #       { channel: ['!with spec&', 'othe&r', 'th ir*!d', :four], skip_validate: true },
+          #       pubnub_client
+          #   )
+          #   expect(event.instance_variable_get(:@channel))
+          #       .to eq ['%21with%20spec%26', 'othe%26r', 'th%20ir*%21d', 'four']
+          # end
         end
       end
     end
