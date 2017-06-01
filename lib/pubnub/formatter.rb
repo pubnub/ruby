@@ -6,12 +6,12 @@ module Pubnub
     class << self
       # Returns array of encoded channels if should_encode is true,
       # otherwise returns just array of channels
-      def format_channel(channel, should_encode = true)
+      def format_channel(channel, should_encode = false)
         make_channel_array(channel).map do |chan|
           if should_encode
             encode(chan)
           else
-            chan
+            chan.to_s
           end
         end
       end
@@ -93,7 +93,7 @@ module Pubnub
 
       # Returns string with all channels separated by comma or single coma
       def channels_for_url(channels)
-        channel = channels.sort.join(',')
+        channel = channels.map{ |c| encode(c) }.sort.join(',')
         channel = ',' if channel.empty?
         channel
       end

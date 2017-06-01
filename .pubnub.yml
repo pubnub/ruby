@@ -1,7 +1,13 @@
 ---
-version: "4.0.21"
+version: "4.0.22"
 changelog:
   -
+    changes:
+      -
+        text: "Fixed signature generation and channel name escaping"
+        type: bug
+      date: 31-05-2017
+      version: 4.0.22
     changes:
     -
       text: "Fixed signature generation"

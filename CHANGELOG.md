@@ -1,3 +1,12 @@
+##### 4.0.22
+* Fixed signature generation and channel name escaping
+
+##### 4.0.21
+* Fixed signature generation
+
+##### 4.0.20
+* Allowing using multiple cipher keys
+
 ##### 4.0.19
 * Fixed sync subscribe.
 
