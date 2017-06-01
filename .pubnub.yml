@@ -1,117 +1,117 @@
----
-version: "4.0.22"
-changelog:
-  -
-    changes:
-      -
+--- 
+changelog: 
+  - 
+    changes: 
+      - 
         text: "Fixed signature generation and channel name escaping"
         type: bug
-      date: 31-05-2017
-      version: 4.0.22
-    changes:
-    -
-      text: "Fixed signature generation"
-      type: bug
+    date: 31-05-2017
+    version: "4.0.22"
+  - 
+    changes: 
+      - 
+        text: "Fixed signature generation"
+        type: bug
     date: 18-04-2017
-    version: 4.0.21
-  -
-    changes:
-    -
-      text: "origin can now be set in initialized client"
-      type: improvement
-    -
-      text: "presence interval support"
-      type: improvement
-    -
-      text: "allows using multiple cipher keys"
-      type: improvement
+    version: "4.0.21"
+  - 
+    changes: 
+      - 
+        text: "origin can now be set in initialized client"
+        type: improvement
+      - 
+        text: "presence interval support"
+        type: improvement
+      - 
+        text: "allows using multiple cipher keys"
+        type: improvement
     date: 11-04-2017
-    version: 4.0.20
-  -
-    changes:
-      -
+    version: "4.0.20"
+  - 
+    changes: 
+      - 
         text: "Fixed sync subscribe not terminating actors"
         type: bug
     date: 02-03-2017
     version: v4.0.18
-  -
-    changes:
-      -
+  - 
+    changes: 
+      - 
         text: "Added a bit more debug logging"
         type: improvement
-      -
+      - 
         text: "Updated default origin"
         type: improvement
     date: 21-12-2016
     version: v4.0.17
-  -
-    changes:
-      -
+  - 
+    changes: 
+      - 
         text: "Fixed missing channel group parameter in leave event"
         type: bug
     date: ~
     version: v4.0.16
-  -
-    changes:
-      -
+  - 
+    changes: 
+      - 
         text: "Fixed PAM signature when some special characters are present"
         type: bug
     date: ~
     version: v4.0.15
-  -
-    changes:
-      -
+  - 
+    changes: 
+      - 
         text: "Added ttl parameter for publish"
         type: improvement
     date: ~
     version: v4.0.14
-  -
-    changes:
-      -
+  - 
+    changes: 
+      - 
         text: "Changed init message log level to debug"
         type: improvement
     date: ~
     version: v4.0.13
-  -
-    changes:
-      -
+  - 
+    changes: 
+      - 
         text: "Added alert on catchup failure (REQUEST_MESSAGE_COUNT_EXCEEDED)"
         type: improvement
     date: ~
     version: v4.0.12
-  -
-    changes:
-      -
+  - 
+    changes: 
+      - 
         text: "Added super admin mode (Enabled when secret key is set on Pubnub::Client init)"
         type: improvement
     date: ~
     version: v4.0.11
-  -
-    changes:
-      -
+  - 
+    changes: 
+      - 
         text: "Better single events timeout handling"
         type: improvement
-      -
+      - 
         text: "DRYed envelope formatting a bit"
         type: improvement
     date: ~
     version: v4.0.10
-  -
-    changes:
-      -
+  - 
+    changes: 
+      - 
         text: "Removed json dependency"
         type: improvement
-      -
+      - 
         text: "Updated dependecies"
         type: improvement
     date: ~
     version: v4.0.9
-  -
-    changes:
-      -
+  - 
+    changes: 
+      - 
         text: "Updated dry-validation."
         type: improvement
-      -
+      - 
         text: "Dropped support for ruby 2.0."
         type: improvement
     date: ~
@@ -188,21 +188,23 @@ changelog:
         type: improvement
     version: v3.8.0
 features: 
-  access:
+  access: 
     - ACCESS-GRANT
-    - ACCESS-SECRET-KEY-ALL-ACCESS    
-  channel-groups:
+    - ACCESS-SECRET-KEY-ALL-ACCESS
+  channel-groups: 
     - CHANNEL-GROUPS-ADD-CHANNELS
     - CHANNEL-GROUPS-REMOVE-CHANNELS
     - CHANNEL-GROUPS-REMOVE-GROUPS
     - CHANNEL-GROUPS-LIST-CHANNELS-IN-GROUP
-  presence:
+  notify: 
+    - REQUEST-MESSAGE-COUNT-EXCEEDED
+  presence: 
     - PRESENCE-HERE-NOW
     - PRESENCE-WHERE-NOW
     - PRESENCE-SET-STATE
     - PRESENCE-GET-STATE
     - PRESENCE-HEARTBEAT
-  publish:
+  publish: 
     - PUBLISH-STORE-FLAG
     - PUBLISH-RAW-JSON
     - PUBLISH-WITH-METADATA
@@ -211,14 +213,12 @@ features:
     - PUBLISH-SYNC
     - PUBLISH-ASYNC
     - PUBLISH-MESSAGE-TTL
-  storage:
+  storage: 
     - STORAGE-REVERSE
     - STORAGE-INCLUDE-TIMETOKEN
     - STORAGE-START-END
     - STORAGE-COUNT
-  time:
-    - TIME-TIME
-  subscribe:
+  subscribe: 
     - SUBSCRIBE-CHANNELS
     - SUBSCRIBE-CHANNEL-GROUPS
     - SUBSCRIBE-PRESENCE-CHANNELS
@@ -226,23 +226,24 @@ features:
     - SUBSCRIBE-WITH-TIMETOKEN
     - SUBSCRIBE-WILDCARD
     - SUBSCRIBE-FILTER-EXPRESSION
-  notify:
-    - REQUEST-MESSAGE-COUNT-EXCEEDED
-supported-platforms:
-  - 
-    version: PubNub Ruby SDK
-    platforms:
-      - FreeBSD 8-STABLE or later, amd64, 386.
-      - Linux 2.6 or later, amd64, 386.
-      - Mac OS X 10.8 or later, amd64
-      - Windows 7 or later, amd64, 386, use rubyinstaller and dev pack.
-      - Apart from the above, PubNub Ruby SDK works on mostly all platforms where the supported Ruby versions work. To use ssl connection, Ruby should be compiled with openssl support.
-    editors:
-      - ruby 2.4.0
-      - ruby 2.3.3
-      - ruby 2.2.6
-      - ruby 2.1.10
-      - jruby-9.1.8.0
+  time: 
+    - TIME-TIME
 name: ruby
 schema: 1
 scm: github.com/pubnub/ruby
+supported-platforms: 
+  - 
+    editors: 
+      - "ruby 2.4.0"
+      - "ruby 2.3.3"
+      - "ruby 2.2.6"
+      - "ruby 2.1.10"
+      - jruby-9.1.8.0
+    platforms: 
+      - "FreeBSD 8-STABLE or later, amd64, 386."
+      - "Linux 2.6 or later, amd64, 386."
+      - "Mac OS X 10.8 or later, amd64"
+      - "Windows 7 or later, amd64, 386, use rubyinstaller and dev pack."
+      - "Apart from the above, PubNub Ruby SDK works on mostly all platforms where the supported Ruby versions work. To use ssl connection, Ruby should be compiled with openssl support."
+    version: "PubNub Ruby SDK"
+version: "4.0.22"
