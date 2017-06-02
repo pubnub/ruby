@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/subscribe/sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe/a%2521%2540%2523%2524%2525%255E%2526*%2528%2529%25C5%25BB%25C3%2593%25C5%2581%255B%255D%257B%257D%2522%2522%253C%253E%253F%253F%257E%2560Z-pnpres/0?pnsdk=PubNub-Ruby/4.0.21&signature=Fk7Vsz4y3KOeWN7LjGCskmkhBaE0mvCc1ewpLv7Z%2B8E=&t=%7B%22r%22:0,%22t%22:0%7D&timestamp=1496401532&uuid=test
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.1.10 (2016-04-01))
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 02 Jun 2017 11:05:32 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 02 Jun 2017 11:05:33 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '45'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"14964015330103493","r":12},"m":[]}'
+    http_version: 
+  recorded_at: Fri, 02 Jun 2017 11:05:33 GMT
+recorded_with: VCR 3.0.1

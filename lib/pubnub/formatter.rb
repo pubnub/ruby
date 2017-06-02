@@ -92,8 +92,8 @@ module Pubnub
       end
 
       # Returns string with all channels separated by comma or single coma
-      def channels_for_url(channels)
-        channel = channels.map{ |c| encode(c) }.sort.join(',')
+      def channels_for_url(channels, should_encode = true)
+        channel = channels.map{ |c| should_encode ? encode(c) : c }.sort.join(',')
         channel = ',' if channel.empty?
         channel
       end

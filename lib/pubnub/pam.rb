@@ -17,11 +17,8 @@ module Pubnub
         @subscribe_key,
         @publish_key,
         @event,
-        variables_for_signature
+        variables_for_signature.gsub(/[!~'()*]/) { |char| '%' + char.ord.to_s(16).upcase } # Replace ! ~ * ' ( )
       ].join("\n")
-
-      # Replace ! ~ * ' ( )
-      message = message.gsub(/[!~'()*]/) { |char| '%' + char.ord.to_s(16).upcase }
 
       Base64.urlsafe_encode64(
         OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'),

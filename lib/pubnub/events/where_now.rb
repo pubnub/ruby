@@ -25,7 +25,7 @@ module Pubnub
         'sub-key',
         @subscribe_key,
         'uuid',
-        @uuid_looking_for
+        Formatter.encode(@uuid_looking_for)
       ].join('/')
     end
 
