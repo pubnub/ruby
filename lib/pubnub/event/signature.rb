@@ -13,10 +13,8 @@ module Pubnub
           @app.env[:subscribe_key],
           @app.env[:publish_key],
           path,
-          variables_for_signature
+          variables_for_signature.gsub(/[!~'()*]/) { |char| '%' + char.ord.to_s(16).upcase } # Replace ! ~ * ' ( )
         ].join("\n")
-
-        message = message.gsub(/[!~'()*]/) { |char| '%' + char.ord.to_s(16).upcase }
 
         URI.encode_www_form_component(Base64.encode64(
           OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'),

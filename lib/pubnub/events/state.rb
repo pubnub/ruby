@@ -35,7 +35,7 @@ module Pubnub
         'channel',
         Formatter.channels_for_url(@channel),
         'uuid',
-        @uuid_looking_for
+        Formatter.encode(@uuid_looking_for)
       ].join('/')
     end
 

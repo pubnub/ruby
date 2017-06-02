@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/presence/sub-key/sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe/channel/a!@%23$%25%5E&*()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E%3F%3F~%60Z?pnsdk=PubNub-Ruby/4.0.21&signature=TCAR%2BkkCtGwRwBLF6k7jFjXnBBcnFHqo4GQDX7MLVNQ=&timestamp=1496401140&uuid=test
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.1.10 (2016-04-01))
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 02 Jun 2017 10:59:00 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 02 Jun 2017 10:59:00 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '84'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub Presence
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "message": "OK", "occupancy": 0, "uuids": [], "service":
+        "Presence"}'
+    http_version: 
+  recorded_at: Fri, 02 Jun 2017 10:59:00 GMT
+recorded_with: VCR 3.0.1
