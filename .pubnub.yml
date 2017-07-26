@@ -1,5 +1,12 @@
 --- 
-changelog: 
+changelog:
+  -
+    changes:
+      -
+        text: "Fixed HereNow envelope generation"
+        type: bug
+    date: 26-07-2017
+    version: "4.0.23"
   - 
     changes: 
       - 
@@ -246,4 +253,4 @@ supported-platforms:
       - "Windows 7 or later, amd64, 386, use rubyinstaller and dev pack."
       - "Apart from the above, PubNub Ruby SDK works on mostly all platforms where the supported Ruby versions work. To use ssl connection, Ruby should be compiled with openssl support."
     version: "PubNub Ruby SDK"
-version: "4.0.22"
+version: "4.0.23"
