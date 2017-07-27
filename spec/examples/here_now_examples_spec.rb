@@ -32,7 +32,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -50,7 +50,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -68,7 +68,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -87,7 +87,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -106,7 +106,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -125,7 +125,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -143,7 +143,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -161,7 +161,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -179,7 +179,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -198,7 +198,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -217,7 +217,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -236,7 +236,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -365,7 +365,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -383,7 +383,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -401,7 +401,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -420,7 +420,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -439,7 +439,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -458,7 +458,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -476,7 +476,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -494,7 +494,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -512,7 +512,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -531,7 +531,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -550,7 +550,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end
@@ -569,7 +569,7 @@ expect(envelope.status[:config]).to eq({:tls=>false, :uuid=>"ruby-test-uuid-clie
 
 expect(envelope.result[:code]).to eq(200)
 expect(envelope.result[:operation]).to eq(:here_now)
-expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>nil, :total_channels=>nil, :channels=>nil})
+expect(envelope.result[:data]).to eq({:uuids=>nil, :occupancy=>nil, :total_occupancy=>1, :total_channels=>1, :channels=>{"demo"=>{"uuids"=>["ruby-test-uuid-client-one"], "occupancy"=>1}}})
 
 end
 end

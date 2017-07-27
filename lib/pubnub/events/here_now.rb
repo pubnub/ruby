@@ -67,9 +67,9 @@ module Pubnub
           data: {
             uuids: parsed_response['uuids'],
             occupancy: parsed_response['occupancy'],
-            total_occupancy: parsed_response['total_occupancy'],
-            total_channels: parsed_response['total_channels'],
-            channels: parsed_response['channels']
+            total_occupancy: (parsed_response['payload'] ? parsed_response['payload']['total_occupancy'] : nil),
+            total_channels: (parsed_response['payload'] ? parsed_response['payload']['total_channels'] : nil),
+            channels: (parsed_response['payload'] ? parsed_response['payload']['channels'] : nil)
           }
         },
 

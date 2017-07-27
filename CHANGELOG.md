@@ -1,3 +1,6 @@
+##### 4.0.23
+* Fixed HereNow envelope generation
+
 ##### 4.0.22
 * Fixed signature generation and channel name escaping
 
