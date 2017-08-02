@@ -46,6 +46,7 @@ require 'pubnub/validators/state'
 require 'pubnub/validators/subscribe'
 require 'pubnub/validators/time'
 require 'pubnub/validators/where_now'
+require 'pubnub/validators/delete'
 
 require 'pubnub/events/audit'
 require 'pubnub/events/channel_registration'
@@ -62,6 +63,7 @@ require 'pubnub/events/state'
 require 'pubnub/events/subscribe'
 require 'pubnub/events/time'
 require 'pubnub/events/where_now'
+require 'pubnub/events/delete'
 
 # Toplevel Pubnub module.
 module Pubnub
