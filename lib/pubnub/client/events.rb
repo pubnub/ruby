@@ -4,7 +4,7 @@ module Pubnub
   class Client
     # Module that holds generator for all events
     module Events
-      EVENTS = %w(publish subscribe presence leave history here_now audit grant delete
+      EVENTS = %w(publish subscribe presence leave history here_now audit grant delete_messages
                   revoke time heartbeat where_now set_state state channel_registration)
 
       EVENTS.each do |event_name|

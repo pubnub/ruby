@@ -1,7 +1,7 @@
 # Toplevel Pubnub module.
 module Pubnub
   # Holds delete functionality
-  class Delete < SingleEvent
+  class DeleteMessages < SingleEvent
     include Celluloid
     include Pubnub::Validator::Delete
 
@@ -20,7 +20,7 @@ module Pubnub
       {
         start: @start,
         end: @end
-      }.merge(super(signature))
+      }.select { |_, value| !value.blank? }.merge(super(signature))
     end
 
     def path

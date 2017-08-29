@@ -63,7 +63,7 @@ require 'pubnub/events/state'
 require 'pubnub/events/subscribe'
 require 'pubnub/events/time'
 require 'pubnub/events/where_now'
-require 'pubnub/events/delete'
+require 'pubnub/events/delete_messages'
 
 # Toplevel Pubnub module.
 module Pubnub
