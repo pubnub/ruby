@@ -1,3 +1,7 @@
+##### 4.0.24
+* Added #delete_messages method
+* Improved timeout error handling (thanks @f1sherman)
+
 ##### 4.0.23
 * Fixed HereNow envelope generation
 

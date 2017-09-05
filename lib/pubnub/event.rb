@@ -49,7 +49,9 @@ module Pubnub
       sender = request_dispatcher
       Pubnub.logger.debug('Pubnub::Event') { '#send_request got sender' }
 
-      if compressed_body.empty?
+      if @event == Pubnub::Constants::OPERATION_DELETE
+        sender.delete(uri.to_s)
+      elsif compressed_body.empty?
         sender.get(uri.to_s)
       else
         sender.post(uri.to_s, body: compressed_body)
