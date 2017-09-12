@@ -1,0 +1,25 @@
+source 'https://rubygems.org'
+
+gemspec path: '../'
+
+gem 'celluloid', '>= 0.17', '< 0.18'
+
+# dry-validation depends on dry-types that is not compatible with ruby
+# 2.1.0 from 0.11.0.
+gem 'dry-validation', '>= 0.10', '< 0.11'
+
+group :test do
+  gem 'rubocop'
+  gem 'simplecov', '>= 0.12', require: false
+  gem 'codacy-coverage', require: false
+  gem 'rspec'
+  gem 'rspec-wait'
+  gem 'vcr'
+  gem 'rr'
+  gem 'webmock'
+end
+
+group :development, :test do
+  gem 'pry'
+  gem 'awesome_print'
+end

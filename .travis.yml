@@ -5,18 +5,40 @@ addons:
     repo_token: 48739096f72763cbed9bd407efd2ed33151ce5663fb3181455128f06d6123ef3
 
 before_install:
+  # See https://github.com/travis-ci/travis-ci/issues/5861
+  - gem install bundler
   - gem update bundler
 
 bundler_args: --without development
 
 script: bundle exec rspec
 
+gemfile:
+  - gemfiles/celluloid_017.gemfile
+  - gemfiles/celluloid_018.gemfile
+  - gemfiles/celluloid_master.gemfile
+
+rvm:
+  - 2.4.1
+  - 2.3.4
+  - 2.2.7
+  - 2.1.10
+
 matrix:
-  include:
-    - rvm: 2.4.1
-    - rvm: 2.3.4
-    - rvm: 2.2.7
+  exclude:
     - rvm: 2.1.10
+      gemfile: gemfiles/celluloid_master.gemfile
+
+  include:
     - rvm: jruby-9.1.12.0
       env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
       jdk: oraclejdk7
+      gemfile: gemfiles/celluloid_017.gemfile
+    - rvm: jruby-9.1.12.0
+      env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
+      jdk: oraclejdk7
+      gemfile: gemfiles/celluloid_018.gemfile
+    - rvm: jruby-9.1.12.0
+      env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
+      jdk: oraclejdk7
+      gemfile: gemfiles/celluloid_master.gemfile
