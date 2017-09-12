@@ -7,6 +7,7 @@ module Pubnub
 
     def initialize(options, app)
       @event = :delete
+      @telemetry_name = :l_hist
       super
     end
 

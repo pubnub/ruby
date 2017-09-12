@@ -2,9 +2,15 @@ require 'spec_helper'
 
 describe Pubnub do
 
+  around :each do |example|
+    Celluloid.boot
+    example.run
+    Celluloid.shutdown
+  end
+
   context 'version' do
     it 'has VERSION' do
-      expect(Pubnub::VERSION).to  match(/\d+\.\d+\..+/)
+      expect(Pubnub::VERSION).to match(/\d+\.\d+\..+/)
     end
   end
 

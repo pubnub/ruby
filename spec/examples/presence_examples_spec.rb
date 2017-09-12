@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Pubnub::Presence do
   around :each do |example|
+    Celluloid.boot
+
     @fired = false
 
     @callback = ->(_envelope) do
@@ -16,7 +18,6 @@ describe Pubnub::Presence do
       reconnect_interval: 0
     )
 
-    Celluloid.boot
     example.run
     Celluloid.shutdown
   end
@@ -876,4 +877,3 @@ end
 
 
 end
-

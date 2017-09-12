@@ -6,6 +6,7 @@ module Pubnub
       super
 
       @auth_key = options[:auth_key]
+      @telemetry_name = :l_pam
 
       # @channel += format_channels(options[:presence]).map do |c|
       #   c + '-pnpres'

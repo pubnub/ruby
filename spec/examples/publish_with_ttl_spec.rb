@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Pubnub::Publish do
   around :each do |example|
+    Celluloid.boot
+
     @pubnub = Pubnub::Client.new(
         publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
         subscribe_key: 'sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f',
@@ -9,7 +11,6 @@ describe Pubnub::Publish do
         auth_key: 'ruby-test-auth-client-one'
     )
 
-    Celluloid.boot
     example.run
     Celluloid.shutdown
   end

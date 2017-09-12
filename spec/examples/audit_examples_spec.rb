@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Pubnub::Audit do
   around :each do |example|
+    Celluloid.boot
+
     @fired = false
 
     @callback = ->(_envelope) do
@@ -16,8 +18,8 @@ describe Pubnub::Audit do
       auth_key: 'ruby-test-auth-client-one'
     )
 
-    Celluloid.boot
     example.run
+    
     Celluloid.shutdown
   end
 

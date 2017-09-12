@@ -7,6 +7,7 @@ module Pubnub
     include Pubnub::Formatter
 
     def initialize(options, app)
+      @telemetry_name = :l_pres
       @event = :heartbeat
       super
     end

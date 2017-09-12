@@ -20,6 +20,7 @@ require 'pubnub/subscribe_event'
 require 'pubnub/pam'
 require 'pubnub/heart'
 require 'pubnub/subscriber'
+require 'pubnub/telemetry'
 
 require 'pubnub/envelope'
 require 'pubnub/error_envelope'
@@ -75,7 +76,7 @@ module Pubnub
     include Helpers
     include GettersSetters
 
-    attr_reader :env, :subscriber, :heart
+    attr_reader :env, :subscriber, :telemetry
 
     VERSION = Pubnub::VERSION
 
@@ -162,6 +163,7 @@ module Pubnub
       clean_env
       prepare_env
       validate! @env
+      @telemetry = Telemetry.new
       Pubnub.logger.debug('Pubnub::Client') do
         "Created new Pubnub::Client instance. Version: #{Pubnub::VERSION}"
       end
@@ -298,6 +300,14 @@ module Pubnub
 
     def generate_ortt
       (::Time.now.to_f * 10_000_000).to_i
+    end
+
+    def record_telemetry(telemetry_type, time_start, time_end)
+      @telemetry.record_request(telemetry_type, time_start, time_end)
+    end
+
+    def telemetry_for(event)
+      @telemetry.fetch_average(event)
     end
 
     private
