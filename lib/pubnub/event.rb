@@ -66,7 +66,10 @@ module Pubnub
       error
     end
 
-    def uri
+    def uri(memo = true)
+      return @uri = uri(false) if memo
+      return @uri if @uri
+
       sa_signature = super_admin_signature unless parameters.include?(:signature)
       telemetry = @app.telemetry_for(@telemetry_name)
 
