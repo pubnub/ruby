@@ -67,8 +67,10 @@ module Pubnub
     end
 
     def uri(memo = true)
-      return @uri = uri(false) if memo
-      return @uri if @uri
+      unless self.is_a? SubscribeEvent
+        return @uri = uri(false) if memo
+        return @uri if @uri
+      end
 
       sa_signature = super_admin_signature unless parameters.include?(:signature)
       telemetry = @app.telemetry_for(@telemetry_name)
