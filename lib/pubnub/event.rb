@@ -49,7 +49,7 @@ module Pubnub
       sender = request_dispatcher
       Pubnub.logger.debug('Pubnub::Event') { '#send_request got sender' }
 
-      telemetry_time_start = ::Time.now.to_f*100
+      telemetry_time_start = ::Time.now.to_f
       if @event == Pubnub::Constants::OPERATION_DELETE
         response = sender.delete(uri.to_s)
       elsif compressed_body.empty?
@@ -57,7 +57,8 @@ module Pubnub
       else
         response = sender.post(uri.to_s, body: compressed_body)
       end
-      @app.record_telemetry(@telemetry_name, telemetry_time_start, ::Time.now.to_f*100)
+
+      @app.record_telemetry(@telemetry_name, telemetry_time_start, ::Time.now.to_f)
 
       return response
 
@@ -74,7 +75,7 @@ module Pubnub
       uri += path
       uri += '?' + Formatter.params_hash_to_url_params(parameters)
       uri += "&signature=#{sa_signature}" if sa_signature
-      uri += "&#{@telemetry_name}=#{telemetry}" if telemetry
+      uri += "&#{@telemetry_name}=#{telemetry.round(3)}" if telemetry
       Pubnub.logger.debug('Pubnub::Event') { "Requested URI: #{uri}" }
       URI uri
     end
