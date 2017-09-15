@@ -9,6 +9,7 @@ module Pubnub
 
     def initialize(options, app)
       @event = :publish
+      @telemetry_name = :l_pub
       super
       @sequence_number = sequence_number!
       @origination_time_token = @app.generate_ortt

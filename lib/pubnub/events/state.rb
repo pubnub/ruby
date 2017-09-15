@@ -7,6 +7,7 @@ module Pubnub
 
     def initialize(options, app)
       @event = :state
+      @telemetry_name = :l_pres
       @uuid_looking_for = options[:uuid] || options['uuid']
       super
       @uuid = app.uuid

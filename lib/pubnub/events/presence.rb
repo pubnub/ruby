@@ -8,6 +8,7 @@ module Pubnub
 
     def initialize(options, app)
       @event = :presence
+      @telemetry_name = :l_pres
       super
     end
 

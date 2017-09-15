@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Pubnub::Heartbeat do
   around :each do |example|
+    Celluloid.boot
+
     @fired = false
 
     @callback = ->(_envelope) do
@@ -15,7 +17,6 @@ describe Pubnub::Heartbeat do
       auth_key: 'ruby-test-auth-client-one'
     )
 
-    Celluloid.boot
     example.run
     Celluloid.shutdown
   end
@@ -813,4 +814,3 @@ end
 
 
 end
-

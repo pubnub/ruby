@@ -3,6 +3,13 @@ changelog:
   -
     changes:
       -
+        text: "Added telemetry"
+        type: feature
+    date: 12-09-2017
+    version: "4.0.25"
+  -
+    changes:
+      -
         text: "Added #delete_messages method"
         type: feature
       -

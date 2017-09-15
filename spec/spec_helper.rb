@@ -75,4 +75,5 @@ VCR.configure do |c|
     match_requests_on: [:method,
                         VCR.request_matchers.uri_without_param(:pnsdk, :uuid, :ortt, :seqn, :t)]
   }
+  c.debug_logger = File.open('vcr.log', 'w')
 end

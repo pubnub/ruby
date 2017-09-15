@@ -5,6 +5,7 @@ addons:
     repo_token: 48739096f72763cbed9bd407efd2ed33151ce5663fb3181455128f06d6123ef3
 
 before_install:
+  - gem install bundler
   - gem update bundler
 
 bundler_args: --without development
@@ -16,7 +17,6 @@ matrix:
     - rvm: 2.4.1
     - rvm: 2.3.4
     - rvm: 2.2.7
-    - rvm: 2.1.10
-    - rvm: jruby-9.1.12.0
+    - rvm: jruby-9.1.13.0
       env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
-      jdk: oraclejdk7
+      jdk: oraclejdk8

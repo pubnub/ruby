@@ -1,3 +1,6 @@
+##### 4.0.25
+* Added Telemetry
+
 ##### 4.0.24
 * Added #delete_messages method
 * Improved timeout error handling (thanks @f1sherman)
