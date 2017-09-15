@@ -27,13 +27,13 @@ matrix:
   include:
     - rvm: jruby-9.1.13.0
       env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
-      jdk: oraclejdk7
+      jdk: oraclejdk8
       gemfile: gemfiles/celluloid_017.gemfile
     - rvm: jruby-9.1.13.0
       env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
-      jdk: oraclejdk7
+      jdk: oraclejdk8
       gemfile: gemfiles/celluloid_018.gemfile
     - rvm: jruby-9.1.13.0
       env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
-      jdk: oraclejdk7
+      jdk: oraclejdk8
       gemfile: gemfiles/celluloid_master.gemfile
