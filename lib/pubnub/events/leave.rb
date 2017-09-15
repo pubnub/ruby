@@ -7,6 +7,7 @@ module Pubnub
 
     def initialize(options, app)
       @event = :leave
+      @telemetry_name = :l_pub
       super
     end
 

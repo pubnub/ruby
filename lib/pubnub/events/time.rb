@@ -7,6 +7,7 @@ module Pubnub
 
     def initialize(options, app)
       @event = :time
+      @telemetry_name = :l_time
       super
     end
 

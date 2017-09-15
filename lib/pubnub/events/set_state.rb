@@ -7,6 +7,7 @@ module Pubnub
 
     def initialize(options, app)
       @event = :set_state
+      @telemetry_name = :l_pres
       super
       app.apply_state(self)
     end

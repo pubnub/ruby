@@ -22,23 +22,18 @@ rvm:
   - 2.4.1
   - 2.3.4
   - 2.2.7
-  - 2.1.10
 
 matrix:
-  exclude:
-    - rvm: 2.1.10
-      gemfile: gemfiles/celluloid_master.gemfile
-
   include:
-    - rvm: jruby-9.1.12.0
+    - rvm: jruby-9.1.13.0
       env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
-      jdk: oraclejdk8
+      jdk: oraclejdk7
       gemfile: gemfiles/celluloid_017.gemfile
-    - rvm: jruby-9.1.12.0
+    - rvm: jruby-9.1.13.0
       env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
-      jdk: oraclejdk8
+      jdk: oraclejdk7
       gemfile: gemfiles/celluloid_018.gemfile
-    - rvm: jruby-9.1.12.0
+    - rvm: jruby-9.1.13.0
       env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
-      jdk: oraclejdk8
+      jdk: oraclejdk7
       gemfile: gemfiles/celluloid_master.gemfile

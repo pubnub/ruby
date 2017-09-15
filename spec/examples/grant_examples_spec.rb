@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Pubnub::Grant do
   around :each do |example|
+    Celluloid.boot
+
     @fired = false
 
     @callback = ->(_envelope) do
@@ -16,7 +18,6 @@ describe Pubnub::Grant do
       auth_key: 'ruby-test-auth-client-one'
     )
 
-    Celluloid.boot
     example.run
     Celluloid.shutdown
   end
@@ -39874,4 +39875,3 @@ end
 
 
 end
-

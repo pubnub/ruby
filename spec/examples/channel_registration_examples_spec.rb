@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Pubnub::ChannelRegistration do
   around :each do |example|
+    Celluloid.boot
+
     @fired = false
 
     @callback = ->(_envelope) do
@@ -15,8 +17,8 @@ describe Pubnub::ChannelRegistration do
       auth_key: 'ruby-test-auth-client-one'
     )
 
-    Celluloid.boot
     example.run
+
     Celluloid.shutdown
   end
 
