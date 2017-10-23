@@ -58,10 +58,13 @@ module Pubnub
         response = sender.post(uri.to_s, body: compressed_body)
       end
 
-      @app.record_telemetry(@telemetry_name, telemetry_time_start, ::Time.now.to_f)
+      begin
+        @app.record_telemetry(@telemetry_name, telemetry_time_start, ::Time.now.to_f)
+      rescue => error
+        Pubnub.logger.warn('Pubnub::Event') { "Couldn't record telemetry because of #{error}\n#{error.backtrace.join("\n")}" }
+      end
 
       return response
-
     rescue => error
       error
     end
