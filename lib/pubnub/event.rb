@@ -66,6 +66,7 @@ module Pubnub
 
       return response
     rescue => error
+      Pubnub.logger.error('Pubnub::Event'){ error }
       error
     end
 
