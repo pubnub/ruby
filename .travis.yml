@@ -1,6 +1,7 @@
 sudo: false
 language: ruby
 addons:
+  srcclr: true
   code_climate:
     repo_token: 48739096f72763cbed9bd407efd2ed33151ce5663fb3181455128f06d6123ef3
 
