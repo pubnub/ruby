@@ -19,10 +19,12 @@ module Pubnub
 
     def fetch_average(telemetry_type)
       begin
+        Pubnub.logger.debug('Pubnub::Telemetry'){ "Fetching telemetry for #{telemetry_type}" }
         @recorded_history[telemetry_type] ||= []
         return false if !@good_to_go[telemetry_type] || @recorded_history[telemetry_type].size == 0
         average = @recorded_history[telemetry_type].reduce(0, :+) / @recorded_history[telemetry_type].size
         clear!(telemetry_type)
+        Pubnub.logger.debug('Pubnub::Telemetry'){ "Current average: #{average}" }
         average
       rescue => error
         Pubnub.logger.error('Pubnub::Telemetry'){ "Failed to fetch average #{error}\n#{error.backtrace.join("\n")}" }
