@@ -9,7 +9,7 @@ module Pubnub
         arr[3] = (arr[3] & 0x3fff) | 0x8000
         format('%08x-%04x-%04x-%04x-%04x%08x', *arr)
       end
-      
+
       def random_bytes_array
         Random.new.bytes(16).unpack('NnnnnN')
       end
