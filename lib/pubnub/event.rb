@@ -28,6 +28,8 @@ module Pubnub
       format_group
       set_timestamp
       validate!
+      telemetry = @app.telemetry_for(@telemetry_name)
+      @current_telemetry = telemetry ? telemetry.round(3) : nil
       Pubnub.logger.debug('Pubnub::Event') { "Initialized #{self.class}" }
     end
 
@@ -77,14 +79,12 @@ module Pubnub
       end
 
       sa_signature = super_admin_signature unless parameters.include?(:signature)
-      telemetry = @app.telemetry_for(@telemetry_name)
 
       uri = @ssl ? 'https://' : 'http://'
       uri += @origin
       uri += path
       uri += '?' + Formatter.params_hash_to_url_params(parameters)
       uri += "&signature=#{sa_signature}" if sa_signature
-      uri += "&#{@telemetry_name}=#{telemetry.round(3)}" if telemetry
       Pubnub.logger.debug('Pubnub::Event') { "Requested URI: #{uri}" }
       URI uri
     end
@@ -118,7 +118,8 @@ module Pubnub
 
       empty_if_blank = {
         auth: @auth_key,
-        uuid: @app.env[:uuid]
+        uuid: @app.env[:uuid],
+        @telemetry_name => @current_telemetry
       }
 
       required.merge!(timestamp: @timestamp) if @app.env[:secret_key] && ![:grant, :revoke, :audit].include?(@event)
