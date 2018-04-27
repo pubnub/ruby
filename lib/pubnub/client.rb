@@ -328,15 +328,19 @@ module Pubnub
 
       case event_type
       when :subscribe_event
-        hc.receive_timeout = 310
+        hc.connect_timeout = @env[:s_open_timeout]
+        hc.send_timeout = @env[:s_send_timeout]
+        hc.receive_timeout = @env[:s_read_timeout]
         unless @env[:disable_keepalive] || @env[:disable_subscribe_keepalive]
-          hc.keep_alive_timeout = 310
+          hc.keep_alive_timeout = @env[:idle_timeout]
           hc.tcp_keepalive = true
         end
       when :single_event
-        hc.receive_timeout = 5
+        hc.connect_timeout = @env[:open_timeout]
+        hc.send_timeout = @env[:send_timeout]
+        hc.receive_timeout = @env[:read_timeout]
         unless @env[:disable_keepalive] || @env[:disable_non_subscribe_keepalive]
-          hc.keep_alive_timeout = 310
+          hc.keep_alive_timeout = @env[:idle_timeout]
           hc.tcp_keepalive = true
         end
       end
