@@ -167,6 +167,8 @@ module Pubnub
       Pubnub.logger.debug('Pubnub::Client') do
         "Created new Pubnub::Client instance. Version: #{Pubnub::VERSION}"
       end
+
+      Celluloid.boot if @env[:boot_celluloid] && !Celluloid.running?
     end
 
     def add_listener(options)

@@ -5,8 +5,6 @@ require 'open-uri'
 require 'openssl'
 require 'celluloid/current'
 
-Celluloid.boot
-
 require 'timers'
 require 'httpclient'
 require 'logger'
