@@ -163,12 +163,12 @@ module Pubnub
       clean_env
       prepare_env
       validate! @env
-      @telemetry = Telemetry.new
       Pubnub.logger.debug('Pubnub::Client') do
         "Created new Pubnub::Client instance. Version: #{Pubnub::VERSION}"
       end
 
       Celluloid.boot if @env[:boot_celluloid] && celluloid_not_running?
+      @telemetry = Telemetry.new unless celluloid_not_running?
     end
 
     def add_listener(options)
@@ -305,10 +305,14 @@ module Pubnub
     end
 
     def record_telemetry(telemetry_type, time_start, time_end)
+      return unless @telemetry
+
       @telemetry.record_request(telemetry_type, time_start, time_end)
     end
 
     def telemetry_for(event)
+      return nil unless @telemetry
+
       @telemetry.fetch_average(event)
     end
 
