@@ -168,7 +168,7 @@ module Pubnub
         "Created new Pubnub::Client instance. Version: #{Pubnub::VERSION}"
       end
 
-      Celluloid.boot if @env[:boot_celluloid] && !Celluloid.running?
+      Celluloid.boot if @env[:boot_celluloid] && celluloid_not_running?
     end
 
     def add_listener(options)
@@ -386,6 +386,12 @@ module Pubnub
         symbolized_options.merge!(k.to_sym => options[k])
       end
       symbolized_options
+    end
+
+    def celluloid_not_running?
+      !Celluloid.running?
+    rescue Celluloid::Error
+      true
     end
   end
 end
