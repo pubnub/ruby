@@ -163,10 +163,12 @@ module Pubnub
       clean_env
       prepare_env
       validate! @env
-      @telemetry = Telemetry.new
       Pubnub.logger.debug('Pubnub::Client') do
         "Created new Pubnub::Client instance. Version: #{Pubnub::VERSION}"
       end
+
+      Celluloid.boot if @env[:boot_celluloid] && celluloid_not_running?
+      @telemetry = Telemetry.new unless celluloid_not_running?
     end
 
     def add_listener(options)
@@ -303,10 +305,14 @@ module Pubnub
     end
 
     def record_telemetry(telemetry_type, time_start, time_end)
+      return unless @telemetry
+
       @telemetry.record_request(telemetry_type, time_start, time_end)
     end
 
     def telemetry_for(event)
+      return nil unless @telemetry
+
       @telemetry.fetch_average(event)
     end
 
@@ -372,7 +378,7 @@ module Pubnub
     def assign_defaults
       @env[:origin] = @env[:origins_pool].first if @env[:origins_pool]
       default_values.each do |k, v|
-        @env[k] = v unless @env[k]
+        @env[k] = v unless @env.key?(k)
       end
       @env[:timetoken] = 0
       @env[:sequence_number_for_publish] = 0
@@ -384,6 +390,12 @@ module Pubnub
         symbolized_options.merge!(k.to_sym => options[k])
       end
       symbolized_options
+    end
+
+    def celluloid_not_running?
+      !Celluloid.running?
+    rescue Celluloid::Error
+      true
     end
   end
 end

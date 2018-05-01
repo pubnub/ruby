@@ -34,7 +34,7 @@ module Pubnub
       end
 
       def clean_env
-        @env.delete_if { |_, v| v.blank? } # nillify if blank
+        @env.delete_if { |_, v| v.nil? || v.is_a?(String) && v.blank? } # nillify if blank
       end
     end
   end
