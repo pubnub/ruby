@@ -378,7 +378,7 @@ module Pubnub
     def assign_defaults
       @env[:origin] = @env[:origins_pool].first if @env[:origins_pool]
       default_values.each do |k, v|
-        @env[k] = v unless @env[k]
+        @env[k] = v unless @env.key?(k)
       end
       @env[:timetoken] = 0
       @env[:sequence_number_for_publish] = 0
