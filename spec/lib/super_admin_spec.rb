@@ -3,9 +3,7 @@ require 'spec_helper'
 describe 'Super admin mode' do
 
   around :each do |example|
-    Celluloid.boot
     example.run
-    Celluloid.shutdown
   end
 
   before(:each) do

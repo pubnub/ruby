@@ -3,9 +3,7 @@ require 'spec_helper'
 describe 'Using multiple cipher keys' do
 
   around :each do |example|
-    Celluloid.boot
     example.run
-    Celluloid.shutdown
   end
 
   it 'works with publish' do

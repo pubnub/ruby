@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Pubnub::ChannelRegistration do
   around :each do |example|
-    Celluloid.boot
 
     @fired = false
 
@@ -19,7 +18,6 @@ describe Pubnub::ChannelRegistration do
 
     example.run
 
-    Celluloid.shutdown
   end
 
   it '__action___add___channel___demo___channel_group___demo___http_sync__true___callback__nil_' do

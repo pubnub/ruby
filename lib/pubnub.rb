@@ -13,6 +13,9 @@ require 'logger'
 require 'dry-validation'
 require 'cgi'
 
+require 'concurrent'
+require 'concurrent-edge'
+
 require 'pubnub/version'
 require 'pubnub/client'
 

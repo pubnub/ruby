@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe Pubnub::ChannelRegistration do
   around :each do |example|
-    Celluloid.boot
     example.run
-    Celluloid.shutdown
   end
 
   context 'whatever' do

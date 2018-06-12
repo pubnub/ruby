@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Pubnub::Audit do
   around :each do |example|
-    Celluloid.boot
 
     @fired = false
 
@@ -20,7 +19,6 @@ describe Pubnub::Audit do
 
     example.run
     
-    Celluloid.shutdown
   end
 
   it '__auth_key___key____channel___demo___channel_group__nil___http_sync__true___callback__nil_' do

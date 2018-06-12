@@ -3,9 +3,7 @@ require 'spec_helper'
 describe 'Status request message count exceeded' do
 
   around :each do |example|
-    Celluloid.boot
     example.run
-    Celluloid.shutdown
   end
 
   before(:each) do

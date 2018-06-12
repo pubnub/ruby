@@ -40,7 +40,7 @@ module Pubnub
       end
 
       def async_paged_history(options)
-        Celluloid::Future.new do
+        Concurrent::Future.new do
           sync_options = options.dup
           sync_options[:http_sync] = true
           paged_history(sync_options, &block)

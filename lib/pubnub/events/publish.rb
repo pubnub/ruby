@@ -2,7 +2,7 @@
 module Pubnub
   # Holds publish functionality
   class Publish < SingleEvent
-    include Celluloid
+    include Concurrent::Async
     include Pubnub::Validator::Publish
 
     attr_reader :store

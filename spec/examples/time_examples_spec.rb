@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Pubnub::Time do
   around :each do |example|
-    Celluloid.boot
 
     @fired = false
 
@@ -18,7 +17,6 @@ describe Pubnub::Time do
     )
 
     example.run
-    Celluloid.shutdown
   end
 
   it '__http_sync__true___callback__nil_' do

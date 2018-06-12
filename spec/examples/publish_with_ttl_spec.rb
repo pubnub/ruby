@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Pubnub::Publish do
   around :each do |example|
-    Celluloid.boot
 
     @pubnub = Pubnub::Client.new(
         publish_key: 'pub-c-b42cec2f-f468-4784-8833-dd2b074538c4',
@@ -12,7 +11,6 @@ describe Pubnub::Publish do
     )
 
     example.run
-    Celluloid.shutdown
   end
 
   context 'with specified ttl parameter' do

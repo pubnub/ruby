@@ -253,7 +253,7 @@ module Pubnub
 
     def build_subscription
       @current_subscription = Subscribe.new({ ssl: @ssl }, @app)
-      @current_subscription_id = @current_subscription.bare_object.object_id
+      @current_subscription_id = @current_subscription.object_id
       @current_subscription.build(callbacks: @callbacks,
                                   channels: @channels,
                                   groups: @groups,
@@ -263,7 +263,7 @@ module Pubnub
     def remove_current_subscription
       return if @current_subscription_id.nil?
       Pubnub.logger.debug('Pubnub::Subscriber') { 'Removing current subscription' }
-      @current_subscription.async.terminate
+      @current_subscription << :terminate!
       @current_subscription    = nil
       @current_subscription_id = nil
       @app.timetoken = 0

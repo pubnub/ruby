@@ -39,5 +39,31 @@ module Pubnub
         @event = event
       end
     end
+
+    class NonBlocking < InternalMessage
+      include Concurrent::Chaneel
+
+      messages = Channel.new # unbuffered
+      signals = Channel.new # unbuffered
+
+      Channel.select do |s|
+        s.take(messages) { |msg| print "received message #{msg}\n" }
+        s.default { print "no message received\n" }
+      end
+
+      message = 'hi'
+      Channel.select do |s|
+        s.put(messages, message) { |msg| print "sent message #{msg}\n" }
+        s.default { print "no message sent\n" }
+      end
+
+      Channel.select do |s|
+        s.case(messages, :~) { |msg| print "received message #{msg}\n" }
+        s.case(signals,  :~) { |sig| print "received signal #{sig}\n" }
+        s.default { print "no activity\n" }
+      end
+
+    end
+
   end
 end

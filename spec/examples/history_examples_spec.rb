@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Pubnub::History do
   around :each do |example|
-    Celluloid.boot
 
     @fired = false
 
@@ -18,7 +17,6 @@ describe Pubnub::History do
     )
 
     example.run
-    Celluloid.shutdown
   end
 
   it '__channel___demo___count__10___start__nil___end__nil___reverse__true___http_sync__true___callback__nil_' do

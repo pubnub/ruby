@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Pubnub::State do
   around :each do |example|
-    Celluloid.boot
 
     @fired = false
 
@@ -18,7 +17,6 @@ describe Pubnub::State do
     )
 
     example.run
-    Celluloid.shutdown
   end
 
   it '__channel___demo___uuid___ruby-test-uuid____http_sync__true___callback__nil_' do

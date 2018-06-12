@@ -8,6 +8,8 @@ require 'celluloid/test'
 require 'pry'
 require 'rspec/wait'
 require 'spec_expectations'
+require 'concurrent'
+require 'concurrent-edge'
 
 require 'simplecov'
 SimpleCov.start do
@@ -23,6 +25,7 @@ end
 
 Celluloid.task_class = Celluloid::Task::Threaded
 
+# This should probably be removed in a future version
 module CelluloidHotFix
   # We can't shutdown the actor if there is no actor running.
   #
@@ -75,7 +78,7 @@ RSpec.configure do |config|
 
   logfile = File.open(File.expand_path('../../test.log', __FILE__), 'a')
   logfile.sync = true
-  Celluloid.logger = Logger.new(logfile)
+  Concurrent.global_logger = Logger.new(logfile)
 
   # config.around(:each) do |example|
   #   if example.metadata[:disable_vcr]

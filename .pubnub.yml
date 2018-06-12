@@ -1,6 +1,13 @@
 ---
-version: "4.0.27"
+version: "4.0.28"
 changelog:
+  -
+    changes:
+      -
+        text: "Added Concurrent-ruby gem."
+        type: bugfix
+    date: 14-05-2017
+    version: "4.0.28"
   -
     changes:
       -

@@ -20,7 +20,7 @@ module Pubnub
             @subscriber.add_subscription(event)
             @subscriber.reset
           else
-            event.future.fire
+            Concurrent::Future.execute { event.fire }
           end
         end
       end

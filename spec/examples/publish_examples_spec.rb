@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Pubnub::Publish do
   around :each do |example|
-    Celluloid.boot
 
     @fired = false
 
@@ -18,7 +17,6 @@ describe Pubnub::Publish do
     )
 
     example.run
-    Celluloid.shutdown
   end
 
   it '__channel___demo___message__100___store__true___compressed__true___replicate__true___http_sync__true___callback__nil_' do

@@ -2,7 +2,7 @@
 module Pubnub
   # Holds time functionality
   class Time < SingleEvent
-    include Celluloid
+    include Concurrent::Async
     include Pubnub::Validator::Time
 
     def initialize(options, app)
