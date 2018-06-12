@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Pubnub::WhereNow do
   around :each do |example|
-    Celluloid.boot
 
     @fired = false
 
@@ -18,7 +17,6 @@ describe Pubnub::WhereNow do
     )
 
     example.run
-    Celluloid.shutdown
   end
 
   it '__uuid___ruby-test-uuid____http_sync__true___callback__nil_' do

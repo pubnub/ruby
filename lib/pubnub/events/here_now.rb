@@ -2,7 +2,7 @@
 module Pubnub
   # Holds here_now functionality
   class HereNow < SingleEvent
-    include Celluloid
+    include Concurrent::Async
     include Pubnub::Validator::HereNow
 
     def initialize(options, app)

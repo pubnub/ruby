@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Pubnub::Heartbeat do
   around :each do |example|
-    Celluloid.boot
 
     @fired = false
 
@@ -18,7 +17,6 @@ describe Pubnub::Heartbeat do
     )
 
     example.run
-    Celluloid.shutdown
   end
 
   it '__channel___demo___channel_group___demo___http_sync__true___callback__nil_' do

@@ -3,9 +3,7 @@ require 'spec_helper'
 describe 'Signatures' do
 
   around :each do |example|
-    Celluloid.boot
     example.run
-    Celluloid.shutdown
   end
 
   it 'works all letters channel' do

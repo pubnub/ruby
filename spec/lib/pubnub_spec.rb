@@ -3,9 +3,7 @@ require 'spec_helper'
 describe Pubnub do
 
   around :each do |example|
-    Celluloid.boot
     example.run
-    Celluloid.shutdown
   end
 
   context 'version' do

@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Pubnub::Presence do
   around :each do |example|
-    Celluloid.boot
 
     @fired = false
 
@@ -19,7 +18,6 @@ describe Pubnub::Presence do
     )
 
     example.run
-    Celluloid.shutdown
   end
 
   it '__channel___demo____http_sync__true___callback__nil_' do

@@ -2,7 +2,7 @@
 module Pubnub
   # Holds here_now functionality
   class Audit < PAM
-    include Celluloid
+    include Concurrent::Async
     include Pubnub::Validator::Audit
 
     def initialize(options, app)

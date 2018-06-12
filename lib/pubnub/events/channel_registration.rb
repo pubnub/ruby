@@ -2,7 +2,7 @@
 module Pubnub
   # Holds channel_registration functionality
   class ChannelRegistration < SingleEvent
-    include Celluloid
+    include Concurrent::Async
     include Pubnub::Validator::ChannelRegistration
 
     def initialize(options, app)

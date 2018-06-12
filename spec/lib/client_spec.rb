@@ -3,9 +3,7 @@ require 'spec_helper'
 describe Pubnub::Client do
 
   around :each do |example|
-    Celluloid.boot
     example.run
-    Celluloid.shutdown
   end
 
   it 'has valid version constant' do

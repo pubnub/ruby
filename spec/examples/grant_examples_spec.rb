@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Pubnub::Grant do
   around :each do |example|
-    Celluloid.boot
 
     @fired = false
 
@@ -19,7 +18,6 @@ describe Pubnub::Grant do
     )
 
     example.run
-    Celluloid.shutdown
   end
 
   it '__channel___demo___group__nil___read__true___write__true___manage__true___ttl__0___auth_key___ruby-authkey____http_sync__true___callback__nil_' do

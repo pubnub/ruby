@@ -5,11 +5,9 @@ module Pubnub
     # Config constants
     DEFAULT_READ_TIMEOUT               = 10
     DEFAULT_OPEN_TIMEOUT               = 10
-    DEFAULT_SEND_TIMEOUT               = 10
     DEFAULT_IDLE_TIMEOUT               = 10
     DEFAULT_S_READ_TIMEOUT             = 310
     DEFAULT_S_OPEN_TIMEOUT             = 310
-    DEFAULT_S_SEND_TIMEOUT             = 310
     DEFAULT_S_IDLE_TIMEOUT             = 310
     DEFAULT_H_READ_TIMEOUT             = 10
     DEFAULT_H_OPEN_TIMEOUT             = 10
