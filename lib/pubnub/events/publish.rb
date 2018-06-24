@@ -2,7 +2,7 @@
 module Pubnub
   # Holds publish functionality
   class Publish < SingleEvent
-    include Celluloid
+    include Concurrent::Async
     include Pubnub::Validator::Publish
 
     attr_reader :store
@@ -36,8 +36,6 @@ module Pubnub
       envelopes = fire_callbacks(handle(response, uri))
       finalize_event(envelopes)
       envelopes
-    ensure
-      terminate unless @stay_alive
     end
 
     private
@@ -88,13 +86,13 @@ module Pubnub
 
     def timetoken(parsed_response)
       parsed_response[2]
-    rescue
+    rescue StandardError
       nil
     end
 
     def response_message(parsed_response)
       parsed_response[1]
-    rescue
+    rescue StandardError
       nil
     end
 

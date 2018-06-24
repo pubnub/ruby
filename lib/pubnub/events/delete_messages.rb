@@ -2,7 +2,7 @@
 module Pubnub
   # Holds delete functionality
   class DeleteMessages < SingleEvent
-    include Celluloid
+    include Concurrent::Async
     include Pubnub::Validator::Delete
 
     def initialize(options, app)
@@ -21,21 +21,21 @@ module Pubnub
       {
         start: @start,
         end: @end
-      }.select { |_, value| !value.blank? }.merge(super(signature))
+      }.reject { |_, value| value.blank? }.merge(super(signature))
     end
 
     def path
       '/' + [
-          'v3',
-          'history',
-          'sub-key',
-          @subscribe_key,
-          'channel',
-          @channel
+        'v3',
+        'history',
+        'sub-key',
+        @subscribe_key,
+        'channel',
+        @channel
       ].join('/')
     end
 
-    def valid_envelope(parsed_response, req_res_objects)
+    def valid_envelope(_parsed_response, req_res_objects)
       Pubnub::Envelope.new(
         event: @event,
         event_options: @given_options,

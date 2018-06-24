@@ -37,7 +37,7 @@ module Pubnub
         cipher_key = compute_cipher_key(message.reject { |k, _v| k == :payload })
         crypto = Pubnub::Crypto.new(cipher_key)
         JSON.parse(crypto.decrypt(message[:payload]), quirks_mode: true)
-      rescue
+      rescue StandardError
         message[:payload]
       end
 
@@ -47,81 +47,81 @@ module Pubnub
         messages = expand_messages_keys(parsed_response['m'])
 
         # STATUS
-        if messages.empty?
-          envelopes = [
-            Pubnub::Envelope.new(
-              event: @event,
-              event_options: @given_options,
-              timetoken: expand_timetoken(timetoken),
-              status: {
-                code: req_res_objects[:response].code,
-                client_request: req_res_objects[:request],
-                server_response: req_res_objects[:response],
-                data: nil,
-                category: Pubnub::Constants::STATUS_ACK,
-                error: false,
-                auto_retried: true,
+        envelopes = if messages.empty?
+                      [
+                        Pubnub::Envelope.new(
+                          event: @event,
+                          event_options: @given_options,
+                          timetoken: expand_timetoken(timetoken),
+                          status: {
+                            code: req_res_objects[:response].code,
+                            client_request: req_res_objects[:request],
+                            server_response: req_res_objects[:response],
+                            data: nil,
+                            category: Pubnub::Constants::STATUS_ACK,
+                            error: false,
+                            auto_retried: true,
 
-                current_timetoken: timetoken['t'].to_i,
-                last_timetoken: @app.env[:timetoken].to_i,
-                subscribed_channels: @app.subscribed_channels,
-                subscribed_channel_groups: @app.subscribed_groups,
+                            current_timetoken: timetoken['t'].to_i,
+                            last_timetoken: @app.env[:timetoken].to_i,
+                            subscribed_channels: @app.subscribed_channels,
+                            subscribed_channel_groups: @app.subscribed_groups,
 
-                config: get_config
+                            config: get_config
 
-              },
-              result: {
-                code: req_res_objects[:response].code,
-                operation: get_operation,
-                client_request: req_res_objects[:request],
-                server_response: req_res_objects[:response],
+                          },
+                          result: {
+                            code: req_res_objects[:response].code,
+                            operation: get_operation,
+                            client_request: req_res_objects[:request],
+                            server_response: req_res_objects[:response],
 
-                data: nil
-              }
-            )
-          ]
-        else # RESULT
-          envelopes = messages.map do |message|
-            Pubnub::Envelope.new(
-              event: @event,
-              event_options: @given_options,
-              timetoken: expand_timetoken(timetoken),
-              status: {
-                code: req_res_objects[:response].code,
-                client_request: req_res_objects[:request],
-                server_response: req_res_objects[:response],
-                data: message,
-                category: Pubnub::Constants::STATUS_ACK,
-                error: false,
-                auto_retried: true,
+                            data: nil
+                          }
+                        )
+                      ]
+                    else # RESULT
+                      messages.map do |message|
+                        Pubnub::Envelope.new(
+                          event: @event,
+                          event_options: @given_options,
+                          timetoken: expand_timetoken(timetoken),
+                          status: {
+                            code: req_res_objects[:response].code,
+                            client_request: req_res_objects[:request],
+                            server_response: req_res_objects[:response],
+                            data: message,
+                            category: Pubnub::Constants::STATUS_ACK,
+                            error: false,
+                            auto_retried: true,
 
-                current_timetoken: timetoken['t'].to_i,
-                last_timetoken: @app.env[:timetoken].to_i,
-                subscribed_channels: @app.subscribed_channels,
-                subscribed_channel_groups: @app.subscribed_groups,
+                            current_timetoken: timetoken['t'].to_i,
+                            last_timetoken: @app.env[:timetoken].to_i,
+                            subscribed_channels: @app.subscribed_channels,
+                            subscribed_channel_groups: @app.subscribed_groups,
 
-                config: get_config
+                            config: get_config
 
-              },
-              result: {
-                code: req_res_objects[:response].code,
-                operation: get_operation(message),
-                client_request: req_res_objects[:request],
-                server_response: req_res_objects[:response],
+                          },
+                          result: {
+                            code: req_res_objects[:response].code,
+                            operation: get_operation(message),
+                            client_request: req_res_objects[:request],
+                            server_response: req_res_objects[:response],
 
-                data: {
-                  message: decipher_payload(message),
-                  subscribed_channel: message[:subscription_match] || message[:channel],
-                  actual_channel: message[:channel],
-                  publish_time_object: message[:publish_timetoken],
-                  message_meta_data: message[:user_meta_data],
-                  presence_event: get_presence_event(message),
-                  presence: get_presence_data(message)
-                }
-              }
-            )
-          end
-        end
+                            data: {
+                              message: decipher_payload(message),
+                              subscribed_channel: message[:subscription_match] || message[:channel],
+                              actual_channel: message[:channel],
+                              publish_time_object: message[:publish_timetoken],
+                              message_meta_data: message[:user_meta_data],
+                              presence_event: get_presence_event(message),
+                              presence: get_presence_data(message)
+                            }
+                          }
+                        )
+                      end
+                    end
 
         validate_envelopes(envelopes)
 
@@ -141,7 +141,7 @@ module Pubnub
 
         if (results_validation + statuses_validation).map(&:failure?).index(true)
           Pubnub.logger.error('Pubnub::SubscribeEvent::Formatter') { 'Invalid formatted envelope.' }
-          fail Exception, 'Invalid formatted envelope.'
+          raise Exception, 'Invalid formatted envelope.'
         end
       end
 
@@ -180,7 +180,7 @@ module Pubnub
       def get_presence_event(message)
         return nil unless get_operation(message) == Pubnub::Constants::OPERATION_PRESENCE
         message[:payload]['action']
-      rescue
+      rescue StandardError
         nil
       end
 

@@ -2,7 +2,7 @@
 module Pubnub
   # Holds channel_registration functionality
   class ChannelRegistration < SingleEvent
-    include Celluloid
+    include Concurrent::Async
     include Pubnub::Validator::ChannelRegistration
 
     def initialize(options, app)
@@ -16,13 +16,9 @@ module Pubnub
 
     def parameters(*_args)
       parameters = super
-      if @action == :add && !@channel.blank?
-        parameters.merge!(add: Formatter.channels_for_url(@channel, false))
-      end
+      parameters[:add] = Formatter.channels_for_url(@channel, false) if @action == :add && !@channel.blank?
 
-      if @action == :remove && !@channel.blank?
-        parameters.merge!(remove: Formatter.channels_for_url(@channel, false))
-      end
+      parameters[:remove] = Formatter.channels_for_url(@channel, false) if @action == :remove && !@channel.blank?
 
       parameters
     end
@@ -31,15 +27,15 @@ module Pubnub
       head = "/v1/channel-registration/sub-key/#{@subscribe_key}/"
 
       body = case @action
-             when :list_groups then
+             when :list_groups
                body_list_groups
-             when :list_namespaces then
+             when :list_namespaces
                body_list_namespaces
-             when :get then
+             when :get
                body_get
-             when :add then
+             when :add
                body_add
-             when :remove then
+             when :remove
                body_remove
              else
                raise_action_key_error
@@ -49,7 +45,7 @@ module Pubnub
     end
 
     def raise_action_key_error
-      fail ArgumentError.new(
+      raise ArgumentError.new(
         object: self,
         message: 'ChannelRegistration requires proper :action key'
       ), 'ChannelRegistration requires proper :action key'
@@ -102,7 +98,7 @@ module Pubnub
         event_options: @given_options,
         timetoken: nil,
         status: {
-          code: req_res_objects [:response].code,
+          code: req_res_objects[:response].code,
           operation: define_operation,
           client_request: req_res_objects[:request],
           server_response: req_res_objects[:response],
@@ -118,7 +114,6 @@ module Pubnub
 
           config: get_config
         },
-
         result: {
           data: parsed_response['payload'],
           code: req_res_objects[:response].code,

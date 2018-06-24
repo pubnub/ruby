@@ -13,7 +13,7 @@ module Pubnub
       def stop_heartbeat
         Pubnub.logger.debug('Pubnub') { "#{self.class}#stop_heartbeat" }
 
-        Celluloid::Actor.kill(@heart) if @heart
+        Concurrent::Actor.kill(@heart) if @heart
         @heart = nil
       end
 

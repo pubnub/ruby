@@ -5,9 +5,7 @@ module Pubnub
     attr_reader :env, :message
 
     def initialize(env = {})
-      unless env.instance_of? Hash
-        fail ::ArgumentError, 'Env passed to Pubnub::Error must be a hash'
-      end
+      raise ::ArgumentError, 'Env passed to Pubnub::Error must be a hash' unless env.instance_of? Hash
 
       @env = env
       @message = ''
@@ -20,13 +18,13 @@ module Pubnub
     private
 
     def build_message
-      insert_value 'operation',       @env[:operation]
-      insert_value 'request',         @env[:request]
-      insert_value 'env',             @env[:env]
-      insert_value 'app',             @env[:app]
-      insert_value 'response',        @env[:response]
-      insert_value 'error type',      @env[:error]
-      insert_value 'error message',   @env[:message]
+      insert_value 'operation', @env[:operation]
+      insert_value 'request', @env[:request]
+      insert_value 'env', @env[:env]
+      insert_value 'app', @env[:app]
+      insert_value 'response', @env[:response]
+      insert_value 'error type', @env[:error]
+      insert_value 'error message', @env[:message]
       insert_value 'error backtrace', backtrace
     end
 
@@ -39,9 +37,18 @@ module Pubnub
     end
   end
 
-  class JSONParseError < Error; end
-  class InitializationError < Error; end
-  class ArgumentError < Error; end
-  class RequestError < Error; end
-  class ResponseError < Error; end
+  class JSONParseError < Error
+  end
+
+  class InitializationError < Error
+  end
+
+  class ArgumentError < Error
+  end
+
+  class RequestError < Error
+  end
+
+  class ResponseError < Error
+  end
 end

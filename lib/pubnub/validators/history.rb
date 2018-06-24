@@ -14,13 +14,15 @@ module Pubnub
       private
 
       def validate_channel!
-        fail(
-          ArgumentError.new(
-            object: self,
-            message: 'Invalid :channel. You can run History for a single channel at once.'
-          ),
-          'Invalid :channel. You can run History for a single channel at once.'
-        ) if @channel.size > 1
+        if @channel.size > 1
+          raise(
+            ArgumentError.new(
+              object: self,
+              message: 'Invalid :channel. You can run History for a single channel at once.'
+            ),
+            'Invalid :channel. You can run History for a single channel at once.'
+          )
+        end
       end
     end
   end

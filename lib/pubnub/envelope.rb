@@ -10,13 +10,13 @@ module Pubnub
     attr_accessor :status, :result, :timetoken
 
     def initialize(options)
-      @id            = UUID.generate # internal usage only
+      @id = UUID.generate # internal usage only
 
-      @event         = options[:event]
+      @event = options[:event]
       @event_options = options[:event_options]
-      @status        = options[:status]
-      @result        = options[:result]
-      @timetoken     = options[:timetoken]
+      @status = options[:status]
+      @result = options[:result]
+      @timetoken = options[:timetoken]
     end
 
     def repeat(client, changes = {})
@@ -31,12 +31,14 @@ module Pubnub
     def last?
       last
     end
+
     # :nocov:
 
     # :nocov:
     def first?
       first
     end
+
     # :nocov:
   end
 end

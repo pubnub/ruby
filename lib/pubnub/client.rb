@@ -243,11 +243,11 @@ module Pubnub
       if sync
         @env[:req_dispatchers_pool][:sync][origin] ||= {}
         @env[:req_dispatchers_pool][:sync][origin][event_type] ||=
-            setup_httpclient(event_type)
+          setup_httpclient(event_type)
       else
         @env[:req_dispatchers_pool][:async][origin] ||= {}
         @env[:req_dispatchers_pool][:async][origin][event_type] ||=
-            setup_httpclient(event_type)
+          setup_httpclient(event_type)
       end
     end
 
@@ -269,7 +269,7 @@ module Pubnub
       # @env[:req_dispatchers_pool][origin][event_type].async.terminate
       @env[:req_dispatchers_pool][:async][origin][event_type].reset_all
       @env[:req_dispatchers_pool][:async][origin][event_type] = nil
-    rescue
+    rescue StandardError
       Pubnub.logger.debug('Pubnub::Client') { 'There\'s no requester' }
     end
 
@@ -320,27 +320,23 @@ module Pubnub
     end
 
     def setup_httpclient(event_type)
-      if ENV['HTTP_PROXY']
-        hc = HTTPClient.new(ENV['HTTP_PROXY'])
-      else
-        hc = HTTPClient.new
-      end
+      hc = if ENV['HTTP_PROXY']
+             HTTPClient.new(ENV['HTTP_PROXY'])
+           else
+             HTTPClient.new
+           end
 
       case event_type
       when :subscribe_event
-        hc.connect_timeout = @env[:s_open_timeout]
-        hc.send_timeout = @env[:s_send_timeout]
-        hc.receive_timeout = @env[:s_read_timeout]
+        hc.receive_timeout = 310
         unless @env[:disable_keepalive] || @env[:disable_subscribe_keepalive]
-          hc.keep_alive_timeout = @env[:idle_timeout]
+          hc.keep_alive_timeout = 310
           hc.tcp_keepalive = true
         end
       when :single_event
-        hc.connect_timeout = @env[:open_timeout]
-        hc.send_timeout = @env[:send_timeout]
-        hc.receive_timeout = @env[:read_timeout]
+        hc.receive_timeout = 5
         unless @env[:disable_keepalive] || @env[:disable_non_subscribe_keepalive]
-          hc.keep_alive_timeout = @env[:idle_timeout]
+          hc.keep_alive_timeout = 310
           hc.tcp_keepalive = true
         end
       end
@@ -354,7 +350,7 @@ module Pubnub
 
     def setup_app(options)
       Pubnub.logger = options[:logger] || Logger.new('pubnub.log')
-      Celluloid.logger = Pubnub.logger
+      Concurrent.global_logger = Pubnub.logger
       @subscriber = Subscriber.new(self)
       @env = options
     end

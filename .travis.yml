@@ -14,11 +14,6 @@ bundler_args: --without development
 
 script: bundle exec rspec
 
-gemfile:
-  - gemfiles/celluloid_017.gemfile
-  - gemfiles/celluloid_018.gemfile
-  - gemfiles/celluloid_master.gemfile
-
 rvm:
   - 2.4.1
   - 2.3.4
@@ -29,12 +24,4 @@ matrix:
     - rvm: jruby-9.1.13.0
       env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
       jdk: oraclejdk8
-      gemfile: gemfiles/celluloid_017.gemfile
-    - rvm: jruby-9.1.13.0
-      env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
-      jdk: oraclejdk8
-      gemfile: gemfiles/celluloid_018.gemfile
-    - rvm: jruby-9.1.13.0
-      env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
-      jdk: oraclejdk8
-      gemfile: gemfiles/celluloid_master.gemfile
+

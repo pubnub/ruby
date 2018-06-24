@@ -14,13 +14,15 @@ module Pubnub
       private
 
       def validate_channel_and_uuid!
-        fail(
-          ArgumentError.new(
-            object: self,
-            message: 'You have to specify :channel or :uuid for State event.'
-          ),
-          'You have to specify :channel or :uuid for State event.'
-        ) if @channel.size == 0 && @uuid_looking_for.nil?
+        if @channel.empty? && @uuid_looking_for.nil?
+          raise(
+            ArgumentError.new(
+              object: self,
+              message: 'You have to specify :channel or :uuid for State event.'
+            ),
+            'You have to specify :channel or :uuid for State event.'
+          )
+        end
       end
     end
   end

@@ -1,3 +1,7 @@
+##### 4.0.28
+* Added Concurrent-ruby Gem
+* Removed Celluloid
+
 ##### 4.0.25
 * Added Telemetry
 

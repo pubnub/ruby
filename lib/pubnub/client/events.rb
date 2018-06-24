@@ -4,8 +4,8 @@ module Pubnub
   class Client
     # Module that holds generator for all events
     module Events
-      EVENTS = %w(publish subscribe presence leave history here_now audit grant delete_messages
-                  revoke time heartbeat where_now set_state state channel_registration)
+      EVENTS = %w[publish subscribe presence leave history here_now audit grant delete_messages
+                  revoke time heartbeat where_now set_state state channel_registration].freeze
 
       EVENTS.each do |event_name|
         define_method event_name do |options = {}, &block|
@@ -20,13 +20,13 @@ module Pubnub
             @subscriber.add_subscription(event)
             @subscriber.reset
           else
-            event.future.fire
+            Concurrent::Future.execute { event.fire }
           end
         end
       end
 
-      alias_method :unsubscribe, :leave
-      alias_method :get_state, :state
+      alias unsubscribe leave
+      alias get_state state
 
       def fire(options, &block)
         publish(options.merge(store: false, replicate: false), &block)

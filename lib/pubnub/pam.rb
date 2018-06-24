@@ -18,7 +18,7 @@ module Pubnub
         @subscribe_key,
         @publish_key,
         @event,
-        variables_for_signature.gsub(/[!~'()*]/) { |char| '%' + char.ord.to_s(16).upcase } # Replace ! ~ * ' ( )
+        variables_for_signature.gsub(/[!~'()*]/) { |char| '%' + char.ord.to_s(16).upcase }, # Replace ! ~ * ' ( )
       ].join("\n")
 
       Base64.urlsafe_encode64(
@@ -29,10 +29,10 @@ module Pubnub
 
     def parameters(set_signature = false)
       params = super()
-      params.merge!('channel-group' => @group.join(',')) unless @group.blank?
-      params.merge!(timestamp: @timestamp)
-      params.merge!(channel: @channel.join(',')) unless @channel.first.blank?
-      params.merge!(signature: signature) unless set_signature
+      params['channel-group'] = @group.join(',') unless @group.blank?
+      params[:timestamp] = @timestamp
+      params[:channel] = @channel.join(',') unless @channel.first.blank?
+      params[:signature] = signature unless set_signature
       params
     end
 

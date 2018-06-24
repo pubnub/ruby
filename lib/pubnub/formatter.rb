@@ -32,19 +32,13 @@ module Pubnub
       def format_message(message, cipher_key, uri_escape = true)
         if cipher_key
           pc = Pubnub::Crypto.new(cipher_key)
-          message = pc.encrypt(message)
-          if uri_escape
-            URI.escape(message.to_json)
-          else
-            message.to_json
-          end
+          message = pc.encrypt(message).to_json
+          message = URI.escape(message) if uri_escape
         else
-          if uri_escape
-            Formatter.encode(message.to_json)
-          else
-            message.to_json
-          end
+          message = message.to_json
+          message = Formatter.encode(message) if uri_escape
         end
+        message
       end
 
       # Quite lazy way, but good enough for current usage
@@ -58,13 +52,18 @@ module Pubnub
 
       def make_channel_array(channel)
         case channel.class.to_s
-        when 'String' then channel.to_s.split(',')
-        when 'Symbol' then channel.to_s.split(',')
-        when 'Array' then channel.map(&:to_s)
-        when 'NilClass' then []
-        else fail Pubnub::ArgumentError.new(
-          message: 'Channel has to be String, Symbol or Array'
-        ), 'Channel has to be String, Symbol or Array'
+        when 'String'
+          channel.to_s.split(',')
+        when 'Symbol'
+          channel.to_s.split(',')
+        when 'Array'
+          channel.map(&:to_s)
+        when 'NilClass'
+          []
+        else
+          raise Pubnub::ArgumentError.new(
+            message: 'Channel has to be String, Symbol or Array'
+          ), 'Channel has to be String, Symbol or Array'
         end
       end
 
@@ -79,10 +78,10 @@ module Pubnub
       def params_hash_to_url_params(hash)
         params = ''
         hash.sort_by { |k, _v| k.to_s }.to_h.each do |key, value|
-          if %w(meta ortt).include?(key.to_s)
+          if %w[meta ortt].include?(key.to_s)
             encoded_value = URI.encode_www_form_component(value.to_json).gsub('+', '%20')
             params << "#{key}=#{encoded_value}&"
-          elsif %w(t state filter-expr).include?(key.to_s)
+          elsif %w[t state filter-expr].include?(key.to_s)
             params << "#{key}=#{value}&"
           else
             params << "#{key}=#{URI.encode_www_form_component(value).gsub('+', '%20')}&"
@@ -93,7 +92,7 @@ module Pubnub
 
       # Returns string with all channels separated by comma or single coma
       def channels_for_url(channels, should_encode = true)
-        channel = channels.map{ |c| should_encode ? encode(c) : c }.sort.join(',')
+        channel = channels.map { |c| should_encode ? encode(c) : c }.sort.join(',')
         channel = ',' if channel.empty?
         channel
       end

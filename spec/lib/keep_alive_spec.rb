@@ -1,13 +1,9 @@
-require 'spec_helper'
+require "spec_helper"
 
-describe 'keep_alive connection' do
-
+describe "keep_alive connection" do
   around :each do |example|
-    Celluloid.boot
-    example.run
-    Celluloid.shutdown
+    example.run_with_retry retry: 10
   end
 
-  it ''
-
+  it ""
 end

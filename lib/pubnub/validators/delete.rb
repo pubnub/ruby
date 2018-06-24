@@ -14,10 +14,12 @@ module Pubnub
       private
 
       def validate_channel!
-        fail(
+        if @channel.blank? || @channel.index(',')
+          raise(
             ArgumentError.new,
             'You have to call #delete on single channel'
-        ) if @channel.blank? || @channel.index(',')
+          )
+        end
       end
     end
   end

@@ -6,8 +6,8 @@ module Pubnub
 
     def initialize(options)
       @callbacks = {
-        message:  options[:message],
-        status:   options[:status],
+        message: options[:message],
+        status: options[:status],
         presence: options[:presence]
       }
       validate!
@@ -18,7 +18,7 @@ module Pubnub
     def validate!
       # Check if each callback responds to call and accept one parameter.
       @callbacks.each do |type, callback|
-        fail "#{type} callback is not valid in SubscribeCallback." unless (callback.respond_to?(:call) && callback.arity == 1) || callback.nil?
+        raise "#{type} callback is not valid in SubscribeCallback." unless (callback.respond_to?(:call) && callback.arity == 1) || callback.nil?
       end
     end
   end

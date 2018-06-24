@@ -24,15 +24,13 @@ module Pubnub
       # Can't change uuid while subscribed. You have to leave every subscribed channel.
       def change_uuid(uuid)
         Pubnub.logger.debug('Pubnub::Client') { 'Changing uuid' }
-        if subscribed?
-          fail('Cannot change UUID while subscribed.')
-        else
-          @env[:uuid] = uuid
-        end
+        raise('Cannot change UUID while subscribed.') if subscribed?
+        @env[:uuid] = uuid
       end
-      alias_method :session_uuid=, :change_uuid
-      alias_method :uuid=, :change_uuid
-      alias_method :set_uuid=, :change_uuid
+
+      alias session_uuid= change_uuid
+      alias uuid= change_uuid
+      alias set_uuid= change_uuid
 
       # Returns:
       # ========
@@ -40,7 +38,8 @@ module Pubnub
       def current_origin
         @env[:origin]
       end
-      alias_method :origin, :current_origin
+
+      alias origin current_origin
 
       # Returns:
       # ========
@@ -103,6 +102,7 @@ module Pubnub
       def events
         @env[:events]
       end
+
       # :nocov:
 
       def current_heartbeat
@@ -113,10 +113,10 @@ module Pubnub
         @env[:heartbeat] = value
       end
 
-      def subscribe_filter=(filter_expr)
-        @env[:subscribe_filter] = filter_expr
+      def subscribe_filter=(filter_exp)
+        @env[:subscribe_filter] = filter_exp
         @subscriber.reset if subscribed?
-        filter_expr
+        filter_exp
       end
 
       def subscribe_filter
