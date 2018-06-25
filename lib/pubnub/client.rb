@@ -4,7 +4,6 @@ require 'pubnub/formatter'
 require 'pubnub/crypto'
 require 'pubnub/constants'
 require 'pubnub/configuration'
-require 'pubnub/message'
 require 'pubnub/subscribe_callback'
 
 require 'pubnub/schemas/envelope_schema'

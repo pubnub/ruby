@@ -11,9 +11,7 @@ module Pubnub
             InitializationError.new,
             'Missing required :origins_pool parameter.'
           )
-        end
-
-        unless origin.is_a?(String) || origin.blank?
+        elsif not (origin.is_a?(String) || origin.blank?)
           raise(
             InitializationError.new,
             'origins_pool parameter is not valid. \
@@ -29,9 +27,7 @@ module Pubnub
             InitializationError.new,
             'Missing required :subscribe_key parameter.'
           )
-        end
-
-        unless [String, Symbol].include?(subscribe_key.class)
+        elsif not [String, Symbol].include?(subscribe_key.class)
           raise(
             InitializationError.new,
             'Subscribe key parameter is not valid. \
@@ -47,10 +43,8 @@ module Pubnub
             InitializationError.new,
             'Missing required :subscribe_key parameter.'
           )
-        end
-
-        unless [String, Symbol].include?(publish_key.class) ||
-               publish_key.blank?
+        elsif not ([String, Symbol].include?(publish_key.class) ||
+               publish_key.blank?)
           raise(
             InitializationError.new,
             'Publish key parameter is not valid. \

@@ -14,12 +14,11 @@ module Pubnub
       private
 
       def validate_ttl!
-        if !@ttl.nil? && !@ttl.is_a?(Integer)
-          raise(
-            ArgumentError.new,
-            ':ttl has to be kind of Integer'
-          )
-        end
+        return unless !@ttl.nil? && !@ttl.is_a?(Integer)
+        raise(
+          ArgumentError.new,
+          ':ttl has to be kind of Integer'
+        )
       end
     end
   end
