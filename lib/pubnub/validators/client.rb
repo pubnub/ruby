@@ -6,6 +6,7 @@ module Pubnub
     module Client
       class << self
         include CommonValidator
+
         def validate!(parameters)
           validate_origin parameters[:origin], true
           validate_subscribe_key parameters[:subscribe_key], true

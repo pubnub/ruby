@@ -39,7 +39,7 @@ module Pubnub
 
         required(:config).schema(ConfigSchema)
 
-        rule(category_value: [:error, :category]) do |error, category|
+        rule(category_value: %i[error category]) do |error, category|
           error.true?.then(category.included_in?(Pubnub::Constants::STATUS_CATEGORY_ERRORS))
           error.false?.then(category.included_in?(Pubnub::Constants::STATUS_CATEGORY_SUCCESSES))
         end

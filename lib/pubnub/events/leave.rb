@@ -2,7 +2,7 @@
 module Pubnub
   # Holds leave functionality
   class Leave < SingleEvent
-    include Celluloid
+    include Concurrent::Async
     include Pubnub::Validator::Leave
 
     def initialize(options, app)
@@ -37,7 +37,7 @@ module Pubnub
 
     def parameters(*_args)
       params = super
-      params.merge!('channel-group' => @group.join(',')) unless @group.empty?
+      params['channel-group'] = @group.join(',') unless @group.empty?
       params
     end
 

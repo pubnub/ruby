@@ -43,7 +43,7 @@ module Pubnub
       response_valid? get_ping_response(uri)
     rescue Errno::ECONNREFUSED
       false
-    rescue => e
+    rescue StandardError => e
       Pubnub.logger.error('Pubnub::OriginManager') do
         "#{e.inspect} #{e.backtrace}"
       end
@@ -71,10 +71,8 @@ module Pubnub
       alive_and_valid?(@http)
     end
 
-    def bring_down(_origin)
-    end
+    def bring_down(_origin); end
 
-    def bring_up(_origin)
-    end
+    def bring_up(_origin); end
   end
 end

@@ -5,11 +5,14 @@ module Pubnub
     # Module that holds formatters for events
     module EFormatter
       def format_envelopes(response, request)
-        if response.kind_of?(HTTPClient::TimeoutError) || response.is_a?(OpenSSL::SSL::SSLError)
-          return error_envelope(nil, response, request: request, response: response)
-        else
-          parsed_response, error = Formatter.parse_json(response.body)
+        if response.is_a?(HTTPClient::TimeoutError) || response.is_a?(OpenSSL::SSL::SSLError)
+          return error_envelope(nil,
+                                response,
+                                request: request,
+                                response: response)
         end
+
+        parsed_response, error = Formatter.parse_json(response.body)
 
         error = response if parsed_response && response.code.to_i != 200
 
@@ -21,7 +24,7 @@ module Pubnub
       end
 
       def format_channels
-        @channel =  Formatter.format_channel(@channel || @channels)
+        @channel = Formatter.format_channel(@channel || @channels)
         @channel += Formatter.format_presence_channel(@presence)
         @channel += Formatter.format_presence_channel(@channel || @channels) if @with_presence
         @wildcard_channel = @channel.select { |e| e.index('.*') } || []

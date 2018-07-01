@@ -9,17 +9,17 @@ gem 'celluloid', git: 'https://github.com/celluloid/celluloid.git'
 gem 'dry-validation', '>= 0.10', '< 0.11'
 
 group :test do
-  gem 'rubocop'
-  gem 'simplecov', '>= 0.12', require: false
   gem 'codacy-coverage', require: false
+  gem 'rr'
   gem 'rspec'
   gem 'rspec-wait'
+  gem 'rubocop'
+  gem 'simplecov', '>= 0.12', require: false
   gem 'vcr'
-  gem 'rr'
   gem 'webmock'
 end
 
 group :development, :test do
-  gem 'pry'
   gem 'awesome_print'
+  gem 'pry'
 end
