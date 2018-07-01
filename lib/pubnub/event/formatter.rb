@@ -6,10 +6,10 @@ module Pubnub
     module EFormatter
       def format_envelopes(response, request)
         if response.is_a?(HTTPClient::TimeoutError) || response.is_a?(OpenSSL::SSL::SSLError)
-        return error_envelope(nil,
-                              response,
-                              request: request,
-                              response: response)
+          return error_envelope(nil,
+                                response,
+                                request: request,
+                                response: response)
         end
 
         parsed_response, error = Formatter.parse_json(response.body)
