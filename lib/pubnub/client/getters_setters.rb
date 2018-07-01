@@ -114,9 +114,8 @@ module Pubnub
       end
 
       def subscribe_filter=(filter_exp)
-        @env[:subscribe_filter] = filter_exp
         @subscriber.reset if subscribed?
-        filter_exp
+        @env[:subscribe_filter] = filter_exp
       end
 
       def subscribe_filter

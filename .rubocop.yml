@@ -16,7 +16,7 @@ Metrics/AbcSize:
   Max: 30
 
 Metrics/MethodLength:
-  Max: 30
+  Max: 35
 
 Metrics/PerceivedComplexity:
   Max: 10

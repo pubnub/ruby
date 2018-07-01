@@ -22,7 +22,7 @@ rvm:
 
 matrix:
   include:
-    - rvm: jruby-9.1.17.0
+    - rvm: jruby-head
       env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
       jdk: oraclejdk8
 

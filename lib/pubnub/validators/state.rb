@@ -20,7 +20,8 @@ module Pubnub
             object: self,
             message: 'You have to specify :channel or :uuid for State event.'
           ),
-          'You have to specify :channel or :uuid for State event.')
+          'You have to specify :channel or :uuid for State event.'
+        )
       end
     end
   end

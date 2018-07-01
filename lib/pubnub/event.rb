@@ -122,7 +122,7 @@ module Pubnub
 
       empty_if_blank[@telemetry_name] = nil if @app.env[:no_telemetry]
 
-        required[:timestamp] = @timestamp if @app.env[:secret_key] && !%i[grant revoke audit].include?(@event)
+      required[:timestamp] = @timestamp if @app.env[:secret_key] && !%i[grant revoke audit].include?(@event)
 
       empty_if_blank.delete_if { |_k, v| v.blank? }
       required.merge(empty_if_blank)

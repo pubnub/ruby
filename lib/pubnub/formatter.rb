@@ -1,3 +1,5 @@
+require 'cgi'
+
 # Toplevel Pubnub module.
 module Pubnub
   # Bunch of useful methods that are used in many parts of Pubnub and and can be
@@ -33,6 +35,7 @@ module Pubnub
         if cipher_key
           pc = Pubnub::Crypto.new(cipher_key)
           message = pc.encrypt(message).to_json
+          # rubocop:disable Lint/UriEscapeUnescape
           message = URI.escape(message) if uri_escape
         else
           message = message.to_json

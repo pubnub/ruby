@@ -1,4 +1,5 @@
 module Pubnub
+  # Thread-safe async telemetry
   class Telemetry
     include Concurrent::Async
 
@@ -9,7 +10,7 @@ module Pubnub
 
     def record_request(telemetry_type, time_start, time_end)
       @recorded_history.compute(telemetry_type) do |telemetry|
-        telemetry = default_telemetry unless telemetry
+        telemetry ||= default_telemetry
         telemetry[:sum] += (time_end - time_start)
         telemetry[:counter] += 1
         telemetry
@@ -20,7 +21,7 @@ module Pubnub
 
     def fetch_average(telemetry_type)
       Pubnub.logger.debug('Pubnub::Telemetry') { "Fetching telemetry for #{telemetry_type}" }
-      return false if @recorded_history[telemetry_type][:counter] == 0
+      return false if @recorded_history[telemetry_type][:counter].zero?
       average = 0
       @recorded_history.compute(telemetry_type) do |telemetry|
         average = telemetry[:sum].to_f / telemetry[:counter].to_f
@@ -35,11 +36,7 @@ module Pubnub
     private
 
     def default_telemetry
-      {
-          sum: 0,
-          counter: 0
-      }
+      { sum: 0, counter: 0 }
     end
-
   end
 end
