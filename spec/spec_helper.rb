@@ -66,13 +66,17 @@ RSpec.configure do |config|
 end
 
 VCR.configure do |c|
+  ignored_params = [
+      :pnsdk, :uuid, :ortt, :seqn, :t,
+      :l_pres, :l_pub, :l_pres, :l_hist, :l_cg, :l_time
+  ]
   c.cassette_library_dir = "fixtures/vcr_cassettes"
   c.hook_into :webmock
   c.allow_http_connections_when_no_cassette = false
   c.ignore_hosts "api.codacy.com"
   c.default_cassette_options = {
     match_requests_on: [:method,
-                        VCR.request_matchers.uri_without_param(:pnsdk, :uuid, :ortt, :seqn, :t)],
+                        VCR.request_matchers.uri_without_param(*ignored_params)],
   }
   c.debug_logger = File.open("vcr.log", "w")
 end

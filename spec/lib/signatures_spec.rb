@@ -168,6 +168,7 @@ describe "Signatures" do
         secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
         uuid: "test",
       )
+      pubnub.env[:no_telemetry] = true
 
       VCR.use_cassette("lib/signatures/channel_registration", record: :once) do
         Pubnub::ChannelRegistration.any_instance.stub(:current_time).and_return 1496400706
@@ -228,13 +229,13 @@ describe "Signatures" do
       stub_const("Pubnub::VERSION", "4.0.21")
       Pubnub::SetState.any_instance.stub(:current_time).and_return 1496402248
       Pubnub::State.any_instance.stub(:current_time).and_return 1496402248
-
       pubnub = Pubnub.new(
         subscribe_key: "sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe",
         publish_key: "pub-c-cd48c41a-afce-4f37-8b3b-7fafccf52e2d",
         secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
         uuid: 'a!@#$%^&()ŻÓŁ[]{}""<>??~`Z',
       )
+      pubnub.env[:no_telemetry] = true
 
       VCR.use_cassette("lib/signatures/state", record: :once) do
         envelope = pubnub.set_state(

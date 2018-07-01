@@ -15,13 +15,14 @@ bundler_args: --without development
 script: bundle exec rspec
 
 rvm:
-  - 2.4.1
-  - 2.3.4
-  - 2.2.7
+  - 2.5.1
+  - 2.4.4
+  - 2.3.7
+  - 2.2.10
 
 matrix:
   include:
-    - rvm: jruby-9.1.13.0
+    - rvm: jruby-9.1.17.0
       env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
       jdk: oraclejdk8
 

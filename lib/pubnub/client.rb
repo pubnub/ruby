@@ -302,11 +302,11 @@ module Pubnub
     end
 
     def record_telemetry(telemetry_type, time_start, time_end)
-      @telemetry.record_request(telemetry_type, time_start, time_end)
+      @telemetry.async.record_request(telemetry_type, time_start, time_end)
     end
 
     def telemetry_for(event)
-      @telemetry.fetch_average(event)
+      @telemetry.await.fetch_average(event).value
     end
 
     private
