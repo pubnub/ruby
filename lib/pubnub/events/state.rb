@@ -2,7 +2,7 @@
 module Pubnub
   # Holds state functionality
   class State < SingleEvent
-    include Celluloid
+    include Concurrent::Async
     include Pubnub::Validator::State
 
     def initialize(options, app)
@@ -21,9 +21,7 @@ module Pubnub
 
     def parameters(*_args)
       parameters = super
-      parameters.merge!(
-        'channel-group' => @group.join(',')
-      ) unless @group.blank?
+      parameters['channel-group'] = @group.join(',') unless @group.blank?
       parameters
     end
 
@@ -42,9 +40,9 @@ module Pubnub
 
     def valid_envelope(parsed_response, req_res_objects)
       Pubnub::Envelope.new(
-        event:         @event,
+        event: @event,
         event_options: @given_options,
-        timetoken:     nil,
+        timetoken: nil,
         status: {
           code: req_res_objects[:response].code,
           client_request: req_res_objects[:request],

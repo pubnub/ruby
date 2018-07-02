@@ -2,7 +2,7 @@
 module Pubnub
   # Holds revoke functionality
   class Revoke < PAM
-    include Celluloid
+    include Concurrent::Async
     include Pubnub::Validator::Revoke
 
     def initialize(options, app)
@@ -18,8 +18,8 @@ module Pubnub
     end
 
     def parameters(signature = false)
-      write  = [0, '0', false].include?(@write) ? 1 : 0
-      read   = [0, '0', false].include?(@read) ? 1 : 0
+      write = [0, '0', false].include?(@write) ? 1 : 0
+      read = [0, '0', false].include?(@read) ? 1 : 0
       manage = [0, '0', false].include?(@manage) ? 1 : 0 unless @group.blank?
 
       { timestamp: @timestamp,

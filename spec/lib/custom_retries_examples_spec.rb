@@ -1,19 +1,16 @@
-require 'spec_helper'
+require "spec_helper"
 
-describe 'Custom retries' do
-
+describe "Custom retries" do
   around :each do |example|
-    Celluloid.boot
-    example.run
-    Celluloid.shutdown
+    example.run_with_retry retry: 10
   end
 
   before(:each) do
     @pubnub = Pubnub.new(
-        subscribe_key: 'sub-c-446d9780-c606-11e5-a316-0619f8945a4f',
-        publish_key: 'pub-c-63eb50a0-98ed-43b2-999a-c32efb85c747',
-        secret_key: 'sec-c-MTQyMzhjZGUtNTJiYi00MDU0LThkZWQtZDRmMGUwZDk4NjQz',
-        uuid: 'ruby-test-client'
+      subscribe_key: "sub-c-446d9780-c606-11e5-a316-0619f8945a4f",
+      publish_key: "pub-c-63eb50a0-98ed-43b2-999a-c32efb85c747",
+      secret_key: "sec-c-MTQyMzhjZGUtNTJiYi00MDU0LThkZWQtZDRmMGUwZDk4NjQz",
+      uuid: "ruby-test-client",
     )
   end
 

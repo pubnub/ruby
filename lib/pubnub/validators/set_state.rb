@@ -9,8 +9,6 @@ module Pubnub
       def validate!
         return if @skip_validate
       end
-
-      private
     end
   end
 end

@@ -37,11 +37,9 @@ module Pubnub
 
       envelopes = finalize_event(fire_callbacks(handle(response, uri)))
 
-      async.fire unless @http_sync
+      Concurrent::Future.execute { fire } unless @http_sync
 
       envelopes
-    ensure
-      terminate if !@stay_alive && @http_sync
     end
 
     def leave_all
@@ -77,7 +75,7 @@ module Pubnub
                                           request: uri)
         end
         req
-      rescue => error
+      rescue StandardError => error
         Pubnub.logger.warn('Pubnub') { "Connection lost! Reason: #{error}" }
         @app.subscriber.announce_status(announcement_type: Pubnub::Constants::TIMEOUT_ANNOUNCEMENT,
                                         event: @event,
@@ -138,24 +136,22 @@ module Pubnub
     end
 
     def add_filter_to_params(params)
-      params.merge!('filter-expr' => encode_parameter("(#{@app.subscribe_filter})", false)) if @app.subscribe_filter
+      params['filter-expr'] = encode_parameter("(#{@app.subscribe_filter})", false) if @app.subscribe_filter
       params
     end
 
     def add_timetoken_to_params(params)
-      params.merge!(t: encode_parameter(r: @app.region_code, t: @app.timetoken))
+      params[:t] = encode_parameter(r: @app.region_code, t: @app.timetoken)
       params
     end
 
     def add_group_to_params(params)
-      params.merge!('channel-group' => @group.join(',')) unless @group.empty?
+      params['channel-group'] = @group.join(',') unless @group.empty?
       params
     end
 
     def add_state_to_params(params)
-      params.merge!(
-        state: encode_parameter(@app.env[:state][@origin][:channel].merge(@app.env[:state][@origin][:group]))
-      ) unless @app.empty_state?
+      params[:state] = encode_parameter(@app.env[:state][@origin][:channel].merge(@app.env[:state][@origin][:group])) unless @app.empty_state?
       params
     end
   end

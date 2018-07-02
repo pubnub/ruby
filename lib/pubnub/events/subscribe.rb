@@ -3,7 +3,7 @@ module Pubnub
   # Holds subscribe functionality, beware, most of subscribe functionality is
   # held by SubscribeEvent
   class Subscribe < SubscribeEvent
-    include Celluloid
+    include Concurrent::Async
     include Pubnub::Validator::Subscribe
 
     def initialize(options, app)

@@ -12,13 +12,14 @@ module Pubnub
       end
 
       def validate_channel_and_group!
-        fail(
+        return unless @channel.empty? && @group.empty? && @wildcard_channel.empty?
+        raise(
           ArgumentError.new(
             object: self,
             message: 'You have to specify :channel or :group while using Leave event.'
           ),
           'You have to specify :channel or :group while using Leave event.'
-        ) if @channel.size == 0 && @group.size == 0 && @wildcard_channel.size == 0
+        )
       end
     end
   end

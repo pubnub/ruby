@@ -2,12 +2,12 @@
 module Pubnub
   # Heart takes responsibility of heartbeat event
   class Heart
-    include Celluloid
+    include Concurrent::Async
 
     def initialize(options)
       @heartbeat = options[:heartbeat]
-      @channel   = options[:channel]
-      @app       = options[:app]
+      @channel = options[:channel]
+      @app = options[:app]
     end
 
     def start_beating
@@ -25,7 +25,7 @@ module Pubnub
 
     def beat
       @app.heartbeat(
-        channel:   @channel,
+        channel: @channel,
         heartbeat: @heartbeat,
         http_sync: true
       )

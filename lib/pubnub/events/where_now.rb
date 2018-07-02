@@ -2,15 +2,15 @@
 module Pubnub
   # Holds where_now functionality
   class WhereNow < SingleEvent
-    include Celluloid
+    include Concurrent::Async
     include Pubnub::Validator::WhereNow
 
     def initialize(options, app)
       super
-      @telemetry_name   = :l_pres
+      @telemetry_name = :l_pres
       @uuid_looking_for = options[:uuid] || options['uuid']
-      @uuid             = app.uuid
-      @event            = :where_now
+      @uuid = app.uuid
+      @event = :where_now
     end
 
     private
@@ -32,9 +32,9 @@ module Pubnub
 
     def valid_envelope(parsed_response, req_res_objects)
       Pubnub::Envelope.new(
-        event:         @event,
+        event: @event,
         event_options: @given_options,
-        timetoken:     nil,
+        timetoken: nil,
         status: {
           code: req_res_objects[:response].code,
           client_request: req_res_objects[:request],

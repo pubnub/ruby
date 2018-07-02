@@ -2,7 +2,7 @@
 module Pubnub
   # Holds SetState functionality
   class SetState < SingleEvent
-    include Celluloid
+    include Concurrent::Async
     include Pubnub::Validator::SetState
 
     def initialize(options, app)
@@ -20,8 +20,8 @@ module Pubnub
 
     def parameters(*_args)
       parameters = super
-      parameters.merge!(state: encode_parameter(@state))
-      parameters.merge!('channel-group' => format_channel_group(@group).join(',')) unless @group.blank?
+      parameters[:state] = encode_parameter(@state)
+      parameters['channel-group'] = format_channel_group(@group).join(',') unless @group.blank?
       parameters
     end
 

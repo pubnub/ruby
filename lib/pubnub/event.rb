@@ -11,8 +11,8 @@ module Pubnub
                 :presence_callback, :wildcard_channel, :ssl, :state,
                 :given_options, :with_presence
 
-    alias_method :channels, :channel
-    alias_method :channel_groups, :channel_group
+    alias channels channel
+    alias channel_groups channel_group
 
     include Signature
     include EFormatter
@@ -41,8 +41,6 @@ module Pubnub
       envelopes = fire_callbacks(handle(response, uri))
       finalize_event(envelopes)
       envelopes
-    ensure
-      terminate unless @stay_alive
     end
 
     def send_request(compressed_body = '')
@@ -52,28 +50,28 @@ module Pubnub
       Pubnub.logger.debug('Pubnub::Event') { '#send_request got sender' }
 
       telemetry_time_start = ::Time.now.to_f
-      if @event == Pubnub::Constants::OPERATION_DELETE
-        response = sender.delete(uri.to_s)
-      elsif compressed_body.empty?
-        response = sender.get(uri.to_s)
-      else
-        response = sender.post(uri.to_s, body: compressed_body)
-      end
+      response = if @event == Pubnub::Constants::OPERATION_DELETE
+                   sender.delete(uri.to_s)
+                 elsif compressed_body.empty?
+                   sender.get(uri.to_s)
+                 else
+                   sender.post(uri.to_s, body: compressed_body)
+                 end
 
       begin
         @app.record_telemetry(@telemetry_name, telemetry_time_start, ::Time.now.to_f)
-      rescue => error
+      rescue StandardError => error
         Pubnub.logger.warn('Pubnub::Event') { "Couldn't record telemetry because of #{error}\n#{error.backtrace.join("\n")}" }
       end
 
-      return response
-    rescue => error
-      Pubnub.logger.error('Pubnub::Event'){ error }
+      response
+    rescue StandardError => error
+      Pubnub.logger.error('Pubnub::Event') { error }
       error
     end
 
     def uri(memo = true)
-      unless self.is_a? SubscribeEvent
+      unless is_a? SubscribeEvent
         return @uri = uri(false) if memo
         return @uri if @uri
       end
@@ -101,7 +99,7 @@ module Pubnub
 
     def secure_call(cb, arg)
       cb.call arg
-    rescue => error
+    rescue StandardError => error
       Pubnub.logger.error('Pubnub::Event') { "Error while calling callback #{error.inspect}" }
     end
 
@@ -122,10 +120,11 @@ module Pubnub
         @telemetry_name => @current_telemetry
       }
 
-      required.merge!(timestamp: @timestamp) if @app.env[:secret_key] && ![:grant, :revoke, :audit].include?(@event)
+      empty_if_blank[@telemetry_name] = nil if @app.env[:no_telemetry]
+
+      required[:timestamp] = @timestamp if @app.env[:secret_key] && !%i[grant revoke audit].include?(@event)
 
       empty_if_blank.delete_if { |_k, v| v.blank? }
-
       required.merge(empty_if_blank)
     end
 
@@ -135,14 +134,14 @@ module Pubnub
     end
 
     def create_variables_from_options(options)
-      variables = %w(channel channels message http_sync callback
+      variables = %w[channel channels message http_sync callback
                      ssl cipher_key secret_key auth_key
                      publish_key subscribe_key timetoken
                      open_timeout read_timeout idle_timeout heartbeat
                      group action read write manage ttl presence start
                      end count reverse presence_callback store skip_validate
                      state channel_group channel_groups compressed meta customs include_token
-                     replicate with_presence cipher_key_selector)
+                     replicate with_presence cipher_key_selector]
 
       options = options.each_with_object({}) { |option, obj| obj[option.first.to_sym] = option.last }
 
@@ -176,16 +175,16 @@ module Pubnub
 
     def error_message(parsed_response)
       parsed_response['message']
-    rescue
+    rescue StandardError
       nil
     end
 
     def get_config
       {
-        tls:      @app.env[:ssl],
-        uuid:     @app.env[:uuid],
+        tls: @app.env[:ssl],
+        uuid: @app.env[:uuid],
         auth_key: @app.env[:auth_key],
-        origin:   @app.current_origin
+        origin: @app.current_origin
       }
     end
 
