@@ -2,7 +2,7 @@
 module Pubnub
   # Holds heartbeat functionality
   class Heartbeat < SingleEvent
-    include Celluloid
+    include Concurrent::Async
     include Pubnub::Validator::Heartbeat
     include Pubnub::Formatter
 
@@ -32,13 +32,9 @@ module Pubnub
 
     def parameters(*_args)
       parameters = super
-      if @app.env[:state] && @app.env[:state][@origin]
-        parameters.merge!(state: encode_state(@app.env[:state][@origin]))
-      end
-      parameters.merge!(heartbeat: @heartbeat)
-      parameters.merge!(
-        'channel-group' => @group.join(',')
-      ) unless @group.blank?
+      parameters[:state] = encode_state(@app.env[:state][@origin]) if @app.env[:state] && @app.env[:state][@origin]
+      parameters[:heartbeat] = @heartbeat
+      parameters['channel-group'] = @group.join(',') unless @group.blank?
       parameters
     end
 

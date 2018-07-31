@@ -19,20 +19,22 @@ module Pubnub
       end
 
       def validate_action_presence!
-        fail(
+        return unless @action.nil?
+        raise(
           ArgumentError.new,
           ':action is required for channel registration event.'
-        ) if @action.nil?
+        )
       end
 
       def validate_action_correctness!
-        fail(
+        return if %i[add list_groups get remove list_namespaces].include?(@action.to_sym)
+        raise(
           ArgumentError.new(
             object: self,
             message: 'Invalid :action key. Valid action keys are: :add, :list_groups, :get, :remove key'
           ),
           'Invalid :action key. Valid action keys are: :add, :list_groups, :get, :remove key'
-        ) unless [:add, :list_groups, :get, :remove, :list_namespaces].include?(@action.to_sym)
+        )
       end
     end
   end

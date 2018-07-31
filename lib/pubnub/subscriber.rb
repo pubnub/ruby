@@ -16,11 +16,11 @@ module Pubnub
     end
 
     def add_listener(options)
-      name     = (options[:name] || UUID.generate).to_sym
+      name = (options[:name] || UUID.generate).to_sym
       callback = options[:callback]
 
-      fail 'Invalid listener.' unless callback.is_a?(SubscribeCallback)
-      fail 'Listener with such name already exists.' if @listeners.keys.include?(name)
+      raise 'Invalid listener.' unless callback.is_a?(SubscribeCallback)
+      raise 'Listener with such name already exists.' if @listeners.key?(name)
 
       @listeners[name] = callback
     end
@@ -29,7 +29,7 @@ module Pubnub
       name = options[:name]
       callback = options[:callback]
 
-      fail 'You have to specify name _or_ listener object.' if name && callback
+      raise 'You have to specify name _or_ listener object.' if name && callback
 
       @listeners.delete_if { |k, _v| k == name.to_sym } if name
 
@@ -83,17 +83,17 @@ module Pubnub
 
     def announce_status(options)
       announcement_type = options[:announcement_type]
-      event             = options[:event]
-      given_options     = options[:given_options]
-      request           = options[:request]
-      _response         = options[:response]
+      event = options[:event]
+      given_options = options[:given_options]
+      request = options[:request]
+      _response = options[:response]
 
       case announcement_type
       when Pubnub::Constants::TIMEOUT_ANNOUNCEMENT
         envelope = ErrorEnvelope.new(
-          event:         event,
+          event: event,
           event_options: given_options,
-          timetoken:     nil,
+          timetoken: nil,
           status: {
             code: nil,
             client_request: request,
@@ -103,9 +103,9 @@ module Pubnub
             error: true,
             auto_retried: true,
 
-            current_timetoken:         @app.env[:timetoken].to_i,
-            last_timetoken:            @app.env[:timetoken].to_i,
-            subscribed_channels:       @app.subscribed_channels,
+            current_timetoken: @app.env[:timetoken].to_i,
+            last_timetoken: @app.env[:timetoken].to_i,
+            subscribed_channels: @app.subscribed_channels,
             subscribed_channel_groups: @app.subscribed_groups,
 
             config: get_config
@@ -122,9 +122,9 @@ module Pubnub
         )
       when Pubnub::Constants::RECONNECTED_ANNOUNCEMENT
         envelope = ErrorEnvelope.new(
-          event:         event,
+          event: event,
           event_options: given_options,
-          timetoken:     nil,
+          timetoken: nil,
           status: {
             code: nil,
             client_request: request,
@@ -134,9 +134,9 @@ module Pubnub
             error: false,
             auto_retried: true,
 
-            current_timetoken:         @app.env[:timetoken].to_i,
-            last_timetoken:            @app.env[:timetoken].to_i,
-            subscribed_channels:       @app.subscribed_channels,
+            current_timetoken: @app.env[:timetoken].to_i,
+            last_timetoken: @app.env[:timetoken].to_i,
+            subscribed_channels: @app.subscribed_channels,
             subscribed_channel_groups: @app.subscribed_groups,
 
             config: get_config
@@ -153,9 +153,9 @@ module Pubnub
         )
       when Pubnub::Constants::STATUS_REQUEST_MESSAGE_COUNT_EXCEEDED
         envelope = Pubnub::Envelope.new(
-          event:         event,
+          event: event,
           event_options: given_options,
-          timetoken:     nil,
+          timetoken: nil,
           status: {
             code: nil,
             client_request: request,
@@ -165,9 +165,9 @@ module Pubnub
             error: false,
             auto_retried: true,
 
-            current_timetoken:         @app.env[:timetoken].to_i,
-            last_timetoken:            @app.env[:timetoken].to_i,
-            subscribed_channels:       @app.subscribed_channels,
+            current_timetoken: @app.env[:timetoken].to_i,
+            last_timetoken: @app.env[:timetoken].to_i,
+            subscribed_channels: @app.subscribed_channels,
             subscribed_channel_groups: @app.subscribed_groups,
 
             config: get_config
@@ -253,7 +253,7 @@ module Pubnub
 
     def build_subscription
       @current_subscription = Subscribe.new({ ssl: @ssl }, @app)
-      @current_subscription_id = @current_subscription.bare_object.object_id
+      @current_subscription_id = @current_subscription.object_id
       @current_subscription.build(callbacks: @callbacks,
                                   channels: @channels,
                                   groups: @groups,
@@ -263,30 +263,29 @@ module Pubnub
     def remove_current_subscription
       return if @current_subscription_id.nil?
       Pubnub.logger.debug('Pubnub::Subscriber') { 'Removing current subscription' }
-      @current_subscription.async.terminate
-      @current_subscription    = nil
+      @current_subscription = nil
       @current_subscription_id = nil
       @app.timetoken = 0
     end
 
     def start_subscription
       Pubnub.logger.debug('Pubnub::Subscriber') { 'Starting subscription' }
-      fail 'Cannot start subscription without builded @current_subscription' if @current_subscription.nil?
-      @current_subscription.future.fire
+      raise 'Cannot start subscription without builded @current_subscription' if @current_subscription.nil?
+      @current_subscription.async.fire
     end
 
     def secure_call(cb, arg)
       cb.call arg
-    rescue => error
+    rescue StandardError => error
       Pubnub.logger.error('Pubnub::Subscriber') { "Error while calling callback #{error.inspect}" }
     end
 
     def get_config
       {
-        tls:      @app.env[:ssl],
-        uuid:     @app.env[:uuid],
+        tls: @app.env[:ssl],
+        uuid: @app.env[:uuid],
         auth_key: @app.env[:auth_key],
-        origin:   @app.current_origin
+        origin: @app.current_origin
       }
     end
   end

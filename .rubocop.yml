@@ -2,18 +2,24 @@ AllCops:
   Exclude:
     - 'spec/**/*'
     - 'examples/**/*'
+    - 'lib/pubnub/crypto.rb'
+    - 'lib/pubnub/format.rb'
+
 
 Metrics/ClassLength:
   Max: 150
 
 Metrics/LineLength:
-  Max: 120
+  Max: 150
 
 Metrics/AbcSize:
   Max: 30
 
 Metrics/MethodLength:
-  Max: 15
+  Max: 35
 
 Metrics/PerceivedComplexity:
   Max: 10
+
+Metrics/CyclomaticComplexity:
+  Enabled: false

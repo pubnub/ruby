@@ -1,7 +1,6 @@
 sudo: false
 language: ruby
 addons:
-  srcclr: true
   code_climate:
     repo_token: 48739096f72763cbed9bd407efd2ed33151ce5663fb3181455128f06d6123ef3
 
@@ -14,27 +13,15 @@ bundler_args: --without development
 
 script: bundle exec rspec
 
-gemfile:
-  - gemfiles/celluloid_017.gemfile
-  - gemfiles/celluloid_018.gemfile
-  - gemfiles/celluloid_master.gemfile
-
 rvm:
-  - 2.4.1
-  - 2.3.4
-  - 2.2.7
+  - 2.5.1
+  - 2.4.4
+  - 2.3.7
+  - 2.2.10
 
 matrix:
   include:
-    - rvm: jruby-9.1.13.0
+    - rvm: jruby-head
       env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
       jdk: oraclejdk8
-      gemfile: gemfiles/celluloid_017.gemfile
-    - rvm: jruby-9.1.13.0
-      env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
-      jdk: oraclejdk8
-      gemfile: gemfiles/celluloid_018.gemfile
-    - rvm: jruby-9.1.13.0
-      env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
-      jdk: oraclejdk8
-      gemfile: gemfiles/celluloid_master.gemfile
+

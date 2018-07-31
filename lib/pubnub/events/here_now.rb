@@ -2,7 +2,7 @@
 module Pubnub
   # Holds here_now functionality
   class HereNow < SingleEvent
-    include Celluloid
+    include Concurrent::Async
     include Pubnub::Validator::HereNow
 
     def initialize(options, app)
@@ -49,17 +49,14 @@ module Pubnub
 
     def parameters(*_args)
       parameters = super
-      parameters.merge!(
-        'channel-group' => @group.join(',')
-      ) unless @group.blank?
+      parameters['channel-group'] = @group.join(',') unless @group.blank?
       parameters
     end
 
     def valid_envelope(parsed_response, req_res_objects)
       Pubnub::Envelope.new(
-        event:           @event,
-        event_options:   @given_options,
-
+        event: @event,
+        event_options: @given_options,
         result: {
           code: req_res_objects[:response].code,
           operation: get_operation,
@@ -73,7 +70,6 @@ module Pubnub
             channels: (parsed_response['payload'] ? parsed_response['payload']['channels'] : nil)
           }
         },
-
         status: {
           code: req_res_objects[:response].code,
           client_request: req_res_objects[:request],

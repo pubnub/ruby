@@ -5,13 +5,13 @@ module Pubnub
     # Module that holds paged_history event logic
     module PagedHistory
       def paged_history(options = {}, &block)
-        channel  = options.fetch(:channel)
-        page     = options.fetch(:page, 1)
-        limit    = options.fetch(:limit, 100)
+        channel = options.fetch(:channel)
+        page = options.fetch(:page, 1)
+        limit = options.fetch(:limit, 100)
         callback = options.fetch(:callback, block)
-        sync     = options[:http_sync]
+        sync = options[:http_sync]
         start_tt = options.fetch(:start)
-        end_tt   = options.fetch(:end)
+        end_tt = options.fetch(:end)
         if sync
           sync_paged_history(channel, page, limit, callback, start: start_tt, end: end_tt)
         else
@@ -40,7 +40,7 @@ module Pubnub
       end
 
       def async_paged_history(options)
-        Celluloid::Future.new do
+        Concurrent::Future.new do
           sync_options = options.dup
           sync_options[:http_sync] = true
           paged_history(sync_options, &block)
@@ -49,9 +49,11 @@ module Pubnub
 
       def call_callback(envelopes, callback)
         envelopes.flatten!
-        envelopes.each do |envelope|
-          secure_call callback, envelope
-        end if callback
+        if callback
+          envelopes.each do |envelope|
+            secure_call callback, envelope
+          end
+        end
         envelopes
       end
     end
