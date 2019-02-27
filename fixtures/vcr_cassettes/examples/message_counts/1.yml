@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://balancer1g.bronze.aws-pdx-1.ps.pn/v3/history/sub-key/demo-36/message-counts/a,b,c,d?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/4.0.3&timetoken=12123&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.2 (2017-09-14))
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 27 Feb 2019 20:08:09 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 27 Feb 2019 20:08:09 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '91'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, DELETE, OPTIONS
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "error": false, "error_message": "", "channels": {"a":0,"c":0,"b":1,"d":0}}'
+    http_version: 
+  recorded_at: Wed, 27 Feb 2019 20:08:10 GMT
+recorded_with: VCR 4.0.0
