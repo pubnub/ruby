@@ -26,12 +26,12 @@ module Pubnub
 
     def path
       '/' + [
-          'v3',
-          'history',
-          'sub-key',
-          @subscribe_key,
-          'message-counts',
-          Formatter.channels_for_url(@channel)
+        'v3',
+        'history',
+        'sub-key',
+        @subscribe_key,
+        'message-counts',
+        Formatter.channels_for_url(@channel)
       ].join('/')
     end
 
@@ -41,45 +41,41 @@ module Pubnub
         params[:timetoken] = @timetokens.first
       elsif @timetokens.length > 1
         params[:channelTimetokens] = @timetokens.join(',')
-
       end
       params
     end
 
     def valid_envelope(parsed_response, req_res_objects)
       Pubnub::Envelope.new(
-          event: @event,
-          event_options: @given_options,
-          timetoken: nil,
-          status: {
-              code: req_res_objects[:response].code,
-              client_request: req_res_objects[:request],
-              server_response: req_res_objects[:response],
+        event: @event,
+        event_options: @given_options,
+        timetoken: nil,
+        status: {
+          code: req_res_objects[:response].code,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
 
-              category: Pubnub::Constants::STATUS_ACK,
-              error: false,
-              auto_retried: false,
+          category: Pubnub::Constants::STATUS_ACK,
+          error: false,
+          auto_retried: false,
 
-              data: nil,
-              current_timetoken: nil,
-              last_timetoken: nil,
-              subscribed_channels: nil,
-              subscribed_channel_groups: nil,
+          data: nil,
+          current_timetoken: nil,
+          last_timetoken: nil,
+          subscribed_channels: nil,
+          subscribed_channel_groups: nil,
 
-              config: get_config
-
-          },
-          result: {
-              code: req_res_objects[:response].code,
-              operation: Pubnub::Constants::OPERATION_HISTORY,
-              client_request: req_res_objects[:request],
-              server_response: req_res_objects[:response],
-              data: parsed_response
-          }
+          config: get_config
+        },
+        result: {
+          code: req_res_objects[:response].code,
+          operation: Pubnub::Constants::OPERATION_HISTORY,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
+          data: parsed_response
+        }
       )
     end
-
-    private
 
     def parse_timetokens(timetokens)
       timetokens ||= []
