@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pubnub (4.0.3)
+    pubnub (4.0.29)
       concurrent-ruby (~> 1.0.5)
       concurrent-ruby-edge (~> 0.3.1)
       dry-validation (~> 0.10)
