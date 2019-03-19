@@ -7,7 +7,7 @@
 # Complete Documentation
 Available at https://www.pubnub.com/docs/ruby/pubnub-ruby-sdk-v4 **v4.x**
 
-## PubNub Gem version 4.0.27
+## PubNub Gem version 4.0.3
 
 ##### YOU MUST HAVE A PUBNUB ACCOUNT TO USE THE API.
 ##### http://www.pubnub.com/account

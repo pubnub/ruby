@@ -1,6 +1,13 @@
 ---
-version: "4.0.28"
+version: "4.0.3"
 changelog:
+  -
+    changes:
+      -
+        text: "Added 'message_count' API endpoint"
+        type: feature
+    date: 28-2-2019
+    version: "4.0.3"
   -
     changes:
       -
@@ -265,6 +272,7 @@ features:
     - STORAGE-START-END
     - STORAGE-COUNT
     - STORAGE-DELETE-MESSAGES
+    - STORAGE-MESSAGE-COUNT
   subscribe: 
     - SUBSCRIBE-CHANNELS
     - SUBSCRIBE-CHANNEL-GROUPS
