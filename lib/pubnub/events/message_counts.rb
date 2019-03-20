@@ -8,7 +8,7 @@ module Pubnub
     def initialize(options, app)
       @event = :message_counts
       @telemetry_name = :l_mc
-      @timetokens = parse_timetokens options[:timetoken] || []
+      @timetokens = parse_timetokens options[:channel_timetokens] || []
       super
     end
 
@@ -38,7 +38,7 @@ module Pubnub
     def parameters(*_args)
       params = super
       if @timetokens.length == 1
-        params[:timetoken] = @timetokens.first
+        params[:channel_timetokens] = @timetokens.first
       elsif @timetokens.length > 1
         params[:channelTimetokens] = @timetokens.join(',')
       end
@@ -49,7 +49,7 @@ module Pubnub
       Pubnub::Envelope.new(
         event: @event,
         event_options: @given_options,
-        timetoken: nil,
+        channel_timetokens: nil,
         status: {
           code: req_res_objects[:response].code,
           client_request: req_res_objects[:request],
