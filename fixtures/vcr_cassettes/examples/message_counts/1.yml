@@ -41,6 +41,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"status": 200, "error": false, "error_message": "", "channels": {"a":0,"c":0,"b":1,"d":0}}'
-    http_version: 
+    http_version:
   recorded_at: Wed, 27 Feb 2019 20:08:10 GMT
 recorded_with: VCR 4.0.0

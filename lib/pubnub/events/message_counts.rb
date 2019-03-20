@@ -38,7 +38,7 @@ module Pubnub
     def parameters(*_args)
       params = super
       if @timetokens.length == 1
-        params[:channel_timetokens] = @timetokens.first
+        params[:timetoken] = @timetokens.first
       elsif @timetokens.length > 1
         params[:channelTimetokens] = @timetokens.join(',')
       end

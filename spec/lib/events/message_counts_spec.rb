@@ -20,7 +20,7 @@ describe Pubnub::Presence do
 
   context 'when number of timetokens is one' do
     it 'does not raise exception' do
-      expect{client.message_counts(channels: 'a', timetoken: 123123123)}.not_to raise_error
+      expect{client.message_counts(channels: 'a', channel_timetokens: 123123123)}.not_to raise_error
     end
   end
 
@@ -28,7 +28,7 @@ describe Pubnub::Presence do
     it 'raises an exception when number of timetokens and channels mismatches' do
       params = {
           channels: ['12', '123'],
-          timetoken: [123123, 123123, 1231231254]
+          channel_timetokens: [123123, 123123, 1231231254]
       }
 
       expect{client.message_counts(**params)}.to raise_error(Pubnub::ArgumentError)
@@ -37,7 +37,7 @@ describe Pubnub::Presence do
     it 'does not raise an exception when number of timetokens and channels is the same' do
       params = {
           channels: ['123123', '12312312'],
-          timetoken: [123123, 123123]
+          channel_timetokens: [123123, 123123]
       }
 
       expect{client.message_counts(**params)}.not_to raise_error
@@ -54,7 +54,7 @@ describe Pubnub::Presence do
             auth_key: 'ruby-test-auth-client-one',
             origin: 'balancer1g.bronze.aws-pdx-1.ps.pn'
             )
-        envelope = pubnub.message_counts(channel:['a,b,c,d'], timetoken: 12123).value
+        envelope = pubnub.message_counts(channel:['a,b,c,d'], channel_timetokens: 12123).value
         res = envelope.result[:data]
         expect(res.keys).to contain_exactly("channels", "error", "error_message", "status")
         expect(res["channels"].keys).to contain_exactly("a", "b", "c", "d")
