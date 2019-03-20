@@ -375,7 +375,7 @@ module Pubnub
       default_values.each do |k, v|
         @env[k] = v unless @env[k]
       end
-      @env[:channel_timetokens] = 0
+      @env[:timetoken] = 0
       @env[:sequence_number_for_publish] = 0
     end
 

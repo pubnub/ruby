@@ -49,7 +49,7 @@ module Pubnub
       Pubnub::Envelope.new(
         event: @event,
         event_options: @given_options,
-        channel_timetokens: nil,
+        timetoken: nil,
         status: {
           code: req_res_objects[:response].code,
           client_request: req_res_objects[:request],
