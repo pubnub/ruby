@@ -8,7 +8,7 @@ module Pubnub
     def initialize(options, app)
       @event = :message_counts
       @telemetry_name = :l_mc
-      @timetokens = parse_timetokens options[:timetoken] || []
+      @timetokens = parse_timetokens options[:channel_timetokens] || []
       super
     end
 

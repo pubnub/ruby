@@ -23,17 +23,17 @@ module Pubnub
           raise(
             ArgumentError.new(
               object: self,
-              message: 'Either single :timetoken or multiple timetokens equaling to number of channels given must be provided.'
+              message: 'channel_timetokens: must contain single or multiple timetokens equaling to number of channels given must be provided.'
             ),
-            'Either single :timetoken or multiple timetokens equaling to number of channels given must be provided.'
+            'channel_timetokens: must contain single or multiple timetokens equaling to number of channels given must be provided.'
           )
         elsif tokens.length > 1 && tokens.length != chans.length
           raise(
             ArgumentError.new(
               object: self,
-              message: 'Number of :timetoken elements must be 1 or same as number of provided channels.'
+              message: 'Number of channel_timetokens: elements must be 1 or same as number of provided channels.'
             ),
-            'Number of :timetoken elements must be 1 or same as number of provided channels.'
+            'Number of channel_timetokens: elements must be 1 or same as number of provided channels.'
           )
         end
       end
