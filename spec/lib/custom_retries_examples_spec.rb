@@ -7,8 +7,8 @@ describe "Custom retries" do
 
   before(:each) do
     @pubnub = Pubnub.new(
-      subscribe_key: "sub-c-446d9780-c606-11e5-a316-0619f8945a4f",
-      publish_key: "pub-c-63eb50a0-98ed-43b2-999a-c32efb85c747",
+      subscribe_key: "sub-a-mock-key",
+      publish_key: "pub-a-mock-key",
       secret_key: "sec-c-MTQyMzhjZGUtNTJiYi00MDU0LThkZWQtZDRmMGUwZDk4NjQz",
       uuid: "ruby-test-client",
     )

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/demo/demo/0?auth=ruby-test-auth&pnsdk=PubNub-Ruby/4.0.0beta2&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid
+    uri: http://ps.pndsn.com/v2/subscribe/demo/demo/0?auth=ruby-test-auth&pnsdk=PubNub-Ruby/4.1.0beta2&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid
     body:
       encoding: UTF-8
       string: ''
@@ -39,7 +39,7 @@ http_interactions:
   recorded_at: Thu, 16 Jun 2016 17:35:13 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/presence/sub-key/demo/channel/demo/heartbeat?auth=ruby-test-auth&heartbeat=3&pnsdk=PubNub-Ruby/4.0.0beta2&state=%7B%22channel%22:%7B%7D,%22group%22:%7B%7D%7D&uuid=ruby-test-uuid
+    uri: http://ps.pndsn.com/v2/presence/sub-key/demo/channel/demo/heartbeat?auth=ruby-test-auth&heartbeat=3&pnsdk=PubNub-Ruby/4.1.0beta2&state=%7B%22channel%22:%7B%7D,%22group%22:%7B%7D%7D&uuid=ruby-test-uuid
     body:
       encoding: UTF-8
       string: ''
@@ -82,7 +82,7 @@ http_interactions:
   recorded_at: Thu, 16 Jun 2016 17:35:13 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/presence/sub-key/demo/channel/demo/heartbeat?auth=ruby-test-auth&heartbeat=3&pnsdk=PubNub-Ruby/4.0.0beta2&state=%7B%22channel%22:%7B%7D,%22group%22:%7B%7D%7D&uuid=ruby-test-uuid
+    uri: http://ps.pndsn.com/v2/presence/sub-key/demo/channel/demo/heartbeat?auth=ruby-test-auth&heartbeat=3&pnsdk=PubNub-Ruby/4.1.0beta2&state=%7B%22channel%22:%7B%7D,%22group%22:%7B%7D%7D&uuid=ruby-test-uuid
     body:
       encoding: UTF-8
       string: ''

@@ -11,7 +11,6 @@ module Pubnub
                                 request: request,
                                 response: response)
         end
-
         parsed_response, error = Formatter.parse_json(response.body)
 
         error = response if parsed_response && response.code.to_i != 200

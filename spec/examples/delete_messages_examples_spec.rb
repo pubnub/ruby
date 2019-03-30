@@ -8,8 +8,8 @@ describe Pubnub::ChannelRegistration do
   context "whatever" do
     let(:pubnub) do
       Pubnub::Client.new(
-        subscribe_key: "sub-c-fc6c9226-655d-11e7-b272-02ee2ddab7fe",
-        publish_key: "pub-c-b458bb23-c95d-4f43-9992-e2c118557e80",
+        subscribe_key: "sub-a-mock-key",
+        publish_key: "pub-a-mock-key",
         auth_key: "ruby-test-auth",
         uuid: "ruby-test-uuid",
       )

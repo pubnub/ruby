@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/demo.*-pnpres/0?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/4.0.0beta1&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid-client-one
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo.*-pnpres/0?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/4.1.0beta1&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid-client-one
     body:
       encoding: UTF-8
       string: ''
@@ -39,7 +39,7 @@ http_interactions:
   recorded_at: Wed, 08 Jun 2016 15:58:16 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/demo.*-pnpres/0?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/4.0.0beta1&t=%7B%22r%22:12,%22t%22:%2214654014944445943%22%7D&uuid=ruby-test-uuid-client-one
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo.*-pnpres/0?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/4.1.0beta1&t=%7B%22r%22:12,%22t%22:%2214654014944445943%22%7D&uuid=ruby-test-uuid-client-one
     body:
       encoding: UTF-8
       string: ''
@@ -71,9 +71,9 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '{"t":{"t":"14654014975133404","r":12},"m":[{"a":"5","f":0,"p":{"t":"14654014970736098","r":1},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo.*-pnpres","d":{"action":
+      string: '{"t":{"t":"14654014975133404","r":12},"m":[{"a":"5","f":0,"p":{"t":"14654014970736098","r":1},"k":"sub-a-mock-key","c":"demo.*-pnpres","d":{"action":
         "join", "timestamp": 1465401497, "uuid": "ruby-test-uuid-client-two", "occupancy":
-        2}},{"a":"5","f":0,"p":{"t":"14654014974678833","r":2},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo.*-pnpres","d":{"action":
+        2}},{"a":"5","f":0,"p":{"t":"14654014974678833","r":2},"k":"sub-a-mock-key","c":"demo.*-pnpres","d":{"action":
         "leave", "timestamp": 1465401497, "uuid": "ruby-test-uuid-client-two", "occupancy":
         1}}]}'
     http_version: 

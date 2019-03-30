@@ -24,8 +24,8 @@ describe Pubnub::Subscribe do
       it "works" do
         VCR.use_cassette("lib/events/subscribe-async", record: :once) do
           @pubnub = Pubnub::Client.new(
-            subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
-            publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
+            subscribe_key: "sub-a-mock-key",
+            publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
             uuid: "ruby-test-uuid",
           )
@@ -80,8 +80,8 @@ describe Pubnub::Subscribe do
       it "fires status callback on error" do
         VCR.use_cassette("lib/events/subscribe-async-error", record: :once) do
           @pubnub = Pubnub::Client.new(
-            subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
-            publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
+            subscribe_key: "sub-a-mock-key",
+            publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
             uuid: "ruby-test-uuid",
           )
@@ -121,8 +121,8 @@ describe Pubnub::Subscribe do
       it "works" do
         VCR.use_cassette("lib/events/subscribe-sync", record: :once) do
           @pubnub = Pubnub::Client.new(
-            subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
-            publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
+            subscribe_key: "sub-a-mock-key",
+            publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
             uuid: "ruby-test-uuid",
           )
@@ -139,8 +139,8 @@ describe Pubnub::Subscribe do
       it "fires status callback on error" do
         VCR.use_cassette("lib/events/subscribe-sync-error", record: :once) do
           @pubnub = Pubnub::Client.new(
-            subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
-            publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
+            subscribe_key: "sub-a-mock-key",
+            publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
             uuid: "ruby-test-uuid",
           )
@@ -159,8 +159,8 @@ describe Pubnub::Subscribe do
       it "pass channels to channel" do
         VCR.use_cassette("lib/events/subscribe-sync", record: :once) do
           @pubnub = Pubnub::Client.new(
-            subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
-            publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
+            subscribe_key: "sub-a-mock-key",
+            publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
             uuid: "ruby-test-uuid",
           )
@@ -177,8 +177,8 @@ describe Pubnub::Subscribe do
       it "pass channel_groups to channel_group" do
         VCR.use_cassette("lib/events/subscribe-channel-groups", record: :once) do
           @pubnub = Pubnub::Client.new(
-            subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
-            publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
+            subscribe_key: "sub-a-mock-key",
+            publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
             uuid: "ruby-test-uuid",
           )
@@ -197,8 +197,8 @@ describe Pubnub::Subscribe do
       it "with with_presence" do
         VCR.use_cassette("lib/events/subscribe-with-presence", record: :once) do
           @pubnub = Pubnub::Client.new(
-            subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
-            publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
+            subscribe_key: "sub-a-mock-key",
+            publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
             uuid: "ruby-test-uuid",
           )

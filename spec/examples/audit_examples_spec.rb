@@ -9,8 +9,8 @@ describe Pubnub::Audit do
     end
 
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       secret_key: "sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
@@ -33,7 +33,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -51,7 +51,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -69,7 +69,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -88,7 +88,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -107,7 +107,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -126,7 +126,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -144,7 +144,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -162,7 +162,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -180,7 +180,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -199,7 +199,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -218,7 +218,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -237,7 +237,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -255,7 +255,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -273,7 +273,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -291,7 +291,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -310,7 +310,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -329,7 +329,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -348,7 +348,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -366,7 +366,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -384,7 +384,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -402,7 +402,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -421,7 +421,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -440,7 +440,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -459,7 +459,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -477,7 +477,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 0, "ttl" => 287}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1441}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1441, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 137}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-a-mock-key", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 0, "ttl" => 287}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1441}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1441, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 137}}}}})
     end
   end
 
@@ -495,7 +495,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 0, "ttl" => 287}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1441, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 137}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-a-mock-key", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 0, "ttl" => 287}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1441, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 137}}}}})
     end
   end
 
@@ -513,7 +513,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 0, "ttl" => 287}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 137}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-a-mock-key", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 0, "ttl" => 287}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 137}}}}})
     end
   end
 
@@ -532,7 +532,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 4}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 4}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 131}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-a-mock-key", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 4}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 4}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 131}}}}})
     end
   end
 
@@ -551,7 +551,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 4}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 4}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 131}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-a-mock-key", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 4}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 4}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 131}}}}})
     end
   end
 
@@ -570,7 +570,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 0, "ttl" => 287}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 137}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-a-mock-key", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 0, "ttl" => 287}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 137}}}}})
     end
   end
 
@@ -588,7 +588,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -606,7 +606,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -624,7 +624,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -643,7 +643,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -662,7 +662,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -681,7 +681,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -699,7 +699,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -717,7 +717,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -735,7 +735,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -754,7 +754,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -773,7 +773,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -792,7 +792,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "user", "subscribe_key" => "sub-a-mock-key", "channel" => "demo", "auths" => {}})
     end
   end
 
@@ -810,7 +810,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -828,7 +828,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -846,7 +846,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -865,7 +865,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -884,7 +884,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -903,7 +903,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -921,7 +921,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -939,7 +939,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -957,7 +957,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -976,7 +976,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -995,7 +995,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -1014,7 +1014,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-group" => "demo", "auths" => {}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group+auth", "subscribe_key" => "sub-a-mock-key", "channel-group" => "demo", "auths" => {}})
     end
   end
 
@@ -1032,7 +1032,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 0, "ttl" => 286}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1441, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 136}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-a-mock-key", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 0, "ttl" => 286}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1441, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 136}}}}})
     end
   end
 
@@ -1050,7 +1050,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 0, "ttl" => 286}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 136}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-a-mock-key", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 0, "ttl" => 286}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 136}}}}})
     end
   end
 
@@ -1068,7 +1068,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 0, "ttl" => 286}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 136}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-a-mock-key", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 0, "ttl" => 286}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 9}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 136}}}}})
     end
   end
 
@@ -1087,7 +1087,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 4}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 4}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 131}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-a-mock-key", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 4}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 4}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 131}}}}})
     end
   end
 
@@ -1106,7 +1106,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 6}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 6}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 134}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-a-mock-key", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 6}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 6}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 134}}}}})
     end
   end
 
@@ -1125,7 +1125,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 4}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 4}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 131}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "subkey", "subscribe_key" => "sub-a-mock-key", "channels" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}, "ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 4}}}, "demo-pnpres" => {"r" => 1, "m" => 1, "w" => 1, "auths" => {"ADMIN-hb89skz71v" => {"r" => 1, "m" => 0, "w" => 1, "ttl" => 4}}}, "demo.*" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}, "objects" => {}, "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 131}}}}})
     end
   end
 
@@ -1143,7 +1143,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1439}}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-a-mock-key", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1439}}})
     end
   end
 
@@ -1161,7 +1161,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-a-mock-key", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440}}})
     end
   end
 
@@ -1179,7 +1179,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 136}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-a-mock-key", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 136}}}}})
     end
   end
 
@@ -1198,7 +1198,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 134}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-a-mock-key", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 134}}}}})
     end
   end
 
@@ -1217,7 +1217,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 136}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-a-mock-key", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 136}}}}})
     end
   end
 
@@ -1236,7 +1236,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 134}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-a-mock-key", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 134}}}}})
     end
   end
 
@@ -1254,7 +1254,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 136}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-a-mock-key", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 136}}}}})
     end
   end
 
@@ -1272,7 +1272,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 136}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-a-mock-key", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 136}}}}})
     end
   end
 
@@ -1290,7 +1290,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 136}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-a-mock-key", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 136}}}}})
     end
   end
 
@@ -1309,7 +1309,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 131}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-a-mock-key", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 131}}}}})
     end
   end
 
@@ -1328,7 +1328,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 130}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-a-mock-key", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 130}}}}})
     end
   end
 
@@ -1347,7 +1347,7 @@ describe Pubnub::Audit do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:audit)
-      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 130}}}}})
+      expect(envelope.result[:data]).to eq({"level" => "channel-group", "subscribe_key" => "sub-a-mock-key", "channel-groups" => {"demo" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 1440, "auths" => {"ruby-authkey" => {"r" => 1, "m" => 1, "w" => 1, "ttl" => 130}}}}})
     end
   end
 end
