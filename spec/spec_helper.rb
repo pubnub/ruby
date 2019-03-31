@@ -77,4 +77,7 @@ VCR.configure do |c|
                         VCR.request_matchers.uri_without_param(*ignored_params)],
   }
   c.debug_logger = File.open("vcr.log", "w")
+  c.before_record do |interaction, casette|
+    interaction.request.uri.gsub!(/(pub|sub)-[\da-fA-F]-[\da-fA-F]{8}(-[\da-fA-F]{4}){3}-[\da-fA-F]{12}/, '\1-a-mock-key')
+  end
 end
