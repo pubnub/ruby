@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-c-9fb06248-0a21-11e7-91d0-02ee2ddab7fe/demo-pnpres/0
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-pnpres/0
     body:
       encoding: UTF-8
       string: ''
@@ -39,7 +39,7 @@ http_interactions:
   recorded_at: Fri, 31 Mar 2017 11:09:34 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-c-9fb06248-0a21-11e7-91d0-02ee2ddab7fe/demo-pnpres/0?pnsdk=PubNub-Ruby/4.0.19&t=%7B%22r%22:12,%22t%22:%2214909585651874910%22%7D&uuid=59d79c38-474c-4996-b2b3-59137b4bb6f7
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-pnpres/0?pnsdk=PubNub-Ruby/4.0.19&t=%7B%22r%22:12,%22t%22:%2214909585651874910%22%7D&uuid=59d79c38-474c-4996-b2b3-59137b4bb6f7
     body:
       encoding: UTF-8
       string: ''
@@ -71,13 +71,13 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '{"t":{"t":"14909585751739118","r":12},"m":[{"a":"4","f":0,"p":{"t":"14909585750910131","r":1},"k":"sub-c-9fb06248-0a21-11e7-91d0-02ee2ddab7fe","c":"demo-pnpres","d":{"action":
+      string: '{"t":{"t":"14909585751739118","r":12},"m":[{"a":"4","f":0,"p":{"t":"14909585750910131","r":1},"k":"sub-a-mock-key","c":"demo-pnpres","d":{"action":
         "interval", "timestamp": 1490958575, "occupancy": 3}}]}'
     http_version: 
   recorded_at: Fri, 31 Mar 2017 11:09:35 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-c-9fb06248-0a21-11e7-91d0-02ee2ddab7fe/demo-pnpres/0?pnsdk=PubNub-Ruby/4.0.19&t=%7B%22r%22:12,%22t%22:%2214909585751739118%22%7D&uuid=59d79c38-474c-4996-b2b3-59137b4bb6f7
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-pnpres/0?pnsdk=PubNub-Ruby/4.0.19&t=%7B%22r%22:12,%22t%22:%2214909585751739118%22%7D&uuid=59d79c38-474c-4996-b2b3-59137b4bb6f7
     body:
       encoding: UTF-8
       string: ''
@@ -109,13 +109,13 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '{"t":{"t":"14909585851755112","r":12},"m":[{"a":"4","f":0,"p":{"t":"14909585850925693","r":1},"k":"sub-c-9fb06248-0a21-11e7-91d0-02ee2ddab7fe","c":"demo-pnpres","d":{"action":
+      string: '{"t":{"t":"14909585851755112","r":12},"m":[{"a":"4","f":0,"p":{"t":"14909585850925693","r":1},"k":"sub-a-mock-key","c":"demo-pnpres","d":{"action":
         "interval", "timestamp": 1490958585, "occupancy": 4, "join": ["Client-d39lr"]}}]}'
     http_version: 
   recorded_at: Fri, 31 Mar 2017 11:09:45 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-c-9fb06248-0a21-11e7-91d0-02ee2ddab7fe/demo-pnpres/0?pnsdk=PubNub-Ruby/4.0.19&t=%7B%22r%22:12,%22t%22:%2214909585851755112%22%7D&uuid=59d79c38-474c-4996-b2b3-59137b4bb6f7
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-pnpres/0?pnsdk=PubNub-Ruby/4.0.19&t=%7B%22r%22:12,%22t%22:%2214909585851755112%22%7D&uuid=59d79c38-474c-4996-b2b3-59137b4bb6f7
     body:
       encoding: UTF-8
       string: ''
@@ -147,13 +147,13 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '{"t":{"t":"14909585951648798","r":12},"m":[{"a":"4","f":0,"p":{"t":"14909585950916556","r":1},"k":"sub-c-9fb06248-0a21-11e7-91d0-02ee2ddab7fe","c":"demo-pnpres","d":{"action":
+      string: '{"t":{"t":"14909585951648798","r":12},"m":[{"a":"4","f":0,"p":{"t":"14909585950916556","r":1},"k":"sub-a-mock-key","c":"demo-pnpres","d":{"action":
         "interval", "timestamp": 1490958595, "occupancy": 3, "leave": ["another-client"]}}]}'
     http_version: 
   recorded_at: Fri, 31 Mar 2017 11:09:55 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-c-9fb06248-0a21-11e7-91d0-02ee2ddab7fe/demo-pnpres/0?pnsdk=PubNub-Ruby/4.0.19&t=%7B%22r%22:12,%22t%22:%2214909585951648798%22%7D&uuid=59d79c38-474c-4996-b2b3-59137b4bb6f7
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-pnpres/0?pnsdk=PubNub-Ruby/4.0.19&t=%7B%22r%22:12,%22t%22:%2214909585951648798%22%7D&uuid=59d79c38-474c-4996-b2b3-59137b4bb6f7
     body:
       encoding: UTF-8
       string: ''
@@ -185,7 +185,7 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '{"t":{"t":"14909586051640750","r":12},"m":[{"a":"4","f":0,"p":{"t":"14909586050915528","r":1},"k":"sub-c-9fb06248-0a21-11e7-91d0-02ee2ddab7fe","c":"demo-pnpres","d":{"action":
+      string: '{"t":{"t":"14909586051640750","r":12},"m":[{"a":"4","f":0,"p":{"t":"14909586050915528","r":1},"k":"sub-a-mock-key","c":"demo-pnpres","d":{"action":
         "interval", "timestamp": 1490958605, "occupancy": 2, "join": ["another-client"],
         "leave": ["Client-d39lr", "client0"]}}]}'
     http_version: 

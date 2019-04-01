@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v1/channel-registration/sub-key/sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe/channel-group/a!@%23$%25%5E&()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E%3F%3F~%60Z?add=a!@%23$%25%5E%26()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E??~%60Z&pnsdk=PubNub-Ruby/4.0.21&signature=kjmyFn1ttT%2BHAcKpOTZZigASBRH1/l528KOHmamcgsg=&timestamp=1496400706&uuid=test
+    uri: http://ps.pndsn.com/v1/channel-registration/sub-key/sub-a-mock-key/channel-group/a!@%23$%25%5E&()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E%3F%3F~%60Z?add=a!@%23$%25%5E%26()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E??~%60Z&pnsdk=PubNub-Ruby/4.0.21&signature=kjmyFn1ttT%2BHAcKpOTZZigASBRH1/l528KOHmamcgsg=&timestamp=1496400706&uuid=test
     body:
       encoding: UTF-8
       string: ''
@@ -46,7 +46,7 @@ http_interactions:
   recorded_at: Fri, 02 Jun 2017 10:51:46 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v1/channel-registration/sub-key/sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe/channel-group/a!@%23$%25%5E&()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E%3F%3F~%60Z?pnsdk=PubNub-Ruby/4.0.21&signature=k2%2Bce2JIuB1kFZoCZCGoxqKZPbJrrgqriSOkMrqEjPI=&timestamp=1496400706&uuid=test
+    uri: http://ps.pndsn.com/v1/channel-registration/sub-key/sub-a-mock-key/channel-group/a!@%23$%25%5E&()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E%3F%3F~%60Z?pnsdk=PubNub-Ruby/4.0.21&signature=k2%2Bce2JIuB1kFZoCZCGoxqKZPbJrrgqriSOkMrqEjPI=&timestamp=1496400706&uuid=test
     body:
       encoding: UTF-8
       string: ''
@@ -91,7 +91,7 @@ http_interactions:
   recorded_at: Fri, 02 Jun 2017 10:51:46 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v1/channel-registration/sub-key/sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe/channel-group/a!@%23$%25%5E&()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E%3F%3F~%60Z?pnsdk=PubNub-Ruby/4.0.21&remove=a!@%23$%25%5E%26()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E??~%60Z&signature=JcO20Q6GH2xmAbNizJ1t4gnfj44Gohct2PfpvlZxGc8=&timestamp=1496400706&uuid=test
+    uri: http://ps.pndsn.com/v1/channel-registration/sub-key/sub-a-mock-key/channel-group/a!@%23$%25%5E&()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E%3F%3F~%60Z?pnsdk=PubNub-Ruby/4.0.21&remove=a!@%23$%25%5E%26()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E??~%60Z&signature=JcO20Q6GH2xmAbNizJ1t4gnfj44Gohct2PfpvlZxGc8=&timestamp=1496400706&uuid=test
     body:
       encoding: UTF-8
       string: ''
@@ -135,7 +135,7 @@ http_interactions:
   recorded_at: Fri, 02 Jun 2017 10:51:46 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v1/channel-registration/sub-key/sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe/channel-group/a!@%23$%25%5E&()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E%3F%3F~%60Z/remove?pnsdk=PubNub-Ruby/4.0.21&signature=CRTxmth8MPcoFQXfVaJ24otecZwUwvcqRrsaqcmqK80=&timestamp=1496400706&uuid=test
+    uri: http://ps.pndsn.com/v1/channel-registration/sub-key/sub-a-mock-key/channel-group/a!@%23$%25%5E&()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E%3F%3F~%60Z/remove?pnsdk=PubNub-Ruby/4.0.21&signature=CRTxmth8MPcoFQXfVaJ24otecZwUwvcqRrsaqcmqK80=&timestamp=1496400706&uuid=test
     body:
       encoding: UTF-8
       string: ''

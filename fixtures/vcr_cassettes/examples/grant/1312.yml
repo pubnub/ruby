@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v1/auth/grant/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f?auth=ruby-authkey&channel=demo&m=0&pnsdk=PubNub-Ruby/4.0.0&r=1&signature=raH3luIK6NqXkZeBPJJx01sWYQ5nCqR8HiqtFiAFmUk=&timestamp=1464187648&ttl=300&uuid=ruby-test-uuid-client-one&w=0
+    uri: http://ps.pndsn.com/v1/auth/grant/sub-key/sub-a-mock-key?auth=ruby-authkey&channel=demo&m=0&pnsdk=PubNub-Ruby/4.1.0&r=1&signature=raH3luIK6NqXkZeBPJJx01sWYQ5nCqR8HiqtFiAFmUk=&timestamp=1464187648&ttl=300&uuid=ruby-test-uuid-client-one&w=0
     body:
       encoding: UTF-8
       string: ''
@@ -36,7 +36,7 @@ http_interactions:
       - no-cache, no-store, must-revalidate
     body:
       encoding: UTF-8
-      string: '{"message":"Success","payload":{"level":"user","subscribe_key":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","ttl":300,"channel":"demo","auths":{"ruby-authkey":{"r":1,"w":0,"m":0}}},"service":"Access
+      string: '{"message":"Success","payload":{"level":"user","subscribe_key":"sub-a-mock-key","ttl":300,"channel":"demo","auths":{"ruby-authkey":{"r":1,"w":0,"m":0}}},"service":"Access
         Manager","status":200}'
     http_version: 
   recorded_at: Wed, 25 May 2016 14:47:28 GMT

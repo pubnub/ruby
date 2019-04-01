@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v1/auth/audit/sub-key/sub-c-777bcd44-f825-11e5-861b-02ee2ddab7fe?channel=channel&pnsdk=PubNub-Ruby/4.0.0beta1&signature=QR698olnyPFXhTgmHZk3wdj5esQxSAGuOcNUhXgkUt0=&timestamp=1465921213&uuid=gentest
+    uri: http://ps.pndsn.com/v1/auth/audit/sub-key/sub-a-mock-key?channel=channel&pnsdk=PubNub-Ruby/4.1.0beta1&signature=QR698olnyPFXhTgmHZk3wdj5esQxSAGuOcNUhXgkUt0=&timestamp=1465921213&uuid=gentest
     body:
       encoding: UTF-8
       string: ''
@@ -36,7 +36,7 @@ http_interactions:
       - no-cache, no-store, must-revalidate
     body:
       encoding: UTF-8
-      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-c-777bcd44-f825-11e5-861b-02ee2ddab7fe","channels":{}},"service":"Access
+      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-a-mock-key","channels":{}},"service":"Access
         Manager","status":200}'
     http_version: 
   recorded_at: Tue, 14 Jun 2016 16:20:13 GMT

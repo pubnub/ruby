@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v1/auth/grant/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f?channel=demo&pnsdk=PubNub-Ruby/4.0.0&r=0&signature=ROGQ92LYySK8SVpF5fHuKtPu7zgeiAhayKkA61dpVi4=&timestamp=1464193182&ttl=0&uuid=ruby-test-uuid-client-one&w=0
+    uri: http://ps.pndsn.com/v1/auth/grant/sub-key/sub-a-mock-key?channel=demo&pnsdk=PubNub-Ruby/4.1.0&r=0&signature=ROGQ92LYySK8SVpF5fHuKtPu7zgeiAhayKkA61dpVi4=&timestamp=1464193182&ttl=0&uuid=ruby-test-uuid-client-one&w=0
     body:
       encoding: UTF-8
       string: ''
@@ -36,7 +36,7 @@ http_interactions:
       - no-cache, no-store, must-revalidate
     body:
       encoding: UTF-8
-      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","ttl":1,"channels":{"demo":{"r":0,"w":0,"m":0}}},"service":"Access
+      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-a-mock-key","ttl":1,"channels":{"demo":{"r":0,"w":0,"m":0}}},"service":"Access
         Manager","status":200}'
     http_version: 
   recorded_at: Wed, 25 May 2016 16:19:42 GMT

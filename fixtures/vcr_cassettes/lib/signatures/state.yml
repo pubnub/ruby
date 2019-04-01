@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/presence/sub-key/sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe/channel/a!@%23$%25%5E&*()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E%3F%3F~%60Z/uuid/a!@%23$%25%5E&()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E%3F%3F~%60Z/data?pnsdk=PubNub-Ruby/4.0.21&signature=0qsr3iEtrhHAlRHTo0vWxoDjwGaLYd84sfN%2BDItQ4mY=&state=%7B%22something%22:%22a!@%23$%25%5E%26*()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%5C%22%5C%22%3C%3E??~%60Z%22%7D&timestamp=1496402248&uuid=a!@%23$%25%5E%26()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E??~%60Z
+    uri: http://ps.pndsn.com/v2/presence/sub-key/sub-a-mock-key/channel/a!@%23$%25%5E&*()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E%3F%3F~%60Z/uuid/a!@%23$%25%5E&()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E%3F%3F~%60Z/data?pnsdk=PubNub-Ruby/4.0.21&signature=0qsr3iEtrhHAlRHTo0vWxoDjwGaLYd84sfN%2BDItQ4mY=&state=%7B%22something%22:%22a!@%23$%25%5E%26*()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%5C%22%5C%22%3C%3E??~%60Z%22%7D&timestamp=1496402248&uuid=a!@%23$%25%5E%26()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E??~%60Z
     body:
       encoding: UTF-8
       string: ''
@@ -46,7 +46,7 @@ http_interactions:
   recorded_at: Fri, 02 Jun 2017 11:17:28 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/presence/sub_key/sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe/channel/a!@%23$%25%5E&*()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E%3F%3F~%60Z/uuid/a!@%23$%25%5E&()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E%3F%3F~%60Z?pnsdk=PubNub-Ruby/4.0.21&signature=8eeA8A2RRX3635Tcii1h8NmJ9nt%2BSHTC/e1Xxn/97Mg=&timestamp=1496402248&uuid=a!@%23$%25%5E%26()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E??~%60Z
+    uri: http://ps.pndsn.com/v2/presence/sub_key/sub-a-mock-key/channel/a!@%23$%25%5E&*()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E%3F%3F~%60Z/uuid/a!@%23$%25%5E&()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E%3F%3F~%60Z?pnsdk=PubNub-Ruby/4.0.21&signature=8eeA8A2RRX3635Tcii1h8NmJ9nt%2BSHTC/e1Xxn/97Mg=&timestamp=1496402248&uuid=a!@%23$%25%5E%26()%C5%BB%C3%93%C5%81%5B%5D%7B%7D%22%22%3C%3E??~%60Z
     body:
       encoding: UTF-8
       string: ''

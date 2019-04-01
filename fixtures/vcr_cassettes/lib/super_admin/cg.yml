@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v1/channel-registration/sub-key/sub-c-f9f24520-9c56-11e6-a681-02ee2ddab7fe/channel-group/demo?add=demo&pnsdk=PubNub-Ruby/4.0.10&signature=SelPXMxzc4/C3yw7gF%2B6jBUTBIHMk9qEG0kscHSDHkM=&timestamp=1477672650&uuid=ruby-test
+    uri: http://ps.pndsn.com/v1/channel-registration/sub-key/sub-a-mock-key/channel-group/demo?add=demo&pnsdk=PubNub-Ruby/4.0.10&signature=SelPXMxzc4/C3yw7gF%2B6jBUTBIHMk9qEG0kscHSDHkM=&timestamp=1477672650&uuid=ruby-test
     body:
       encoding: UTF-8
       string: ''

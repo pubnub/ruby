@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/demo.*-pnpres,demo0-pnpres,demo1-pnpres/0?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/4.0.0beta1&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid-client-one
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo.*-pnpres,demo0-pnpres,demo1-pnpres/0?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/4.1.0beta1&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid-client-one
     body:
       encoding: UTF-8
       string: ''
@@ -39,7 +39,7 @@ http_interactions:
   recorded_at: Wed, 08 Jun 2016 15:47:07 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/demo.*-pnpres,demo0-pnpres,demo1-pnpres/0?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/4.0.0beta1&t=%7B%22r%22:3,%22t%22:%2214654008273829519%22%7D&uuid=ruby-test-uuid-client-one
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo.*-pnpres,demo0-pnpres,demo1-pnpres/0?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/4.1.0beta1&t=%7B%22r%22:3,%22t%22:%2214654008273829519%22%7D&uuid=ruby-test-uuid-client-one
     body:
       encoding: UTF-8
       string: ''
@@ -71,13 +71,13 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '{"t":{"t":"14654008290139220","r":3},"m":[{"a":"5","f":0,"p":{"t":"14654008279770747","r":2},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo.*-pnpres","d":{"action":
+      string: '{"t":{"t":"14654008290139220","r":3},"m":[{"a":"5","f":0,"p":{"t":"14654008279770747","r":2},"k":"sub-a-mock-key","c":"demo.*-pnpres","d":{"action":
         "join", "timestamp": 1465400827, "uuid": "ruby-test-uuid-client-two", "occupancy":
-        2},"b":"demo.*-pnpres"},{"a":"5","f":0,"p":{"t":"14654008289751218","r":2},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo.*-pnpres","d":{"action":
+        2},"b":"demo.*-pnpres"},{"a":"5","f":0,"p":{"t":"14654008289751218","r":2},"k":"sub-a-mock-key","c":"demo.*-pnpres","d":{"action":
         "leave", "timestamp": 1465400828, "uuid": "ruby-test-uuid-client-two", "occupancy":
-        1},"b":"demo.*-pnpres"},{"a":"5","f":0,"p":{"t":"14654008280445990","r":2},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo1-pnpres","d":{"action":
+        1},"b":"demo.*-pnpres"},{"a":"5","f":0,"p":{"t":"14654008280445990","r":2},"k":"sub-a-mock-key","c":"demo1-pnpres","d":{"action":
         "join", "timestamp": 1465400828, "uuid": "ruby-test-uuid-client-two", "occupancy":
-        2},"b":"demo1-pnpres"},{"a":"5","f":0,"p":{"t":"14654008287803113","r":1},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo1-pnpres","d":{"action":
+        2},"b":"demo1-pnpres"},{"a":"5","f":0,"p":{"t":"14654008287803113","r":1},"k":"sub-a-mock-key","c":"demo1-pnpres","d":{"action":
         "leave", "timestamp": 1465400828, "uuid": "ruby-test-uuid-client-two", "occupancy":
         1},"b":"demo1-pnpres"}]}'
     http_version: 

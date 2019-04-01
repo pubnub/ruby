@@ -19,8 +19,8 @@ describe "Super admin mode" do
     )
 
     @pubnub = Pubnub.new(
-      subscribe_key: "sub-c-f9f24520-9c56-11e6-a681-02ee2ddab7fe",
-      publish_key: "pub-c-9bb9ae77-a60c-4788-96ab-75cbe5d5dd11",
+      subscribe_key: "sub-a-mock-key",
+      publish_key: "pub-a-mock-key",
       secret_key: "sec-c-MjZkYmQyMDUtYmRhZi00ZDY3LThjZGQtNjU2NmNjNmJkODM3",
       uuid: "ruby-test",
       reconnect_interval: 0,

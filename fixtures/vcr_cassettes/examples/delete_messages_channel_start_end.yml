@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: http://ps.pndsn.com/v3/history/sub-key/sub-c-fc6c9226-655d-11e7-b272-02ee2ddab7fe/channel/demo?auth=ruby-test-auth&end=1504007197000&pnsdk=PubNub-Ruby/4.0.23&start=1504003597000&uuid=ruby-test-uuid
+    uri: http://ps.pndsn.com/v3/history/sub-key/sub-a-mock-key/channel/demo?auth=ruby-test-auth&end=1504007197000&pnsdk=PubNub-Ruby/4.0.23&start=1504003597000&uuid=ruby-test-uuid
     body:
       encoding: UTF-8
       string: ''
