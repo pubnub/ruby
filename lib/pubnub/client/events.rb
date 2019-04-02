@@ -5,7 +5,8 @@ module Pubnub
     # Module that holds generator for all events
     module Events
       EVENTS = %w[publish subscribe presence leave history here_now audit grant delete_messages
-                  revoke time heartbeat where_now set_state state channel_registration message_counts].freeze
+                  revoke time heartbeat where_now set_state state channel_registration message_counts
+                  add_channels_to_push list_push_provisions remove_channels_from_push remove_device_from_push].freeze
 
       EVENTS.each do |event_name|
         define_method event_name do |options = {}, &block|
