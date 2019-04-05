@@ -16,6 +16,7 @@ module Pubnub
 
       def validate!
         return if @skip_validate
+
         validate_channel!
       end
 
@@ -24,6 +25,7 @@ module Pubnub
       def validate_channel!
         missing_params = required_params - @params.keys
         return if missing_params.empty?
+
         raise(
           ArgumentError.new(
             object: self,
