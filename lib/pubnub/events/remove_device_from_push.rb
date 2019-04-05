@@ -1,21 +1,20 @@
-# Toplevel Pubnub module.
+# Toplevel Pubnub module
 module Pubnub
-  # Holds history functionality
-  class MessageCounts < SingleEvent
+  # Push related event
+  class RemoveDeviceFromPush < SingleEvent
     include Concurrent::Async
-    include Pubnub::Validator::MessageCounts
+    include Pubnub::Validator::Push
 
     def initialize(options, app)
-      @event = :message_counts
-      @telemetry_name = :l_mc
-      @timetokens = parse_timetokens options[:channel_timetokens] || []
+      @event = current_operation
+      @params = options
       super
     end
 
     private
 
     def current_operation
-      Pubnub::Constants::OPERATION_MESSAGE_COUNTS
+      Pubnub::Constants::OPERATION_REMOVE_DEVICE_FROM_PUSH
     end
 
     def response_message(parsed_response)
@@ -26,22 +25,20 @@ module Pubnub
 
     def path
       '/' + [
-        'v3',
-        'history',
+        'v1',
+        'push',
         'sub-key',
         @subscribe_key,
-        'message-counts',
-        Formatter.channels_for_url(@channel)
+        'devices',
+        @params.fetch(:push_token),
+        'remove'
       ].join('/')
     end
 
     def parameters(*_args)
       params = super
-      if @timetokens.length == 1
-        params[:timetoken] = @timetokens.first
-      elsif @timetokens.length > 1
-        params[:channelTimetokens] = @timetokens.join(',')
-      end
+      params.merge!(@params.select { |p, _| required_params.include?(p) })
+      params[:uuid] = @params[:uuid] if @params.key?(:uuid)
       params
     end
 
@@ -75,16 +72,6 @@ module Pubnub
           data: parsed_response
         }
       )
-    end
-
-    def parse_timetokens(timetokens)
-      timetokens ||= []
-      if timetokens.is_a? String
-        timetokens = timetokens.split(/\s*,\s*/)
-      elsif timetokens.is_a? Integer
-        timetokens = [timetokens]
-      end
-      timetokens.map(&:to_i)
     end
   end
 end
