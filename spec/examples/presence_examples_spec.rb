@@ -9,8 +9,8 @@ describe Pubnub::Presence do
     end
 
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       reconnect_interval: 0,
@@ -29,7 +29,7 @@ describe Pubnub::Presence do
       end
 
       expect(envelopes[0].status[:code]).to eq(200)
-      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo-pnpres", :subscription_match => nil, :payload => {"action" => "join", "timestamp" => 1465403696, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 1}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654036961172863", :region_code => 1}})
+      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo-pnpres", :subscription_match => nil, :payload => {"action" => "join", "timestamp" => 1465403696, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 1}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-a-mock-key", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654036961172863", :region_code => 1}})
       expect(envelopes[0].status[:category]).to eq(:ack)
       expect(envelopes[0].status[:auto_retried]).to eq(true)
       expect(envelopes[0].status[:current_timetoken]).to eq(14654036961931472)
@@ -54,7 +54,7 @@ describe Pubnub::Presence do
       end
 
       expect(envelopes[0].status[:code]).to eq(200)
-      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo-pnpres", :subscription_match => nil, :payload => {"action" => "leave", "timestamp" => 1465403696, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 0}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654036965065315", :region_code => 2}})
+      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo-pnpres", :subscription_match => nil, :payload => {"action" => "leave", "timestamp" => 1465403696, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 0}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-a-mock-key", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654036965065315", :region_code => 2}})
       expect(envelopes[0].status[:category]).to eq(:ack)
       expect(envelopes[0].status[:auto_retried]).to eq(true)
       expect(envelopes[0].status[:current_timetoken]).to eq(14654036965469160)
@@ -79,7 +79,7 @@ describe Pubnub::Presence do
       end
 
       expect(envelopes[0].status[:code]).to eq(200)
-      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo-pnpres", :subscription_match => nil, :payload => {"action" => "join", "timestamp" => 1465403698, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 1}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654036986516448", :region_code => 2}})
+      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo-pnpres", :subscription_match => nil, :payload => {"action" => "join", "timestamp" => 1465403698, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 1}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-a-mock-key", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654036986516448", :region_code => 2}})
       expect(envelopes[0].status[:category]).to eq(:ack)
       expect(envelopes[0].status[:auto_retried]).to eq(true)
       expect(envelopes[0].status[:current_timetoken]).to eq(14654036986900265)
@@ -203,7 +203,7 @@ describe Pubnub::Presence do
       end
 
       expect(envelopes[0].status[:code]).to eq(200)
-      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo.*-pnpres", :subscription_match => nil, :payload => {"action" => "join", "timestamp" => 1465403699, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 1}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654036996668692", :region_code => 1}})
+      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo.*-pnpres", :subscription_match => nil, :payload => {"action" => "join", "timestamp" => 1465403699, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 1}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-a-mock-key", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654036996668692", :region_code => 1}})
       expect(envelopes[0].status[:category]).to eq(:ack)
       expect(envelopes[0].status[:auto_retried]).to eq(true)
       expect(envelopes[0].status[:current_timetoken]).to eq(14654036997432530)
@@ -228,7 +228,7 @@ describe Pubnub::Presence do
       end
 
       expect(envelopes[0].status[:code]).to eq(200)
-      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo.*-pnpres", :subscription_match => nil, :payload => {"action" => "leave", "timestamp" => 1465403700, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 0}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654037002398263", :region_code => 1}})
+      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo.*-pnpres", :subscription_match => nil, :payload => {"action" => "leave", "timestamp" => 1465403700, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 0}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-a-mock-key", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654037002398263", :region_code => 1}})
       expect(envelopes[0].status[:category]).to eq(:ack)
       expect(envelopes[0].status[:auto_retried]).to eq(true)
       expect(envelopes[0].status[:current_timetoken]).to eq(14654037003110327)
@@ -253,7 +253,7 @@ describe Pubnub::Presence do
       end
 
       expect(envelopes[0].status[:code]).to eq(200)
-      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo.*-pnpres", :subscription_match => nil, :payload => {"action" => "join", "timestamp" => 1465403702, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 1}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654037023404890", :region_code => 1}})
+      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo.*-pnpres", :subscription_match => nil, :payload => {"action" => "join", "timestamp" => 1465403702, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 1}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-a-mock-key", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654037023404890", :region_code => 1}})
       expect(envelopes[0].status[:category]).to eq(:ack)
       expect(envelopes[0].status[:auto_retried]).to eq(true)
       expect(envelopes[0].status[:current_timetoken]).to eq(14654037024165554)
@@ -377,7 +377,7 @@ describe Pubnub::Presence do
       end
 
       expect(envelopes[0].status[:code]).to eq(200)
-      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo-pnpres", :subscription_match => nil, :payload => {"action" => "leave", "timestamp" => 1465403703, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 0}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654037039766378", :region_code => 2}})
+      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo-pnpres", :subscription_match => nil, :payload => {"action" => "leave", "timestamp" => 1465403703, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 0}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-a-mock-key", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654037039766378", :region_code => 2}})
       expect(envelopes[0].status[:category]).to eq(:ack)
       expect(envelopes[0].status[:auto_retried]).to eq(true)
       expect(envelopes[0].status[:current_timetoken]).to eq(14654037040157428)
@@ -402,7 +402,7 @@ describe Pubnub::Presence do
       end
 
       expect(envelopes[0].status[:code]).to eq(200)
-      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo-pnpres", :subscription_match => nil, :payload => {"action" => "join", "timestamp" => 1465405069, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 1}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654050693824272", :region_code => 1}})
+      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo-pnpres", :subscription_match => nil, :payload => {"action" => "join", "timestamp" => 1465405069, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 1}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-a-mock-key", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654050693824272", :region_code => 1}})
       expect(envelopes[0].status[:category]).to eq(:ack)
       expect(envelopes[0].status[:auto_retried]).to eq(true)
       expect(envelopes[0].status[:current_timetoken]).to eq(14654050694555754)
@@ -427,7 +427,7 @@ describe Pubnub::Presence do
       end
 
       expect(envelopes[0].status[:code]).to eq(200)
-      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo-pnpres", :subscription_match => nil, :payload => {"action" => "join", "timestamp" => 1465403890, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 1}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654038904558577", :region_code => 2}})
+      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo-pnpres", :subscription_match => nil, :payload => {"action" => "join", "timestamp" => 1465403890, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 1}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-a-mock-key", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654038904558577", :region_code => 2}})
       expect(envelopes[0].status[:category]).to eq(:ack)
       expect(envelopes[0].status[:auto_retried]).to eq(true)
       expect(envelopes[0].status[:current_timetoken]).to eq(14654038904954461)
@@ -551,7 +551,7 @@ describe Pubnub::Presence do
       end
 
       expect(envelopes[0].status[:code]).to eq(200)
-      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo-pnpres", :subscription_match => "demo-pnpres", :payload => {"action" => "leave", "timestamp" => 1465403891, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 0}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654038913084722", :region_code => 1}})
+      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo-pnpres", :subscription_match => "demo-pnpres", :payload => {"action" => "leave", "timestamp" => 1465403891, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 0}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-a-mock-key", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654038913084722", :region_code => 1}})
       expect(envelopes[0].status[:category]).to eq(:ack)
       expect(envelopes[0].status[:auto_retried]).to eq(true)
       expect(envelopes[0].status[:current_timetoken]).to eq(14654038913920232)
@@ -576,7 +576,7 @@ describe Pubnub::Presence do
       end
 
       expect(envelopes[0].status[:code]).to eq(200)
-      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo.*-pnpres", :subscription_match => "demo.*-pnpres", :payload => {"action" => "leave", "timestamp" => 1465403892, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 0}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654038929920942", :region_code => 1}})
+      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo.*-pnpres", :subscription_match => "demo.*-pnpres", :payload => {"action" => "leave", "timestamp" => 1465403892, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 0}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-a-mock-key", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654038929920942", :region_code => 1}})
       expect(envelopes[0].status[:category]).to eq(:ack)
       expect(envelopes[0].status[:auto_retried]).to eq(true)
       expect(envelopes[0].status[:current_timetoken]).to eq(14654038931856126)
@@ -601,7 +601,7 @@ describe Pubnub::Presence do
       end
 
       expect(envelopes[0].status[:code]).to eq(200)
-      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo-pnpres", :subscription_match => "demo-pnpres", :payload => {"action" => "join", "timestamp" => 1465403893, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 1}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654038934962157", :region_code => 2}})
+      expect(envelopes[0].status[:data]).to eq({:shard => "5", :channel => "demo-pnpres", :subscription_match => "demo-pnpres", :payload => {"action" => "join", "timestamp" => 1465403893, "uuid" => "ruby-test-uuid-client-two", "occupancy" => 1}, :flags => 0, :issuing_client_id => nil, :subscribe_key => "sub-a-mock-key", :sequence_number => nil, :user_meta_data => nil, :replication_map => nil, :eat_after_reading => nil, :waypoint_list => nil, :origination_time_token => nil, :publish_timetoken => {:timetoken => "14654038934962157", :region_code => 2}})
       expect(envelopes[0].status[:category]).to eq(:ack)
       expect(envelopes[0].status[:auto_retried]).to eq(true)
       expect(envelopes[0].status[:current_timetoken]).to eq(14654038935342617)

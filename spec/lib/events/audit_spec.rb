@@ -9,8 +9,8 @@ describe Pubnub::Audit do
       Pubnub::Audit.any_instance.stub(:signature).and_return "P3xhzqxwFJSFthJbnByZog-U4j1S5TMFeuUxqKNgMM0="
 
       @pubnub = Pubnub::Client.new(
-        subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
-        publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
+        subscribe_key: "sub-a-mock-key",
+        publish_key: "pub-a-mock-key",
         secret_key: "sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy",
         auth_key: "ruby-test-auth",
         uuid: "ruby-test-uuid",
@@ -45,7 +45,6 @@ describe Pubnub::Audit do
         envelope = @pubnub.audit(
           channel: :demo,
         ).value
-
         expect(envelope.is_a?(Pubnub::ErrorEnvelope)).to eq true
         expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
         expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema

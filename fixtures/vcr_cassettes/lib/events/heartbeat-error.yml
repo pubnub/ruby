@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/presence/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo/heartbeat?auth=ruby-test-auth&heartbeat=&pnsdk=PubNub-Ruby/4.0.0pre0&uuid=ruby-test-uuid
+    uri: http://ps.pndsn.com/v2/presence/sub-key/sub-a-mock-key/channel/demo/heartbeat?auth=ruby-test-auth&heartbeat=&pnsdk=PubNub-Ruby/4.1.0&uuid=ruby-test-uuid
     body:
       encoding: UTF-8
       string: ''

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/demo-pnpres,demo.*,demo0,demo1/0?auth=ruby-test-auth-client-one&channel-group=demo&pnsdk=PubNub-Ruby/4.0.0beta1&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid-client-one
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-pnpres,demo.*,demo0,demo1/0?auth=ruby-test-auth-client-one&channel-group=demo&pnsdk=PubNub-Ruby/4.1.0beta1&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid-client-one
     body:
       encoding: UTF-8
       string: ''
@@ -39,7 +39,7 @@ http_interactions:
   recorded_at: Wed, 08 Jun 2016 15:56:01 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/demo-pnpres,demo.*,demo0,demo1/0?auth=ruby-test-auth-client-one&channel-group=demo&pnsdk=PubNub-Ruby/4.0.0beta1&t=%7B%22r%22:3,%22t%22:%2214654013597749374%22%7D&uuid=ruby-test-uuid-client-one
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-pnpres,demo.*,demo0,demo1/0?auth=ruby-test-auth-client-one&channel-group=demo&pnsdk=PubNub-Ruby/4.1.0beta1&t=%7B%22r%22:3,%22t%22:%2214654013597749374%22%7D&uuid=ruby-test-uuid-client-one
     body:
       encoding: UTF-8
       string: ''
@@ -71,9 +71,9 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '{"t":{"t":"14654013631263724","r":3},"m":[{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":591,"o":{"t":"14654013616110290"},"p":{"t":"14654013616434783","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo0","d":"+P/LbbzCa1zk0sDK1i6/69V4ROQ8h5MxYRFCpWPlmRM=","b":"demo0"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":593,"o":{"t":"14654013616709618"},"p":{"t":"14654013617032962","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo1","d":"+P/LbbzCa1zk0sDK1i6/69V4ROQ8h5MxYRFCpWPlmRM=","b":"demo1"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":595,"o":{"t":"14654013617303600"},"p":{"t":"14654013617624065","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo.ruby","d":"+P/LbbzCa1zk0sDK1i6/69V4ROQ8h5MxYRFCpWPlmRM=","b":"demo.*"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":597,"o":{"t":"14654013617895848"},"p":{"t":"14654013618218761","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo","d":"+P/LbbzCa1zk0sDK1i6/69V4ROQ8h5MxYRFCpWPlmRM=","b":"demo"},{"a":"5","f":0,"p":{"t":"14654013621798199","r":2},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo-pnpres","d":{"action":
+      string: '{"t":{"t":"14654013631263724","r":3},"m":[{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":591,"o":{"t":"14654013616110290"},"p":{"t":"14654013616434783","r":12},"k":"sub-a-mock-key","c":"demo0","d":"+P/LbbzCa1zk0sDK1i6/69V4ROQ8h5MxYRFCpWPlmRM=","b":"demo0"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":593,"o":{"t":"14654013616709618"},"p":{"t":"14654013617032962","r":12},"k":"sub-a-mock-key","c":"demo1","d":"+P/LbbzCa1zk0sDK1i6/69V4ROQ8h5MxYRFCpWPlmRM=","b":"demo1"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":595,"o":{"t":"14654013617303600"},"p":{"t":"14654013617624065","r":12},"k":"sub-a-mock-key","c":"demo.ruby","d":"+P/LbbzCa1zk0sDK1i6/69V4ROQ8h5MxYRFCpWPlmRM=","b":"demo.*"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":597,"o":{"t":"14654013617895848"},"p":{"t":"14654013618218761","r":12},"k":"sub-a-mock-key","c":"demo","d":"+P/LbbzCa1zk0sDK1i6/69V4ROQ8h5MxYRFCpWPlmRM=","b":"demo"},{"a":"5","f":0,"p":{"t":"14654013621798199","r":2},"k":"sub-a-mock-key","c":"demo-pnpres","d":{"action":
         "join", "timestamp": 1465401362, "uuid": "ruby-test-uuid-client-two", "occupancy":
-        2},"b":"demo-pnpres"},{"a":"5","f":0,"p":{"t":"14654013630487474","r":1},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo-pnpres","d":{"action":
+        2},"b":"demo-pnpres"},{"a":"5","f":0,"p":{"t":"14654013630487474","r":1},"k":"sub-a-mock-key","c":"demo-pnpres","d":{"action":
         "leave", "timestamp": 1465401363, "uuid": "ruby-test-uuid-client-two", "occupancy":
         1},"b":"demo-pnpres"}]}'
     http_version: 

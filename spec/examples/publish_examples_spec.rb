@@ -9,8 +9,8 @@ describe Pubnub::Publish do
     end
 
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
     )
@@ -11684,8 +11684,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -11704,8 +11704,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -11724,8 +11724,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -11744,8 +11744,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -11765,8 +11765,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -11786,8 +11786,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -11807,8 +11807,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -11827,8 +11827,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -11847,8 +11847,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -11867,8 +11867,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -11888,8 +11888,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -11909,8 +11909,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -11930,8 +11930,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -11950,8 +11950,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -11970,8 +11970,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -11990,8 +11990,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12011,8 +12011,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12032,8 +12032,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12053,8 +12053,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12073,8 +12073,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12093,8 +12093,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12113,8 +12113,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12134,8 +12134,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12155,8 +12155,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12176,8 +12176,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12196,8 +12196,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12216,8 +12216,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12236,8 +12236,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12257,8 +12257,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12278,8 +12278,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12299,8 +12299,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12319,8 +12319,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12339,8 +12339,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12359,8 +12359,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12380,8 +12380,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12401,8 +12401,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__true___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12422,8 +12422,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12442,8 +12442,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12462,8 +12462,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12482,8 +12482,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12503,8 +12503,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12524,8 +12524,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12545,8 +12545,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12565,8 +12565,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12585,8 +12585,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12605,8 +12605,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12626,8 +12626,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12647,8 +12647,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12668,8 +12668,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12688,8 +12688,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12708,8 +12708,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12728,8 +12728,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12749,8 +12749,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12770,8 +12770,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12791,8 +12791,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12811,8 +12811,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12831,8 +12831,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12851,8 +12851,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12872,8 +12872,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12893,8 +12893,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12914,8 +12914,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12934,8 +12934,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12954,8 +12954,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12974,8 +12974,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -12995,8 +12995,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13016,8 +13016,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13037,8 +13037,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13057,8 +13057,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13077,8 +13077,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13097,8 +13097,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13118,8 +13118,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13139,8 +13139,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__false___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13160,8 +13160,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13180,8 +13180,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13200,8 +13200,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13220,8 +13220,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13241,8 +13241,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13262,8 +13262,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13283,8 +13283,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13303,8 +13303,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13323,8 +13323,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13343,8 +13343,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13364,8 +13364,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13385,8 +13385,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13406,8 +13406,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13426,8 +13426,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13446,8 +13446,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13466,8 +13466,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13487,8 +13487,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13508,8 +13508,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13529,8 +13529,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13549,8 +13549,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13569,8 +13569,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13589,8 +13589,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13610,8 +13610,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13631,8 +13631,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13652,8 +13652,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13672,8 +13672,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13692,8 +13692,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13712,8 +13712,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13733,8 +13733,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13754,8 +13754,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13775,8 +13775,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13795,8 +13795,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13815,8 +13815,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13835,8 +13835,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13856,8 +13856,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13877,8 +13877,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message__100___store__nil___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13898,8 +13898,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13918,8 +13918,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13938,8 +13938,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13958,8 +13958,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -13979,8 +13979,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14000,8 +14000,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14021,8 +14021,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14041,8 +14041,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14061,8 +14061,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14081,8 +14081,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14102,8 +14102,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14123,8 +14123,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14144,8 +14144,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14164,8 +14164,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14184,8 +14184,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14204,8 +14204,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14225,8 +14225,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14246,8 +14246,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14267,8 +14267,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14287,8 +14287,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14307,8 +14307,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14327,8 +14327,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14348,8 +14348,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14369,8 +14369,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14390,8 +14390,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14410,8 +14410,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14430,8 +14430,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14450,8 +14450,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14471,8 +14471,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14492,8 +14492,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14513,8 +14513,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14533,8 +14533,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14553,8 +14553,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14573,8 +14573,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14594,8 +14594,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14615,8 +14615,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__true___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14636,8 +14636,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14656,8 +14656,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14676,8 +14676,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14696,8 +14696,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14717,8 +14717,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14738,8 +14738,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14759,8 +14759,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14779,8 +14779,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14799,8 +14799,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14819,8 +14819,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14840,8 +14840,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14861,8 +14861,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14882,8 +14882,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14902,8 +14902,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14922,8 +14922,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14942,8 +14942,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14963,8 +14963,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -14984,8 +14984,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15005,8 +15005,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15025,8 +15025,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15045,8 +15045,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15065,8 +15065,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15086,8 +15086,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15107,8 +15107,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15128,8 +15128,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15148,8 +15148,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15168,8 +15168,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15188,8 +15188,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15209,8 +15209,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15230,8 +15230,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15251,8 +15251,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15271,8 +15271,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15291,8 +15291,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15311,8 +15311,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15332,8 +15332,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15353,8 +15353,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__false___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15374,8 +15374,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15394,8 +15394,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15414,8 +15414,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15434,8 +15434,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15455,8 +15455,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15476,8 +15476,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15497,8 +15497,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15517,8 +15517,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15537,8 +15537,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15557,8 +15557,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15578,8 +15578,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15599,8 +15599,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15620,8 +15620,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15640,8 +15640,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15660,8 +15660,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15680,8 +15680,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15701,8 +15701,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15722,8 +15722,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15743,8 +15743,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15763,8 +15763,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15783,8 +15783,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15803,8 +15803,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15824,8 +15824,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15845,8 +15845,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15866,8 +15866,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15886,8 +15886,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15906,8 +15906,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15926,8 +15926,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15947,8 +15947,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15968,8 +15968,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -15989,8 +15989,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16009,8 +16009,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16029,8 +16029,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16049,8 +16049,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16070,8 +16070,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16091,8 +16091,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message___string____store__nil___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16112,8 +16112,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16132,8 +16132,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16152,8 +16152,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16172,8 +16172,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16193,8 +16193,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16214,8 +16214,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16235,8 +16235,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16255,8 +16255,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16275,8 +16275,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16295,8 +16295,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16316,8 +16316,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16337,8 +16337,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16358,8 +16358,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16378,8 +16378,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16398,8 +16398,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16418,8 +16418,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16439,8 +16439,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16460,8 +16460,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16481,8 +16481,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16501,8 +16501,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16521,8 +16521,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16541,8 +16541,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16562,8 +16562,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16583,8 +16583,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16604,8 +16604,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16624,8 +16624,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16644,8 +16644,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16664,8 +16664,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16685,8 +16685,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16706,8 +16706,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16727,8 +16727,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16747,8 +16747,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16767,8 +16767,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16787,8 +16787,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16808,8 +16808,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16829,8 +16829,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__true___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16850,8 +16850,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16870,8 +16870,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16890,8 +16890,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16910,8 +16910,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16931,8 +16931,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16952,8 +16952,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16973,8 +16973,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -16993,8 +16993,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17013,8 +17013,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17033,8 +17033,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17054,8 +17054,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17075,8 +17075,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17096,8 +17096,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17116,8 +17116,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17136,8 +17136,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17156,8 +17156,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17177,8 +17177,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17198,8 +17198,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17219,8 +17219,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17239,8 +17239,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17259,8 +17259,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17279,8 +17279,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17300,8 +17300,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17321,8 +17321,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17342,8 +17342,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17362,8 +17362,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17382,8 +17382,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17402,8 +17402,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17423,8 +17423,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17444,8 +17444,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17465,8 +17465,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17485,8 +17485,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17505,8 +17505,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17525,8 +17525,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17546,8 +17546,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17567,8 +17567,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__false___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17588,8 +17588,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17608,8 +17608,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17628,8 +17628,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17648,8 +17648,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17669,8 +17669,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17690,8 +17690,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17711,8 +17711,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17731,8 +17731,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17751,8 +17751,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17771,8 +17771,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17792,8 +17792,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17813,8 +17813,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17834,8 +17834,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17854,8 +17854,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17874,8 +17874,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17894,8 +17894,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17915,8 +17915,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17936,8 +17936,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17957,8 +17957,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17977,8 +17977,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -17997,8 +17997,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18017,8 +18017,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18038,8 +18038,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18059,8 +18059,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18080,8 +18080,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18100,8 +18100,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18120,8 +18120,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18140,8 +18140,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18161,8 +18161,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18182,8 +18182,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18203,8 +18203,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18223,8 +18223,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18243,8 +18243,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18263,8 +18263,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18284,8 +18284,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18305,8 +18305,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____ar____ray_____store__nil___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18326,8 +18326,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18346,8 +18346,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18366,8 +18366,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18386,8 +18386,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18407,8 +18407,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18428,8 +18428,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18449,8 +18449,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18469,8 +18469,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18489,8 +18489,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18509,8 +18509,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18530,8 +18530,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18551,8 +18551,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18572,8 +18572,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18592,8 +18592,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18612,8 +18612,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18632,8 +18632,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18653,8 +18653,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18674,8 +18674,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18695,8 +18695,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18715,8 +18715,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18735,8 +18735,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18755,8 +18755,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18776,8 +18776,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18797,8 +18797,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18818,8 +18818,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18838,8 +18838,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18858,8 +18858,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18878,8 +18878,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18899,8 +18899,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18920,8 +18920,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18941,8 +18941,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18961,8 +18961,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -18981,8 +18981,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19001,8 +19001,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19022,8 +19022,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19043,8 +19043,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__true___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19064,8 +19064,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19084,8 +19084,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19104,8 +19104,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19124,8 +19124,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19145,8 +19145,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19166,8 +19166,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19187,8 +19187,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19207,8 +19207,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19227,8 +19227,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19247,8 +19247,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19268,8 +19268,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19289,8 +19289,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19310,8 +19310,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19330,8 +19330,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19350,8 +19350,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19370,8 +19370,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19391,8 +19391,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19412,8 +19412,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19433,8 +19433,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19453,8 +19453,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19473,8 +19473,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19493,8 +19493,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19514,8 +19514,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19535,8 +19535,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19556,8 +19556,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19576,8 +19576,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19596,8 +19596,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19616,8 +19616,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19637,8 +19637,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19658,8 +19658,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19679,8 +19679,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19699,8 +19699,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19719,8 +19719,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19739,8 +19739,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19760,8 +19760,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19781,8 +19781,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__false___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19802,8 +19802,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19822,8 +19822,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19842,8 +19842,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19862,8 +19862,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19883,8 +19883,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19904,8 +19904,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19925,8 +19925,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19945,8 +19945,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19965,8 +19965,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -19985,8 +19985,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20006,8 +20006,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20027,8 +20027,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20048,8 +20048,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20068,8 +20068,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20088,8 +20088,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20108,8 +20108,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20129,8 +20129,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20150,8 +20150,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20171,8 +20171,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20191,8 +20191,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20211,8 +20211,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20231,8 +20231,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20252,8 +20252,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20273,8 +20273,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20294,8 +20294,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20314,8 +20314,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20334,8 +20334,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20354,8 +20354,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20375,8 +20375,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20396,8 +20396,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20417,8 +20417,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20437,8 +20437,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20457,8 +20457,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20477,8 +20477,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20498,8 +20498,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20519,8 +20519,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo___message____hash___it_is_____store__nil___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20540,8 +20540,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20560,8 +20560,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20580,8 +20580,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20600,8 +20600,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20621,8 +20621,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20642,8 +20642,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20663,8 +20663,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20683,8 +20683,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20703,8 +20703,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20723,8 +20723,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20744,8 +20744,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20765,8 +20765,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20786,8 +20786,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20806,8 +20806,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20826,8 +20826,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20846,8 +20846,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20867,8 +20867,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20888,8 +20888,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20909,8 +20909,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20929,8 +20929,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20949,8 +20949,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20969,8 +20969,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -20990,8 +20990,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21011,8 +21011,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21032,8 +21032,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21052,8 +21052,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21072,8 +21072,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21092,8 +21092,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21113,8 +21113,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21134,8 +21134,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21155,8 +21155,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21175,8 +21175,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21195,8 +21195,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21215,8 +21215,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21236,8 +21236,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21257,8 +21257,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__true___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21278,8 +21278,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21298,8 +21298,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21318,8 +21318,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21338,8 +21338,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21359,8 +21359,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21380,8 +21380,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21401,8 +21401,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21421,8 +21421,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21441,8 +21441,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21461,8 +21461,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21482,8 +21482,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21503,8 +21503,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21524,8 +21524,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21544,8 +21544,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21564,8 +21564,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21584,8 +21584,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21605,8 +21605,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21626,8 +21626,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21647,8 +21647,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21667,8 +21667,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21687,8 +21687,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21707,8 +21707,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21728,8 +21728,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21749,8 +21749,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21770,8 +21770,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21790,8 +21790,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21810,8 +21810,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21830,8 +21830,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21851,8 +21851,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21872,8 +21872,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21893,8 +21893,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21913,8 +21913,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21933,8 +21933,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21953,8 +21953,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21974,8 +21974,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -21995,8 +21995,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__false___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22016,8 +22016,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22036,8 +22036,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22056,8 +22056,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22076,8 +22076,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22097,8 +22097,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22118,8 +22118,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22139,8 +22139,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22159,8 +22159,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22179,8 +22179,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22199,8 +22199,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22220,8 +22220,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22241,8 +22241,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22262,8 +22262,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22282,8 +22282,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22302,8 +22302,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22322,8 +22322,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22343,8 +22343,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22364,8 +22364,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22385,8 +22385,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22405,8 +22405,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22425,8 +22425,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22445,8 +22445,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22466,8 +22466,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22487,8 +22487,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22508,8 +22508,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22528,8 +22528,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22548,8 +22548,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22568,8 +22568,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22589,8 +22589,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22610,8 +22610,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22631,8 +22631,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22651,8 +22651,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22671,8 +22671,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22691,8 +22691,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22712,8 +22712,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22733,8 +22733,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message__100___store__nil___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22754,8 +22754,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22774,8 +22774,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22794,8 +22794,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22814,8 +22814,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22835,8 +22835,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22856,8 +22856,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22877,8 +22877,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22897,8 +22897,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22917,8 +22917,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22937,8 +22937,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22958,8 +22958,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -22979,8 +22979,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23000,8 +23000,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23020,8 +23020,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23040,8 +23040,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23060,8 +23060,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23081,8 +23081,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23102,8 +23102,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23123,8 +23123,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23143,8 +23143,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23163,8 +23163,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23183,8 +23183,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23204,8 +23204,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23225,8 +23225,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23246,8 +23246,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23266,8 +23266,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23286,8 +23286,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23306,8 +23306,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23327,8 +23327,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23348,8 +23348,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23369,8 +23369,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23389,8 +23389,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23409,8 +23409,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23429,8 +23429,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23450,8 +23450,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23471,8 +23471,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__true___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23492,8 +23492,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23512,8 +23512,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23532,8 +23532,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23552,8 +23552,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23573,8 +23573,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23594,8 +23594,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23615,8 +23615,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23635,8 +23635,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23655,8 +23655,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23675,8 +23675,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23696,8 +23696,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23717,8 +23717,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23738,8 +23738,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23758,8 +23758,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23778,8 +23778,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23798,8 +23798,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23819,8 +23819,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23840,8 +23840,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23861,8 +23861,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23881,8 +23881,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23901,8 +23901,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23921,8 +23921,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23942,8 +23942,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23963,8 +23963,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -23984,8 +23984,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24004,8 +24004,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24024,8 +24024,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24044,8 +24044,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24065,8 +24065,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24086,8 +24086,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24107,8 +24107,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24127,8 +24127,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24147,8 +24147,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24167,8 +24167,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24188,8 +24188,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24209,8 +24209,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__false___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24230,8 +24230,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24250,8 +24250,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24270,8 +24270,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24290,8 +24290,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24311,8 +24311,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24332,8 +24332,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24353,8 +24353,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24373,8 +24373,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24393,8 +24393,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24413,8 +24413,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24434,8 +24434,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24455,8 +24455,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24476,8 +24476,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24496,8 +24496,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24516,8 +24516,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24536,8 +24536,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24557,8 +24557,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24578,8 +24578,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24599,8 +24599,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24619,8 +24619,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24639,8 +24639,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24659,8 +24659,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24680,8 +24680,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24701,8 +24701,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24722,8 +24722,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24742,8 +24742,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24762,8 +24762,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24782,8 +24782,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24803,8 +24803,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24824,8 +24824,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24845,8 +24845,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24865,8 +24865,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24885,8 +24885,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24905,8 +24905,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24926,8 +24926,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24947,8 +24947,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message___string____store__nil___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24968,8 +24968,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -24988,8 +24988,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25008,8 +25008,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25028,8 +25028,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25049,8 +25049,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25070,8 +25070,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25091,8 +25091,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25111,8 +25111,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25131,8 +25131,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25151,8 +25151,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25172,8 +25172,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25193,8 +25193,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25214,8 +25214,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25234,8 +25234,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25254,8 +25254,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25274,8 +25274,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25295,8 +25295,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25316,8 +25316,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25337,8 +25337,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25357,8 +25357,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25377,8 +25377,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25397,8 +25397,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25418,8 +25418,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25439,8 +25439,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25460,8 +25460,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25480,8 +25480,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25500,8 +25500,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25520,8 +25520,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25541,8 +25541,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25562,8 +25562,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25583,8 +25583,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25603,8 +25603,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25623,8 +25623,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25643,8 +25643,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25664,8 +25664,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25685,8 +25685,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__true___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25706,8 +25706,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25726,8 +25726,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25746,8 +25746,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25766,8 +25766,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25787,8 +25787,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25808,8 +25808,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25829,8 +25829,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25849,8 +25849,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25869,8 +25869,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25889,8 +25889,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25910,8 +25910,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25931,8 +25931,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25952,8 +25952,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25972,8 +25972,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -25992,8 +25992,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26012,8 +26012,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26033,8 +26033,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26054,8 +26054,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26075,8 +26075,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26095,8 +26095,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26115,8 +26115,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26135,8 +26135,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26156,8 +26156,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26177,8 +26177,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26198,8 +26198,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26218,8 +26218,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26238,8 +26238,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26258,8 +26258,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26279,8 +26279,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26300,8 +26300,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26321,8 +26321,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26341,8 +26341,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26361,8 +26361,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26381,8 +26381,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26402,8 +26402,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26423,8 +26423,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__false___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26444,8 +26444,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26464,8 +26464,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26484,8 +26484,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26504,8 +26504,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26525,8 +26525,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26546,8 +26546,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26567,8 +26567,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26587,8 +26587,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26607,8 +26607,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26627,8 +26627,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26648,8 +26648,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26669,8 +26669,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26690,8 +26690,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26710,8 +26710,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26730,8 +26730,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26750,8 +26750,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26771,8 +26771,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26792,8 +26792,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26813,8 +26813,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26833,8 +26833,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26853,8 +26853,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26873,8 +26873,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26894,8 +26894,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26915,8 +26915,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26936,8 +26936,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26956,8 +26956,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26976,8 +26976,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -26996,8 +26996,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27017,8 +27017,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27038,8 +27038,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27059,8 +27059,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27079,8 +27079,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27099,8 +27099,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27119,8 +27119,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27140,8 +27140,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27161,8 +27161,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____ar____ray_____store__nil___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27182,8 +27182,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27202,8 +27202,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27222,8 +27222,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27242,8 +27242,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27263,8 +27263,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27284,8 +27284,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27305,8 +27305,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27325,8 +27325,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27345,8 +27345,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27365,8 +27365,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27386,8 +27386,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27407,8 +27407,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27428,8 +27428,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27448,8 +27448,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27468,8 +27468,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27488,8 +27488,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27509,8 +27509,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27530,8 +27530,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27551,8 +27551,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27571,8 +27571,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27591,8 +27591,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27611,8 +27611,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27632,8 +27632,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27653,8 +27653,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27674,8 +27674,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27694,8 +27694,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27714,8 +27714,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27734,8 +27734,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27755,8 +27755,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27776,8 +27776,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27797,8 +27797,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27817,8 +27817,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27837,8 +27837,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27857,8 +27857,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27878,8 +27878,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27899,8 +27899,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__true___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27920,8 +27920,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27940,8 +27940,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27960,8 +27960,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -27980,8 +27980,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28001,8 +28001,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28022,8 +28022,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28043,8 +28043,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28063,8 +28063,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28083,8 +28083,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28103,8 +28103,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28124,8 +28124,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28145,8 +28145,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28166,8 +28166,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28186,8 +28186,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28206,8 +28206,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28226,8 +28226,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28247,8 +28247,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28268,8 +28268,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28289,8 +28289,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28309,8 +28309,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28329,8 +28329,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28349,8 +28349,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28370,8 +28370,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28391,8 +28391,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28412,8 +28412,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28432,8 +28432,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28452,8 +28452,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28472,8 +28472,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28493,8 +28493,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28514,8 +28514,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28535,8 +28535,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28555,8 +28555,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28575,8 +28575,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28595,8 +28595,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28616,8 +28616,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28637,8 +28637,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__false___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28658,8 +28658,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__true___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28678,8 +28678,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__true___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28698,8 +28698,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__true___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28718,8 +28718,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__true___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28739,8 +28739,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__true___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28760,8 +28760,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__true___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28781,8 +28781,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__true___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28801,8 +28801,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__true___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28821,8 +28821,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__true___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28841,8 +28841,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__true___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28862,8 +28862,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__true___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28883,8 +28883,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__true___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28904,8 +28904,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__false___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28924,8 +28924,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__false___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28944,8 +28944,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__false___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28964,8 +28964,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__false___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -28985,8 +28985,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__false___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29006,8 +29006,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__false___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29027,8 +29027,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__false___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29047,8 +29047,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__false___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29067,8 +29067,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__false___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29087,8 +29087,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__false___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29108,8 +29108,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__false___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29129,8 +29129,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__false___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29150,8 +29150,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__nil___replicate__true___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29170,8 +29170,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__nil___replicate__true___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29190,8 +29190,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__nil___replicate__true___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29210,8 +29210,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__nil___replicate__true___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29231,8 +29231,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__nil___replicate__true___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29252,8 +29252,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__nil___replicate__true___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29273,8 +29273,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__nil___replicate__nil___http_sync__true___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29293,8 +29293,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__nil___replicate__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29313,8 +29313,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__nil___replicate__nil___http_sync__true___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29333,8 +29333,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__nil___replicate__nil___http_sync__false___callback__nil_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29354,8 +29354,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__nil___replicate__nil___http_sync__false___callback___block_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
@@ -29375,8 +29375,8 @@ describe Pubnub::Publish do
 
   it "__channel___demo____message____hash___it_is_____store__nil___compressed__nil___replicate__nil___http_sync__false___callback___lambda_cipherkeysuper-secret-cipher-key" do
     @pubnub = Pubnub.new(
-      publish_key: "pub-c-b42cec2f-f468-4784-8833-dd2b074538c4",
-      subscribe_key: "sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f",
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",

@@ -8,7 +8,7 @@ module Pubnub
 
       def validate!
         return if @skip_validate
-        
+
         validate_channel!
       end
 

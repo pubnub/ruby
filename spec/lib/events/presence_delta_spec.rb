@@ -19,7 +19,7 @@ describe Pubnub::Presence do
     end
 
     it "works" do
-      pubnub = Pubnub.new(subscribe_key: "sub-c-9fb06248-0a21-11e7-91d0-02ee2ddab7fe", publish_key: "pub-c-7a6fa2a4-a4c4-4eb4-9a21-a3334d38209d", uuid: "")
+      pubnub = Pubnub.new(subscribe_key: "sub-a-mock-key", publish_key: "pub-a-mock-key", uuid: "")
       pubnub.add_listener(callback: @callbacks)
 
       VCR.use_cassette("lib/events/presence_delta", record: :once) do

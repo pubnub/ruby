@@ -10,8 +10,8 @@ describe "Signatures" do
     Pubnub::Grant.any_instance.stub(:current_time).and_return(1496242823)
 
     pubnub = Pubnub.new(
-      subscribe_key: "sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe",
-      publish_key: "pub-c-cd48c41a-afce-4f37-8b3b-7fafccf52e2d",
+      subscribe_key: "sub-a-mock-key",
+      publish_key: "pub-a-mock-key",
       secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
       uuid: "test",
     )
@@ -27,8 +27,8 @@ describe "Signatures" do
     Pubnub::Grant.any_instance.stub(:current_time).and_return(1496242823)
 
     pubnub = Pubnub.new(
-      subscribe_key: "sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe",
-      publish_key: "pub-c-cd48c41a-afce-4f37-8b3b-7fafccf52e2d",
+      subscribe_key: "sub-a-mock-key",
+      publish_key: "pub-a-mock-key",
       secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
       uuid: "test",
     )
@@ -45,8 +45,8 @@ describe "Signatures" do
       Pubnub::Grant.any_instance.stub(:current_time).and_return(1496242824)
 
       pubnub = Pubnub.new(
-        subscribe_key: "sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe",
-        publish_key: "pub-c-cd48c41a-afce-4f37-8b3b-7fafccf52e2d",
+        subscribe_key: "sub-a-mock-key",
+        publish_key: "pub-a-mock-key",
         secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
         uuid: "test",
       )
@@ -63,8 +63,8 @@ describe "Signatures" do
       Pubnub::Client.any_instance.stub(:generate_ortt).and_return 14963961271418600
 
       pubnub = Pubnub.new(
-        subscribe_key: "sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe",
-        publish_key: "pub-c-cd48c41a-afce-4f37-8b3b-7fafccf52e2d",
+        subscribe_key: "sub-a-mock-key",
+        publish_key: "pub-a-mock-key",
         secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
         uuid: "test",
       )
@@ -80,8 +80,8 @@ describe "Signatures" do
       Pubnub::Subscribe.any_instance.stub(:current_time).and_return 1496397558
 
       pubnub = Pubnub.new(
-        subscribe_key: "sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe",
-        publish_key: "pub-c-cd48c41a-afce-4f37-8b3b-7fafccf52e2d",
+        subscribe_key: "sub-a-mock-key",
+        publish_key: "pub-a-mock-key",
         secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
         uuid: "test",
       )
@@ -97,8 +97,8 @@ describe "Signatures" do
       Pubnub::Presence.any_instance.stub(:current_time).and_return 1496401532
 
       pubnub = Pubnub.new(
-        subscribe_key: "sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe",
-        publish_key: "pub-c-cd48c41a-afce-4f37-8b3b-7fafccf52e2d",
+        subscribe_key: "sub-a-mock-key",
+        publish_key: "pub-a-mock-key",
         secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
         uuid: "test",
       )
@@ -114,8 +114,8 @@ describe "Signatures" do
       Pubnub::Leave.any_instance.stub(:current_time).and_return 1496401409
 
       pubnub = Pubnub.new(
-        subscribe_key: "sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe",
-        publish_key: "pub-c-cd48c41a-afce-4f37-8b3b-7fafccf52e2d",
+        subscribe_key: "sub-a-mock-key",
+        publish_key: "pub-a-mock-key",
         secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
         uuid: "test",
       )
@@ -131,8 +131,8 @@ describe "Signatures" do
       Pubnub::History.any_instance.stub(:current_time).and_return 1496396745
 
       pubnub = Pubnub.new(
-        subscribe_key: "sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe",
-        publish_key: "pub-c-cd48c41a-afce-4f37-8b3b-7fafccf52e2d",
+        subscribe_key: "sub-a-mock-key",
+        publish_key: "pub-a-mock-key",
         secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
         uuid: "test",
       )
@@ -148,8 +148,8 @@ describe "Signatures" do
       Pubnub::HereNow.any_instance.stub(:current_time).and_return 1496401140
 
       pubnub = Pubnub.new(
-        subscribe_key: "sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe",
-        publish_key: "pub-c-cd48c41a-afce-4f37-8b3b-7fafccf52e2d",
+        subscribe_key: "sub-a-mock-key",
+        publish_key: "pub-a-mock-key",
         secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
         uuid: "test",
       )
@@ -163,8 +163,8 @@ describe "Signatures" do
     it "channel registration works" do
       stub_const("Pubnub::VERSION", "4.0.21")
       pubnub = Pubnub.new(
-        subscribe_key: "sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe",
-        publish_key: "pub-c-cd48c41a-afce-4f37-8b3b-7fafccf52e2d",
+        subscribe_key: "sub-a-mock-key",
+        publish_key: "pub-a-mock-key",
         secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
         uuid: "test",
       )
@@ -213,8 +213,8 @@ describe "Signatures" do
       Pubnub::Heartbeat.any_instance.stub(:current_time).and_return 1496400995
 
       pubnub = Pubnub.new(
-        subscribe_key: "sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe",
-        publish_key: "pub-c-cd48c41a-afce-4f37-8b3b-7fafccf52e2d",
+        subscribe_key: "sub-a-mock-key",
+        publish_key: "pub-a-mock-key",
         secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
         uuid: "test",
       )
@@ -230,8 +230,8 @@ describe "Signatures" do
       Pubnub::SetState.any_instance.stub(:current_time).and_return 1496402248
       Pubnub::State.any_instance.stub(:current_time).and_return 1496402248
       pubnub = Pubnub.new(
-        subscribe_key: "sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe",
-        publish_key: "pub-c-cd48c41a-afce-4f37-8b3b-7fafccf52e2d",
+        subscribe_key: "sub-a-mock-key",
+        publish_key: "pub-a-mock-key",
         secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
         uuid: 'a!@#$%^&()ŻÓŁ[]{}""<>??~`Z',
       )
@@ -256,8 +256,8 @@ describe "Signatures" do
       Pubnub::WhereNow.any_instance.stub(:current_time).and_return 1496402114
 
       pubnub = Pubnub.new(
-        subscribe_key: "sub-c-b6df3d38-45e3-11e7-86e2-02ee2ddab7fe",
-        publish_key: "pub-c-cd48c41a-afce-4f37-8b3b-7fafccf52e2d",
+        subscribe_key: "sub-a-mock-key",
+        publish_key: "pub-a-mock-key",
         secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
         uuid: "test",
       )

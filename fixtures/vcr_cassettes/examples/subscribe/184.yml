@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/demo,demo.*-pnpres,demo0-pnpres,demo1-pnpres/0?auth=ruby-test-auth-client-one&channel-group=demo&pnsdk=PubNub-Ruby/4.0.0beta1&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid-client-one
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo,demo.*-pnpres,demo0-pnpres,demo1-pnpres/0?auth=ruby-test-auth-client-one&channel-group=demo&pnsdk=PubNub-Ruby/4.1.0beta1&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid-client-one
     body:
       encoding: UTF-8
       string: ''
@@ -39,7 +39,7 @@ http_interactions:
   recorded_at: Wed, 08 Jun 2016 15:36:56 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/demo,demo.*-pnpres,demo0-pnpres,demo1-pnpres/0?auth=ruby-test-auth-client-one&channel-group=demo&pnsdk=PubNub-Ruby/4.0.0beta1&t=%7B%22r%22:3,%22t%22:%2214654002164906267%22%7D&uuid=ruby-test-uuid-client-one
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo,demo.*-pnpres,demo0-pnpres,demo1-pnpres/0?auth=ruby-test-auth-client-one&channel-group=demo&pnsdk=PubNub-Ruby/4.1.0beta1&t=%7B%22r%22:3,%22t%22:%2214654002164906267%22%7D&uuid=ruby-test-uuid-client-one
     body:
       encoding: UTF-8
       string: ''
@@ -71,11 +71,11 @@ http_interactions:
       - GET
     body:
       encoding: UTF-8
-      string: '{"t":{"t":"14654002181546944","r":3},"m":[{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":103,"o":{"t":"14654002167833460"},"p":{"t":"14654002168154272","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo","d":"test_message","b":"demo"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":103,"o":{"t":"14654002167833460"},"p":{"t":"14654002168154272","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo","d":"test_message","b":"demo"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":105,"o":{"t":"14654002168440408"},"p":{"t":"14654002168766077","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo","d":"test_message","b":"demo"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":105,"o":{"t":"14654002168440408"},"p":{"t":"14654002168766077","r":12},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo","d":"test_message","b":"demo"},{"a":"5","f":0,"p":{"t":"14654002174580283","r":2},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo.*-pnpres","d":{"action":
+      string: '{"t":{"t":"14654002181546944","r":3},"m":[{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":103,"o":{"t":"14654002167833460"},"p":{"t":"14654002168154272","r":12},"k":"sub-a-mock-key","c":"demo","d":"test_message","b":"demo"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":103,"o":{"t":"14654002167833460"},"p":{"t":"14654002168154272","r":12},"k":"sub-a-mock-key","c":"demo","d":"test_message","b":"demo"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":105,"o":{"t":"14654002168440408"},"p":{"t":"14654002168766077","r":12},"k":"sub-a-mock-key","c":"demo","d":"test_message","b":"demo"},{"a":"5","f":0,"i":"ruby-test-uuid-client-two","s":105,"o":{"t":"14654002168440408"},"p":{"t":"14654002168766077","r":12},"k":"sub-a-mock-key","c":"demo","d":"test_message","b":"demo"},{"a":"5","f":0,"p":{"t":"14654002174580283","r":2},"k":"sub-a-mock-key","c":"demo.*-pnpres","d":{"action":
         "join", "timestamp": 1465400217, "uuid": "ruby-test-uuid-client-two", "occupancy":
-        1},"b":"demo.*-pnpres"},{"a":"5","f":0,"p":{"t":"14654002175212078","r":2},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo1-pnpres","d":{"action":
+        1},"b":"demo.*-pnpres"},{"a":"5","f":0,"p":{"t":"14654002175212078","r":2},"k":"sub-a-mock-key","c":"demo1-pnpres","d":{"action":
         "join", "timestamp": 1465400217, "uuid": "ruby-test-uuid-client-two", "occupancy":
-        1},"b":"demo1-pnpres"},{"a":"5","f":0,"p":{"t":"14654002181159076","r":2},"k":"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f","c":"demo.*-pnpres","d":{"action":
+        1},"b":"demo1-pnpres"},{"a":"5","f":0,"p":{"t":"14654002181159076","r":2},"k":"sub-a-mock-key","c":"demo.*-pnpres","d":{"action":
         "leave", "timestamp": 1465400218, "uuid": "ruby-test-uuid-client-two", "occupancy":
         0},"b":"demo.*-pnpres"}]}'
     http_version: 

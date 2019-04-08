@@ -48,24 +48,11 @@ require 'pubnub/validators/time'
 require 'pubnub/validators/where_now'
 require 'pubnub/validators/delete'
 require 'pubnub/validators/message_counts'
+require 'pubnub/validators/push'
 
-require 'pubnub/events/audit'
-require 'pubnub/events/channel_registration'
-require 'pubnub/events/grant'
-require 'pubnub/events/heartbeat'
-require 'pubnub/events/here_now'
-require 'pubnub/events/history'
-require 'pubnub/events/message_counts'
-require 'pubnub/events/leave'
-require 'pubnub/events/presence'
-require 'pubnub/events/publish'
-require 'pubnub/events/revoke'
-require 'pubnub/events/set_state'
-require 'pubnub/events/state'
-require 'pubnub/events/subscribe'
-require 'pubnub/events/time'
-require 'pubnub/events/where_now'
-require 'pubnub/events/delete_messages'
+Dir[File.join(Dir.pwd, 'lib', 'pubnub', 'events', '*.rb')].each do |file|
+  require file
+end
 
 # Toplevel Pubnub module.
 module Pubnub

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/publish/demo/demo/0/ruby_demo_channel/0/%7B%22text%22:%22sometext%22%7D?auth=demoish_authkey&norep=true&ortt=%7B%22t%22:14660961816489710%7D&pnsdk=PubNub-Ruby/4.0.0beta2&seqn=1&store=0&uuid=tester
+    uri: http://ps.pndsn.com/publish/demo/demo/0/ruby_demo_channel/0/%7B%22text%22:%22sometext%22%7D?auth=demoish_authkey&norep=true&ortt=%7B%22t%22:14660961816489710%7D&pnsdk=PubNub-Ruby/4.1.0beta2&seqn=1&store=0&uuid=tester
     body:
       encoding: UTF-8
       string: ''

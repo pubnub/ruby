@@ -69,7 +69,7 @@ module Pubnub
         },
         result: {
           code: req_res_objects[:response].code,
-          operation: Pubnub::Constants::OPERATION_HISTORY,
+          operation: current_operation,
           client_request: req_res_objects[:request],
           server_response: req_res_objects[:response],
           data: parsed_response

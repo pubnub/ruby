@@ -67,9 +67,7 @@ end
 
 VCR.configure do |c|
   ignored_params = [
-      :pnsdk, :uuid, :ortt, :seqn, :t,
-      :l_pres, :l_pub, :l_pres, :l_hist, :l_cg, :l_time
-  ]
+      :pnsdk, :uuid, :ortt, :seqn, :t, :l_pres, :l_pub, :l_pres, :l_hist, :l_cg, :l_time, :signature ]
   c.cassette_library_dir = "fixtures/vcr_cassettes"
   c.hook_into :webmock
   c.allow_http_connections_when_no_cassette = false
@@ -79,4 +77,7 @@ VCR.configure do |c|
                         VCR.request_matchers.uri_without_param(*ignored_params)],
   }
   c.debug_logger = File.open("vcr.log", "w")
+  c.before_record do |interaction, casette|
+    interaction.request.uri.gsub!(/(pub|sub)-[\da-fA-F]-[\da-fA-F]{8}(-[\da-fA-F]{4}){3}-[\da-fA-F]{12}/, '\1-a-mock-key')
+  end
 end

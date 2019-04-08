@@ -242,12 +242,12 @@ Most important part: `result[:data]`
   {:code=>200,
    :operation=>:audit,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v1/auth/audit/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f?channel=whatever&pnsdk=PubNub-Ruby%2F4.0.13&signature=724F4F024fhSolYgMc5dQrAGOY7tFZeo_2_XKxAvg0g%3D&timestamp=1479309113&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269>,
+    #<URI::HTTP http://pubsub.pubnub.com/v1/auth/audit/sub-key/sub-a-mock-key?channel=whatever&pnsdk=PubNub-Ruby%2F4.0.13&signature=724F4F024fhSolYgMc5dQrAGOY7tFZeo_2_XKxAvg0g%3D&timestamp=1479309113&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269>,
    :server_response=>
     #<HTTP::Message:0x007fc3240575f0
      @http_body=
       #<HTTP::Message::Body:0x007fc324057550
-       @body="{\"message\":\"Success\",\"payload\":{\"level\":\"channel\",\"subscribe_key\":\"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f\",\"channels\":{}},\"service\":\"Access Manager\",\"status\":200}",
+       @body="{\"message\":\"Success\",\"payload\":{\"level\":\"channel\",\"subscribe_key\":\"sub-a-mock-key\",\"channels\":{}},\"service\":\"Access Manager\",\"status\":200}",
        @chunk_size=nil,
        @positions=nil,
        @size=0>,
@@ -276,20 +276,20 @@ Most important part: `result[:data]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x3fe19202be2c URI:http://pubsub.pubnub.com/v1/auth/audit/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f?channel=whatever&pnsdk=PubNub-Ruby%2F4.0.13&signature=724F4F024fhSolYgMc5dQrAGOY7tFZeo_2_XKxAvg0g%3D&timestamp=1479309113&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269>,
+        #<Addressable::URI:0x3fe19202be2c URI:http://pubsub.pubnub.com/v1/auth/audit/sub-key/sub-a-mock-key?channel=whatever&pnsdk=PubNub-Ruby%2F4.0.13&signature=724F4F024fhSolYgMc5dQrAGOY7tFZeo_2_XKxAvg0g%3D&timestamp=1479309113&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
-   :data=>{"level"=>"channel", "subscribe_key"=>"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "channels"=>{}}},
+   :data=>{"level"=>"channel", "subscribe_key"=>"sub-a-mock-key", "channels"=>{}}},
  @status=
   {:code=>200,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v1/auth/audit/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f?channel=whatever&pnsdk=PubNub-Ruby%2F4.0.13&signature=724F4F024fhSolYgMc5dQrAGOY7tFZeo_2_XKxAvg0g%3D&timestamp=1479309113&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269>,
+    #<URI::HTTP http://pubsub.pubnub.com/v1/auth/audit/sub-key/sub-a-mock-key?channel=whatever&pnsdk=PubNub-Ruby%2F4.0.13&signature=724F4F024fhSolYgMc5dQrAGOY7tFZeo_2_XKxAvg0g%3D&timestamp=1479309113&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269>,
    :server_response=>
     #<HTTP::Message:0x007fc3240575f0
      @http_body=
       #<HTTP::Message::Body:0x007fc324057550
-       @body="{\"message\":\"Success\",\"payload\":{\"level\":\"channel\",\"subscribe_key\":\"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f\",\"channels\":{}},\"service\":\"Access Manager\",\"status\":200}",
+       @body="{\"message\":\"Success\",\"payload\":{\"level\":\"channel\",\"subscribe_key\":\"sub-a-mock-key\",\"channels\":{}},\"service\":\"Access Manager\",\"status\":200}",
        @chunk_size=nil,
        @positions=nil,
        @size=0>,
@@ -318,7 +318,7 @@ Most important part: `result[:data]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x3fe19202be2c URI:http://pubsub.pubnub.com/v1/auth/audit/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f?channel=whatever&pnsdk=PubNub-Ruby%2F4.0.13&signature=724F4F024fhSolYgMc5dQrAGOY7tFZeo_2_XKxAvg0g%3D&timestamp=1479309113&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269>,
+        #<Addressable::URI:0x3fe19202be2c URI:http://pubsub.pubnub.com/v1/auth/audit/sub-key/sub-a-mock-key?channel=whatever&pnsdk=PubNub-Ruby%2F4.0.13&signature=724F4F024fhSolYgMc5dQrAGOY7tFZeo_2_XKxAvg0g%3D&timestamp=1479309113&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
@@ -347,7 +347,7 @@ Most important part: `status[:error]`
    :code=>200,
    :operation=>:channel_group_add,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v1/channel-registration/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel-group/whatever?add=whatever&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479309313&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=%2F32U%2F9t4ZKOfO3MbrsGFnosO8zLbQrYcMN86VL4sPgw%3D>,
+    #<URI::HTTP http://pubsub.pubnub.com/v1/channel-registration/sub-key/sub-a-mock-key/channel-group/whatever?add=whatever&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479309313&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=%2F32U%2F9t4ZKOfO3MbrsGFnosO8zLbQrYcMN86VL4sPgw%3D>,
    :server_response=>
     #<HTTP::Message:0x005571e1f29948
      @http_body=#<HTTP::Message::Body:0x005571e1f29830 @body="{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}", @chunk_size=nil, @positions=nil, @size=0>,
@@ -378,7 +378,7 @@ Most important part: `status[:error]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x3fe192080008 URI:http://pubsub.pubnub.com/v1/channel-registration/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel-group/whatever?add=whatever&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479309313&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=%2F32U%2F9t4ZKOfO3MbrsGFnosO8zLbQrYcMN86VL4sPgw%3D>,
+        #<Addressable::URI:0x3fe192080008 URI:http://pubsub.pubnub.com/v1/channel-registration/sub-key/sub-a-mock-key/channel-group/whatever?add=whatever&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479309313&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=%2F32U%2F9t4ZKOfO3MbrsGFnosO8zLbQrYcMN86VL4sPgw%3D>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>},
@@ -386,7 +386,7 @@ Most important part: `status[:error]`
   {:code=>200,
    :operation=>:channel_group_add,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v1/channel-registration/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel-group/whatever?add=whatever&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479309313&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=%2F32U%2F9t4ZKOfO3MbrsGFnosO8zLbQrYcMN86VL4sPgw%3D>,
+    #<URI::HTTP http://pubsub.pubnub.com/v1/channel-registration/sub-key/sub-a-mock-key/channel-group/whatever?add=whatever&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479309313&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=%2F32U%2F9t4ZKOfO3MbrsGFnosO8zLbQrYcMN86VL4sPgw%3D>,
    :server_response=>
     #<HTTP::Message:0x005571e1f29948
      @http_body=#<HTTP::Message::Body:0x005571e1f29830 @body="{\"status\": 200, \"message\": \"OK\", \"service\": \"channel-registry\", \"error\": false}", @chunk_size=nil, @positions=nil, @size=0>,
@@ -417,7 +417,7 @@ Most important part: `status[:error]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x3fe192080008 URI:http://pubsub.pubnub.com/v1/channel-registration/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel-group/whatever?add=whatever&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479309313&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=%2F32U%2F9t4ZKOfO3MbrsGFnosO8zLbQrYcMN86VL4sPgw%3D>,
+        #<Addressable::URI:0x3fe192080008 URI:http://pubsub.pubnub.com/v1/channel-registration/sub-key/sub-a-mock-key/channel-group/whatever?add=whatever&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479309313&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=%2F32U%2F9t4ZKOfO3MbrsGFnosO8zLbQrYcMN86VL4sPgw%3D>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
@@ -445,7 +445,7 @@ Most important part: `result[:data]`
    :code=>200,
    :operation=>:list_all_channels_in_channel_group,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v1/channel-registration/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel-group/whatever?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479309608&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=9tmmAHHVCDeS8qOV3qdkPZr11cnYWhXUrV475xBslWY%3D>,
+    #<URI::HTTP http://pubsub.pubnub.com/v1/channel-registration/sub-key/sub-a-mock-key/channel-group/whatever?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479309608&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=9tmmAHHVCDeS8qOV3qdkPZr11cnYWhXUrV475xBslWY%3D>,
    :server_response=>
     #<HTTP::Message:0x005571e1811f70
      @http_body=
@@ -477,7 +477,7 @@ Most important part: `result[:data]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x2ab8f0c09d64 URI:http://pubsub.pubnub.com/v1/channel-registration/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel-group/whatever?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479309608&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=9tmmAHHVCDeS8qOV3qdkPZr11cnYWhXUrV475xBslWY%3D>,
+        #<Addressable::URI:0x2ab8f0c09d64 URI:http://pubsub.pubnub.com/v1/channel-registration/sub-key/sub-a-mock-key/channel-group/whatever?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479309608&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=9tmmAHHVCDeS8qOV3qdkPZr11cnYWhXUrV475xBslWY%3D>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>},
@@ -485,7 +485,7 @@ Most important part: `result[:data]`
   {:code=>200,
    :operation=>:list_all_channels_in_channel_group,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v1/channel-registration/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel-group/whatever?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479309608&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=9tmmAHHVCDeS8qOV3qdkPZr11cnYWhXUrV475xBslWY%3D>,
+    #<URI::HTTP http://pubsub.pubnub.com/v1/channel-registration/sub-key/sub-a-mock-key/channel-group/whatever?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479309608&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=9tmmAHHVCDeS8qOV3qdkPZr11cnYWhXUrV475xBslWY%3D>,
    :server_response=>
     #<HTTP::Message:0x005571e1811f70
      @http_body=
@@ -517,7 +517,7 @@ Most important part: `result[:data]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x2ab8f0c09d64 URI:http://pubsub.pubnub.com/v1/channel-registration/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel-group/whatever?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479309608&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=9tmmAHHVCDeS8qOV3qdkPZr11cnYWhXUrV475xBslWY%3D>,
+        #<Addressable::URI:0x2ab8f0c09d64 URI:http://pubsub.pubnub.com/v1/channel-registration/sub-key/sub-a-mock-key/channel-group/whatever?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479309608&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=9tmmAHHVCDeS8qOV3qdkPZr11cnYWhXUrV475xBslWY%3D>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
@@ -545,13 +545,13 @@ Most important part: `status[:error]`
   {:code=>200,
    :operation=>:grant,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v1/auth/grant/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f?channel=whatever&m=1&pnsdk=PubNub-Ruby%2F4.0.13&r=1&signature=o-r78nncnqenn_LlJDoVzwP3jOhJKP2riKgcEZpbbCA%3D&timestamp=1479310015&ttl=3600&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&w=1>,
+    #<URI::HTTP http://pubsub.pubnub.com/v1/auth/grant/sub-key/sub-a-mock-key?channel=whatever&m=1&pnsdk=PubNub-Ruby%2F4.0.13&r=1&signature=o-r78nncnqenn_LlJDoVzwP3jOhJKP2riKgcEZpbbCA%3D&timestamp=1479310015&ttl=3600&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&w=1>,
    :server_response=>
     #<HTTP::Message:0x007fc32423a6b0
      @http_body=
       #<HTTP::Message::Body:0x007fc32423a610
        @body=
-        "{\"message\":\"Success\",\"payload\":{\"level\":\"channel\",\"subscribe_key\":\"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f\",\"ttl\":3600,\"channels\":{\"whatever\":{\"r\":1,\"w\":1,\"m\":1}}},\"service\":\"Access Manager\",\"status\":200}",
+        "{\"message\":\"Success\",\"payload\":{\"level\":\"channel\",\"subscribe_key\":\"sub-a-mock-key\",\"ttl\":3600,\"channels\":{\"whatever\":{\"r\":1,\"w\":1,\"m\":1}}},\"service\":\"Access Manager\",\"status\":200}",
        @chunk_size=nil,
        @positions=nil,
        @size=0>,
@@ -580,21 +580,21 @@ Most important part: `status[:error]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x3fe19211d678 URI:http://pubsub.pubnub.com/v1/auth/grant/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f?channel=whatever&m=1&pnsdk=PubNub-Ruby%2F4.0.13&r=1&signature=o-r78nncnqenn_LlJDoVzwP3jOhJKP2riKgcEZpbbCA%3D&timestamp=1479310015&ttl=3600&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&w=1>,
+        #<Addressable::URI:0x3fe19211d678 URI:http://pubsub.pubnub.com/v1/auth/grant/sub-key/sub-a-mock-key?channel=whatever&m=1&pnsdk=PubNub-Ruby%2F4.0.13&r=1&signature=o-r78nncnqenn_LlJDoVzwP3jOhJKP2riKgcEZpbbCA%3D&timestamp=1479310015&ttl=3600&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&w=1>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
-   :data=>{"level"=>"channel", "subscribe_key"=>"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f", "ttl"=>3600, "channels"=>{"whatever"=>{"r"=>1, "w"=>1, "m"=>1}}}},
+   :data=>{"level"=>"channel", "subscribe_key"=>"sub-a-mock-key", "ttl"=>3600, "channels"=>{"whatever"=>{"r"=>1, "w"=>1, "m"=>1}}}},
  @status=
   {:code=>200,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v1/auth/grant/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f?channel=whatever&m=1&pnsdk=PubNub-Ruby%2F4.0.13&r=1&signature=o-r78nncnqenn_LlJDoVzwP3jOhJKP2riKgcEZpbbCA%3D&timestamp=1479310015&ttl=3600&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&w=1>,
+    #<URI::HTTP http://pubsub.pubnub.com/v1/auth/grant/sub-key/sub-a-mock-key?channel=whatever&m=1&pnsdk=PubNub-Ruby%2F4.0.13&r=1&signature=o-r78nncnqenn_LlJDoVzwP3jOhJKP2riKgcEZpbbCA%3D&timestamp=1479310015&ttl=3600&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&w=1>,
    :server_response=>
     #<HTTP::Message:0x007fc32423a6b0
      @http_body=
       #<HTTP::Message::Body:0x007fc32423a610
        @body=
-        "{\"message\":\"Success\",\"payload\":{\"level\":\"channel\",\"subscribe_key\":\"sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f\",\"ttl\":3600,\"channels\":{\"whatever\":{\"r\":1,\"w\":1,\"m\":1}}},\"service\":\"Access Manager\",\"status\":200}",
+        "{\"message\":\"Success\",\"payload\":{\"level\":\"channel\",\"subscribe_key\":\"sub-a-mock-key\",\"ttl\":3600,\"channels\":{\"whatever\":{\"r\":1,\"w\":1,\"m\":1}}},\"service\":\"Access Manager\",\"status\":200}",
        @chunk_size=nil,
        @positions=nil,
        @size=0>,
@@ -623,7 +623,7 @@ Most important part: `status[:error]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x3fe19211d678 URI:http://pubsub.pubnub.com/v1/auth/grant/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f?channel=whatever&m=1&pnsdk=PubNub-Ruby%2F4.0.13&r=1&signature=o-r78nncnqenn_LlJDoVzwP3jOhJKP2riKgcEZpbbCA%3D&timestamp=1479310015&ttl=3600&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&w=1>,
+        #<Addressable::URI:0x3fe19211d678 URI:http://pubsub.pubnub.com/v1/auth/grant/sub-key/sub-a-mock-key?channel=whatever&m=1&pnsdk=PubNub-Ruby%2F4.0.13&r=1&signature=o-r78nncnqenn_LlJDoVzwP3jOhJKP2riKgcEZpbbCA%3D&timestamp=1479310015&ttl=3600&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&w=1>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
@@ -650,7 +650,7 @@ Most important part: `result[:data]`
   {:code=>200,
    :operation=>:here_now,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v2/presence/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310131&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=9%2F2CaKUvCvq5jhEEzz9LScQO0O8vo7SgYBkYeQv1jMs%3D>,
+    #<URI::HTTP http://pubsub.pubnub.com/v2/presence/sub-key/sub-a-mock-key/channel/demo?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310131&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=9%2F2CaKUvCvq5jhEEzz9LScQO0O8vo7SgYBkYeQv1jMs%3D>,
    :server_response=>
     #<HTTP::Message:0x005571e315cb38
      @http_body=
@@ -682,7 +682,7 @@ Most important part: `result[:data]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x2ab8f18ae8bc URI:http://pubsub.pubnub.com/v2/presence/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310131&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=9%2F2CaKUvCvq5jhEEzz9LScQO0O8vo7SgYBkYeQv1jMs%3D>,
+        #<Addressable::URI:0x2ab8f18ae8bc URI:http://pubsub.pubnub.com/v2/presence/sub-key/sub-a-mock-key/channel/demo?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310131&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=9%2F2CaKUvCvq5jhEEzz9LScQO0O8vo7SgYBkYeQv1jMs%3D>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
@@ -690,7 +690,7 @@ Most important part: `result[:data]`
  @status=
   {:code=>200,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v2/presence/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310131&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=9%2F2CaKUvCvq5jhEEzz9LScQO0O8vo7SgYBkYeQv1jMs%3D>,
+    #<URI::HTTP http://pubsub.pubnub.com/v2/presence/sub-key/sub-a-mock-key/channel/demo?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310131&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=9%2F2CaKUvCvq5jhEEzz9LScQO0O8vo7SgYBkYeQv1jMs%3D>,
    :server_response=>
     #<HTTP::Message:0x005571e315cb38
      @http_body=
@@ -722,7 +722,7 @@ Most important part: `result[:data]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x2ab8f18ae8bc URI:http://pubsub.pubnub.com/v2/presence/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310131&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=9%2F2CaKUvCvq5jhEEzz9LScQO0O8vo7SgYBkYeQv1jMs%3D>,
+        #<Addressable::URI:0x2ab8f18ae8bc URI:http://pubsub.pubnub.com/v2/presence/sub-key/sub-a-mock-key/channel/demo?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310131&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=9%2F2CaKUvCvq5jhEEzz9LScQO0O8vo7SgYBkYeQv1jMs%3D>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
@@ -750,7 +750,7 @@ Most important part: `result[:data]`.
   {:code=>200,
    :operation=>:history,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v2/history/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo?count=10&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310589&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=74Dczzz%2F8WxEVUP4shYHkXWsoUeBNzmDfOUcgI57BQ8%3D>,
+    #<URI::HTTP http://pubsub.pubnub.com/v2/history/sub-key/sub-a-mock-key/channel/demo?count=10&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310589&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=74Dczzz%2F8WxEVUP4shYHkXWsoUeBNzmDfOUcgI57BQ8%3D>,
    :server_response=>
     #<HTTP::Message:0x005571e3844bf8
      @http_body=#<HTTP::Message::Body:0x005571e3844b58 @body="[[90,91,92,93,94,95,96,97,98,99],14793103373028625,14793103423331645]", @chunk_size=nil, @positions=nil, @size=0>,
@@ -781,7 +781,7 @@ Most important part: `result[:data]`.
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x2ab8f1c2291c URI:http://pubsub.pubnub.com/v2/history/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo?count=10&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310589&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=74Dczzz%2F8WxEVUP4shYHkXWsoUeBNzmDfOUcgI57BQ8%3D>,
+        #<Addressable::URI:0x2ab8f1c2291c URI:http://pubsub.pubnub.com/v2/history/sub-key/sub-a-mock-key/channel/demo?count=10&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310589&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=74Dczzz%2F8WxEVUP4shYHkXWsoUeBNzmDfOUcgI57BQ8%3D>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
@@ -789,7 +789,7 @@ Most important part: `result[:data]`.
  @status=
   {:code=>200,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v2/history/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo?count=10&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310589&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=74Dczzz%2F8WxEVUP4shYHkXWsoUeBNzmDfOUcgI57BQ8%3D>,
+    #<URI::HTTP http://pubsub.pubnub.com/v2/history/sub-key/sub-a-mock-key/channel/demo?count=10&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310589&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=74Dczzz%2F8WxEVUP4shYHkXWsoUeBNzmDfOUcgI57BQ8%3D>,
    :server_response=>
     #<HTTP::Message:0x005571e3844bf8
      @http_body=#<HTTP::Message::Body:0x005571e3844b58 @body="[[90,91,92,93,94,95,96,97,98,99],14793103373028625,14793103423331645]", @chunk_size=nil, @positions=nil, @size=0>,
@@ -820,7 +820,7 @@ Most important part: `result[:data]`.
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x2ab8f1c2291c URI:http://pubsub.pubnub.com/v2/history/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo?count=10&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310589&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=74Dczzz%2F8WxEVUP4shYHkXWsoUeBNzmDfOUcgI57BQ8%3D>,
+        #<Addressable::URI:0x2ab8f1c2291c URI:http://pubsub.pubnub.com/v2/history/sub-key/sub-a-mock-key/channel/demo?count=10&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310589&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=74Dczzz%2F8WxEVUP4shYHkXWsoUeBNzmDfOUcgI57BQ8%3D>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
@@ -835,7 +835,7 @@ Most important part: `result[:data]`.
   {:code=>200,
    :operation=>:history,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v2/history/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo?count=10&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310594&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=uPfZzcP%2F5OozLCtdFVXnzwhn84E1opPZNHhWtdDHoFg%3D>,
+    #<URI::HTTP http://pubsub.pubnub.com/v2/history/sub-key/sub-a-mock-key/channel/demo?count=10&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310594&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=uPfZzcP%2F5OozLCtdFVXnzwhn84E1opPZNHhWtdDHoFg%3D>,
    :server_response=>
     #<HTTP::Message:0x005571e1c52760
      @http_body=#<HTTP::Message::Body:0x005571e1c52620 @body="[[90,91,92,93,94,95,96,97,98,99],14793103373028625,14793103423331645]", @chunk_size=nil, @positions=nil, @size=0>,
@@ -866,7 +866,7 @@ Most important part: `result[:data]`.
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x2ab8f0e29824 URI:http://pubsub.pubnub.com/v2/history/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo?count=10&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310594&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=uPfZzcP%2F5OozLCtdFVXnzwhn84E1opPZNHhWtdDHoFg%3D>,
+        #<Addressable::URI:0x2ab8f0e29824 URI:http://pubsub.pubnub.com/v2/history/sub-key/sub-a-mock-key/channel/demo?count=10&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310594&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=uPfZzcP%2F5OozLCtdFVXnzwhn84E1opPZNHhWtdDHoFg%3D>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
@@ -874,7 +874,7 @@ Most important part: `result[:data]`.
  @status=
   {:code=>200,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v2/history/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo?count=10&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310594&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=uPfZzcP%2F5OozLCtdFVXnzwhn84E1opPZNHhWtdDHoFg%3D>,
+    #<URI::HTTP http://pubsub.pubnub.com/v2/history/sub-key/sub-a-mock-key/channel/demo?count=10&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310594&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=uPfZzcP%2F5OozLCtdFVXnzwhn84E1opPZNHhWtdDHoFg%3D>,
    :server_response=>
     #<HTTP::Message:0x005571e1c52760
      @http_body=#<HTTP::Message::Body:0x005571e1c52620 @body="[[90,91,92,93,94,95,96,97,98,99],14793103373028625,14793103423331645]", @chunk_size=nil, @positions=nil, @size=0>,
@@ -905,7 +905,7 @@ Most important part: `result[:data]`.
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x2ab8f0e29824 URI:http://pubsub.pubnub.com/v2/history/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo?count=10&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310594&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=uPfZzcP%2F5OozLCtdFVXnzwhn84E1opPZNHhWtdDHoFg%3D>,
+        #<Addressable::URI:0x2ab8f0e29824 URI:http://pubsub.pubnub.com/v2/history/sub-key/sub-a-mock-key/channel/demo?count=10&pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310594&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=uPfZzcP%2F5OozLCtdFVXnzwhn84E1opPZNHhWtdDHoFg%3D>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
@@ -934,7 +934,7 @@ Most important part: `status[:error]`
   {:code=>200,
    :operation=>:leave,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v2/presence/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo/leave?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310804&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=MwJI5czAwWn4MZJdaj%2BAcJL61zX1j2l59OpT%2F4z02mI%3D>,
+    #<URI::HTTP http://pubsub.pubnub.com/v2/presence/sub-key/sub-a-mock-key/channel/demo/leave?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310804&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=MwJI5czAwWn4MZJdaj%2BAcJL61zX1j2l59OpT%2F4z02mI%3D>,
    :server_response=>
     #<HTTP::Message:0x005571e36d66b8
      @http_body=#<HTTP::Message::Body:0x005571e36d6618 @body="{\"status\": 200, \"action\": \"leave\", \"message\": \"OK\", \"service\": \"Presence\"}", @chunk_size=nil, @positions=nil, @size=0>,
@@ -965,7 +965,7 @@ Most important part: `status[:error]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x2ab8f1b6b6e0 URI:http://pubsub.pubnub.com/v2/presence/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo/leave?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310804&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=MwJI5czAwWn4MZJdaj%2BAcJL61zX1j2l59OpT%2F4z02mI%3D>,
+        #<Addressable::URI:0x2ab8f1b6b6e0 URI:http://pubsub.pubnub.com/v2/presence/sub-key/sub-a-mock-key/channel/demo/leave?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310804&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=MwJI5czAwWn4MZJdaj%2BAcJL61zX1j2l59OpT%2F4z02mI%3D>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
@@ -994,7 +994,7 @@ Most important part: `status[:error]`
   {:code=>200,
    :operation=>:publish,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/publish/pub-c-b42cec2f-f468-4784-8833-dd2b074538c4/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/0/demo/0/%22hello%21%22?ortt=%7B%22t%22%3A14793109008755456%7D&pnsdk=PubNub-Ruby%2F4.0.13&seqn=101&timestamp=1479310900&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=Juqy8g4Bi%2FXgwhrUXN5NxqjMoROUyINRYPCzV%2B1s9o8%3D>,
+    #<URI::HTTP http://pubsub.pubnub.com/publish/pub-a-mock-key/sub-a-mock-key/0/demo/0/%22hello%21%22?ortt=%7B%22t%22%3A14793109008755456%7D&pnsdk=PubNub-Ruby%2F4.0.13&seqn=101&timestamp=1479310900&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=Juqy8g4Bi%2FXgwhrUXN5NxqjMoROUyINRYPCzV%2B1s9o8%3D>,
    :server_response=>
     #<HTTP::Message:0x005571e341b4c8
      @http_body=#<HTTP::Message::Body:0x005571e341b428 @body="[1,\"Sent\",\"14793109009827627\"]", @chunk_size=nil, @positions=nil, @size=0>,
@@ -1022,7 +1022,7 @@ Most important part: `status[:error]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x2ab8f1a0dd84 URI:http://pubsub.pubnub.com/publish/pub-c-b42cec2f-f468-4784-8833-dd2b074538c4/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/0/demo/0/%22hello%21%22?ortt=%7B%22t%22%3A14793109008755456%7D&pnsdk=PubNub-Ruby%2F4.0.13&seqn=101&timestamp=1479310900&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=Juqy8g4Bi%2FXgwhrUXN5NxqjMoROUyINRYPCzV%2B1s9o8%3D>,
+        #<Addressable::URI:0x2ab8f1a0dd84 URI:http://pubsub.pubnub.com/publish/pub-a-mock-key/sub-a-mock-key/0/demo/0/%22hello%21%22?ortt=%7B%22t%22%3A14793109008755456%7D&pnsdk=PubNub-Ruby%2F4.0.13&seqn=101&timestamp=1479310900&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=Juqy8g4Bi%2FXgwhrUXN5NxqjMoROUyINRYPCzV%2B1s9o8%3D>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
@@ -1051,7 +1051,7 @@ Most important part: `status[:error]`
   {:code=>200,
    :operation=>:set_state,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v2/presence/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269/data?pnsdk=PubNub-Ruby%2F4.0.13&state=%7B%22one%22%3A1%7D&timestamp=1479310989&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=6LSIKJMxhTrSFbPWPfVEbQHuv%2BlK1Dt4zQwXb%2B5Lav8%3D>,
+    #<URI::HTTP http://pubsub.pubnub.com/v2/presence/sub-key/sub-a-mock-key/channel/demo/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269/data?pnsdk=PubNub-Ruby%2F4.0.13&state=%7B%22one%22%3A1%7D&timestamp=1479310989&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=6LSIKJMxhTrSFbPWPfVEbQHuv%2BlK1Dt4zQwXb%2B5Lav8%3D>,
    :server_response=>
     #<HTTP::Message:0x005571e218a520
      @http_body=#<HTTP::Message::Body:0x005571e218a368 @body="{\"status\": 200, \"message\": \"OK\", \"payload\": {\"one\": 1}, \"service\": \"Presence\"}", @chunk_size=nil, @positions=nil, @size=0>,
@@ -1082,7 +1082,7 @@ Most important part: `status[:error]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x2ab8f10c5a10 URI:http://pubsub.pubnub.com/v2/presence/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269/data?pnsdk=PubNub-Ruby%2F4.0.13&state=%7B%22one%22%3A1%7D&timestamp=1479310989&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=6LSIKJMxhTrSFbPWPfVEbQHuv%2BlK1Dt4zQwXb%2B5Lav8%3D>,
+        #<Addressable::URI:0x2ab8f10c5a10 URI:http://pubsub.pubnub.com/v2/presence/sub-key/sub-a-mock-key/channel/demo/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269/data?pnsdk=PubNub-Ruby%2F4.0.13&state=%7B%22one%22%3A1%7D&timestamp=1479310989&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=6LSIKJMxhTrSFbPWPfVEbQHuv%2BlK1Dt4zQwXb%2B5Lav8%3D>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
@@ -1109,7 +1109,7 @@ Most important part: `result[:data]`
   {:code=>200,
    :operation=>:get_state,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v2/presence/sub_key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479311064&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=uC3RWRo4nbOB%2BOH32uiBh%2BYYVnkCu1KfHi9e1nuke5I%3D>,
+    #<URI::HTTP http://pubsub.pubnub.com/v2/presence/sub_key/sub-a-mock-key/channel/demo/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479311064&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=uC3RWRo4nbOB%2BOH32uiBh%2BYYVnkCu1KfHi9e1nuke5I%3D>,
    :server_response=>
     #<HTTP::Message:0x005571e3684480
      @http_body=
@@ -1145,7 +1145,7 @@ Most important part: `result[:data]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x2ab8f1b42560 URI:http://pubsub.pubnub.com/v2/presence/sub_key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479311064&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=uC3RWRo4nbOB%2BOH32uiBh%2BYYVnkCu1KfHi9e1nuke5I%3D>,
+        #<Addressable::URI:0x2ab8f1b42560 URI:http://pubsub.pubnub.com/v2/presence/sub_key/sub-a-mock-key/channel/demo/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479311064&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=uC3RWRo4nbOB%2BOH32uiBh%2BYYVnkCu1KfHi9e1nuke5I%3D>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
@@ -1153,7 +1153,7 @@ Most important part: `result[:data]`
  @status=
   {:code=>200,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v2/presence/sub_key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479311064&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=uC3RWRo4nbOB%2BOH32uiBh%2BYYVnkCu1KfHi9e1nuke5I%3D>,
+    #<URI::HTTP http://pubsub.pubnub.com/v2/presence/sub_key/sub-a-mock-key/channel/demo/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479311064&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=uC3RWRo4nbOB%2BOH32uiBh%2BYYVnkCu1KfHi9e1nuke5I%3D>,
    :server_response=>
     #<HTTP::Message:0x005571e3684480
      @http_body=
@@ -1189,7 +1189,7 @@ Most important part: `result[:data]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x2ab8f1b42560 URI:http://pubsub.pubnub.com/v2/presence/sub_key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/channel/demo/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479311064&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=uC3RWRo4nbOB%2BOH32uiBh%2BYYVnkCu1KfHi9e1nuke5I%3D>,
+        #<Addressable::URI:0x2ab8f1b42560 URI:http://pubsub.pubnub.com/v2/presence/sub_key/sub-a-mock-key/channel/demo/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479311064&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=uC3RWRo4nbOB%2BOH32uiBh%2BYYVnkCu1KfHi9e1nuke5I%3D>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
@@ -1217,7 +1217,7 @@ Most important part: `result[:data]`
   {:code=>200,
    :operation=>:where_now,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v2/presence/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310689&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=oI5hm2fo8oc7dBKyUkKKdklrjy87JI8rioFFMI2KLkM%3D>,
+    #<URI::HTTP http://pubsub.pubnub.com/v2/presence/sub-key/sub-a-mock-key/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310689&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=oI5hm2fo8oc7dBKyUkKKdklrjy87JI8rioFFMI2KLkM%3D>,
    :server_response=>
     #<HTTP::Message:0x005571e3205940
      @http_body=#<HTTP::Message::Body:0x005571e32058a0 @body="{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": [\"demo\"]}, \"service\": \"Presence\"}", @chunk_size=nil, @positions=nil, @size=0>,
@@ -1248,7 +1248,7 @@ Most important part: `result[:data]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x2ab8f1902fd4 URI:http://pubsub.pubnub.com/v2/presence/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310689&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=oI5hm2fo8oc7dBKyUkKKdklrjy87JI8rioFFMI2KLkM%3D>,
+        #<Addressable::URI:0x2ab8f1902fd4 URI:http://pubsub.pubnub.com/v2/presence/sub-key/sub-a-mock-key/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310689&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=oI5hm2fo8oc7dBKyUkKKdklrjy87JI8rioFFMI2KLkM%3D>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
@@ -1256,7 +1256,7 @@ Most important part: `result[:data]`
  @status=
   {:code=>200,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v2/presence/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310689&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=oI5hm2fo8oc7dBKyUkKKdklrjy87JI8rioFFMI2KLkM%3D>,
+    #<URI::HTTP http://pubsub.pubnub.com/v2/presence/sub-key/sub-a-mock-key/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310689&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=oI5hm2fo8oc7dBKyUkKKdklrjy87JI8rioFFMI2KLkM%3D>,
    :server_response=>
     #<HTTP::Message:0x005571e3205940
      @http_body=#<HTTP::Message::Body:0x005571e32058a0 @body="{\"status\": 200, \"message\": \"OK\", \"payload\": {\"channels\": [\"demo\"]}, \"service\": \"Presence\"}", @chunk_size=nil, @positions=nil, @size=0>,
@@ -1287,7 +1287,7 @@ Most important part: `result[:data]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x2ab8f1902fd4 URI:http://pubsub.pubnub.com/v2/presence/sub-key/sub-c-b7fb805a-1777-11e6-be83-0619f8945a4f/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310689&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=oI5hm2fo8oc7dBKyUkKKdklrjy87JI8rioFFMI2KLkM%3D>,
+        #<Addressable::URI:0x2ab8f1902fd4 URI:http://pubsub.pubnub.com/v2/presence/sub-key/sub-a-mock-key/uuid/96ba2f54-955c-4fd3-acb7-a8407dae2269?pnsdk=PubNub-Ruby%2F4.0.13&timestamp=1479310689&uuid=96ba2f54-955c-4fd3-acb7-a8407dae2269&signature=oI5hm2fo8oc7dBKyUkKKdklrjy87JI8rioFFMI2KLkM%3D>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,

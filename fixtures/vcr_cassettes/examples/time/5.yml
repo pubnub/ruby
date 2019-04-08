@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/time/0?pnsdk=PubNub-Ruby/4.0.0beta1&auth=ruby-test-auth-client-one&uuid=ruby-test-uuid-client-one
+    uri: http://ps.pndsn.com/time/0?pnsdk=PubNub-Ruby/4.1.0beta1&auth=ruby-test-auth-client-one&uuid=ruby-test-uuid-client-one
     body:
       encoding: UTF-8
       string: ''
