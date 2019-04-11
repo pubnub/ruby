@@ -50,7 +50,7 @@ require 'pubnub/validators/delete'
 require 'pubnub/validators/message_counts'
 require 'pubnub/validators/push'
 
-Dir[File.join(Dir.pwd, 'lib', 'pubnub', 'events', '*.rb')].each do |file|
+Dir[File.join(File.dirname(__dir__), 'pubnub', 'events', '*.rb')].each do |file|
   require file
 end
 
