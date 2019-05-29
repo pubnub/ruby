@@ -11,7 +11,7 @@ describe Pubnub::Revoke do
       @pubnub = Pubnub::Client.new(
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
-        secret_key: "sec-c-OWIyYmVlYWYtYWMxMS00OTcxLTlhZDAtZDBlYTM4ODE1MWUy",
+        secret_key: "sec-a-mock-key",
         auth_key: "ruby-test-auth",
         uuid: "ruby-test-uuid",
       )
