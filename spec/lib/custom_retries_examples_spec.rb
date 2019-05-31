@@ -9,7 +9,7 @@ describe "Custom retries" do
     @pubnub = Pubnub.new(
       subscribe_key: "sub-a-mock-key",
       publish_key: "pub-a-mock-key",
-      secret_key: "sec-c-MTQyMzhjZGUtNTJiYi00MDU0LThkZWQtZDRmMGUwZDk4NjQz",
+      secret_key: "sec-a-mock-key",
       uuid: "ruby-test-client",
     )
   end

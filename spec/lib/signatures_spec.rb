@@ -12,7 +12,7 @@ describe "Signatures" do
     pubnub = Pubnub.new(
       subscribe_key: "sub-a-mock-key",
       publish_key: "pub-a-mock-key",
-      secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
+      secret_key: "sec-a-mock-key",
       uuid: "test",
     )
 
@@ -29,7 +29,7 @@ describe "Signatures" do
     pubnub = Pubnub.new(
       subscribe_key: "sub-a-mock-key",
       publish_key: "pub-a-mock-key",
-      secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
+      secret_key: "sec-a-mock-key",
       uuid: "test",
     )
 
@@ -47,7 +47,7 @@ describe "Signatures" do
       pubnub = Pubnub.new(
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
-        secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
+        secret_key: "sec-a-mock-key",
         uuid: "test",
       )
 
@@ -65,7 +65,7 @@ describe "Signatures" do
       pubnub = Pubnub.new(
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
-        secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
+        secret_key: "sec-a-mock-key",
         uuid: "test",
       )
 
@@ -82,7 +82,7 @@ describe "Signatures" do
       pubnub = Pubnub.new(
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
-        secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
+        secret_key: "sec-a-mock-key",
         uuid: "test",
       )
 
@@ -99,7 +99,7 @@ describe "Signatures" do
       pubnub = Pubnub.new(
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
-        secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
+        secret_key: "sec-a-mock-key",
         uuid: "test",
       )
 
@@ -116,7 +116,7 @@ describe "Signatures" do
       pubnub = Pubnub.new(
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
-        secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
+        secret_key: "sec-a-mock-key",
         uuid: "test",
       )
 
@@ -133,7 +133,7 @@ describe "Signatures" do
       pubnub = Pubnub.new(
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
-        secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
+        secret_key: "sec-a-mock-key",
         uuid: "test",
       )
 
@@ -150,7 +150,7 @@ describe "Signatures" do
       pubnub = Pubnub.new(
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
-        secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
+        secret_key: "sec-a-mock-key",
         uuid: "test",
       )
 
@@ -165,7 +165,7 @@ describe "Signatures" do
       pubnub = Pubnub.new(
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
-        secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
+        secret_key: "sec-a-mock-key",
         uuid: "test",
       )
       pubnub.env[:no_telemetry] = true
@@ -215,7 +215,7 @@ describe "Signatures" do
       pubnub = Pubnub.new(
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
-        secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
+        secret_key: "sec-a-mock-key",
         uuid: "test",
       )
 
@@ -232,7 +232,7 @@ describe "Signatures" do
       pubnub = Pubnub.new(
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
-        secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
+        secret_key: "sec-a-mock-key",
         uuid: 'a!@#$%^&()ŻÓŁ[]{}""<>??~`Z',
       )
       pubnub.env[:no_telemetry] = true
@@ -258,7 +258,7 @@ describe "Signatures" do
       pubnub = Pubnub.new(
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
-        secret_key: "sec-c-OTMzNmViNGEtYjg0MS00ZTZkLWI5ZmMtNDYzMDA0NTBlMDdi",
+        secret_key: "sec-a-mock-key",
         uuid: "test",
       )
 

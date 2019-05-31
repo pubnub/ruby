@@ -6,9 +6,10 @@ module Pubnub
     include Pubnub::Validator::Push
 
     def initialize(options, app)
-      @event = current_operation
-      @params = options
       super
+      @event = current_operation
+      @params = @given_options
+      @auth_key = options[:auth_key]
     end
 
     private
