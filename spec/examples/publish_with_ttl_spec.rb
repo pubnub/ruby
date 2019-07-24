@@ -18,7 +18,7 @@ describe Pubnub::Publish do
         envelope = @pubnub.publish(channel: :demo, message: :whatever, ttl: 10, http_sync: true)
 
         expect(envelope.is_a?(Pubnub::Envelope)).to eq true
-        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
       end
     end
 
@@ -27,7 +27,7 @@ describe Pubnub::Publish do
         envelope = @pubnub.publish(channel: :demo, message: :whatever, ttl: 10, store: false, http_sync: true)
 
         expect(envelope.is_a?(Pubnub::Envelope)).to eq true
-        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
       end
     end
   end
