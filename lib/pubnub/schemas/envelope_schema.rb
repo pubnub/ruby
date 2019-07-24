@@ -36,11 +36,11 @@ module Pubnub
       class StatusSchema < Dry::Validation::Contract
         params do
           required(:code).filled(:int?)
+          required(:category).filled
+          required(:error).filled(:bool?)
           required(:client_request).filled
           required(:server_response).filled
           required(:auto_retried).filled(:bool?)
-
-          required(:category_value).hash(CategorySchema)
 
           optional(:data).maybe(:hash?)
           optional(:current_timetoken).maybe(:int?)
@@ -51,9 +51,9 @@ module Pubnub
           required(:config).hash(ConfigSchema)
         end
 
-        rule(category_value: %i[error category]) do |error, category|
-          error.true?.then(category.included_in?(Pubnub::Constants::STATUS_CATEGORY_ERRORS))
-          error.false?.then(category.included_in?(Pubnub::Constants::STATUS_CATEGORY_SUCCESSES))
+        rule(:category, :error) do
+          key.failure('Invalid error category') if values[:error] && Pubnub::Constants::STATUS_CATEGORY_ERRORS.include?(values[:category].to_s)
+          key.failure('Invalid success category') if !values[:error] && Pubnub::Constants::STATUS_CATEGORY_SUCCESSES.include?(values[:category].to_s)
         end
       end
 

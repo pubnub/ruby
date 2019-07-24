@@ -134,11 +134,11 @@ module Pubnub
         # return if envelopes.size == 1 && envelopes.first.timetoken_update?
 
         results_validation = envelopes.map(&:result).map do |result|
-          Pubnub::Schemas::Envelope::ResultSchema.call result
+          Pubnub::Schemas::Envelope::ResultSchema.new.call result
         end
 
         statuses_validation = envelopes.map(&:status).map do |status|
-          Pubnub::Schemas::Envelope::StatusSchema.call status
+          Pubnub::Schemas::Envelope::StatusSchema.new.call status
         end
 
         if (results_validation + statuses_validation).map(&:failure?).index(true)
