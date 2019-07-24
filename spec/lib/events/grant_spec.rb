@@ -25,16 +25,16 @@ describe Pubnub::Grant do
 
     it "works" do
       VCR.use_cassette("lib/events/grant", record: :once) do
-        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
-        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
       end
     end
 
     it "forms valid ErrorEnvelope on error" do
       VCR.use_cassette("lib/events/grant-error", record: :once) do
         expect(envelope.is_a?(Pubnub::ErrorEnvelope)).to eq true
-        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
-        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
       end
     end
 
@@ -49,7 +49,7 @@ describe Pubnub::Grant do
         expect(envelope.is_a?(Pubnub::ErrorEnvelope)).to eq true
         expect(envelope.status[:code]).to eq 408
         expect(envelope.status[:category]).to eq Pubnub::Constants::STATUS_TIMEOUT
-        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
       end
     end
   end

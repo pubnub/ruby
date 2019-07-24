@@ -19,7 +19,7 @@ describe Pubnub::Leave do
           channel: :demo,
         ).value
 
-        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
       end
     end
 
@@ -30,7 +30,7 @@ describe Pubnub::Leave do
         ).value
 
         expect(envelope.is_a?(Pubnub::ErrorEnvelope)).to eq true
-        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
       end
     end
   end
