@@ -15,9 +15,9 @@ bundler_args: --without development
 script: bundle exec rspec
 
 rvm:
+  - 2.6.3
   - 2.5.1
   - 2.4.4
-  - 2.3.7
 
 matrix:
   include:
