@@ -20,6 +20,10 @@ module Pubnub
         end
       end
 
+      PresenceSchema = Dry::Schema.Params do
+        required(:channels).maybe(:array?)
+      end
+
       ConfigSchema = Dry::Schema.Params do
         required(:tls).filled(:bool?)
         required(:uuid).filled(:str?)
@@ -65,8 +69,15 @@ module Pubnub
           required(:client_request).filled
           required(:server_response).filled
 
-          # TODO: Fix this to be more strict by using DataSchema
           optional(:data).maybe(:hash?)
+        end
+
+        rule(:operation, :data) do
+          if values[:operation] == Pubnub::Constants::OPERATION_PRESENCE
+            PresenceSchema.call(values[:data])
+          else
+            DataSchema.call(values[:data])
+          end
         end
       end
     end
