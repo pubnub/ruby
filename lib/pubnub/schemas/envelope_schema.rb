@@ -65,9 +65,8 @@ module Pubnub
           required(:client_request).filled
           required(:server_response).filled
 
-          required(:data).maybe do
-            hash(DataSchema)
-          end
+          # TODO: Fix this to be more strict by using DataSchema
+          optional(:data).maybe(:hash?)
         end
       end
     end
