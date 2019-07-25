@@ -8,6 +8,17 @@ RSpec::Matchers.define :satisfies_schema do |expected|
 
   failure_message do |actual|
     msg = "expected that given hash will fit the schema.\n"
-    msg + @check.errors.to_h.map { |k, v| "#{k}: #{v}" }.join("\n")
+        
+    @check.errors.each do |item|
+      item.path.each do |path|
+        msg += "#{path}."
+      end
+
+      msg = msg.delete_suffix(".")
+
+      msg += ": #{item.text}\n"
+    end
+
+    return msg
   end
 end
