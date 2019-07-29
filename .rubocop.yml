@@ -23,3 +23,5 @@ Metrics/PerceivedComplexity:
 
 Metrics/CyclomaticComplexity:
   Enabled: false
+
+TargetRubyVersion: 2.4
