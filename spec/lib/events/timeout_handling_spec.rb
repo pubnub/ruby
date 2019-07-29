@@ -23,7 +23,7 @@ describe "timeout" do
         expect(envelope.is_a?(Pubnub::ErrorEnvelope)).to eq true
         expect(envelope.status[:code]).to eq 408
         expect(envelope.status[:category]).to eq Pubnub::Constants::STATUS_TIMEOUT
-        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
       end
     end
   end

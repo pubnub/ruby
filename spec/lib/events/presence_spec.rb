@@ -35,8 +35,8 @@ describe Pubnub::Presence do
 
           eventually do
             envelope = @messages.first
-            expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
-            expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema
+            expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+            expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
           end
         end
       end
@@ -78,8 +78,8 @@ describe Pubnub::Presence do
           envelopes = @pubnub.presence(channel: :demo, http_sync: true)
 
           envelope = envelopes.first
-          expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
-          expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema
+          expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+          expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
         end
       end
 
@@ -97,7 +97,7 @@ describe Pubnub::Presence do
 
           envelope = envelopes.first
           expect(envelope).to be_a_kind_of Pubnub::ErrorEnvelope
-          expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
+          expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
         end
       end
     end

@@ -16,7 +16,7 @@ describe Pubnub::Time do
       VCR.use_cassette("lib/events/time", record: :once) do
         envelope = @pubnub.time.value
 
-        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
       end
     end
 
@@ -25,7 +25,7 @@ describe Pubnub::Time do
         envelope = @pubnub.time.value
 
         expect(envelope.is_a?(Pubnub::ErrorEnvelope)).to eq true
-        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
       end
     end
   end
