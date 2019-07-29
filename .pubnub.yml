@@ -6,7 +6,7 @@ changelog:
       -
         text: "Updated dependencies"
         type: improvement
-    date: 23-7-2019
+    date: 29-7-2019
     version: "4.1.4"
   -
     changes:
