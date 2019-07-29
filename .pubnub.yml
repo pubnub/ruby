@@ -1,6 +1,13 @@
 ---
-version: "4.1.3"
+version: "4.1.5"
 changelog:
+  -
+    changes:
+      -
+        text: "Updated dependencies"
+        type: improvement
+    date: 29-7-2019
+    version: "4.1.5"
   -
     changes:
       -

@@ -16,12 +16,13 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{^bin\/}) { |f| File.basename(f) }
   spec.test_files = spec.files.grep(%r{^(test|spec|features)\/})
   spec.require_paths = ['lib']
+  spec.required_ruby_version = '>= 2.4'
 
-  spec.add_dependency 'concurrent-ruby', '~> 1.0.5'
-  spec.add_dependency 'concurrent-ruby-edge', '~> 0.3.1'
-  spec.add_dependency 'dry-validation', '~> 0.10'
+  spec.add_dependency 'concurrent-ruby', '~> 1.1.5'
+  spec.add_dependency 'concurrent-ruby-edge', '~> 0.5.0'
+  spec.add_dependency 'dry-validation', '~> 1.0'
   spec.add_dependency 'httpclient', '~> 2.8', '>= 2.8.3'
-  spec.add_dependency 'json', '>= 1.8', '< 3'
-  spec.add_dependency 'timers', '>= 4.1.1'
+  spec.add_dependency 'json', '>= 2.2.0', '< 3'
+  spec.add_dependency 'timers', '>= 4.3.0'
   spec.add_development_dependency 'bundler', '~> 1.7'
 end

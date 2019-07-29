@@ -19,7 +19,7 @@ describe Pubnub::Publish do
           message: "whatever",
         ).value
 
-        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
       end
     end
 
@@ -31,7 +31,7 @@ describe Pubnub::Publish do
         ).value
 
         expect(envelope.is_a?(Pubnub::ErrorEnvelope)).to eq true
-        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
       end
     end
   end

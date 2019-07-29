@@ -1,3 +1,7 @@
+##### 4.1.5
+* Update dependency dry-validation
+* Includes minimum Ruby version requirement of 2.4+
+
 ##### 4.0.28
 * Added Concurrent-ruby Gem
 * Removed Celluloid
