@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/signal/demo/demo/0/demo/0/%2200000000000000000000000000000000000000000000000000%22?auth=ruby-test-auth&ortt=%7B%22t%22:15663104632819572%7D&pnsdk=PubNub-Ruby/4.1.5&seqn=1&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.6 (2019-04-01))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 20 Aug 2019 14:14:23 GMT
+  response:
+    status:
+      code: 400
+      message: INVALID
+    headers:
+      Date:
+      - Tue, 20 Aug 2019 14:14:25 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '47'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[0,"Signal size too large","15663104658224536"]'
+    http_version: 
+  recorded_at: Tue, 20 Aug 2019 14:14:23 GMT
+recorded_with: VCR 5.0.0
