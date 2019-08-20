@@ -8,7 +8,8 @@ module Pubnub
       @callbacks = {
         message: options[:message],
         status: options[:status],
-        presence: options[:presence]
+        presence: options[:presence],
+        signal: options[:signal]
       }
       validate!
     end
