@@ -1,6 +1,11 @@
 ---
-version: "4.1.5"
+version: "4.1.6"
 changelog:
+  - changes:
+        - text: "Added signal feature"
+          type: feature
+      date: 21-8-2019
+      version: "4.1.6"
   -
     changes:
       -
@@ -295,6 +300,8 @@ features:
     - SUBSCRIBE-WITH-TIMETOKEN
     - SUBSCRIBE-WILDCARD
     - SUBSCRIBE-FILTER-EXPRESSION
+  signal:
+    - SIGNAL-SEND
   time: 
     - TIME-TIME
 name: ruby

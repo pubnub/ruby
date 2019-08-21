@@ -1,3 +1,6 @@
+##### 4.1.6
+* Added signal feature
+
 ##### 4.1.5
 * Update dependency dry-validation
 * Includes minimum Ruby version requirement of 2.4+

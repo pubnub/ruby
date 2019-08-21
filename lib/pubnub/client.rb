@@ -49,6 +49,7 @@ require 'pubnub/validators/where_now'
 require 'pubnub/validators/delete'
 require 'pubnub/validators/message_counts'
 require 'pubnub/validators/push'
+require 'pubnub/validators/signal'
 
 Dir[File.join(File.dirname(__dir__), 'pubnub', 'events', '*.rb')].each do |file|
   require file

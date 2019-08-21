@@ -71,6 +71,8 @@ module Pubnub
             case envelope.result[:operation]
             when Pubnub::Constants::OPERATION_SUBSCRIBE
               secure_call callbacks.callbacks[:message], envelope
+            when Pubnub::Constants::OPERATION_SIGNAL
+              secure_call callbacks.callbacks[:signal], envelope
             when Pubnub::Constants::OPERATION_PRESENCE
               secure_call callbacks.callbacks[:presence], envelope
             else
