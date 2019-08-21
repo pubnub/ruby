@@ -1,6 +1,11 @@
 ---
-version: "4.1.5"
+version: "4.1.6"
 changelog:
+  - changes:
+        - text: "Added signal feature"
+          type: feature
+      date: 21-8-2019
+      version: "4.1.6"
   -
     changes:
       -
@@ -295,6 +300,8 @@ features:
     - SUBSCRIBE-WITH-TIMETOKEN
     - SUBSCRIBE-WILDCARD
     - SUBSCRIBE-FILTER-EXPRESSION
+  signal:
+    - SIGNAL-SEND
   time: 
     - TIME-TIME
 name: ruby
@@ -303,15 +310,13 @@ scm: github.com/pubnub/ruby
 supported-platforms: 
   - 
     editors: 
-      - "ruby 2.4.0"
-      - "ruby 2.3.3"
-      - "ruby 2.2.6"
-      - "ruby 2.1.10"
-      - jruby-9.1.8.0
+      - "ruby 2.6"
+      - "ruby 2.5"
+      - "ruby 2.4"
     platforms: 
-      - "FreeBSD 8-STABLE or later, amd64, 386."
-      - "Linux 2.6 or later, amd64, 386."
-      - "Mac OS X 10.8 or later, amd64"
-      - "Windows 7 or later, amd64, 386, use rubyinstaller and dev pack."
-      - "Apart from the above, PubNub Ruby SDK works on mostly all platforms where the supported Ruby versions work. To use ssl connection, Ruby should be compiled with openssl support."
+      - "FreeBSD 8-STABLE or later, amd64, 386"
+      - "Linux 2.6 or later, amd64, 386"
+      - "macOS 10.8 or later, amd64"
+      - "Windows 7 or later, amd64, 386, use rubyinstaller and dev pack"
+      - "Apart from the above, the PubNub Ruby SDK works on almost every platform where the supported Ruby versions work. To use an SSL connection, Ruby should be compiled with OpenSSL support."
     version: "PubNub Ruby SDK"

@@ -164,6 +164,8 @@ module Pubnub
           Pubnub::Constants::OPERATION_TIME
         elsif message[:channel].to_s.index(/pnpres\z/)
           Pubnub::Constants::OPERATION_PRESENCE
+        elsif message[:type] == 1
+          Pubnub::Constants::OPERATION_SIGNAL
         else
           Pubnub::Constants::OPERATION_SUBSCRIBE
         end
@@ -193,6 +195,7 @@ module Pubnub
             channel: m['c'],
             subscription_match: m['b'],
             payload: m['d'],
+            type: m['e'],
             flags: m['f'],
             issuing_client_id: m['i'],
             subscribe_key: m['k'],
