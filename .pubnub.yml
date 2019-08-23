@@ -1,11 +1,13 @@
 ---
 version: "4.1.6"
 changelog:
-  - changes:
-        - text: "Added signal feature"
-          type: feature
-      date: 21-8-2019
-      version: "4.1.6"
+  -
+    changes:
+      -
+        text: "Added signal feature"
+        type: feature
+    date: 21-8-2019
+    version: "4.1.6"
   -
     changes:
       -
