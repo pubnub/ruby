@@ -50,8 +50,12 @@ module Pubnub
       Pubnub.logger.debug('Pubnub::Event') { '#send_request got sender' }
 
       telemetry_time_start = ::Time.now.to_f
-      response = if @event == Pubnub::Constants::OPERATION_DELETE
+      response = if @event == Pubnub::Constants::OPERATION_DELETE or @event == Pubnub::Constants::OPERATION_DELETE_SPACE or @event == Pubnub::Constants::OPERATION_DELETE_USER
                    sender.delete(uri.to_s)
+                 elsif @event == Pubnub::Constants::OPERATION_MANAGE_MEMBERS or @event == Pubnub::Constants::OPERATION_MANAGE_MEMBERSHIPS or @event == Pubnub::Constants::OPERATION_UPDATE_SPACE or @event == Pubnub::Constants::OPERATION_UPDATE_USER
+                   sender.patch(uri.to_s, body: compressed_body)
+                 elsif @event == Pubnub::Constants::OPERATION_CREATE_USER or @event == Pubnub::Constants::OPERATION_CREATE_SPACE
+                   sender.post(uri.to_s, body: compressed_body)
                  elsif compressed_body.empty?
                    sender.get(uri.to_s)
                  else
