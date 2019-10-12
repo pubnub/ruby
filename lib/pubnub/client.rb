@@ -65,7 +65,6 @@ require 'pubnub/validators/get_space_memberships'
 require 'pubnub/validators/manage_members'
 require 'pubnub/validators/manage_memberships'
 
-
 Dir[File.join(File.dirname(__dir__), 'pubnub', 'events', '*.rb')].each do |file|
   require file
 end

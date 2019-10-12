@@ -1,4 +1,6 @@
 # Toplevel Pubnub module.
+# frozen_string_literal: true
+
 module Pubnub
   # Validator module that holds all validators modules
   module Validator
@@ -16,32 +18,27 @@ module Pubnub
       private
 
       def validate_space!
+        return unless @space_id.nil?
 
-        if @space_id == nil
-          raise(
-              ArgumentError.new(
-                  object: self,
-                  message: 'data: Provide space_id.'
-              ),
-              'data: Provide space_id.'
-          )
-        end
-
+        raise(
+          ArgumentError.new(
+            object: self,
+            message: 'data: Provide space_id.'
+          ),
+          'data: Provide space_id.'
+        )
       end
 
       def validate_data!
-        data = @data
+        return unless @data.nil?
 
-        if data == nil
-          raise(
-            ArgumentError.new(
-              object: self,
-              message: 'data: No data supplied.'
-            ),
-            'data: No data supplied.'
-          )
-        end
-
+        raise(
+          ArgumentError.new(
+            object: self,
+            message: 'data: No data supplied.'
+          ),
+          'data: No data supplied.'
+        )
       end
     end
   end

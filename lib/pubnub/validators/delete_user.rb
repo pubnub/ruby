@@ -1,4 +1,6 @@
 # Toplevel Pubnub module.
+# frozen_string_literal: true
+
 module Pubnub
   # Validator module that holds all validators modules
   module Validator
@@ -15,17 +17,15 @@ module Pubnub
       private
 
       def validate_user!
+        return unless @user_id.nil?
 
-        if @user_id == nil
-          raise(
-            ArgumentError.new(
-              object: self,
-              message: 'data: Provide user_id.'
-            ),
-            'data: Provide user_id.'
-          )
-        end
-
+        raise(
+          ArgumentError.new(
+            object: self,
+            message: 'data: Provide user_id.'
+          ),
+          'data: Provide user_id.'
+        )
       end
     end
   end
