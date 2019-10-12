@@ -53,7 +53,8 @@ module Pubnub
       response = case @event
                  when Pubnub::Constants::OPERATION_DELETE, Pubnub::Constants::OPERATION_DELETE_SPACE, Pubnub::Constants::OPERATION_DELETE_USER
                    sender.delete(uri.to_s)
-                 when Pubnub::Constants::OPERATION_MANAGE_MEMBERS, Pubnub::Constants::OPERATION_MANAGE_MEMBERSHIPS, Pubnub::Constants::OPERATION_UPDATE_SPACE, Pubnub::Constants::OPERATION_UPDATE_USER
+                 when Pubnub::Constants::OPERATION_MANAGE_MEMBERS, Pubnub::Constants::OPERATION_MANAGE_MEMBERSHIPS,
+                      Pubnub::Constants::OPERATION_UPDATE_SPACE, Pubnub::Constants::OPERATION_UPDATE_USER
                    sender.patch(uri.to_s, body: compressed_body)
                  when Pubnub::Constants::OPERATION_CREATE_USER, Pubnub::Constants::OPERATION_CREATE_SPACE
                    sender.post(uri.to_s, body: compressed_body)
