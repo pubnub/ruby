@@ -1,29 +1,31 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: http://ps.pndsn.com/v1/objects/demo/spaces/rb_space?auth=ruby-test-auth&include=custom&pnsdk=PubNub-Ruby/4.1.6&uuid=ruby-test-uuid
+    method: patch
+    uri: http://ps.pndsn.com/v1/objects/demo/users/mg3/spaces?auth=ruby-test-auth&pnsdk=PubNub-Ruby/4.1.6&uuid=ruby-test-uuid
     body:
       encoding: UTF-8
-      string: ''
+      string: '{"add":[{"id":"space-1"}]}'
     headers:
       User-Agent:
       - HTTPClient/1.0 (2.8.3, ruby 2.4.6 (2019-04-01))
       Accept:
       - "*/*"
       Date:
-      - Mon, 14 Oct 2019 10:18:07 GMT
+      - Mon, 14 Oct 2019 10:18:05 GMT
+      Content-Type:
+      - application/x-www-form-urlencoded
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Mon, 14 Oct 2019 10:18:08 GMT
+      - Mon, 14 Oct 2019 10:18:07 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '205'
+      - '156'
       Connection:
       - keep-alive
       Access-Control-Allow-Origin:
@@ -32,7 +34,7 @@ http_interactions:
       - 'true'
     body:
       encoding: UTF-8
-      string: '{"status":200,"data":{"id":"rb_space","name":"new_name","description":null,"custom":{"XXX":"YYYY"},"created":"2019-10-14T10:18:08.111524Z","updated":"2019-10-14T10:18:08.408671Z","eTag":"AYKsrdL029TZ1wE"}}'
+      string: '{"status":200,"data":[{"id":"space-1","created":"2019-10-14T10:18:07.053086Z","updated":"2019-10-14T10:18:07.053086Z","eTag":"AY39mJKK//C0VA"}],"next":"MQ"}'
     http_version: 
-  recorded_at: Mon, 14 Oct 2019 10:18:07 GMT
+  recorded_at: Mon, 14 Oct 2019 10:18:06 GMT
 recorded_with: VCR 5.0.0

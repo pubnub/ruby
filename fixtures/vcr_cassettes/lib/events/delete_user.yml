@@ -12,14 +12,14 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Mon, 14 Oct 2019 09:35:20 GMT
+      - Mon, 14 Oct 2019 10:18:09 GMT
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Mon, 14 Oct 2019 09:35:22 GMT
+      - Mon, 14 Oct 2019 10:18:10 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -34,5 +34,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"status":200,"data":null}'
     http_version: 
-  recorded_at: Mon, 14 Oct 2019 09:35:21 GMT
+  recorded_at: Mon, 14 Oct 2019 10:18:09 GMT
 recorded_with: VCR 5.0.0

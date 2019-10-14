@@ -29,18 +29,34 @@ describe Pubnub::ManageMemberships do
       end
     end
 
-    it "get_manage_memberships_works" do
-      VCR.use_cassette("lib/events/manage_memberships", record: :once) do
+    it "get_manage_memberships_add_works" do
+      VCR.use_cassette("lib/events/manage_memberships_add", record: :once) do
         envelope = @pubnub.manage_memberships(user_id: "mg3", data: {'add': [{'id': 'space-1'}]}, include: "custom").value
 
         expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
         expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
       end
     end
+    it "get_manage_memberships_remove_works" do
+      VCR.use_cassette("lib/events/manage_memberships_remove", record: :once) do
+        envelope = @pubnub.manage_memberships(user_id: "mg3", data: {'remove': [{'id': 'space-1'}]}, include: "custom").value
 
-    it "get_manage_members_works" do
-      VCR.use_cassette("lib/events/manage_members", record: :once) do
+        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+      end
+    end
+
+    it "get_manage_members_add_works" do
+      VCR.use_cassette("lib/events/manage_members_add", record: :once) do
         envelope = @pubnub.manage_members(space_id: "space-1", data: {'add': [{'id': 'mg2'}]}, include: "custom").value
+
+        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+      end
+    end
+    it "get_manage_members_works_remove" do
+      VCR.use_cassette("lib/events/manage_members_remove", record: :once) do
+        envelope = @pubnub.manage_members(space_id: "space-1", data: {'remove': [{'id': 'mg2'}]}, include: "custom").value
 
         expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
         expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
