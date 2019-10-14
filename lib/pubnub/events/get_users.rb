@@ -36,9 +36,9 @@ module Pubnub
     def parameters(*_args)
       parameters = super
       parameters[:start] = @start if @start
-      parameters[:end] = @end if @end && !@start
+      #parameters[:end] = @end if @end && !@start
       parameters[:count] = @count if @count
-      parameters[:limit] = @limit if @limit && @limit != @max_limit
+      #parameters[:limit] = @limit if @limit && @limit != @max_limit
       parameters[:include] = @include if @include
 
       parameters
