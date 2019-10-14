@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Toplevel Pubnub module.
 module Pubnub
   # Holds history functionality
@@ -81,6 +83,5 @@ module Pubnub
         }
       )
     end
-
   end
 end
