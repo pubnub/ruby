@@ -52,7 +52,7 @@ describe Pubnub::CreateUser do
       end
     end
 
-    it "get_users_works", :focus => true do
+    it "get_users_works" do
       VCR.use_cassette("lib/events/get_users", record: :once) do
         envelope = @pubnub.get_users(limit: 5, include: "custom").value
 
