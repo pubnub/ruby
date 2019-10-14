@@ -21,7 +21,7 @@ module Pubnub
       else
         @count = options[:count]
       end
-      @count = options[:include]
+      @include = options[:include]
       @user_id = options[:user_id]
       @data = options[:data]
       super

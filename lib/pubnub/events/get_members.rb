@@ -21,7 +21,7 @@ module Pubnub
       else
         @count = options[:count]
       end
-      @count = options[:include]
+      @include = options[:include]
       @space_id = options[:space_id]
       super
     end
