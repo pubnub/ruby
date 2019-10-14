@@ -1,4 +1,6 @@
 # Toplevel Pubnub module.
+# frozen_string_literal: true
+
 module Pubnub
   # Validator module that holds all validators modules
   module Validator
@@ -17,7 +19,7 @@ module Pubnub
       def validate_data!
         data = @data
 
-        if data == nil
+        if data.nil?
           raise(
             ArgumentError.new(
               object: self,
@@ -27,16 +29,15 @@ module Pubnub
           )
         end
 
-        if !data[:id] || !data[:name]
-          raise(
-              ArgumentError.new(
-                  object: self,
-                  message: 'data: Space\'s id or name missing.'
-              ),
-              'data: Space\'s id or name missing.'
-          )
-        end
+        return unless !data[:id] || !data[:name]
 
+        raise(
+          ArgumentError.new(
+            object: self,
+            message: 'data: Space\'s id or name missing.'
+          ),
+          'data: Space\'s id or name missing.'
+        )
       end
     end
   end

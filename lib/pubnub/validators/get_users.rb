@@ -1,4 +1,6 @@
 # Toplevel Pubnub module.
+# frozen_string_literal: true
+
 module Pubnub
   # Validator module that holds all validators modules
   module Validator
