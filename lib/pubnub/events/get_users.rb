@@ -11,19 +11,6 @@ module Pubnub
     def initialize(options, app)
       @event = :get_users
       @telemetry_name = :l_obj
-      @start = options[:start]
-      @end = if options[:end].nil?
-               @max_limit
-             else
-               @end = options[:end]
-             end
-      @limit = options[:limit]
-      @count = if options[:count].nil?
-                 false
-               else
-                 options[:count]
-               end
-      @include = options[:include]
       super
     end
 
@@ -35,11 +22,6 @@ module Pubnub
 
     def parameters(*_args)
       parameters = super
-      parameters[:start] = @start if @start
-      parameters[:end] = @end if @end && !@start
-      parameters[:count] = @count if @count
-      parameters[:limit] = @limit if @limit != @max_limit
-      parameters[:include] = @include if @include
 
       parameters
     end
