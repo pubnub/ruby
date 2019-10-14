@@ -52,11 +52,9 @@ describe Pubnub::CreateSpace do
       end
     end
 
-    it "get_spaces_works", :focus => true do
+    it "get_spaces_works" do
       VCR.use_cassette("lib/events/get_spaces", record: :once) do
         envelope = @pubnub.get_spaces(limit: 5, include: "custom").value
-        puts "get_spaces"
-        puts envelope.inspect
 
         expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
         expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new

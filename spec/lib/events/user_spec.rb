@@ -52,11 +52,9 @@ describe Pubnub::CreateUser do
       end
     end
 
-    it "get_users_works", :focus => true do
+    it "get_users_works" do
       VCR.use_cassette("lib/events/get_users", record: :once) do
-        envelope = @pubnub.get_users.value
-        puts "get_users"
-        puts envelope.inspect
+        envelope = @pubnub.get_users(limit: 5, include: "custom").value
 
         expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
         expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
