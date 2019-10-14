@@ -1,3 +1,6 @@
+##### 4.2.0
+* Added objects feature
+
 ##### 4.1.6
 * Added signal feature
 

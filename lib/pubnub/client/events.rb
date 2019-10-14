@@ -6,7 +6,9 @@ module Pubnub
     module Events
       EVENTS = %w[publish subscribe presence leave history here_now audit grant delete_messages
                   revoke time heartbeat where_now set_state state channel_registration message_counts signal
-                  add_channels_to_push list_push_provisions remove_channels_from_push remove_device_from_push].freeze
+                  add_channels_to_push list_push_provisions remove_channels_from_push remove_device_from_push
+                  create_user create_space delete_user delete_space get_user get_users get_space get_spaces
+                  update_user update_space get_members get_space_memberships manage_members manage_memberships].freeze
 
       EVENTS.each do |event_name|
         define_method event_name do |options = {}, &block|
