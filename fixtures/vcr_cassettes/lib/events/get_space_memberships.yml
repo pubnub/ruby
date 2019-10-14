@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v1/objects/demo/users/mg3/spaces?auth=ruby-test-auth&count=true&pnsdk=PubNub-Ruby/4.1.6&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.6 (2019-04-01))
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 14 Oct 2019 09:45:02 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 14 Oct 2019 09:45:03 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '39'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"data":[],"totalCount":0}'
+    http_version: 
+  recorded_at: Mon, 14 Oct 2019 09:45:02 GMT
+recorded_with: VCR 5.0.0

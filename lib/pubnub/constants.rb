@@ -78,7 +78,7 @@ module Pubnub
     OPERATION_DELETE_SPACE = :delete_space
     OPERATION_GET_MEMBERS = :get_members
     OPERATION_MANAGE_MEMBERS = :manage_members
-    OPERATION_GET_SPACE_MEMBERSHIPS = :get_memberships
+    OPERATION_GET_SPACE_MEMBERSHIPS = :get_space_memberships
     OPERATION_MANAGE_MEMBERSHIPS = :manage_memberships
 
     OPERATIONS = [
