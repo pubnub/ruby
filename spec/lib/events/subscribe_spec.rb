@@ -12,11 +12,19 @@ describe Pubnub::Subscribe do
     before :each do
       @messages = []
       @statuses = []
+      @signals = []
+      @user_events = []
+      @space_events = []
+      @membership_events = []
 
       @callbacks = Pubnub::SubscribeCallback.new(
         message: -> (envelope) { @messages << envelope },
         presence: -> (_envelope) { },
         status: -> (envelope) { @statuses << envelope },
+        signal: -> (envelope) { @signals << envelope },
+        user: -> (envelope) { @user_events << envelope },
+        space: -> (envelope) { @space_events << envelope },
+        membership: -> (envelope) { @membership_events << envelope }
       )
     end
 
@@ -95,6 +103,196 @@ describe Pubnub::Subscribe do
             envelope = @statuses.first
             expect(envelope).to be_a_kind_of Pubnub::ErrorEnvelope
             expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+          end
+        end
+      end
+
+      it "user update works" do
+        VCR.use_cassette("lib/events/subscribe-user-update-async", record: :once) do
+          @pubnub = Pubnub::Client.new(
+            subscribe_key: "sub-a-mock-key",
+            publish_key: "pub-a-mock-key",
+            auth_key: "ruby-test-auth",
+            uuid: "ruby-test-uuid"
+          )
+
+          @pubnub.add_listener(callback: @callbacks)
+
+          @pubnub.subscribe(channel: :user_mg3)
+
+          eventually do
+            envelope = @user_events.first
+            expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+            expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+            expect(envelope.result[:data][:message]['event']).to eq 'update'
+            expect(envelope.result[:data][:message]['type']).to eq 'user'
+          end
+        end
+      end
+
+      it "user delete works" do
+        VCR.use_cassette("lib/events/subscribe-user-delete-async", record: :once) do
+          @pubnub = Pubnub::Client.new(
+            subscribe_key: "sub-a-mock-key",
+            publish_key: "pub-a-mock-key",
+            auth_key: "ruby-test-auth",
+            uuid: "ruby-test-uuid"
+          )
+
+          @pubnub.add_listener(callback: @callbacks)
+
+          @pubnub.subscribe(channel: :user_mg3)
+
+          eventually do
+            envelope = @user_events.first
+            expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+            expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+            expect(envelope.result[:data][:message]['event']).to eq 'delete'
+            expect(envelope.result[:data][:message]['type']).to eq 'user'
+            expect(envelope.result[:data][:message]['data']['id']).to eq 'user_mg3'
+          end
+        end
+      end
+
+      it "space update works" do
+        VCR.use_cassette("lib/events/subscribe-space-update-async", record: :once) do
+          @pubnub = Pubnub::Client.new(
+            subscribe_key: "sub-a-mock-key",
+            publish_key: "pub-a-mock-key",
+            auth_key: "ruby-test-auth",
+            uuid: "ruby-test-uuid"
+          )
+
+          @pubnub.add_listener(callback: @callbacks)
+
+          @pubnub.subscribe(channel: :rb_space_3)
+
+          eventually do
+            envelope = @space_events.first
+            expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+            expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+            expect(envelope.result[:data][:message]['event']).to eq 'update'
+            expect(envelope.result[:data][:message]['type']).to eq 'space'
+          end
+        end
+      end
+
+      it "space delete works" do
+        VCR.use_cassette("lib/events/subscribe-space-delete-async", record: :once) do
+          @pubnub = Pubnub::Client.new(
+            subscribe_key: "sub-a-mock-key",
+            publish_key: "pub-a-mock-key",
+            auth_key: "ruby-test-auth",
+            uuid: "ruby-test-uuid"
+          )
+
+          @pubnub.add_listener(callback: @callbacks)
+
+          @pubnub.subscribe(channel: :rb_space_3)
+
+          eventually do
+            envelope = @space_events.first
+            expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+            expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+            expect(envelope.result[:data][:message]['event']).to eq 'delete'
+            expect(envelope.result[:data][:message]['type']).to eq 'space'
+            expect(envelope.result[:data][:message]['data']['id']).to eq 'rb_space_3'
+          end
+        end
+      end
+
+      it "member add works" do
+        VCR.use_cassette("lib/events/subscribe-member-add-async", record: :once) do
+          @pubnub = Pubnub::Client.new(
+            subscribe_key: "sub-a-mock-key",
+            publish_key: "pub-a-mock-key",
+            auth_key: "ruby-test-auth",
+            uuid: "ruby-test-uuid"
+          )
+
+          @pubnub.add_listener(callback: @callbacks)
+
+          @pubnub.subscribe(channel: :rb_space_4)
+
+          eventually do
+            envelope = @membership_events.first
+            expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+            expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+            expect(envelope.result[:data][:message]['event']).to eq 'create'
+            expect(envelope.result[:data][:message]['type']).to eq 'membership'
+            expect(envelope.result[:data][:message]['data']['userId']).to eq 'user_mg4'
+          end
+        end
+      end
+
+      it "member remove works" do
+        VCR.use_cassette("lib/events/subscribe-member-remove-async", record: :once) do
+          @pubnub = Pubnub::Client.new(
+            subscribe_key: "sub-a-mock-key",
+            publish_key: "pub-a-mock-key",
+            auth_key: "ruby-test-auth",
+            uuid: "ruby-test-uuid"
+          )
+
+          @pubnub.add_listener(callback: @callbacks)
+
+          @pubnub.subscribe(channel: :rb_space_4)
+
+          eventually do
+            envelope = @membership_events.first
+            expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+            expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+            expect(envelope.result[:data][:message]['event']).to eq 'delete'
+            expect(envelope.result[:data][:message]['type']).to eq 'membership'
+            expect(envelope.result[:data][:message]['data']['userId']).to eq 'user_mg4'
+          end
+        end
+      end
+
+      it "membership add works" do
+        VCR.use_cassette("lib/events/subscribe-membership-add-async", record: :once) do
+          @pubnub = Pubnub::Client.new(
+              subscribe_key: "sub-a-mock-key",
+              publish_key: "pub-a-mock-key",
+              auth_key: "ruby-test-auth",
+              uuid: "ruby-test-uuid"
+          )
+
+          @pubnub.add_listener(callback: @callbacks)
+
+          @pubnub.subscribe(channel: :user_mg4)
+
+          eventually do
+            envelope = @membership_events.first
+            expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+            expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+            expect(envelope.result[:data][:message]['event']).to eq 'create'
+            expect(envelope.result[:data][:message]['type']).to eq 'membership'
+            expect(envelope.result[:data][:message]['data']['spaceId']).to eq 'rb_space_4'
+          end
+        end
+      end
+
+      it "membership remove works" do
+        VCR.use_cassette("lib/events/subscribe-membership-remove-async", record: :once) do
+          @pubnub = Pubnub::Client.new(
+            subscribe_key: "sub-a-mock-key",
+            publish_key: "pub-a-mock-key",
+            auth_key: "ruby-test-auth",
+            uuid: "ruby-test-uuid"
+          )
+
+          @pubnub.add_listener(callback: @callbacks)
+
+          @pubnub.subscribe(channel: :user_mg4)
+
+          eventually do
+            envelope = @membership_events.first
+            expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+            expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+            expect(envelope.result[:data][:message]['event']).to eq 'delete'
+            expect(envelope.result[:data][:message]['type']).to eq 'membership'
+            expect(envelope.result[:data][:message]['data']['spaceId']).to eq 'rb_space_4'
           end
         end
       end
@@ -212,5 +410,6 @@ describe Pubnub::Subscribe do
         end
       end
     end
+
   end
 end
