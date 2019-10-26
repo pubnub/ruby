@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: http://ps.pndsn.com/v1/objects/demo/users/mg?auth=ruby-test-auth&include=custom&pnsdk=PubNub-Ruby/4.2.0&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: '{"id":"mg","name":"magnum_1","custom":{"XXX":"YYYY"}}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 25 Oct 2019 20:36:54 GMT
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 25 Oct 2019 20:36:57 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '228'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"data":{"id":"mg","name":"magnum_1","externalId":null,"profileUrl":null,"email":null,"custom":{"XXX":"YYYY"},"created":"2019-10-25T20:36:57.254813Z","updated":"2019-10-25T20:36:57.561462Z","eTag":"AYD0rZeD55aIMA"}}'
+    http_version: 
+  recorded_at: Fri, 25 Oct 2019 20:36:54 GMT
+recorded_with: VCR 5.0.0
