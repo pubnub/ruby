@@ -166,6 +166,39 @@ module Pubnub
           Pubnub::Constants::OPERATION_PRESENCE
         elsif message[:type] == 1
           Pubnub::Constants::OPERATION_SIGNAL
+        elsif message[:type] == 2
+          case message[:payload]['type']
+          when 'user'
+            case message[:payload]['event']
+            when 'create'
+              Pubnub::Constants::OPERATION_CREATE_USER
+            when 'update'
+              Pubnub::Constants::OPERATION_UPDATE_USER
+            when 'delete'
+              Pubnub::Constants::OPERATION_DELETE_USER
+            else
+              Pubnub.logger.error('Pubnub::SubscribeEvent::Formatter') { "Invalid event #{message[:payload]['event']}." }
+              raise Exception, "Invalid event #{message[:payload]['event']}."
+            end
+          when 'space'
+            case message[:payload]['event']
+            when 'create'
+              Pubnub::Constants::OPERATION_CREATE_SPACE
+            when 'update'
+              Pubnub::Constants::OPERATION_UPDATE_SPACE
+            when 'delete'
+              Pubnub::Constants::OPERATION_DELETE_SPACE
+            else
+              Pubnub.logger.error('Pubnub::SubscribeEvent::Formatter') { "Invalid event #{message[:payload]['event']}." }
+              raise Exception, "Invalid event #{message[:payload]['event']}."
+            end
+          when 'membership'
+            Pubnub::Constants::OPERATION_MANAGE_MEMBERSHIPS
+          else
+            Pubnub.logger.error('Pubnub::SubscribeEvent::Formatter') { "Invalid operation type #{message[:payload]['type']}." }
+            raise Exception, "Invalid operation type #{message[:payload]['type']}."
+          end
+
         else
           Pubnub::Constants::OPERATION_SUBSCRIBE
         end
