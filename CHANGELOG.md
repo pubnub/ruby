@@ -1,3 +1,6 @@
+##### 4.2.1
+* Updated listener methods
+
 ##### 4.2.0
 * Added objects feature
 

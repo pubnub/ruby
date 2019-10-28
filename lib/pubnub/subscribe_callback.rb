@@ -9,7 +9,10 @@ module Pubnub
         message: options[:message],
         status: options[:status],
         presence: options[:presence],
-        signal: options[:signal]
+        signal: options[:signal],
+        user: options[:user],
+        space: options[:space],
+        membership: options[:membership]
       }
       validate!
     end

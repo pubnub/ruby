@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/rb_space_4/0?auth=ruby-test-auth&pnsdk=PubNub-Ruby/4.2.0&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 25 Oct 2019 20:20:13 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 25 Oct 2019 20:20:15 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '45'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"15720347890178803","r":12},"m":[]}'
+    http_version: 
+  recorded_at: Fri, 25 Oct 2019 20:20:13 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/rb_space_4/0?auth=ruby-test-auth&pnsdk=PubNub-Ruby/4.2.0&t=%7B%22r%22:12,%22t%22:%2215720347890178803%22%7D&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 25 Oct 2019 20:20:13 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 25 Oct 2019 20:20:18 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '422'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"15720348183193928","r":12},"m":[{"a":"3","f":0,"e":2,"p":{"t":"15720348182752121","r":2},"k":"sub-a-mock-key","c":"rb_space_4","d":{"source":"objects","version":"1.0","event":"create","type":"membership","data":{"created":"2019-10-25T20:20:18.257654837Z","custom":null,"eTag":"AY39mJKK//C0VA","spaceId":"rb_space_4","updated":"2019-10-25T20:20:18.257654837Z","userId":"user_mg4"}}}]}'
+    http_version: 
+  recorded_at: Fri, 25 Oct 2019 20:20:15 GMT
+recorded_with: VCR 5.0.0
