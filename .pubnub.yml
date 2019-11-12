@@ -1,6 +1,13 @@
 ---
-version: "4.2.1"
+version: "4.2.2"
 changelog:
+  -
+    changes:
+      -
+        text: "Resolved issue with multiple timetokens in message counts endpoint"
+        type: bugfix
+    date: 11-11-2019
+    version: "4.2.2"
   -
     changes:
       -
