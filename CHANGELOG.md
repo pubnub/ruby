@@ -1,3 +1,6 @@
+##### 4.2.2
+* Resolved issue with multiple timetokens in message counts endpoint
+
 ##### 4.2.1
 * Updated listener methods
 

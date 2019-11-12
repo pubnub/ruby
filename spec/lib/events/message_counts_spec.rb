@@ -45,19 +45,64 @@ describe Pubnub::Presence do
   end
 
   context 'integration test' do
-    it 'returns valid response' do
-      VCR.use_cassette('examples/message_counts/1', record: :none) do
+
+    it 'returns valid response with multiple channels as array and single timetoken' do
+      VCR.use_cassette('examples/message_counts/1', record: :once) do
         pubnub = Pubnub.new(
-            publish_key: 'demo-36',
-            subscribe_key: 'demo-36',
-            uuid: 'ruby-test-uuid-client-one',
-            auth_key: 'ruby-test-auth-client-one',
-            origin: 'balancer1g.bronze.aws-pdx-1.ps.pn'
-            )
-        envelope = pubnub.message_counts(channel:['a,b,c,d'], channel_timetokens: 12123).value
+          publish_key: 'demo',
+          subscribe_key: 'demo',
+          uuid: 'ruby-test-uuid-client-one',
+          auth_key: 'ruby-test-auth-client-one'
+        )
+        envelope = pubnub.message_counts(channel:['a','b','c','d'], channel_timetokens: 12123).value
         res = envelope.result[:data]
-        expect(res.keys).to contain_exactly("channels", "error", "error_message", "status")
+        expect(res.keys).to contain_exactly("channels", "error", "error_message", "more", "status")
         expect(res["channels"].keys).to contain_exactly("a", "b", "c", "d")
+      end
+    end
+
+    it 'returns valid response with multiple channels as string and single timetoken' do
+      VCR.use_cassette('examples/message_counts/2', record: :once) do
+        pubnub = Pubnub.new(
+          publish_key: 'demo',
+          subscribe_key: 'demo',
+          uuid: 'ruby-test-uuid-client-one',
+          auth_key: 'ruby-test-auth-client-one'
+        )
+        envelope = pubnub.message_counts(channel:'a,b,c,d', channel_timetokens: 12123).value
+        res = envelope.result[:data]
+        expect(res.keys).to contain_exactly("channels", "error", "error_message", "more", "status")
+        expect(res["channels"].keys).to contain_exactly("a", "b", "c", "d")
+      end
+    end
+
+    it 'returns valid response with multiple channels as array and multiple timetokens' do
+      VCR.use_cassette('examples/message_counts/3', record: :once) do
+        pubnub = Pubnub.new(
+          publish_key: 'demo',
+          subscribe_key: 'demo',
+          uuid: 'ruby-test-uuid-client-one',
+          auth_key: 'ruby-test-auth-client-one'
+        )
+        envelope = pubnub.message_counts(channel:['a','b','c','d'], channel_timetokens: [1231231254, 1231231354, 1231231454, 1231231654]).value
+        res = envelope.result[:data]
+        expect(res.keys).to contain_exactly("channels", "error", "error_message", "more", "status")
+        expect(res["channels"].keys).to contain_exactly("a", "b", "c", "d")
+      end
+    end
+
+    it 'returns valid response with single channel as string and multiple timetokens' do
+      VCR.use_cassette('examples/message_counts/4', record: :once) do
+        pubnub = Pubnub.new(
+          publish_key: 'demo',
+          subscribe_key: 'demo',
+          uuid: 'ruby-test-uuid-client-one',
+          auth_key: 'ruby-test-auth-client-one'
+        )
+        envelope = pubnub.message_counts(channel:'a', channel_timetokens: 1231231254).value
+        res = envelope.result[:data]
+        expect(res.keys).to contain_exactly("channels", "error", "error_message", "more", "status")
+        expect(res["channels"].keys).to contain_exactly("a")
       end
     end
   end
