@@ -40,7 +40,7 @@ module Pubnub
       if @timetokens.length == 1
         params[:timetoken] = @timetokens.first
       elsif @timetokens.length > 1
-        params[:channelTimetokens] = @timetokens.join(',')
+        params[:channelsTimetoken] = @timetokens.join(',')
       end
       params
     end

@@ -15,8 +15,8 @@ module Pubnub
       private
 
       def validate_channel!
-        chans = @channels
-        chans = @channels.split(',') if @channels.is_a? String
+        chans = @channel
+        chans = @channel.split(',') if @channel.is_a? String
         tokens = @timetokens
 
         if tokens.length.zero?

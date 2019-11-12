@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v3/history/sub-key/demo/message-counts/a,b,c,d?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/4.2.1&timetoken=12123&uuid=ruby-test-uuid-client-one
+    uri: http://ps.pndsn.com/v3/history/sub-key/demo/message-counts/a?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/4.2.1&timetoken=1231231254&uuid=ruby-test-uuid-client-one
     body:
       encoding: UTF-8
       string: ''
@@ -23,7 +23,7 @@ http_interactions:
       Content-Type:
       - text/javascript; charset="UTF-8"
       Content-Length:
-      - '473'
+      - '181'
       Connection:
       - keep-alive
       Cache-Control:
@@ -40,12 +40,9 @@ http_interactions:
       - Pubnub
     body:
       encoding: UTF-8
-      string: '{"status": 200, "error": false, "error_message": "", "channels": {"a":0,"c":0,"b":0,"d":0},
-        "more": {"a": {"url": "/v3/history/sub-key/demo/message-counts/a?timetoken=12123",
-        "is_more": false}, "c": {"url": "/v3/history/sub-key/demo/message-counts/c?timetoken=12123",
-        "is_more": false}, "b": {"url": "/v3/history/sub-key/demo/message-counts/b?timetoken=12123",
-        "is_more": false}, "d": {"url": "/v3/history/sub-key/demo/message-counts/d?timetoken=12123",
+      string: '{"status": 200, "error": false, "error_message": "", "channels": {"a":0},
+        "more": {"a": {"url": "/v3/history/sub-key/demo/message-counts/a?timetoken=1231231254",
         "is_more": false}}}'
     http_version: 
-  recorded_at: Mon, 11 Nov 2019 18:46:26 GMT
+  recorded_at: Mon, 11 Nov 2019 18:46:27 GMT
 recorded_with: VCR 5.0.0
