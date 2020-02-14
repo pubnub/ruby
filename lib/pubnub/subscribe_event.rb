@@ -37,7 +37,7 @@ module Pubnub
 
       envelopes = finalize_event(fire_callbacks(handle(response, uri)))
 
-      return false if response.status_code.between?(400,499)
+      return false if response.status_code.between?(400, 499)
 
       Concurrent::Future.execute { fire } unless @http_sync
 
