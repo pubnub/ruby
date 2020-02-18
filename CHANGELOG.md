@@ -1,3 +1,6 @@
+##### 4.2.3
+* Resolved issue with subscribe loop where the connection was reinitiated after receiving a 4xx error code from the server
+
 ##### 4.2.2
 * Resolved issue with multiple timetokens in message counts endpoint
 
