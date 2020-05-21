@@ -17,7 +17,7 @@ module Pubnub
       message = [
         @subscribe_key,
         @publish_key,
-        @event,
+        path,
         variables_for_signature.gsub(/[!~'()*]/) { |char| '%' + char.ord.to_s(16).upcase }, # Replace ! ~ * ' ( )
       ].join("\n")
 
