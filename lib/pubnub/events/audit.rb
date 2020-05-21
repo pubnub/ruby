@@ -22,7 +22,7 @@ module Pubnub
 
     def path
       '/' + [
-        'v1',
+        'v2',
         'auth',
         'audit',
         'sub-key',

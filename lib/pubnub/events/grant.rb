@@ -31,7 +31,7 @@ module Pubnub
 
     def path
       '/' + [
-        'v1',
+        'v2',
         'auth',
         'grant',
         'sub-key',
