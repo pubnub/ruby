@@ -1,0 +1,10 @@
+.DS_Store
+pubnub-*.gem
+.ruby-version
+*.iml
+.idea/
+log/*
+*.log
+examples/test.rb
+coverage
+dev_scripts

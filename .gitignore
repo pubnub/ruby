@@ -8,3 +8,13 @@ log/*
 examples/test.rb
 coverage
 dev_scripts
+
+.travis/README.md
+.travis/scripts
+
+deployment_keys
+deployment_keys-private
+deployment_keys.tar
+
+.travis/github-labels-policy.json
+.travis/github-labels.json

@@ -13,19 +13,6 @@ bundler_args: --without development
 
 stages:
   - name: "test"
-    if: |
-      type != pull_request \
-      AND tag IS blank
-  - name: "release candidate"
-    if: |
-      type != pull_request \
-      AND tag IS present \
-      AND tag =~ ^v\d+\.\d+\.\d+-rc\.\d+$
-  - name: "release"
-    if: |
-      type != pull_request \
-      AND tag IS present \
-      AND tag =~ ^v\d+\.\d+\.\d+$
 
 jobs:
   include:
