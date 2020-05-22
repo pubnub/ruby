@@ -23,7 +23,9 @@ module Pubnub
       end
 
       def variables_for_signature
-        parameters(true).map do |k, v|
+        unsorted_params = parameters(true)
+        sorted_keys = unsorted_params.sort_by {|k, v| k.to_s}
+        sorted_keys.map do |k, v|
           if %w[meta ortt].include?(k.to_s)
             encoded_value = URI.encode_www_form_component(v.to_json).gsub('+', '%20')
             "#{k}=#{encoded_value}"
@@ -32,7 +34,7 @@ module Pubnub
           else
             "#{k}=#{URI.encode_www_form_component(v.to_s).gsub('+', '%20')}"
           end
-        end.sort.join('&')
+        end.join('&')
       end
     end
   end

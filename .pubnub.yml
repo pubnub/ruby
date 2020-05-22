@@ -1,13 +1,26 @@
 ---
-version: "4.2.3"
+version: "4.2.4"
 changelog:
+  -
+    changes:
+      -
+        text: "Replace event name with full endpoint path in PAM signatures, for compatibility with PAM v2 signatures."
+        type: bug
+      -
+        text: "Change paths for PAM endpoints from v1 to v2."
+        type: bug
+      -
+        text: "Update PAM signature generator to correctly sort the query string parameters based on key instead of combined key and value."
+        type: bug
+    date: 05 22, 2020
+    version: v4.2.4
   -
     changes:
       -
         text: "Resolved issue with subscribe loop where the connection was reinitiated after receiving a 4xx error code from the server"
         type: bugfix
     date: 14-02-2020
-    version: "4.2.3"
+    version: "4.2.4"
   -
     changes:
       -

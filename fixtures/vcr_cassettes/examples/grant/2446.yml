@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v1/auth/grant/sub-key/sub-a-mock-key?auth=ruby-authkey&channel-group=demo&m=0&pnsdk=PubNub-Ruby/4.1.0&r=0&signature=NB5oX3ttA_2Jdlq9tV4_HdQ0k2Zide9Qfy34EU98P4s=&timestamp=1464188524&ttl=1440&uuid=ruby-test-uuid-client-one&w=0
+    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?auth=ruby-authkey&channel-group=demo&m=0&pnsdk=PubNub-Ruby/4.1.0&r=0&signature=NB5oX3ttA_2Jdlq9tV4_HdQ0k2Zide9Qfy34EU98P4s=&timestamp=1464188524&ttl=1440&uuid=ruby-test-uuid-client-one&w=0
     body:
       encoding: UTF-8
       string: ''

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v1/auth/audit/sub-key/sub-a-mock-key?channel-group=demo&pnsdk=PubNub-Ruby/4.1.0&signature=llWHzSYMTpc24K92E6ZhBACHbCOGqS4Dg-Fo94PjpR8=&timestamp=1464186891&uuid=ruby-test-uuid-client-one
+    uri: http://ps.pndsn.com/v2/auth/audit/sub-key/sub-a-mock-key?channel-group=demo&pnsdk=PubNub-Ruby/4.1.0&signature=llWHzSYMTpc24K92E6ZhBACHbCOGqS4Dg-Fo94PjpR8=&timestamp=1464186891&uuid=ruby-test-uuid-client-one
     body:
       encoding: UTF-8
       string: ''
@@ -42,7 +42,7 @@ http_interactions:
   recorded_at: Wed, 25 May 2016 14:34:51 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v1/auth/audit/sub-key/sub-a-mock-key?channel-group=demo&pnsdk=PubNub-Ruby/4.1.0&signature=llWHzSYMTpc24K92E6ZhBACHbCOGqS4Dg-Fo94PjpR8=&timestamp=1464186891&uuid=ruby-test-uuid-client-one
+    uri: http://ps.pndsn.com/v2/auth/audit/sub-key/sub-a-mock-key?channel-group=demo&pnsdk=PubNub-Ruby/4.1.0&signature=llWHzSYMTpc24K92E6ZhBACHbCOGqS4Dg-Fo94PjpR8=&timestamp=1464186891&uuid=ruby-test-uuid-client-one
     body:
       encoding: UTF-8
       string: ''

@@ -1,8 +1,6 @@
-sudo: false
 language: ruby
-addons:
-  code_climate:
-    repo_token: 48739096f72763cbed9bd407efd2ed33151ce5663fb3181455128f06d6123ef3
+dist: xenial
+os: linux
 
 before_install:
   # See https://github.com/travis-ci/travis-ci/issues/5861
@@ -12,16 +10,38 @@ before_install:
 
 bundler_args: --without development
 
-script: bundle exec rspec
 
-rvm:
-  - 2.6.3
-  - 2.5.1
-  - 2.4.4
+stages:
+  - name: "test"
+    if: |
+      type != pull_request \
+      AND tag IS blank
+  - name: "release candidate"
+    if: |
+      type != pull_request \
+      AND tag IS present \
+      AND tag =~ ^v\d+\.\d+\.\d+-rc\.\d+$
+  - name: "release"
+    if: |
+      type != pull_request \
+      AND tag IS present \
+      AND tag =~ ^v\d+\.\d+\.\d+$
 
-matrix:
+jobs:
   include:
-    - rvm: jruby-head
+    - stage: "test"
+      name: 'Ruby 2.4.4'
+      rvm: '2.4.4'
+      script: bundle exec rspec
+    - name: 'Ruby 2.5.1'
+      rvm: '2.5.1'
+      script: bundle exec rspec
+    - name: 'Ruby 2.6.3'
+      rvm: '2.6.3'
+      script: bundle exec rspec
+    - name: 'Ruby JRuby'
+      rvm: 'jruby-head'
       env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
       jdk: oraclejdk11
+      script: bundle exec rspec
 
