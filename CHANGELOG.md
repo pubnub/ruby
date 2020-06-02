@@ -1,3 +1,8 @@
+##### v4.2.5
+
+- Updated Subscribe endpoint tests to use an unsorted channels list. 
+- Fixed Message Counts channel timetokens by disabling alphabetic sorting of the channels list. 
+
 ##### v4.2.4
 
 - Update Grant, Revoke and Audit PAM tests to use v2 paths instead of v1. 

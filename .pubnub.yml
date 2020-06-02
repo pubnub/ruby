@@ -1,6 +1,13 @@
 ---
-version: "4.2.4"
+version: "4.2.5"
 changelog:
+  -
+    changes:
+      -
+        text: "Fixed Message Counts channel timetokens by disabling alphabetic sorting of the channels list."
+        type: bug
+    date: 02-06-2020
+    version: v4.2.5
   -
     changes:
       -
@@ -20,7 +27,7 @@ changelog:
         text: "Resolved issue with subscribe loop where the connection was reinitiated after receiving a 4xx error code from the server"
         type: bugfix
     date: 14-02-2020
-    version: "4.2.4"
+    version: "4.2.5"
   -
     changes:
       -

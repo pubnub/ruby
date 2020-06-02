@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-pnpres,demo.*,demo0,demo1/0?auth=ruby-test-auth-client-one&channel-group=demo&pnsdk=PubNub-Ruby/4.1.0beta1&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid-client-one
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo0,demo1,demo-pnpres,demo.*/0?auth=ruby-test-auth-client-one&channel-group=demo&pnsdk=PubNub-Ruby/4.1.0beta1&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid-client-one
     body:
       encoding: UTF-8
       string: ''
@@ -39,7 +39,7 @@ http_interactions:
   recorded_at: Wed, 08 Jun 2016 15:56:01 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-pnpres,demo.*,demo0,demo1/0?auth=ruby-test-auth-client-one&channel-group=demo&pnsdk=PubNub-Ruby/4.1.0beta1&t=%7B%22r%22:3,%22t%22:%2214654013597749374%22%7D&uuid=ruby-test-uuid-client-one
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo0,demo1,demo-pnpres,demo.*/0?auth=ruby-test-auth-client-one&channel-group=demo&pnsdk=PubNub-Ruby/4.1.0beta1&t=%7B%22r%22:3,%22t%22:%2214654013597749374%22%7D&uuid=ruby-test-uuid-client-one
     body:
       encoding: UTF-8
       string: ''
