@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/history/sub-key/sub-a-mock-key/channel/rubytest?auth=ruby-test-auth-client-one&count=10&pnsdk=PubNub-Ruby/4.2.5&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.4.10 (2020-03-31))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 18 Aug 2020 21:55:21 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 18 Aug 2020 21:55:21 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '66'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub
+    body:
+      encoding: UTF-8
+      string: '[["wdjzGfMFLREacKDtVrgDgA=="],15965666789169854,15965666789169854]'
+  recorded_at: Tue, 18 Aug 2020 21:55:21 GMT
+recorded_with: VCR 6.0.0

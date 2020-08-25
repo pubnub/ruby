@@ -1,4 +1,5 @@
 require 'cgi'
+require "addressable/uri"
 
 # Toplevel Pubnub module.
 module Pubnub
@@ -35,8 +36,7 @@ module Pubnub
         if cipher_key
           pc = Pubnub::Crypto.new(cipher_key)
           message = pc.encrypt(message).to_json
-          # rubocop:disable Lint/UriEscapeUnescape
-          message = URI.escape(message) if uri_escape
+          message = Addressable::URI.escape(message) if uri_escape
         else
           message = message.to_json
           message = Formatter.encode(message) if uri_escape

@@ -1,14 +1,19 @@
+##### v4.2.6
+
+- History can now respond with message meta information. 
+- Added official support for Ruby 2.7X20282028fix: Decrypt History messages20282028History properly decrypts messages when using the "include_token" parameter. 
+
 ##### v4.2.5
 
-- Updated Subscribe endpoint tests to use an unsorted channels list. 
-- Fixed Message Counts channel timetokens by disabling alphabetic sorting of the channels list. 
+- Updated Subscribe endpoint tests to use an unsorted channels list.
+- Fixed Message Counts channel timetokens by disabling alphabetic sorting of the channels list.
 
 ##### v4.2.4
 
-- Update Grant, Revoke and Audit PAM tests to use v2 paths instead of v1. 
+- Update Grant, Revoke and Audit PAM tests to use v2 paths instead of v1.
 - Replace event name with full endpoint path in PAM signatures, for compatibility with PAM v2 signatures. Addresses the following PRs from [@stefan-qsd](https://github.com/stefan-qsd): [#112](https://github.com/pubnub/ruby/pull/112).
-- Change paths for PAM endpoints from v1 to v2. 
-- Update PAM signature generator to correctly sort the query string parameters based on key instead of combined key and value. 
+- Change paths for PAM endpoints from v1 to v2.
+- Update PAM signature generator to correctly sort the query string parameters based on key instead of combined key and value.
 
 ##### 4.2.3
 * Resolved issue with subscribe loop where the connection was reinitiated after receiving a 4xx error code from the server

@@ -18,6 +18,91 @@ describe Pubnub::History do
     example.run_with_retry retry: 10
   end
 
+  it "__channel___demo___count__10___start__nil___end__nil___reverse__false___http_sync__true___callback__nil___include_meta__true_" do
+    VCR.use_cassette("examples/history/100", :record => :none) do
+      envelope = @pubnub.history(channel: :rubytest, include_meta: true, http_sync: true)
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:category]).to eq(:ack)
+      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:history)
+      expect(envelope.result[:data]).to eq({:messages => [{"message" => {"message"=>"text"}, "meta" => {"metaKey"=>"metaValue"}, "timetoken" => 15965666789169854}], :end => 15965666789169854, :start => 15965666789169854})
+    end
+  end
+
+  it "__channel___demo___count__10___start__nil___end__nil___reverse__false___http_sync__true___callback__nil___encrypted__true_" do
+    @pubnub = Pubnub.new(
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
+      uuid: "ruby-test-uuid-client-one",
+      auth_key: "ruby-test-auth-client-one",
+      cipher_key: "super-secret-cipher-key",
+    )
+    VCR.use_cassette("examples/history/no_includes__encrypted", :record => :none) do
+      envelope = @pubnub.history(channel: :rubytest, count: 10, http_sync: true)
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:category]).to eq(:ack)
+      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:history)
+      expect(envelope.result[:data]).to eq({:messages => [100], :end => 15965666789169854, :start => 15965666789169854})
+    end
+  end
+
+  it "__channel___demo___count__10___start__nil___end__nil___reverse__false___http_sync__true___callback__nil___include_meta__true___encrypted__true_" do
+    @pubnub = Pubnub.new(
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
+      uuid: "ruby-test-uuid-client-one",
+      auth_key: "ruby-test-auth-client-one",
+      cipher_key: "super-secret-cipher-key",
+    )
+    VCR.use_cassette("examples/history/include_meta__encrypted", :record => :none) do
+      envelope = @pubnub.history(channel: :rubytest, count: 10, include_meta: true, http_sync: true)
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:category]).to eq(:ack)
+      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:history)
+      expect(envelope.result[:data]).to eq({:messages => [{"message" => 100, "meta" => "", "timetoken" => 15965666789169854}], :end => 15965666789169854, :start => 15965666789169854})
+    end
+  end
+
+  it "__channel___demo___count__10___start__nil___end__nil___reverse__false___http_sync__true___callback__nil___include_token__true___encrypted__true_" do
+    @pubnub = Pubnub.new(
+      publish_key: "pub-a-mock-key",
+      subscribe_key: "sub-a-mock-key",
+      uuid: "ruby-test-uuid-client-one",
+      auth_key: "ruby-test-auth-client-one",
+      cipher_key: "super-secret-cipher-key",
+    )
+    VCR.use_cassette("examples/history/include_token__encrypted", :record => :none) do
+      envelope = @pubnub.history(channel: :rubytest, count: 10, include_token: true, http_sync: true)
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:category]).to eq(:ack)
+      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:history)
+      expect(envelope.result[:data]).to eq({:messages => [{"message" => 100, "timetoken" => 15965666789169854}], :end => 15965666789169854, :start => 15965666789169854})
+    end
+  end
+
   it "__channel___demo___count__10___start__nil___end__nil___reverse__true___http_sync__true___callback__nil_" do
     VCR.use_cassette("examples/history/53", record: :none) do
       envelope = @pubnub.history(channel: :demo, count: 10, reverse: true, http_sync: true)

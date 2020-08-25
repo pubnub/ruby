@@ -21,8 +21,12 @@ module Pubnub
       message['timetoken'] if @include_token
     end
 
+    def meta(message)
+      message['meta'] if @include_meta
+    end
+
     def message(message)
-      if @include_token
+      if @include_token || @include_meta
         message['message']
       else
         message
@@ -53,7 +57,18 @@ module Pubnub
       params[:count] = @count if @count
       params[:reverse] = 'true' if @reverse
       params[:include_token] = 'true' if @include_token
+      params[:include_meta] = 'true' if @include_meta
       params
+    end
+
+    def decrypt_history(message, crypto)
+      if @include_token || @include_meta
+        message['message'] = JSON.parse(crypto.decrypt(message['message']), quirks_mode: true)
+
+        message
+      else
+        JSON.parse(crypto.decrypt(message), quirks_mode: true)
+      end
     end
 
     def valid_envelope(parsed_response, req_res_objects)
@@ -62,7 +77,7 @@ module Pubnub
       if (@cipher_key || @app.env[:cipher_key] || @cipher_key_selector || @app.env[:cipher_key_selector]) && messages
         cipher_key = compute_cipher_key(parsed_response)
         crypto = Crypto.new(cipher_key)
-        messages = messages.map { |message| JSON.parse(crypto.decrypt(message), quirks_mode: true) }
+        messages = messages.map { |message| decrypt_history(message, crypto) }
       end
 
       start = parsed_response[1]

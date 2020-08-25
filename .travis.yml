@@ -17,18 +17,20 @@ stages:
 jobs:
   include:
     - stage: "test"
-      name: 'Ruby 2.4.4'
-      rvm: '2.4.4'
+      name: 'Ruby 2.4.10'
+      rvm: '2.4.10'
       script: bundle exec rspec
-    - name: 'Ruby 2.5.1'
-      rvm: '2.5.1'
+    - name: 'Ruby 2.5.8'
+      rvm: '2.5.8'
       script: bundle exec rspec
-    - name: 'Ruby 2.6.3'
-      rvm: '2.6.3'
+    - name: 'Ruby 2.6.6'
+      rvm: '2.6.6'
+      script: bundle exec rspec
+    - name: 'Ruby 2.7.1'
+      rvm: '2.7.1'
       script: bundle exec rspec
     - name: 'Ruby JRuby'
       rvm: 'jruby-head'
       env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
       jdk: oraclejdk11
       script: bundle exec rspec
-

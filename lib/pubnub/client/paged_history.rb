@@ -12,7 +12,7 @@ module Pubnub
         sync = options[:http_sync]
         start_tt = options.fetch(:start)
         end_tt = options.fetch(:end)
-        if sync
+      if sync
           sync_paged_history(channel, page, limit, callback, start: start_tt, end: end_tt)
         else
           async_paged_history(options)

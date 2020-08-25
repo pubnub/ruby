@@ -149,7 +149,7 @@ module Pubnub
                      group action read write manage ttl presence start
                      end count reverse presence_callback store skip_validate
                      state channel_group channel_groups compressed meta customs include_token
-                     replicate with_presence cipher_key_selector]
+                     replicate with_presence cipher_key_selector include_meta]
 
       options = options.each_with_object({}) { |option, obj| obj[option.first.to_sym] = option.last }
 
