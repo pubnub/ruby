@@ -1,7 +1,8 @@
 ##### v4.2.6
 
 - History can now respond with message meta information. 
-- Added official support for Ruby 2.7X20282028fix: Decrypt History messages20282028History properly decrypts messages when using the "include_token" parameter. 
+- Added official support for Ruby 2.7.X
+- History properly decrypts messages when using the "include_token" parameter. 
 
 ##### v4.2.5
 

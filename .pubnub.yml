@@ -7,8 +7,11 @@ changelog:
         text: "History can now respond with message meta information."
         type: feature
       -
-        text: "Added official support for Ruby 2.7X\u2028\u2028fix: Decrypt History messages\u2028\u2028History properly decrypts messages when using the \"include_token\" parameter."
+        text: "Added official support for Ruby 2.7.X"
         type: feature
+      -
+        text: "History properly decrypts messages when using the \"include_token\" parameter."
+        type: bug
     date: 25-08-2020
     version: v4.2.6
   -
