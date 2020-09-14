@@ -1,3 +1,7 @@
+##### v4.2.7
+
+- Don't suppress runtime errors. 
+
 ##### v4.2.6
 
 - History can now respond with message meta information. 

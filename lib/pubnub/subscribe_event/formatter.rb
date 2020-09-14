@@ -148,6 +148,11 @@ module Pubnub
       end
 
       def format_envelopes(response, request)
+        if response.is_a?(StandardError)
+          # unexpected error response
+          raise response
+        end
+
         parsed_response, error = Pubnub::Formatter.parse_json(response.body)
 
         error = response if parsed_response && response.code.to_i != 200

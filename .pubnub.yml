@@ -1,6 +1,13 @@
 ---
-version: "4.2.6"
+version: "4.2.7"
 changelog:
+  -
+    changes:
+      -
+        text: "Don't suppress runtime errors."
+        type: bug
+    date: 14-09-2020
+    version: v4.2.7
   -
     changes:
       -
@@ -40,7 +47,7 @@ changelog:
         text: "Resolved issue with subscribe loop where the connection was reinitiated after receiving a 4xx error code from the server"
         type: bugfix
     date: 14-02-2020
-    version: "4.2.6"
+    version: "4.2.7"
   -
     changes:
       -
