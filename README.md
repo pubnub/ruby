@@ -32,3 +32,4 @@ Examples of affected operations can be found [here](3.5_to_3.6_upgrade_notes.md)
 PubNub 3.7.3 is NOT compatible with earlier than 3.4 versions of Pubnub Ruby Client.
 
 # Please direct all Support Questions and Concerns to Support@PubNub.com
+# Thank You
