@@ -1,3 +1,7 @@
+##### v4.3.0
+
+- Add `delete` permission for `channel` to Grant. 
+
 ##### v4.2.7
 
 - Don't suppress runtime errors. 

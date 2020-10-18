@@ -1,6 +1,13 @@
 ---
-version: "4.2.7"
+version: "4.3.0"
 changelog:
+  -
+    changes:
+      -
+        text: "Add `delete` permission for `channel` to Grant."
+        type: feature
+    date: 18-10-2020
+    version: v4.3.0
   -
     changes:
       -
@@ -47,7 +54,7 @@ changelog:
         text: "Resolved issue with subscribe loop where the connection was reinitiated after receiving a 4xx error code from the server"
         type: bugfix
     date: 14-02-2020
-    version: "4.2.7"
+    version: "4.3.0"
   -
     changes:
       -

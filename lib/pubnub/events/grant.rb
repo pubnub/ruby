@@ -22,10 +22,17 @@ module Pubnub
       read = [0, '0', false].include?(@read) ? 0 : 1
       manage = [0, '0', false].include?(@manage) ? 0 : 1 # unless @group.blank?
 
+      if @delete.blank?
+        delete = nil
+      else
+        delete = [0, '0', false].include?(@delete) ? 0 : 1
+      end
+
       { timestamp: @timestamp,
         w: write,
         r: read,
         m: manage,
+        d: delete,
         ttl: @ttl }.delete_if { |_k, v| v.nil? }.merge(super(signature))
     end
 

@@ -146,7 +146,7 @@ module Pubnub
                      ssl cipher_key secret_key auth_key
                      publish_key subscribe_key timetoken
                      open_timeout read_timeout idle_timeout heartbeat
-                     group action read write manage ttl presence start
+                     group action read write delete manage ttl presence start
                      end count reverse presence_callback store skip_validate
                      state channel_group channel_groups compressed meta customs include_token
                      replicate with_presence cipher_key_selector include_meta]

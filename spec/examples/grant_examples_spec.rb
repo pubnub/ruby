@@ -35982,4 +35982,40 @@ describe Pubnub::Grant do
       expect(envelope.result[:data]).to eq({"level" => "channel", "subscribe_key" => "sub-a-mock-key", "ttl" => 1440, "channels" => {"demo" => {"r" => 1, "w" => 1, "m" => 1}}})
     end
   end
+
+  it "__channel___demo___group__nil___read__true___write__true___manage__nil___delete__true___ttl__nil___auth_key__nil___http_sync__true___callback__nil_" do
+    VCR.use_cassette("examples/grant/1944", record: :none) do
+      Pubnub::Grant.any_instance.stub(:current_time).and_return "1601665764"
+      Pubnub::Grant.any_instance.stub(:signature).and_return "6_P9JKXY2G7gIdjuRsAhAgcHOcp5tgZt1VUiILsyim8="
+      envelope = @pubnub.grant(channel: :demo, read: true, write: true, delete: true, http_sync: true)
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:category]).to eq(:ack)
+      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:grant)
+      expect(envelope.result[:data]).to eq({"level" => "channel", "subscribe_key" => "sub-a-mock-key", "ttl" => 1440, "channels" => {"demo" => {"r" => 1, "w" => 1, "m" => 1, "d" => 1, "g" => 0, "u" => 0, "j" => 0}}})
+    end
+  end
+
+  it "__channel___demo___group__nil___read__true___write__true___manage__nil___delete__false___ttl__nil___auth_key__nil___http_sync__true___callback__nil_" do
+    VCR.use_cassette("examples/grant/1945", record: :none) do
+      Pubnub::Grant.any_instance.stub(:current_time).and_return "1601667045"
+      Pubnub::Grant.any_instance.stub(:signature).and_return "sff6s-w30otIKUPo2hOmMs7GHloZ1cfBy1_5GhzW8HM="
+      envelope = @pubnub.grant(channel: :demo, read: true, write: true, delete: false, http_sync: true)
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:category]).to eq(:ack)
+      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:grant)
+      expect(envelope.result[:data]).to eq({"level" => "channel", "subscribe_key" => "sub-a-mock-key", "ttl" => 1440, "channels" => {"demo" => {"r" => 1, "w" => 1, "m" => 1, "d" => 0, "g" => 0, "u" => 0, "j" => 0}}})
+    end
+  end
 end
