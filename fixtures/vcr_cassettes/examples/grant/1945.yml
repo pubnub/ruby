@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?channel=demo&m=1&pnsdk=PubNub-Ruby/4.2.7&r=1&signature=sff6s-w30otIKUPo2hOmMs7GHloZ1cfBy1_5GhzW8HM=&timestamp=1601667045&ttl=1440&uuid=ruby-test-uuid-client-one&w=1
+    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?channel=demo&d=0&m=1&pnsdk=PubNub-Ruby/4.2.7&r=1&signature=v2.e1xGxWqMtgai9T7lewHA0A3LiTaBHM7keT6L6sw0F08&timestamp=1602781742&ttl=1440&uuid=ruby-test-uuid-client-one&w=1
     body:
       encoding: UTF-8
       string: ''
@@ -12,14 +12,14 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Fri, 02 Oct 2020 19:30:45 GMT
+      - Thu, 15 Oct 2020 17:09:02 GMT
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Fri, 02 Oct 2020 19:30:45 GMT
+      - Thu, 15 Oct 2020 17:09:02 GMT
       Content-Type:
       - text/javascript; charset=UTF-8
       Content-Length:
@@ -38,5 +38,356 @@ http_interactions:
       encoding: UTF-8
       string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-a-mock-key","ttl":1440,"channels":{"demo":{"r":1,"w":1,"m":1,"d":0,"g":0,"u":0,"j":0}}},"service":"Access
         Manager","status":200}'
-  recorded_at: Fri, 02 Oct 2020 19:30:45 GMT
+  recorded_at: Thu, 15 Oct 2020 17:09:02 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?channel=demo&d=0&m=1&pnsdk=PubNub-Ruby/4.2.7&r=1&signature=v2.e1xGxWqMtgai9T7lewHA0A3LiTaBHM7keT6L6sw0F08&timestamp=1602781742&ttl=1440&uuid=ruby-test-uuid-client-one&w=1
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 15 Oct 2020 17:09:02 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 15 Oct 2020 17:09:02 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '227'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+    body:
+      encoding: UTF-8
+      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-c-3601a400-fc4f-11e5-ba5f-0619f8945a4f","ttl":1440,"channels":{"demo":{"r":1,"w":1,"m":1,"d":0,"g":0,"u":0,"j":0}}},"service":"Access
+        Manager","status":200}'
+  recorded_at: Thu, 15 Oct 2020 17:09:02 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?channel=demo&d=0&m=1&pnsdk=PubNub-Ruby/4.2.7&r=1&signature=v2.DxXm4m23VNNQJYXv_Ek4djm08u59RzUwNhUs8Ua_iX4&timestamp=1602781743&ttl=1440&uuid=ruby-test-uuid-client-one&w=1
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 15 Oct 2020 17:09:03 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 15 Oct 2020 17:09:03 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '227'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+    body:
+      encoding: UTF-8
+      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-c-3601a400-fc4f-11e5-ba5f-0619f8945a4f","ttl":1440,"channels":{"demo":{"r":1,"w":1,"m":1,"d":0,"g":0,"u":0,"j":0}}},"service":"Access
+        Manager","status":200}'
+  recorded_at: Thu, 15 Oct 2020 17:09:03 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?channel=demo&d=0&m=1&pnsdk=PubNub-Ruby/4.2.7&r=1&signature=v2.DxXm4m23VNNQJYXv_Ek4djm08u59RzUwNhUs8Ua_iX4&timestamp=1602781743&ttl=1440&uuid=ruby-test-uuid-client-one&w=1
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 15 Oct 2020 17:09:03 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 15 Oct 2020 17:09:03 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '227'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+    body:
+      encoding: UTF-8
+      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-c-3601a400-fc4f-11e5-ba5f-0619f8945a4f","ttl":1440,"channels":{"demo":{"r":1,"w":1,"m":1,"d":0,"g":0,"u":0,"j":0}}},"service":"Access
+        Manager","status":200}'
+  recorded_at: Thu, 15 Oct 2020 17:09:03 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?channel=demo&d=0&m=1&pnsdk=PubNub-Ruby/4.2.7&r=1&signature=v2.DxXm4m23VNNQJYXv_Ek4djm08u59RzUwNhUs8Ua_iX4&timestamp=1602781743&ttl=1440&uuid=ruby-test-uuid-client-one&w=1
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 15 Oct 2020 17:09:03 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 15 Oct 2020 17:09:03 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '227'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+    body:
+      encoding: UTF-8
+      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-c-3601a400-fc4f-11e5-ba5f-0619f8945a4f","ttl":1440,"channels":{"demo":{"r":1,"w":1,"m":1,"d":0,"g":0,"u":0,"j":0}}},"service":"Access
+        Manager","status":200}'
+  recorded_at: Thu, 15 Oct 2020 17:09:03 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?channel=demo&d=0&m=1&pnsdk=PubNub-Ruby/4.2.7&r=1&signature=v2.DxXm4m23VNNQJYXv_Ek4djm08u59RzUwNhUs8Ua_iX4&timestamp=1602781743&ttl=1440&uuid=ruby-test-uuid-client-one&w=1
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 15 Oct 2020 17:09:03 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 15 Oct 2020 17:09:03 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '227'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+    body:
+      encoding: UTF-8
+      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-c-3601a400-fc4f-11e5-ba5f-0619f8945a4f","ttl":1440,"channels":{"demo":{"r":1,"w":1,"m":1,"d":0,"g":0,"u":0,"j":0}}},"service":"Access
+        Manager","status":200}'
+  recorded_at: Thu, 15 Oct 2020 17:09:03 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?channel=demo&d=0&m=1&pnsdk=PubNub-Ruby/4.2.7&r=1&signature=v2.DxXm4m23VNNQJYXv_Ek4djm08u59RzUwNhUs8Ua_iX4&timestamp=1602781743&ttl=1440&uuid=ruby-test-uuid-client-one&w=1
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 15 Oct 2020 17:09:03 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 15 Oct 2020 17:09:03 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '227'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+    body:
+      encoding: UTF-8
+      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-c-3601a400-fc4f-11e5-ba5f-0619f8945a4f","ttl":1440,"channels":{"demo":{"r":1,"w":1,"m":1,"d":0,"g":0,"u":0,"j":0}}},"service":"Access
+        Manager","status":200}'
+  recorded_at: Thu, 15 Oct 2020 17:09:03 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?channel=demo&d=0&m=1&pnsdk=PubNub-Ruby/4.2.7&r=1&signature=v2.DxXm4m23VNNQJYXv_Ek4djm08u59RzUwNhUs8Ua_iX4&timestamp=1602781743&ttl=1440&uuid=ruby-test-uuid-client-one&w=1
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 15 Oct 2020 17:09:03 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 15 Oct 2020 17:09:03 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '227'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+    body:
+      encoding: UTF-8
+      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-c-3601a400-fc4f-11e5-ba5f-0619f8945a4f","ttl":1440,"channels":{"demo":{"r":1,"w":1,"m":1,"d":0,"g":0,"u":0,"j":0}}},"service":"Access
+        Manager","status":200}'
+  recorded_at: Thu, 15 Oct 2020 17:09:03 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?channel=demo&d=0&m=1&pnsdk=PubNub-Ruby/4.2.7&r=1&signature=v2.DxXm4m23VNNQJYXv_Ek4djm08u59RzUwNhUs8Ua_iX4&timestamp=1602781743&ttl=1440&uuid=ruby-test-uuid-client-one&w=1
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 15 Oct 2020 17:09:03 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 15 Oct 2020 17:09:03 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '227'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+    body:
+      encoding: UTF-8
+      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-c-3601a400-fc4f-11e5-ba5f-0619f8945a4f","ttl":1440,"channels":{"demo":{"r":1,"w":1,"m":1,"d":0,"g":0,"u":0,"j":0}}},"service":"Access
+        Manager","status":200}'
+  recorded_at: Thu, 15 Oct 2020 17:09:03 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?channel=demo&d=0&m=1&pnsdk=PubNub-Ruby/4.2.7&r=1&signature=v2.DxXm4m23VNNQJYXv_Ek4djm08u59RzUwNhUs8Ua_iX4&timestamp=1602781743&ttl=1440&uuid=ruby-test-uuid-client-one&w=1
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 15 Oct 2020 17:09:03 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 15 Oct 2020 17:09:03 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '227'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+    body:
+      encoding: UTF-8
+      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-c-3601a400-fc4f-11e5-ba5f-0619f8945a4f","ttl":1440,"channels":{"demo":{"r":1,"w":1,"m":1,"d":0,"g":0,"u":0,"j":0}}},"service":"Access
+        Manager","status":200}'
+  recorded_at: Thu, 15 Oct 2020 17:09:03 GMT
 recorded_with: VCR 6.0.0

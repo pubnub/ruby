@@ -29,6 +29,7 @@ module Pubnub
       set_timestamp
       validate!
       telemetry = @app.telemetry_for(@telemetry_name)
+      @compressed_body = nil
       @current_telemetry = telemetry ? telemetry.round(3) : nil
       Pubnub.logger.debug('Pubnub::Event') { "Initialized #{self.class}" }
     end
@@ -46,24 +47,20 @@ module Pubnub
     def send_request(compressed_body = '')
       Pubnub.logger.debug('Pubnub::Event') { '#send_request called' }
 
+      @compressed_body = compressed_body
       sender = request_dispatcher
       Pubnub.logger.debug('Pubnub::Event') { '#send_request got sender' }
 
       telemetry_time_start = ::Time.now.to_f
-      response = case @event
-                 when Pubnub::Constants::OPERATION_DELETE, Pubnub::Constants::OPERATION_DELETE_SPACE, Pubnub::Constants::OPERATION_DELETE_USER
-                   sender.delete(uri.to_s)
-                 when Pubnub::Constants::OPERATION_MANAGE_MEMBERS, Pubnub::Constants::OPERATION_MANAGE_MEMBERSHIPS,
-                      Pubnub::Constants::OPERATION_UPDATE_SPACE, Pubnub::Constants::OPERATION_UPDATE_USER
-                   sender.patch(uri.to_s, body: compressed_body)
-                 when Pubnub::Constants::OPERATION_CREATE_USER, Pubnub::Constants::OPERATION_CREATE_SPACE
+      response = case operation_http_method
+                 when "get"
+                   sender.get(uri.to_s)
+                 when "post"
                    sender.post(uri.to_s, body: compressed_body)
+                 when "patch"
+                   sender.patch(uri.to_s, body: compressed_body)
                  else
-                   if compressed_body.empty?
-                     sender.get(uri.to_s)
-                   else
-                     sender.post(uri.to_s, body: compressed_body)
-                   end
+                   sender.delete(uri.to_s)
                  end
 
       begin
@@ -84,7 +81,7 @@ module Pubnub
         return @uri if @uri
       end
 
-      sa_signature = super_admin_signature unless parameters.include?(:signature)
+      sa_signature = super_admin_signature(operation_http_method, @compressed_body) unless parameters.include?(:signature)
 
       uri = @ssl ? 'https://' : 'http://'
       uri += @origin
@@ -104,6 +101,23 @@ module Pubnub
     end
 
     private
+
+    def operation_http_method
+      case @event
+      when Pubnub::Constants::OPERATION_DELETE, Pubnub::Constants::OPERATION_REMOVE_CHANNEL_METADATA, Pubnub::Constants::OPERATION_REMOVE_UUID_METADATA
+        "delete"
+      when Pubnub::Constants::OPERATION_SET_UUID_METADATA, Pubnub::Constants::OPERATION_SET_CHANNEL_METADATA,
+           Pubnub::Constants::OPERATION_SET_CHANNEL_MEMBERS, Pubnub::Constants::OPERATION_SET_MEMBERSHIPS,
+           Pubnub::Constants::OPERATION_REMOVE_CHANNEL_MEMBERS, Pubnub::Constants::OPERATION_REMOVE_MEMBERSHIPS
+        "patch"
+      else
+        if @compressed_body.nil? || @compressed_body.empty?
+          "get"
+        else
+          "post"
+        end
+      end
+    end
 
     def secure_call(cb, arg)
       cb.call arg
@@ -147,9 +161,9 @@ module Pubnub
                      publish_key subscribe_key timetoken
                      open_timeout read_timeout idle_timeout heartbeat
                      group action read write delete manage ttl presence start
-                     end count reverse presence_callback store skip_validate
+                     end count limit reverse presence_callback store skip_validate
                      state channel_group channel_groups compressed meta customs include_token
-                     replicate with_presence cipher_key_selector include_meta]
+                     replicate with_presence cipher_key_selector include_meta join update get]
 
       options = options.each_with_object({}) { |option, obj| obj[option.first.to_sym] = option.last }
 

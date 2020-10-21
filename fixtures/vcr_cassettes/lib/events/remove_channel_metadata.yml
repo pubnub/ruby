@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: http://ps.pndsn.com/v2/objects/sub-a-mock-key/channels/rb_channel?auth=ruby-test-auth&pnsdk=PubNub-Ruby/4.2.7&signature=v2.gQoXDHvTt1Gd6RIeZollm0b7wjOm5BGmpiZ6_8bvTNU&timestamp=1602593114&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 13 Oct 2020 12:45:14 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 13 Oct 2020 12:45:15 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '26'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"data":null}'
+  recorded_at: Tue, 13 Oct 2020 12:45:15 GMT
+recorded_with: VCR 6.0.0

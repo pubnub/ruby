@@ -2,32 +2,32 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?channel=demo&m=1&pnsdk=PubNub-Ruby/4.1.0&r=1&signature=udCXAk-z4VaU2JA2LgjVzED2LBZAKsjj86twYJoGPnY=&timestamp=1463146850&ttl=1440&uuid=ruby-test-uuid&w=1
+    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?channel=demo&m=1&pnsdk=PubNub-Ruby/4.2.7&r=1&signature=v2.OdCTZXne_jEBewh3yY8iNDWcMCHC6BXNrg1Er9JoSTQ&timestamp=1602537897&ttl=1440&uuid=ruby-test-uuid&w=1
     body:
       encoding: UTF-8
       string: ''
     headers:
       User-Agent:
-      - HTTPClient/1.0 (2.8.0, ruby 2.0.0 (2015-04-13))
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
       Accept:
-      - '*/*'
+      - "*/*"
       Date:
-      - Fri, 13 May 2016 13:40:50 GMT
+      - Mon, 12 Oct 2020 21:24:57 GMT
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Fri, 13 May 2016 13:40:50 GMT
+      - Mon, 12 Oct 2020 21:24:57 GMT
       Content-Type:
       - text/javascript; charset=UTF-8
       Content-Length:
-      - '203'
+      - '227'
       Connection:
       - keep-alive
       Access-Control-Allow-Origin:
-      - '*'
+      - "*"
       Access-Control-Allow-Methods:
       - GET
       Access-Control-Allow-Headers:
@@ -36,8 +36,7 @@ http_interactions:
       - no-cache, no-store, must-revalidate
     body:
       encoding: UTF-8
-      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-a-mock-key","ttl":1440,"channels":{"demo":{"r":1,"w":1,"m":1}}},"service":"Access
+      string: '{"message":"Success","payload":{"level":"channel","subscribe_key":"sub-a-mock-key","ttl":1440,"channels":{"demo":{"r":1,"w":1,"m":1,"d":0,"g":0,"u":0,"j":0}}},"service":"Access
         Manager","status":200}'
-    http_version: 
-  recorded_at: Fri, 13 May 2016 13:40:51 GMT
-recorded_with: VCR 3.0.1
+  recorded_at: Mon, 12 Oct 2020 21:24:57 GMT
+recorded_with: VCR 6.0.0

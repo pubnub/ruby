@@ -75,12 +75,11 @@ module Pubnub
               secure_call callbacks.callbacks[:signal], envelope
             when Pubnub::Constants::OPERATION_PRESENCE
               secure_call callbacks.callbacks[:presence], envelope
-            when Pubnub::Constants::OPERATION_CREATE_USER, Pubnub::Constants::OPERATION_UPDATE_USER, Pubnub::Constants::OPERATION_DELETE_USER
-              secure_call callbacks.callbacks[:user], envelope
-            when Pubnub::Constants::OPERATION_CREATE_SPACE, Pubnub::Constants::OPERATION_UPDATE_SPACE, Pubnub::Constants::OPERATION_DELETE_SPACE
-              secure_call callbacks.callbacks[:space], envelope
-            when Pubnub::Constants::OPERATION_MANAGE_MEMBERS, Pubnub::Constants::OPERATION_MANAGE_MEMBERSHIPS
-              secure_call callbacks.callbacks[:membership], envelope
+            when Pubnub::Constants::OPERATION_SET_UUID_METADATA, Pubnub::Constants::OPERATION_REMOVE_UUID_METADATA,
+                 Pubnub::Constants::OPERATION_SET_CHANNEL_METADATA, Pubnub::Constants::OPERATION_REMOVE_CHANNEL_METADATA,
+                 Pubnub::Constants::OPERATION_SET_CHANNEL_MEMBERS, Pubnub::Constants::OPERATION_REMOVE_CHANNEL_MEMBERS,
+                 Pubnub::Constants::OPERATION_SET_MEMBERSHIPS, Pubnub::Constants::OPERATION_REMOVE_MEMBERSHIPS
+              secure_call callbacks.callbacks[:object], envelope
             else
               secure_call callbacks.callbacks[:status], envelope
             end

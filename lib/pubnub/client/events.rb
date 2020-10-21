@@ -7,8 +7,10 @@ module Pubnub
       EVENTS = %w[publish subscribe presence leave history here_now audit grant delete_messages
                   revoke time heartbeat where_now set_state state channel_registration message_counts signal
                   add_channels_to_push list_push_provisions remove_channels_from_push remove_device_from_push
-                  create_user create_space delete_user delete_space get_user get_users get_space get_spaces
-                  update_user update_space get_members get_space_memberships manage_members manage_memberships].freeze
+                  set_uuid_metadata set_channel_metadata remove_uuid_metadata remove_channel_metadata
+                  get_uuid_metadata get_all_uuid_metadata get_channel_metadata get_all_channels_metadata
+                  get_channel_members get_memberships set_channel_members set_memberships
+                  remove_memberships remove_channel_members].freeze
 
       EVENTS.each do |event_name|
         define_method event_name do |options = {}, &block|

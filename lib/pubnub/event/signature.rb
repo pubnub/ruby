@@ -6,20 +6,35 @@ module Pubnub
     module Signature
       private
 
-      def super_admin_signature
+      def super_admin_signature(http_method, body)
         return unless @app.env[:secret_key]
 
+        # Handle special case with publish operation signing when message sent as POST body.
+        http_method = if http_method.upcase == "POST" && current_operation == Pubnub::Constants::OPERATION_PUBLISH
+                        "GET"
+                      else
+                        http_method.upcase
+                      end
+
         message = [
-          @app.env[:subscribe_key],
+          http_method.upcase,
           @app.env[:publish_key],
           path,
           variables_for_signature.gsub(/[!~'()*]/) { |char| '%' + char.ord.to_s(16).upcase }, # Replace ! ~ * ' ( )
-        ].join("\n")
+        ]
 
-        URI.encode_www_form_component(Base64.encode64(
+        if %w[POST PATCH].include?(http_method)
+          message.push(body)
+        else
+          message.push('')
+        end
+
+        signature = URI.encode_www_form_component(Base64.encode64(
           OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'),
-                               @app.env[:secret_key].to_s, message)
-        ).strip).gsub('+', '%20')
+                               @app.env[:secret_key].to_s, message.join("\n"))
+        ).strip.gsub(/\+/, '-').gsub(/\//, '_').gsub(/=+$/, ''))
+
+        "v2.#{signature}"
       end
 
       def variables_for_signature
@@ -29,7 +44,7 @@ module Pubnub
           if %w[meta ortt].include?(k.to_s)
             encoded_value = URI.encode_www_form_component(v.to_json).gsub('+', '%20')
             "#{k}=#{encoded_value}"
-          elsif %w[t state filter-expr].include?(k.to_s)
+          elsif %w[t state filter-expr sort filter].include?(k.to_s)
             "#{k}=#{v}"
           else
             "#{k}=#{URI.encode_www_form_component(v.to_s).gsub('+', '%20')}"

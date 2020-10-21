@@ -14,17 +14,7 @@ module Pubnub
     end
 
     def signature
-      message = [
-        @subscribe_key,
-        @publish_key,
-        path,
-        variables_for_signature.gsub(/[!~'()*]/) { |char| '%' + char.ord.to_s(16).upcase }, # Replace ! ~ * ' ( )
-      ].join("\n")
-
-      Base64.urlsafe_encode64(
-        OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'),
-                             @secret_key.to_s, message)
-      ).strip
+      super_admin_signature("GET", nil)
     end
 
     def parameters(set_signature = false)
@@ -32,6 +22,7 @@ module Pubnub
       params['channel-group'] = @group.join(',') unless @group.blank?
       params[:timestamp] = @timestamp
       params[:channel] = @channel.join(',') unless @channel.first.blank?
+      params['target-uuid'] = @uuids.join(',') if !@uuids.nil? && !@uuids.first.blank?
       params[:signature] = signature unless set_signature
       params
     end

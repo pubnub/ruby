@@ -10,9 +10,7 @@ module Pubnub
         status: options[:status],
         presence: options[:presence],
         signal: options[:signal],
-        user: options[:user],
-        space: options[:space],
-        membership: options[:membership]
+        object: options[:object]
       }
       validate!
     end

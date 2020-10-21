@@ -13,8 +13,8 @@ describe Pubnub::Subscribe do
       @messages = []
       @statuses = []
       @signals = []
-      @user_events = []
-      @space_events = []
+      @uuid_metadata_events = []
+      @channel_metadata_events = []
       @membership_events = []
 
       @callbacks = Pubnub::SubscribeCallback.new(
@@ -22,9 +22,19 @@ describe Pubnub::Subscribe do
         presence: -> (_envelope) { },
         status: -> (envelope) { @statuses << envelope },
         signal: -> (envelope) { @signals << envelope },
-        user: -> (envelope) { @user_events << envelope },
-        space: -> (envelope) { @space_events << envelope },
-        membership: -> (envelope) { @membership_events << envelope }
+        object: -> (envelope) {
+          case envelope.result[:operation]
+          when Pubnub::Constants::OPERATION_SET_UUID_METADATA, Pubnub::Constants::OPERATION_REMOVE_UUID_METADATA
+            @uuid_metadata_events << envelope
+          when Pubnub::Constants::OPERATION_SET_CHANNEL_METADATA, Pubnub::Constants::OPERATION_REMOVE_CHANNEL_METADATA
+            @channel_metadata_events << envelope
+          when Pubnub::Constants::OPERATION_SET_CHANNEL_MEMBERS, Pubnub::Constants::OPERATION_REMOVE_CHANNEL_MEMBERS,
+               Pubnub::Constants::OPERATION_SET_MEMBERSHIPS, Pubnub::Constants::OPERATION_REMOVE_MEMBERSHIPS
+            @membership_events << envelope
+          else
+            puts "Unexpected operation"
+          end
+        }
       )
     end
 
@@ -107,8 +117,8 @@ describe Pubnub::Subscribe do
         end
       end
 
-      it "user update works" do
-        VCR.use_cassette("lib/events/subscribe-user-update-async", record: :once) do
+      it "uuid metadata update works" do
+        VCR.use_cassette("lib/events/subscribe-uuid-metadata-set-async", record: :once) do
           @pubnub = Pubnub::Client.new(
             subscribe_key: "sub-a-mock-key",
             publish_key: "pub-a-mock-key",
@@ -118,20 +128,21 @@ describe Pubnub::Subscribe do
 
           @pubnub.add_listener(callback: @callbacks)
 
-          @pubnub.subscribe(channel: :user_mg3)
+          @pubnub.subscribe(channel: :uuid_mg3)
 
           eventually do
-            envelope = @user_events.first
+            envelope = @uuid_metadata_events.first
             expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
             expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
-            expect(envelope.result[:data][:message]['event']).to eq 'update'
-            expect(envelope.result[:data][:message]['type']).to eq 'user'
+            expect(envelope.result[:data][:message]['event']).to eq 'set'
+            expect(envelope.result[:data][:message]['type']).to eq 'uuid'
+            expect(envelope.result[:data][:message]['data']['id']).to eq 'uuid_mg3'
           end
         end
       end
 
-      it "space update works" do
-        VCR.use_cassette("lib/events/subscribe-space-update-async", record: :once) do
+      it "channel metadata update works" do
+        VCR.use_cassette("lib/events/subscribe-channel-metadata-set-async", record: :once) do
           @pubnub = Pubnub::Client.new(
             subscribe_key: "sub-a-mock-key",
             publish_key: "pub-a-mock-key",
@@ -141,20 +152,21 @@ describe Pubnub::Subscribe do
 
           @pubnub.add_listener(callback: @callbacks)
 
-          @pubnub.subscribe(channel: :rb_space_3)
+          @pubnub.subscribe(channel: :rb_channel_3)
 
           eventually do
-            envelope = @space_events.first
+            envelope = @channel_metadata_events.first
             expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
             expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
-            expect(envelope.result[:data][:message]['event']).to eq 'update'
-            expect(envelope.result[:data][:message]['type']).to eq 'space'
+            expect(envelope.result[:data][:message]['event']).to eq 'set'
+            expect(envelope.result[:data][:message]['type']).to eq 'channel'
+            # expect(envelope.result[:data][:message]['data']['id']).to eq 'rb_channel_3'
           end
         end
       end
 
-      it "member add works" do
-        VCR.use_cassette("lib/events/subscribe-member-add-async", record: :once) do
+      it "member set works" do
+        VCR.use_cassette("lib/events/subscribe-member-set-async", record: :once) do
           @pubnub = Pubnub::Client.new(
             subscribe_key: "sub-a-mock-key",
             publish_key: "pub-a-mock-key",
@@ -164,21 +176,21 @@ describe Pubnub::Subscribe do
 
           @pubnub.add_listener(callback: @callbacks)
 
-          @pubnub.subscribe(channel: :rb_space_4)
+          @pubnub.subscribe(channel: :rb_channel_3)
 
           eventually do
             envelope = @membership_events.first
             expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
             expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
-            expect(envelope.result[:data][:message]['event']).to eq 'create'
+            expect(envelope.result[:data][:message]['event']).to eq 'set'
             expect(envelope.result[:data][:message]['type']).to eq 'membership'
-            expect(envelope.result[:data][:message]['data']['userId']).to eq 'user_mg4'
+            expect(envelope.result[:data][:message]['data']['uuid']['id']).to eq 'uuid_mg3'
           end
         end
       end
 
-      it "membership add works" do
-        VCR.use_cassette("lib/events/subscribe-membership-add-async", record: :once) do
+      it "membership set works" do
+        VCR.use_cassette("lib/events/subscribe-membership-set-async", record: :once) do
           @pubnub = Pubnub::Client.new(
               subscribe_key: "sub-a-mock-key",
               publish_key: "pub-a-mock-key",
@@ -188,15 +200,15 @@ describe Pubnub::Subscribe do
 
           @pubnub.add_listener(callback: @callbacks)
 
-          @pubnub.subscribe(channel: :user_mg4)
+          @pubnub.subscribe(channel: :uuid_mg5)
 
           eventually do
             envelope = @membership_events.first
             expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
             expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
-            expect(envelope.result[:data][:message]['event']).to eq 'create'
+            expect(envelope.result[:data][:message]['event']).to eq 'set'
             expect(envelope.result[:data][:message]['type']).to eq 'membership'
-            expect(envelope.result[:data][:message]['data']['spaceId']).to eq 'rb_space_4'
+            expect(envelope.result[:data][:message]['data']['channel']['id']).to eq 'rb_channel_5'
           end
         end
       end
@@ -258,8 +270,8 @@ describe Pubnub::Subscribe do
         end
       end
 
-      it "user delete works" do
-        VCR.use_cassette("lib/events/subscribe-user-delete-async", record: :once) do
+      it "uuid metadata remove works" do
+        VCR.use_cassette("lib/events/subscribe-uuid-metadata-remove-sync", record: :once) do
           @pubnub = Pubnub::Client.new(
               subscribe_key: "sub-a-mock-key",
               publish_key: "pub-a-mock-key",
@@ -267,19 +279,20 @@ describe Pubnub::Subscribe do
               uuid: "ruby-test-uuid"
           )
 
-          @pubnub.subscribe(channel: :user_mg3, http_sync: true)
-          envelopes = @pubnub.subscribe(channel: :user_mg3, http_sync: true)
+          @pubnub.subscribe(channel: :uuid_mg3, http_sync: true)
+          envelopes = @pubnub.subscribe(channel: :uuid_mg3, http_sync: true)
 
           envelope = envelopes.first
           expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
           expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
           expect(envelope.result[:data][:message]['event']).to eq 'delete'
-          expect(envelope.result[:data][:message]['type']).to eq 'user'
+          expect(envelope.result[:data][:message]['type']).to eq 'uuid'
+          expect(envelope.result[:data][:message]['data']['id']).to eq 'uuid_mg3'
         end
       end
 
-      it "space delete works" do
-        VCR.use_cassette("lib/events/subscribe-space-delete-async", record: :once) do
+      it "channel metadata remove works" do
+        VCR.use_cassette("lib/events/subscribe-channel-metadata-remove-sync", record: :once) do
           @pubnub = Pubnub::Client.new(
               subscribe_key: "sub-a-mock-key",
               publish_key: "pub-a-mock-key",
@@ -287,20 +300,20 @@ describe Pubnub::Subscribe do
               uuid: "ruby-test-uuid"
           )
 
-          @pubnub.subscribe(channel: :rb_space_3, http_sync: true)
-          envelopes = @pubnub.subscribe(channel: :rb_space_3, http_sync: true)
+          @pubnub.subscribe(channel: :rb_channel_1, http_sync: true)
+          envelopes = @pubnub.subscribe(channel: :rb_channel_1, http_sync: true)
 
           envelope = envelopes.first
           expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
           expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
           expect(envelope.result[:data][:message]['event']).to eq 'delete'
-          expect(envelope.result[:data][:message]['type']).to eq 'space'
-          expect(envelope.result[:data][:message]['data']['id']).to eq 'rb_space_3'
+          expect(envelope.result[:data][:message]['type']).to eq 'channel'
+          expect(envelope.result[:data][:message]['data']['id']).to eq 'rb_channel_1'
         end
       end
 
       it "member remove works" do
-        VCR.use_cassette("lib/events/subscribe-member-remove-async", record: :once) do
+        VCR.use_cassette("lib/events/subscribe-member-remove-sync", record: :once) do
           @pubnub = Pubnub::Client.new(
               subscribe_key: "sub-a-mock-key",
               publish_key: "pub-a-mock-key",
@@ -308,15 +321,15 @@ describe Pubnub::Subscribe do
               uuid: "ruby-test-uuid"
           )
 
-          @pubnub.subscribe(channel: :rb_space_4, http_sync: true)
-          envelopes = @pubnub.subscribe(channel: :rb_space_4, http_sync: true)
+          @pubnub.subscribe(channel: :rb_channel_1, http_sync: true)
+          envelopes = @pubnub.subscribe(channel: :rb_channel_1, http_sync: true)
 
           envelope = envelopes.first
           expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
           expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
           expect(envelope.result[:data][:message]['event']).to eq 'delete'
           expect(envelope.result[:data][:message]['type']).to eq 'membership'
-          expect(envelope.result[:data][:message]['data']['userId']).to eq 'user_mg4'
+          expect(envelope.result[:data][:message]['data']['uuid']['id']).to eq 'uuid_mg1'
         end
       end
 
@@ -329,15 +342,15 @@ describe Pubnub::Subscribe do
               uuid: "ruby-test-uuid"
           )
 
-          @pubnub.subscribe(channel: :user_mg4, http_sync: true)
-          envelopes = @pubnub.subscribe(channel: :user_mg4, http_sync: true)
+          @pubnub.subscribe(channel: :uuid_mg1, http_sync: true)
+          envelopes = @pubnub.subscribe(channel: :uuid_mg1, http_sync: true)
 
           envelope = envelopes.first
           expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
           expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
           expect(envelope.result[:data][:message]['event']).to eq 'delete'
           expect(envelope.result[:data][:message]['type']).to eq 'membership'
-          expect(envelope.result[:data][:message]['data']['spaceId']).to eq 'rb_space_4'
+          expect(envelope.result[:data][:message]['data']['channel']['id']).to eq 'rb_channel_1'
         end
 
     end

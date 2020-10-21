@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/rb_channel_1/0?auth=ruby-test-auth&pnsdk=PubNub-Ruby/4.2.7&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 14 Oct 2020 22:52:57 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 14 Oct 2020 22:52:57 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '45'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"16027159755912480","r":12},"m":[]}'
+  recorded_at: Wed, 14 Oct 2020 22:52:57 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/rb_channel_1/0?auth=ruby-test-auth&pnsdk=PubNub-Ruby/4.2.7&t=%7B%22r%22:12,%22t%22:%2216027159755912480%22%7D&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 14 Oct 2020 22:53:01 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 14 Oct 2020 22:53:01 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '315'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"16027159797721921","r":12},"m":[{"a":"5","f":0,"e":2,"p":{"t":"16027159797722917","r":12},"k":"sub-a-mock-key","c":"rb_channel_1","d":{"source":"objects","version":"2.0","event":"delete","type":"membership","data":{"channel":{"id":"rb_channel_1"},"uuid":{"id":"uuid_mg1"}}}}]}'
+  recorded_at: Wed, 14 Oct 2020 22:53:01 GMT
+recorded_with: VCR 6.0.0

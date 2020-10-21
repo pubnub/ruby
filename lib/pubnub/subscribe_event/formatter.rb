@@ -173,32 +173,36 @@ module Pubnub
           Pubnub::Constants::OPERATION_SIGNAL
         elsif message[:type] == 2
           case message[:payload]['type']
-          when 'user'
+          when 'uuid'
             case message[:payload]['event']
-            when 'create'
-              Pubnub::Constants::OPERATION_CREATE_USER
-            when 'update'
-              Pubnub::Constants::OPERATION_UPDATE_USER
+            when 'set'
+              Pubnub::Constants::OPERATION_SET_UUID_METADATA
             when 'delete'
-              Pubnub::Constants::OPERATION_DELETE_USER
+              Pubnub::Constants::OPERATION_REMOVE_UUID_METADATA
             else
-              Pubnub.logger.error('Pubnub::SubscribeEvent::Formatter') { "Invalid event #{message[:payload]['event']}." }
-              raise Exception, "Invalid event #{message[:payload]['event']}."
+              Pubnub.logger.error('Pubnub::SubscribeEvent::Formatter') { "Invalid event #{message[:payload]['event']} for uuid." }
+              raise Exception, "Invalid event #{message[:payload]['event']} for uuid."
             end
-          when 'space'
+          when 'channel'
             case message[:payload]['event']
-            when 'create'
-              Pubnub::Constants::OPERATION_CREATE_SPACE
-            when 'update'
-              Pubnub::Constants::OPERATION_UPDATE_SPACE
+            when 'set'
+              Pubnub::Constants::OPERATION_SET_CHANNEL_METADATA
             when 'delete'
-              Pubnub::Constants::OPERATION_DELETE_SPACE
+              Pubnub::Constants::OPERATION_REMOVE_CHANNEL_METADATA
             else
-              Pubnub.logger.error('Pubnub::SubscribeEvent::Formatter') { "Invalid event #{message[:payload]['event']}." }
-              raise Exception, "Invalid event #{message[:payload]['event']}."
+              Pubnub.logger.error('Pubnub::SubscribeEvent::Formatter') { "Invalid event #{message[:payload]['event']} for channel." }
+              raise Exception, "Invalid event #{message[:payload]['event']} for channel."
             end
           when 'membership'
-            Pubnub::Constants::OPERATION_MANAGE_MEMBERSHIPS
+            case message[:payload]['event']
+            when 'set'
+              Pubnub::Constants::OPERATION_SET_MEMBERSHIPS
+            when 'delete'
+              Pubnub::Constants::OPERATION_REMOVE_MEMBERSHIPS
+            else
+              Pubnub.logger.error('Pubnub::SubscribeEvent::Formatter') { "Invalid event #{message[:payload]['event']} for membership." }
+              raise Exception, "Invalid event #{message[:payload]['event']} for membership."
+            end
           else
             Pubnub.logger.error('Pubnub::SubscribeEvent::Formatter') { "Invalid operation type #{message[:payload]['type']}." }
             raise Exception, "Invalid operation type #{message[:payload]['type']}."

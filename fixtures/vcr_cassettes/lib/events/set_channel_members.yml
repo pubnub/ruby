@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: http://ps.pndsn.com/v2/objects/sub-a-mock-key/channels/channel-1/uuids?auth=ruby-test-auth&count=1&include=custom&pnsdk=PubNub-Ruby/4.2.7&signature=v2.lZTtaQRgLzrtk9OimIQDKVw4wQFBZ7v09NzjgQjOQVA&timestamp=1602536212&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: '{"set":[{"uuid":{"id":"mg2"}}]}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 12 Oct 2020 20:56:52 GMT
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 12 Oct 2020 20:56:54 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '149'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"data":[{"uuid":{"id":"mg2"},"custom":null,"updated":"2020-10-12T20:56:53.35663Z","eTag":"AY39mJKK//C0VA"}],"totalCount":1,"next":"MQ"}'
+  recorded_at: Mon, 12 Oct 2020 20:56:54 GMT
+recorded_with: VCR 6.0.0

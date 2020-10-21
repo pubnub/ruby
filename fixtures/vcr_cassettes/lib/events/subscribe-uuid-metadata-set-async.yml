@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/uuid_mg3/0?auth=ruby-test-auth&pnsdk=PubNub-Ruby/4.2.7&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 14 Oct 2020 20:10:53 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 14 Oct 2020 20:10:53 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '45'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"16027062536439869","r":12},"m":[]}'
+  recorded_at: Wed, 14 Oct 2020 20:10:53 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/uuid_mg3/0?auth=ruby-test-auth&pnsdk=PubNub-Ruby/4.2.7&t=%7B%22r%22:12,%22t%22:%2216027062536439869%22%7D&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 14 Oct 2020 20:10:53 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 14 Oct 2020 20:10:55 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '366'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"16027062557993707","r":12},"m":[{"a":"5","f":0,"e":2,"p":{"t":"16027062557985952","r":12},"k":"sub-a-mock-key","c":"uuid_mg3","d":{"source":"objects","version":"2.0","event":"set","type":"uuid","data":{"custom":{"XXX":"YYYY"},"eTag":"Ad2eyIWXwJzBqAE","id":"uuid_mg3","name":"magnum","updated":"2020-10-14T20:10:55.763006Z"}}}]}'
+  recorded_at: Wed, 14 Oct 2020 20:10:55 GMT
+recorded_with: VCR 6.0.0

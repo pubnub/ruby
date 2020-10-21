@@ -1,3 +1,8 @@
+##### v4.4.0
+
+- Add simplified Objects API support with UUID and Channel metadata / membership management. 
+- Add uuid and parameter to Grant API along with new Objects permissions: `get`, `update` and `join`. 
+
 ##### v4.3.0
 
 - Add `delete` permission for `channel` to Grant. 

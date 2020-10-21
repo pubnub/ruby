@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?channel=demo&m=1&pnsdk=PubNub-Ruby/4.1.0&r=1&signature=udCXAk-z4VaU2JA2LgjVzED2LBZAKsjj86twYJoGPnY=&timestamp=1463146850&ttl=1440&uuid=ruby-test-uuid&w=1
+    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?channel=demo&m=1&pnsdk=PubNub-Ruby/4.2.7&r=1&signature=v2.OdCTZXne_jEBewh3yY8iNDWcMCHC6BXNrg1Er9JoSTQ&timestamp=1602537897&ttl=1440&uuid=ruby-test-uuid&w=1
     body:
       encoding: UTF-8
       string: ''
@@ -37,6 +37,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"message":"Suc'
-    http_version: 
+    http_version:
   recorded_at: Fri, 13 May 2016 13:40:51 GMT
 recorded_with: VCR 3.0.1

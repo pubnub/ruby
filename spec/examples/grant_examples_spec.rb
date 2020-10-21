@@ -36003,8 +36003,8 @@ describe Pubnub::Grant do
 
   it "__channel___demo___group__nil___read__true___write__true___manage__nil___delete__false___ttl__nil___auth_key__nil___http_sync__true___callback__nil_" do
     VCR.use_cassette("examples/grant/1945", record: :none) do
-      Pubnub::Grant.any_instance.stub(:current_time).and_return "1601667045"
-      Pubnub::Grant.any_instance.stub(:signature).and_return "sff6s-w30otIKUPo2hOmMs7GHloZ1cfBy1_5GhzW8HM="
+      Pubnub::Grant.any_instance.stub(:current_time).and_return "1602781742"
+      Pubnub::Grant.any_instance.stub(:signature).and_return "v2.e1xGxWqMtgai9T7lewHA0A3LiTaBHM7keT6L6sw0F08"
       envelope = @pubnub.grant(channel: :demo, read: true, write: true, delete: false, http_sync: true)
       expect(envelope.is_a?(Pubnub::Envelope)).to eq true
       expect(envelope.error?).to eq false

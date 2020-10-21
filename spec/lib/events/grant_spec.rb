@@ -5,9 +5,10 @@ describe Pubnub::Grant do
 
   context "given basic parameters" do
     before :each do
-      allow_any_instance_of(Pubnub::Grant).to receive(:current_time).and_return 1463146850
-      allow_any_instance_of(Pubnub::Grant).to receive(:signature).and_return "udCXAk-z4VaU2JA2LgjVzED2LBZAKsjj86twYJoGPnY="
+      allow_any_instance_of(Pubnub::Grant).to receive(:current_time).and_return 1602537897
+      allow_any_instance_of(Pubnub::Grant).to receive(:signature).and_return "v2.OdCTZXne_jEBewh3yY8iNDWcMCHC6BXNrg1Er9JoSTQ"
     end
+
     let(:pubnub) do
       Pubnub::Client.new(
         subscribe_key: "sub-a-mock-key",
