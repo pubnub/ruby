@@ -13,8 +13,8 @@ describe Pubnub::SetUuidMetadata do
       )
     end
 
-    it "set_uuid_metadata_works" do
-      VCR.use_cassette("lib/events/set_uuid_metadata", record: :once) do
+    it "set_uuid_metadata_works_1" do
+      VCR.use_cassette("lib/events/set_uuid_metadata1", record: :once) do
         envelope = @pubnub.set_uuid_metadata(
           uuid: "mg",
           metadata: { name: "magnum", custom: { XXX: "YYYY" } },
@@ -26,9 +26,30 @@ describe Pubnub::SetUuidMetadata do
       end
     end
 
-    it "get_uuid_metadata_works" do
-      VCR.use_cassette("lib/events/get_uuid_metadata", record: :once) do
+    it "set_uuid_metadata_works_2" do
+      VCR.use_cassette("lib/events/set_uuid_metadata2", record: :once) do
+        envelope = @pubnub.set_uuid_metadata(
+          metadata: { name: "magnum", custom: { XXX: "YYYY" } },
+          include: { custom: true }
+        ).value
+
+        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+      end
+    end
+
+    it "get_uuid_metadata_works_1" do
+      VCR.use_cassette("lib/events/get_uuid_metadata1", record: :once) do
         envelope = @pubnub.get_uuid_metadata(uuid: "mg", include: { custom: true }).value
+
+        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+      end
+    end
+
+    it "get_uuid_metadata_works_2" do
+      VCR.use_cassette("lib/events/get_uuid_metadata2", record: :once) do
+        envelope = @pubnub.get_uuid_metadata(include: { custom: true }).value
 
         expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
         expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
@@ -44,9 +65,18 @@ describe Pubnub::SetUuidMetadata do
       end
     end
 
-    it "remove_uuid_metadata_works" do
-      VCR.use_cassette("lib/events/remove_uuid_metadata", record: :once) do
+    it "remove_uuid_metadata_works_1" do
+      VCR.use_cassette("lib/events/remove_uuid_metadata1", record: :once) do
         envelope = @pubnub.remove_uuid_metadata(uuid: "mg").value
+
+        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+      end
+    end
+
+    it "remove_uuid_metadata_works_2" do
+      VCR.use_cassette("lib/events/remove_uuid_metadata2", record: :once) do
+        envelope = @pubnub.remove_uuid_metadata.value
 
         expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
         expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new

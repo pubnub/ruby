@@ -31,6 +31,16 @@ module Pubnub
         )
       end
 
+      def format_uuid(uuids, should_encode = true)
+        make_uuid_array(uuids).map do |uuid|
+          if should_encode
+            encode(uuid)
+          else
+            uuid.to_s
+          end
+        end
+      end
+
       # Transforms message to json and encode it
       def format_message(message, cipher_key, uri_escape = true)
         if cipher_key
@@ -70,6 +80,23 @@ module Pubnub
         end
       end
 
+      def make_uuid_array(uuid)
+        case uuid.class.to_s
+        when 'String'
+          uuid.to_s.split(',')
+        when 'Symbol'
+          uuid.to_s.split(',')
+        when 'Array'
+          uuid.map(&:to_s)
+        when 'NilClass'
+          []
+        else
+          raise Pubnub::ArgumentError.new(
+            message: 'UUID has to be String, Symbol or Array'
+          ), 'UUID has to be String, Symbol or Array'
+        end
+      end
+
       # Parses string to JSON
       def parse_json(string)
         [JSON.parse(string), nil]
@@ -84,7 +111,7 @@ module Pubnub
           if %w[meta ortt].include?(key.to_s)
             encoded_value = URI.encode_www_form_component(value.to_json).gsub('+', '%20')
             params << "#{key}=#{encoded_value}&"
-          elsif %w[t state filter-expr].include?(key.to_s)
+          elsif %w[t state filter filter-expr].include?(key.to_s)
             params << "#{key}=#{value}&"
           else
             params << "#{key}=#{URI.encode_www_form_component(value).gsub('+', '%20')}&"

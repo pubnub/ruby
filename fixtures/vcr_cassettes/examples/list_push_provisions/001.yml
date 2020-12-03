@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v1/push/sub-key/sub-a-mock-key/devices/815ee724ccb0a6a84dc303be8ccbaa00d1c84dde6bcae6721b08f92100951113?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/4.4.0&type=apns&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.6 (2020-03-31))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 17 Nov 2020 20:18:01 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 17 Nov 2020 20:18:01 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '103'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Server:
+      - Pubnub
+    body:
+      encoding: UTF-8
+      string: '["[]", "channel2", "demo2", " \"demo2\"]", "channel1", "demo1", "[\"demo1\"",
+        " channel2", " channel1"]'
+  recorded_at: Tue, 17 Nov 2020 20:18:01 GMT
+recorded_with: VCR 6.0.0

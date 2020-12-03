@@ -1,3 +1,7 @@
+##### v4.5.0
+
+- Add support for APNS2 device/channel management. 
+
 ##### v4.4.0
 
 - Add simplified Objects API support with UUID and Channel metadata / membership management. 

@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: http://ps.pndsn.com/v2/objects/sub-a-mock-key/uuids/mg3/channels?auth=ruby-test-auth&count=1&include=custom&pnsdk=PubNub-Ruby/4.2.7&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: '{"set":[{"channel":{"id":"channel-1"}}]}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 14 Oct 2020 23:03:56 GMT
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 14 Oct 2020 23:03:56 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '159'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"data":[{"channel":{"id":"channel-1"},"custom":null,"updated":"2020-10-14T23:03:56.826388Z","eTag":"AY39mJKK//C0VA"}],"totalCount":1,"next":"MQ"}'
+  recorded_at: Wed, 14 Oct 2020 23:03:56 GMT
+recorded_with: VCR 6.0.0

@@ -3,12 +3,14 @@ module Pubnub
   # Push related event
   class ListPushProvisions < SingleEvent
     include Concurrent::Async
-    include Pubnub::Validator::Push
+    include Pubnub::Validator::ListPushProvisions
 
     def initialize(options, app)
-      super
       @event = current_operation
-      @params = @given_options
+      @telemetry_name = :l_push
+      super
+      # `environment` should
+      @environment ||= 'development' if @push_gateway.eql? 'apns2'
     end
 
     private
@@ -24,19 +26,33 @@ module Pubnub
     end
 
     def path
-      '/' + [
-        'v1',
-        'push',
-        'sub-key',
-        @subscribe_key,
-        'devices',
-        @params.fetch(:push_token)
-      ].join('/')
+      if @push_gateway.eql? 'apns2'
+        '/' + [
+          'v2',
+          'push',
+          'sub-key',
+          @subscribe_key,
+          'devices-apns2',
+          @push_token
+        ].join('/')
+      else
+        '/' + [
+          'v1',
+          'push',
+          'sub-key',
+          @subscribe_key,
+          'devices',
+          @push_token
+        ].join('/')
+      end
     end
 
     def parameters(*_args)
       params = super
-      params.merge!(@params.select { |p, _| required_params.include?(p) })
+      # Only include `type` if gateway is other than apns2
+      params[:type] = @push_gateway unless @push_gateway.eql? 'apns2'
+      params[:environment] = @environment if @push_gateway.eql? 'apns2'
+      params[:topic] = @topic if @push_gateway.eql? 'apns2'
       params
     end
 
@@ -47,6 +63,7 @@ module Pubnub
         timetoken: nil,
         status: {
           code: req_res_objects[:response].code,
+          operation: current_operation,
           client_request: req_res_objects[:request],
           server_response: req_res_objects[:response],
 

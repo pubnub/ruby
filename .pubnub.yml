@@ -1,6 +1,13 @@
 ---
-version: "4.4.0"
+version: "4.5.0"
 changelog:
+  -
+    changes:
+      -
+        text: "Add support for APNS2 device/channel management."
+        type: feature
+    date: 03-12-2020
+    version: v4.5.0
   -
     changes:
       -
@@ -64,7 +71,7 @@ changelog:
         text: "Resolved issue with subscribe loop where the connection was reinitiated after receiving a 4xx error code from the server"
         type: bugfix
     date: 14-02-2020
-    version: "4.4.0"
+    version: "4.5.0"
   -
     changes:
       -
@@ -372,6 +379,15 @@ features:
     - PUBLISH-SYNC
     - PUBLISH-ASYNC
     - PUBLISH-MESSAGE-TTL
+  push:
+    - PUSH-ADD-DEVICE-TO-CHANNELS
+    - PUSH-REMOVE-DEVICE-FROM-CHANNELS
+    - PUSH-LIST-CHANNELS-FROM-DEVICE
+    - PUSH-REMOVE-DEVICE
+    - PUSH-TYPE-APNS
+    - PUSH-TYPE-APNS2
+    - PUSH-TYPE-FCM
+    - PUSH-TYPE-MPNS
   storage:
     - STORAGE-REVERSE
     - STORAGE-INCLUDE-TIMETOKEN

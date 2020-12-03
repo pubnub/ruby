@@ -58,6 +58,11 @@ module Pubnub
     end
 
     def valid_envelope(parsed_response, req_res_objects)
+      data = parsed_response['data']
+      metadata = Hash.new
+      data.each{ |k,v| metadata[k.to_sym] = v }
+      metadata[:updated] = Date._parse(metadata[:updated]) unless metadata[:updated].nil?
+
       Pubnub::Envelope.new(
         event: @event,
         event_options: @given_options,
@@ -68,7 +73,7 @@ module Pubnub
           operation: current_operation,
           client_request: req_res_objects[:request],
           server_response: req_res_objects[:response],
-          data: parsed_response
+          data: metadata
         },
 
         status: {

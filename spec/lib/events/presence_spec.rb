@@ -4,7 +4,7 @@ describe Pubnub::Presence do
   around :each do |example|
     example.run_with_retry retry: 10
   end
-  
+
   it_behaves_like "an event"
 
   context "given basic parameters" do
@@ -34,9 +34,12 @@ describe Pubnub::Presence do
           @pubnub.presence(channel: :demo)
 
           eventually do
-            envelope = @messages.first
-            expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
-            expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+            if @messages.length > 0
+              envelope = @messages.first
+              expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+              expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+              true
+            end
           end
         end
       end
@@ -56,9 +59,12 @@ describe Pubnub::Presence do
           sleep 0.1
 
           eventually do
-            envelope = @statuses.first
-            expect(envelope).to be_a_kind_of Pubnub::ErrorEnvelope
-            # expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
+            if @statuses.length > 0
+              envelope = @statuses.first
+              expect(envelope).to be_a_kind_of Pubnub::ErrorEnvelope
+              # expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema
+              true
+            end
           end
         end
       end

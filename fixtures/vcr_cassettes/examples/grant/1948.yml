@@ -2,28 +2,28 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?auth=ruby-authkey&channel-group=demo&m=0&pnsdk=PubNub-Ruby/4.1.0&r=0&signature=ul_R5sIqyldD47tpyxU5sATIZd0H8JL4UulNIyuXJoA=&timestamp=1464188863&ttl=0&uuid=ruby-test-uuid-client-one&w=0
+    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?auth=demo&d=0&g=1&m=1&pnsdk=PubNub-Ruby/4.4.0&r=1&signature=v2.52XSSWDJICI8GEBq9Da-KfMLIHDVRF4YQdUYcGjR4V0&target-uuid=bob,john&timestamp=1605102472&ttl=1440&u=1&uuid=ruby-test-uuid-client-one&w=1
     body:
       encoding: UTF-8
       string: ''
     headers:
       User-Agent:
-      - HTTPClient/1.0 (2.8.0, ruby 2.3.0 (2015-12-25))
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
       Accept:
       - "*/*"
       Date:
-      - Wed, 25 May 2016 15:07:43 GMT
+      - Wed, 11 Nov 2020 13:47:52 GMT
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Wed, 25 May 2016 15:07:43 GMT
+      - Wed, 11 Nov 2020 13:47:52 GMT
       Content-Type:
       - text/javascript; charset=UTF-8
       Content-Length:
-      - '240'
+      - '309'
       Connection:
       - keep-alive
       Access-Control-Allow-Origin:
@@ -36,8 +36,7 @@ http_interactions:
       - no-cache, no-store, must-revalidate
     body:
       encoding: UTF-8
-      string: '{"message":"Success","payload":{"level":"channel-group+auth","subscribe_key":"sub-a-mock-key","ttl":1,"channel-groups":"demo","auths":{"ruby-authkey":{"r":0,"w":0,"m":0}}},"service":"Access
+      string: '{"message":"Success","payload":{"level":"uuid","subscribe_key":"sub-a-mock-key","ttl":1440,"uuids":{"bob":{"auths":{"demo":{"r":1,"w":1,"m":1,"d":0,"g":1,"u":1,"j":0}}},"john":{"auths":{"demo":{"r":1,"w":1,"m":1,"d":0,"g":1,"u":1,"j":0}}}}},"service":"Access
         Manager","status":200}'
-    http_version: 
-  recorded_at: Wed, 25 May 2016 15:07:43 GMT
-recorded_with: VCR 3.0.1
+  recorded_at: Wed, 11 Nov 2020 13:47:52 GMT
+recorded_with: VCR 6.0.0

@@ -86,8 +86,10 @@ describe "Super admin mode" do
       @pubnub.presence(channel: :demo)
 
       eventually do
-        envelope = @presences.first
-        expect(envelope.status[:client_request].to_s.index("&signature=")).to be_truthy
+        if @presences.length > 0
+          expect(@presences.first.status[:client_request].to_s.index("&signature=")).to be_truthy
+          true
+        end
       end
     end
   end
@@ -128,8 +130,10 @@ describe "Super admin mode" do
       @pubnub.subscribe(channel: :demo)
 
       eventually do
-        envelope = @messages.first
-        expect(envelope.status[:client_request].to_s.index("&signature=")).to be_truthy
+        if @messages.length > 0
+          expect(@messages.first.status[:client_request].to_s.index("&signature=")).to be_truthy
+          true
+        end
       end
     end
   end

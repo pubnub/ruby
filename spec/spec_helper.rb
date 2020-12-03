@@ -9,13 +9,20 @@ require "concurrent"
 require "concurrent-edge"
 require "rspec/retry"
 require "simplecov"
-SimpleCov.start do
-  add_filter "/spec/"
+
+if ENV['NO_COVERAGE'] != 'true'
+  puts "Gather Code Coverage"
+
+  SimpleCov.start do
+    add_filter "/spec/"
+  end
+else
+  puts "Skip Code Coverage"
 end
 
 require "pubnub"
 Pubnub::Constants::DEFAULT_RECONNECT_INTERVAL = 0
-if ENV["CI"] == "true"
+if ENV["CI"] == "true" && ENV['NO_COVERAGE'] != 'true'
   require "codacy-coverage"
   Codacy::Reporter.start
 end
@@ -34,13 +41,22 @@ module AsyncHelper
   def loop_it(interval, time_limit)
     loop do
       begin
-        yield
+        check_called = yield
+        check_called = false if check_called.nil?
       rescue => error
         cought_error = error
       end
-      return if cought_error.nil?
-      fail cought_error if Time.now >= time_limit
-      sleep interval
+
+      # Check whether test code in block has been called or not.
+      if (check_called.nil? || !check_called) && Time.now >= time_limit
+        cought_error = 'Eventual condition not met' if cought_error.nil?
+        fail cought_error
+        break
+      elsif !check_called.nil? && check_called
+        break
+      end
+
+      sleep(interval)
     end
   end
 end

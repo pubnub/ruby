@@ -7,6 +7,7 @@ describe "Connect, disconnect and reconnect callbacks" do
 
   before(:each) do
     @connect_messages, @reconnect_messages, @disconnect_messages = [], [], []
+    @sleep_duration = ENV['JRUBY_TEST'] == 'true' ? 1.5 : 0.5
 
     callback = Pubnub::SubscribeCallback.new(
       message: -> (_envelope) { },
@@ -37,7 +38,7 @@ describe "Connect, disconnect and reconnect callbacks" do
   it "fire connect callback when connection is made" do
     VCR.use_cassette("client/connection_callbacks_0", :record => :once) do
       @pubnub.subscribe(channel: :demo)
-      sleep 0.5
+      sleep @sleep_duration
       expect(@connect_messages.size).to be > 0
     end
   end
@@ -47,7 +48,7 @@ describe "Connect, disconnect and reconnect callbacks" do
 
     VCR.use_cassette("client/connection_callbacks_1", :record => :once) do
       @pubnub.subscribe(channel: :demo)
-      sleep 0.5
+      sleep @sleep_duration
       expect(@disconnect_messages.size).to be > 0
     end
   end
@@ -57,7 +58,7 @@ describe "Connect, disconnect and reconnect callbacks" do
 
     VCR.use_cassette("client/connection_callbacks_2", :record => :once) do
       @pubnub.subscribe(channel: :demo)
-      sleep 0.5
+      sleep @sleep_duration
       expect(@reconnect_messages.size).to be > 0
     end
   end

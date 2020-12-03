@@ -10,7 +10,7 @@ describe Pubnub::SetMemberships do
         publish_key: "pub-a-mock-key",
         auth_key: "ruby-test-auth",
         uuid: "ruby-test-uuid",
-        )
+      )
     end
 
     it "get_channel_members_works" do
@@ -22,8 +22,8 @@ describe Pubnub::SetMemberships do
       end
     end
 
-    it "get_memberships_works" do
-      VCR.use_cassette("lib/events/get_memberships", record: :once) do
+    it "get_memberships_works_1" do
+      VCR.use_cassette("lib/events/get_memberships1", record: :once) do
         envelope = @pubnub.get_memberships(uuid: "mg3", include: { count: true, custom: true }).value
 
         expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
@@ -31,18 +31,45 @@ describe Pubnub::SetMemberships do
       end
     end
 
-    it "set_memberships_works" do
-      VCR.use_cassette("lib/events/set_memberships", record: :once) do
-        envelope = @pubnub.set_memberships(uuid: "mg3", channels: [{ 'channel': 'channel-1'}], include: { custom: true }).value
+    it "get_memberships_works_2" do
+      VCR.use_cassette("lib/events/get_memberships2", record: :once) do
+        envelope = @pubnub.get_memberships(include: { count: true, custom: true }).value
 
         expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
         expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
       end
     end
 
-    it "remove_memberships_works" do
-      VCR.use_cassette("lib/events/remove_memberships", record: :once) do
-        envelope = @pubnub.remove_memberships(uuid: "mg3", channels: [{ 'channel': 'channel-1'}], include: { custom: true }).value
+    it "set_memberships_works_1" do
+      VCR.use_cassette("lib/events/set_memberships1", record: :once) do
+        envelope = @pubnub.set_memberships(uuid: "mg3", channels: [{ channel: 'channel-1'}], include: { custom: true }).value
+
+        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+      end
+    end
+
+    it "set_memberships_works_2" do
+      VCR.use_cassette("lib/events/set_memberships2", record: :once) do
+        envelope = @pubnub.set_memberships(channels: [{ channel: 'channel-1'}], include: { custom: true }).value
+
+        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+      end
+    end
+
+    it "remove_memberships_works_1" do
+      VCR.use_cassette("lib/events/remove_memberships1", record: :once) do
+        envelope = @pubnub.remove_memberships(uuid: "mg3", channels: ['channel-1'], include: { custom: true }).value
+
+        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+      end
+    end
+
+    it "remove_memberships_works_2" do
+      VCR.use_cassette("lib/events/remove_memberships2", record: :once) do
+        envelope = @pubnub.remove_memberships(channels: ['channel-1'], include: { custom: true }).value
 
         expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
         expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
@@ -51,7 +78,7 @@ describe Pubnub::SetMemberships do
 
     it "set_channel_members_works" do
       VCR.use_cassette("lib/events/set_channel_members", record: :once) do
-        envelope = @pubnub.set_channel_members(channel: "channel-1", uuids: [{'uuid': 'mg2'}], include: { custom: true }).value
+        envelope = @pubnub.set_channel_members(channel: "channel-1", uuids: [{uuid: 'mg2'}], include: { custom: true }).value
 
         expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
         expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
@@ -60,7 +87,7 @@ describe Pubnub::SetMemberships do
 
     it "remove_channel_members_works" do
       VCR.use_cassette("lib/events/remove_channel_members", record: :once) do
-        envelope = @pubnub.remove_channel_members(channel: "channel-1", uuids: [{'uuid': 'mg2'}], include: { custom: true }).value
+        envelope = @pubnub.remove_channel_members(channel: "channel-1", uuids: ['mg2'], include: { custom: true }).value
 
         expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
         expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new

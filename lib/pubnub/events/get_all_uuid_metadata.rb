@@ -56,6 +56,13 @@ module Pubnub
     end
 
     def valid_envelope(parsed_response, req_res_objects)
+      uuids_metadata = parsed_response['data'].map { |uuid_metadata|
+        metadata = Hash.new
+        uuid_metadata.each{ |k,v| metadata[k.to_sym] = v }
+        metadata[:updated] = Date._parse(metadata[:updated]) unless metadata[:updated].nil?
+        metadata
+      }
+
       Pubnub::Envelope.new(
         event: @event,
         event_options: @given_options,
@@ -66,7 +73,12 @@ module Pubnub
           operation: current_operation,
           client_request: req_res_objects[:request],
           server_response: req_res_objects[:response],
-          data: parsed_response
+          data: {
+            metadata: uuids_metadata,
+            totalCount: parsed_response['totalCount'],
+            next: parsed_response['next'],
+            prev: parsed_response['prev']
+          }
         },
 
         status: {

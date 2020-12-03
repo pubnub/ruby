@@ -3,12 +3,14 @@ module Pubnub
   # Push related event
   class RemoveDeviceFromPush < SingleEvent
     include Concurrent::Async
-    include Pubnub::Validator::Push
+    include Pubnub::Validator::RemoveDeviceFromPush
 
     def initialize(options, app)
-      super
       @event = current_operation
-      @params = @given_options
+      @telemetry_name = :l_push
+      super
+      # `environment` should
+      @environment ||= 'development' if @push_gateway.eql? 'apns2'
     end
 
     private
@@ -24,21 +26,34 @@ module Pubnub
     end
 
     def path
-      '/' + [
-        'v1',
-        'push',
-        'sub-key',
-        @subscribe_key,
-        'devices',
-        @params.fetch(:push_token),
-        'remove'
-      ].join('/')
+      if @push_gateway.eql? 'apns2'
+        '/' + [
+          'v2',
+          'push',
+          'sub-key',
+          @subscribe_key,
+          'devices-apns2',
+          @push_token,
+          'remove'
+        ].join('/')
+      else
+        '/' + [
+          'v1',
+          'push',
+          'sub-key',
+          @subscribe_key,
+          'devices',
+          @push_token,
+          'remove'
+        ].join('/')
+      end
     end
 
     def parameters(*_args)
       params = super
-      params.merge!(@params.select { |p, _| required_params.include?(p) })
-      params[:uuid] = @params[:uuid] if @params.key?(:uuid)
+      params[:type] = @push_gateway unless @push_gateway.eql? 'apns2'
+      params[:environment] = @environment if @push_gateway.eql? 'apns2'
+      params[:topic] = @topic if @push_gateway.eql? 'apns2'
       params
     end
 
@@ -49,6 +64,7 @@ module Pubnub
         timetoken: nil,
         status: {
           code: req_res_objects[:response].code,
+          operation: current_operation,
           client_request: req_res_objects[:request],
           server_response: req_res_objects[:response],
 

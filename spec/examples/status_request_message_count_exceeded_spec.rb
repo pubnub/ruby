@@ -31,7 +31,10 @@ describe "Status request message count exceeded" do
       @pubnub.subscribe(channel: :demo)
 
       eventually do
-        expect(@statuses[1].status[:category]).to eq(Pubnub::Constants::STATUS_REQUEST_MESSAGE_COUNT_EXCEEDED)
+        if @statuses.length >= 1
+          expect(@statuses[1].status[:category]).to eq(Pubnub::Constants::STATUS_REQUEST_MESSAGE_COUNT_EXCEEDED)
+          true
+        end
       end
     end
   end

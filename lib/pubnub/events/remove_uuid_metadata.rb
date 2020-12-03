@@ -10,7 +10,7 @@ module Pubnub
     def initialize(options, app)
       @event = current_operation
       @telemetry_name = :l_obj
-      @uuid = options[:uuid]
+      @uuid = options[:uuid].nil? ? app.env[:uuid] : options[:uuid]
       super
     end
 

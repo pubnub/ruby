@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pubnub (4.4.0)
+    pubnub (4.5.0)
       addressable (>= 2.0.0)
       concurrent-ruby (~> 1.1.5)
       concurrent-ruby-edge (~> 0.5.0)
@@ -68,10 +68,12 @@ GEM
       dry-equalizer (~> 0.2)
       dry-initializer (~> 3.0)
       dry-schema (~> 1.5)
+    ffi (1.13.1-java)
     hashdiff (1.0.1)
     httpclient (2.8.3)
     interception (0.5)
     json (2.3.1)
+    json (2.3.1-java)
     method_source (1.0.0)
     parallel (1.19.2)
     parser (2.7.1.4)
@@ -79,6 +81,10 @@ GEM
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    pry (0.13.1-java)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+      spoon (~> 0.0)
     pry-rescue (1.5.2)
       interception (>= 0.5)
       pry (>= 0.12.0)
@@ -122,6 +128,8 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
     simplecov-html (0.12.2)
+    spoon (0.0.6)
+      ffi
     timers (4.3.0)
     unicode-display_width (1.7.0)
     vcr (6.0.0)
@@ -131,6 +139,7 @@ GEM
       hashdiff (>= 0.4.0, < 2.0.0)
 
 PLATFORMS
+  java
   ruby
 
 DEPENDENCIES

@@ -38,7 +38,7 @@ module Pubnub
       end
 
       def validate_uuids!
-        return if @uuid.nil?
+        return if @uuids.nil?
 
         raise(
           ArgumentError.new(object: self, message: ':uuid should not be empty for grant event.'),

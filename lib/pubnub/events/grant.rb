@@ -8,7 +8,7 @@ module Pubnub
     def initialize(options, app)
       @event = current_operation
       super
-      @uuids = options[:uuids] unless options[:uuids].nil?
+      @uuids = Formatter::format_uuid(options[:uuids]) unless options[:uuids].nil?
       @ttl ||= Pubnub::Constants::DEFAULT_TTL
     end
 

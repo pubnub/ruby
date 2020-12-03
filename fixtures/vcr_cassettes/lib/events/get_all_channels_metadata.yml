@@ -34,6 +34,6 @@ http_interactions:
       - 'true'
     body:
       encoding: UTF-8
-      string: '{"status":200,"data":[{"id":"[\"rb_channel\"]","name":"some_name","description":null,"custom":{"XXX":"YYYY"},"updated":"2020-10-13T11:43:29.824332Z","eTag":"AZTUtcvx6NDGLQ"},{"id":"rb_channel","name":"some_name","description":null,"custom":{"XXX":"YYYY"},"updated":"2020-10-13T12:38:14.839088Z","eTag":"AZTUtcvx6NDGLQ"}],"totalCount":2,"next":"Mg"}'
+      string: '{"status":200,"data":[{"id":"rb_channel1","name":"some_name","description":null,"custom":{"XXX":"YYYY"},"updated":"2020-10-13T11:43:29.824332Z","eTag":"AZTUtcvx6NDGLQ"},{"id":"rb_channel2","name":"some_name","description":null,"custom":{"XXX":"YYYY"},"updated":"2020-10-13T12:38:14.839088Z","eTag":"AZTUtcvx6NDGLQ"}],"totalCount":2,"next":"Mg"}'
   recorded_at: Tue, 13 Oct 2020 12:44:30 GMT
 recorded_with: VCR 6.0.0

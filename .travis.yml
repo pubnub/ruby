@@ -31,6 +31,8 @@ jobs:
       script: bundle exec rspec
     - name: 'Ruby JRuby'
       rvm: 'jruby-head'
-      env: JRUBY_OPTS="--server -J-Xms1500m -J-Xmx1500m -J-XX:+UseConcMarkSweepGC -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
+      env: JRUBY_TEST=true NO_COVERAGE=true JRUBY_OPTS="--server -J-Xms2048m -J-Xmx2048m -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
       jdk: oraclejdk11
-      script: bundle exec rspec
+      script:
+        - jruby -S rspec ./spec/examples/
+        - jruby -S rspec ./spec/lib/

@@ -110,14 +110,17 @@ describe Pubnub::Presence do
     end
 
     eventually do
-      expect(@status_envelopes[0].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[0].status[:error]).to eq(true)
-      expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
-      expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      if @status_envelopes.length > 0
+        expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[0].status[:error]).to eq(true)
+        expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
+        expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        true
+      end
     end
   end
 
@@ -137,23 +140,26 @@ describe Pubnub::Presence do
     end
 
     eventually do
-      expect(@status_envelopes[0].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[0].status[:error]).to eq(true)
-      expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
-      expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      if @status_envelopes.length >= 1
+        expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[0].status[:error]).to eq(true)
+        expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
+        expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
 
-      expect(@status_envelopes[1].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[1].status[:error]).to eq(true)
-      expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres"])
-      expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[1].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        expect(@status_envelopes[1].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[1].status[:error]).to eq(true)
+        expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres"])
+        expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[1].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        true
+      end
     end
   end
 
@@ -173,23 +179,26 @@ describe Pubnub::Presence do
     end
 
     eventually do
-      expect(@status_envelopes[0].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[0].status[:error]).to eq(true)
-      expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
-      expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      if @status_envelopes.length >= 1
+        expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[0].status[:error]).to eq(true)
+        expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
+        expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
 
-      expect(@status_envelopes[1].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[1].status[:error]).to eq(true)
-      expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres"])
-      expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[1].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        expect(@status_envelopes[1].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[1].status[:error]).to eq(true)
+        expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres"])
+        expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[1].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        true
+      end
     end
   end
 
@@ -284,14 +293,17 @@ describe Pubnub::Presence do
     end
 
     eventually do
-      expect(@status_envelopes[0].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[0].status[:error]).to eq(true)
-      expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
-      expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      if @status_envelopes.length > 0
+        expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[0].status[:error]).to eq(true)
+        expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
+        expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        true 
+      end
     end
   end
 
@@ -311,23 +323,26 @@ describe Pubnub::Presence do
     end
 
     eventually do
-      expect(@status_envelopes[0].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[0].status[:error]).to eq(true)
-      expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
-      expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      if @status_envelopes.length >= 1
+        expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[0].status[:error]).to eq(true)
+        expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
+        expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
 
-      expect(@status_envelopes[1].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[1].status[:error]).to eq(true)
-      expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
-      expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[1].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        expect(@status_envelopes[1].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[1].status[:error]).to eq(true)
+        expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
+        expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[1].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        true
+      end
     end
   end
 
@@ -347,23 +362,26 @@ describe Pubnub::Presence do
     end
 
     eventually do
-      expect(@status_envelopes[0].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[0].status[:error]).to eq(true)
-      expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
-      expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      if @status_envelopes.length >= 1
+        expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[0].status[:error]).to eq(true)
+        expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
+        expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
 
-      expect(@status_envelopes[1].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[1].status[:error]).to eq(true)
-      expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
-      expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[1].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        expect(@status_envelopes[1].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[1].status[:error]).to eq(true)
+        expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo.*-pnpres"])
+        expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[1].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        true
+      end
     end
   end
 
@@ -458,14 +476,17 @@ describe Pubnub::Presence do
     end
 
     eventually do
-      expect(@status_envelopes[0].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[0].status[:error]).to eq(true)
-      expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
-      expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      if @status_envelopes.length > 0
+        expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[0].status[:error]).to eq(true)
+        expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
+        expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        true
+      end
     end
   end
 
@@ -485,23 +506,26 @@ describe Pubnub::Presence do
     end
 
     eventually do
-      expect(@status_envelopes[0].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[0].status[:error]).to eq(true)
-      expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
-      expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      if @status_envelopes.length >= 1
+        expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[0].status[:error]).to eq(true)
+        expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
+        expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
 
-      expect(@status_envelopes[1].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[1].status[:error]).to eq(true)
-      expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres"])
-      expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[1].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        expect(@status_envelopes[1].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[1].status[:error]).to eq(true)
+        expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres"])
+        expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[1].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        true
+      end
     end
   end
 
@@ -521,23 +545,26 @@ describe Pubnub::Presence do
     end
 
     eventually do
-      expect(@status_envelopes[0].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[0].status[:error]).to eq(true)
-      expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
-      expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      if @status_envelopes.length >= 1
+        expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[0].status[:error]).to eq(true)
+        expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres"])
+        expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
 
-      expect(@status_envelopes[1].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[1].status[:error]).to eq(true)
-      expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres"])
-      expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[1].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        expect(@status_envelopes[1].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[1].status[:error]).to eq(true)
+        expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres"])
+        expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[1].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        true
+      end
     end
   end
 
@@ -632,14 +659,17 @@ describe Pubnub::Presence do
     end
 
     eventually do
-      expect(@status_envelopes[0].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[0].status[:error]).to eq(true)
-      expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
-      expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      if @status_envelopes.length > 0
+        expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[0].status[:error]).to eq(true)
+        expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
+        expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        true
+      end
     end
   end
 
@@ -659,32 +689,35 @@ describe Pubnub::Presence do
     end
 
     eventually do
-      expect(@status_envelopes[0].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[0].status[:error]).to eq(true)
-      expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
-      expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      if @status_envelopes.length >= 3
+        expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[0].status[:error]).to eq(true)
+        expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
+        expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
 
-      expect(@status_envelopes[1].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[1].status[:error]).to eq(true)
-      expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
-      expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[1].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        expect(@status_envelopes[1].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[1].status[:error]).to eq(true)
+        expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
+        expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[1].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
 
-      expect(@status_envelopes[2].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[2].status[:error]).to eq(true)
-      expect(@status_envelopes[2].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[2].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[2].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[2].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
-      expect(@status_envelopes[2].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[2].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        expect(@status_envelopes[2].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[2].status[:error]).to eq(true)
+        expect(@status_envelopes[2].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[2].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[2].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[2].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
+        expect(@status_envelopes[2].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[2].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        true
+      end
     end
   end
 
@@ -704,32 +737,35 @@ describe Pubnub::Presence do
     end
 
     eventually do
-      expect(@status_envelopes[0].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[0].status[:error]).to eq(true)
-      expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
-      expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      if @status_envelopes.length >= 3
+        expect(@status_envelopes[0].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[0].status[:error]).to eq(true)
+        expect(@status_envelopes[0].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[0].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[0].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
+        expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
 
-      expect(@status_envelopes[1].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[1].status[:error]).to eq(true)
-      expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
-      expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[1].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        expect(@status_envelopes[1].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[1].status[:error]).to eq(true)
+        expect(@status_envelopes[1].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[1].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[1].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[1].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
+        expect(@status_envelopes[1].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[1].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
 
-      expect(@status_envelopes[2].status[:category]).to eq(:timeout)
-      expect(@status_envelopes[2].status[:error]).to eq(true)
-      expect(@status_envelopes[2].status[:auto_retried]).to eq(true)
-      expect(@status_envelopes[2].status[:current_timetoken]).to eq(0)
-      expect(@status_envelopes[2].status[:last_timetoken]).to eq(0)
-      expect(@status_envelopes[2].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
-      expect(@status_envelopes[2].status[:subscribed_channel_groups]).to eq([])
-      expect(@status_envelopes[2].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        expect(@status_envelopes[2].status[:category]).to eq(:timeout)
+        expect(@status_envelopes[2].status[:error]).to eq(true)
+        expect(@status_envelopes[2].status[:auto_retried]).to eq(true)
+        expect(@status_envelopes[2].status[:current_timetoken]).to eq(0)
+        expect(@status_envelopes[2].status[:last_timetoken]).to eq(0)
+        expect(@status_envelopes[2].status[:subscribed_channels]).to eq(["demo-pnpres", "demo.*-pnpres"])
+        expect(@status_envelopes[2].status[:subscribed_channel_groups]).to eq([])
+        expect(@status_envelopes[2].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+        true
+      end
     end
   end
 end

@@ -39,7 +39,7 @@ module Pubnub
       Pubnub.logger.debug('Pubnub::RemoveChannelMembers') { "Fired event #{self.class}" }
 
       members = @uuids.map do |member|
-        { uuid: { id: member[:uuid] } }
+        { uuid: { id: member } }
       end
 
       body = Formatter.format_message({ delete: members }, @cipher_key, false)
@@ -81,6 +81,21 @@ module Pubnub
     end
 
     def valid_envelope(parsed_response, req_res_objects)
+      members = parsed_response['data'].map { |channel_member|
+        member = Hash.new
+        channel_member.each{ |k,v| member[k.to_sym] = v }
+
+        unless member[:uuid].nil?
+          uuid_metadata = Hash.new
+          member[:uuid].each{ |k,v| uuid_metadata[k.to_sym] = v }
+          uuid_metadata[:updated] = Date._parse(uuid_metadata[:updated]) unless uuid_metadata[:updated].nil?
+          member[:uuid] = uuid_metadata
+        end
+        member[:updated] = Date._parse(member[:updated]) unless member[:updated].nil?
+
+        member
+      }
+
       Pubnub::Envelope.new(
         event: @event,
         event_options: @given_options,
@@ -91,7 +106,12 @@ module Pubnub
           operation: current_operation,
           client_request: req_res_objects[:request],
           server_response: req_res_objects[:response],
-          data: parsed_response
+          data: {
+            members: members,
+            totalCount: parsed_response['totalCount'],
+            next: parsed_response['next'],
+            prev: parsed_response['prev']
+          }
         },
 
         status: {

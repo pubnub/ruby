@@ -10,7 +10,7 @@ module Pubnub
     def initialize(options, app)
       @event = current_operation
       @telemetry_name = :l_obj
-      @uuid = options[:uuid]
+      @uuid = options[:uuid].nil? ? app.env[:uuid] : options[:uuid]
       @limit = [options[:limit], 100].min unless options[:limit].nil?
       @sort = options[:sort].join(",") if options[:sort] && !options[:sort].empty?
       @filter = options[:filter] if options[:filter] && !options[:filter].empty?
@@ -84,6 +84,21 @@ module Pubnub
     end
 
     def valid_envelope(parsed_response, req_res_objects)
+      memberships = parsed_response['data'].map { |uuid_membership|
+        membership = Hash.new
+        uuid_membership.each{ |k,v| membership[k.to_sym] = v }
+
+        unless membership[:channel].nil?
+          channel_metadata = Hash.new
+          membership[:channel].each{ |k,v| channel_metadata[k.to_sym] = v }
+          channel_metadata[:updated] = Date._parse(channel_metadata[:updated]) unless channel_metadata[:updated].nil?
+          membership[:channel] = channel_metadata
+        end
+        membership[:updated] = Date._parse(membership[:updated]) unless membership[:updated].nil?
+
+        membership
+      }
+
       Pubnub::Envelope.new(
         event: @event,
         event_options: @given_options,
@@ -94,7 +109,12 @@ module Pubnub
           operation: current_operation,
           client_request: req_res_objects[:request],
           server_response: req_res_objects[:response],
-          data: parsed_response
+          data: {
+            memberships: memberships,
+            totalCount: parsed_response['totalCount'],
+            next: parsed_response['next'],
+            prev: parsed_response['prev']
+          }
         },
 
         status: {

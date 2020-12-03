@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/auth/grant/sub-key/sub-a-mock-key?auth=ruby-test-auth,ruby-test-auth2&g=1&j=1&m=1&pnsdk=PubNub-Ruby/4.2.7&r=1&signature=v2.vOIJQ3_z4VCBfNg-2UyoMR6Z78weFmHXpcukiFDPgD8&target-uuid=ruby-test-uuid,ruby-test-uuid2&timestamp=1602594634&ttl=1440&u=1&uuid=ruby-test-uuid&w=1
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 13 Oct 2020 13:10:34 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 13 Oct 2020 13:10:34 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '475'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+    body:
+      encoding: UTF-8
+      string: '{"message":"Success","payload":{"level":"uuid","subscribe_key":"sub-a-mock-key","ttl":1440,"uuids":{"ruby-test-uuid":{"auths":{"ruby-test-auth":{"r":1,"w":1,"m":1,"d":0,"g":1,"u":1,"j":1},"ruby-test-auth2":{"r":1,"w":1,"m":1,"d":0,"g":1,"u":1,"j":1}}},"ruby-test-uuid2":{"auths":{"ruby-test-auth":{"r":1,"w":1,"m":1,"d":0,"g":1,"u":1,"j":1},"ruby-test-auth2":{"r":1,"w":1,"m":1,"d":0,"g":1,"u":1,"j":1}}}}},"service":"Access
+        Manager","status":200}'
+  recorded_at: Tue, 13 Oct 2020 13:10:34 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/objects/sub-a-mock-key/uuids/ruby-test-uuid?auth=ruby-test-auth&include=custom&pnsdk=PubNub-Ruby/4.2.7&signature=v2.lQaCwKyH8SrFsNVCay4CsaOZMvygJx0aovJFNrhzHQs&timestamp=1602594634&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.3 (2019-04-16))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 13 Oct 2020 13:10:34 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 13 Oct 2020 13:10:34 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '187'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"data":{"id":"ruby-test-uuid","name":"magnum","externalId":null,"profileUrl":null,"email":null,"custom":{"XXX":"YYYY"},"updated":"2020-10-13T13:10:33.333845Z","eTag":"Ad2eyIWXwJzBqAE"}}'
+  recorded_at: Tue, 13 Oct 2020 13:10:34 GMT
+recorded_with: VCR 6.0.0

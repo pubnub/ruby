@@ -53,9 +53,12 @@ describe Pubnub::Subscribe do
           @pubnub.subscribe(channel: :demo)
 
           eventually do
-            envelope = @messages.first
-            expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
-            expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+            if @messages.length > 0
+              envelope = @messages.first
+              expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+              expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+              true
+            end
           end
         end
       end
@@ -74,7 +77,10 @@ describe Pubnub::Subscribe do
           @pubnub.subscribe(channel: :whatever)
 
           eventually do
-            expect(@messages.first.result[:data][:message]).to eq("text" => "hey")
+            if @messages.length > 0
+              expect(@messages.first.result[:data][:message]).to eq("text" => "hey")
+              true
+            end
           end
         end
       end
@@ -110,9 +116,12 @@ describe Pubnub::Subscribe do
           sleep 0.1
 
           eventually do
-            envelope = @statuses.first
-            expect(envelope).to be_a_kind_of Pubnub::ErrorEnvelope
-            expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+            if @statuses.length > 0
+              envelope = @statuses.first
+              expect(envelope).to be_a_kind_of Pubnub::ErrorEnvelope
+              expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+              true
+            end
           end
         end
       end
@@ -131,12 +140,15 @@ describe Pubnub::Subscribe do
           @pubnub.subscribe(channel: :uuid_mg3)
 
           eventually do
-            envelope = @uuid_metadata_events.first
-            expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
-            expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
-            expect(envelope.result[:data][:message]['event']).to eq 'set'
-            expect(envelope.result[:data][:message]['type']).to eq 'uuid'
-            expect(envelope.result[:data][:message]['data']['id']).to eq 'uuid_mg3'
+            if @uuid_metadata_events.length > 0
+              envelope = @uuid_metadata_events.first
+              expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+              expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+              expect(envelope.result[:data][:message]['event']).to eq 'set'
+              expect(envelope.result[:data][:message]['type']).to eq 'uuid'
+              expect(envelope.result[:data][:message]['data']['id']).to eq 'uuid_mg3'
+              true
+            end
           end
         end
       end
@@ -155,12 +167,15 @@ describe Pubnub::Subscribe do
           @pubnub.subscribe(channel: :rb_channel_3)
 
           eventually do
-            envelope = @channel_metadata_events.first
-            expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
-            expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
-            expect(envelope.result[:data][:message]['event']).to eq 'set'
-            expect(envelope.result[:data][:message]['type']).to eq 'channel'
-            # expect(envelope.result[:data][:message]['data']['id']).to eq 'rb_channel_3'
+            if @channel_metadata_events.length > 0
+              envelope = @channel_metadata_events.first
+              expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+              expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+              expect(envelope.result[:data][:message]['event']).to eq 'set'
+              expect(envelope.result[:data][:message]['type']).to eq 'channel'
+              # expect(envelope.result[:data][:message]['data']['id']).to eq 'rb_channel_3'
+              true
+            end
           end
         end
       end
@@ -179,12 +194,15 @@ describe Pubnub::Subscribe do
           @pubnub.subscribe(channel: :rb_channel_3)
 
           eventually do
-            envelope = @membership_events.first
-            expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
-            expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
-            expect(envelope.result[:data][:message]['event']).to eq 'set'
-            expect(envelope.result[:data][:message]['type']).to eq 'membership'
-            expect(envelope.result[:data][:message]['data']['uuid']['id']).to eq 'uuid_mg3'
+            if @membership_events.length > 0
+              envelope = @membership_events.first
+              expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+              expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+              expect(envelope.result[:data][:message]['event']).to eq 'set'
+              expect(envelope.result[:data][:message]['type']).to eq 'membership'
+              expect(envelope.result[:data][:message]['data']['uuid']['id']).to eq 'uuid_mg3'
+              true
+            end
           end
         end
       end
@@ -203,12 +221,15 @@ describe Pubnub::Subscribe do
           @pubnub.subscribe(channel: :uuid_mg5)
 
           eventually do
-            envelope = @membership_events.first
-            expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
-            expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
-            expect(envelope.result[:data][:message]['event']).to eq 'set'
-            expect(envelope.result[:data][:message]['type']).to eq 'membership'
-            expect(envelope.result[:data][:message]['data']['channel']['id']).to eq 'rb_channel_5'
+            if @membership_events.length > 0
+              envelope = @membership_events.first
+              expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+              expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+              expect(envelope.result[:data][:message]['event']).to eq 'set'
+              expect(envelope.result[:data][:message]['type']).to eq 'membership'
+              expect(envelope.result[:data][:message]['data']['channel']['id']).to eq 'rb_channel_5'
+              true
+            end
           end
         end
       end
@@ -229,7 +250,10 @@ describe Pubnub::Subscribe do
           @pubnub.subscribe(channel: :whatever, http_sync: true)
           @messages = @pubnub.subscribe(channel: :whatever, http_sync: true)
           eventually do
-            expect(@messages.first.result[:data][:message]).to eq("text" => "hey")
+            if @messages.length > 0
+              expect(@messages.first.result[:data][:message]).to eq("text" => "hey")
+              true
+            end
           end
         end
       end
