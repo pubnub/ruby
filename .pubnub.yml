@@ -6,6 +6,9 @@ changelog:
       -
         text: "Add support for APNS2 device/channel management."
         type: feature
+      -
+        text: "Resolved issue with multiple timetokens in message counts endpoint"
+        type: bug        
     date: 2020-12-03
     version: v4.5.0
   -
@@ -68,15 +71,8 @@ changelog:
   -
     changes:
       -
-        text: "Resolved issue with subscribe loop where the connection was reinitiated after receiving a 4xx error code from the server"
-        type: bugfix
-    date: 2020-02-14
-    version: "4.5.0"
-  -
-    changes:
-      -
         text: "Resolved issue with multiple timetokens in message counts endpoint"
-        type: bugfix
+        type: bug
     date: 2019-11-11
     version: "4.2.2"
   -
@@ -125,21 +121,21 @@ changelog:
     changes:
       -
         text: "Switch from Celluloid to concurrent-ruby."
-        type: bugfix
+        type: bug
     date: 2018-08-28
     version: "4.0.28"
   -
     changes:
       -
         text: "Fixed telemetry issues."
-        type: bugfix
+        type: bug
     date: 2017-11-17
     version: "4.0.27"
   -
     changes:
       -
         text: "Secured telemetry call. Fixed crash when an app was exiting."
-        type: bugfix
+        type: bug
     date: 2017-10-23
     version: "4.0.26"
   -
