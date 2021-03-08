@@ -119,6 +119,9 @@ module Pubnub
     #   <dt>ssl</dt>
     #   <dd><b>optional.</b> Your connection will use ssl if set to true.</dd>
     #
+    #   <dt>random_iv</dt>
+    #   <dd><b>optional.</b> Whether data should be encrypted / decrypted using random initialization vector.</dd>
+    #
     #   <dt>heartbeat</dt>
     #   <dd><b>optional.</b> Heartbeat interval, if not set heartbeat will not be running.</dd>
     #
@@ -378,7 +381,7 @@ module Pubnub
     def assign_defaults
       @env[:origin] = @env[:origins_pool].first if @env[:origins_pool]
       default_values.each do |k, v|
-        @env[k] = v unless @env[k]
+        @env[k] = v unless @env.has_key?(k)
       end
       @env[:timetoken] = 0
       @env[:sequence_number_for_publish] = 0

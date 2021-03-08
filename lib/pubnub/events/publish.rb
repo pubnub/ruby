@@ -27,7 +27,7 @@ module Pubnub
       Pubnub.logger.debug('Pubnub::Publish') { "Fired event #{self.class}" }
 
       if @compressed
-        compressed_body = Formatter.format_message(@message, @cipher_key, false)
+        compressed_body = Formatter.format_message(@message, @cipher_key, @random_iv, false)
         response = send_request(compressed_body)
       else
         response = send_request
@@ -72,7 +72,7 @@ module Pubnub
         '0',
         Formatter.format_channel(@channel, true),
         '0',
-        Formatter.format_message(@message, @cipher_key)
+        Formatter.format_message(@message, @cipher_key, @random_iv)
       ]
 
       rpath.pop if @compressed

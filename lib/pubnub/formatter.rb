@@ -42,9 +42,9 @@ module Pubnub
       end
 
       # Transforms message to json and encode it
-      def format_message(message, cipher_key, uri_escape = true)
-        if cipher_key
-          pc = Pubnub::Crypto.new(cipher_key)
+      def format_message(message, cipher_key = "", use_random_iv = false, uri_escape = true)
+        if cipher_key && !cipher_key.empty?
+          pc = Pubnub::Crypto.new(cipher_key, use_random_iv)
           message = pc.encrypt(message).to_json
           message = Addressable::URI.escape(message) if uri_escape
         else

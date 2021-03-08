@@ -17,7 +17,7 @@ module Pubnub
     def fire
       Pubnub.logger.debug('Pubnub::RemoveChannelMetadata') { "Fired event #{self.class}" }
 
-      body = Formatter.format_message(@data, @cipher_key, false)
+      body = Formatter.format_message(@data, "", @random_iv, false)
       response = send_request(body)
 
       envelopes = fire_callbacks(handle(response, uri))

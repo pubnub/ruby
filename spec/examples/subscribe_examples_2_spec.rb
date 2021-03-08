@@ -14,7 +14,7 @@ describe Pubnub::Subscribe do
   end
 
   let(:pubnub_cipher_params) do
-    pubnub_params.merge({cipher_key: "super-secret-cipher-key"})
+    pubnub_params.merge({cipher_key: "super-secret-cipher-key", random_iv: false})
   end
 
   let(:pubnub) { Pubnub.new(**pubnub_params) }
@@ -853,7 +853,7 @@ describe Pubnub::Subscribe do
         expect(envelopes[0].result[:data]).to eq({:message => "ruby is awesome", :subscribed_channel => "demo", :actual_channel => "demo", :publish_time_object => {:timetoken => "14654009949699093", :region_code => 12}, :message_meta_data => nil, :presence_event => nil, :presence => nil})
       end
     end
-    
+
     it "__channel___demo____presence__nil___channel_group__nil___http_sync__true___callback___block_cipherkeysuper-secret-cipher-key" do
 
       VCR.use_cassette("examples/subscribe/265", record: :none) do
@@ -933,7 +933,7 @@ describe Pubnub::Subscribe do
           expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
           expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
           true
-        end 
+        end
       end
     end
 
@@ -16177,7 +16177,7 @@ describe Pubnub::Subscribe do
           expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
           expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
           true
-        end 
+        end
       end
     end
 

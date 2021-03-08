@@ -1,3 +1,13 @@
+##### v4.6.0
+
+- BREAKING CHANGE: Add randomized initialization vector usage by default for data encryption / decryption in publish / subscribe / history API calls. 
+- Fix issue which caused Object request body encryption when `cipher_key` is set. 
+
+##### v4.6.0
+
+- BREAKING CHANGE: Add randomized initialization vector usage by default for data encryption / decryption in publish / subscribe / history API calls. 
+- Fix issue which caused Object request body encryption when `cipher_key` is set. 
+
 ##### v4.5.0
 
 - Add support for APNS2 device/channel management. 

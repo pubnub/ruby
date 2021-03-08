@@ -157,7 +157,7 @@ module Pubnub
 
     def create_variables_from_options(options)
       variables = %w[channel channels message http_sync callback
-                     ssl cipher_key secret_key auth_key
+                     ssl cipher_key random_iv secret_key auth_key
                      publish_key subscribe_key timetoken
                      open_timeout read_timeout idle_timeout heartbeat
                      group action read write delete manage ttl presence start
@@ -193,6 +193,12 @@ module Pubnub
 
     def compute_cipher_key(data)
       ck = @compute_cipher_key || @cipher_key || @app.env[:cipher_key_selector] || @app.env[:cipher_key].to_s
+      return ck unless ck.respond_to?(:call)
+      ck.call(data)
+    end
+
+    def compute_random_iv(data)
+      ck = @compute_random_iv || @random_iv || @app.env[:random_iv_selector] || @app.env[:random_iv].to_s
       return ck unless ck.respond_to?(:call)
       ck.call(data)
     end

@@ -69,6 +69,7 @@ describe Pubnub::Subscribe do
           publish_key: "demo",
           uuid: "ruby-test-uuid",
           cipher_key: "demo",
+          random_iv: false
         )
 
         @pubnub.add_listener(callback: @callbacks)
@@ -244,6 +245,7 @@ describe Pubnub::Subscribe do
           publish_key: "demo",
           uuid: "ruby-test-uuid",
           cipher_key: "demo",
+          random_iv: false
         )
 
         VCR.use_cassette("lib/events/subscribe-cipher-async", record: :once) do

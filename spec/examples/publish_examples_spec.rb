@@ -11689,6 +11689,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/31e6f146053c0d2273c27f9a42262c2bee8f8f73dbac806115215d8c3d817667", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: true, replicate: true, http_sync: true)
@@ -11709,6 +11710,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/38a5f7f8e2d1204f3885e784dbffc9a3603abbfa3cfd005450eb74750ce1cbd0", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -11729,6 +11731,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ffc6c709128ad67ed02ac9c192136720ee9b5c5a2ef814e1bbc8d77968fe48c9", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -11749,6 +11752,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7a097a2b60718056b653ccf11e43d5369e4ead704f5aaff143522899f11ee772", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: true, replicate: true, http_sync: false)
@@ -11770,6 +11774,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a167062c9401f48b1dd0c71e6962e0c14b4749a4298907159781ebf66230fb39", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -11791,6 +11796,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/63f4fcf55aa04f59fd96718d630a2090060ef6b193c86aad6bc72cea17728e80", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -11812,6 +11818,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d4205cbb07e06a1dc35b15f5c8858430a8c8209305aa30e2a007a01e87fad2b9", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: true, http_sync: true)
@@ -11832,6 +11839,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/42bff7edabcdbfd066195c99570c14e0d399359ae9478c71314e48b6cd5c0206", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: true, http_sync: true, &@callback)
@@ -11852,6 +11860,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/465915c6c5886cd40beb6006293b7c3644b41c06031d053e70b86facd3663b0f", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: true, http_sync: true, callback: @callback)
@@ -11872,6 +11881,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e9245b304c1eb99891e7974d0b008d79a40077177034474a2e62f4b3d4c10be8", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: true, http_sync: false)
@@ -11893,6 +11903,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b643055dc9f5ec9daee5decebc011a06953010364cc335e03e335c8e232624dc", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: true, http_sync: false, &@callback)
@@ -11914,6 +11925,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/692d53d0116f60211d387558b85d18625a3a00fcd54a887bd87b023c066dcafd", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: true, http_sync: false, callback: @callback)
@@ -11935,6 +11947,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0b1460d75abe7f6f82fd3c6508e62088807e7dcc361aca79d3bc331206642c69", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: false, replicate: true, http_sync: true)
@@ -11955,6 +11968,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/27b6219bb5f81a48a1b22671211b4aabab7864c968407f5a61aa7be336242136", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -11975,6 +11989,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2f793ef3fe0ca06b10eb85759e4d436b643f2217def0b9e73ca15140300ec9d5", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -11995,6 +12010,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/390ac9f0bdbf5c9f9ee918fa0679dbc736581c86ef039078933c1f65d7d20639", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: false, replicate: true, http_sync: false)
@@ -12016,6 +12032,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/41a3f07590c77172fd9656328067b4cd7bf3ebe588e031beb7617c550a84b5d7", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -12037,6 +12054,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/afe700f4cef0b668a197e066236cb8dea4d7647e05b7a9af0bd5fbfb3e19547e", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -12058,6 +12076,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/736a7621920941e3d48f806843fd6067ef153ef4e61611d58bea7bcfccdab35a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: false, http_sync: true)
@@ -12078,6 +12097,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2f19295e45064b6b523c8394e1f572f3a3ecbf21080036de650f610726e3d4bf", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: false, http_sync: true, &@callback)
@@ -12098,6 +12118,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d7b7d41be7089977ed4fb3c4102b4f2e9d2dfa7732a54f806956bd5d7318386c", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: false, http_sync: true, callback: @callback)
@@ -12118,6 +12139,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8be993541b452605a4abfefb6b62b3ca5fe0e24efa1b036a06cb8106780a4875", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: false, http_sync: false)
@@ -12139,6 +12161,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/17970956066d970fa2570414823c67435cc353769afb036b1f89f67384424fd2", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: false, http_sync: false, &@callback)
@@ -12160,6 +12183,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/47f153d91f4bce456d70c081ec3a5e26f48ca1ec676d0e70e7c2dc39d803d44d", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, compressed: false, http_sync: false, callback: @callback)
@@ -12181,6 +12205,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c81a9fbecebb95c2dd3a1209ec02bcf29d1de779274c5883d606646c9a32acc8", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, replicate: true, http_sync: true)
@@ -12201,6 +12226,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e6fcff2d727c3a2839ea7110b9a7fee786425bbccec513c482a833a36c670ebb", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, replicate: true, http_sync: true, &@callback)
@@ -12221,6 +12247,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a126147ddbf50391c96dc4af2d4cb97e01cd66ac97db65ce18bac72a5b9421ff", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, replicate: true, http_sync: true, callback: @callback)
@@ -12241,6 +12268,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/aa0618c35c6721dd7f0394f261048be7016c426f04304139e549076efa6f883d", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, replicate: true, http_sync: false)
@@ -12262,6 +12290,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/bab67b738a4aa944b80148931266ef20adfdecf2421792216ba42beaa80ccb38", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, replicate: true, http_sync: false, &@callback)
@@ -12283,6 +12312,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a1b9dbbcb889377dc99a3a98af3af63879ee94f0eb18226bb7db35964547ebaf", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, replicate: true, http_sync: false, callback: @callback)
@@ -12304,6 +12334,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f9e1153304fa55001fd2a11b08f1ad4172347f7ac2e9d1cc65d6b4270bdc48c1", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, http_sync: true)
@@ -12324,6 +12355,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4ca77639293f74b5daa546a0c07b261281caa6c890f32af8b5d1c6ef8b0c907d", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, http_sync: true, &@callback)
@@ -12344,6 +12376,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e716394f68804f790207d49015d51e4a548fe77fd83e06e98e5b5cea20feefd1", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, http_sync: true, callback: @callback)
@@ -12364,6 +12397,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b457cc937e372e410a06ec985f92543ee3abdd763aa0b97abe1e636cc48e19f3", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, http_sync: false)
@@ -12385,6 +12419,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b8943885f5d6e0aff47a23b4ac25388aefb21c85ef20b085090cc054bd7ee510", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, http_sync: false, &@callback)
@@ -12406,6 +12441,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/08af7b0c03f7814b7c500618fe8a7ef7313c1112aace84cb4def5c9de4eba983", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: true, http_sync: false, callback: @callback)
@@ -12427,6 +12463,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4b1bd8bfe2f0f3c8f20de9e8eafb99f08cb19513665d235142a7bd2b36f400b9", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: true, replicate: true, http_sync: true)
@@ -12447,6 +12484,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6f259a5b18b9fd5f7b92805048f153b33e762e276f3f5cb21320311bb466b8d0", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -12467,6 +12505,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2a3b95790eeec0a07bc71ed84fd2f6e779ba04af962574eef4b2a5a9aed0359f", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -12487,6 +12526,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b453fd2144fc5f8fb0276247a4db9f0c88b2737436714561f7696793577f8e85", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: true, replicate: true, http_sync: false)
@@ -12508,6 +12548,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b17e1426f546cdbea5b5dc66eccbca55a26ae2c4cb10b0eed43d7b7b0b2396d4", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -12529,6 +12570,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/01f0af7ecdc9f4cc842345b1f03325dc6d6bb25b68cf0748de2637709b08ce24", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -12550,6 +12592,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b16adaca39dfdd32bf509b0b46831dc4f78451af804edcb5e838b90ee94be862", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: true, http_sync: true)
@@ -12570,6 +12613,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/aa0d9e95e75d279092cf6f1f82b2f2e386e4fc7223d56f11b3530a55028a0664", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: true, http_sync: true, &@callback)
@@ -12590,6 +12634,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c7a5cf9ffed1af47fa55d4bd9e467c8929f3b37aee22ad66cc16e88142962adc", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: true, http_sync: true, callback: @callback)
@@ -12610,6 +12655,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/35e196b2cfb6bc2642c855fadfdf59ce96f11a0a751f516dc35ef3afec855f50", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: true, http_sync: false)
@@ -12631,6 +12677,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e6cde6c58242523ab33136f3d99de1a97df22311862ac2189c99e5881609edc9", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: true, http_sync: false, &@callback)
@@ -12652,6 +12699,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/142d8f8f1b2e8779b06aa784d81238fd58a755a63a0ea8ba0469cb13559026c2", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: true, http_sync: false, callback: @callback)
@@ -12673,6 +12721,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4b564c8bcfa47d5dbf2684beb8539619b0323fdbcf36a9dba086782bb2466691", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: false, replicate: true, http_sync: true)
@@ -12693,6 +12742,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/eeb72bca879311fdda08cefdaf7205856b94acc117046f5b494070f05e874800", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -12713,6 +12763,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c7ebe447b44444a726509604ca18a54c49ed8015e5f2d87969155e56589c4256", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -12733,6 +12784,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c8df8723449bdb1fc9765044a130c213a7d8411b5d3331eff4c28a7bb98117ef", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: false, replicate: true, http_sync: false)
@@ -12754,6 +12806,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c4c276fa0d0cc99bc0871b7d96afb5d05de42f207784b10b49f632af55cf5174", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -12775,6 +12828,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3e1834097cbb767c7df8b9ae783c6de9e99667714c7d91613e8ccd7109c7bbe2", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -12796,6 +12850,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a99f8dfa22d686706f7c83d0128c96ca6244de45936a59793cfe0d69a793ddd2", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: false, http_sync: true)
@@ -12816,6 +12871,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/15bc90f20deb9da62bc6b72676a563a2da8360b54bcc0ce75429d5c257ac3df2", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: false, http_sync: true, &@callback)
@@ -12836,6 +12892,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b47cd4a5994118a083bed6d178a5e218b4dcb2c2992fff00989be73315fe308e", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: false, http_sync: true, callback: @callback)
@@ -12856,6 +12913,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4d119ca4a3a294739fa3ec6989073b74fec20f017d5eb9569a36d6786018141b", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: false, http_sync: false)
@@ -12877,6 +12935,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ef14c205f86e6a90b8d8a2375bfde43097463e8a2c1469957e6d6d838c569d6b", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: false, http_sync: false, &@callback)
@@ -12898,6 +12957,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/01c7a3166c869cf6dbdf427ccfffa6d9146e0c8c71f3dbcc49af36c9c9e58eff", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, compressed: false, http_sync: false, callback: @callback)
@@ -12919,6 +12979,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8c68e3f5c7f5e89beaeb98a4783b86d85e13cab37d408407f8f7159049b922b2", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, replicate: true, http_sync: true)
@@ -12939,6 +13000,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1659465f08200f14f1d71430da08e2dc09f8fc922cf2a20bb378da20be36c16e", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, replicate: true, http_sync: true, &@callback)
@@ -12959,6 +13021,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5c3ffb92465e1bdd1758d312ef8bc967a32a564f2eee35d3cac6e5a82161d184", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, replicate: true, http_sync: true, callback: @callback)
@@ -12979,6 +13042,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9e907077272b62f80f280325d1424ff0479d5a946c59d159e32fba15f319471a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, replicate: true, http_sync: false)
@@ -13000,6 +13064,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/302ac168e48ff9f82783a246b6ff3c0dd77914dd0404e14a00ca9cbb01dc7c87", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, replicate: true, http_sync: false, &@callback)
@@ -13021,6 +13086,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b568d95e97772d7247527263047f7cf4eb5457c54107a6e6a556c0a729c02bb6", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, replicate: true, http_sync: false, callback: @callback)
@@ -13042,6 +13108,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a7a5e2af6436e14a7e32fc2ea5574dc171f97b8bb19350d8e5404dd1a5b43bf1", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, http_sync: true)
@@ -13062,6 +13129,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f66c6d3bb74a418743c5c1bb0782eb3fcf02b810b318c3471f03a1ef1cb7e630", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, http_sync: true, &@callback)
@@ -13082,6 +13150,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/11f03401718d4f355c9ad471b09c7a147f700e11368595267760163e9bcb4b42", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, http_sync: true, callback: @callback)
@@ -13102,6 +13171,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/56cd60ade95a146daf8cee237a261234af61856ef5eb88e8ca117708db9c62b7", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, http_sync: false)
@@ -13123,6 +13193,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f6f8c6f2ab371594a511ee208bd7ace3e86174b3f913af606a51273197ed1afe", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, http_sync: false, &@callback)
@@ -13144,6 +13215,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d17704ce5b78362a118597fe2dfb0234d75fcf1f639cefe2bda25bfd4f48f2ee", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, store: false, http_sync: false, callback: @callback)
@@ -13165,6 +13237,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a9a63627362ee6bea77873b6da411a2bcb5bbdca659aa74bd670e6f42763f49e", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: true, replicate: true, http_sync: true)
@@ -13185,6 +13258,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2a752c916bacc7dbcbc6a486b5ad97fdae836cf830a984fec499509e90a34c36", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -13205,6 +13279,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7625b7caf86021f73cd081a29a70eda3dbc247480c766aee593d86ff922f4ee9", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -13225,6 +13300,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/cedbf5bfe81b5d254c4ed27b064460c28a6cf1c8a93ac276eb7a593cd1ced8ac", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: true, replicate: true, http_sync: false)
@@ -13246,6 +13322,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e7396902faad1ab0248211c09a748cd721a9eeeaa4ebd44e9f2ef4e0796ebb60", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -13267,6 +13344,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/484acc74d141515f390d4eb51fb718079f7a1b8ecdb90833e9b3a300938b96f4", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -13288,6 +13366,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/12e8fb7451aee59f6936374ebba83555d297a52dcb06aead8b7dbbd858001149", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: true, http_sync: true)
@@ -13308,6 +13387,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/358e2c2ecbe2b5056ee0b09b22415e965ef43b5dec64da5b6983b76a5a4970fe", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: true, http_sync: true, &@callback)
@@ -13328,6 +13408,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4af8f6d55b455fc9d152be7a18c9592388e73eab837acb8364aff486654fb10f", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: true, http_sync: true, callback: @callback)
@@ -13348,6 +13429,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0824d7d6855ab723a59b1d2b497823817a28f89dd2f96687eeea0287564bb8f8", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: true, http_sync: false)
@@ -13369,6 +13451,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/89d2ef68f865387c30fb684c03b4c7e33eb311307f2c8245be346d874058067c", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: true, http_sync: false, &@callback)
@@ -13390,6 +13473,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9f0e03a7477176b64b43ac026d776b720df825c0554ce28452ca20a5c614da77", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: true, http_sync: false, callback: @callback)
@@ -13411,6 +13495,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/977bfc2cfeb57f9bb7b683cedd38bbe90de0f37c948f8de86ce249a26794b5ca", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: false, replicate: true, http_sync: true)
@@ -13431,6 +13516,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/441ca985f83b82436a798d245cf5ee1c02a1ba908b3ec07786beaed8b2319b1e", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -13451,6 +13537,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ba6ebd83a8271eb51edeefb1b5f0c75e3abf48e89d07c8f789f90b0604bd9fff", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -13471,6 +13558,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7d4818305d1f91e4cc07ab0387b0b7051dca8556f51c0ed214e321ade5f6d091", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: false, replicate: true, http_sync: false)
@@ -13492,6 +13580,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/389c98e02dfceb8c6800f4ff8e5158566736f46bf6186f644a3c9982ff69c45c", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -13513,6 +13602,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/06ccebc56254730f515c7034ca80051e6adba80e599921c37fced001dc52ad24", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -13534,6 +13624,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/66d952f5d9331074a4da7c0d8ffac6a499eeaf01d4993d49db7cb9bf0d772f1d", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: false, http_sync: true)
@@ -13554,6 +13645,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/98c93820563c4236a57a633decc0a9d04674bce4bafeaa4ed04529fbfed83bb9", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: false, http_sync: true, &@callback)
@@ -13574,6 +13666,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a6f279d034a68fe81e79c53427a1cc5b9913b302277285bc77731f9991df6b04", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: false, http_sync: true, callback: @callback)
@@ -13594,6 +13687,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/fcf1cc1e1feacea87a0a01d4dcc6ecefc33c9117263fb326d5541eadaf599499", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: false, http_sync: false)
@@ -13615,6 +13709,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/56d143859df8eaf7ed574fe2122202c9d4e3a00e884cdf015d9cf85498c4d9c4", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: false, http_sync: false, &@callback)
@@ -13636,6 +13731,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/982b7268013ac2d146a336e4221366cb846a38e4057de005b615adc435467876", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, compressed: false, http_sync: false, callback: @callback)
@@ -13657,6 +13753,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/04d241551c3cb78071912038b8a460f850e506224d694f23a518b7db51d83b63", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, replicate: true, http_sync: true)
@@ -13677,6 +13774,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7d73f71907802544a59b1c5006c8a8d22aa95135bf80d9bd93c0a4d8223d2e05", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, replicate: true, http_sync: true, &@callback)
@@ -13697,6 +13795,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e9537a44f747ecd749f255cc6dfac6060da4f4a615348a74546af431aa5a1ce0", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, replicate: true, http_sync: true, callback: @callback)
@@ -13717,6 +13816,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ff23729a0d7b3b1abbefdbf2ebc7afe18bd0f1e65366daf24f6905f76ef68e58", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, replicate: true, http_sync: false)
@@ -13738,6 +13838,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/60bc7f93ffe5f0b0513ce78e8e4ca0cea678b0f5096fec0635889c99bdefd9ed", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, replicate: true, http_sync: false, &@callback)
@@ -13759,6 +13860,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/136ac56bbb3f2e6e6fa06a3b895af5a1540107a39433c582575dcf4d017f49b0", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, replicate: true, http_sync: false, callback: @callback)
@@ -13780,6 +13882,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b7750f8a80233972bc74ba6c4facd581a0d8487a633a1e92d754d40449b6d25b", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, http_sync: true)
@@ -13800,6 +13903,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2331f5c21c7f37cb6bdaac89b5f9e8ad9833e26e2b4648e297ba1e75d6e04113", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, http_sync: true, &@callback)
@@ -13820,6 +13924,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2dccac20e80dc13f185a2f4f98816ee852cf3ce4bd97fe4ab423daf10dccd489", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, http_sync: true, callback: @callback)
@@ -13840,6 +13945,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5e771858a674d54a98c794f8b492d04fbc27e4fdba5cbf8011f3a8c8648c8f9d", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, http_sync: false)
@@ -13861,6 +13967,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c3580509862cab0a9a589f1df81feaa5b746cd20a5d3c5f171a5f6704dd9696c", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, http_sync: false, &@callback)
@@ -13882,6 +13989,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6f1b39244bf6b4587cd7a5935826f46d8ae2f3a360a0e46a076b55f9fee7c017", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: 100, http_sync: false, callback: @callback)
@@ -13903,6 +14011,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6071801e12aacdccb866367b81a954018cf224444fc349fbf3929f7c7f489def", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: true, replicate: true, http_sync: true)
@@ -13923,6 +14032,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/35bc30fce3c8ab7d5fdbffb122c42205c9ede76285f8f104f4cd82d3e1443fa6", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -13943,6 +14053,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/11e70056fd4349471bac58c45263a291d81445e67456452257d5444122d415e6", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -13963,6 +14074,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c43a61034dc7e6de7b7d8e10ad7f7835d3b475e3efc21dc03fe1cae7699df8bf", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: true, replicate: true, http_sync: false)
@@ -13984,6 +14096,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/03ce08944b7553f5d004349263e4eacad67d224e93badeb8531c4577f3be88f0", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -14005,6 +14118,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/90fba087730d5103d97cb6f99822a4c3f7c328dae152f23b18c8f700bd9034ac", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -14026,6 +14140,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0c6b7c1b485cb55c76ce7ee8c8771b51084f4184dfb41c2023859ff5041c42d8", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: true, http_sync: true)
@@ -14046,6 +14161,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f416f8fd88dc281765a125ccd64a0daccfa041e7e46cbb10cf637d38c8008765", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: true, http_sync: true, &@callback)
@@ -14066,6 +14182,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/616731e80fcc8a6453f79530f9438776150d44cd0431fb4a236363573d4a3b92", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: true, http_sync: true, callback: @callback)
@@ -14086,6 +14203,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9d552c0073ffb377ece195b1fc14cb0225ff53d15578418c19b18c77af084274", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: true, http_sync: false)
@@ -14107,6 +14225,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/73f40b5c41b807cfea7893e2a2c006539d77eda7287423337e936461f5b9b031", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: true, http_sync: false, &@callback)
@@ -14128,6 +14247,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2b7beec411ba45871c9fb1d73cb06f96b1498bb42cbf6ae4822ae45165bb3843", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: true, http_sync: false, callback: @callback)
@@ -14149,6 +14269,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a1beccdfac321ac9c82f3fd28351e3f7e8fe5d5d9631d23d8addc81695a3b105", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: false, replicate: true, http_sync: true)
@@ -14169,6 +14290,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/dfd09c28644d71afd26fd294f9bd4203c85622c1a755b2da85ea35526d0e4736", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -14189,6 +14311,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0e2204d5de28b524a748c13844fa34a9c74e5ba0b17c343efd4f487bb35d762d", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -14209,6 +14332,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/57ce0b59f370d13decc1267ff990ac02d95b9c04c30e2a7af5f47d71fba381fe", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: false, replicate: true, http_sync: false)
@@ -14230,6 +14354,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/56e5a2b62e31b82be3f9405512428bcde999e29cbacdd548d10419f605e961a0", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -14251,6 +14376,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/56a796c5301d896b136554d93854648c0776c3dc9d3819c3d98681becde97b2d", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -14272,6 +14398,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ef752fc8c95e4d5e486d5a6cd10a9f08cfbb4520da00dc80a176b6bb4c2ce4da", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: false, http_sync: true)
@@ -14292,6 +14419,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/51def7676ea89739d8e8dc3532084fcbcf4bbcd0c6b260f5389d5c5a1160f8f5", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: false, http_sync: true, &@callback)
@@ -14312,6 +14440,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2c5a36f403df1fe973d50887f97f77a9f5e565a6061b96c0590c8491bcbb20c2", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: false, http_sync: true, callback: @callback)
@@ -14332,6 +14461,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6eda6498a349d284ef0b6001bd4775d60475b5c510883372b45b007f8c7909f3", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: false, http_sync: false)
@@ -14353,6 +14483,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6cc86549e0c28720b93230359b3cb1966e697954e02f04a605794f5b80235d8b", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: false, http_sync: false, &@callback)
@@ -14374,6 +14505,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/87b10edd0edb0af94cf761efef7e1678fc1a3d89c2b6749cfc5a23511be8acd4", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, compressed: false, http_sync: false, callback: @callback)
@@ -14395,6 +14527,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/47c7f20020bf3c9b18b88154e11e1bfd8e0ad1c166fc1f77344f5aa8f6198440", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, replicate: true, http_sync: true)
@@ -14415,6 +14548,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1c92dc946b04b4969ef3362bdf57be8fa7ae3399e3bd05023bbd51bffa7bda21", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, replicate: true, http_sync: true, &@callback)
@@ -14435,6 +14569,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c9586a71145c489f8df9bbec7bbca889f0a15f235722b2df0bb6e4f3f1894469", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, replicate: true, http_sync: true, callback: @callback)
@@ -14455,6 +14590,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/054c3d0b30851804d76eca357d4a93be20b161cd0475b578c65c9ccc32e74355", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, replicate: true, http_sync: false)
@@ -14476,6 +14612,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8c41a08b62d3c2a1344e9733798aa7b2d9f89638ccd6e27def97c37beaac549c", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, replicate: true, http_sync: false, &@callback)
@@ -14497,6 +14634,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/007d8320f583d297fd484f1b425187aeea7148b74a20c694e471d5605effcec8", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, replicate: true, http_sync: false, callback: @callback)
@@ -14518,6 +14656,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ffeab4633db247026476a0139d5c49c97f15c02c9e3da1b434b9e38b587a9972", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, http_sync: true)
@@ -14538,6 +14677,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f79f301295827e63605db07a200081b2d962d7b9141e40501a8774b45a38de82", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, http_sync: true, &@callback)
@@ -14558,6 +14698,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/fb9d0ce088807107d39ce5411ed86665bd5ca30076307b070ccd5e575e7e7852", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, http_sync: true, callback: @callback)
@@ -14578,6 +14719,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6e527f5a6f537096964b70c6892f0660e29c3d8ecd20340f1f1ef6ec7b2dd0b8", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, http_sync: false)
@@ -14599,6 +14741,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/96d692cb0b591394e0d8c3174d43d31309e57587de28ff24719b58e34b116d97", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, http_sync: false, &@callback)
@@ -14620,6 +14763,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/888837f256748291cd7f79f788b847996f87a23fe9cad7c78444804d417b75e0", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: true, http_sync: false, callback: @callback)
@@ -14641,6 +14785,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ebaebed0aa6e8021f83191566429256e5a50df16a3d39513a117dd28b7d430af", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: true, replicate: true, http_sync: true)
@@ -14661,6 +14806,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/161f29f7c44073207efff5ae86899e65ceee6442ad47344b9c688a95a5b4b541", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -14681,6 +14827,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/012f472690bd1fb53169b74ef54d9f717f6863534c1b514268835bdf5b7f5888", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -14701,6 +14848,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/db862e9dc69bba7812110bbcfb73624e479418f63423545d02b85af3cd6e3bf0", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: true, replicate: true, http_sync: false)
@@ -14722,6 +14870,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/467866368ca5b7b67908475671f8727a35b6b8079721ab85a2920b0a958cb818", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -14743,6 +14892,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/976841ece7f6da7b4bba24ca74868aa9337a82fe24416f52edc38ad908ab3e83", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -14764,6 +14914,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/78706ad23470b33804d0ffa658311fa78b940a7ff0b766d7cb111ab56b635c41", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: true, http_sync: true)
@@ -14784,6 +14935,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1d10e96e050ef33855b607d539423b2839a5d7f8a1ad3fd8164eb995b8bb92d0", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: true, http_sync: true, &@callback)
@@ -14804,6 +14956,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/37795f9e17cc58086de12f564b4d3e3e6c95856abf31e0dff547b09b1893fd8f", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: true, http_sync: true, callback: @callback)
@@ -14824,6 +14977,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5037a1a7273f771b3868fe95f1a162ddd426fa39bc436cb37b8335bbc5d3f45c", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: true, http_sync: false)
@@ -14845,6 +14999,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/39794aa68ca53e34677854154746ea9282642474bb793ec27e651da1d678dd64", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: true, http_sync: false, &@callback)
@@ -14866,6 +15021,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4dea01c056542cbcf5a26f32d0c78dac731e23b70c1b24c97a6efb506f9891a1", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: true, http_sync: false, callback: @callback)
@@ -14887,6 +15043,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d2dd959c4de1f518254060c711907dc4b0c77a3fe40a9b54a02d5da1e362b00d", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: false, replicate: true, http_sync: true)
@@ -14907,6 +15064,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/82651875d65d2ffa243ac7081665b8ba65b61f5ebe73861148027f5af4cf5904", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -14927,6 +15085,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7567487aca64f1a4b09f7f1c8b81248f70b37919022bef06eae31c145655d7fb", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -14947,6 +15106,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a84f593c2255ea2c3c09af91de7c7e91629e7161ca1ea78cb270d41e84c1654b", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: false, replicate: true, http_sync: false)
@@ -14968,6 +15128,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5324bc911e0c07d8490cabe37013164badbf221a172b42827801ac03e3aa44ed", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -14989,6 +15150,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/70ce075c7ce68686957207015f858a5468c333e7277487a5fdaabdef7721b36b", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -15010,6 +15172,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6be564836638c354f3f94762414a98443230c3a354f49e76769dd75f5edcdf35", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: false, http_sync: true)
@@ -15030,6 +15193,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0fd867f2bfeb53cbdfcac98fdc0e157a528659d80ae26c692d118d3c30445ae0", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: false, http_sync: true, &@callback)
@@ -15050,6 +15214,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e1d3fbfd78bf32a9502aeb82d899726a348461b152fece353403af3176435b3a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: false, http_sync: true, callback: @callback)
@@ -15070,6 +15235,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/98e8c792026c3f543c6d33171d1e4a44b6953ea55e18427ceeb2f92b058978ab", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: false, http_sync: false)
@@ -15091,6 +15257,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8df8c733bc37652e632bea1c37f845439cf176f273da3eca4dc2af6126815a71", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: false, http_sync: false, &@callback)
@@ -15112,6 +15279,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/074691d7dd1b2f9501e69a243642e474aeb008917b6d69b401b002ab4b478489", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, compressed: false, http_sync: false, callback: @callback)
@@ -15133,6 +15301,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a0e88204270cca1999553b5fea7d16df9d3afae2bca5c40459077bff935b155f", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, replicate: true, http_sync: true)
@@ -15153,6 +15322,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3ab869a33b606dc6645210301440c50e1cb804d8155549fd052d9ca0283b438d", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, replicate: true, http_sync: true, &@callback)
@@ -15173,6 +15343,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/66102c21f4ee865bcbcfadabe989f0808f10e0605cfb93b62e8aa9bc0e026a83", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, replicate: true, http_sync: true, callback: @callback)
@@ -15193,6 +15364,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/172aa123c953b4df1407e90ae1c0b3b77ae02b695555e88fb30a6961a38fe6f8", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, replicate: true, http_sync: false)
@@ -15214,6 +15386,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a683d01f90451a8b3ad9e7dd00e99eeee154d2703cf4d75dd13edd12b8f7bcc7", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, replicate: true, http_sync: false, &@callback)
@@ -15235,6 +15408,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b9d97b0cf115a798f9dfad44e14fc2acc4c0c2f2b9b61808bf0667237a21ced9", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, replicate: true, http_sync: false, callback: @callback)
@@ -15256,6 +15430,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/44698d794b96240222e7bbf282f40a809624f32188bd792f520a24ac08266e1b", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, http_sync: true)
@@ -15276,6 +15451,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a7728112aa38f094fa6e3d2a5b066b74eeeeae5e59cd8837fa23aea26d1f3b54", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, http_sync: true, &@callback)
@@ -15296,6 +15472,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7180cd17a7d5e30c2662285dc24810a1cf22c6bd992f7bf8fc330a8e41245c80", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, http_sync: true, callback: @callback)
@@ -15316,6 +15493,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/636d9f829c8e188e8f6e115f5b78301c3227ca7eab4544b6360217a92ba04a93", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, http_sync: false)
@@ -15337,6 +15515,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2a1f727ee1502566ee5330614799a8eae06abfcf6e4933dae377d76f3ff29376", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, http_sync: false, &@callback)
@@ -15358,6 +15537,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e26cb68bc55fae687a54df08347ea8e3ba0f90be84c96b964fa7e5348d1c9ed1", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", store: false, http_sync: false, callback: @callback)
@@ -15379,6 +15559,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a8e03b486965d97c7d549ebee113409e353b3693aa0357055e820b8dc9027515", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: true, replicate: true, http_sync: true)
@@ -15399,6 +15580,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/aa2647f20028b7d6c22e53bb3513d658c498242cc474f769f19da042aae09952", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: true, replicate: true, http_sync: true, &@callback)
@@ -15419,6 +15601,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7721b7843d6c37d7256d5aefbe10b4c05b4b8e92d361c141d71a465414f8350a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -15439,6 +15622,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f9d4f225f05f16ee6b05a91dc16c7e1fdbb90de5859bae7478861f93728a7c16", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: true, replicate: true, http_sync: false)
@@ -15460,6 +15644,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/42952a3bc0c7ce221a5256cecbdf23c3ff2b50b5dae2d273dc2b30d0e9ff5de7", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: true, replicate: true, http_sync: false, &@callback)
@@ -15481,6 +15666,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b4a63d342782678154f81ee027596364c99efe499f3d4f31892352b0f1d06789", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -15502,6 +15688,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e025a4c32384a29412b900918e9fdb7a144e918aa8979c2defd52d75c03f4f01", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: true, http_sync: true)
@@ -15522,6 +15709,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d30665e53504da59ec4b7e6f2ad89bfba7fa7819b678c7c8585de71d00d3b55b", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: true, http_sync: true, &@callback)
@@ -15542,6 +15730,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3ec90b07db56b30493af0a7d82837c3319b0ed72a4c3bb778d38138de47d288c", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: true, http_sync: true, callback: @callback)
@@ -15562,6 +15751,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/42ed2f50c4fd2c9d6f915c42002eaa7e5f132bb91e84aef6e0ac7d5f2c3d7e15", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: true, http_sync: false)
@@ -15583,6 +15773,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0756081fbbe452f8a1f29774fb4708b124233865ff1a3a4a99d1acc52eeb8e1b", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: true, http_sync: false, &@callback)
@@ -15604,6 +15795,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a797745da20d983d77125c5c4508423fe4be21aa5d97a5ec403a6e33ffea7c4b", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: true, http_sync: false, callback: @callback)
@@ -15625,6 +15817,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/bf4c4dacdfdd584127f906bb3a7500ff4ebcdd95e599bc2f9aa9c1ba687884d2", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: false, replicate: true, http_sync: true)
@@ -15645,6 +15838,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/618809c59e0a44ed44ad16aae10e8b8fdbd20156005291d6313ee8b7d6b08907", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: false, replicate: true, http_sync: true, &@callback)
@@ -15665,6 +15859,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0822baf6952806bfe2b8125058a0d09818fff2d0d73c6b3459dfc84996807a8c", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -15685,6 +15880,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1dd15a70960dee0d87c0f700a4a3a9e98cd832462d090372150fc745e407752f", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: false, replicate: true, http_sync: false)
@@ -15706,6 +15902,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2e0c151a028eb65742816ef987fb7d2449cbbf194e8edd7a05647485fee1949a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: false, replicate: true, http_sync: false, &@callback)
@@ -15727,6 +15924,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e550b3bc5497013121824ad1a92d727bef0e27811501ea81ff6b91e65ead59eb", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -15748,6 +15946,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d4acf89de29bf2538981fd500a5d0e785a6c4f6f448c66d935e84270dee2330a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: false, http_sync: true)
@@ -15768,6 +15967,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9ee21f2de59aa5d79b124baa34b72c8658ed5671433b3bb1e2846e47e28b3cf5", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: false, http_sync: true, &@callback)
@@ -15788,6 +15988,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7b5577c9d7a5f31ace3f840e73f233d0fb21f21579d536dd57fd4dc328842e19", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: false, http_sync: true, callback: @callback)
@@ -15808,6 +16009,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e64c1e03cb57da0c30adc4031565944cc3c2c60a34998985bd4fee85a7bede47", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: false, http_sync: false)
@@ -15829,6 +16031,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/eaae2d992739115aca99681336a62fe088b77e73449a526f8e8d843ad46e7120", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: false, http_sync: false, &@callback)
@@ -15850,6 +16053,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/397aa38f7339d18156c0bc9713cde53de369570a9a74f5b385ecc9c0c6b80e67", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", compressed: false, http_sync: false, callback: @callback)
@@ -15871,6 +16075,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/72f46c3d8fe3a3cc4276c2e19ff774239eafc3e680479d59fc388e22cf4fd5b4", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", replicate: true, http_sync: true)
@@ -15891,6 +16096,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/74572d0d1e5d0d918b72e95933e9499715f403d7c017e79e7bbad5b995819153", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", replicate: true, http_sync: true, &@callback)
@@ -15911,6 +16117,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7f29ea806c663a74f9c5fa5a468a2412e6ef8d1a6785b13f3e1452c1dfe55e13", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", replicate: true, http_sync: true, callback: @callback)
@@ -15931,6 +16138,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3f57ddcde9586ce175705135a72670f36fd585434d94d28b4382fcad1a67708e", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", replicate: true, http_sync: false)
@@ -15952,6 +16160,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/47c3bab7bac3425d5881f04f9e8cf72732405fb19462499c8847b045a1d5f159", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", replicate: true, http_sync: false, &@callback)
@@ -15973,6 +16182,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/85faca9a4a16bdeb76cae23c53e24f63d21d6ac8924f5344da1f2235a5e18b98", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", replicate: true, http_sync: false, callback: @callback)
@@ -15994,6 +16204,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/52e6f616e42e4655610828744131981357cae02fe7cc25bd45572d703c41981a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", http_sync: true)
@@ -16014,6 +16225,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6e88ae4598340570b4dba5b4b408b501d77f83202f1102a97a1d2839d9bca951", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", http_sync: true, &@callback)
@@ -16034,6 +16246,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/67e3bbc266377826d4a596e7678f0cf37b47d4f79e9d0b2d4274d8799a354d50", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", http_sync: true, callback: @callback)
@@ -16054,6 +16267,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/02b835deba891cff137565575fead5ad795136005c045a359d3553f88ac0871a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", http_sync: false)
@@ -16075,6 +16289,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a5cfd2b518421547a6cc32e637ef3e6d16c024bab95f1665dee22a78f1596f53", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", http_sync: false, &@callback)
@@ -16096,6 +16311,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9636d3f7defb300ad55ef66f123fdeb377fd9fe810769228c8163639e0130eb1", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: "string", http_sync: false, callback: @callback)
@@ -16117,6 +16333,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e5843612bbfd568e8bbe63f1d7423f4693cde429f8c49f137ba4fb0dcb996357", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: true, replicate: true, http_sync: true)
@@ -16137,6 +16354,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/40b4d70dfcf616e37c319909022e7dcb424e72858eb24b095114d26ffe2dede8", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -16157,6 +16375,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b4711993f664a308486fd9ae8ff87662877dd897cda2961bff13ff3f4937c0f8", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -16177,6 +16396,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e7e529d07f9c0a7a29b430e04e971513ac163d84a1f7aa0c83fc23361f728189", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: true, replicate: true, http_sync: false)
@@ -16198,6 +16418,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/dce30f79c502b0f325d41775ae60f8300adc18ed1445f07d83744497a4fc55bf", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -16219,6 +16440,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ad088daa95a986a698ac2a7f46cad7634f09937fcd2f0f82de501a697241572d", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -16240,6 +16462,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/fbdd366b8209af3a9272dc60f21baed0d64acd97b287ab38e5a3d283d7a03f5e", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: true, http_sync: true)
@@ -16260,6 +16483,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9fc913a436c50f178f317a325dc28938c277c84835b688ec784e97842738bb89", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: true, http_sync: true, &@callback)
@@ -16280,6 +16504,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b97e4a4c1ff8dad61651b09a123c263bd232ec9f4aca64c0154114cfd897fa2a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: true, http_sync: true, callback: @callback)
@@ -16300,6 +16525,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1d99a4c2c5a720e38b579b00472bceb9e79ca5bfe06fe18556cc1031f7adf321", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: true, http_sync: false)
@@ -16321,6 +16547,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/428d057f5bb9fcab6f4dec809ceb186ca12081c6d58b759255a6f1044b5fe7e4", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: true, http_sync: false, &@callback)
@@ -16342,6 +16569,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b35f8e4f901e2fc09001cbc98680b361d2652469d1e1647c2493e4a479ea25db", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: true, http_sync: false, callback: @callback)
@@ -16363,6 +16591,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0decdfa1a7c35b9f62fcf04d2ceea9851e0f535e966b26dabbf422bd88eaf3c5", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: false, replicate: true, http_sync: true)
@@ -16383,6 +16612,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/68a32a0cf3f0e021bb8381a3b997c3060f46e505ef5879dd017927f21db55e5d", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -16403,6 +16633,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/965715ebd7ee44e762ba57d9b7e560af548b499726ecfa2cf6cf31b3a05966e5", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -16423,6 +16654,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/32322d315b9543d26a55258fdc91c6f0633d4c0600ed291a1f59c9a346f5d8ca", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: false, replicate: true, http_sync: false)
@@ -16444,6 +16676,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/36f658685a0115a95e5e2a946eb82e889818e363b767ec8afcb016de0a81acf5", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -16465,6 +16698,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/19b71e701c323e4357d15354f2fa67bca0540406f8b4da6a1077002580a49cec", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -16486,6 +16720,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2be5460fedccd5f54d380bee23ddd7d32d3780e06ae0e1d86a5ac3ac2d68aa46", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: false, http_sync: true)
@@ -16506,6 +16741,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/164fc76639e295df30e6adfa9c1bdfe05be59435e34d1d55eba48d44e894c1cd", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: false, http_sync: true, &@callback)
@@ -16526,6 +16762,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f115f6ed5aab63ca69bf1b3c9873b81a5cfa37fb89ff5e73f5b02d7467843cf7", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: false, http_sync: true, callback: @callback)
@@ -16546,6 +16783,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/552d2d703954875f8b1ffd0f2c0a9161f24b8f1644aa8e5a40adb8a807d83ddf", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: false, http_sync: false)
@@ -16567,6 +16805,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/94223cdb0532065a625419d5ff93b5ccd48c2da7f09aaf21abd3a86f202381c6", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: false, http_sync: false, &@callback)
@@ -16588,6 +16827,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3247321fd44d9cf45633a10f7924530e98cf0be3ba82e3edc5c7496c79f2b000", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, compressed: false, http_sync: false, callback: @callback)
@@ -16609,6 +16849,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b44c9839c7db01b8225a4f8907c19a25d78e6589d125990e0350cce203078615", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, replicate: true, http_sync: true)
@@ -16629,6 +16870,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0aca0a144e9795f10fd01fd866248348276405f8b3fa2cd51073155ac9d0e5d0", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, replicate: true, http_sync: true, &@callback)
@@ -16649,6 +16891,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1672dabfa2c535b83abbfb99beaa8b5710b9238d8867f48046eca0875d5cd33c", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, replicate: true, http_sync: true, callback: @callback)
@@ -16669,6 +16912,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a59e8fcf52f49490f5c4187e7ea370ea69ab0a9f0242cecc13ea59ece682ddc5", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, replicate: true, http_sync: false)
@@ -16690,6 +16934,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0976e9fdb9f9ef1c65c6f2d5673fc85b35ef91ae14526837b33dd7f55a906782", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, replicate: true, http_sync: false, &@callback)
@@ -16711,6 +16956,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2a1dcca87f5dc0a879a24606253770f1c359dc68d63f402c5c3889da6dc245bc", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, replicate: true, http_sync: false, callback: @callback)
@@ -16732,6 +16978,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7ab32e603d2a4df71b402b75cb42f09729a0deb747a47437fcdb726ece258e44", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, http_sync: true)
@@ -16752,6 +16999,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4fa513f1d96030af88afe716e29ad69ff72dd0274802d0720474e04e28ee1492", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, http_sync: true, &@callback)
@@ -16772,6 +17020,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9fdaf327143e4375483307101cc8f59fa32e3131cc2e732338c785ebbce88bc5", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, http_sync: true, callback: @callback)
@@ -16792,6 +17041,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ce60dfeeaff9cf4e171d9e2d3b441148367bafadad0fd924fb8d18298e8511bc", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, http_sync: false)
@@ -16813,6 +17063,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/572751323a2f85106b1bf0cb39b580977124a71cda900103d1ab5f62d6f60e61", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, http_sync: false, &@callback)
@@ -16834,6 +17085,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8d80acf1d7b39397efaab7f1b2a463fbcb2671a1018f059315fb605a592bb849", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: true, http_sync: false, callback: @callback)
@@ -16855,6 +17107,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/17809eb95ff185a394fd40cf0b9e826cefa881e06fd7cf3796500a74405bc035", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: true, replicate: true, http_sync: true)
@@ -16875,6 +17128,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2a17c1544af971e33778e9350c9b7a7ea3472c43ffdb188383b8a1bbdb56986f", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -16895,6 +17149,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0a876ac1effdfd36ce4abd9f5a03bd0a7cffec01257fce3669dfb1f8aec142b4", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -16915,6 +17170,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/de3cd78d54d0c9b123739ac921ab20d60f663ce0c03cdd3725d093530cca4d88", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: true, replicate: true, http_sync: false)
@@ -16936,6 +17192,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/715ed6f5116f5e417d6fb41bdfc280725bc63e17d478d542464310df5127f5d8", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -16957,6 +17214,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7234cc81b48838e0512ddead239b8919497fff1bb0387d8eb73ee93d825c0103", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -16978,6 +17236,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1e3bbed3c3f488aa55623f94567ce69959c03a5720c679460e0509a5dc25ba12", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: true, http_sync: true)
@@ -16998,6 +17257,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ef56ce5aa8764afaa072572603021db79d8714664f4d5d39f6ae565be4184932", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: true, http_sync: true, &@callback)
@@ -17018,6 +17278,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c396d0a18a51355c3e6a9a7d862cb9d549e8d5ac81f9cd980a278cd95b7f4536", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: true, http_sync: true, callback: @callback)
@@ -17038,6 +17299,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/853aee383d8114938905ba9b9853d816803a27be4d236bc15e3d4f846880d9e7", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: true, http_sync: false)
@@ -17059,6 +17321,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b95a952f8d10fb739c64dc1322c551896e77790b3baba014f28a50e91dd918c3", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: true, http_sync: false, &@callback)
@@ -17080,6 +17343,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b99a45acd7f6017471f153e33f046332b52dc03c222fe7eb911edcae91abd351", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: true, http_sync: false, callback: @callback)
@@ -17101,6 +17365,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5beb445c809c8b655748b1786365bcfa830c1913210ba2e25b2f589eeb4f4702", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: false, replicate: true, http_sync: true)
@@ -17121,6 +17386,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b36de98c96a36451a8d08289c459020c95f8f073e0f40ac392bdd191aece6ba5", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -17141,6 +17407,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/90216edcd2f99c4b400058ccb565720938c067cd52a1c059c07f86e02591501e", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -17161,6 +17428,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a35f30e2848343ff393f68aef3e9f2344d1051ae45c7f5f99140426a2a8b54f0", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: false, replicate: true, http_sync: false)
@@ -17182,6 +17450,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/152a684de74657b199a2caca68593d060747a62d39b6b57b3eaecd5147d335ff", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -17203,6 +17472,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0e86f50713e441c010cc74a7d81710c6bbf50f47f8487de694f5461f52f26efc", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -17224,6 +17494,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/385b169ef2d605d0783f3647fafce7940b88d65776dca57c63b01f70194c4e36", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: false, http_sync: true)
@@ -17244,6 +17515,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/cb4c0bfbd76b54697f8ded3b727fb32c31c78ef60e7005679eaa70652fe6296c", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: false, http_sync: true, &@callback)
@@ -17264,6 +17536,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9b7537fd7c3f5440f4216086086203caa5b860ffba6ca4cce5c81bec09b0a43e", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: false, http_sync: true, callback: @callback)
@@ -17284,6 +17557,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/69cd7a07748c07dda0e8a792fb25fc230450d5c783979fe44594b9ddbc4376c4", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: false, http_sync: false)
@@ -17305,6 +17579,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ac55f00898b1b144a9fccc62844f23d7404f4d69e54e54c78515517e38a16d92", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: false, http_sync: false, &@callback)
@@ -17326,6 +17601,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/53c6ddfbeae5128e023126280c54d81cb768d35ce9546fea2cbc14f6d96d26b3", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, compressed: false, http_sync: false, callback: @callback)
@@ -17347,6 +17623,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4c5965fb977eded75905d46c531b982a609923fe8c978c9bd344a71f213637ed", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, replicate: true, http_sync: true)
@@ -17367,6 +17644,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6b915aed438e63aa03b6c152ab402bda2d9d039de06df7969dee69a23ec718b4", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, replicate: true, http_sync: true, &@callback)
@@ -17387,6 +17665,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8a7de7412044dad310363d63aefef53af81e44af3a31c1c96cf775251695dd66", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, replicate: true, http_sync: true, callback: @callback)
@@ -17407,6 +17686,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/440ad2e99d2445c9b1a9ac5adc32f19d0d68fc46e860ec01f3e2c3c566279d06", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, replicate: true, http_sync: false)
@@ -17428,6 +17708,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/46a3f9ebb216f3052419e35812eb91c1dae8fb96806ac6fa22a3caa9d8452ab1", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, replicate: true, http_sync: false, &@callback)
@@ -17449,6 +17730,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/55f09ccebcfab83e61299deb8192e7b9ef989e502549cc15c12fd621819fcfd9", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, replicate: true, http_sync: false, callback: @callback)
@@ -17470,6 +17752,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4c1b9e79a9863adc645beedf5b83037c6d6d3950b0e6972e5bc9dc2ca9511bd0", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, http_sync: true)
@@ -17490,6 +17773,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/bf6f6611635c19d354b8aadc046b4ddc0d47a40a81d2a83ef669af00878077fa", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, http_sync: true, &@callback)
@@ -17510,6 +17794,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/46c9e302aec4ac03de998b335e56fb5bd6f8ea84c3792ed94f91978e37ce0174", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, http_sync: true, callback: @callback)
@@ -17530,6 +17815,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6a5fc24f533342bdbbb698930552577a76b2a8eb75ab9e8e49f6b50eb195a0ad", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, http_sync: false)
@@ -17551,6 +17837,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/39f18ff83ed35f833e229a13d3207e1781dd849a62da8c269f7242a63eb791df", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, http_sync: false, &@callback)
@@ -17572,6 +17859,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/74fe16aa97fcb1a2904a1ef71d95b54f90f7c310c1c1f84f6b12da456ca1e631", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], store: false, http_sync: false, callback: @callback)
@@ -17593,6 +17881,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4c212344e23901b9865c0e2df8d9d2d5a2b2f3c639f84fcd105addd5dc32e3a4", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: true, replicate: true, http_sync: true)
@@ -17613,6 +17902,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/430bcd040b98aa6dbc8ebd4867fe3532bca1d678f0dcbdbc2b56822d3943e8e9", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: true, replicate: true, http_sync: true, &@callback)
@@ -17633,6 +17923,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9d58a9da54297469cd79f7e86b995523e1b483e87ae64d2a64a02f98f8dc957b", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -17653,6 +17944,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4817ee499fac7c81fdea64d6c0202020a6fe1b693d0fb8279fc6ed5e121a4b60", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: true, replicate: true, http_sync: false)
@@ -17674,6 +17966,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/95afc9f96ff55eec9a94aec413c1343f898debfc203dffe8bdcfabbe15d2f0ee", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: true, replicate: true, http_sync: false, &@callback)
@@ -17695,6 +17988,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f3242235f5b957ebe97e9887819807e9ef537276fa87581a7e28d3aa2e16c9e3", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -17716,6 +18010,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/273b9492d1523d813dfeda32573e6ba3023f6120da168d14423c253cedc6c93e", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: true, http_sync: true)
@@ -17736,6 +18031,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/53efa1b620e77ebf3a94771daff8804b2e081db88ba58ed37fd4776470a2b9e3", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: true, http_sync: true, &@callback)
@@ -17756,6 +18052,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/87906fb56a0948966ceaa1cf4d325f3a70c1cb503e2b72e350ad47aabc48be9e", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: true, http_sync: true, callback: @callback)
@@ -17776,6 +18073,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a47af55502649ba4fb984b9b1cc3d91b0225100caec7e81ecc83366437f5db38", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: true, http_sync: false)
@@ -17797,6 +18095,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/cba62cb27ee668d650b3252fed0891985def850376898181ee5c934468d57266", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: true, http_sync: false, &@callback)
@@ -17818,6 +18117,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/712f74f152a3dae36f9d0f198746b13b5b1bd7cc118032593403fe99d2adabd5", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: true, http_sync: false, callback: @callback)
@@ -17839,6 +18139,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/680b7a199982684795bfb1310d2b129669246502c34e876a78fb2e81bb9be894", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: false, replicate: true, http_sync: true)
@@ -17859,6 +18160,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/38b56a040ce4bd1380293c951b884a246e55d60f4f6776ce7df92a2e71fcb9e3", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: false, replicate: true, http_sync: true, &@callback)
@@ -17879,6 +18181,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/fae03e62d346b717fbb8fc5a4091354d4a2096af24f53180a5fa809377be5509", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -17899,6 +18202,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7123d25781a8577336bd87ae107454a30255c782c41adfc4c4666b01b35b3832", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: false, replicate: true, http_sync: false)
@@ -17920,6 +18224,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0e5a45290d87b572c578041f856b8503fb07ffdc82219d878a07674c6f8da24d", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: false, replicate: true, http_sync: false, &@callback)
@@ -17941,6 +18246,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/dc5ad4d9df65cf0b4b5cf754c13a7983ba15596c71c73e205d674b86c5ab525b", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -17962,6 +18268,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8a667a99a42ed1aa4ec9bf7ad4c3d3622eed66e49c61668926331bdcd49dfdc2", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: false, http_sync: true)
@@ -17982,6 +18289,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d94d0c6b94736a542fe420063c7f796e3155531ed2cf933d27ed08e23dcdcbaa", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: false, http_sync: true, &@callback)
@@ -18002,6 +18310,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f0fbd741832bf31f2b3d76bd60ebb0a73ea69e917250daa6f0e7e5385beaf504", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: false, http_sync: true, callback: @callback)
@@ -18022,6 +18331,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e0c57fbc72d08b927ce5d2c1b140f0f3c7416ebb8f79c74b5f9490d93faef1ef", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: false, http_sync: false)
@@ -18043,6 +18353,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9f33c7aef9e1f550b10447545952279e9390eedf2ac258cdcbbb069978cb9fe4", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: false, http_sync: false, &@callback)
@@ -18064,6 +18375,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a3f6fb6c81d94033ddd2177bd1c93f4603b7a83b873ea546779cfdaa58c55c89", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], compressed: false, http_sync: false, callback: @callback)
@@ -18085,6 +18397,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/21e54e5a8b9154d33fbb1ab206ece62954d7893d18c8a7abf3a2fdcdd61fb298", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], replicate: true, http_sync: true)
@@ -18105,6 +18418,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/690fe06412eea42267819f4518f2e8ab4475afeea458d15f55c48f474737184f", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], replicate: true, http_sync: true, &@callback)
@@ -18125,6 +18439,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b9a3e4975b1e89e913a9ecd79afd06fa08f879e71352515861b7d35634bd7882", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], replicate: true, http_sync: true, callback: @callback)
@@ -18145,6 +18460,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c4c78695d62cbac8b1fd56a34e128f6f3c4927e4f8d8d70007386a0a69e9a32e", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], replicate: true, http_sync: false)
@@ -18166,6 +18482,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/57e9bf0d678f5b7347a0c25619391b98d94f7021cdf1a9e1c39ea61fbb336a31", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], replicate: true, http_sync: false, &@callback)
@@ -18187,6 +18504,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8a3940d823a41fabab09851cc65d0b81e2fda1dde3754ae8a0c5977c2b30ce6d", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], replicate: true, http_sync: false, callback: @callback)
@@ -18208,6 +18526,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8ca94935317486de4157ecbd59f9e86280c7b7c4e221d57aea05427839450c57", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], http_sync: true)
@@ -18228,6 +18547,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9cdbdf0d747188eded2359e355116ddb2cfff2ac4be71faaeb5b1bbbee9352b8", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], http_sync: true, &@callback)
@@ -18248,6 +18568,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b41406297c198b6e3cce4a8787cadc502f4911eef2d8cb6a94ea29229e6e728a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], http_sync: true, callback: @callback)
@@ -18268,6 +18589,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8240516fed52c97d88837d6a5433440b70a97d4e917f4c19d6e92e7d011c5a80", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], http_sync: false)
@@ -18289,6 +18611,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3b9276d60d749a6e31a0695e177669d2781eae28bf7d5fbd1b2e1dcd1a103453", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], http_sync: false, &@callback)
@@ -18310,6 +18633,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6308a28db66b885f309bea467288d94161b65f67326ef2920ea68491b8b46aca", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: ["ar", "ray"], http_sync: false, callback: @callback)
@@ -18331,6 +18655,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/03668c7e6b1a2a641fdbf7e8cf8bf688146fb0434b52f92f5ef1bf718790c778", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: true, replicate: true, http_sync: true)
@@ -18351,6 +18676,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/67a7666f294adfa2626443943a125d5848fd263445171f4340f532f41b0de3fa", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -18371,6 +18697,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7b31564ff18ed4907157e8dae8c75affd0c3330459dc6c52d5f117bed7153b66", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -18391,6 +18718,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b873308f0c1fd48ecdc6bd713f5bc77123ba819105565579f7138030ffcc8556", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: true, replicate: true, http_sync: false)
@@ -18412,6 +18740,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2793324e27ab094ac3955d2c935111bf077768a56244da4170da717b481c05e6", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -18433,6 +18762,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8ad50340d32971df777bc0220253cdfb654c9156d2a9d5c16b5f9279c2bd3e81", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -18454,6 +18784,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/70f120955216fb4fa91362a1f4be872b0388e71476dd477a0f1fe4d618ec901f", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: true, http_sync: true)
@@ -18474,6 +18805,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/dfa4b4f7903aecf551b30a5b1ea5796b0c09260e16830555d309774713576b05", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: true, http_sync: true, &@callback)
@@ -18494,6 +18826,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/49593c2c20afcc9527e0e39eb3b589c9e98ab121bd0f5910d9b43b1c94e76bda", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: true, http_sync: true, callback: @callback)
@@ -18514,6 +18847,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a03da683353064bfea9d45e6767baf778aa92191fd062aba6423b66237f4fa35", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: true, http_sync: false)
@@ -18535,6 +18869,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/601707f39d1649b042b9a17ab3bad102b1263a8c8f9e41fa9a8ccec8c67747a0", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: true, http_sync: false, &@callback)
@@ -18556,6 +18891,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/af38a40b5631c78fb1c24fc22ed086ed4e04aa339b689f9fdff2a630bd329241", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: true, http_sync: false, callback: @callback)
@@ -18577,6 +18913,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e4dd7678fdf4c22f24e73fb9bc1b75e5a2b9b017ab08cdefce4b3887994b9a55", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: false, replicate: true, http_sync: true)
@@ -18597,6 +18934,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/93a654e9a06e6ec446df4eb1a3ed185e2d3dbc02adfc75d09712956f28366a5d", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -18617,6 +18955,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1b3f95058471b99d6efc96a3fdf978d94d8f9c4526eea7e42f7bdcd860fa8de5", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -18637,6 +18976,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/81ea0f8c580eb2b21ca86429472239ea85e02e4cfa41f0120b8baa8ce5a5d1ec", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: false, replicate: true, http_sync: false)
@@ -18658,6 +18998,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/df240b1d0b197e0748930145dd31d1c67f41db72fc0f4912b9962ca0bbeb46d3", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -18679,6 +19020,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/64540d1059a663d3edcee8164f23f101ffbb83b7bd8be2dd29bb46d64f48aa74", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -18700,6 +19042,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9574d2b2ff8e677fdb192aea5e189b35b5d5852fd5071bb947d0db714332f75a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: false, http_sync: true)
@@ -18720,6 +19063,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/373a86b9a052632aa0cf932786725a509ce76f35faf5e277fcbfb93acf2ce3d1", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: false, http_sync: true, &@callback)
@@ -18740,6 +19084,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0181b1b6ce3127c799f0260caa0615a5f5c39de9d116e43543e24825070c5dac", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: false, http_sync: true, callback: @callback)
@@ -18760,6 +19105,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1ac8e0cb5365238b23d0108ad4e723953de9f244dfd96c245fa0009ab334a07e", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: false, http_sync: false)
@@ -18781,6 +19127,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5a4b1790c3ccf5b2276933e73092737e731edb71f34dd8a001072cd05ac8b6d7", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: false, http_sync: false, &@callback)
@@ -18802,6 +19149,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9224d7ad142ba870e16cfef2f9401578032a464eb2a15f48a4d32e9900660320", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, compressed: false, http_sync: false, callback: @callback)
@@ -18823,6 +19171,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/982fd67a0c2f50563bbb61321bfbeb80fc583f68fd5ffc062b607defe3964034", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, replicate: true, http_sync: true)
@@ -18843,6 +19192,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4e926de94fd13ef5c0749142e14880faaf4998372d78fb8c89aa54a0eba668e0", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, replicate: true, http_sync: true, &@callback)
@@ -18863,6 +19213,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7121e4f9fead81100b2bd8dbb0751dde73492bfe38f7839417644d1d07d86b4d", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, replicate: true, http_sync: true, callback: @callback)
@@ -18883,6 +19234,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5e8a3ee9f47699e69bde859cc0a7fdce72c0799f7e5aa162fb182b455c476cad", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, replicate: true, http_sync: false)
@@ -18904,6 +19256,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/dc16df9482eebc062697be13d676dd939ebb60e2108a74235b6db31b0439ff89", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, replicate: true, http_sync: false, &@callback)
@@ -18925,6 +19278,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/21dc95682015ea2702aa1e462c2bb778ca44a70807f03d7d26d9713834b92be6", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, replicate: true, http_sync: false, callback: @callback)
@@ -18946,6 +19300,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5ada15019a80cb8f63b020e1d20b479cffb486cc39706fd65c674276afe25041", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, http_sync: true)
@@ -18966,6 +19321,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b2569d68330cb153b10a65c6c3a56fa2424c3969e745e8ef353d07a297ac3c52", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, http_sync: true, &@callback)
@@ -18986,6 +19342,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/40df08cee76d1c2f42b815c3094c455caa4c2949ae8fb54458422fd82f8e3127", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, http_sync: true, callback: @callback)
@@ -19006,6 +19363,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ee998eb703ff302f68040cadbf82725527bb0c611aba3b55528243fe656892bb", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, http_sync: false)
@@ -19027,6 +19385,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/eb07bb20460c3317b8d2d24f9847f64246cdc8638abc464144bbf83750e879af", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, http_sync: false, &@callback)
@@ -19048,6 +19407,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b9e4d02ca3cfb8ba5c8dcd353190c11a0c799823986e85db0f381af3af9581bd", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: true, http_sync: false, callback: @callback)
@@ -19069,6 +19429,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8b436113f8a4178ead11e6ae77b64a7971796a863b288f7242f57c8328dc59c9", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: true, replicate: true, http_sync: true)
@@ -19089,6 +19450,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6746a9b99db1ff3da792593cfb28a8030d5000bd90efaef582b75ecb2cc82dd1", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -19109,6 +19471,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/014cc9e042969139ba70f6460997f327176fe33a70d31b6fe382790e26934ba9", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -19129,6 +19492,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2a889a437a655c6560ac89530f2fc0428def3ffc19d8834ac9587211216fd96b", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: true, replicate: true, http_sync: false)
@@ -19150,6 +19514,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/391a8c28cf732acc4c00d9f957af9d9ac2147acc2367730f264de07c90d32c2a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -19171,6 +19536,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8eb905ccfa187878d8b0e290cd5a61bd0aaba7a2b9bc648ec64ab8b437d10a17", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -19192,6 +19558,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5ecf82a6bc1c36234258ec0130ce289d00fd9a890ae6cf3ebe7817db5434fdcd", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: true, http_sync: true)
@@ -19212,6 +19579,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d907802c3b81f905b253ebaaa794a60ff9a59efb97f9b538e667eb25cc7647e9", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: true, http_sync: true, &@callback)
@@ -19232,6 +19600,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6b7b2eeac16b4ab2777c18e4a80a9f7ef628584a1772af735224ba14dc763756", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: true, http_sync: true, callback: @callback)
@@ -19252,6 +19621,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/58ca83a55e7dadb5929f509c4cac438280b5a2e945043aec8984e3ae14fa5d7b", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: true, http_sync: false)
@@ -19273,6 +19643,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a4eeedabd78c1c38d073433d5ddc815776d1aca12f00338d24d16035543e2978", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: true, http_sync: false, &@callback)
@@ -19294,6 +19665,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c0bb9ba3b8ff81e4e86d18e7c4a56ad5c3a6a9b0935d492fa42e21a703887aae", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: true, http_sync: false, callback: @callback)
@@ -19315,6 +19687,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f810ba4de3f3b18a51ae11b5b702536220144947a09ea0d56819171bf441def6", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: false, replicate: true, http_sync: true)
@@ -19335,6 +19708,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4b39132d782eceb41445286911b92042f29eeafce6e2df89ebfd4ea680c8f09c", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -19355,6 +19729,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/af4525e2cdaf136b45f0af82e194242a359fb3b1d119326e56291a37c44306ad", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -19375,6 +19750,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b6be627caf009b1c9dbf67f888bad04a3849c763c6961e0fbdcaba31faa86e4a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: false, replicate: true, http_sync: false)
@@ -19396,6 +19772,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ad6538af616ca346237038c6abfa686858aae84a9b2f220b8da715e1dfec33d5", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -19417,6 +19794,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1d3e24763addab01852c48db3111811ccad28d565bcec8d4c89d3a06e3af3319", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -19438,6 +19816,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/280f356bf5d12b035b5646abd3f9fd423ca31c6bcedfdaafbfd658660d5fb327", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: false, http_sync: true)
@@ -19458,6 +19837,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/754c14c8c38a3d65d04b685905159ea3eeb25f3cfe654b0c8c80f7065943fc9a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: false, http_sync: true, &@callback)
@@ -19478,6 +19858,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0cd99b25811a9ecbc1d69747ba024fb64a8c4b0f6eda397b3ab8d72dd1dd287b", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: false, http_sync: true, callback: @callback)
@@ -19498,6 +19879,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c2a0e0d33a2828c0b68c42294c5c231e64d3562c1c10b91f9193702b1e088959", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: false, http_sync: false)
@@ -19519,6 +19901,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/96ba5e542e8b3a69d25484dcab935bd97b088257f088517eb91c856b2ecd0c38", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: false, http_sync: false, &@callback)
@@ -19540,6 +19923,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6a24813953ef9986abf09712f96a6dc435d2612029675f54c2d75ed10a39e419", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, compressed: false, http_sync: false, callback: @callback)
@@ -19561,6 +19945,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/36bc8b9f2d9513d5bced93dc68a83ebdd59e072c9fe4a6dc6db61c95768bf059", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, replicate: true, http_sync: true)
@@ -19581,6 +19966,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a675987ef2c125cf13573cc28655cce4e36aa0607b4308d8c503f0937025081f", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, replicate: true, http_sync: true, &@callback)
@@ -19601,6 +19987,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ce75ffa11eb2b1712404b1e8250cf554adbbf49fb0195a345ec18299635e28bd", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, replicate: true, http_sync: true, callback: @callback)
@@ -19621,6 +20008,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3cd581e7bd73a1dc9592210df27ed0ac70c894bafb2baa3d4ad166cc2ae178e0", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, replicate: true, http_sync: false)
@@ -19642,6 +20030,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8e2565ec4e2cf56c875eb01749c64026747aeeb2199716b3f2d25f776c9dd36f", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, replicate: true, http_sync: false, &@callback)
@@ -19663,6 +20052,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/12c669051d4aa6dc00c30a3cbda80b285e5c5fc36c3a18d468a602b2461b059f", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, replicate: true, http_sync: false, callback: @callback)
@@ -19684,6 +20074,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b64e899d3ac8e6fa185a01eac0389c57456d6b8b32bcc6fb919c876ee4f9c407", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, http_sync: true)
@@ -19704,6 +20095,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5d7062a6839d516fa2155d0ea5def630d4c5264ce9f3b7dab19ce65004950329", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, http_sync: true, &@callback)
@@ -19724,6 +20116,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/69d1fc67799a0dc09c101e0c08487ec4468e76e7b35d676b4918e0e9cd612d6e", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, http_sync: true, callback: @callback)
@@ -19744,6 +20137,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8690d44b52f18e9c5e9143d4e50d404ddd143c6c1c1599a7f628fb3bcbfa27c0", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, http_sync: false)
@@ -19765,6 +20159,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0b12cfab1340d639b90ae0ae431f4abe9768b4c970df55600b7369010cf652ad", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, http_sync: false, &@callback)
@@ -19786,6 +20181,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/27a22d5ea0d5297732943a52708537b8eeb5068bc14447c4c8e91a601030c386", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, store: false, http_sync: false, callback: @callback)
@@ -19807,6 +20203,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8492daff05c6e971d1fa86d9d0d5c3940617b47b18e9267c78cd9bffdd203d16", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: true, replicate: true, http_sync: true)
@@ -19827,6 +20224,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d81ac5c13a18a10ff2524a984d49902c0b78515bbef8d644ff800c979475faa8", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -19847,6 +20245,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6f41a3594a7dd30a3e01a188051ca4ef8cd1954723d7e6b2c0991f038352a66a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -19867,6 +20266,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5c50b54da886980e33e38f28668e701b8935a5348203e8585491716b5f9c8dfa", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: true, replicate: true, http_sync: false)
@@ -19888,6 +20288,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/37622be3a13284fccef9c7d93c7ca79dd6846384160d942424d4788192adc7ae", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -19909,6 +20310,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e1533219e8792e655e8a6e6f78156c892b4091065d95deb4864ed331b623dfc0", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -19930,6 +20332,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2fa4933674b4fde556ed8a820278cda77f3053326f863281ee0890f3794f8c64", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: true, http_sync: true)
@@ -19950,6 +20353,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/362630e473eedacc3455b02aea2d0ffc6504ce9f5d3596cd3f578bbcc9f740ed", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: true, http_sync: true, &@callback)
@@ -19970,6 +20374,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5950b9248d2b51dff19fe3cf04b2547303cad99c269e36b8ab2687210080a10d", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: true, http_sync: true, callback: @callback)
@@ -19990,6 +20395,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7f514c5cf8b41182fbebe8567265071300df957f088bfe13e91e9f2ffdf81afb", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: true, http_sync: false)
@@ -20011,6 +20417,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/204bdcaa967ba8f5d15f9ed51f42df41fa71acecd3cdaefb0642881bed5a6692", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: true, http_sync: false, &@callback)
@@ -20032,6 +20439,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b47d153daa5aa6f569c46df1a051257fc99665f6bb849c3876750d5fb64c4089", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: true, http_sync: false, callback: @callback)
@@ -20053,6 +20461,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8032a2d5656a85734f115443b92f03230ff52cd97a2878e7aa41e3a856caa64a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: false, replicate: true, http_sync: true)
@@ -20073,6 +20482,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/90a4d7ce09c34a85326cae7813450bc423422b3c00a4d70b968ac021b6a8d7bd", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -20093,6 +20503,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f0c306f7799abd67c9bd2b3fc748008afc8871b81b1ea00b5886ecd61df6c97b", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -20113,6 +20524,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f60455c2f428fa21f41f201a6dbd213451c4aa93c299dbad5867047bf2811a65", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: false, replicate: true, http_sync: false)
@@ -20134,6 +20546,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2f6786f41451af58c141f4bdb1c8eeb23f08cfc96593b60671b57edafbe8de6a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -20155,6 +20568,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/666fa811be9502e0359577aa6543b95e24fa69e751ba44e732710fc9dc3e5f91", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -20176,6 +20590,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/90a673b9016f9bed7d7bc852f6d798286ea35b30eafde8df7666e4431f578e01", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: false, http_sync: true)
@@ -20196,6 +20611,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/61863d43a2fb8c9de1cbb9b1cee60be49d452a3d0d273e1aa3f4c84ff39d2ac3", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: false, http_sync: true, &@callback)
@@ -20216,6 +20632,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8e4b81b9bbb06287df579adc5beab0a6a10f4d4a35a567270b78357c59913a28", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: false, http_sync: true, callback: @callback)
@@ -20236,6 +20653,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7263b8367f2d92f4aa0b0d0211ccf1fe85799587ae3a27b18c9a29020bf2a55e", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: false, http_sync: false)
@@ -20257,6 +20675,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/db331f8b9fe3e7da80dd7d7b110513a94de47f759530928fa836603b2ac0ca19", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: false, http_sync: false, &@callback)
@@ -20278,6 +20697,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b627d9a2f492f297e2b55167728aead8bade13074c06fe56c9db25d7a112b86a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, compressed: false, http_sync: false, callback: @callback)
@@ -20299,6 +20719,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d23808718ccbc5a8976ad22e3b4756ce73e6210e34c8d78be439155a859d075e", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, replicate: true, http_sync: true)
@@ -20319,6 +20740,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d4213d90ebdd63c853e38467c86d6b9b2d75dc345ac7b105a573d3bfcbe7922c", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, replicate: true, http_sync: true, &@callback)
@@ -20339,6 +20761,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2f656286e0501720872796d4f63504b19476203851e2827303423b2eb47baeba", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, replicate: true, http_sync: true, callback: @callback)
@@ -20359,6 +20782,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/50c7cbac9ae0bad7308c8daff3cdbec9b48b5cf55f44c0b571d9c939e9f8989b", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, replicate: true, http_sync: false)
@@ -20380,6 +20804,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d61dc957085429eb19bdc414ce5e8cb790e2982b5801093f118d4568bbe61dac", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, replicate: true, http_sync: false, &@callback)
@@ -20401,6 +20826,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7b4c5e79d369934d2fb347d11f0ae5c593fb2a1393f0ab154331fc7f3f133f5e", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, replicate: true, http_sync: false, callback: @callback)
@@ -20422,6 +20848,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/64e539deeba6f6ca4ca7831d6b8e1044506100e84f513d50112c843b1ae98a46", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, http_sync: true)
@@ -20442,6 +20869,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/67a776c80f3d91804d72568ab3f17dfa6a44f42e36504fec3e73724c7e2b6c22", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, http_sync: true, &@callback)
@@ -20462,6 +20890,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e3925e0d2bbc09649078d645b7ae83ce646114f3e58c0bc8feba67596fce958a", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, http_sync: true, callback: @callback)
@@ -20482,6 +20911,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/369da6d5127592dee6d04f6c14e307287ef82c107e7f51c57143ebbb9a27f478", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, http_sync: false)
@@ -20503,6 +20933,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5e1842f205deb3297e2c93c246adef0808e877882da67b6ad359b046f0570b9f", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, http_sync: false, &@callback)
@@ -20524,6 +20955,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/182a813eecbce2ac61ad3dcb8ffdecfc1ab685cb4f253970534c88259dadf5c2", record: :none) do
       envelope = @pubnub.publish(channel: :demo, message: {:hash => "it is"}, http_sync: false, callback: @callback)
@@ -20545,6 +20977,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ddc8aaa11e62f55d912915b5f217042237240fbeb0cea654c986bc02f5a10e7e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: true, replicate: true, http_sync: true)
@@ -20565,6 +20998,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/dda5a7c3bacbdd916cec9d9e92a7caaad812842a9a74530c14e13e5e86a97c0a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -20585,6 +21019,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/84d54a6cc46dae82ca144cec861a2c8de2f57e1e1e3c5454c90b3ab3b6ffc6e7", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -20605,6 +21040,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/bef0a5e0628cbf1009b93b85997bbdcd214cd7853712af58e9ca798ce803e529", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: true, replicate: true, http_sync: false)
@@ -20626,6 +21062,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a5b48169d86634d7d08bc8084b73a304690eaa97f27de292d1fef65236631737", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -20647,6 +21084,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5ab7d27460c58411dbd4219dcd1e13216b8e63f0c47d2c706302b209aac8f67b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -20668,6 +21106,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/753b92a18454e2e4de3e10ac6d90fb9e928239ff3003ca0520e6987203b3caa6", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: true, http_sync: true)
@@ -20688,6 +21127,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/367619867e3e5d02050f2e88767e2b8c9e73100068a8ad068663ae5f6d240f06", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: true, http_sync: true, &@callback)
@@ -20708,6 +21148,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8a536de4aa3aae4202b37ebaf2864016357b615d174133ad8c72a7dee7c0dd9f", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: true, http_sync: true, callback: @callback)
@@ -20728,6 +21169,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/963fb8cddac3a1c129b25421c7eaa34e68beefd3af0e293ff215d8dc695c2c48", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: true, http_sync: false)
@@ -20749,6 +21191,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/183f627c6e68b485071ef02bad8b255301768347bc416bb2366c9816acaba203", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: true, http_sync: false, &@callback)
@@ -20770,6 +21213,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/30a8c673f56c1e12e5a8a005ec52a0768ec45b2d17de2007e03aaf6fa973dffa", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: true, http_sync: false, callback: @callback)
@@ -20791,6 +21235,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/cf8589f70d2feb3a63b4931324a0889639bf0561d5f54b1b51cf6caa02d5c164", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: false, replicate: true, http_sync: true)
@@ -20811,6 +21256,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/89f02b0899abda1de9de902706859f15bd2b4b8ed1530a022af87066cf47ab5b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -20831,6 +21277,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ec49453af4aec318c8763720db939e30c93ff84956e0be64075b55b400f606f0", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -20851,6 +21298,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5006b93931c8c91339385618e8ec4b1244988d58d32ed331b9a1ba8baf9132ce", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: false, replicate: true, http_sync: false)
@@ -20872,6 +21320,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6d1a38b0ba49af7ad7a0fc7a2460d91bcee8da45863970928b4c5e333e1b1fcf", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -20893,6 +21342,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6913858bb04aec0f23237bbcf14d479cd41876ffba0759528a88c96016da223b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -20914,6 +21364,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/80579bdee4e4b8a63802fbea27dd7496dea34b22d31b701e9b36cbb7dd5284b6", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: false, http_sync: true)
@@ -20934,6 +21385,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/21e6a8c9a92acf430adce1ed5a94e38c43cc1d5df8b59bc4885356d49bf77e00", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: false, http_sync: true, &@callback)
@@ -20954,6 +21406,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/00137969798b5dd71da12968bfd6ebdd311021fd1e29f19921a4aff3111670bc", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: false, http_sync: true, callback: @callback)
@@ -20974,6 +21427,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0da630cdf049249beec88c2b92a795a268f4793b39a3bbeeceee8bdbb63ac7d4", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: false, http_sync: false)
@@ -20995,6 +21449,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5a388ec4ef9e825b472a7a89f88f26e7df5930b5cb6f1c472a69d39b9f2ce50f", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: false, http_sync: false, &@callback)
@@ -21016,6 +21471,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/bd2d25b4dbfaa3410854333783aa82cad7651ae4745abe6c44edd88c474add4a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, compressed: false, http_sync: false, callback: @callback)
@@ -21037,6 +21493,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/75db92f8fd44a0871186f15c4917d892f5be15dce8e646dbccba4681cefa10c1", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, replicate: true, http_sync: true)
@@ -21057,6 +21514,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b1ac80373e9a5f04e111efa9dff4ba7f32c244cc887f6a83d8dafb85da2acf2e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, replicate: true, http_sync: true, &@callback)
@@ -21077,6 +21535,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/204cceb3416f56480316f22f67cdc096bb82d89fd2836d1059561c815253bf7c", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, replicate: true, http_sync: true, callback: @callback)
@@ -21097,6 +21556,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5dd2f9db9d4e8c2875eb4418636a6c88b9a6ed619a8f70fb95010f43a6f03113", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, replicate: true, http_sync: false)
@@ -21118,6 +21578,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3f0fbf1dc79e9e79c0f7752eea12325d8de4c27feb3725b402ae8867fbdf8f90", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, replicate: true, http_sync: false, &@callback)
@@ -21139,6 +21600,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3caa3dc52c7623175e7576cd3929c6978dc39a0b4182012b2a61035ec0a0c452", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, replicate: true, http_sync: false, callback: @callback)
@@ -21160,6 +21622,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/20c7cadeade8db3cf7f549d108033d6c14d3a9014c00f571d8c5b889082c320c", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, http_sync: true)
@@ -21180,6 +21643,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ddbcbdcffd2ad84bc862b5569eb60b4edc6ee794097cb945cc1a289358262245", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, http_sync: true, &@callback)
@@ -21200,6 +21664,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/cb0edc094e988f6aa644c03fba374d206a47ad0a86791f92bc9036bbaef18a36", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, http_sync: true, callback: @callback)
@@ -21220,6 +21685,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4c8ccb2b9896ffd1f682441d3ea4a3c8d876a2f33364e6fa3e1e8b8f00712761", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, http_sync: false)
@@ -21241,6 +21707,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/65163b96d72a8142ff939f90b28b955a01a17d7d293b5625c8d054c8379eeecb", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, http_sync: false, &@callback)
@@ -21262,6 +21729,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6c8b5153c42ff29a1a9f2d282c85d9d76f54b5e214de1d66fbe421107aad9b81", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: true, http_sync: false, callback: @callback)
@@ -21283,6 +21751,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3c28dab8c85f65c927203bb3548d8603f342c899d58bd17ffb7d03b8b867e8ad", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: true, replicate: true, http_sync: true)
@@ -21303,6 +21772,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2adc89be9fb5fb353d3c131d417273f63a7c9e51b29a12b4b29dc24dfc53e4b3", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -21323,6 +21793,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/dd03341489de2f89e9973805f7ee426d00eedb4d05c5aa390c34d635e3aebc97", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -21343,6 +21814,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/babf96984af325fab8d7bfb49d97dbce316373254e87d1413e11b04bd9c2bd96", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: true, replicate: true, http_sync: false)
@@ -21364,6 +21836,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/cd17607fe38decde5aabe6071e1ebcf001a77fc705fa75eae684a2c05d98e0d6", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -21385,6 +21858,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b24437706aa62fe6da366f5927858c205fb71305e6ce048f7da51a7e68d5f196", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -21406,6 +21880,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3e5b215f89a4f86f13f3c66097341e477297b4771737873db0aeba3cc0cf1545", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: true, http_sync: true)
@@ -21426,6 +21901,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f2bd9fe45dae822716b4454235883e7427d00af305dd17c23b4163e1407e8967", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: true, http_sync: true, &@callback)
@@ -21446,6 +21922,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3b0656e97cc91d35b85ffcde8bae456430cb9932276c2045656cf9f558a17a70", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: true, http_sync: true, callback: @callback)
@@ -21466,6 +21943,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/035ae3ee64a5d822be75bcdf695b59830fec5017bc4276848b042d115d01210f", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: true, http_sync: false)
@@ -21487,6 +21965,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6af11f80a1a2cffa7c9156d74f7bdcc657a4f6bd46dcf220cb161576d8e0f275", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: true, http_sync: false, &@callback)
@@ -21508,6 +21987,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d59f86658188630e51b99f541685d776599ca76768a792c3e353f8b15c20cbcf", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: true, http_sync: false, callback: @callback)
@@ -21529,6 +22009,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/60844b833e5f198e7223f5ad4ee032ac435188fe2535b56efa164915bada05b9", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: false, replicate: true, http_sync: true)
@@ -21549,6 +22030,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b1efc72457c555f44cb727032ac6d54ca1f9e2fa84c2852cde077090e8e02adb", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -21569,6 +22051,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ba3b6a65790f00759117db89046097ff0edb3ce49deebbadec42e4673f0d8404", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -21589,6 +22072,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e046243c5fd9b84921916be2df23d0c68fcfb76f7775580c078d4239df620be5", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: false, replicate: true, http_sync: false)
@@ -21610,6 +22094,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f67fcc5f069dc127536b2afa96c100fe5b64418aea36e1b67ad0f712764bfef3", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -21631,6 +22116,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0acb36889acb022eeef47df2e301a6d8340fb7cdfe7bd0eb93b59c01d17e3c9c", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -21652,6 +22138,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7578ab5095b20197dc76df9877dd7bb2a95d510fb1832b19f34d926ec1868db0", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: false, http_sync: true)
@@ -21672,6 +22159,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/dd4bb67fa00b46493a24ae30a29503be98303fc1d4b148ce5f34f02e8bbf733b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: false, http_sync: true, &@callback)
@@ -21692,6 +22180,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7087a41584bbeda8b321c1c52e899ea337a572214270a2d67cdb97216e957547", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: false, http_sync: true, callback: @callback)
@@ -21712,6 +22201,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d26cd7ef0538e52b3a1b34f433bae9bfeb60dc0c43627eb00cdf93f0f103d5de", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: false, http_sync: false)
@@ -21733,6 +22223,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/cd5efdfc8fab0c19c2481d6716ebcd11b333875507933e01e36266e88c1e3c96", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: false, http_sync: false, &@callback)
@@ -21754,6 +22245,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/16f9be7055d7d1360a6c97cb85877c73762909ef916622e877ad8611714f9d97", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, compressed: false, http_sync: false, callback: @callback)
@@ -21775,6 +22267,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/95c4e514dd84d7d3c371bb87bbb5ab20cfc7b2ea3cd9cfec14ad83a207285ae4", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, replicate: true, http_sync: true)
@@ -21795,6 +22288,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/319421ebedec701c184148f27d437704873ebf15bd814d366ae61b40aa8a3b76", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, replicate: true, http_sync: true, &@callback)
@@ -21815,6 +22309,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/067f42ed0957aba52986aca93acd79e581c2308e4cdd1ac9d63f90fa284668a3", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, replicate: true, http_sync: true, callback: @callback)
@@ -21835,6 +22330,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f6692fcbaf1c0738b8210a06e83283e80fb7320976ab896ede70bbdce3ca7b71", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, replicate: true, http_sync: false)
@@ -21856,6 +22352,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0dfb72b83493957cdf61b80a667ac5104a28a9003d0c96889b6af589b2663e65", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, replicate: true, http_sync: false, &@callback)
@@ -21877,6 +22374,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/75aa2e0d86966cc60736ffa7d53f1ba0a780fa6b07f682cda4a0e5ed63c5a895", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, replicate: true, http_sync: false, callback: @callback)
@@ -21898,6 +22396,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6d5a76c13adea0b0c9aa877aaa2fd1142e3f8bc0f0f92571cdd2b039e96b0a31", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, http_sync: true)
@@ -21918,6 +22417,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/801f0a49e49c1e5637042686fc1fd3b7fd45c6ab52aeced387040ba9a27b0634", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, http_sync: true, &@callback)
@@ -21938,6 +22438,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/851056e2b7ab740499fcf382674294f1ee77312736d8aa9ceb737350bebc953a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, http_sync: true, callback: @callback)
@@ -21958,6 +22459,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b2981002b50a56f689ca68c3a43ba15dcb0a57759a7b4da9e804d3bc0cbdbfe2", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, http_sync: false)
@@ -21979,6 +22481,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/26c6ac9f362b05fe051c7a77bd9f93a2a592a2565c2d90f189fa520e92a20e2a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, http_sync: false, &@callback)
@@ -22000,6 +22503,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6044d4c763c7684fdea86f20524be06c42bcdb12e213b30eb0941cdff694715f", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, store: false, http_sync: false, callback: @callback)
@@ -22021,6 +22525,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0c3597358a0318ecaaf209abaf266a8844805f9c75e7052deea8d85ca4159e61", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: true, replicate: true, http_sync: true)
@@ -22041,6 +22546,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/91310895c2146127bd51f971ccafcd1599aa47fa5a7de001aec04bda3322f00b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -22061,6 +22567,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/70d521f6dd991ddeafa9b70e36db67e88dd92e581c210ee648ecdd4726a97d94", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -22081,6 +22588,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/eb09563a310c2b4dfc8b9beb87892f503e028a16c511e67a6d66d20b264cfca4", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: true, replicate: true, http_sync: false)
@@ -22102,6 +22610,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2760a319d03c0ec1a5386e0611779833b83d5df5096121436b09d65c3d61afde", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -22123,6 +22632,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/cb44580d6f4bbd8dbc149abae0f6340b3cfae55f178ae64c6096670eba61ae91", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -22144,6 +22654,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/bb23b526ba6b170bf6c31cfb5d3a16a4f02e9802ee81fad305aa0ec9f0d57cdb", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: true, http_sync: true)
@@ -22164,6 +22675,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d9b7d3375a26fb5375cf38ee3df39abf55587ea6c47124f14e747b1d2dd85df5", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: true, http_sync: true, &@callback)
@@ -22184,6 +22696,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e3f7a93c74b8405e96f3d11c9c54f41def8bb4ce7bfe18218016cdf2fee83294", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: true, http_sync: true, callback: @callback)
@@ -22204,6 +22717,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6b4fb35d14ce7bc2fc64a5a5ba9d75f937efdec818c158614f7c4c30dcf327b9", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: true, http_sync: false)
@@ -22225,6 +22739,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/025f3a8222edb6de03a5e92f7f2967a0bd049750316ccff6b5d121331eb64f3c", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: true, http_sync: false, &@callback)
@@ -22246,6 +22761,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/995e34c03eb009f4d0b801825f1dec496a7c45d7754dc946340a1265970b676e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: true, http_sync: false, callback: @callback)
@@ -22267,6 +22783,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/48f56a2d01c063cb3dc65b1dda979e160fdcc12411d8faa852678c1623c3dbfd", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: false, replicate: true, http_sync: true)
@@ -22287,6 +22804,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0582b7345a0aedcc5cc76259871bc5df4753d3031fc0ecb00a141ae6b76556cf", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -22307,6 +22825,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/aedbcdd8515e1786dd56b31c4affe953bebbe165addd6519a08dd696484ad11a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -22327,6 +22846,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a3e3529523a1f7c1831f4f6216e51df41d50da4ae5000533d7f19641cfa76426", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: false, replicate: true, http_sync: false)
@@ -22348,6 +22868,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ed7d12886cdf5538d218664e37589fd77017da80d239fc55c4457fa78c36f89c", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -22369,6 +22890,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d4267b799253723c2ce6eb34266b42170fb64d47ea05b21e7a01e748b538198b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -22390,6 +22912,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/49c8cf144563ea07a072361ebc12e9f68e443542b8bf96fecac49e7ec282d165", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: false, http_sync: true)
@@ -22410,6 +22933,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/acecdad37db92e4bf431a8d9ec82bc6c08820ae99abb6435b8994f58b2a1dff0", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: false, http_sync: true, &@callback)
@@ -22430,6 +22954,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5eb271bc8b73a81065f8240d025e4bf945c487774aff2ea5c9dd4a12a6afec8e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: false, http_sync: true, callback: @callback)
@@ -22450,6 +22975,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/68facd59b5da2d9cf9ade238647f4f4366aad480a38c40787df6f3fbcacaa67d", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: false, http_sync: false)
@@ -22471,6 +22997,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/07a33d7bf408af5003af6c18f8dc0dedd7ce50106e5b13bc362df9fbca247c54", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: false, http_sync: false, &@callback)
@@ -22492,6 +23019,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/bf6858edeec95d2d3531601a59d3d12a8614b037e848cb8cd0347a8ffa702603", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, compressed: false, http_sync: false, callback: @callback)
@@ -22513,6 +23041,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f98f42f19aa7382db6d215e537a8c1bdd76833d093bea9c3227218ccbd3cd5df", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, replicate: true, http_sync: true)
@@ -22533,6 +23062,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a910d51152bfee6bf6e47b50a2b66fda01a354e2a4fa4c055c6e4fce01b9afe2", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, replicate: true, http_sync: true, &@callback)
@@ -22553,6 +23083,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ba37413561ff0adf113bd778c7a95c83103254a8ac393e073643490dfe174dba", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, replicate: true, http_sync: true, callback: @callback)
@@ -22573,6 +23104,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ef8bb7945f83b08ae37d222bceb77742015ccad13616f66e84fe0c3632d8b8a1", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, replicate: true, http_sync: false)
@@ -22594,6 +23126,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/413f6d553df3a22a173d6138608ff0bf4cfb15872ed953c568e8a28f06d951a1", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, replicate: true, http_sync: false, &@callback)
@@ -22615,6 +23148,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f704c6240a10868158453d55c2bcc93e718a618736ccb720bfe3327fc6c7089a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, replicate: true, http_sync: false, callback: @callback)
@@ -22636,6 +23170,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ddc833afb761804fdc330f33b9ba96f82290528cb538c0edbf19d24c53a101fe", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, http_sync: true)
@@ -22656,6 +23191,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/743e34c908a25aa9097d279d1ae996fd62702d8db2cd54a95ecea668e1c26565", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, http_sync: true, &@callback)
@@ -22676,6 +23212,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4c320cc91466184d118c2eb558397f4a40df21bfae7b03c1c3b3c936095ebc9b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, http_sync: true, callback: @callback)
@@ -22696,6 +23233,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d37877d5ac4e9f049e600682615c627f5b0464c2022a08c7dc987740d0e08743", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, http_sync: false)
@@ -22717,6 +23255,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/547c24f9e148d3144565aec2dcc1509d92694ac0ba63a85ca25e308e8a881d27", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, http_sync: false, &@callback)
@@ -22738,6 +23277,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2885cf553fa07665335d57452c57ed9769ff63522601107c19670522bcbbf960", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: 100, http_sync: false, callback: @callback)
@@ -22759,6 +23299,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a25199d7fef13f53776e5fff05d4d7ba7b9f8da4af3d36d58602f0a42d793488", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: true, replicate: true, http_sync: true)
@@ -22779,6 +23320,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/07bc013c632f7778097595f9a500b4410c7fcfc4f5eb2afb3b4c623c2f7c5fda", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -22799,6 +23341,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2816301d4fa70ebc8c3a64cfc80b771bdc21546a520df9797398a66f1f5f55a8", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -22819,6 +23362,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/789122a0f0d69ed181df28c1db4f01ff8171cdf48d7ddacc638e62e4090e9367", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: true, replicate: true, http_sync: false)
@@ -22840,6 +23384,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a7b41e0d5c3bcc3abe8451fe2d0e3af905b1f2ced1be279ba7566585459a3650", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -22861,6 +23406,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/301e4052fcd26dae3c2500166a8eca963313abc852f70a7f79a42cc6cc7c5753", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -22882,6 +23428,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e232fd6a770bd05add289943ca86053b8bdf3560eed693043261be674f6f4a94", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: true, http_sync: true)
@@ -22902,6 +23449,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3631dad4c757e764640c1310ac20082d1a4c774d09239625a7d66ca14707a72a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: true, http_sync: true, &@callback)
@@ -22922,6 +23470,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/99ea78bd360ea1177b3335c3a6fbb5f98a891fecf8bbfe323a8a8269e069d925", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: true, http_sync: true, callback: @callback)
@@ -22942,6 +23491,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/235d031a3e43a5f64d6ca7e4c88403b4c31510f7acf997a95c4a345cacfb1680", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: true, http_sync: false)
@@ -22963,6 +23513,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4513f0efcb113dc4087522d94dff2576b8623de419caccd512d6d8f9e11971b0", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: true, http_sync: false, &@callback)
@@ -22984,6 +23535,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8154e01a26712169d870518f06e3781afe1321ae032974c878df9211d3c59717", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: true, http_sync: false, callback: @callback)
@@ -23005,6 +23557,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b5f70a2bcfd4c826cd37daa737c5ed2f64082b37ffbe62872ccf52f42a22e137", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: false, replicate: true, http_sync: true)
@@ -23025,6 +23578,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/eaa5b6671f5ccea174aeb1fd8649e769849f7f9024499afb04348483fa315c7b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -23045,6 +23599,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7a194415ee0d9d052c5fdf4d6003e3b8ac5fbd46a1ecf2b3c76c231df116be8d", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -23065,6 +23620,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/86a34b84e66ba5226e3f2ebfe12b80d23f09b708502fb6f70245a7ae823cf671", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: false, replicate: true, http_sync: false)
@@ -23086,6 +23642,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c1253c0d9a5e502eb6d4f9897bbf71568ea3ffac854a2bd6d21a03f4ae3ca921", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -23107,6 +23664,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/bc323c656d5dcf0cd0181790b72318dd4d3a78774554a5183263f0ee192ec1ed", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -23128,6 +23686,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/992da1662b7365c44d04face974245729bdb9be218b8057d4812451c8b71614a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: false, http_sync: true)
@@ -23148,6 +23707,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/359ae5de7e10bfc63479cbe12998187b93b8da3682299062da17370d2b4029ac", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: false, http_sync: true, &@callback)
@@ -23168,6 +23728,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/829efc9a3364ccd614165c184d91492364546bcecb215081613aa137a15831ee", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: false, http_sync: true, callback: @callback)
@@ -23188,6 +23749,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/93c25cc78cd8729089392443843bab4a7136c5d3633766305072c9ebebbe37a8", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: false, http_sync: false)
@@ -23209,6 +23771,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c2b18c818eba487d356b7adfabccb93a54ee7571f8aa5596a17d315bd001278b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: false, http_sync: false, &@callback)
@@ -23230,6 +23793,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/841e12dae45bca78aa20a49559fd3d1e43000b476cdee3df2281cfe24a2ef181", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, compressed: false, http_sync: false, callback: @callback)
@@ -23251,6 +23815,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c2f8cd419dac1d8f621be0ff84e9b431983c4367e830f73832faef21af3866b1", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, replicate: true, http_sync: true)
@@ -23271,6 +23836,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/120e34af686890781d60dfc38f589b57597d90beb0a5ae86466914768ac4eb4e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, replicate: true, http_sync: true, &@callback)
@@ -23291,6 +23857,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1fafbb4218a8b894da688f5724c2e059aa39842fd4c6e9fbc843b6d28b40e682", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, replicate: true, http_sync: true, callback: @callback)
@@ -23311,6 +23878,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/714a650c404986d8f2135a304140b81705543ff6de94e7ced00b583d894dc076", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, replicate: true, http_sync: false)
@@ -23332,6 +23900,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/fb6f2d8f7e86278a848b6836c33bf442afd4862be1cd4f119b173a4a053f27cd", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, replicate: true, http_sync: false, &@callback)
@@ -23353,6 +23922,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0d198d01f2af001feac7758305902d739963fd2486213909884f9a0a93e91c6c", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, replicate: true, http_sync: false, callback: @callback)
@@ -23374,6 +23944,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/96603cbf977f4b937775a3e8658dc0849d7b33d5a4b2a801fe774db48ecc59aa", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, http_sync: true)
@@ -23394,6 +23965,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/91ad86e9421177ce562efb9910363a165730adfba878c838ffb31110fc8062d0", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, http_sync: true, &@callback)
@@ -23414,6 +23986,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5aa8df30f81b3dc32f373851bfeef188f537c842c63eb4ffc6ca321641ab32b0", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, http_sync: true, callback: @callback)
@@ -23434,6 +24007,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7fa373634b7cf596597a0af243c001cedad1ba609335fbe392c85f1515713e31", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, http_sync: false)
@@ -23455,6 +24029,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/630e04be85402ce7a1c0d0f7b273a9a736767e273cf701bf716ac5eaee7d183e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, http_sync: false, &@callback)
@@ -23476,6 +24051,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/dc5f4c83467f567dc36d6150f63052f78d3abcea427da369b9f2b57549f44487", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: true, http_sync: false, callback: @callback)
@@ -23497,6 +24073,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d3cc194dce51f068030c55a1005b78144b069a51827dcb94462143db4c8585b7", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: true, replicate: true, http_sync: true)
@@ -23517,6 +24094,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ff53cfeeb6e884fe0abb943270e37980e1a1d2b13ba221f1b5b45817970db9f3", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -23537,6 +24115,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/91b38fb25257c8490d559b7afbaa5d550247445446445ff0196cac08fa268db1", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -23557,6 +24136,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/47b913bb8ffbdbc53d564a880bac9c250fc3bd9902387133baede2a621e3e16e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: true, replicate: true, http_sync: false)
@@ -23578,6 +24158,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c5f6455b60c5bfd5faab4e1f317b5178d6e054b614557fac532d768eccab325c", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -23599,6 +24180,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/af7706089b96c5a1f1781c8ef98352bb1c7bea4a59b211551b0a8d249e4a992a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -23620,6 +24202,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1b084697e4f7b6e837a9df633cc9a1869cda69403e006e7da4b494f58cb81971", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: true, http_sync: true)
@@ -23640,6 +24223,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9d4133f66596c02c14d8a06654dfd24d7c7916f58090b92da9691a3502cab7f6", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: true, http_sync: true, &@callback)
@@ -23660,6 +24244,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1e590ba609f55a3042ddec1c2c06c394368fcf46ac9f1047fb3b31320abb46a1", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: true, http_sync: true, callback: @callback)
@@ -23680,6 +24265,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1c6d5e025bd93d7fcebdc63f425b11c6ef84dda9732e0d67f714a6168a10e771", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: true, http_sync: false)
@@ -23701,6 +24287,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a5785752e991c6b123ea8a0eedb3f59d552633c3e53ba29865d9963adbed960f", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: true, http_sync: false, &@callback)
@@ -23722,6 +24309,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4e6db05d501a1a775a5d713e09df1fd78961a8f9da5f3f6f664176348625908e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: true, http_sync: false, callback: @callback)
@@ -23743,6 +24331,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/28744c3bbbc59a35207bd7debfa413b99f9a22f93286810129646c7de7c4f371", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: false, replicate: true, http_sync: true)
@@ -23763,6 +24352,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b38537eab12a8c8f0a444fc3de024edb02f4aa0c415b2c01ab3954699281276e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -23783,6 +24373,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4ebf739780ae29c2c114592f48dc335fa665a8fd4b444d5fd900c7c42cd9e04b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -23803,6 +24394,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/40d2295870a489bd53b8fc27000fe8859b3614eb04b38aa6e6576a570d1f97be", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: false, replicate: true, http_sync: false)
@@ -23824,6 +24416,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/82f1ceebfbf3b954bb85936b864536c312a03b846ba50f7cc1fa6117b6d42b5a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -23845,6 +24438,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d1f732c72558748171b301d36f7d56044da6cd9f89f36a6902d968e4ba7f2e69", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -23866,6 +24460,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f85e9e4333d2e9fb450fb3982f3805c3c0ebb9fce3d6c281b617623ced075559", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: false, http_sync: true)
@@ -23886,6 +24481,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0753411565f7938d8f582c60cf85498067d4fcc575de47fac663546db44023ca", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: false, http_sync: true, &@callback)
@@ -23906,6 +24502,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/cdaba1a0dcdf95501bc15ab9547120c223cc3fc3bc699c8aa9fb04cce95995b7", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: false, http_sync: true, callback: @callback)
@@ -23926,6 +24523,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/45c4272c01f34fd52b48b49cfd9dc95e3af2670a6a1636e2d037e40e9bd3d3aa", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: false, http_sync: false)
@@ -23947,6 +24545,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/dd90708a7f1ee0c3404eb7b7c568bb42f4698746911df94e05de8ab6f7ae770d", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: false, http_sync: false, &@callback)
@@ -23968,6 +24567,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/545f5581af788bff2eb73366d2170b62e2af41d47934be7b7a8b7634009ee873", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, compressed: false, http_sync: false, callback: @callback)
@@ -23989,6 +24589,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a4001df10c6ff4d774603be1143936de7e17a96abb837148c47db51dc319491e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, replicate: true, http_sync: true)
@@ -24009,6 +24610,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6942e43b9e13505ea0f05eb03a8d451faa931037f414628760833154b488ab5b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, replicate: true, http_sync: true, &@callback)
@@ -24029,6 +24631,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ff99bb2f8ea373dae991bba9e8cc7a6cfd3cb7f0a858dafe8e9faca01fb283f6", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, replicate: true, http_sync: true, callback: @callback)
@@ -24049,6 +24652,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/bdd4b0d506144dc704fbe5d6a2ba8c6b570799f5a10ec6334f17006d60c8af1d", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, replicate: true, http_sync: false)
@@ -24070,6 +24674,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/03ccafe38a6a7593f42bdbfa2292fdea93e4e65c48eddd29421c23c0693bb998", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, replicate: true, http_sync: false, &@callback)
@@ -24091,6 +24696,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e8e1cdaafc4a0668d92809dbac8338a1a7952cf6846a894dfaa0484b4a487e69", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, replicate: true, http_sync: false, callback: @callback)
@@ -24112,6 +24718,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7ae3b7900ce72c03d90df625fa826dfad7b4145727b23ce0bebce3115ce413e6", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, http_sync: true)
@@ -24132,6 +24739,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d432cfa736945bd8bbe45646f1fcbe3a6b8cb33d102fb539bc72d668dfca27b4", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, http_sync: true, &@callback)
@@ -24152,6 +24760,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/aa4106fb665a941e121009e9f882b8297a8a30b9c97ec0b93c10f7d1f84b5ddf", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, http_sync: true, callback: @callback)
@@ -24172,6 +24781,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/186557c7296c6cf9c995ab690d62948349f9a0ca541dd9b72c77ae46604235c2", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, http_sync: false)
@@ -24193,6 +24803,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/eaaf8ee95e86d49e136c3406b4e64beffc44fe4e2d26198dd46087b0b76ddb46", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, http_sync: false, &@callback)
@@ -24214,6 +24825,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/306c8bacfe837759c2f407d0af2c947062891d1bd566d987bd6c8a8b939372f9", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", store: false, http_sync: false, callback: @callback)
@@ -24235,6 +24847,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/aac8981e6821a26c4a3e22b8e612669ffd3cb989f501b116596445383ac91682", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: true, replicate: true, http_sync: true)
@@ -24255,6 +24868,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/88511f9247428f14d643b0caa934affc38fd72f4e09411a62f143fdf3ae8640c", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: true, replicate: true, http_sync: true, &@callback)
@@ -24275,6 +24889,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d4b2c5d2d639dd763bab45fcb35724990fddb445cbcef47a72b93f2ce1415e03", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -24295,6 +24910,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a5bb9a751aae4c80d86cb4803dda940bce7a62d32c49ff301728c1e7d8542d31", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: true, replicate: true, http_sync: false)
@@ -24316,6 +24932,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0c4e7e46d5236b311fca6c9aab48d126aad6013dbafc3abf62650efe2ee05406", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: true, replicate: true, http_sync: false, &@callback)
@@ -24337,6 +24954,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/dd4caebd0e1d756c70dae50f8d54cae16381f7442166b2e4be9d00522f21ee73", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -24358,6 +24976,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/88872cf225752380b1dbdd08dfe5e11afec102b7aec62fa7bac2e7428c87f85c", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: true, http_sync: true)
@@ -24378,6 +24997,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d422245f2db1bb57d48715345e89b9c516696906f63f759429b9ff83c3486813", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: true, http_sync: true, &@callback)
@@ -24398,6 +25018,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7bdc2b83aafb8d85d255efe8cca0745ad9efd0c9b11b611a9704d42e0c50249b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: true, http_sync: true, callback: @callback)
@@ -24418,6 +25039,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c074fc56e68c5fd0bac25639659353625612e35b0045ad427e78c1a02cd02210", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: true, http_sync: false)
@@ -24439,6 +25061,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/11b57f60cde4e0bae1763173af0d16d5fb312a40c1b7ffdcbc4f09d8bdf3979e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: true, http_sync: false, &@callback)
@@ -24460,6 +25083,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c5f42714b5cd7ce0ab51b136bcba97dd130fbb47cf38bd604d01e6384beabcf4", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: true, http_sync: false, callback: @callback)
@@ -24481,6 +25105,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c7baf7565342a48f6294d66c14c2cd73b04cac95468c8c9fea991da73987a9c7", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: false, replicate: true, http_sync: true)
@@ -24501,6 +25126,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/657cbc4c9060da2d69d321e3480850b709883b1c17f2f76b5f76d8775da36343", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: false, replicate: true, http_sync: true, &@callback)
@@ -24521,6 +25147,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/268573df3798f1d4613c31708ae419957ed6ea82008295dbcf0a833eb174e34b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -24541,6 +25168,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/246358121a780e8597c6e83b9e585faa86531eed1bc001b0aada73497df36bda", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: false, replicate: true, http_sync: false)
@@ -24562,6 +25190,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/fc3bc3f41dd02819b490eae073fc8222c344b7ef33eb75336fff99d9489a4c16", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: false, replicate: true, http_sync: false, &@callback)
@@ -24583,6 +25212,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2989020f81b149b8cc8f018651b216b52bec1eea62c97afa2b007490a3dc09ff", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -24604,6 +25234,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/72bed88b0fbffb1eea3e03ad9a2c18126cfb5811b97ce7140e35ec2712ccb048", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: false, http_sync: true)
@@ -24624,6 +25255,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/80a6e5a4eef3084a19fb31840ed87eca4c7c62027a4e2e7c6dfac6d34ce64092", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: false, http_sync: true, &@callback)
@@ -24644,6 +25276,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f091ea1ecd02385a8596ac63248676ce98a8ce651ae4666a7c195ca2f287f18d", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: false, http_sync: true, callback: @callback)
@@ -24664,6 +25297,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/317972838426372523f3aec1362d7868243b1c75158ef48114202d58f6bcc642", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: false, http_sync: false)
@@ -24685,6 +25319,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f1e99d854d95636f2ee5643b133ecc04732913e03c805da2b90213e825e304f8", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: false, http_sync: false, &@callback)
@@ -24706,6 +25341,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b04723b2cd8deae54286da19158964fbdc59b6ffc04b30f19e51b34245babd1a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", compressed: false, http_sync: false, callback: @callback)
@@ -24727,6 +25363,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/032f9d81330baf40881f79843d64c9fef16927ef90c735b735e2599b2231db15", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", replicate: true, http_sync: true)
@@ -24747,6 +25384,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/214450785bf59410d6a2d0e709552725f07a8d3b17c2b068abf7fd87b2946388", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", replicate: true, http_sync: true, &@callback)
@@ -24767,6 +25405,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b73ccae012f959a5638ea55a6876e495b1bb60ba105288de1c1a12b443b680f9", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", replicate: true, http_sync: true, callback: @callback)
@@ -24787,6 +25426,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/37e7aee540d1189c80cd572f6227961a45891551180bf425b9dda05451dd48c2", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", replicate: true, http_sync: false)
@@ -24808,6 +25448,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/430028f9b34b41e9531977d9bc399af5a863e3367fc2f4337cb0c65b648c256d", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", replicate: true, http_sync: false, &@callback)
@@ -24829,6 +25470,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e4c9bad1951c58ae68d5a509b773a00d1c84e3f5ba6009a5759c2811bac8fbea", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", replicate: true, http_sync: false, callback: @callback)
@@ -24850,6 +25492,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c0c7ae1d575c50b1e42b34cdbcd37ee06a5a9bce9f10d531c35e6f17e062bc33", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", http_sync: true)
@@ -24870,6 +25513,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a5206aecffa703c9ac74b96c9160d7ea162343e8ab5b44ba51c3cfd7324abd68", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", http_sync: true, &@callback)
@@ -24890,6 +25534,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/89fe1282893630c3983ae201ecc474a4d6b9d9eb859efbf3a0611679e01ddec2", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", http_sync: true, callback: @callback)
@@ -24910,6 +25555,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1accc599ef0922011e6f515b0e29663cb8644ca55105144eabc101e7ca4ab67d", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", http_sync: false)
@@ -24931,6 +25577,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e48828e17e437ce40808e0e68891a3f4edc1242df92da8da37409b55af181f9b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", http_sync: false, &@callback)
@@ -24952,6 +25599,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ba88045497e031f5407f7e0f18d6f149ccabaf8ce4ebc243f7a18e2ca865b366", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: "string", http_sync: false, callback: @callback)
@@ -24973,6 +25621,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0d5de1fefbb2efb71bdc62160e84e07b6c3643d717f18903e1334b509a3f381d", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: true, replicate: true, http_sync: true)
@@ -24993,6 +25642,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a1b24d7e5ed9a73e5417ed742029ea7e90e2892c779da5fc89b4c8afb4e4f946", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -25013,6 +25663,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ca0438e7b00e8f42cca90ea9c0313db11b4dfdf8b22a6ee049cd6700c4dac2e4", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -25033,6 +25684,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/37d26d477cb49d2b7ff254e598a5eed74782056d87e61121540d00dd1b04fc64", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: true, replicate: true, http_sync: false)
@@ -25054,6 +25706,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/92613b846aca4a8c5e28c42c23dce18655a71658b5755267dc7ae2a66495b70f", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -25075,6 +25728,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b9d32616b848003b9cfe919694c8bda9f7aa4b2cdc672fe264cfae59fc0a10fe", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -25096,6 +25750,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f0bbb8051c9fea1fa5aa9cf900f2ced03b3ec766fe67646eee530535fceefd11", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: true, http_sync: true)
@@ -25116,6 +25771,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/171363b98f5e9ae3a0af1baa7691275ef1f7ae7af3bd986b6795bae361b04ac0", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: true, http_sync: true, &@callback)
@@ -25136,6 +25792,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c79da03680195e8119eb635a0fa04047b66e2abef213703e801517036e84891c", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: true, http_sync: true, callback: @callback)
@@ -25156,6 +25813,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1aed64e5def0a2275294e4e3f0bc03e44133b31c85b97fea9854009a3a2ea152", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: true, http_sync: false)
@@ -25177,6 +25835,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3b58aa645d3f9e7e7cbdd7257c73cf86e24fcdcb71f0e0432de7fb47452597f7", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: true, http_sync: false, &@callback)
@@ -25198,6 +25857,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/68a2ce7591f2f81705514f7cf73dc662ba8d2ad4f1492df4e7f2970ffeb0c130", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: true, http_sync: false, callback: @callback)
@@ -25219,6 +25879,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1b39e4e901980e6226754c5bed89bd2726f87dfc8fb3dd40301efb47a45768db", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: false, replicate: true, http_sync: true)
@@ -25239,6 +25900,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/661ce500d852517f30464502f262360d9fa694003ab93b92b0f216c9751f257b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -25259,6 +25921,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0172925cea5185f8e7a32f21010c90925e4e095fb1f30e35ef2532ee38f3055c", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -25279,6 +25942,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c0a0be6c7fee21f595ce73b89bec1a7b66113201232afec5eb242f58b0e4edb8", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: false, replicate: true, http_sync: false)
@@ -25300,6 +25964,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/bc6fac43b6f1f4eb1b6fd41f501e9077940b07f948db690a5a952cc9cc64f444", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -25321,6 +25986,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/37214918193aaa195277a856982716ceadbdb16852e9b8795996ed663d3a9c51", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -25342,6 +26008,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ce1322b40979798fcee0cd4438bddae028e0c386bf57e5802d03df08d36ef9e0", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: false, http_sync: true)
@@ -25362,6 +26029,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/41bb4f29edea1356787422bb4c523dafe3c55b0d035c2048e9b78aab5fc53431", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: false, http_sync: true, &@callback)
@@ -25382,6 +26050,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e89552ba6cc75f20d5cdf3c0ab824f1cbd6a5592c67000b37f13b8109d13cf03", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: false, http_sync: true, callback: @callback)
@@ -25402,6 +26071,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5e5d2d7bd094e64e53583ee4923b260a4e7fec8c1105a991774241fbcd1ab530", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: false, http_sync: false)
@@ -25423,6 +26093,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/55c5393b5ed8e8b7a42e36c74d61f6287501a98ba942de5c07a66bb9f5e9d050", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: false, http_sync: false, &@callback)
@@ -25444,6 +26115,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c431a52ea719c46b590f3e1afb343bd035d73c8e33df3d46de02d0b4d275884c", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, compressed: false, http_sync: false, callback: @callback)
@@ -25465,6 +26137,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/cfad5a91bc4d3a7cc69a4383d18bdc658312bc344aeb719781c3548cf120dca9", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, replicate: true, http_sync: true)
@@ -25485,6 +26158,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9d561cd1ce3259a44679e6dfb37b7b558ba4dc954a27e8e3a9aff05383e92c66", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, replicate: true, http_sync: true, &@callback)
@@ -25505,6 +26179,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8448f50fe6f7cd4c500d53ab14b99aae76dddf07d578639c15f1fbbd3e4eb25a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, replicate: true, http_sync: true, callback: @callback)
@@ -25525,6 +26200,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/de91d6a25afbfb9399d7d919258c2b4c198f250dc804fc314080d9ff6d604702", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, replicate: true, http_sync: false)
@@ -25546,6 +26222,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f40f71738a14d5a23bb20f38d1081b8d5179eb5d770235e3f4618a3df2be8fbc", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, replicate: true, http_sync: false, &@callback)
@@ -25567,6 +26244,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0d87f1bb6b3267efbcdd7ddccb4fa88ad7e4b74d5a34047c1371660e3e378e7a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, replicate: true, http_sync: false, callback: @callback)
@@ -25588,6 +26266,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/697910f36fbcf975efed111327d756043f2a7e2fd07bc0468a852097b59778e3", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, http_sync: true)
@@ -25608,6 +26287,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e496e15bc221809578716c5969affdcbe6334ba089ddf73232900b48b33230ff", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, http_sync: true, &@callback)
@@ -25628,6 +26308,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4c737fa7d5d81bf7df472ee80d5df87d2d3313280ec27951b4e6577cec60773b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, http_sync: true, callback: @callback)
@@ -25648,6 +26329,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1b8f62b2e4e85667ecb6e2ba930d236801f122d27659ff3ef92e0e1e88b37482", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, http_sync: false)
@@ -25669,6 +26351,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3091473113b23b9ae3de544ea2dbb394437eafdc031d0a4d946da1719529fdc0", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, http_sync: false, &@callback)
@@ -25690,6 +26373,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/10ff810d84889c205e8fbc2fea05c89b872b1610d12f9909b6122a41c2ea9339", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: true, http_sync: false, callback: @callback)
@@ -25711,6 +26395,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/01f82300387116ef90ae825ff8bfd5e9c243de06f2cdc5a5cc3ea38047d44dcb", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: true, replicate: true, http_sync: true)
@@ -25731,6 +26416,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3125071f434846634967f710d44dcafabf1fbf38f03651cf5289e26c6395eff5", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -25751,6 +26437,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3a618ff1eb0375efb06d7867a3bd8482bef8b331f9d969ca9376400613081a87", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -25771,6 +26458,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a6261a3e34bc45c5614b97f5959751ceb3320ce4035b620a70c69b2e9a75c60c", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: true, replicate: true, http_sync: false)
@@ -25792,6 +26480,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5e3687cea5995d381e56491d16222bf56c9b705da11a9b44947a7fe36743364e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -25813,6 +26502,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/57d83369e91c4bc94ff76f3bf91f369a8d9e300be36cce8c353086dfe682a657", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -25834,6 +26524,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/cbe6e3ea52877f456c9e4ecc65ea5dfd649b4071bf95e1c60cb34e6e642409e6", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: true, http_sync: true)
@@ -25854,6 +26545,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/634ed18e230b2e429efb4c67182d13ecf16b6fa28b97a72e5c55da53a90bc205", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: true, http_sync: true, &@callback)
@@ -25874,6 +26566,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/fcb443bba606a482af92f052b939a7f67c56e6ed343d6e663cfaa999c695074d", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: true, http_sync: true, callback: @callback)
@@ -25894,6 +26587,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1bd727a85b8e45179b71d50dc1d35590e628155e492d1d6d8bee5b96df6e5f03", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: true, http_sync: false)
@@ -25915,6 +26609,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/12b719e6ae1a2a0bc08e54478af1d24ffbcc090af670b7abfc56fbc99d53096f", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: true, http_sync: false, &@callback)
@@ -25936,6 +26631,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/54a6e7640c2b8760117998454132d9b8de9399002da355943b660a9996ac6eaa", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: true, http_sync: false, callback: @callback)
@@ -25957,6 +26653,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1f0009bb25ce89edeada68a0ddf688d58cc83b7dcf1fc23eb18a8ed4801ca9e0", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: false, replicate: true, http_sync: true)
@@ -25977,6 +26674,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/51641c2bf5109ec28d08c92e25bc549e66ffaee065bbaa5661bd5510c9b936d5", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -25997,6 +26695,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/829928a5a932929dcfa13f2fc24bd40c33b4a10d85766795b9ded3f7df050a05", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -26017,6 +26716,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/572ef60dcb6f5b575bbf780c8a53a50bcd613e44091384393df1c1aa69baeb3b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: false, replicate: true, http_sync: false)
@@ -26038,6 +26738,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5c062dfa5d6cd3537038bc3700c692b7da50e01b0af22cec98cd95bde23aa5b6", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -26059,6 +26760,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9ed750342a6240af33ed0ff3f7c9f409065eba4cdc0d91699218a32830c9d020", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -26080,6 +26782,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9953d5c96aea8a7081e5f43814635833eb9a37b1cb5644d9f6512e6c02e85861", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: false, http_sync: true)
@@ -26100,6 +26803,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/46c452300c288ff5899c399f936a88f19d5a5515cc5dad2e5ef34f81ecfc203a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: false, http_sync: true, &@callback)
@@ -26120,6 +26824,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1c33057359280b58065634986941999b13aed8d699f8acd400c8f7f779e4069a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: false, http_sync: true, callback: @callback)
@@ -26140,6 +26845,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/59e1918288fbf5eb6325b35e235bf00695c757974906781c3d546119f081165d", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: false, http_sync: false)
@@ -26161,6 +26867,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/809a14660b35c91107a96ea17b6c2d71bf6544bdb6a324476348efc303dec6f9", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: false, http_sync: false, &@callback)
@@ -26182,6 +26889,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a559e83c724d5a28dc3b932708b4e102bb1af462f4d39951d43e36a05860fe3a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, compressed: false, http_sync: false, callback: @callback)
@@ -26203,6 +26911,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5c7c3be3ad50aa9494d2edc6986f9ec5a3a4c9c3d2a30bb4fbe9ce5514550c3d", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, replicate: true, http_sync: true)
@@ -26223,6 +26932,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c1e33658d33c9f77787766eb5a57f447abb943eae8519e48fffebb0bf7a98d5e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, replicate: true, http_sync: true, &@callback)
@@ -26243,6 +26953,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3e0cd8924e958507926cf5518a04ae3d793b35590c128a1081c679cf398dfe57", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, replicate: true, http_sync: true, callback: @callback)
@@ -26263,6 +26974,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e83edca127782823a4aba71d439ce0519f10cf4e230e5db171c0f7cd887ce1d8", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, replicate: true, http_sync: false)
@@ -26284,6 +26996,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b2fca87c2c24a3f5d87e90300c333dccd7b7c204a1f6527d39eb14b19b3797a4", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, replicate: true, http_sync: false, &@callback)
@@ -26305,6 +27018,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4d0c818e2ec48d921dee1eab228baed6e3ef66dc036d7db550ab7ef8f4c213f3", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, replicate: true, http_sync: false, callback: @callback)
@@ -26326,6 +27040,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/09ac1d8984775a86b72fde88cf56b0bbcae2bcacadbd8e7a4723b042c516127e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, http_sync: true)
@@ -26346,6 +27061,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1b71f5013717c51af7b02a9c1e853a9054740277867d1822edd12006ea15af85", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, http_sync: true, &@callback)
@@ -26366,6 +27082,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/48e23ff3680f2f2e646706fcaf112c7ece4cc7b458c23ddcf7875b3b49c99b8f", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, http_sync: true, callback: @callback)
@@ -26386,6 +27103,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7da425a7b73c5aa906717ea4387a9af0715b68db6398026b8b50321449ce8752", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, http_sync: false)
@@ -26407,6 +27125,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d8ef95de23aa6b0a95c77c5f5970752df38c7662cf94e40beb4e418a1544eed4", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, http_sync: false, &@callback)
@@ -26428,6 +27147,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/02129bfeccc5a53637fb63487dfdcc1b927d631e42d04b3e85953f378d940521", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], store: false, http_sync: false, callback: @callback)
@@ -26449,6 +27169,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/33e202286c5bd6302d69c70fbc2917c83b72ebfefe1fc8009e2c74b1ce570cf8", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: true, replicate: true, http_sync: true)
@@ -26469,6 +27190,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6eac2f44da25f4c6ab076ba23fd8150f9ba028d1032166156c83a93de39d404f", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: true, replicate: true, http_sync: true, &@callback)
@@ -26489,6 +27211,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/36c249992ca5836fd54b456c9d8dc8c2a498270914c01d4c087581c5552d9111", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -26509,6 +27232,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8fae229928d704540bb68967f8a3b7bc8593541725ccdc65823fa149a45eaae3", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: true, replicate: true, http_sync: false)
@@ -26530,6 +27254,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d5a1ec9c81060c14e1d0846014ce52c26b259e8d9fff9f2636a704fe6eb1588c", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: true, replicate: true, http_sync: false, &@callback)
@@ -26551,6 +27276,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4dcf8882393433040889a59f5e6edd33d5ae401d6170342dde3def362e358701", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -26572,6 +27298,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3756b1323284b238cdcaad28aff355ddd318c4ffc7dec881dc21ce6f5fef522a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: true, http_sync: true)
@@ -26592,6 +27319,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/79ff7e9813df229ae0f932244704602260eaad66befc149688cb2e6b5911e74f", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: true, http_sync: true, &@callback)
@@ -26612,6 +27340,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9e6981366763cd5359b74a53b176e8303317610262f13c69914bf4ea874100b2", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: true, http_sync: true, callback: @callback)
@@ -26632,6 +27361,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/45d3b4fffe218e75acc8f44fb49be4baa92e82e258140bccdd9ce3464b9aa7e4", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: true, http_sync: false)
@@ -26653,6 +27383,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/46964300bbd7d500c9953705b9dfa1d177f34cb2f8baa72952d4ad22840391a4", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: true, http_sync: false, &@callback)
@@ -26674,6 +27405,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4cd90b8a3d333a497fc25ec56e608e4a1e758751f878a0d703ef9f6f0a2e50ec", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: true, http_sync: false, callback: @callback)
@@ -26695,6 +27427,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/fc208db55e872e1e7321e893198d442b3ce6c368b3655e1659b5271d27f0e6db", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: false, replicate: true, http_sync: true)
@@ -26715,6 +27448,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/dd696b2fbc601f134080c8365804705c0720aafb382285dd9ef76cd84f690017", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: false, replicate: true, http_sync: true, &@callback)
@@ -26735,6 +27469,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/02cc1616c7aa323e02dcc940318fdcdc4b5fb9b0ef8581b485d8d4201a4deb94", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -26755,6 +27490,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5972720421f304ac639a45f7cae6319c595ea09dcce0a5960f52449a4d4c9569", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: false, replicate: true, http_sync: false)
@@ -26776,6 +27512,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/fab9742aa360ad79ca4cdaed38bccc764d3915b8ef73138a52cc4eb579b21a0a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: false, replicate: true, http_sync: false, &@callback)
@@ -26797,6 +27534,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/68e3f5afb0fdf4f0f0771b5de5d7150fa048173d8211f946ce3c4d2270819d64", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -26818,6 +27556,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/78af097355677f0700ea3cd1e00e6bc5ca5b3555816374c565e4da9f82c1f0f3", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: false, http_sync: true)
@@ -26838,6 +27577,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/22a0e2928f8e5d5f1646091501a571f8772126fd106ecf8f6ba50fe0acbf6e6a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: false, http_sync: true, &@callback)
@@ -26858,6 +27598,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8ee2767845639afa73f379501f0427acf748b28f8f8cbbc52e3ea472e58d74f9", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: false, http_sync: true, callback: @callback)
@@ -26878,6 +27619,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e85c59b893724bd073f31d5ec0112a429bcede4b745eb7fbc9b98f053789a58c", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: false, http_sync: false)
@@ -26899,6 +27641,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/d46bd66b1118fd2b9b164e5f3f982b7ce5ae5f211689411ef326b6e479d47092", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: false, http_sync: false, &@callback)
@@ -26920,6 +27663,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e0ae76c2ed82091d5d915232d82cae65fb2b3b7b3c36ca60afd15f88a2120745", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], compressed: false, http_sync: false, callback: @callback)
@@ -26941,6 +27685,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7872108e6d40356f135516004e67bfa902afe1c8674bf7381e3311554ee48f64", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], replicate: true, http_sync: true)
@@ -26961,6 +27706,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5de3f4478f6c3527284565e3225ced6390657303314816bc0485b0e15bdab023", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], replicate: true, http_sync: true, &@callback)
@@ -26981,6 +27727,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/26e1e76de0219c0c0788cd47c3e7bc32a4904a1860a56a7a39fedd7e9b568704", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], replicate: true, http_sync: true, callback: @callback)
@@ -27001,6 +27748,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c9dc97df4cd08eceb47f0b44e1625ad76940a899e6d4e3b3ffe900098a20ecfa", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], replicate: true, http_sync: false)
@@ -27022,6 +27770,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/aed3015a03149f7955a2c9a7d6e8a2b1a76db21d08043c43ee1ecdb5a7071af1", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], replicate: true, http_sync: false, &@callback)
@@ -27043,6 +27792,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3e6105c32bc892044c89f418f4c7c52589983a1ae29ff03df4545333aeb9ad5d", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], replicate: true, http_sync: false, callback: @callback)
@@ -27064,6 +27814,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5c2d23d1972594a61a8ccc2bfadf93ee9844a71feb339eb4375507539087358e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], http_sync: true)
@@ -27084,6 +27835,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ba3a6ee67dcb49d9309cb5ada8c63a60ed6d015ce8ca6e56bc33306e7c1e44ba", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], http_sync: true, &@callback)
@@ -27104,6 +27856,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/62a6d3d46979eb389c321b96946906f693d8b7c4b140697b939f5ca8bed4a98f", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], http_sync: true, callback: @callback)
@@ -27124,6 +27877,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b99eea473f073a4d848538121c37571c87d385b0432f70ee39f52fd8943cd2a0", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], http_sync: false)
@@ -27145,6 +27899,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3b163e0bc0bc39569174ca62a5e77f53f19652c5769d3b82ae331dae359e3084", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], http_sync: false, &@callback)
@@ -27166,6 +27921,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/cb086ba3c5d11451ae11e2afd65101de352704053c6e77091955d4a26bcd8f98", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: ["ar", "ray"], http_sync: false, callback: @callback)
@@ -27187,6 +27943,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/48048293347e887b19d0c436a49e2d9db5b8c61e87d8d0ec77ca7adda0f0c10a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: true, replicate: true, http_sync: true)
@@ -27207,6 +27964,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/224cd60e1e76418073623cf92c883707460589f4f9579eb4aaa88d612265f006", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -27227,6 +27985,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/af89d876945665fb4abff7573c7a6ad63a396a00482db0b1e9e6bc552cc73780", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -27247,6 +28006,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3ff2dd7187abc4e31dbae8707b610cdd713060c26e016fc399d8b4d6e9b20972", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: true, replicate: true, http_sync: false)
@@ -27268,6 +28028,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1447144eed9ce96fc941180c5210ec86aaa6a55545786a94089851a2a27f3c91", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -27289,6 +28050,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1ecdd48fe22beb535dbabc97f777fc130d34ccda2be3977248d0e6ded3b718cb", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -27310,6 +28072,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c26ed2164f1ff4f04eebebb7371355fba064e6b29120719b02268562c8f198d3", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: true, http_sync: true)
@@ -27330,6 +28093,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8482ee69df8f447de6d85bf1b451ce7acfc1408f55b7fdbd947673a0b373086a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: true, http_sync: true, &@callback)
@@ -27350,6 +28114,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5d159dad92911c0df38bfe8c8c266b95f2ff17ccf99638879be2b5771e5dc3d1", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: true, http_sync: true, callback: @callback)
@@ -27370,6 +28135,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2529d64f1d4b49aa874d34c2083a747914612450a2bce4adb83c332957b6e665", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: true, http_sync: false)
@@ -27391,6 +28157,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c78d36bb7afe54eb594bff182fee0109721555750c6284ab2e5e45620524733e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: true, http_sync: false, &@callback)
@@ -27412,6 +28179,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a3f3f12137310d13fc8d690c31dd829e828a26c06386c7b76b0c16bc51dfec26", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: true, http_sync: false, callback: @callback)
@@ -27433,6 +28201,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/abdd545b2e36f92ea50b9ee58edac24f2a70e38dad5e298f517937261055ecf7", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: false, replicate: true, http_sync: true)
@@ -27453,6 +28222,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c81c0640c91f736513b62072a0ff7322733305d046aebc84e77654faaaa3b238", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -27473,6 +28243,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/914854c452738ba10e9d32ad52b1dbbf51cf0e94c7e5c6d153f87dc5e2ed6989", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -27493,6 +28264,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9c9e18d742a29f9342acc70103593d3ea3964b6108e6be9710ffdfd321af714f", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: false, replicate: true, http_sync: false)
@@ -27514,6 +28286,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1ccf74ee295bea39d47357877070e75aa74013180aae1eaf9eaca042cb7f04e4", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -27535,6 +28308,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a95340fa14613bd826516f2493f079ab8237f3883339bb3c1eb46aef8784b7cc", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -27556,6 +28330,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3f3992c44e72cefc75f8b0018cbef06589e1ae7350ea15c6f4e166a4663161fc", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: false, http_sync: true)
@@ -27576,6 +28351,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/cc16b71300f133f38382c920e66fbdbccf46c8b524c59cf941b6d11ed0a7b46f", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: false, http_sync: true, &@callback)
@@ -27596,6 +28372,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a7e7fb8b8fd87ee366a2fb1ff996e0fd68b4a0dfde3545271e3ed63771aafc32", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: false, http_sync: true, callback: @callback)
@@ -27616,6 +28393,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7cbc92e71774302158e799051f64d84c12d1cf13772dfd1b0353c4da987b6c46", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: false, http_sync: false)
@@ -27637,6 +28415,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3920641e99667f0d07010c15d100559be6a6a9945289aa57d4fe7dd526acfdf0", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: false, http_sync: false, &@callback)
@@ -27658,6 +28437,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/74a125b25289d522c1827c3f7051c6d647a96c8fb456752ae01c8f58e2112575", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, compressed: false, http_sync: false, callback: @callback)
@@ -27679,6 +28459,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4ae63bcac34132c1d4ba9c3bf5a25e6b409a09064cf8f85e48386af89fd3993f", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, replicate: true, http_sync: true)
@@ -27699,6 +28480,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/189b86baaca72cf236f91b17c93fc26bb79d8f58a034197a85e17b8b3356b8a0", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, replicate: true, http_sync: true, &@callback)
@@ -27719,6 +28501,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/de14e25cb09a7fb5e37992a359c8fdb34f0599e3ce3af712d0c6e81a372a849e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, replicate: true, http_sync: true, callback: @callback)
@@ -27739,6 +28522,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7660a7132cc897f23f06d6d0ed75b2903b5bd7305f9f3ad62a9a05da7e8857c0", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, replicate: true, http_sync: false)
@@ -27760,6 +28544,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/772b27be6bfa1236b82c10ec4cbfbadf93a6adbfbf5683fd892fe30a5d574758", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, replicate: true, http_sync: false, &@callback)
@@ -27781,6 +28566,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c0bd6b24092348d9637306513b83174a222826475897fa09a08af9aa2871d871", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, replicate: true, http_sync: false, callback: @callback)
@@ -27802,6 +28588,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/976938591abc12b6514e114daaf95ce251c041b0b053ced2140cfad12dee6c8e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, http_sync: true)
@@ -27822,6 +28609,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0bd2ae2fe59c801082fe482fdfe5123fb941b79a3b2d545e99a2b108efb83bf5", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, http_sync: true, &@callback)
@@ -27842,6 +28630,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5d0f4993cbdaf40015de05b614d536bbbc14c6aaafd6f47b5215f6371c1a3dd9", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, http_sync: true, callback: @callback)
@@ -27862,6 +28651,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/44db8470a379552fbeb3c24a3e8c3ddbb47b17a6b109fffc3e7015187923ce7f", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, http_sync: false)
@@ -27883,6 +28673,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1a68da3b400dd51d15bc8e22fc4312e8c7aca3c8839328deced37aad4ddcc06d", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, http_sync: false, &@callback)
@@ -27904,6 +28695,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/285987f507e3f97f250f8b561569a4a8f9968f9c9db1f04da41d551f54866ce3", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: true, http_sync: false, callback: @callback)
@@ -27925,6 +28717,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/afff4ff7c04aa2995dc4a6d6c79fee89d66e5531047d2e4a4a605b2c6b127530", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: true, replicate: true, http_sync: true)
@@ -27945,6 +28738,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/087b7d83a145efab8aed169013331e93df327045babd54cc75702d98db55dfc0", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -27965,6 +28759,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e3b44208fbda93af07ca3eb79847d6f56347496c7e00f7ea03969962601e4ba9", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -27985,6 +28780,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/9c0153f0a26883617155793a43904db35aba3789038af22131e9af28e5affb7a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: true, replicate: true, http_sync: false)
@@ -28006,6 +28802,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e3530fafa7864af8f23f4e5c375987379119ff40ba0d1d9704f4857718097834", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -28027,6 +28824,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/1200b38ee2d8b7aa8ddcbb897664f388c6d315df161b545eb08e8184ab9eaa5e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -28048,6 +28846,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/490540b5599b94ac358c010e9d1db5ae1081b8ea298f31e3d0a9025af2e10be8", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: true, http_sync: true)
@@ -28068,6 +28867,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/faa872811c568236fd8eabfa9c877660b7c21e4bc5fdda3b96e7b836624f6bab", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: true, http_sync: true, &@callback)
@@ -28088,6 +28888,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/813ebbb9b93253ced685e624fd60c0ad46d94afd3142b1a969fa7c1b6435598e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: true, http_sync: true, callback: @callback)
@@ -28108,6 +28909,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a81dbeb3f2b4763d22de72fef756d4233c5b7cb32254759b1ecf0594ff7c131e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: true, http_sync: false)
@@ -28129,6 +28931,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/bfbdfcd8ce1b0e9b54d0477d2797db1f1d5544effa13253a044cdf8b70dcb33e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: true, http_sync: false, &@callback)
@@ -28150,6 +28953,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/db21adc40430aa7329c5528dcd565dec62077772279d313506a64a1353cfbe8a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: true, http_sync: false, callback: @callback)
@@ -28171,6 +28975,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/fcd6a13e20ead128f3f428c3972ac7100eed49ec818cabf249c7ec8e0bf6743e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: false, replicate: true, http_sync: true)
@@ -28191,6 +28996,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4947e6c002461dfd8d10a907b73737e52c93f4a6f69679043ba820233d9db358", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -28211,6 +29017,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/884e4face51bbfc7e3f6435921a0e850fb9077c9730584e37d1126564c70b20e", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -28231,6 +29038,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/89fb5a9631ac576494df905999fa6276e15a07100744085dfa2639300fc81673", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: false, replicate: true, http_sync: false)
@@ -28252,6 +29060,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0d6fecb1885fa8b9e51ef6c4b7f8814a9a9e1e976196a9e5a609d387b7329482", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -28273,6 +29082,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/dab87e05a97fc9823159c60e7877183f89df38fef4463fcfdaa16028501b7788", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -28294,6 +29104,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ed2939d81a9614604be6ad75efae5178d20a27b4af07a2597f76f9ac09c24156", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: false, http_sync: true)
@@ -28314,6 +29125,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/bf3e7ffb8e1c1c2b6737e0842cbb5cb7ae4000db940c60102ea0c77d6e4043af", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: false, http_sync: true, &@callback)
@@ -28334,6 +29146,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/747c460c7468ab3c84cd815b8ee7311c2f61ddb6ea00746c1b1461de4b89d381", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: false, http_sync: true, callback: @callback)
@@ -28354,6 +29167,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f1acfde4fd110994ddb7d204a07aff97716301d9a2079109123316152da9d92a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: false, http_sync: false)
@@ -28375,6 +29189,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/71194c02488a474259dda65cc79e424135a9e0108566438ba1e1f9fff7b85166", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: false, http_sync: false, &@callback)
@@ -28396,6 +29211,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ddd5d0eacd822ae570c5f77cf4ea1e327168ec381888c1e6054d9012600fb536", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, compressed: false, http_sync: false, callback: @callback)
@@ -28417,6 +29233,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3fc3a22d5220c14df852efc702549fd0955b2363ed27f23d1f479b13e7a7a5b3", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, replicate: true, http_sync: true)
@@ -28437,6 +29254,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/2bc0eb16cf0e97eb33953f5b3369d6cb4ede8b1b8655873dcfe13441efc1d63c", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, replicate: true, http_sync: true, &@callback)
@@ -28457,6 +29275,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/c976de9013b74198707c11257da415e86c6de9d4433b711505d2386dda48421c", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, replicate: true, http_sync: true, callback: @callback)
@@ -28477,6 +29296,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ba9cf4263e2e456f2af42f1f45b7fa6ec27cfe2a50782556dabcf97001222dd4", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, replicate: true, http_sync: false)
@@ -28498,6 +29318,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/91fc1e60a91672c3941ff8c25b8869df2d21bd827496ab6634c42c8969efcd01", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, replicate: true, http_sync: false, &@callback)
@@ -28519,6 +29340,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/283d30caa68f0c9c3a8e7a80a44af2ea3abad59c83a6bcd855032dc5f3748f41", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, replicate: true, http_sync: false, callback: @callback)
@@ -28540,6 +29362,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/a85108bc722eac71d559b73258060dbe5fcc88b3cde2b4fd4a841fb343afcab1", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, http_sync: true)
@@ -28560,6 +29383,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7fee37292b9bc884ef482abf9432b3dab87cf9cb9c16d35154b3e4de2ddc6190", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, http_sync: true, &@callback)
@@ -28580,6 +29404,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/021b3ec23d6ac91e8aa4d202958216c73de898bd9fd37b94b49610ecbbc5f224", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, http_sync: true, callback: @callback)
@@ -28600,6 +29425,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/cf202da6575b23e19dbc389a54b34cd25494ae230d8d990033291aa56cb323c2", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, http_sync: false)
@@ -28621,6 +29447,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3d32595afc90ad1b1c0de7fadfeea1600325769547979ae84809231d3de229bb", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, http_sync: false, &@callback)
@@ -28642,6 +29469,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8181af921687b0621cfa8a53f0f3ca1a3bed8799f39aff8f123656a8ddad2abf", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, store: false, http_sync: false, callback: @callback)
@@ -28663,6 +29491,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/4b2730a48d5f064419c08f7c2b4a352012444a4ff711e9ea41433dac868c8d40", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: true, replicate: true, http_sync: true)
@@ -28683,6 +29512,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6864ff6c5490d5b9373cf801f44053ccb333f68bfc22236564bcac29197d6d25", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: true, replicate: true, http_sync: true, &@callback)
@@ -28703,6 +29533,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/f69fe2c8dec8b89bf8cf0b67b3af62c426bf228c9df616aa1ba4081a64ab1d03", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: true, replicate: true, http_sync: true, callback: @callback)
@@ -28723,6 +29554,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8bc72ee0a632f3d26d130bfc5b424b5042d437afaf6925e45e664cac61bc516d", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: true, replicate: true, http_sync: false)
@@ -28744,6 +29576,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/dde5508e7e8a03a7ca748d8d9d470d3e466ab11b8c629d4617efbf5e88a6c69b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: true, replicate: true, http_sync: false, &@callback)
@@ -28765,6 +29598,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/fd90a6d489787e80f27311e94b62363ea565d384ee2a67b35bffb87e451ff7d9", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: true, replicate: true, http_sync: false, callback: @callback)
@@ -28786,6 +29620,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3ed5f36dcb3313cb82e38bfb34c26dd35a746283674e72b535afe9872c277fbd", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: true, http_sync: true)
@@ -28806,6 +29641,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b7e9c644fd9b12f44d67f54e8f4770983f079e83ee20f8890e8015f421f36390", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: true, http_sync: true, &@callback)
@@ -28826,6 +29662,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/da82a075f1da4000f5e6c63a014c3a2526c22de37f7bd58418e125d1b663c9c4", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: true, http_sync: true, callback: @callback)
@@ -28846,6 +29683,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/03ddb0a5a8dd988cbc067c61529fde6a2c8c4aeeb56af5136f6d67925e887dbe", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: true, http_sync: false)
@@ -28867,6 +29705,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/806cd1f27251134ab8cfcca64654612be6730993d18970a238f6d34b82b78898", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: true, http_sync: false, &@callback)
@@ -28888,6 +29727,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/7cea08474442c7aee3acf07f5eccd62f7e083e9b619e66e900bcee1c0bf83f91", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: true, http_sync: false, callback: @callback)
@@ -28909,6 +29749,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/75d060a8b636458313823fa7c8aed335c01d2864f0afc2fc3547a294a50c2e51", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: false, replicate: true, http_sync: true)
@@ -28929,6 +29770,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/845df770ba9953e7002819e43615fd288fe196ceaf8e7515c1e3ae6f3542d8c2", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: false, replicate: true, http_sync: true, &@callback)
@@ -28949,6 +29791,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/69863a327516594f48663e8e39cad990307f0147de1f67be13545b0aee1f5fc6", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: false, replicate: true, http_sync: true, callback: @callback)
@@ -28969,6 +29812,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/b04c445a2631c0fdfdb6c9279dc61a269ee3b99055bfa3cc2a44976b757006cc", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: false, replicate: true, http_sync: false)
@@ -28990,6 +29834,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/6542ff241cb3043e0c85f89304d14204dacb59f9193224023648e7a023514311", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: false, replicate: true, http_sync: false, &@callback)
@@ -29011,6 +29856,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/20c194ab1f17579246f9fd5e7e818054856dd67bbb31f0af9c1bfee376a83953", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: false, replicate: true, http_sync: false, callback: @callback)
@@ -29032,6 +29878,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/da44f15e3e3dc3754ea59b38cbc6e1eb015c56245d09f93480b210adc50a02ff", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: false, http_sync: true)
@@ -29052,6 +29899,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5246060ef22df264f39d30c9e7dbab89f84c58d8cea011dd6b3bb3b4cbd9b4e7", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: false, http_sync: true, &@callback)
@@ -29072,6 +29920,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/e15a4a131cbb5fd64178bb93df7145e7087879560ae595675843c9dc6e4c4190", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: false, http_sync: true, callback: @callback)
@@ -29092,6 +29941,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/0317efdc32f7617da6165ed62ef6194947aae8d9badaf8ed0265d47e9fcce5de", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: false, http_sync: false)
@@ -29113,6 +29963,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3c8bd83273729b3654b479d98fd65999fc6efe2807bcfef9db281dba97101ec9", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: false, http_sync: false, &@callback)
@@ -29134,6 +29985,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/634f875b786a905cad909c390c63848ab198fcc0ef5a920486e9a4df57a44619", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, compressed: false, http_sync: false, callback: @callback)
@@ -29155,6 +30007,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5a2f340eb7807131e59d115ec8dc85fff4133c64e3185d21ac1696b5230a2f90", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, replicate: true, http_sync: true)
@@ -29175,6 +30028,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3b618aa9f273622094247c9c7713733a8ee1832e30f0faa6388d3fa43da81c49", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, replicate: true, http_sync: true, &@callback)
@@ -29195,6 +30049,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/22b3ed246c57580581c3c4749958593210ce9457ce5230f09f8636a679bee02b", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, replicate: true, http_sync: true, callback: @callback)
@@ -29215,6 +30070,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/59bbbd1a103a95573437cd02a3d3c7fcf2b7b813ac072df3a9e76b6b200575ab", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, replicate: true, http_sync: false)
@@ -29236,6 +30092,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/5f4f7dec90b70206ac18403df265364d4d8e88ac59f7e87b2da990c117e2aa8d", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, replicate: true, http_sync: false, &@callback)
@@ -29257,6 +30114,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/3571bcb8ed6653a0f3bd8243946875708a846eed2b3d8f535a1825f393b26738", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, replicate: true, http_sync: false, callback: @callback)
@@ -29278,6 +30136,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8ebcf307fce710dfe39b806170bf5339d6eb05a8ea9b5772cd98ee42e2974b8c", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, http_sync: true)
@@ -29298,6 +30157,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/91d12231f63ef63aab4d0a2067d30a08c8cba63e222325a5b4cd598f6b8da09a", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, http_sync: true, &@callback)
@@ -29318,6 +30178,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/8fe6fad9d4dd7fc7de0a6d7530aefe1bdc5b520471da331f172d2cf3fd64a9ef", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, http_sync: true, callback: @callback)
@@ -29338,6 +30199,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/ee1d46a6cc9afd34fea8499b7a1efd53b963272f480113b9c61b551ebb949f16", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, http_sync: false)
@@ -29359,6 +30221,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/fc9acd5ccafc78ac6cc16ef1d0b9e09b71c2c1e64e6d8504cce0c7b0403b3f33", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, http_sync: false, &@callback)
@@ -29380,6 +30243,7 @@ describe Pubnub::Publish do
       uuid: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
+      random_iv: false
     )
     VCR.use_cassette("examples/publish/66c8456d464b5705e28f480e4dd264029743ee518ba5c7f9afc9371b94203619", record: :none) do
       envelope = @pubnub.publish(channel: "demo", message: {:hash => "it is"}, http_sync: false, callback: @callback)

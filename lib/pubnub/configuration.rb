@@ -16,6 +16,7 @@ module Pubnub
         reconnect_interval: Pubnub::Constants::DEFAULT_RECONNECT_INTERVAL,
         region: Pubnub::Constants::DEFAULT_REGION,
         ssl: Pubnub::Constants::DEFAULT_SSL,
+        random_iv: Pubnub::Constants::DEFAULT_USE_RANDOM_IV,
         request_message_count_threshold: Pubnub::Constants::REQUEST_MESSAGE_COUNT_THRESHOLD }
     end
   end

@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: http://ps.pndsn.com/v2/objects/sub-a-mock-key/uuids/ruby-test-uuid-client-one?auth=ruby-test-auth-client-one&include=1&pnsdk=PubNub-Ruby/4.5.0&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: '{"name":"magnum"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.5 (2019-10-01))
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 03 Mar 2021 23:11:13 GMT
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 03 Mar 2021 23:11:13 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '185'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"data":{"id":"ruby-test-uuid-client-one","name":"magnum","externalId":null,"profileUrl":null,"email":null,"updated":"2021-03-03T23:11:13.101616Z","eTag":"AaaUxtPTpNTufg"}}'
+  recorded_at: Wed, 03 Mar 2021 23:11:13 GMT
+- request:
+    method: delete
+    uri: http://ps.pndsn.com/v2/objects/sub-a-mock-key/uuids/bob?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/4.5.0&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.6.5 (2019-10-01))
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 03 Mar 2021 23:11:13 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 03 Mar 2021 23:11:13 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '26'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"data":null}'
+  recorded_at: Wed, 03 Mar 2021 23:11:13 GMT
+recorded_with: VCR 6.0.0

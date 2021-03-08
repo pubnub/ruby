@@ -42,7 +42,7 @@ module Pubnub
         { uuid: { id: member } }
       end
 
-      body = Formatter.format_message({ delete: members }, @cipher_key, false)
+      body = Formatter.format_message({ delete: members }, "", @random_iv, false)
       response = send_request(body)
 
       envelopes = fire_callbacks(handle(response, uri))

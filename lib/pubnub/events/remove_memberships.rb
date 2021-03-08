@@ -42,7 +42,7 @@ module Pubnub
         { channel: { id: membership } }
       end
 
-      body = Formatter.format_message({ delete: memberships }, @cipher_key, false)
+      body = Formatter.format_message({ delete: memberships }, "", @random_iv, false)
       response = send_request(body)
 
       envelopes = fire_callbacks(handle(response, uri))

@@ -45,7 +45,7 @@ module Pubnub
         membership_object
       end
 
-      body = Formatter.format_message({ set: memberships }, @cipher_key, false)
+      body = Formatter.format_message({ set: memberships }, "", @random_iv, false)
       response = send_request(body)
 
       envelopes = fire_callbacks(handle(response, uri))

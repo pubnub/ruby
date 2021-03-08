@@ -39,7 +39,7 @@ module Pubnub
         '0',
         Formatter.format_channel(@channel, true),
         '0',
-        Formatter.format_message(@message, @cipher_key)
+        Formatter.format_message(@message, @cipher_key, @random_iv)
       ].join('/')
     end
 

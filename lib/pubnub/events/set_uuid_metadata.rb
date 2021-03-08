@@ -28,7 +28,7 @@ module Pubnub
     def fire
       Pubnub.logger.debug('Pubnub::SetUuidMetadata') { "Fired event #{self.class}" }
 
-      body = Formatter.format_message(@metadata, @cipher_key, false)
+      body = Formatter.format_message(@metadata, "", @random_iv, false)
       response = send_request(body)
 
       envelopes = fire_callbacks(handle(response, uri))

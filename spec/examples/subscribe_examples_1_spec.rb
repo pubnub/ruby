@@ -14,7 +14,7 @@ describe Pubnub::Subscribe do
   end
 
   let(:pubnub_cipher_params) do
-    pubnub_params.merge({cipher_key: "super-secret-cipher-key"})
+    pubnub_params.merge({cipher_key: "super-secret-cipher-key", random_iv: false})
   end
 
   let(:pubnub) { Pubnub.new(**pubnub_params) }
@@ -17458,7 +17458,7 @@ describe Pubnub::Subscribe do
         expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq([])
         expect(@status_envelopes[0].status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
         true
-      end 
+      end
     end
   end
 
