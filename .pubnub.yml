@@ -14,21 +14,11 @@ changelog:
   -
     changes:
       -
-        text: "BREAKING CHANGE: Add randomized initialization vector usage by default for data encryption / decryption in publish / subscribe / history API calls."
-        type: feature
-      -
-        text: "Fix issue which caused Object request body encryption when `cipher_key` is set."
-        type: bug
-    date: Mar 8, 21
-    version: v4.6.0
-  -
-    changes:
-      -
         text: "Add support for APNS2 device/channel management."
         type: feature
       -
         text: "Resolved issue with multiple timetokens in message counts endpoint"
-        type: bug        
+        type: bug
     date: 2020-12-03
     version: v4.5.0
   -
