@@ -80,6 +80,9 @@ module Pubnub
       when HTTPClient::TimeoutError
         error_category = Pubnub::Constants::STATUS_TIMEOUT
         code = 408
+      when OpenSSL::SSL::SSLError
+        error_category = Pubnub::Constants::SSL_ERROR
+        code = nil
       else
         error_category = Pubnub::Constants::STATUS_ERROR
         code = req_res_objects[:response].code
