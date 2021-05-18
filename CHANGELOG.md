@@ -1,3 +1,9 @@
+##### v4.6.1
+
+- Exclude `spec` and `fixtures` from built gem file. 
+- Fix Ruby SDK repository location under `sdks` section in `.pubnub.yml`. 
+- Add new section to `.pubnub.yml` file with information about SDK and destribution types. 
+
 ##### v4.6.0
 
 - BREAKING CHANGE: Add randomized initialization vector usage by default for data encryption / decryption in publish / subscribe / history API calls. 
