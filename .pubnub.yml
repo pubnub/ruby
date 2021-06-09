@@ -1,6 +1,13 @@
 ---
-version: "4.6.1"
+version: "4.6.2"
 changelog:
+  -
+    changes:
+      -
+        text: "Add new `sdks` section to `.pubnub.yml` with information about available artifacts and distribution variants."
+        type: improvement
+    date: 2021-06-09
+    version: v4.6.2
   -
     changes:
       -
@@ -699,7 +706,7 @@ sdks:
           - distribution-type: library
             distribution-repository: GitHub release
             package-name: pubnub-4.6.1.gem
-            location: https://github.com/pubnub/ruby/releases/download/v4.6.1/pubnub-4.6.1.gem
+            location: https://github.com/pubnub/ruby/releases/download/v4.6.2/pubnub-4.6.1.gem
             requires:
               - name: addressable
                 min-version: 2.0.0

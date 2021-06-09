@@ -1,3 +1,7 @@
+##### v4.6.2
+
+- Add new `sdks` section to `.pubnub.yml` with information about available artifacts and distribution variants. 
+
 ##### v4.6.1
 
 - Exclude `spec` and `fixtures` from built gem file. 
