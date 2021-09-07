@@ -484,10 +484,10 @@ supported-platforms:
 sdks:
   - full-name: Ruby SDK
     short-name: Ruby
+    tier: 1
     artifacts:
       - artifact-type: api-client
         language: Ruby
-        tier: 1
         tags:
           - Server
         source-repository: https://github.com/pubnub/ruby
