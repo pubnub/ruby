@@ -8,3 +8,7 @@ log/*
 examples/test.rb
 coverage
 dev_scripts
+
+# GitHub Actions #
+##################
+.github/.release
