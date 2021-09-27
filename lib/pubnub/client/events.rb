@@ -4,7 +4,7 @@ module Pubnub
   class Client
     # Module that holds generator for all events
     module Events
-      EVENTS = %w[publish subscribe presence leave history here_now audit grant delete_messages
+      EVENTS = %w[publish subscribe presence leave history here_now audit grant grant_token delete_messages
                   revoke time heartbeat where_now set_state state channel_registration message_counts signal
                   add_channels_to_push list_push_provisions remove_channels_from_push remove_device_from_push
                   set_uuid_metadata set_channel_metadata remove_uuid_metadata remove_channel_metadata

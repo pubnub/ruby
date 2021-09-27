@@ -34,6 +34,8 @@ module Pubnub
       Pubnub.logger.debug('Pubnub::Event') { "Initialized #{self.class}" }
     end
 
+
+
     def fire
       Pubnub.logger.debug('Pubnub::Event') { "Fired event #{self.class}" }
 
@@ -44,7 +46,7 @@ module Pubnub
       envelopes
     end
 
-    def send_request(compressed_body = '')
+    def send_request(compressed_body = '', header = {})
       Pubnub.logger.debug('Pubnub::Event') { '#send_request called' }
 
       @compressed_body = compressed_body
@@ -54,13 +56,13 @@ module Pubnub
       telemetry_time_start = ::Time.now.to_f
       response = case operation_http_method
                  when "get"
-                   sender.get(uri.to_s)
+                   sender.get(uri.to_s, header: header)
                  when "post"
-                   sender.post(uri.to_s, body: compressed_body)
+                   sender.post(uri.to_s, body: compressed_body, header: header)
                  when "patch"
-                   sender.patch(uri.to_s, body: compressed_body)
+                   sender.patch(uri.to_s, body: compressed_body, header: header)
                  else
-                   sender.delete(uri.to_s)
+                   sender.delete(uri.to_s, header: header)
                  end
 
       begin
@@ -164,7 +166,7 @@ module Pubnub
                      end count limit reverse presence_callback store skip_validate
                      state channel_group channel_groups compressed meta customs include_token
                      replicate with_presence cipher_key_selector include_meta join update get
-                     add remove push_token push_gateway environment topic
+                     add remove push_token push_gateway environment topic authorized_uuid
                    ]
 
       options = options.each_with_object({}) { |option, obj| obj[option.first.to_sym] = option.last }

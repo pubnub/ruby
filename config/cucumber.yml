@@ -1,0 +1,1 @@
+default: -- SERVER_MOCK=true PAM_SUB_KEY=subKey PAM_PUB_KEY=pubKey PAM_SEC_KEY=secKey SERVER_HOST=localhost SERVER_PORT=8090

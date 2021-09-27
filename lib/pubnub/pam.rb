@@ -23,19 +23,8 @@ module Pubnub
       params[:timestamp] = @timestamp
       params[:channel] = @channel.join(',') unless @channel.first.blank?
       params['target-uuid'] = @uuids.join(',') if !@uuids.nil? && !@uuids.first.blank?
-      params[:signature] = signature unless set_signature
+      #params[:signature] = signature unless set_signature
       params
-    end
-
-    def current_operation
-      case @event
-      when :audit
-        Pubnub::Constants::OPERATION_AUDIT
-      when :grant
-        Pubnub::Constants::OPERATION_GRANT
-      when :revoke
-        Pubnub::Constants::OPERATION_REVOKE
-      end
     end
 
     def valid_envelope(parsed_response, req_res_objects)
