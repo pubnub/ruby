@@ -25,6 +25,9 @@ jobs:
           pwd &&
           ls -la &&
           ls -la sdk-specifications &&
+          ls -la sdk-specifications/features &&
+          ls -la sdk-specifications/features/access &&
+          cat sdk-specifications/features/access/grant-token.feature &&
           sudo gem install bundler &&
           bundle install
       - name: Run acceptance tests
