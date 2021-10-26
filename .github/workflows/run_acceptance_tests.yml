@@ -22,6 +22,9 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
       - name: Install dependencies
         run: |
+          pwd &&
+          ls -la &&
+          ls -la sdk-specifications &&
           sudo gem install bundler &&
           bundle install
       - name: Run acceptance tests
