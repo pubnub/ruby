@@ -28,4 +28,4 @@ jobs:
           sudo gem install bundler &&
           bundle install
       - name: Run acceptance tests
-        run: bundle exec cucumber sdk-specifications/features -t @feature=access
+        run: bundle exec cucumber sdk-specifications/features/ -t @feature=access
