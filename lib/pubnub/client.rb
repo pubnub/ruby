@@ -68,6 +68,8 @@ require 'pubnub/validators/set_channel_members'
 require 'pubnub/validators/set_memberships'
 require 'pubnub/validators/remove_channel_members'
 require 'pubnub/validators/remove_memberships'
+require 'cbor'
+require 'base64'
 
 Dir[File.join(File.dirname(__dir__), 'pubnub', 'events', '*.rb')].each do |file|
   require file
@@ -318,6 +320,11 @@ module Pubnub
 
     def telemetry_for(event)
       @telemetry.await.fetch_average(event).value
+    end
+
+    def parse_token(token)
+      token_bytes = Base64.urlsafe_decode64(token)
+      CBOR.decode(token_bytes)
     end
 
     private

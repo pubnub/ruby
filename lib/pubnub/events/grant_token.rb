@@ -1,18 +1,8 @@
-require 'cbor'
-require 'base64'
-
 module Pubnub
-  # Holds grant functionality
+  # Holds grant token functionality
   class GrantToken < PAM
     include Concurrent::Async
     include Pubnub::Validator::GrantToken
-
-    class << self
-      def parse_token(token)
-        token_bytes = Base64.urlsafe_decode64(token)
-        CBOR.decode(token_bytes)
-      end
-    end
 
     def initialize(options, app)
       @event = current_operation

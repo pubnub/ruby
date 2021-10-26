@@ -56,7 +56,7 @@ end
 
 When('I grant a token specifying those permissions') do
   res = call_grant_token(@pubnub, @grant_token_state)
-  @grant_token_state[:parsed_token] = Pubnub::GrantToken.parse_token(res.result[:data]["token"])
+  @grant_token_state[:parsed_token] = @pubnub.parse_token(res.result[:data]["token"])
 end
 
 Then('the token contains the authorized UUID {string}') do |expected_uuid|
@@ -151,7 +151,7 @@ Given('I have a known token containing an authorized UUID') do
 end
 
 When('I parse the token') do
-  @grant_token_state[:parsed_token] = Pubnub::GrantToken.parse_token(@grant_token_state[:token])
+  @grant_token_state[:parsed_token] = @pubnub.parse_token(@grant_token_state[:token])
 end
 
 Then('the parsed token output contains the authorized UUID {string}') do |expected_uuid|
