@@ -22,13 +22,7 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
       - name: Install dependencies
         run: |
-          pwd &&
-          ls -la &&
-          ls -la sdk-specifications &&
-          ls -la sdk-specifications/features &&
-          ls -la sdk-specifications/features/access &&
-          cat sdk-specifications/features/access/grant-token.feature &&
           sudo gem install bundler &&
           bundle install
       - name: Run acceptance tests
-        run: bundle exec cucumber sdk-specifications/features/ -t @feature=access
+        run: bundle exec cucumber sdk-specifications/features/ -t @featureSet=access
