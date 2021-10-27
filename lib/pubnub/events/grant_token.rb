@@ -1,6 +1,6 @@
 module Pubnub
   # Holds grant token functionality
-  class GrantToken < PAM
+  class GrantToken < SingleEvent
     include Concurrent::Async
     include Pubnub::Validator::GrantToken
 
@@ -9,10 +9,10 @@ module Pubnub
       @uuid_perms = options[:uuids] || {}
       @channel_perms = options[:channels] || {}
       @channel_group_perms = options[:channel_groups] || {}
+      @telemetry_name = :l_pamv3
       options[:channels] = []
       options[:channel_groups] = []
       super
-      @telemetry_name = :l_pamv3
     end
 
     def fire

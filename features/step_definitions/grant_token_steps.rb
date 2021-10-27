@@ -123,7 +123,7 @@ Then('an error is returned') do
 end
 
 Then('the error status code is {int}') do |code|
-  expect(@grant_token_state[:error_response].result[:code]).to eq code
+  expect(@grant_token_state[:error_response].status[:code]).to eq code
 end
 
 Then('the error message is {string}') do |error_message|

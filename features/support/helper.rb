@@ -35,5 +35,5 @@ def call_grant_token(pubnub, grant_token_state)
 end
 
 def parse_error_body(error_response)
-  Pubnub::Formatter.parse_json(error_response.result[:server_response].body)[0]
+  Pubnub::Formatter.parse_json(error_response.status[:server_response].body)[0]
 end
