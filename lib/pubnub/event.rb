@@ -34,8 +34,6 @@ module Pubnub
       Pubnub.logger.debug('Pubnub::Event') { "Initialized #{self.class}" }
     end
 
-
-
     def fire
       Pubnub.logger.debug('Pubnub::Event') { "Fired event #{self.class}" }
 

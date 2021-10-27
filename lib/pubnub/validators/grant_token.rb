@@ -7,54 +7,54 @@ module Pubnub
       include CommonValidator
 
       def validate!
-        true
-
-        # validate_keys!
-        # validate_ttl!
-        # validate_uuids!
+        validate_keys!
+        validate_ttl!
+        validate_permissions!(@uuid_perms, ":uuids")
+        validate_permissions!(@channel_perms, ":channels")
+        validate_permissions!(@channel_group_perms, ":uuids")
+        validate_all_permissions!
       end
 
       private
 
-      # def validate_keys!
-      #   raise(
-      #     ArgumentError.new(object: self, message: ':subscribe_key is required for grant event.'),
-      #     ':subscribe_key is required for grant event.'
-      #   ) if @subscribe_key.nil? || @subscribe_key.empty?
-      #
-      #   raise(
-      #     ArgumentError.new(object: self, message: ':publish_key is required for grant event.'),
-      #     ':publish_key is required for grant event.'
-      #   ) if @publish_key.nil? || @publish_key.empty?
-      # end
+      def validate_keys!
+        raise(
+          ArgumentError.new(object: self, message: ':subscribe_key is required for grant token event.'),
+          ':subscribe_key is required for grant token event.'
+        ) if @subscribe_key.nil? || @subscribe_key.empty?
 
-      # def validate_ttl!
-      #   return unless !@ttl.nil? && !@ttl.is_a?(Integer)
-      #
-      #   raise(
-      #     ArgumentError.new(object: self, message: ':ttl has to be kind of Integer for grant event.'),
-      #     ':ttl has to be kind of Integer for grant event.'
-      #   )
-      # end
+        raise(
+          ArgumentError.new(object: self, message: ':secret_key is required for grant token event.'),
+          ':publish_key is required for grant token event.'
+        ) if @secret_key.nil? || @secret_key.empty?
+      end
 
-      # def validate_uuids!
-      #   return if @uuids.nil?
-      #
-      #   raise(
-      #     ArgumentError.new(object: self, message: ':uuid should not be empty for grant event.'),
-      #     ':uuid should not be empty for grant event.'
-      #   ) if @uuid.empty?
-      #
-      #   raise(
-      #     ArgumentError.new(object: self, message: ':auth_key required for grant event on uuids.'),
-      #     ':uuid should not be empty for grant event on uuids.'
-      #   ) if @auth_key.nil? || @auth_key.blank?
-      #
-      #   raise(
-      #     ArgumentError.new(object: self, message: ':uuid can\'t be used along with channel/channel_groups for grant event.'),
-      #     ':uuid can\'t be used along with channel/channel_groups for grant event.'
-      #   ) if !@channels.nil? || !@channel_groups.nil?
-      # end
+      def validate_ttl!
+        return unless !@ttl.nil? && !@ttl.is_a?(Integer)
+
+        raise(
+          ArgumentError.new(object: self, message: ':ttl has to be kind of Integer for grant token event.'),
+          ':ttl has to be kind of Integer for grant token event.'
+        )
+      end
+
+      def validate_permissions!(arg, name)
+        return if arg.nil?
+
+        raise(
+          ArgumentError.new(object: self, message: ":#{name} has to be kind of Hash for grant token event."),
+          ":#{name} has to be kind of Hash for grant token event."
+        ) unless arg.is_a?(Hash)
+      end
+
+      def validate_all_permissions!
+        return if !@uuid_perms.empty? or !@channel_group_perms.empty? or !@channel_perms.empty?
+
+        raise(
+          ArgumentError.new(object: self, message: 'one of :uuids, :channels or :channel_groups has to be non empty for grant token event.'),
+          'one of :uuids, :channels or :channel_groups has to be non empty for grant token event.'
+        )
+      end
     end
   end
 end

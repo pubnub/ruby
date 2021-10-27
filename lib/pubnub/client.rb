@@ -1,3 +1,6 @@
+require 'cbor'
+require 'base64'
+
 require 'pubnub/error'
 require 'pubnub/uuid'
 require 'pubnub/formatter'
@@ -68,8 +71,6 @@ require 'pubnub/validators/set_channel_members'
 require 'pubnub/validators/set_memberships'
 require 'pubnub/validators/remove_channel_members'
 require 'pubnub/validators/remove_memberships'
-require 'cbor'
-require 'base64'
 
 Dir[File.join(File.dirname(__dir__), 'pubnub', 'events', '*.rb')].each do |file|
   require file

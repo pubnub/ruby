@@ -12,10 +12,7 @@ module Pubnub
       options[:channels] = []
       options[:channel_groups] = []
       super
-    end
-
-    def headers
-      { "Content-Type": "application/json" }
+      @telemetry_name = :l_pamv3
     end
 
     def fire

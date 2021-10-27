@@ -24,5 +24,16 @@ jobs:
         run: |
           sudo gem install bundler &&
           bundle install
-      - name: Run acceptance tests
-        run: bundle exec cucumber sdk-specifications/features/ -t @featureSet=access
+      - name: Run acceptance tests (optional)
+        run: bundle exec cucumber sdk-specifications/features/ -t "not @skip and not @na=lang and @beta" -f junit --out beta.xml
+        continue-on-error: true
+      - name: Run acceptance tests (required)
+        run: bundle exec cucumber sdk-specifications/features/ -t "not @skip and not @na=lang and not @beta" -f junit --out main.xml
+      - name: Expose acceptance tests reports
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: acceptance-test-reports
+          path: |
+            main.xml
+            beta.xml

@@ -8,9 +8,6 @@ module Pubnub
       @auth_key = options[:auth_key]
       @telemetry_name = :l_pam
 
-      # @channel += format_channels(options[:presence]).map do |c|
-      #   c + '-pnpres'
-      # end if options[:presence].present?
     end
 
     def signature
@@ -23,7 +20,7 @@ module Pubnub
       params[:timestamp] = @timestamp
       params[:channel] = @channel.join(',') unless @channel.first.blank?
       params['target-uuid'] = @uuids.join(',') if !@uuids.nil? && !@uuids.first.blank?
-      #params[:signature] = signature unless set_signature
+      params[:signature] = signature unless set_signature
       params
     end
 
