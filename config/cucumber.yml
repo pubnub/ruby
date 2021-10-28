@@ -1,1 +1,7 @@
-default: -- SERVER_MOCK=true PAM_SUB_KEY=subKey PAM_PUB_KEY=pubKey PAM_SEC_KEY=secKey SERVER_HOST=localhost SERVER_PORT=8090
+default: -p mock -p run_main
+run_main: -t "not @skip and not @na=ruby and not @beta"
+report_main: -f junit --out main
+run_beta: -t "not @skip and not @na=ruby and @beta"
+report_beta: -f junit --out beta
+mock: SERVER_MOCK=true PAM_SUB_KEY=subKey PAM_PUB_KEY=pubKey PAM_SEC_KEY=secKey SERVER_HOST=localhost SERVER_PORT=8090
+prod: SERVER_MOCK=false

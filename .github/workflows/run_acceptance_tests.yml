@@ -25,10 +25,10 @@ jobs:
           sudo gem install bundler &&
           bundle install
       - name: Run acceptance tests (optional)
-        run: bundle exec cucumber sdk-specifications/features/ -t "not @skip and not @na=ruby and @beta" -f junit --out beta
+        run: bundle exec cucumber sdk-specifications/features/ -p mock -p run_beta -p report_beta
         continue-on-error: true
       - name: Run acceptance tests (required)
-        run: bundle exec cucumber sdk-specifications/features/ -t "not @skip and not @na=ruby and not @beta" -f junit --out main
+        run: bundle exec cucumber sdk-specifications/features/ -p mock -p run_main -p report_main
       - name: Combine test results
         if: always()
         run: |

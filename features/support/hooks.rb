@@ -4,6 +4,17 @@ require 'json'
 Before do |scenario|
   @grant_token_state = {}
   @grant_token_state[:current_grant] = {}
+  @pn_configuration = {}
+
+  when_mock_server_used {
+    puts "Using mock"
+    expect(ENV['SERVER_HOST']).not_to be_nil
+    expect(ENV['SERVER_PORT']).not_to be_nil
+    @pn_configuration = {
+      origin: ENV['SERVER_HOST'] + ":" + ENV['SERVER_PORT'],
+      isSecure: false,
+    }
+  }
 
   when_mock_server_used {
     init_mock(scenario)
@@ -17,11 +28,6 @@ After do |scenario|
 end
 
 def when_mock_server_used(&block)
-  @pn_configuration = {
-    origin: "localhost:8090",
-    isSecure: false
-  }
-
   if ENV['SERVER_MOCK']&.to_s&.downcase == 'true'
     block.call
   end

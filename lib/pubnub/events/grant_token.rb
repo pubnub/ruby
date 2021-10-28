@@ -28,7 +28,7 @@ module Pubnub
         }.select { |_, v| v }
       }
 
-      body = Formatter.format_message(raw_body, "", @random_iv, false)
+      body = Formatter.format_message(raw_body)
       response = send_request(body, { "Content-Type": "application/json" })
 
       envelopes = fire_callbacks(handle(response, uri))
