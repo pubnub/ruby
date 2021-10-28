@@ -9,9 +9,9 @@ module Pubnub
       def validate!
         validate_keys!
         validate_ttl!
-        validate_permissions!(@uuid_perms, ":uuids")
-        validate_permissions!(@channel_perms, ":channels")
-        validate_permissions!(@channel_group_perms, ":uuids")
+        validate_permissions!(@uuids, ":uuids")
+        validate_permissions!(@channels, ":channels")
+        validate_permissions!(@channel_groups, ":uuids")
         validate_all_permissions!
       end
 
@@ -48,7 +48,9 @@ module Pubnub
       end
 
       def validate_all_permissions!
-        return if !@uuid_perms.empty? or !@channel_group_perms.empty? or !@channel_perms.empty?
+        return if (@uuids and !@uuids.empty?) or
+          (@channel_groups and !@channel_groups.empty?) or
+          (@channels and !@channels.empty?)
 
         raise(
           ArgumentError.new(object: self, message: 'one of :uuids, :channels or :channel_groups has to be non empty for grant token event.'),

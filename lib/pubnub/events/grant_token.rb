@@ -6,12 +6,10 @@ module Pubnub
 
     def initialize(options, app)
       @event = current_operation
-      @uuid_perms = options[:uuids] || {}
-      @channel_perms = options[:channels] || {}
-      @channel_group_perms = options[:channel_groups] || {}
       @telemetry_name = :l_pamv3
-      options[:channels] = []
-      options[:channel_groups] = []
+      options[:uuids] = options[:uuids] || {}
+      options[:channels] = options[:channels] || {}
+      options[:channel_groups] = options[:channel_groups] || {}
       super
     end
 
@@ -23,8 +21,8 @@ module Pubnub
         permissions: {
           meta: @meta,
           uuid: @authorized_uuid,
-          resources: prepare_permissions(:resource, @channel_perms, @channel_group_perms, @uuid_perms),
-          patterns: prepare_permissions(:pattern, @channel_perms, @channel_group_perms, @uuid_perms)
+          resources: prepare_permissions(:resource, @channels, @channel_groups, @uuids),
+          patterns: prepare_permissions(:pattern, @channels, @channel_groups, @uuids)
         }.select { |_, v| v }
       }
 
@@ -37,6 +35,14 @@ module Pubnub
     end
 
     private
+
+    def enable_format_channels?
+      false
+    end
+
+    def enable_format_group?
+      false
+    end
 
     def current_operation
       Pubnub::Constants::OPERATION_GRANT_TOKEN

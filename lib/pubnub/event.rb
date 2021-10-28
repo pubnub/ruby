@@ -24,8 +24,8 @@ module Pubnub
       env.delete(:state)
       create_variables_from_options(env.merge(options))
       @origin = @app.current_origin
-      format_channels
-      format_group
+      format_channels if enable_format_channels?
+      format_group if enable_format_group?
       set_timestamp
       validate!
       telemetry = @app.telemetry_for(@telemetry_name)
@@ -102,6 +102,14 @@ module Pubnub
 
     private
 
+    def enable_format_channels?
+      true
+    end
+
+    def enable_format_group?
+      true
+    end
+
     def operation_http_method
       case @event
       when Pubnub::Constants::OPERATION_DELETE, Pubnub::Constants::OPERATION_REMOVE_CHANNEL_METADATA, Pubnub::Constants::OPERATION_REMOVE_UUID_METADATA
@@ -164,7 +172,7 @@ module Pubnub
                      end count limit reverse presence_callback store skip_validate
                      state channel_group channel_groups compressed meta customs include_token
                      replicate with_presence cipher_key_selector include_meta join update get
-                     add remove push_token push_gateway environment topic authorized_uuid
+                     add remove push_token push_gateway environment topic authorized_uuid uuids
                    ]
 
       options = options.each_with_object({}) { |option, obj| obj[option.first.to_sym] = option.last }
