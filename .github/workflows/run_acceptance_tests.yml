@@ -25,20 +25,26 @@ jobs:
           sudo gem install bundler &&
           bundle install
       - name: Run acceptance tests (optional)
-        run: bundle exec cucumber sdk-specifications/features/ -t "not @skip and not @na=lang and @beta" -f junit --out beta
+        run: bundle exec cucumber sdk-specifications/features/ -t "not @skip and not @na=ruby and @beta" -f junit --out beta
         continue-on-error: true
       - name: Run acceptance tests (required)
-        run: bundle exec cucumber sdk-specifications/features/ -t "not @skip and not @na=lang and not @beta" -f junit --out main
+        run: bundle exec cucumber sdk-specifications/features/ -t "not @skip and not @na=ruby and not @beta" -f junit --out main
       - name: Combine test results
+        if: always()
         run: |
           sudo npm install -g junit-report-merger &&
           jrm ./main.xml "./main/**/*.xml" &&
           jrm ./beta.xml "./beta/**/*.xml"
-      - name: Expose acceptance tests reports
+      - name: Expose main report
         uses: actions/upload-artifact@v2
         if: always()
         with:
-          name: acceptance-test-reports
-          path: |
-            main.xml
-            beta.xml
+          name: main.xml
+          path: main.xml
+      - name: Expose beta report
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: beta.xml
+          path: beta.xml
+
