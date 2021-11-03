@@ -144,8 +144,9 @@ module Pubnub
         pnsdk: @app.sdk_version
       }
 
+      token = @app.env[:token]
       empty_if_blank = {
-        auth: @auth_key,
+        auth: token ? token : @auth_key,
         uuid: @app.env[:uuid],
         @telemetry_name => @current_telemetry
       }

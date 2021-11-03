@@ -1,4 +1,3 @@
-require 'cbor'
 require 'base64'
 
 require 'pubnub/error'
@@ -326,6 +325,10 @@ module Pubnub
     def parse_token(token)
       token_bytes = Base64.urlsafe_decode64(token)
       CBOR.decode(token_bytes)
+    end
+
+    def set_token(token)
+      @env[:token] = token
     end
 
     private

@@ -16,7 +16,6 @@ group :test do
 end
 
 group :development, :test do
-  gem 'cbor', '~> 0.5.9.6'
   gem 'awesome_print'
   gem 'pry'
   gem 'pry-rescue'
