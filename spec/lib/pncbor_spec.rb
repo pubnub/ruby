@@ -11,7 +11,7 @@ describe Pncbor do
       ['F6', nil]
     ].each do |cbor, expected|
       it "handle #{expected}" do
-        expect(object.decode(cbor)).to eq expected
+        expect(object.decode([cbor].pack('H*').bytes.to_a)).to eq expected
       end
     end
   end
@@ -28,7 +28,7 @@ describe Pncbor do
       ['1AFFFFFFFF', 4294967295]
     ].each do |cbor, expected|
       it "handle #{expected}" do
-        expect(object.decode(cbor)).to eq expected
+        expect(object.decode([cbor].pack('H*').bytes.to_a)).to eq expected
       end
     end
   end
@@ -43,7 +43,7 @@ describe Pncbor do
       ['3AFFFFFFFF', -4294967296]
     ].each do |cbor, expected|
       it "handle #{expected}" do
-        expect(object.decode(cbor)).to eq expected
+        expect(object.decode([cbor].pack('H*').bytes.to_a)).to eq expected
       end
     end
   end
@@ -55,7 +55,7 @@ describe Pncbor do
       ['F9EC00', -4096]
     ].each do |cbor, expected|
       it "handle #{expected}" do
-        expect((object.decode(cbor) - expected).abs).to be < 0.000001
+        expect((object.decode([cbor].pack('H*').bytes.to_a) - expected).abs).to be < 0.000001
       end
     end
   end
@@ -69,7 +69,7 @@ describe Pncbor do
       ['FA47D9F95E', 111602.734375]
     ].each do |cbor, expected|
       it "handle #{expected}" do
-        expect((object.decode(cbor) - expected).abs).to be < 0.000001
+        expect((object.decode([cbor].pack('H*').bytes.to_a) - expected).abs).to be < 0.000001
       end
     end
   end
@@ -82,7 +82,7 @@ describe Pncbor do
       ['FBC0240083126E978D', -10.001]
     ].each do |cbor, expected|
       it "handle #{expected}" do
-        expect((object.decode(cbor) - expected).abs).to be < 0.000001
+        expect((object.decode([cbor].pack('H*').bytes.to_a) - expected).abs).to be < 0.000001
       end
     end
   end
@@ -102,8 +102,7 @@ describe Pncbor do
       ['4A507562F09F93A24E7562', 'Pub📢Nub']
     ].each do |cbor, expected|
       it "handle #{expected}" do
-        decoded = object.decode(cbor)
-        expect(decoded).to eq expected
+        expect(object.decode([cbor].pack('H*').bytes.to_a)).to eq expected
       end
     end
   end
@@ -139,7 +138,7 @@ describe Pncbor do
       ]
     ].each do |cbor, expected|
       it "handle #{expected}" do
-        expect(object.decode(cbor)).to eq expected
+        expect(object.decode([cbor].pack('H*').bytes.to_a)).to eq expected
       end
     end
   end
@@ -190,7 +189,7 @@ describe Pncbor do
       ],
     ].each do |cbor, expected|
       it "handle #{expected}" do
-        expect(object.decode(cbor)).to eq expected
+        expect(object.decode([cbor].pack('H*').bytes.to_a)).to eq expected
       end
     end
   end
@@ -239,7 +238,7 @@ describe Pncbor do
       ]
     ].each do |cbor, expected|
       it "handle #{expected}" do
-        expect(object.decode(cbor)).to eq expected
+        expect(object.decode([cbor].pack('H*').bytes.to_a)).to eq expected
       end
     end
   end
