@@ -70,6 +70,7 @@ require 'pubnub/validators/set_channel_members'
 require 'pubnub/validators/set_memberships'
 require 'pubnub/validators/remove_channel_members'
 require 'pubnub/validators/remove_memberships'
+require 'pubnub/cbor'
 
 Dir[File.join(File.dirname(__dir__), 'pubnub', 'events', '*.rb')].each do |file|
   require file
@@ -324,7 +325,7 @@ module Pubnub
 
     def parse_token(token)
       token_bytes = Base64.urlsafe_decode64(token)
-      CBOR.decode(token_bytes)
+      Cbor.new.decode(token_bytes.bytes)
     end
 
     def set_token(token)

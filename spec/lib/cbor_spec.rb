@@ -1,8 +1,8 @@
 require 'spec_helper'
-require 'pubnub/pncbor'
+require 'pubnub/cbor'
 
-describe Pncbor do
-  subject(:object) { Object.new.extend(described_class) }
+describe Pubnub::Cbor do
+  subject(:object) { Pubnub::Cbor.new }
 
   context "handles simple values" do
     [
