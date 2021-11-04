@@ -173,7 +173,7 @@ module Pubnub
                      end count limit reverse presence_callback store skip_validate
                      state channel_group channel_groups compressed meta customs include_token
                      replicate with_presence cipher_key_selector include_meta join update get
-                     add remove push_token push_gateway environment topic authorized_uuid uuids
+                     add remove push_token push_gateway environment topic authorized_uuid
                    ]
 
       options = options.each_with_object({}) { |option, obj| obj[option.first.to_sym] = option.last }

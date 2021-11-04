@@ -7,7 +7,7 @@ module Pubnub
     def initialize(options, app)
       @event = current_operation
       @telemetry_name = :l_pamv3
-      options[:uuids] = options[:uuids] || {}
+      @uuids = options[:uuids] || {}
       options[:channels] = options[:channels] || {}
       options[:channel_groups] = options[:channel_groups] || {}
       super
