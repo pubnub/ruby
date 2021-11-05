@@ -25,7 +25,6 @@ module Pubnub
           patterns: prepare_permissions(:pattern, @channels, @channel_groups, @uuids)
         }.select { |_, v| v }
       }
-
       body = Formatter.format_message(raw_body,  "", false, false)
       response = send_request(body, { "Content-Type": "application/json" })
 
