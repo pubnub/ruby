@@ -125,7 +125,9 @@ module Pubnub
 
     def decode_map(data, additional)
       length = compute_length(data, additional)
-      (1..length).to_h { [parse_data(data), parse_data(data)] }
+      result = Hash.new
+      (1..length).each { result.store(parse_data(data), parse_data(data)) }
+      result
     end
 
     def decode_array(data, additional)
