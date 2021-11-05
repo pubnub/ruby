@@ -12,7 +12,6 @@ module Pubnub
         validate_permissions!(@uuids, ":uuids")
         validate_permissions!(@channels, ":channels")
         validate_permissions!(@channel_groups, ":uuids")
-        validate_all_permissions!
       end
 
       private
@@ -45,17 +44,6 @@ module Pubnub
           ArgumentError.new(object: self, message: ":#{name} has to be kind of Hash for grant token event."),
           ":#{name} has to be kind of Hash for grant token event."
         ) unless arg.is_a?(Hash)
-      end
-
-      def validate_all_permissions!
-        return if (@uuids and !@uuids.empty?) or
-          (@channel_groups and !@channel_groups.empty?) or
-          (@channels and !@channels.empty?)
-
-        raise(
-          ArgumentError.new(object: self, message: 'one of :uuids, :channels or :channel_groups has to be non empty for grant token event.'),
-          'one of :uuids, :channels or :channel_groups has to be non empty for grant token event.'
-        )
       end
     end
   end
