@@ -1,6 +1,11 @@
 ---
-version: "4.6.2"
+version: "v4.7.0"
 changelog:
+  - date: 2021-11-09
+    version: v4.7.0
+    changes:
+      - type: feature
+        text: "Grant_token allows generation of signed token with permissions for channels, channel groups and uuids."
   -
     changes:
       -
@@ -600,7 +605,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-4.6.1.gem
+            package-name: pubnub-v4.7.0.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -705,8 +710,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-4.6.1.gem
-            location: https://github.com/pubnub/ruby/releases/download/v4.6.2/pubnub-4.6.1.gem
+            package-name: pubnub-v4.7.0.gem
+            location: https://github.com/pubnub/ruby/releases/download/v4.7.0/pubnub-v4.7.0.gem
             requires:
               - name: addressable
                 min-version: 2.0.0
