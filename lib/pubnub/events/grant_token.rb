@@ -25,7 +25,7 @@ module Pubnub
           patterns: prepare_permissions(:pattern, @channels, @channel_groups, @uuids)
         }.select { |_, v| v }
       }
-      body = Formatter.format_message(raw_body,  "", false, false)
+      body = Formatter.format_message(raw_body, "", false, false)
       response = send_request(body, { "Content-Type": "application/json" })
 
       envelopes = fire_callbacks(handle(response, uri))
@@ -158,38 +158,14 @@ module Pubnub
     def calculate_bitmask
       sum = 0
 
-      if @read
-        sum |= 1
-      end
-
-      if @write
-        sum |= 2
-      end
-
-      if @manage
-        sum |= 4
-      end
-
-      if @delete
-        sum |= 8
-      end
-
-      if @create
-        sum |= 16
-      end
-
-      if @get
-        sum |= 32
-      end
-
-      if @update
-        sum |= 64
-      end
-
-      if @join
-        sum |= 128
-      end
-      sum
+      sum |= 1 if @read
+      sum |= 2 if @write
+      sum |= 4 if @manage
+      sum |= 8 if @delete
+      sum |= 16 if @create
+      sum |= 32 if @get
+      sum |= 64 if @update
+      sum |= 128 if @join
     end
   end
 end

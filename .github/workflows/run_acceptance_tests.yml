@@ -39,12 +39,8 @@ jobs:
         uses: actions/upload-artifact@v2
         if: always()
         with:
-          name: main.xml
-          path: main.xml
-      - name: Expose beta report
-        uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: beta.xml
-          path: beta.xml
-
+          name: acceptance-test-reports
+          path: |
+            main.xml
+            beta.xml
+          retention-days: 7
