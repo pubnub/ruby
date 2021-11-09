@@ -1,3 +1,5 @@
+require 'base64'
+
 require 'pubnub/error'
 require 'pubnub/uuid'
 require 'pubnub/formatter'
@@ -34,6 +36,7 @@ require 'pubnub/validators/client'
 require 'pubnub/validators/audit'
 require 'pubnub/validators/channel_registration'
 require 'pubnub/validators/grant'
+require 'pubnub/validators/grant_token'
 require 'pubnub/validators/heartbeat'
 require 'pubnub/validators/here_now'
 require 'pubnub/validators/history'
@@ -67,6 +70,7 @@ require 'pubnub/validators/set_channel_members'
 require 'pubnub/validators/set_memberships'
 require 'pubnub/validators/remove_channel_members'
 require 'pubnub/validators/remove_memberships'
+require 'pubnub/cbor'
 
 Dir[File.join(File.dirname(__dir__), 'pubnub', 'events', '*.rb')].each do |file|
   require file
@@ -317,6 +321,15 @@ module Pubnub
 
     def telemetry_for(event)
       @telemetry.await.fetch_average(event).value
+    end
+
+    def parse_token(token)
+      token_bytes = Base64.urlsafe_decode64(token)
+      Cbor.new.decode(token_bytes.bytes)
+    end
+
+    def set_token(token)
+      @env[:token] = token
     end
 
     private

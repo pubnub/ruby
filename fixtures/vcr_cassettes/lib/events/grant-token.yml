@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://ps.pndsn.com/v3/pam/sub-a-mock-key/grant?pnsdk=PubNub-Ruby/4.6.2&signature=v2.yZaPGX91wlB3GD03L8BdyJVNmMT6uJMsgpLitWSRPm8&timestamp=1635159481&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: '{"ttl":60,"permissions":{"uuid":"authorized_uuid","resources":{"channels":{"id":1},"groups":{},"uuids":{}},"patterns":{"channels":{},"groups":{},"uuids":{}}}}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.7.0 (2019-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 25 Oct 2021 10:58:26 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 25 Oct 2021 10:58:26 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '281'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+    body:
+      encoding: UTF-8
+      string: '{"data":{"message":"Success","token":"qEF2AkF0GmF2jdJDdHRsGDxDcmVzpURjaGFuoWJpZAFDZ3JwoEN1c3KgQ3NwY6BEdXVpZKBDcGF0pURjaGFuoENncnCgQ3VzcqBDc3BjoER1dWlkoERtZXRhoER1dWlkb2F1dGhvcml6ZWRfdXVpZENzaWdYIDdEOLM5Z0KUgMQmmNqjLaRQo-742ZKMV2Z69-fZipCf"},"service":"Access
+        Manager","status":200}'
+  recorded_at: Mon, 25 Oct 2021 10:58:26 GMT
+recorded_with: VCR 6.0.0

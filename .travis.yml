@@ -16,10 +16,6 @@ stages:
 
 jobs:
   include:
-    - stage: "test"
-      name: 'Ruby 2.4.10'
-      rvm: '2.4.10'
-      script: bundle exec rspec
     - name: 'Ruby 2.5.8'
       rvm: '2.5.8'
       script: bundle exec rspec

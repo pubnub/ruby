@@ -1,3 +1,9 @@
+## v4.7.0
+November 09 2021
+
+#### Added
+- Grant_token allows generation of signed token with permissions for channels, channel groups and uuids.
+
 ##### v4.6.2
 
 - Add new `sdks` section to `.pubnub.yml` with information about available artifacts and distribution variants. 
