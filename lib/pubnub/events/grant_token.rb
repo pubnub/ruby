@@ -166,6 +166,7 @@ module Pubnub
       sum |= 32 if @get
       sum |= 64 if @update
       sum |= 128 if @join
+      sum
     end
   end
 end
