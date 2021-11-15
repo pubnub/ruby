@@ -3,6 +3,7 @@ require 'json'
 
 Before do |scenario|
   @grant_token_state = {}
+  @global_state = {}
   @grant_token_state[:current_grant] = {}
   @pn_configuration = {}
 
