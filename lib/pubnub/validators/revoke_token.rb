@@ -15,15 +15,15 @@ module Pubnub
 
       def validate_keys!
         raise(
-          ArgumentError.new(object: self, message: ':subscribe_key is required for grant token event.'),
+          ArgumentError.new(object: self, message: ':subscribe_key is required for revoke token event.'),
           ':subscribe_key is required for grant token event.'
         ) if @subscribe_key.nil? || @subscribe_key.empty?
       end
 
       def validate_token!
         raise(
-          ArgumentError.new(object: self, message: ':ttl has to be kind of Integer for grant token event.'),
-          ':ttl has to be kind of Integer for grant token event.'
+          ArgumentError.new(object: self, message: ':token is required for revoke token event.'),
+          ':token is required for revoke token event.'
         ) if @token.nil? || @token.empty?
       end
     end
