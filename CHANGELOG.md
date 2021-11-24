@@ -1,3 +1,12 @@
+## v4.7.1
+November 24 2021
+
+#### Added
+- Add new method `all_history_messages` which return messages from requested interval or `since` / `before` date in single object.
+
+#### Fixed
+- Fix exception raised when optional start / end not passed to `paged_history`.
+
 ## v4.7.0
 November 09 2021
 
