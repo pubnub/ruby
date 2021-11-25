@@ -83,7 +83,9 @@ end
 
 VCR.configure do |c|
   ignored_params = [
-      :pnsdk, :uuid, :ortt, :seqn, :t, :l_pres, :l_pub, :l_pres, :l_hist, :l_cg, :l_time, :l_obj, :signature, :timestamp ]
+      :pnsdk, :uuid, :ortt, :seqn, :t, :l_pres, :l_pub, :l_push, :l_pres, :l_pamv3, :l_hist, :l_mc,
+      :l_cg, :l_time, :l_obj, :signature, :timestamp ]
+  c.allow_http_connections_when_no_cassette = true
   c.cassette_library_dir = "fixtures/vcr_cassettes"
   c.hook_into :webmock
   c.allow_http_connections_when_no_cassette = false
