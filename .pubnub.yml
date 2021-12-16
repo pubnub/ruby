@@ -6,6 +6,11 @@ changelog:
     changes:
       - type: feature
         text: "Add revoke token feature."
+  - date: 2021-12-16
+    version: v4.8.0
+    changes:
+      - type: feature
+        text: "Add revoke token feature."
   - date: 2021-11-24
     version: v4.7.1
     changes:
