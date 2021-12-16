@@ -1,6 +1,13 @@
 ---
-version: "4.7.0"
+version: "4.7.1"
 changelog:
+  - date: 2021-11-24
+    version: v4.7.1
+    changes:
+      - type: feature
+        text: "Add new method `all_history_messages` which return messages from requested interval or `since` / `before` date in single object."
+      - type: bug
+        text: "Fix exception raised when optional start / end not passed to `paged_history`."
   - date: 2021-11-09
     version: v4.7.0
     changes:
@@ -609,7 +616,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-4.7.0.gem
+            package-name: pubnub-4.7.1.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -714,8 +721,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-v4.7.0.gem
-            location: https://github.com/pubnub/ruby/releases/download/v4.7.0/pubnub-4.7.0.gem
+            package-name: pubnub-4.7.1.gem
+            location: https://github.com/pubnub/ruby/releases/download/v4.7.1/pubnub-4.7.1.gem
             requires:
               - name: addressable
                 min-version: 2.0.0

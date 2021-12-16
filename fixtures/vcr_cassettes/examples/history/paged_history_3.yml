@@ -1,0 +1,131 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/history/sub-key/sub-a-mock-key/channel/demo?auth=ruby-test-auth-client-one&count=3&end=16376215880582193&pnsdk=PubNub-Ruby/4.7.0&start=16376216052005484&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.7.2 (2020-10-01))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 23 Nov 2021 22:22:17 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 23 Nov 2021 22:22:17 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '126'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Server:
+      - Pubnub Storage
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+    body:
+      encoding: UTF-8
+      string: '[[{"text": "Test message #8"}, {"text": "Test message #9"}, {"text":
+        "Test message #10"}],16376215974611464,16376216052005483]'
+  recorded_at: Tue, 23 Nov 2021 22:22:17 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/history/sub-key/sub-a-mock-key/channel/demo?auth=ruby-test-auth-client-one&count=3&end=16376215880582193&l_hist=0.161&pnsdk=PubNub-Ruby/4.7.0&start=16376215974611464&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.7.2 (2020-10-01))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 23 Nov 2021 22:22:17 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 23 Nov 2021 22:22:17 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '125'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Server:
+      - Pubnub Storage
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+    body:
+      encoding: UTF-8
+      string: '[[{"text": "Test message #5"}, {"text": "Test message #6"}, {"text":
+        "Test message #7"}],16376215880582193,16376215943848282]'
+  recorded_at: Tue, 23 Nov 2021 22:22:17 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/history/sub-key/sub-a-mock-key/channel/demo?auth=ruby-test-auth-client-one&count=3&end=16376215880582193&l_hist=0.076&pnsdk=PubNub-Ruby/4.7.0&start=16376215880582193&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.7.2 (2020-10-01))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 23 Nov 2021 22:22:17 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 23 Nov 2021 22:22:17 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '8'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Server:
+      - Pubnub Storage
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+    body:
+      encoding: UTF-8
+      string: "[[],0,0]"
+  recorded_at: Tue, 23 Nov 2021 22:22:17 GMT
+recorded_with: VCR 6.0.0

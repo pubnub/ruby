@@ -1,0 +1,136 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/history/sub-key/sub-a-mock-key/channel/demo?auth=ruby-test-auth-client-one&count=4&end=16377095974621056&include_token=true&pnsdk=PubNub-Ruby/4.7.0&start=16377095731901576&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.7.2 (2020-10-01))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 23 Nov 2021 23:31:28 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 23 Nov 2021 23:31:28 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '334'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Server:
+      - Pubnub Storage
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+    body:
+      encoding: UTF-8
+      string: '[[{"message": {"text": "Test message #1"}, "timetoken": 16377095731901577},
+        {"message": {"text": "Test message #2"}, "timetoken": 16377095753435756},
+        {"message": {"text": "Test message #3"}, "timetoken": 16377095776142785},
+        {"message": {"text": "Test message #4"}, "timetoken": 16377095796303676}],16377095731901577,16377095796303676]'
+  recorded_at: Tue, 23 Nov 2021 23:31:28 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/history/sub-key/sub-a-mock-key/channel/demo?auth=ruby-test-auth-client-one&count=4&end=16377095974621056&include_token=true&l_hist=0.105&pnsdk=PubNub-Ruby/4.7.0&start=16377095796303676&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.7.2 (2020-10-01))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 23 Nov 2021 23:31:28 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 23 Nov 2021 23:31:28 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '334'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Server:
+      - Pubnub Storage
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+    body:
+      encoding: UTF-8
+      string: '[[{"message": {"text": "Test message #5"}, "timetoken": 16377095818104733},
+        {"message": {"text": "Test message #6"}, "timetoken": 16377095850534863},
+        {"message": {"text": "Test message #7"}, "timetoken": 16377095883609014},
+        {"message": {"text": "Test message #8"}, "timetoken": 16377095912474163}],16377095818104733,16377095912474163]'
+  recorded_at: Tue, 23 Nov 2021 23:31:28 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/history/sub-key/sub-a-mock-key/channel/demo?auth=ruby-test-auth-client-one&count=4&end=16377095974621056&include_token=true&l_hist=0.099&pnsdk=PubNub-Ruby/4.7.0&start=16377095912474163&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.7.2 (2020-10-01))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 23 Nov 2021 23:31:28 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 23 Nov 2021 23:31:28 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '187'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Server:
+      - Pubnub Storage
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+    body:
+      encoding: UTF-8
+      string: '[[{"message": {"text": "Test message #9"}, "timetoken": 16377095941299801},
+        {"message": {"text": "Test message #10"}, "timetoken": 16377095974621056}],16377095941299801,16377095974621056]'
+  recorded_at: Tue, 23 Nov 2021 23:31:28 GMT
+recorded_with: VCR 6.0.0
