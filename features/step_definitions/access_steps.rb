@@ -12,6 +12,7 @@ Given('I have a keyset with access manager enabled') do
   logger = Logger.new(STDOUT)
   logger.level = Logger::DEBUG
   @pn_configuration['logger'] = logger
+  @pn_configuration['uuid'] = Pubnub::UUID.generate
 
   @pubnub = Pubnub.new(@pn_configuration)
 end
@@ -24,6 +25,7 @@ Given('I have a keyset with access manager enabled - without secret key') do
   logger = Logger.new(STDOUT)
   logger.level = Logger::DEBUG
   @pn_configuration['logger'] = logger
+  @pn_configuration['uuid'] = Pubnub::UUID.generate
 
   @pubnub = Pubnub.new(@pn_configuration)
 end

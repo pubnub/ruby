@@ -52,6 +52,23 @@ module Pubnub
           )
         end
       end
+
+      # Validates given uuid
+      def validate_uuid(uuid)
+        if !uuid
+          raise(
+            InitializationError.new,
+            'Missing required :uuid parameter.'
+          )
+        elsif !([String, Symbol].include?(uuid.class) ||
+          uuid.blank?)
+          raise(
+            InitializationError.new,
+            'UUID parameter is not valid. \
+                   Should be type of String or Symbol.'
+          )
+        end
+      end
     end
   end
 end
