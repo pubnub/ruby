@@ -19,6 +19,10 @@ describe Pubnub::Client do
       expect { Pubnub.new }.to raise_error(Pubnub::InitializationError)
     end
 
+    it "requires uuid" do
+      expect { Pubnub.new(subscribe_key: :key) }.to raise_error(Pubnub::InitializationError)
+    end
+
     it "by default sets Pubnub.logger that logs to pubnub.log" do
       _pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: :key)
       expect(Pubnub.logger.instance_eval("@logdev").filename).to eq "pubnub.log"
@@ -208,6 +212,10 @@ describe Pubnub::Client do
       pubnub_client.subscribe(channel: :demo)
 
       expect { pubnub_client.change_uuid("whatever") }.to raise_error(RuntimeError)
+    end
+
+    it "cannot change uuid to empty" do
+      expect { pubnub_client.change_uuid("") }.to raise_error(Pubnub::InitializationError)
     end
 
     it "can show what channels are subscribed" do

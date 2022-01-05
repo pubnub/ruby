@@ -1,9 +1,12 @@
+require 'pubnub/validators/common_validator'
+
 # Toplevel Pubnub module.
 module Pubnub
   # Pubnub client Class
   class Client
     # Module that holds some getters and setters
     module GettersSetters
+
       def sdk_version
         "PubNub-Ruby/#{Pubnub::VERSION}"
       end
@@ -25,6 +28,8 @@ module Pubnub
       def change_uuid(uuid)
         Pubnub.logger.debug('Pubnub::Client') { 'Changing uuid' }
         raise('Cannot change UUID while subscribed.') if subscribed?
+        Validator::Client.validate_uuid uuid
+
         @env[:uuid] = uuid
       end
 

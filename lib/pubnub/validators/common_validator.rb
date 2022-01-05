@@ -55,7 +55,7 @@ module Pubnub
 
       # Validates given uuid
       def validate_uuid(uuid)
-        if !uuid
+        if !uuid || uuid.blank?
           raise(
             InitializationError.new,
             'Missing required :uuid parameter.'
