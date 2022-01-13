@@ -1,6 +1,11 @@
 ---
-version: "4.8.0"
+version: "5.0.0"
 changelog:
+  - date: 2022-01-13
+    version: v5.0.0
+    changes:
+      - type: improvement
+        text: "BREAKING CHANGES: uuid is required parameter to create PubNub instance."
   - date: 2021-12-16
     version: v4.8.0
     changes:
@@ -621,7 +626,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-4.8.0.gem
+            package-name: pubnub-5.0.0.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -726,8 +731,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-4.8.0.gem
-            location: https://github.com/pubnub/ruby/releases/download/v4.8.0/pubnub-4.8.0.gem
+            package-name: pubnub-5.0.0.gem
+            location: https://github.com/pubnub/ruby/releases/download/v5.0.0/pubnub-5.0.0.gem
             requires:
               - name: addressable
                 min-version: 2.0.0

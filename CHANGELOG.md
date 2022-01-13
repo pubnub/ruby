@@ -1,3 +1,9 @@
+## v5.0.0
+January 13 2022
+
+#### Modified
+- BREAKING CHANGES: uuid is required parameter to create PubNub instance.
+
 ## v4.8.0
 December 16 2021
 
