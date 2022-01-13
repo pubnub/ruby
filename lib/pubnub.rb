@@ -15,6 +15,7 @@ require 'concurrent-edge'
 
 require 'pubnub/version'
 require 'pubnub/client'
+require 'pubnub/uuid'
 
 # Adding blank? and present? methods to Object.
 class Object

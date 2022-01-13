@@ -3,7 +3,7 @@ require 'pry'
 
 describe Pubnub::Presence do
 
-  let(:client) {Pubnub.new(subscribe_key: :key)}
+  let(:client) {Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: :key)}
 
   around :each do |example|
     example.run_with_retry retry: 10
