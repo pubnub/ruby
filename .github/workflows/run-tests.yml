@@ -37,11 +37,6 @@ jobs:
       - name: Build and run tests for Ruby 2.7.x
         run: |
           bundle exec rspec
-      - name: Setup JRuby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: jruby-head
-          bundler-cache: true
   acceptance:
     name: Acceptance tests
     runs-on: ubuntu-latest
