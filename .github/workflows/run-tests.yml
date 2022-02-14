@@ -42,14 +42,6 @@ jobs:
         with:
           ruby-version: jruby-head
           bundler-cache: true
-      - name: Build and run tests for JRuby
-        env:
-          JRUBY_TEST: true
-          NO_COVERAGE: true
-          JRUBY_OPTS: "--server -J-Xms2048m -J-Xmx2048m -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
-        run: |
-          jruby -S rspec ./spec/examples/
-          jruby -S rspec ./spec/lib/
   acceptance:
     name: Acceptance tests
     runs-on: ubuntu-latest
