@@ -14,38 +14,42 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Setup Ruby 2.5.x
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.5
+          bundler-cache: true
       - name: Build and run tests for Ruby 2.5.x
         run: |
-          gem update --system
-          gem install bundler
-          gem update bundler
-          bundle install --without development
           bundle exec rspec
       - name: Setup Ruby 2.6.x
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6
+          bundler-cache: true
       - name: Build and run tests for Ruby 2.6.x
         run: |
-          gem update --system
-          gem install bundler
-          gem update bundler
-          bundle install --without development
           bundle exec rspec
       - name: Setup Ruby 2.7.x
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
+          bundler-cache: true
       - name: Build and run tests for Ruby 2.7.x
         run: |
-          gem update --system
-          gem install bundler
-          gem update bundler
-          bundle install --without development
           bundle exec rspec
+      - name: Setup JRuby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: jruby-head
+          bundler-cache: true
+      - name: Build and run tests for JRuby
+        env:
+          JRUBY_TEST: true
+          NO_COVERAGE: true
+          JRUBY_OPTS: "--server -J-Xms2048m -J-Xmx2048m -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
+        run: |
+          jruby -S rspec ./spec/examples/
+          jruby -S rspec ./spec/lib/
   acceptance:
     name: Acceptance tests
     runs-on: ubuntu-latest
