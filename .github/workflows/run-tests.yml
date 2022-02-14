@@ -1,10 +1,53 @@
-name: run_acceptance_tests
+name: Tests
 
-on: [push]
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
-  build:
-    name: Perform Acceptance BDD tests
+  tests:
+    name: Integration and Unit tests
+    runs-on: ubuntu-latest
+    env:
+      CXX: 'g++-4.8'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Setup Ruby 2.5.x
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.5
+      - name: Build and run tests for Ruby 2.5.x
+        run: |
+          gem update --system
+          gem install bundler
+          gem update bundler
+          bundle install --without development
+          bundle exec rspec
+      - name: Setup Ruby 2.6.x
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+      - name: Build and run tests for Ruby 2.6.x
+        run: |
+          gem update --system
+          gem install bundler
+          gem update bundler
+          bundle install --without development
+          bundle exec rspec
+      - name: Setup Ruby 2.7.x
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+      - name: Build and run tests for Ruby 2.7.x
+        run: |
+          gem update --system
+          gem install bundler
+          gem update bundler
+          bundle install --without development
+          bundle exec rspec
+  acceptance:
+    name: Acceptance tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project
