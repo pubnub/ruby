@@ -10,19 +10,28 @@ module Pubnub
       @uuids = options[:uuids] || {}
       options[:channels] = options[:channels] || {}
       options[:channel_groups] = options[:channel_groups] || {}
+      @spaces_permissions = options[:spaces_permissions] || {}
+      @users_permissions = options[:users_permissions] || {}
       super
     end
 
     def fire
       Pubnub.logger.debug('Pubnub::GrantToken') { "Fired event #{self.class}" }
+      if @authorized_user_id != nil
+        uuid = @authorized_user_id
+      elsif @authorized_uuid != nil
+        uuid = @authorized_uuid
+      else
+        uuid = nil
+      end
 
       raw_body = {
         ttl: @ttl,
         permissions: {
           meta: @meta,
-          uuid: @authorized_uuid,
-          resources: prepare_permissions(:resource, @channels, @channel_groups, @uuids),
-          patterns: prepare_permissions(:pattern, @channels, @channel_groups, @uuids)
+          uuid: uuid,
+          resources: prepare_permissions(:resource, @channels, @channel_groups, @uuids, @spaces_permissions, @users_permissions),
+          patterns: prepare_permissions(:pattern, @channels, @channel_groups, @uuids, @spaces_permissions, @users_permissions)
         }.select { |_, v| v }
       }
       body = Formatter.format_message(raw_body, "", false, false)
@@ -47,11 +56,11 @@ module Pubnub
       Pubnub::Constants::OPERATION_GRANT_TOKEN
     end
 
-    def prepare_permissions(type, channels, groups, uuids)
+    def prepare_permissions(type, channels, groups, uuids, spaces_permissions, users_permissions)
       {
-        channels: prepare_single_permissions(type, channels),
+        channels: prepare_single_permissions(type, channels).merge!(prepare_single_permissions(type, spaces_permissions)),
         groups: prepare_single_permissions(type, groups),
-        uuids: prepare_single_permissions(type, uuids)
+        uuids: prepare_single_permissions(type, uuids).merge!(prepare_single_permissions(type, users_permissions))
       }
     end
 
