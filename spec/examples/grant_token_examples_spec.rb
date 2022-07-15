@@ -9,10 +9,10 @@ describe Pubnub::GrantToken do
     end
 
     @pubnub = Pubnub.new(
-      publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
+      publish_key: "pub-a-mock-key",
       secret_key: "sec-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-user-id-client-one",
       auth_key: "ruby-test-auth-client-one",
     )
 
@@ -20,7 +20,7 @@ describe Pubnub::GrantToken do
   end
 
   it "__channel___demo____group__nil___read__false___write__false___manage__false___ttl__300___auth_key__nil___http_sync__true___callback___block_" do
-    VCR.use_cassette("examples/grant_token/1", record: :none) do
+    VCR.use_cassette("examples/grant_token/1", record: :once) do
       Pubnub::Grant.any_instance.stub(:current_time).and_return "1657795717"
       Pubnub::Grant.any_instance.stub(:signature).and_return "v2.dOOoWVBHwrRw3kXQ37gWR1De6TlufWW_ccWaLFMhaSw"
       envelope = @pubnub.grant_token(
@@ -42,7 +42,7 @@ describe Pubnub::GrantToken do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-user-id-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:grant_token)

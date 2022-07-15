@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://ps.pndsn.com/v3/pam/sub-a-mock-key/grant?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/5.0.0&signature=v2.dOOoWVBHwrRw3kXQ37gWR1De6TlufWW_ccWaLFMhaSw&timestamp=1657795717&uuid=ruby-test-uuid-client-one
+    uri: http://ps.pndsn.com/v3/pam/sub-a-mock-key/grant?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/5.0.0&signature=v2.FLuNhUa0kOlicaHQvAEYOYcfM-M1WqVTSnjHEdQdVTo&timestamp=1657881355&uuid=ruby-test-user-id-client-one
     body:
       encoding: UTF-8
       string: '{"ttl":60,"permissions":{"uuid":"authorized_user_id","resources":{"channels":{"id":1},"groups":{},"uuids":{"user1":64}},"patterns":{"channels":{"whatever.*":3},"groups":{},"uuids":{"users.*":24}}}}'
@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - "*/*"
       Date:
-      - Thu, 14 Jul 2022 10:48:37 GMT
+      - Fri, 15 Jul 2022 10:35:55 GMT
       Content-Type:
       - application/json
   response:
@@ -21,7 +21,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 14 Jul 2022 10:48:32 GMT
+      - Fri, 15 Jul 2022 10:35:50 GMT
       Content-Type:
       - text/javascript; charset=UTF-8
       Transfer-Encoding:
@@ -32,7 +32,7 @@ http_interactions:
       - no-cache, no-store, must-revalidate
     body:
       encoding: UTF-8
-      string: '{"data":{"message":"Success","token":"qEF2AkF0GmLP9IBDdHRsGDxDcmVzpURjaGFuoWJpZAFDZ3JwoENzcGOgQ3VzcqBEdXVpZKFldXNlcjEYQENwYXSlRGNoYW6handoYXRldmVyLioDQ2dycKBDc3BjoEN1c3KgRHV1aWShZ3VzZXJzLioYGERtZXRhoER1dWlkcmF1dGhvcml6ZWRfdXNlcl9pZENzaWdYIJcNyBtPLfLcJjZfXoVY2bzAlcjAKRqoesdbaSaCRfOc"},"service":"Access
+      string: '{"data":{"message":"Success","token":"qEF2AkF0GmLRQwZDdHRsGDxDcmVzpURjaGFuoWJpZAFDZ3JwoENzcGOgQ3VzcqBEdXVpZKFldXNlcjEYQENwYXSlRGNoYW6handoYXRldmVyLioDQ2dycKBDc3BjoEN1c3KgRHV1aWShZ3VzZXJzLioYGERtZXRhoER1dWlkcmF1dGhvcml6ZWRfdXNlcl9pZENzaWdYIMTIf3E62rWFvrXH-pW2cKxxh5WHz0_MSfJRxMCcHwuu"},"service":"Access
         Manager","status":200}'
-  recorded_at: Thu, 14 Jul 2022 10:48:37 GMT
+  recorded_at: Fri, 15 Jul 2022 10:35:55 GMT
 recorded_with: VCR 6.0.0

@@ -14,7 +14,7 @@ describe Pubnub::GrantToken do
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "ruby-test-uuid",
+        user_id: "ruby-test-user_id",
       )
     end
 
@@ -31,7 +31,7 @@ describe Pubnub::GrantToken do
     let(:envelope_with_entities) do
       pubnub.grant_token(
         ttl: 60,
-        authorized_uuid: "authorized_uuid",
+        authorized_user_id: "authorized_user_id",
         spaces_permissions: {
           "id": Pubnub::Permissions.res(read: true)
         }
@@ -41,7 +41,7 @@ describe Pubnub::GrantToken do
     it "raises error when mixing objects and entities" do
       expect { pubnub.grant_token(
         ttl: 60,
-        authorized_uuid: "authorized_uuid",
+        authorized_user_id: "authorized_user_id",
         spaces_permissions: {
           "id": Pubnub::Permissions.res(read: true)
         },
