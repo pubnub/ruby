@@ -15,7 +15,8 @@ module Pubnub
       # ===========
       # <dl>
       #   <dt>uuid</dt>
-      #   <dd>New uuid to be set.</dd>
+      #   <b>DEPRECATED:</b> Please use <tt>change_user_id</tt> instead.
+      #   <dd>New uuid to be set. Note that this will override user_id value</dd>
       # </dl>
       #
       # Returns:
@@ -33,9 +34,30 @@ module Pubnub
         @env[:uuid] = uuid
       end
 
+      # Parameters:
+      # ===========
+      # <dl>
+      #   <dt>user_id</dt>
+      #   <dd>New user_id to be set. Note that this will override uuid value</dd>
+      # </dl>
+      #
+      # Returns:
+      # ========
+      # New user_id.
+      #
+      # Functionality:
+      # ==============
+      # Can't change user_id while subscribed. You have to leave every subscribed channel.
+      def change_user_id(user_id)
+        change_uuid(user_id)
+      end
+
       alias session_uuid= change_uuid
       alias uuid= change_uuid
       alias set_uuid= change_uuid
+      alias session_user_id= change_user_id
+      alias user_id= change_user_id
+      alias set_user_id= change_user_id
 
       # Returns:
       # ========
@@ -93,11 +115,19 @@ module Pubnub
         @env[:timetoken] = timetoken
       end
 
+      #   <b>DEPRECATED:</b> Please use <tt>user_id</tt> instead.
       # Returns:
       # ========
       # Current uuid.
       def uuid
         @env[:uuid]
+      end
+
+      # Returns:
+      # ========
+      # Current user_id.
+      def user_id
+        uuid
       end
 
       # Returns:

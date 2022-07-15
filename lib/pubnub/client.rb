@@ -289,7 +289,7 @@ module Pubnub
 
     def sequence_number_for_publish!
       @env[:sequence_number_for_publish] += 1
-      @env[:sequence_number_for_publish] % 2**32
+      @env[:sequence_number_for_publish] % 2 ** 32
     end
 
     def apply_state(event)
@@ -379,6 +379,10 @@ module Pubnub
       Pubnub.logger = options[:logger] || Logger.new('pubnub.log')
       Concurrent.global_logger = Pubnub.logger
       @subscriber = Subscriber.new(self)
+      user_id = options[:user_id]
+      if user_id != nil
+        options[:uuid] = user_id
+      end
       @env = options
     end
 
