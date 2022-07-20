@@ -148,7 +148,7 @@ module Pubnub
       token = @app.env[:token]
       empty_if_blank = {
         auth: token ? token : @auth_key,
-        uuid: @app.env[:uuid],
+        uuid: @app.user_id,
         @telemetry_name => @current_telemetry
       }
 
@@ -223,7 +223,7 @@ module Pubnub
     def get_config
       {
         tls: @app.env[:ssl],
-        uuid: @app.env[:uuid],
+        uuid: @app.user_id,
         auth_key: @app.env[:auth_key],
         origin: @app.current_origin
       }
