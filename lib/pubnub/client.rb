@@ -379,10 +379,7 @@ module Pubnub
       Pubnub.logger = options[:logger] || Logger.new('pubnub.log')
       Concurrent.global_logger = Pubnub.logger
       @subscriber = Subscriber.new(self)
-      user_id = options[:user_id]
-      if user_id != nil
-        options[:uuid] = user_id
-      end
+      options[:uuid] = options[:user_id] unless options[:user_id].nil?
       @env = options
     end
 

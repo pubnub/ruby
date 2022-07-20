@@ -38,7 +38,7 @@ describe Pubnub::Publish do
 
   context "store, replicate" do
     before(:each) do
-      @pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, 
+      @pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, 
         :max_retries => 0,
         :subscribe_key => :demo,
         :publish_key => :demo,

@@ -69,6 +69,23 @@ module Pubnub
           )
         end
       end
+      deprecate :validate_uuid, :validate_user_id, 2023, 1
+
+      def validate_user_id(user_id)
+        if !user_id || user_id.blank?
+          raise(
+            InitializationError.new,
+            'Missing required :user_id parameter.'
+          )
+        elsif !([String, Symbol].include?(user_id.class) ||
+          user_id.blank?)
+          raise(
+            InitializationError.new,
+            'user_id parameter is not valid. \
+                   Should be type of String or Symbol.'
+          )
+        end
+      end
     end
   end
 end
