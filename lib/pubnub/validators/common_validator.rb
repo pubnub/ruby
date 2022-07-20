@@ -4,6 +4,8 @@ module Pubnub
   module Validator
     # Validator for Client object
     module CommonValidator
+      extend Gem::Deprecate
+
       # Validates given origin
       def validate_origin(origin, required = false)
         if !origin && required

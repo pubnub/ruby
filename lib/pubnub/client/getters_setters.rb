@@ -7,6 +7,8 @@ module Pubnub
     # Module that holds some getters and setters
     module GettersSetters
 
+      extend Gem::Deprecate
+
       def sdk_version
         "PubNub-Ruby/#{Pubnub::VERSION}"
       end
