@@ -10,7 +10,7 @@ module Pubnub
     def initialize(options, app)
       @event = current_operation
       @telemetry_name = :l_obj
-      @uuid = options[:uuid].nil? ? app.env.user_id : options[:uuid]
+      @uuid = options[:uuid].nil? ? app.user_id : options[:uuid]
 
       if options[:include]
         @include = "custom" unless [0, '0', false].include?(options[:include][:custom])
