@@ -111,7 +111,10 @@ module Pubnub
     #   <dd><b>optional.</b> Required to encrypt messages.</dd>
     #
     #   <dt>uuid</dt>
-    #   <dd><b>optional.</b> Sets given uuid as client uuid, does not generates random uuid on init as usually.</dd>
+    #   <dd><b>optional.</b> <b>Deprecated.</b> Sets given uuid as client uuid, does not generates random uuid on init as usually</dd>
+    #
+    #   <dt>user_id</dt>
+    #   <dd><b>required.</b> Sets given user_id as client user_id.</dd>
     #
     #   <dt>origin</dt>
     #   <dd><b>optional.</b> Specifies the fully qualified domain name of the PubNub origin.
@@ -155,7 +158,7 @@ module Pubnub
     #   publish_key: :demo,
     #   secret_key: :secret,
     #   cipher_key: :other_secret,
-    #   uuid: :mad_max,
+    #   user_id: :mad_max,
     #   origin: 'custom.pubnub.com',
     #   callback: ->(envelope) { puts envelope.message },
     #   connect_callback: ->(message) { puts message },
@@ -379,7 +382,7 @@ module Pubnub
       Pubnub.logger = options[:logger] || Logger.new('pubnub.log')
       Concurrent.global_logger = Pubnub.logger
       @subscriber = Subscriber.new(self)
-      options[:uuid] = options[:user_id] unless options[:user_id].nil?
+      options[:user_id] = options[:uuid] until options[:user_id].nil?
       @env = options
     end
 
