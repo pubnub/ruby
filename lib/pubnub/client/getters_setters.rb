@@ -54,9 +54,9 @@ module Pubnub
         @env[:user_id] = user_id
       end
 
-      alias session_uuid= change_user_id
-      alias uuid= change_user_id
-      alias set_uuid= change_user_id
+      alias session_uuid= change_uuid
+      alias uuid= change_uuid
+      alias set_uuid= change_uuid
       alias session_user_id= change_user_id
       alias user_id= change_user_id
       alias set_user_id= change_user_id

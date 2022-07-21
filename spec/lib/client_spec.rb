@@ -205,17 +205,17 @@ describe Pubnub::Client do
     let(:pubnub_client) { Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: "demo") }
 
     it "can change uuid while not subscribed" do
-      expect(pubnub_client.change_uuid("whatever")).to eq "whatever"
+      expect(pubnub_client.change_user_id("whatever")).to eq "whatever"
     end
 
     it "cannot change uuid when subscribed" do
       pubnub_client.subscribe(channel: :demo)
 
-      expect { pubnub_client.change_uuid("whatever") }.to raise_error(RuntimeError)
+      expect { pubnub_client.change_user_id("whatever") }.to raise_error(RuntimeError)
     end
 
     it "cannot change uuid to empty" do
-      expect { pubnub_client.change_uuid("") }.to raise_error(Pubnub::InitializationError)
+      expect { pubnub_client.change_user_id("") }.to raise_error(Pubnub::InitializationError)
     end
 
     it "can show what channels are subscribed" do
