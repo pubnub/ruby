@@ -8,6 +8,7 @@ module Pubnub
         include CommonValidator
 
         def validate!(parameters)
+          validate_required parameters, :subscribe_key, :origin, :user_id
           validate_origin parameters[:origin], true
           validate_subscribe_key parameters[:subscribe_key], true
           validate_publish_key parameters[:publish_key]

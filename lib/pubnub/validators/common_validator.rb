@@ -4,8 +4,6 @@ module Pubnub
   module Validator
     # Validator for Client object
     module CommonValidator
-      extend Gem::Deprecate
-
       # Validates given origin
       def validate_origin(origin, required = false)
         if !origin && required
@@ -54,24 +52,6 @@ module Pubnub
           )
         end
       end
-
-      # Validates given uuid
-      def validate_uuid(uuid)
-        if !uuid || uuid.blank?
-          raise(
-            InitializationError.new,
-            'Missing required :uuid parameter.'
-          )
-        elsif !([String, Symbol].include?(uuid.class) ||
-          uuid.blank?)
-          raise(
-            InitializationError.new,
-            'UUID parameter is not valid. \
-                   Should be type of String or Symbol.'
-          )
-        end
-      end
-      deprecate :validate_uuid, :validate_user_id, 2023, 1
 
       def validate_user_id(user_id)
         if !user_id || user_id.blank?

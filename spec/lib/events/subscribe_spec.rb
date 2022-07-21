@@ -45,7 +45,7 @@ describe Pubnub::Subscribe do
             subscribe_key: "sub-a-mock-key",
             publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
-            uuid: "ruby-test-uuid",
+            user_id: "ruby-test-uuid",
           )
 
           @pubnub.add_listener(callback: @callbacks)
@@ -67,7 +67,7 @@ describe Pubnub::Subscribe do
         @pubnub = Pubnub::Client.new(
           subscribe_key: "demo",
           publish_key: "demo",
-          uuid: "ruby-test-uuid",
+          user_id: "ruby-test-uuid",
           cipher_key: "demo",
           random_iv: false
         )
@@ -90,7 +90,7 @@ describe Pubnub::Subscribe do
         @pubnub = Pubnub::Client.new(
           subscribe_key: "demo",
           publish_key: "demo",
-          uuid: "ruby-test-uuid",
+          user_id: "ruby-test-uuid",
         )
 
         VCR.use_cassette("lib/events/subscribe-playing-async", record: :once) do
@@ -108,7 +108,7 @@ describe Pubnub::Subscribe do
             subscribe_key: "sub-a-mock-key",
             publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
-            uuid: "ruby-test-uuid",
+            user_id: "ruby-test-uuid",
           )
 
           @pubnub.add_listener(callback: @callbacks)
@@ -133,7 +133,7 @@ describe Pubnub::Subscribe do
             subscribe_key: "sub-a-mock-key",
             publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
-            uuid: "ruby-test-uuid"
+            user_id: "ruby-test-uuid"
           )
 
           @pubnub.add_listener(callback: @callbacks)
@@ -160,7 +160,7 @@ describe Pubnub::Subscribe do
             subscribe_key: "sub-a-mock-key",
             publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
-            uuid: "ruby-test-uuid"
+            user_id: "ruby-test-uuid"
           )
 
           @pubnub.add_listener(callback: @callbacks)
@@ -187,7 +187,7 @@ describe Pubnub::Subscribe do
             subscribe_key: "sub-a-mock-key",
             publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
-            uuid: "ruby-test-uuid"
+            user_id: "ruby-test-uuid"
           )
 
           @pubnub.add_listener(callback: @callbacks)
@@ -214,7 +214,7 @@ describe Pubnub::Subscribe do
               subscribe_key: "sub-a-mock-key",
               publish_key: "pub-a-mock-key",
               auth_key: "ruby-test-auth",
-              uuid: "ruby-test-uuid"
+              user_id: "ruby-test-uuid"
           )
 
           @pubnub.add_listener(callback: @callbacks)
@@ -243,7 +243,7 @@ describe Pubnub::Subscribe do
         @pubnub = Pubnub::Client.new(
           subscribe_key: "demo",
           publish_key: "demo",
-          uuid: "ruby-test-uuid",
+          user_id: "ruby-test-uuid",
           cipher_key: "demo",
           random_iv: false
         )
@@ -266,7 +266,7 @@ describe Pubnub::Subscribe do
             subscribe_key: "sub-a-mock-key",
             publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
-            uuid: "ruby-test-uuid",
+            user_id: "ruby-test-uuid",
           )
 
           @pubnub.subscribe(channel: :demo, http_sync: true)
@@ -284,7 +284,7 @@ describe Pubnub::Subscribe do
             subscribe_key: "sub-a-mock-key",
             publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
-            uuid: "ruby-test-uuid",
+            user_id: "ruby-test-uuid",
           )
 
           @pubnub.subscribe(channel: :demo, http_sync: true)
@@ -302,7 +302,7 @@ describe Pubnub::Subscribe do
               subscribe_key: "sub-a-mock-key",
               publish_key: "pub-a-mock-key",
               auth_key: "ruby-test-auth",
-              uuid: "ruby-test-uuid"
+              user_id: "ruby-test-uuid"
           )
 
           @pubnub.subscribe(channel: :uuid_mg3, http_sync: true)
@@ -323,7 +323,7 @@ describe Pubnub::Subscribe do
               subscribe_key: "sub-a-mock-key",
               publish_key: "pub-a-mock-key",
               auth_key: "ruby-test-auth",
-              uuid: "ruby-test-uuid"
+              user_id: "ruby-test-uuid"
           )
 
           @pubnub.subscribe(channel: :rb_channel_1, http_sync: true)
@@ -344,7 +344,7 @@ describe Pubnub::Subscribe do
               subscribe_key: "sub-a-mock-key",
               publish_key: "pub-a-mock-key",
               auth_key: "ruby-test-auth",
-              uuid: "ruby-test-uuid"
+              user_id: "ruby-test-uuid"
           )
 
           @pubnub.subscribe(channel: :rb_channel_1, http_sync: true)
@@ -365,7 +365,7 @@ describe Pubnub::Subscribe do
               subscribe_key: "sub-a-mock-key",
               publish_key: "pub-a-mock-key",
               auth_key: "ruby-test-auth",
-              uuid: "ruby-test-uuid"
+              user_id: "ruby-test-uuid"
           )
 
           @pubnub.subscribe(channel: :uuid_mg1, http_sync: true)
@@ -388,7 +388,7 @@ describe Pubnub::Subscribe do
             subscribe_key: "sub-a-mock-key",
             publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
-            uuid: "ruby-test-uuid",
+            user_id: "ruby-test-uuid",
           )
 
           @pubnub.subscribe(channels: :demo, http_sync: true)
@@ -406,7 +406,7 @@ describe Pubnub::Subscribe do
             subscribe_key: "sub-a-mock-key",
             publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
-            uuid: "ruby-test-uuid",
+            user_id: "ruby-test-uuid",
           )
 
           @pubnub.subscribe(channel_groups: :demo, http_sync: true)
@@ -426,7 +426,7 @@ describe Pubnub::Subscribe do
             subscribe_key: "sub-a-mock-key",
             publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
-            uuid: "ruby-test-uuid",
+            user_id: "ruby-test-uuid",
           )
 
           @pubnub.subscribe(channels: [:demo, :demo1, "demo.*"], with_presence: true, http_sync: true)

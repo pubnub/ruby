@@ -9,14 +9,14 @@ describe Pubnub::SetUuidMetadata do
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         auth_key: "ruby-test-auth",
-        uuid: "ruby-test-uuid",
+        user_id: "ruby-test-uuid",
       )
     end
 
     it "set_uuid_metadata_works_1" do
       VCR.use_cassette("lib/events/set_uuid_metadata1", record: :once) do
         envelope = @pubnub.set_uuid_metadata(
-          uuid: "mg",
+          user_id: "mg",
           metadata: { name: "magnum", custom: { XXX: "YYYY" } },
           include: { custom: true }
         ).value

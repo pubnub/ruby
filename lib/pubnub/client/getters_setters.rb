@@ -51,7 +51,7 @@ module Pubnub
         raise('Cannot change user_id while subscribed.') if subscribed?
         Validator::Client.validate_user_id user_id
 
-        @env[:uuid] = user_id
+        @env[:user_id] = user_id
       end
 
       alias session_uuid= change_user_id
@@ -129,7 +129,7 @@ module Pubnub
       # ========
       # Current user_id.
       def user_id
-        @env[:uuid]
+        @env[:user_id]
       end
 
       # Returns:

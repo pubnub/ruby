@@ -19,7 +19,7 @@ describe "Status request message count exceeded" do
     @pubnub = Pubnub.new(
       subscribe_key: "demo",
       publish_key: "demo",
-      uuid: "ruby-test",
+      user_id: "ruby-test",
       request_message_count_threshold: 100,
     )
 
