@@ -16,7 +16,7 @@ describe Pubnub::SetUuidMetadata do
     it "set_uuid_metadata_works_1" do
       VCR.use_cassette("lib/events/set_uuid_metadata1", record: :once) do
         envelope = @pubnub.set_uuid_metadata(
-          user_id: "mg",
+          uuid: "mg",
           metadata: { name: "magnum", custom: { XXX: "YYYY" } },
           include: { custom: true }
         ).value
