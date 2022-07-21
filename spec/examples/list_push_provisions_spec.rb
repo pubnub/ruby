@@ -10,7 +10,7 @@ describe Pubnub::ListPushProvisions do
 
     @pubnub = Pubnub.new(
       subscribe_key: 'sub-a-mock-key',
-      user_id:ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one"
     )
 

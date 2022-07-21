@@ -11,7 +11,7 @@ describe Pubnub::SetState do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      app.user_id "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
     )
 

@@ -11,7 +11,7 @@ describe Pubnub::Publish do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      user_id:ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
     )
 
@@ -11686,7 +11686,7 @@ describe Pubnub::Publish do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      user_id:ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
       random_iv: false
@@ -11707,7 +11707,7 @@ describe Pubnub::Publish do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      user_id:ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
       random_iv: false
@@ -11728,7 +11728,7 @@ describe Pubnub::Publish do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      user_id:ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
       random_iv: false
@@ -11749,7 +11749,7 @@ describe Pubnub::Publish do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      user_id:ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
       random_iv: false
@@ -11771,7 +11771,7 @@ describe Pubnub::Publish do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      user_id:ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
       random_iv: false
