@@ -14,7 +14,7 @@ describe Pubnub::GrantToken do
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "ruby-test-uuid",
+        user_id: "ruby-test-user_id",
       )
     end
 

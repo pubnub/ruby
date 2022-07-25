@@ -6,7 +6,7 @@ describe Pubnub::Subscribe do
     {
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       max_retries: 2,
       reconnect_interval: 0

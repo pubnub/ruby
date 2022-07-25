@@ -5,7 +5,7 @@ describe Pubnub::Publish do
     @pubnub = Pubnub::Client.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
     )
 

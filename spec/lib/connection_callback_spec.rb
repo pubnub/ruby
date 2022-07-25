@@ -26,7 +26,7 @@ describe "Connect, disconnect and reconnect callbacks" do
       end,
     )
 
-    @pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, 
+    @pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, 
       subscribe_key: :demo,
       publish_key: :demo,
       reconnect_interval: 0,

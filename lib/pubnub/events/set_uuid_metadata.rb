@@ -10,7 +10,7 @@ module Pubnub
     def initialize(options, app)
       @event = current_operation
       @telemetry_name = :l_obj
-      @uuid = options[:uuid].nil? ? app.env[:uuid] : options[:uuid]
+      @uuid = options[:uuid].nil? ? app.user_id : options[:uuid]
 
       # Clean up user-provided metadata object from nils.
       @metadata = options[:metadata].delete_if { |_k, v| v.blank? } unless options[:metadata].nil?

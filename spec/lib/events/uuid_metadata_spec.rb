@@ -9,7 +9,7 @@ describe Pubnub::SetUuidMetadata do
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         auth_key: "ruby-test-auth",
-        uuid: "ruby-test-uuid",
+        user_id: "ruby-test-uuid",
       )
     end
 

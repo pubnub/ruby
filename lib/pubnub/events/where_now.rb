@@ -9,7 +9,7 @@ module Pubnub
       super
       @telemetry_name = :l_pres
       @uuid_looking_for = options[:uuid] || options['uuid']
-      @uuid = app.uuid
+      @uuid = app.user_id
       @event = :where_now
     end
 
