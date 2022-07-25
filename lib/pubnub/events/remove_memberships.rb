@@ -10,7 +10,7 @@ module Pubnub
     def initialize(options, app)
       @event = current_operation
       @telemetry_name = :l_obj
-      @uuid = options[:uuid].nil? ? app.env[:uuid] : options[:uuid]
+      @uuid = options[:uuid].nil? ? app.user_id : options[:uuid]
       @limit = [options[:limit], 100].min unless options[:limit].nil?
       @sort = options[:sort].join(",") if options[:sort] && !options[:sort].empty?
       @filter = options[:filter] if options[:filter] && !options[:filter].empty?

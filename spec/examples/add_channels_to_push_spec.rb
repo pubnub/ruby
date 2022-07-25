@@ -10,7 +10,7 @@ describe Pubnub::AddChannelsToPush do
 
     @pubnub = Pubnub.new(
       subscribe_key: 'sub-a-mock-key',
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one"
     )
 

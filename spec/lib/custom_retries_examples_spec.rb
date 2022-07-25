@@ -10,7 +10,7 @@ describe "Custom retries" do
       subscribe_key: "sub-a-mock-key",
       publish_key: "pub-a-mock-key",
       secret_key: "sec-a-mock-key",
-      uuid: "ruby-test-client",
+      user_id: "ruby-test-client",
     )
   end
 

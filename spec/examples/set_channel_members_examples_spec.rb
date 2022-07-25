@@ -11,7 +11,7 @@ describe Pubnub::HereNow do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: 'sub-a-mock-key',
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       random_iv: false
     )
@@ -51,7 +51,7 @@ describe Pubnub::HereNow do
       pubnub = Pubnub.new(
         publish_key: "pub-a-mock-key",
         subscribe_key: 'sub-a-mock-key',
-        uuid: "ruby-test-uuid-client-one",
+        user_id: "ruby-test-uuid-client-one",
         auth_key: "ruby-test-auth-client-one",
         random_iv: false,
         cipher_key: "enigma"
@@ -78,7 +78,7 @@ describe Pubnub::HereNow do
       pubnub = Pubnub.new(
         publish_key: "pub-a-mock-key",
         subscribe_key: 'sub-a-mock-key',
-        uuid: "ruby-test-uuid-client-one",
+        user_id: "ruby-test-uuid-client-one",
         auth_key: "ruby-test-auth-client-one",
         cipher_key: "enigma"
       )

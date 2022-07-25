@@ -6,7 +6,7 @@ describe "Using multiple cipher keys" do
   end
 
   it "works with publish" do
-    @pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: :demo, publish_key: :demo, cipher_key: "this_doesnt_fit_anywhere", random_iv: false)
+    @pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: :demo, publish_key: :demo, cipher_key: "this_doesnt_fit_anywhere", random_iv: false)
 
     VCR.use_cassette("lib/multiple_ciphers", record: :once) do
       # Fetch current timestamp
@@ -48,7 +48,7 @@ describe "Using multiple cipher keys" do
   end
 
   it "works with history" do
-    @pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: :demo, publish_key: :demo, cipher_key: "this_doesnt_fit_anywhere", random_iv: false)
+    @pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: :demo, publish_key: :demo, cipher_key: "this_doesnt_fit_anywhere", random_iv: false)
 
     VCR.use_cassette("lib/multiple_ciphers_history", record: :once) do
       @pubnub.publish(
@@ -89,7 +89,7 @@ describe "Using multiple cipher keys" do
   end
 
   it "works with async history" do
-    @pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: :demo, publish_key: :demo, cipher_key: "this_doesnt_fit_anywhere", random_iv: false)
+    @pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: :demo, publish_key: :demo, cipher_key: "this_doesnt_fit_anywhere", random_iv: false)
 
     VCR.use_cassette("lib/multiple_ciphers_history", record: :once) do
       @pubnub.publish(
@@ -141,7 +141,7 @@ describe "Using multiple cipher keys" do
       ciphers[data[:issuing_client_id]]
     end
 
-    @pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: :demo, publish_key: :demo, cipher_key_selector: lambda_cipher_key, random_iv: false)
+    @pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: :demo, publish_key: :demo, cipher_key_selector: lambda_cipher_key, random_iv: false)
     @pubnub.add_listener(callback: cb)
 
     VCR.use_cassette("lib/callable_cipher_key", record: :once) do

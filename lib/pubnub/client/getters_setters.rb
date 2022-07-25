@@ -7,6 +7,8 @@ module Pubnub
     # Module that holds some getters and setters
     module GettersSetters
 
+      extend Gem::Deprecate
+
       def sdk_version
         "PubNub-Ruby/#{Pubnub::VERSION}"
       end
@@ -15,7 +17,7 @@ module Pubnub
       # ===========
       # <dl>
       #   <dt>uuid</dt>
-      #   <dd>New uuid to be set.</dd>
+      #   <dd>New uuid to be set. Note that this will override user_id value</dd>
       # </dl>
       #
       # Returns:
@@ -26,16 +28,38 @@ module Pubnub
       # ==============
       # Can't change uuid while subscribed. You have to leave every subscribed channel.
       def change_uuid(uuid)
-        Pubnub.logger.debug('Pubnub::Client') { 'Changing uuid' }
-        raise('Cannot change UUID while subscribed.') if subscribed?
-        Validator::Client.validate_uuid uuid
+        change_user_id(uuid)
+      end
+      deprecate :change_uuid, :change_user_id, 2023, 1
 
-        @env[:uuid] = uuid
+      # Parameters:
+      # ===========
+      # <dl>
+      #   <dt>user_id</dt>
+      #   <dd>New user_id to be set. Note that this will override uuid value</dd>
+      # </dl>
+      #
+      # Returns:
+      # ========
+      # New user_id.
+      #
+      # Functionality:
+      # ==============
+      # Can't change user_id while subscribed. You have to leave every subscribed channel.
+      def change_user_id(user_id)
+        Pubnub.logger.debug('Pubnub::Client') { 'Changing user_id' }
+        raise('Cannot change user_id while subscribed.') if subscribed?
+        Validator::Client.validate_user_id user_id
+
+        @env[:user_id] = user_id
       end
 
       alias session_uuid= change_uuid
       alias uuid= change_uuid
       alias set_uuid= change_uuid
+      alias session_user_id= change_user_id
+      alias user_id= change_user_id
+      alias set_user_id= change_user_id
 
       # Returns:
       # ========
@@ -97,7 +121,15 @@ module Pubnub
       # ========
       # Current uuid.
       def uuid
-        @env[:uuid]
+        user_id
+      end
+      deprecate :uuid, :user_id, 2023, 1
+
+      # Returns:
+      # ========
+      # Current user_id.
+      def user_id
+        @env[:user_id]
       end
 
       # Returns:
