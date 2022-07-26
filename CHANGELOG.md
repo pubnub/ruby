@@ -1,3 +1,10 @@
+## v5.1.0
+July 26 2022
+
+#### Added
+- Add support for spaces and users permissions in grant_token.
+- Add user_id and deprecate uuid when creating new pubnub instance.
+
 ## v5.0.0
 January 13 2022
 
