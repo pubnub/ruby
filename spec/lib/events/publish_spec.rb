@@ -46,7 +46,7 @@ describe Pubnub::Publish do
         :error_callback => @error_callback,
       )
 
-      @pubnub.uuid = "tester"
+      @pubnub.user_id = "tester"
     end
 
     it "works" do
