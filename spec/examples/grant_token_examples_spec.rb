@@ -12,7 +12,7 @@ describe Pubnub::GrantToken do
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
       secret_key: "sec-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-user-id-client-one",
       auth_key: "ruby-test-auth-client-one",
     )
 
@@ -42,7 +42,7 @@ describe Pubnub::GrantToken do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-user-id-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:grant_token)

@@ -48,11 +48,11 @@ module Pubnub
       end
 
       def validate_objects_entities_separation!
-        entities_set = not(@spaces_permissions.empty?) ||
-          not(@users_permissions.empty?)
-        objects_set = not(@channels.empty?) ||
-          not(@channel_groups.empty?) ||
-          not(@uuids.empty?)
+        entities_set = !@spaces_permissions.empty? ||
+          !@users_permissions.empty?
+        objects_set = !@channels.empty? ||
+          !@channel_groups.empty? ||
+          !@uuids.empty?
 
         raise(
           ArgumentError.new(object: self, message: "Can't mix entities and objects"),
