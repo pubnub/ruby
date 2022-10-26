@@ -12,7 +12,8 @@ jobs:
       - name: Checkout mock-server action
         uses: actions/checkout@v3
         with:
-          repository: pubnub/client-engineering-deployment-tools@v1
+          repository: pubnub/client-engineering-deployment-tools
+          ref: v1
           token: ${{ secrets.GH_TOKEN }}
           path: client-engineering-deployment-tools
       - name: Run mock server action

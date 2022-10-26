@@ -17,7 +17,8 @@ jobs:
       - name: Checkout actions
         uses: actions/checkout@v2
         with:
-          repository: pubnub/client-engineering-deployment-tools@v1
+          repository: pubnub/client-engineering-deployment-tools
+          ref: v1
           token: ${{ secrets.GH_TOKEN }}
           path: .github/.release/actions
       - id: check
@@ -39,7 +40,8 @@ jobs:
       - name: Checkout actions
         uses: actions/checkout@v3
         with:
-          repository: pubnub/client-engineering-deployment-tools@v1
+          repository: pubnub/client-engineering-deployment-tools
+          ref: v1
           token: ${{ secrets.GH_TOKEN }}
           path: .github/.release/actions
       - name: Publish to RubyGems
