@@ -15,11 +15,13 @@ module Pubnub
       EVENTS.each do |event_name|
         define_method event_name do |options = {}, &block|
           options[:callback] = block if options[:callback].nil?
+          # Use constructor-provided :callback if nothing passed to method call.
+          options[:callback] = self.env[:callback] if options[:callback].nil?
           event = Pubnub.const_get(
             Formatter.classify_method(event_name)
           ).new(options, self)
 
-          if options[:http_sync]
+          if event.sync?
             event.fire
           elsif event.is_a? SubscribeEvent
             @subscriber.add_subscription(event)
