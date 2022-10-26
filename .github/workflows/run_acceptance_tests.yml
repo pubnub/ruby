@@ -8,12 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Checkout mock-server action
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          repository: pubnub/client-engineering-deployment-tools
-          ref: github-actions
+          repository: pubnub/client-engineering-deployment-tools@v1
           token: ${{ secrets.GH_TOKEN }}
           path: client-engineering-deployment-tools
       - name: Run mock server action
@@ -36,7 +35,7 @@ jobs:
           jrm ./main.xml "./main/**/*.xml" &&
           jrm ./beta.xml "./beta/**/*.xml"
       - name: Expose main report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: always()
         with:
           name: acceptance-test-reports
