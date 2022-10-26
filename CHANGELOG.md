@@ -1,3 +1,9 @@
+## v5.1.1
+October 26 2022
+
+#### Fixed
+- Fix issue because of which `callback` and `http_sync` provided during client configuration not used when missing in method call.
+
 ## v5.1.0
 July 26 2022
 

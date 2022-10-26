@@ -1,6 +1,11 @@
 ---
-version: "5.1.0"
+version: "5.1.1"
 changelog:
+  - date: 2022-10-26
+    version: v5.1.1
+    changes:
+      - type: bug
+        text: "Fix issue because of which `callback` and `http_sync` provided during client configuration not used when missing in method call."
   - date: 2022-07-26
     version: v5.1.0
     changes:
@@ -632,7 +637,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-5.1.0.gem
+            package-name: pubnub-5.1.1.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -737,8 +742,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-5.1.0.gem
-            location: https://github.com/pubnub/ruby/releases/download/v5.1.0/pubnub-5.1.0.gem
+            package-name: pubnub-5.1.1.gem
+            location: https://github.com/pubnub/ruby/releases/download/v5.1.1/pubnub-5.1.1.gem
             requires:
               - name: addressable
                 min-version: 2.0.0
