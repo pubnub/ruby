@@ -11,6 +11,7 @@ module Pubnub
           validate_origin parameters[:origin], true
           validate_subscribe_key parameters[:subscribe_key], true
           validate_publish_key parameters[:publish_key]
+          validate_user_id parameters[:user_id]
         end
       end
     end

@@ -9,7 +9,7 @@ describe Pubnub::Publish do
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         auth_key: "ruby-test-auth",
-        uuid: "ruby-test-uuid",
+        user_id: "ruby-test-uuid",
       )
     end
     it "works" do
@@ -38,7 +38,7 @@ describe Pubnub::Publish do
 
   context "store, replicate" do
     before(:each) do
-      @pubnub = Pubnub.new(
+      @pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, 
         :max_retries => 0,
         :subscribe_key => :demo,
         :publish_key => :demo,
@@ -46,7 +46,7 @@ describe Pubnub::Publish do
         :error_callback => @error_callback,
       )
 
-      @pubnub.uuid = "tester"
+      @pubnub.user_id = "tester"
     end
 
     it "works" do

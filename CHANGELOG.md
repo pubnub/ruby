@@ -1,3 +1,53 @@
+## v5.1.1
+October 26 2022
+
+#### Fixed
+- Fix issue because of which `callback` and `http_sync` provided during client configuration not used when missing in method call.
+
+## v5.1.0
+July 26 2022
+
+#### Added
+- Add support for spaces and users permissions in grant_token.
+- Add user_id and deprecate uuid when creating new pubnub instance.
+
+## v5.0.0
+January 13 2022
+
+#### Modified
+- BREAKING CHANGES: uuid is required parameter to create PubNub instance.
+
+## v4.8.0
+December 16 2021
+
+#### Added
+- Add revoke token feature.
+
+## v4.7.1
+November 24 2021
+
+#### Added
+- Add new method `all_history_messages` which return messages from requested interval or `since` / `before` date in single object.
+
+#### Fixed
+- Fix exception raised when optional start / end not passed to `paged_history`.
+
+## v4.7.0
+November 09 2021
+
+#### Added
+- Grant_token allows generation of signed token with permissions for channels, channel groups and uuids.
+
+##### v4.6.2
+
+- Add new `sdks` section to `.pubnub.yml` with information about available artifacts and distribution variants. 
+
+##### v4.6.1
+
+- Exclude `spec` and `fixtures` from built gem file. 
+- Fix Ruby SDK repository location under `sdks` section in `.pubnub.yml`. 
+- Add new section to `.pubnub.yml` file with information about SDK and destribution types. 
+
 ##### v4.6.0
 
 - BREAKING CHANGE: Add randomized initialization vector usage by default for data encryption / decryption in publish / subscribe / history API calls. 

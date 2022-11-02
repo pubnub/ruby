@@ -9,11 +9,11 @@ describe "Signatures" do
     stub_const("Pubnub::VERSION", "4.0.21")
     Pubnub::Grant.any_instance.stub(:current_time).and_return(1496242823)
 
-    pubnub = Pubnub.new(
+    pubnub = Pubnub.new( 
       subscribe_key: "sub-a-mock-key",
       publish_key: "pub-a-mock-key",
       secret_key: "sec-a-mock-key",
-      uuid: "test",
+      user_id: "test",
     )
 
     VCR.use_cassette("lib/signatures/all-letters", record: :once) do
@@ -26,11 +26,11 @@ describe "Signatures" do
     stub_const("Pubnub::VERSION", "4.0.21")
     Pubnub::Grant.any_instance.stub(:current_time).and_return(1496242823)
 
-    pubnub = Pubnub.new(
+    pubnub = Pubnub.new( 
       subscribe_key: "sub-a-mock-key",
       publish_key: "pub-a-mock-key",
       secret_key: "sec-a-mock-key",
-      uuid: "test",
+      user_id: "test",
     )
 
     VCR.use_cassette("lib/signatures/wildcard", record: :once) do
@@ -44,11 +44,11 @@ describe "Signatures" do
       stub_const("Pubnub::VERSION", "4.0.21")
       Pubnub::Grant.any_instance.stub(:current_time).and_return(1496242824)
 
-      pubnub = Pubnub.new(
+      pubnub = Pubnub.new( 
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
 
       VCR.use_cassette("lib/signatures/special", record: :once) do
@@ -62,11 +62,11 @@ describe "Signatures" do
       Pubnub::Publish.any_instance.stub(:current_time).and_return 1496396127
       Pubnub::Client.any_instance.stub(:generate_ortt).and_return 14963961271418600
 
-      pubnub = Pubnub.new(
+      pubnub = Pubnub.new( 
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
 
       VCR.use_cassette("lib/signatures/publish", record: :once) do
@@ -79,11 +79,11 @@ describe "Signatures" do
       stub_const("Pubnub::VERSION", "4.0.21")
       Pubnub::Subscribe.any_instance.stub(:current_time).and_return 1496397558
 
-      pubnub = Pubnub.new(
+      pubnub = Pubnub.new( 
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
 
       VCR.use_cassette("lib/signatures/subscribe", record: :once) do
@@ -96,11 +96,11 @@ describe "Signatures" do
       stub_const("Pubnub::VERSION", "4.0.21")
       Pubnub::Presence.any_instance.stub(:current_time).and_return 1496401532
 
-      pubnub = Pubnub.new(
+      pubnub = Pubnub.new( 
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
 
       VCR.use_cassette("lib/signatures/presence", record: :once) do
@@ -113,11 +113,11 @@ describe "Signatures" do
       stub_const("Pubnub::VERSION", "4.0.21")
       Pubnub::Leave.any_instance.stub(:current_time).and_return 1496401409
 
-      pubnub = Pubnub.new(
+      pubnub = Pubnub.new( 
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
 
       VCR.use_cassette("lib/signatures/leave", record: :once) do
@@ -130,11 +130,11 @@ describe "Signatures" do
       stub_const("Pubnub::VERSION", "4.0.21")
       Pubnub::History.any_instance.stub(:current_time).and_return 1496396745
 
-      pubnub = Pubnub.new(
+      pubnub = Pubnub.new( 
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
 
       VCR.use_cassette("lib/signatures/history", record: :once) do
@@ -147,11 +147,11 @@ describe "Signatures" do
       stub_const("Pubnub::VERSION", "4.0.21")
       Pubnub::HereNow.any_instance.stub(:current_time).and_return 1496401140
 
-      pubnub = Pubnub.new(
+      pubnub = Pubnub.new( 
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
 
       VCR.use_cassette("lib/signatures/here_now", record: :once) do
@@ -162,11 +162,11 @@ describe "Signatures" do
 
     it "channel registration works" do
       stub_const("Pubnub::VERSION", "4.0.21")
-      pubnub = Pubnub.new(
+      pubnub = Pubnub.new( 
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
       pubnub.env[:no_telemetry] = true
 
@@ -212,11 +212,11 @@ describe "Signatures" do
       stub_const("Pubnub::VERSION", "4.0.21")
       Pubnub::Heartbeat.any_instance.stub(:current_time).and_return 1496400995
 
-      pubnub = Pubnub.new(
+      pubnub = Pubnub.new( 
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
 
       VCR.use_cassette("lib/signatures/heartbeat", record: :once) do
@@ -229,7 +229,7 @@ describe "Signatures" do
       stub_const("Pubnub::VERSION", "4.0.21")
       Pubnub::SetState.any_instance.stub(:current_time).and_return 1496402248
       Pubnub::State.any_instance.stub(:current_time).and_return 1496402248
-      pubnub = Pubnub.new(
+      pubnub = Pubnub.new( 
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
@@ -255,11 +255,11 @@ describe "Signatures" do
       stub_const("Pubnub::VERSION", "4.0.21")
       Pubnub::WhereNow.any_instance.stub(:current_time).and_return 1496402114
 
-      pubnub = Pubnub.new(
+      pubnub = Pubnub.new( 
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
 
       VCR.use_cassette("lib/signatures/where_now", record: :once) do

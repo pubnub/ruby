@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://ps.pndsn.com/v3/pam/sub-a-mock-key/grant?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/5.0.0&signature=v2.dOOoWVBHwrRw3kXQ37gWR1De6TlufWW_ccWaLFMhaSw&timestamp=1657795717&uuid=ruby-test-user-id-client-one
+    body:
+      encoding: UTF-8
+      string: '{"ttl":60,"permissions":{"uuid":"authorized_user_id","resources":{"channels":{"id":1},"groups":{},"uuids":{"user1":64}},"patterns":{"channels":{"whatever.*":3},"groups":{},"uuids":{"users.*":24}}}}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 2.7.1 (2020-03-31))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 14 Jul 2022 10:48:37 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 14 Jul 2022 10:48:32 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+    body:
+      encoding: UTF-8
+      string: '{"data":{"message":"Success","token":"qEF2AkF0GmLP9IBDdHRsGDxDcmVzpURjaGFuoWJpZAFDZ3JwoENzcGOgQ3VzcqBEdXVpZKFldXNlcjEYQENwYXSlRGNoYW6handoYXRldmVyLioDQ2dycKBDc3BjoEN1c3KgRHV1aWShZ3VzZXJzLioYGERtZXRhoER1dWlkcmF1dGhvcml6ZWRfdXNlcl9pZENzaWdYIJcNyBtPLfLcJjZfXoVY2bzAlcjAKRqoesdbaSaCRfOc"},"service":"Access
+        Manager","status":200}'
+  recorded_at: Thu, 14 Jul 2022 10:48:37 GMT
+recorded_with: VCR 6.0.0

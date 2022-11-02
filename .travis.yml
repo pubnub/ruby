@@ -16,10 +16,6 @@ stages:
 
 jobs:
   include:
-    - stage: "test"
-      name: 'Ruby 2.4.10'
-      rvm: '2.4.10'
-      script: bundle exec rspec
     - name: 'Ruby 2.5.8'
       rvm: '2.5.8'
       script: bundle exec rspec
@@ -30,7 +26,7 @@ jobs:
       rvm: '2.7.1'
       script: bundle exec rspec
     - name: 'Ruby JRuby'
-      rvm: 'jruby-head'
+      rvm: 'jruby-9.3.4.0'
       env: JRUBY_TEST=true NO_COVERAGE=true JRUBY_OPTS="--server -J-Xms2048m -J-Xmx2048m -J-XX:-UseGCOverheadLimit -J-XX:+CMSClassUnloadingEnabled"
       jdk: oraclejdk11
       script:

@@ -1,3 +1,5 @@
+require 'base64'
+
 require 'pubnub/error'
 require 'pubnub/uuid'
 require 'pubnub/formatter'
@@ -34,6 +36,8 @@ require 'pubnub/validators/client'
 require 'pubnub/validators/audit'
 require 'pubnub/validators/channel_registration'
 require 'pubnub/validators/grant'
+require 'pubnub/validators/grant_token'
+require 'pubnub/validators/revoke_token'
 require 'pubnub/validators/heartbeat'
 require 'pubnub/validators/here_now'
 require 'pubnub/validators/history'
@@ -67,6 +71,7 @@ require 'pubnub/validators/set_channel_members'
 require 'pubnub/validators/set_memberships'
 require 'pubnub/validators/remove_channel_members'
 require 'pubnub/validators/remove_memberships'
+require 'pubnub/cbor'
 
 Dir[File.join(File.dirname(__dir__), 'pubnub', 'events', '*.rb')].each do |file|
   require file
@@ -106,7 +111,10 @@ module Pubnub
     #   <dd><b>optional.</b> Required to encrypt messages.</dd>
     #
     #   <dt>uuid</dt>
-    #   <dd><b>optional.</b> Sets given uuid as client uuid, does not generates random uuid on init as usually.</dd>
+    #   <dd><b>optional.</b> <b>Deprecated.</b> Sets given uuid as client uuid, does not generates random uuid on init as usually</dd>
+    #
+    #   <dt>user_id</dt>
+    #   <dd><b>required.</b> Sets given user_id as client user_id.</dd>
     #
     #   <dt>origin</dt>
     #   <dd><b>optional.</b> Specifies the fully qualified domain name of the PubNub origin.
@@ -150,7 +158,7 @@ module Pubnub
     #   publish_key: :demo,
     #   secret_key: :secret,
     #   cipher_key: :other_secret,
-    #   uuid: :mad_max,
+    #   user_id: :mad_max,
     #   origin: 'custom.pubnub.com',
     #   callback: ->(envelope) { puts envelope.message },
     #   connect_callback: ->(message) { puts message },
@@ -284,7 +292,7 @@ module Pubnub
 
     def sequence_number_for_publish!
       @env[:sequence_number_for_publish] += 1
-      @env[:sequence_number_for_publish] % 2**32
+      @env[:sequence_number_for_publish] % 2 ** 32
     end
 
     def apply_state(event)
@@ -317,6 +325,15 @@ module Pubnub
 
     def telemetry_for(event)
       @telemetry.await.fetch_average(event).value
+    end
+
+    def parse_token(token)
+      token_bytes = Base64.urlsafe_decode64(token)
+      Cbor.new.decode(token_bytes.bytes)
+    end
+
+    def set_token(token)
+      @env[:token] = token
     end
 
     private
@@ -365,17 +382,13 @@ module Pubnub
       Pubnub.logger = options[:logger] || Logger.new('pubnub.log')
       Concurrent.global_logger = Pubnub.logger
       @subscriber = Subscriber.new(self)
+      options[:user_id] = options[:uuid] if options[:user_id].nil?
       @env = options
     end
 
     def prepare_env
       assign_defaults
-      generate_uuid if @env[:uuid].blank?
       setup_pools
-    end
-
-    def generate_uuid
-      @env[:uuid] = UUID.generate
     end
 
     def assign_defaults

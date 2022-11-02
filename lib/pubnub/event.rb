@@ -24,8 +24,8 @@ module Pubnub
       env.delete(:state)
       create_variables_from_options(env.merge(options))
       @origin = @app.current_origin
-      format_channels
-      format_group
+      format_channels if enable_format_channels?
+      format_group if enable_format_group?
       set_timestamp
       validate!
       telemetry = @app.telemetry_for(@telemetry_name)
@@ -44,7 +44,7 @@ module Pubnub
       envelopes
     end
 
-    def send_request(compressed_body = '')
+    def send_request(compressed_body = '', header = {})
       Pubnub.logger.debug('Pubnub::Event') { '#send_request called' }
 
       @compressed_body = compressed_body
@@ -54,13 +54,13 @@ module Pubnub
       telemetry_time_start = ::Time.now.to_f
       response = case operation_http_method
                  when "get"
-                   sender.get(uri.to_s)
+                   sender.get(uri.to_s, header: header)
                  when "post"
-                   sender.post(uri.to_s, body: compressed_body)
+                   sender.post(uri.to_s, body: compressed_body, header: header)
                  when "patch"
-                   sender.patch(uri.to_s, body: compressed_body)
+                   sender.patch(uri.to_s, body: compressed_body, header: header)
                  else
-                   sender.delete(uri.to_s)
+                   sender.delete(uri.to_s, header: header)
                  end
 
       begin
@@ -102,9 +102,18 @@ module Pubnub
 
     private
 
+    def enable_format_channels?
+      true
+    end
+
+    def enable_format_group?
+      true
+    end
+
     def operation_http_method
       case @event
-      when Pubnub::Constants::OPERATION_DELETE, Pubnub::Constants::OPERATION_REMOVE_CHANNEL_METADATA, Pubnub::Constants::OPERATION_REMOVE_UUID_METADATA
+      when Pubnub::Constants::OPERATION_DELETE, Pubnub::Constants::OPERATION_REMOVE_CHANNEL_METADATA,
+           Pubnub::Constants::OPERATION_REMOVE_UUID_METADATA, Pubnub::Constants::OPERATION_REVOKE_TOKEN
         "delete"
       when Pubnub::Constants::OPERATION_SET_UUID_METADATA, Pubnub::Constants::OPERATION_SET_CHANNEL_METADATA,
            Pubnub::Constants::OPERATION_SET_CHANNEL_MEMBERS, Pubnub::Constants::OPERATION_SET_MEMBERSHIPS,
@@ -136,9 +145,10 @@ module Pubnub
         pnsdk: @app.sdk_version
       }
 
+      token = @app.env[:token]
       empty_if_blank = {
-        auth: @auth_key,
-        uuid: @app.env[:uuid],
+        auth: token ? token : @auth_key,
+        uuid: @app.user_id,
         @telemetry_name => @current_telemetry
       }
 
@@ -164,7 +174,8 @@ module Pubnub
                      end count limit reverse presence_callback store skip_validate
                      state channel_group channel_groups compressed meta customs include_token
                      replicate with_presence cipher_key_selector include_meta join update get
-                     add remove push_token push_gateway environment topic
+                     add remove push_token push_gateway environment topic authorized_uuid
+                     authorized_user_id token
                    ]
 
       options = options.each_with_object({}) { |option, obj| obj[option.first.to_sym] = option.last }
@@ -212,7 +223,7 @@ module Pubnub
     def get_config
       {
         tls: @app.env[:ssl],
-        uuid: @app.env[:uuid],
+        uuid: @app.user_id,
         auth_key: @app.env[:auth_key],
         origin: @app.current_origin
       }

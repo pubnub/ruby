@@ -2,16 +2,18 @@ require "spec_helper"
 
 describe Pubnub::History do
   around :each do |example|
+    @fired_count = 0
     @fired = false
 
     @callback = -> (_envelope) do
       @fired = true
+      @fired_count += 1
     end
 
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
     )
 
@@ -38,7 +40,7 @@ describe Pubnub::History do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
       random_iv: false
@@ -63,7 +65,7 @@ describe Pubnub::History do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
       random_iv: false
@@ -88,7 +90,7 @@ describe Pubnub::History do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
       random_iv: false
@@ -113,7 +115,7 @@ describe Pubnub::History do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key"
     )
@@ -137,7 +139,7 @@ describe Pubnub::History do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key"
     )
@@ -161,7 +163,7 @@ describe Pubnub::History do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key"
     )
@@ -1366,6 +1368,185 @@ describe Pubnub::History do
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
       expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+    end
+  end
+
+  it "paged_history___channel___demo____page__2___limit__2___start__nil___end__nil___http_sync__true___callback___lambda_" do
+    VCR.use_cassette("examples/history/paged_history_1", record: :none) do
+      envelopes = @pubnub.paged_history(channel: "demo", page: 2, limit: 2, http_sync: true, callback: @callback)
+      expect(@fired_count).to eq 2
+      expect(envelopes.length).to eq 2
+
+      envelopes.each do |envelope|
+        expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+        expect(envelope.error?).to eq false
+        expect(envelope.status[:code]).to eq(200)
+        expect(envelope.status[:category]).to eq(:ack)
+
+        expect(envelope.result[:code]).to eq(200)
+        expect(envelope.result[:operation]).to eq(:history)
+      end
+
+      expect(envelopes[0].result[:data]).to eq({:messages => [{"text" => "Test message #9"}, {"text" => "Test message #10"}], :end => 16376216052005483, :start => 16376216012185785})
+      expect(envelopes[1].result[:data]).to eq({:messages => [{"text" => "Test message #7"}, {"text" => "Test message #8"}], :end => 16376215974611464, :start => 16376215943848282})
+    end
+  end
+
+  it "paged_history___channel___demo____page__2___limit__2___start__nil___end__nil___http_sync__false___callback___lambda_" do
+    VCR.use_cassette("examples/history/paged_history_1", record: :none) do
+      envelopes = @pubnub.paged_history(channel: "demo", page: 2, limit: 2, http_sync: false, callback: @callback)
+      envelopes = envelopes.value
+      expect(@fired_count).to eq 2
+      expect(envelopes.length).to eq 2
+
+      envelopes.each do |envelope|
+        expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+        expect(envelope.error?).to eq false
+        expect(envelope.status[:code]).to eq(200)
+        expect(envelope.status[:category]).to eq(:ack)
+
+        expect(envelope.result[:code]).to eq(200)
+        expect(envelope.result[:operation]).to eq(:history)
+      end
+
+      expect(envelopes[0].result[:data]).to eq({:messages => [{"text" => "Test message #9"}, {"text" => "Test message #10"}], :end => 16376216052005483, :start => 16376216012185785})
+      expect(envelopes[1].result[:data]).to eq({:messages => [{"text" => "Test message #7"}, {"text" => "Test message #8"}], :end => 16376215974611464, :start => 16376215943848282})
+    end
+  end
+
+  # Test that second page won't have required limit because of reaching the end of storage.
+  it "paged_history___channel___demo____page__4___limit__2___start__16376215835141821___end__nil___http_sync__false___callback___lambda_" do
+    VCR.use_cassette("examples/history/paged_history_2", record: :none) do
+      # 16376215835141820 should be incremented by one to make it inclusive.
+      envelopes = @pubnub.paged_history(channel: "demo", page: 4, limit: 2, start: 16376215835141821, http_sync: false, callback: @callback)
+      envelopes = envelopes.value
+      expect(@fired_count).to eq 2
+
+      envelopes.each do |envelope|
+        expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+        expect(envelope.error?).to eq false
+        expect(envelope.status[:code]).to eq(200)
+        expect(envelope.status[:category]).to eq(:ack)
+
+        expect(envelope.result[:code]).to eq(200)
+        expect(envelope.result[:operation]).to eq(:history)
+      end
+
+      expect(envelopes[0].result[:data]).to eq({:messages => [{"text" => "Test message #2"}, {"text" => "Test message #3"}], :end => 16376215835141820, :start => 16376215812842130})
+      expect(envelopes[1].result[:data]).to eq({:messages => [{"text" => "Test message #1"}], :end => 16376215769471824, :start => 16376215769471824})
+    end
+  end
+
+  # Test that rest of pages won't be filled because between two timetokens only 6 messages.
+  it "paged_history___channel___demo____page__4___limit__2___start__16376216052005483___end__16376215880582193___http_sync__false___callback___lambda_" do
+    VCR.use_cassette("examples/history/paged_history_3", record: :none) do
+      # 16376216052005483 should be incremented by one to make it inclusive.
+      envelopes = @pubnub.paged_history(channel: "demo", page: 4, limit: 3, start: 16376216052005484, end: 16376215880582193, http_sync: false, callback: @callback)
+      envelopes = envelopes.value
+      expect(@fired_count).to eq 2
+
+      envelopes.each do |envelope|
+        expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+        expect(envelope.error?).to eq false
+        expect(envelope.status[:code]).to eq(200)
+        expect(envelope.status[:category]).to eq(:ack)
+
+        expect(envelope.result[:code]).to eq(200)
+        expect(envelope.result[:operation]).to eq(:history)
+      end
+
+      expect(envelopes[0].result[:data]).to eq({:messages => [{"text" => "Test message #8"}, {"text" => "Test message #9"}, {"text" => "Test message #10"}], :end => 16376216052005483, :start => 16376215974611464})
+      expect(envelopes[1].result[:data]).to eq({:messages => [{"text" => "Test message #5"}, {"text" => "Test message #6"}, {"text" => "Test message #7"}], :end => 16376215943848282, :start => 16376215880582193})
+    end
+  end
+
+  # Get all message prior specified date.
+  it "paged_history___channel___demo____page_size__3___max__500___start__16376215943848282___end__nil__reverse__false___http_sync__false___callback___lambda_" do
+    VCR.use_cassette("examples/history/all_history_messages_1", record: :none) do
+      # 16376215943848282 should be incremented by one to make it inclusive.
+      envelope = @pubnub.all_history_messages(channel: "demo", page_size: 3, start: 16376215943848283, http_sync: false, callback: @callback)
+      envelope = envelope.value
+      expect(@fired_count).to eq 1
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:category]).to eq(:ack)
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:history)
+      expect(envelope.result[:data]).to eq({
+                                             :messages => [
+                                               {"message" => {"text" => "Test message #1"}, "timetoken" => 16376215769471824},
+                                               {"message" => {"text" => "Test message #2"}, "timetoken" => 16376215812842130},
+                                               {"message" => {"text" => "Test message #3"}, "timetoken" => 16376215835141820},
+                                               {"message" => {"text" => "Test message #4"}, "timetoken" => 16376215858523321},
+                                               {"message" => {"text" => "Test message #5"}, "timetoken" => 16376215880582193},
+                                               {"message" => {"text" => "Test message #6"}, "timetoken" => 16376215916206736},
+                                               {"message" => {"text" => "Test message #7"}, "timetoken" => 16376215943848282}
+                                             ],
+                                             :end => 16376215943848282, :start => 16376215769471824
+                                           })
+    end
+  end
+
+  # Get all message after specified date.
+  it "paged_history___channel___demo____page_size__3___max__500___start__16376215858523321___end__nil__reverse__true___http_sync__true___callback___lambda_" do
+    VCR.use_cassette("examples/history/all_history_messages_2", record: :none) do
+      # 16376215858523321 should be decremented by one to make it inclusive.
+      envelope = @pubnub.all_history_messages(channel: "demo", page_size: 3, start: 16376215858523320, reverse: true, http_sync: true, callback: @callback)
+
+      expect(@fired_count).to eq 1
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:category]).to eq(:ack)
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:history)
+      expect(envelope.result[:data]).to eq({
+                                             :messages => [
+                                               {"message" => {"text" => "Test message #4"}, "timetoken" => 16376215858523321},
+                                               {"message" => {"text" => "Test message #5"}, "timetoken" => 16376215880582193},
+                                               {"message" => {"text" => "Test message #6"}, "timetoken" => 16376215916206736},
+                                               {"message" => {"text" => "Test message #7"}, "timetoken" => 16376215943848282},
+                                               {"message" => {"text" => "Test message #8"}, "timetoken" => 16376215974611464},
+                                               {"message" => {"text" => "Test message #9"}, "timetoken" => 16376216012185785},
+                                               {"message" => {"text" => "Test message #10"}, "timetoken" => 16376216052005483}
+                                             ],
+                                             :end => 16376216052005483, :start => 16376215858523321
+                                           })
+    end
+  end
+
+  # Get all message in timeframe ignoring max value (because all messages between dates requested).
+  it "paged_history___channel___demo____page_size__4___max__3___start__16377095731901577___end__16377095974621056__reverse__false___http_sync__true___callback___lambda_" do
+    VCR.use_cassette("examples/history/all_history_messages_3", record: :once) do
+      # 16377095731901577 should be decremented by one to make it inclusive.
+      envelope = @pubnub.all_history_messages(channel: "demo", page_size: 4, max: 3, start: 16377095731901576, end: 16377095974621056, http_sync: true, callback: @callback)
+
+      expect(@fired_count).to eq 1
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:category]).to eq(:ack)
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:history)
+      expect(envelope.result[:data]).to eq({
+                                             :messages => [
+                                               {"message" => {"text" => "Test message #1"}, "timetoken" => 16377095731901577},
+                                               {"message" => {"text" => "Test message #2"}, "timetoken" => 16377095753435756},
+                                               {"message" => {"text" => "Test message #3"}, "timetoken" => 16377095776142785},
+                                               {"message" => {"text" => "Test message #4"}, "timetoken" => 16377095796303676},
+                                               {"message" => {"text" => "Test message #5"}, "timetoken" => 16377095818104733},
+                                               {"message" => {"text" => "Test message #6"}, "timetoken" => 16377095850534863},
+                                               {"message" => {"text" => "Test message #7"}, "timetoken" => 16377095883609014},
+                                               {"message" => {"text" => "Test message #8"}, "timetoken" => 16377095912474163},
+                                               {"message" => {"text" => "Test message #9"}, "timetoken" => 16377095941299801},
+                                               {"message" => {"text" => "Test message #10"}, "timetoken" => 16377095974621056}
+                                             ],
+                                             :end => 16377095974621056, :start => 16377095731901577
+                                           })
     end
   end
 end

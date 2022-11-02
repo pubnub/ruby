@@ -1,0 +1,17 @@
+{
+  ".pubnub.yml": [
+    { "pattern": "^version: \"(.+)\"$", "cleared": true },
+    { "pattern": "\\s+package-name: pubnub-(v?(\\d+\\.?){2,}([a-zA-Z0-9-]+(\\.?\\d+)?)?).gem$", "cleared": true },
+    { "pattern": "/releases/download/(v?(\\d+\\.?){2,}([a-zA-Z0-9-]+(\\.?\\d+)?)?)/pubnub-.*.gem$", "cleared": false },
+    { "pattern": "/releases/download/.*/pubnub-(v?(\\d+\\.?){2,}([a-zA-Z0-9-]+(\\.?\\d+)?)?).gem$", "cleared": true }
+  ],
+  "VERSION": [
+    { "pattern": "(v?(\\d+\\.?){2,}([a-zA-Z0-9-]+(\\.?\\d+)?)?)", "cleared": true }
+  ],
+  "Gemfile.lock": [
+    { "pattern": "^\\s{2,}pubnub \\((v?(\\d+\\.?){2,}([a-zA-Z0-9-]+(\\.?\\d+)?)?)\\)$", "cleared": true }
+  ],
+  "lib/pubnub/version.rb": [
+    { "pattern": "^\\s{2,}VERSION = '(v?(\\d+\\.?){2,}([a-zA-Z0-9-]+(\\.?\\d+)?)?)'.freeze", "cleared": true }
+  ]
+}
