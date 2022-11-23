@@ -1,3 +1,9 @@
+## v5.1.2
+November 23 2022
+
+#### Fixed
+- Fix issue because of which channel hasn't been encoded properly with endpoint call.
+
 ## v5.1.1
 October 26 2022
 
