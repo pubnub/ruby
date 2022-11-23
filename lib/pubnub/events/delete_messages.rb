@@ -31,7 +31,7 @@ module Pubnub
         'sub-key',
         @subscribe_key,
         'channel',
-        @channel
+        Formatter.format_channel(@channel, true)
       ].join('/')
     end
 

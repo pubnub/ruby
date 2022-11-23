@@ -9,7 +9,7 @@ group :test do
   gem 'rspec-retry'
   gem 'rspec-expectations'
   gem 'rubocop'
-  gem 'simplecov', '>= 0.12', require: false
+  gem 'simplecov', '>= 0.21.2', require: false
   gem 'vcr'
   gem 'webmock'
   gem 'cucumber'

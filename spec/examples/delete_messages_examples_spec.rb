@@ -22,6 +22,13 @@ describe Pubnub::ChannelRegistration do
       end
     end
 
+    it "works with channel which contains non-URL friendly characters" do
+      VCR.use_cassette("examples/delete_messages_channel_non_url_friendly_name", record: :once) do
+        envelope = pubnub.delete_messages(channel: 'demo@pubnub')
+        expect(envelope.value.status[:code]).to eq 200
+      end
+    end
+
     it "works with channel and start specified" do
       VCR.use_cassette("examples/delete_messages_channel_start", record: :once) do
         envelope = pubnub.delete_messages(channel: :demo, start: "15040071432538531")
