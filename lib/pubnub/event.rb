@@ -53,11 +53,11 @@ module Pubnub
 
       telemetry_time_start = ::Time.now.to_f
       response = case operation_http_method
-                 when "get"
+                 when 'get'
                    sender.get(uri.to_s, header: header)
-                 when "post"
+                 when 'post'
                    sender.post(uri.to_s, body: compressed_body, header: header)
-                 when "patch"
+                 when 'patch'
                    sender.patch(uri.to_s, body: compressed_body, header: header)
                  else
                    sender.delete(uri.to_s, header: header)
@@ -112,18 +112,21 @@ module Pubnub
 
     def operation_http_method
       case @event
-      when Pubnub::Constants::OPERATION_DELETE, Pubnub::Constants::OPERATION_REMOVE_CHANNEL_METADATA,
-           Pubnub::Constants::OPERATION_REMOVE_UUID_METADATA, Pubnub::Constants::OPERATION_REVOKE_TOKEN
-        "delete"
+      when Pubnub::Constants::OPERATION_DELETE, Pubnub::Constants::OPERATION_REMOVE_MESSAGE_ACTION,
+           Pubnub::Constants::OPERATION_REMOVE_CHANNEL_METADATA, Pubnub::Constants::OPERATION_REMOVE_UUID_METADATA,
+           Pubnub::Constants::OPERATION_REVOKE_TOKEN
+        'delete'
       when Pubnub::Constants::OPERATION_SET_UUID_METADATA, Pubnub::Constants::OPERATION_SET_CHANNEL_METADATA,
            Pubnub::Constants::OPERATION_SET_CHANNEL_MEMBERS, Pubnub::Constants::OPERATION_SET_MEMBERSHIPS,
            Pubnub::Constants::OPERATION_REMOVE_CHANNEL_MEMBERS, Pubnub::Constants::OPERATION_REMOVE_MEMBERSHIPS
-        "patch"
+        'patch'
+      when Pubnub::Constants::OPERATION_ADD_MESSAGE_ACTION
+        'post'
       else
         if @compressed_body.nil? || @compressed_body.empty?
-          "get"
+          'get'
         else
-          "post"
+          'post'
         end
       end
     end
@@ -168,14 +171,14 @@ module Pubnub
     def create_variables_from_options(options)
       variables = %w[channel channels message http_sync callback
                      ssl cipher_key random_iv secret_key auth_key
-                     publish_key subscribe_key timetoken
+                     publish_key subscribe_key timetoken action_timetoken message_timetoken
                      open_timeout read_timeout idle_timeout heartbeat
                      group action read write delete manage ttl presence start
                      end count limit reverse presence_callback store skip_validate
                      state channel_group channel_groups compressed meta customs include_token
                      replicate with_presence cipher_key_selector include_meta join update get
                      add remove push_token push_gateway environment topic authorized_uuid
-                     authorized_user_id token
+                     authorized_user_id token type value
                    ]
 
       options = options.each_with_object({}) { |option, obj| obj[option.first.to_sym] = option.last }
@@ -229,7 +232,8 @@ module Pubnub
       }
     end
 
-    def error_envelope(_parsed_response, error, req_res_objects)
+    def error_envelope(parsed_response, error, req_res_objects)
+      error_information = nil
       case error
       when JSON::ParserError
         error_category = Pubnub::Constants::STATUS_NON_JSON_RESPONSE
@@ -243,6 +247,12 @@ module Pubnub
       else
         error_category = Pubnub::Constants::STATUS_ERROR
         code = req_res_objects[:response].code
+        # Trying to receive useful information about error.
+        unless parsed_response.nil?
+          error_msg, error_details = error_details_from_response parsed_response
+          error_information = { message: error_msg, details: error_details } unless error_msg.nil?
+        end
+
       end
 
       Pubnub::ErrorEnvelope.new(
@@ -254,7 +264,7 @@ module Pubnub
           operation: current_operation,
           client_request: req_res_objects[:request],
           server_response: req_res_objects[:response],
-          data: nil,
+          data: error_information,
           category: error_category,
           error: true,
           auto_retried: false,
@@ -262,6 +272,20 @@ module Pubnub
           config: get_config
         }
       )
+    end
+
+    def error_details_from_response(parsed_response)
+      return [nil, nil] if parsed_response.nil?
+
+      error_msg = parsed_response.include?('message') ? parsed_response['message'] : nil
+      error_details = nil
+
+      if parsed_response.include?('error') && parsed_response['error'].is_a?(Hash)
+        error_msg = parsed_response['error']['message'] if parsed_response['error'].include? 'message'
+        error_details = parsed_response['error']['details'] if parsed_response['error'].include? 'details'
+      end
+
+      [error_msg, error_details]
     end
   end
 end
