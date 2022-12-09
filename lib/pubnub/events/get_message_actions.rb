@@ -36,11 +36,13 @@ module Pubnub
     end
 
     def valid_envelope(parsed_response, req_res_objects)
-      actions = parsed_response['data'].map { |v|
+      actions = parsed_response['data'].map do |v|
+        puts "PARSED DATA BEFORE: #{v}"
         v['message_timetoken'] = v['messageTimetoken'].to_i
         v['action_timetoken'] = v['actionTimetoken'].to_i
+        puts "PARSED DATA AFTER: #{v}"
         v.except('messageTimetoken', 'actionTimetoken')
-      }
+      end
 
       Pubnub::Envelope.new(
         event: @event,
