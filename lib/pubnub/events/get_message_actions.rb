@@ -37,11 +37,9 @@ module Pubnub
 
     def valid_envelope(parsed_response, req_res_objects)
       actions = parsed_response['data'].map do |v|
-        puts "PARSED DATA BEFORE: #{v}"
         v['message_timetoken'] = v['messageTimetoken'].to_i
         v['action_timetoken'] = v['actionTimetoken'].to_i
-        puts "PARSED DATA AFTER: #{v}"
-        v.except('messageTimetoken', 'actionTimetoken')
+        v.delete_if { |key| %w[messageTimetoken actionTimetoken].include? key }
       end
 
       Pubnub::Envelope.new(
