@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'helpers/spec_helper'
 require 'pubnub/cbor'
 
 describe Pubnub::Cbor do

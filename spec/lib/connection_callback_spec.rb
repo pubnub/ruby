@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe "Connect, disconnect and reconnect callbacks" do
   around :each do |example|

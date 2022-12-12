@@ -1,6 +1,13 @@
 ---
-version: "5.1.2"
+version: "5.2.0"
 changelog:
+  - date: 2022-12-12
+    version: v5.2.0
+    changes:
+      - type: feature
+        text: "Add api which allow to work with message actions endpoints."
+      - type: improvement
+        text: "Migrate test suite run from Travis to GitHub Actions."
   - date: 2022-11-23
     version: v5.1.2
     changes:
@@ -642,7 +649,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-5.1.2.gem
+            package-name: pubnub-5.2.0.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -747,8 +754,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-5.1.2.gem
-            location: https://github.com/pubnub/ruby/releases/download/v5.1.2/pubnub-5.1.2.gem
+            package-name: pubnub-5.2.0.gem
+            location: https://github.com/pubnub/ruby/releases/download/v5.2.0/pubnub-5.2.0.gem
             requires:
               - name: addressable
                 min-version: 2.0.0

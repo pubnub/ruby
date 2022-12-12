@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe "formatter" do
   around :each do |example|

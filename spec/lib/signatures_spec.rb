@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe "Signatures" do
   around :each do |example|

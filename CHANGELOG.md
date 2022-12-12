@@ -1,3 +1,12 @@
+## v5.2.0
+December 12 2022
+
+#### Added
+- Add api which allow to work with message actions endpoints.
+
+#### Modified
+- Migrate test suite run from Travis to GitHub Actions.
+
 ## v5.1.2
 November 23 2022
 

@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe Pubnub::Revoke do
   it_behaves_like "an event"

@@ -1,7 +1,7 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe Pubnub::GrantToken do
-  #it_behaves_like "an event"
+  # it_behaves_like "an event"
 
   context "given basic parameters" do
     before :each do
