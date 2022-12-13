@@ -40,7 +40,11 @@ module Pubnub
         v['message_timetoken'] = v['messageTimetoken'].to_i
         v['action_timetoken'] = v['actionTimetoken'].to_i
         v.delete_if { |key| %w[messageTimetoken actionTimetoken].include? key }
+        v.transform_keys(&:to_sym)
       end
+
+      more = parsed_response.key?('more') ? parsed_response['more'].transform_keys(&:to_sym) : {}
+      more.delete :url unless more.empty?
 
       Pubnub::Envelope.new(
         event: @event,
@@ -52,7 +56,10 @@ module Pubnub
           operation: current_operation,
           client_request: req_res_objects[:request],
           server_response: req_res_objects[:response],
-          data: actions
+          data: {
+            message_actions: actions,
+            more: more.empty? ? nil : more
+          }
         },
 
         status: {
