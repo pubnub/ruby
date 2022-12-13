@@ -1,3 +1,9 @@
+## v5.2.1
+December 13 2022
+
+#### Fixed
+- Fix format which is used to return server data from `get_message_actions` method call.
+
 ## v5.2.0
 December 12 2022
 
