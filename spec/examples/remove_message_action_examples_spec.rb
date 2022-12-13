@@ -44,8 +44,8 @@ describe Pubnub::RemoveMessageAction do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:remove_message_action)
-      expect(message_actions_envelope.result[:data].length).to eq(2)
-      expect(message_actions_envelope.result[:data].last['action_timetoken']).to eq(action_timetokens[-2])
+      expect(message_actions_envelope.result[:data][:message_actions].length).to eq(2)
+      expect(message_actions_envelope.result[:data][:message_actions].last['action_timetoken']).to eq(action_timetokens[-2])
     end
   end
 
@@ -77,8 +77,8 @@ describe Pubnub::RemoveMessageAction do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:remove_message_action)
-      expect(message_actions_envelope.result[:data].length).to eq(2)
-      expect(message_actions_envelope.result[:data].last['action_timetoken']).to eq(action_timetokens.last)
+      expect(message_actions_envelope.result[:data][:message_actions].length).to eq(2)
+      expect(message_actions_envelope.result[:data][:message_actions].last['action_timetoken']).to eq(action_timetokens.last)
     end
   end
 
@@ -139,8 +139,8 @@ describe Pubnub::RemoveMessageAction do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:remove_message_action)
-      expect(message_actions_envelope.result[:data].length).to eq(2)
-      expect(message_actions_envelope.result[:data].last['action_timetoken']).to eq(action_timetokens[-2])
+      expect(message_actions_envelope.result[:data][:message_actions].length).to eq(2)
+      expect(message_actions_envelope.result[:data][:message_actions].last['action_timetoken']).to eq(action_timetokens[-2])
     end
   end
 
@@ -173,8 +173,8 @@ describe Pubnub::RemoveMessageAction do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:remove_message_action)
-      expect(message_actions_envelope.result[:data].length).to eq(2)
-      expect(message_actions_envelope.result[:data].last['action_timetoken']).to eq(action_timetokens.last)
+      expect(message_actions_envelope.result[:data][:message_actions].length).to eq(2)
+      expect(message_actions_envelope.result[:data][:message_actions].last['action_timetoken']).to eq(action_timetokens.last)
     end
   end
 
