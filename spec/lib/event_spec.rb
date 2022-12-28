@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 shared_examples "an event" do
   around :each do |example|
@@ -13,7 +13,7 @@ shared_examples "an event" do
   end
 
   context "#initialize" do
-    let(:pubnub_client) { Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: "demo") }
+    let(:pubnub_client) { Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: "demo") }
 
     it "sets :channel_group parameter as @group internal variable" do
       event = described_class.new({channel_group: "somegroup", skip_validate: true}, pubnub_client)
@@ -28,7 +28,7 @@ shared_examples "an event" do
     it "logs when initialized" do
       rd, wr = IO.pipe
       logger = Logger.new(wr)
-      pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: :key, logger: logger)
+      pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: :key, logger: logger)
 
       described_class.new({channel: "channel", skip_validate: true}, pubnub)
 

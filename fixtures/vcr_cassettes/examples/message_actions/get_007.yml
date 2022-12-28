@@ -1,0 +1,839 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/publish/pub-a-mock-key/sub-a-mock-key/0/get-chat7/0/%22Hello%20world%201%22?auth=ruby-test-auth-client-one&ortt=%7B%22t%22:16703291003998092%7D&pnsdk=PubNub-Ruby/5.1.2&seqn=1&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:20 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:20 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '30'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[1,"Sent","16703291005560698"]'
+  recorded_at: Tue, 06 Dec 2022 12:18:20 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/publish/pub-a-mock-key/sub-a-mock-key/0/get-chat7/0/%22Hello%20world%202%22?auth=ruby-test-auth-client-one&l_pub=0.123&ortt=%7B%22t%22:16703291025252760%7D&pnsdk=PubNub-Ruby/5.1.2&seqn=2&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:22 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:22 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '30'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[1,"Sent","16703291025991442"]'
+  recorded_at: Tue, 06 Dec 2022 12:18:22 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/publish/pub-a-mock-key/sub-a-mock-key/0/get-chat7/0/%22Hello%20world%203%22?auth=ruby-test-auth-client-one&l_pub=0.043&ortt=%7B%22t%22:16703291045714418%7D&pnsdk=PubNub-Ruby/5.1.2&seqn=3&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:24 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:24 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '30'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[1,"Sent","16703291046529449"]'
+  recorded_at: Tue, 06 Dec 2022 12:18:24 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/publish/pub-a-mock-key/sub-a-mock-key/0/get-chat7/0/%22Hello%20world%204%22?auth=ruby-test-auth-client-one&l_pub=0.052&ortt=%7B%22t%22:16703291066280802%7D&pnsdk=PubNub-Ruby/5.1.2&seqn=4&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:26 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:26 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '30'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+    body:
+      encoding: UTF-8
+      string: '[1,"Sent","16703291067003385"]'
+  recorded_at: Tue, 06 Dec 2022 12:18:26 GMT
+- request:
+    method: post
+    uri: http://ps.pndsn.com/v1/message-actions/sub-a-mock-key/channel/get-chat7/message/16703291025991442?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/5.1.2&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: '{"type":"emotion_type_2","value":"angry"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:28 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:28 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '187'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "data": {"messageTimetoken": "16703291025991442", "type":
+        "emotion_type_2", "uuid": "ruby-test-uuid-client-one", "value": "angry", "actionTimetoken":
+        "16703291087447650"}}'
+  recorded_at: Tue, 06 Dec 2022 12:18:28 GMT
+- request:
+    method: post
+    uri: http://ps.pndsn.com/v1/message-actions/sub-a-mock-key/channel/get-chat7/message/16703291046529449?auth=ruby-test-auth-client-one&l_msga=0.056&pnsdk=PubNub-Ruby/5.1.2&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: '{"type":"emotion_type_3","value":"surprised"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:29 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:29 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '191'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "data": {"messageTimetoken": "16703291046529449", "type":
+        "emotion_type_3", "uuid": "ruby-test-uuid-client-one", "value": "surprised",
+        "actionTimetoken": "16703291098098350"}}'
+  recorded_at: Tue, 06 Dec 2022 12:18:29 GMT
+- request:
+    method: post
+    uri: http://ps.pndsn.com/v1/message-actions/sub-a-mock-key/channel/get-chat7/message/16703291067003385?auth=ruby-test-auth-client-one&l_msga=0.055&pnsdk=PubNub-Ruby/5.1.2&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: '{"type":"emotion_type_4","value":"lol"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:30 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:30 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '185'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "data": {"messageTimetoken": "16703291067003385", "type":
+        "emotion_type_4", "uuid": "ruby-test-uuid-client-one", "value": "lol", "actionTimetoken":
+        "16703291108677000"}}'
+  recorded_at: Tue, 06 Dec 2022 12:18:30 GMT
+- request:
+    method: post
+    uri: http://ps.pndsn.com/v1/message-actions/sub-a-mock-key/channel/get-chat7/message/16703291005560698?auth=ruby-test-auth-client-one&l_msga=0.061&pnsdk=PubNub-Ruby/5.1.2&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: '{"type":"emotion_type_1","value":"check"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:32 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:32 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '187'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "data": {"messageTimetoken": "16703291005560698", "type":
+        "emotion_type_1", "uuid": "ruby-test-uuid-client-one", "value": "check", "actionTimetoken":
+        "16703291129394910"}}'
+  recorded_at: Tue, 06 Dec 2022 12:18:32 GMT
+- request:
+    method: post
+    uri: http://ps.pndsn.com/v1/message-actions/sub-a-mock-key/channel/get-chat7/message/16703291025991442?auth=ruby-test-auth-client-one&l_msga=0.064&pnsdk=PubNub-Ruby/5.1.2&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: '{"type":"emotion_type_2","value":"tada"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:33 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:34 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '186'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "data": {"messageTimetoken": "16703291025991442", "type":
+        "emotion_type_2", "uuid": "ruby-test-uuid-client-one", "value": "tada", "actionTimetoken":
+        "16703291140043900"}}'
+  recorded_at: Tue, 06 Dec 2022 12:18:33 GMT
+- request:
+    method: post
+    uri: http://ps.pndsn.com/v1/message-actions/sub-a-mock-key/channel/get-chat7/message/16703291046529449?auth=ruby-test-auth-client-one&l_msga=0.06&pnsdk=PubNub-Ruby/5.1.2&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: '{"type":"emotion_type_3","value":"firework"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:35 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:36 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '190'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "data": {"messageTimetoken": "16703291046529449", "type":
+        "emotion_type_3", "uuid": "ruby-test-uuid-client-one", "value": "firework",
+        "actionTimetoken": "16703291160716930"}}'
+  recorded_at: Tue, 06 Dec 2022 12:18:36 GMT
+- request:
+    method: post
+    uri: http://ps.pndsn.com/v1/message-actions/sub-a-mock-key/channel/get-chat7/message/16703291067003385?auth=ruby-test-auth-client-one&l_msga=0.058&pnsdk=PubNub-Ruby/5.1.2&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: '{"type":"emotion_type_4","value":"smile"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:38 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:38 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '187'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "data": {"messageTimetoken": "16703291067003385", "type":
+        "emotion_type_4", "uuid": "ruby-test-uuid-client-one", "value": "smile", "actionTimetoken":
+        "16703291181347870"}}'
+  recorded_at: Tue, 06 Dec 2022 12:18:38 GMT
+- request:
+    method: post
+    uri: http://ps.pndsn.com/v1/message-actions/sub-a-mock-key/channel/get-chat7/message/16703291005560698?auth=ruby-test-auth-client-one&l_msga=0.061&pnsdk=PubNub-Ruby/5.1.2&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: '{"type":"emotion_type_1","value":"angry"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:39 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:39 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '187'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "data": {"messageTimetoken": "16703291005560698", "type":
+        "emotion_type_1", "uuid": "ruby-test-uuid-client-one", "value": "angry", "actionTimetoken":
+        "16703291191936540"}}'
+  recorded_at: Tue, 06 Dec 2022 12:18:39 GMT
+- request:
+    method: post
+    uri: http://ps.pndsn.com/v1/message-actions/sub-a-mock-key/channel/get-chat7/message/16703291025991442?auth=ruby-test-auth-client-one&l_msga=0.053&pnsdk=PubNub-Ruby/5.1.2&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: '{"type":"emotion_type_2","value":"surprised"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:40 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:40 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '191'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "data": {"messageTimetoken": "16703291025991442", "type":
+        "emotion_type_2", "uuid": "ruby-test-uuid-client-one", "value": "surprised",
+        "actionTimetoken": "16703291202515200"}}'
+  recorded_at: Tue, 06 Dec 2022 12:18:40 GMT
+- request:
+    method: post
+    uri: http://ps.pndsn.com/v1/message-actions/sub-a-mock-key/channel/get-chat7/message/16703291046529449?auth=ruby-test-auth-client-one&l_msga=0.05&pnsdk=PubNub-Ruby/5.1.2&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: '{"type":"emotion_type_3","value":"lol"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:42 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:42 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '185'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "data": {"messageTimetoken": "16703291046529449", "type":
+        "emotion_type_3", "uuid": "ruby-test-uuid-client-one", "value": "lol", "actionTimetoken":
+        "16703291223009840"}}'
+  recorded_at: Tue, 06 Dec 2022 12:18:42 GMT
+- request:
+    method: post
+    uri: http://ps.pndsn.com/v1/message-actions/sub-a-mock-key/channel/get-chat7/message/16703291067003385?auth=ruby-test-auth-client-one&l_msga=0.054&pnsdk=PubNub-Ruby/5.1.2&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: '{"type":"emotion_type_4","value":"check"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:44 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:44 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '187'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "data": {"messageTimetoken": "16703291067003385", "type":
+        "emotion_type_4", "uuid": "ruby-test-uuid-client-one", "value": "check", "actionTimetoken":
+        "16703291243858690"}}'
+  recorded_at: Tue, 06 Dec 2022 12:18:44 GMT
+- request:
+    method: post
+    uri: http://ps.pndsn.com/v1/message-actions/sub-a-mock-key/channel/get-chat7/message/16703291005560698?auth=ruby-test-auth-client-one&l_msga=0.071&pnsdk=PubNub-Ruby/5.1.2&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: '{"type":"emotion_type_1","value":"tada"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:46 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:46 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '186'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "data": {"messageTimetoken": "16703291005560698", "type":
+        "emotion_type_1", "uuid": "ruby-test-uuid-client-one", "value": "tada", "actionTimetoken":
+        "16703291264729790"}}'
+  recorded_at: Tue, 06 Dec 2022 12:18:46 GMT
+- request:
+    method: post
+    uri: http://ps.pndsn.com/v1/message-actions/sub-a-mock-key/channel/get-chat7/message/16703291025991442?auth=ruby-test-auth-client-one&l_msga=0.09&pnsdk=PubNub-Ruby/5.1.2&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: '{"type":"emotion_type_2","value":"firework"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:48 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:48 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '190'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "data": {"messageTimetoken": "16703291025991442", "type":
+        "emotion_type_2", "uuid": "ruby-test-uuid-client-one", "value": "firework",
+        "actionTimetoken": "16703291285566600"}}'
+  recorded_at: Tue, 06 Dec 2022 12:18:48 GMT
+- request:
+    method: post
+    uri: http://ps.pndsn.com/v1/message-actions/sub-a-mock-key/channel/get-chat7/message/16703291046529449?auth=ruby-test-auth-client-one&l_msga=0.058&pnsdk=PubNub-Ruby/5.1.2&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: '{"type":"emotion_type_3","value":"smile"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:50 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:50 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '187'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "data": {"messageTimetoken": "16703291046529449", "type":
+        "emotion_type_3", "uuid": "ruby-test-uuid-client-one", "value": "smile", "actionTimetoken":
+        "16703291306195920"}}'
+  recorded_at: Tue, 06 Dec 2022 12:18:50 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v1/message-actions/sub-a-mock-key/channel/get-chat7?auth=ruby-test-auth-client-one&l_msga=0.075&limit=3&pnsdk=PubNub-Ruby/5.1.2&start=16703291191936540&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 06 Dec 2022 12:18:52 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 06 Dec 2022 12:18:52 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '519'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "data": [{"messageTimetoken": "16703291025991442",
+        "type": "emotion_type_2", "uuid": "ruby-test-uuid-client-one", "value": "tada",
+        "actionTimetoken": "16703291140043900"}, {"messageTimetoken": "16703291046529449",
+        "type": "emotion_type_3", "uuid": "ruby-test-uuid-client-one", "value": "firework",
+        "actionTimetoken": "16703291160716930"}, {"messageTimetoken": "16703291067003385",
+        "type": "emotion_type_4", "uuid": "ruby-test-uuid-client-one", "value": "smile",
+        "actionTimetoken": "16703291181347870"}]}'
+  recorded_at: Tue, 06 Dec 2022 12:18:52 GMT
+recorded_with: VCR 6.0.0

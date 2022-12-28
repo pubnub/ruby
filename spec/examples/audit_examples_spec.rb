@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe Pubnub::Audit do
   around :each do |example|
@@ -12,7 +12,7 @@ describe Pubnub::Audit do
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
       secret_key: "sec-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
     )
 

@@ -1,6 +1,35 @@
 ---
-version: "5.0.0"
+version: "5.2.1"
 changelog:
+  - date: 2022-12-13
+    version: v5.2.1
+    changes:
+      - type: bug
+        text: "Fix format which is used to return server data from `get_message_actions` method call."
+  - date: 2022-12-12
+    version: v5.2.0
+    changes:
+      - type: feature
+        text: "Add api which allow to work with message actions endpoints."
+      - type: improvement
+        text: "Migrate test suite run from Travis to GitHub Actions."
+  - date: 2022-11-23
+    version: v5.1.2
+    changes:
+      - type: bug
+        text: "Fix issue because of which channel hasn't been encoded properly with endpoint call."
+  - date: 2022-10-26
+    version: v5.1.1
+    changes:
+      - type: bug
+        text: "Fix issue because of which `callback` and `http_sync` provided during client configuration not used when missing in method call."
+  - date: 2022-07-26
+    version: v5.1.0
+    changes:
+      - type: feature
+        text: "Add support for spaces and users permissions in grant_token."
+      - type: feature
+        text: "Add user_id and deprecate uuid when creating new pubnub instance."
   - date: 2022-01-13
     version: v5.0.0
     changes:
@@ -422,6 +451,10 @@ features:
     - CHANNEL-GROUPS-REMOVE-CHANNELS
     - CHANNEL-GROUPS-REMOVE-GROUPS
     - CHANNEL-GROUPS-LIST-CHANNELS-IN-GROUP
+  message-actions:
+    - MESSAGE-ACTIONS-GET
+    - MESSAGE-ACTIONS-ADD
+    - MESSAGE-ACTIONS-REMOVE
   notify:
     - REQUEST-MESSAGE-COUNT-EXCEEDED
   presence:
@@ -447,7 +480,6 @@ features:
     - PUSH-TYPE-APNS
     - PUSH-TYPE-APNS2
     - PUSH-TYPE-FCM
-    - PUSH-TYPE-MPNS
   storage:
     - STORAGE-REVERSE
     - STORAGE-INCLUDE-TIMETOKEN
@@ -626,7 +658,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-5.0.0.gem
+            package-name: pubnub-5.2.1.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -731,8 +763,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-5.0.0.gem
-            location: https://github.com/pubnub/ruby/releases/download/v5.0.0/pubnub-5.0.0.gem
+            package-name: pubnub-5.2.1.gem
+            location: https://github.com/pubnub/ruby/releases/download/v5.2.1/pubnub-5.2.1.gem
             requires:
               - name: addressable
                 min-version: 2.0.0

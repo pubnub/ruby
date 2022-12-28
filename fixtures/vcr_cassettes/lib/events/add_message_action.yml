@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://ps.pndsn.com/v1/message-actions/sub-a-mock-key/channel/chat/message/16701562382648731?auth=ruby-test-auth&pnsdk=PubNub-Ruby/5.1.2&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: '{"type":"emotion","value":"smile"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Sun, 04 Dec 2022 14:54:25 GMT
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 04 Dec 2022 14:54:26 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '169'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "data": {"messageTimetoken": "16701562382648731", "type":
+        "emotion", "uuid": "ruby-test-uuid", "value": "smile", "actionTimetoken":
+        "16701656660127890"}}'
+  recorded_at: Sun, 04 Dec 2022 14:54:26 GMT
+recorded_with: VCR 6.0.0

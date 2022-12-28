@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe Pubnub do
   around :each do |example|
@@ -14,12 +14,12 @@ describe Pubnub do
   context "logger" do
     it "is settable" do
       logger = Logger.new("pubnub.log")
-      _pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: "valid", logger: logger)
+      _pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: "valid", logger: logger)
       expect(Pubnub.logger).to be logger
     end
 
     it "is set by default if not provided" do
-      _pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: "valid")
+      _pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: "valid")
       expect(Pubnub.logger.class).to be Logger
     end
   end

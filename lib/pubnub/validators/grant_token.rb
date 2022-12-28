@@ -12,6 +12,7 @@ module Pubnub
         validate_permissions!(@uuids, ":uuids")
         validate_permissions!(@channels, ":channels")
         validate_permissions!(@channel_groups, ":uuids")
+        validate_objects_entities_separation!
       end
 
       private
@@ -44,6 +45,19 @@ module Pubnub
           ArgumentError.new(object: self, message: ":#{name} has to be kind of Hash for grant token event."),
           ":#{name} has to be kind of Hash for grant token event."
         ) unless arg.is_a?(Hash)
+      end
+
+      def validate_objects_entities_separation!
+        entities_set = !@spaces_permissions.empty? ||
+          !@users_permissions.empty?
+        objects_set = !@channels.empty? ||
+          !@channel_groups.empty? ||
+          !@uuids.empty?
+
+        raise(
+          ArgumentError.new(object: self, message: "Can't mix entities and objects"),
+          "Can't mix entities and objects"
+        ) if (entities_set && objects_set)
       end
     end
   end

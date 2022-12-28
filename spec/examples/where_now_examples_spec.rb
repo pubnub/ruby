@@ -1,18 +1,25 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe Pubnub::WhereNow do
   around :each do |example|
     @fired = false
+    @defaultFired = false
 
     @callback = -> (_envelope) do
       @fired = true
     end
 
+    @defaultCallback = -> (_envelope) do
+      @defaultFired = true
+    end
+
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
+      http_sync: true,
+      callback: @defaultCallback
     )
 
     example.run_with_retry retry: 10
@@ -55,6 +62,25 @@ describe Pubnub::WhereNow do
       envelope = @pubnub.where_now(uuid: "ruby-test-uuid", http_sync: true, callback: @callback)
       expect(envelope.is_a?(Pubnub::Envelope)).to eq true
       expect(envelope.error?).to eq false
+      expect(@defaultFired).to eq false
+
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:category]).to eq(:ack)
+      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:where_now)
+      expect(envelope.result[:data]).to eq({"channels" => []})
+    end
+  end
+
+  it "__uuid___ruby-test-uuid____http_sync__default___callback___default_" do
+    VCR.use_cassette("examples/where_now/4", record: :none) do
+      envelope = @pubnub.where_now(uuid: "ruby-test-uuid")
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+      expect(@defaultFired).to eq true
+      expect(@fired).to eq false
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)

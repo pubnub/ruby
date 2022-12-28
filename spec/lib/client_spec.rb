@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe Pubnub::Client do
   around :each do |example|
@@ -11,7 +11,7 @@ describe Pubnub::Client do
 
   context "#initialize" do
     it "returns new Pubnub::Client" do
-      pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: :key)
+      pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: :key)
       expect(pubnub.is_a?(Pubnub::Client)).to eq true
     end
 
@@ -24,7 +24,7 @@ describe Pubnub::Client do
     end
 
     it "by default sets Pubnub.logger that logs to pubnub.log" do
-      _pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: :key)
+      _pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: :key)
       expect(Pubnub.logger.instance_eval("@logdev").filename).to eq "pubnub.log"
     end
 
@@ -32,12 +32,12 @@ describe Pubnub::Client do
       _rd, wr = IO.pipe
 
       logger = Logger.new(wr)
-      _pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: :key, logger: logger)
+      _pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: :key, logger: logger)
       expect(Pubnub.logger).to eq(logger)
     end
 
     it "creates required pools" do
-      pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: "key")
+      pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: "key")
 
       # Connections
       expect(pubnub.env[:single_event_conn_pool]).to eq({})
@@ -53,77 +53,77 @@ describe Pubnub::Client do
 
     context "parameters" do
       it "changes string keys to sym keys" do
-        pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, "subscribe_key" => "key")
+        pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, "subscribe_key" => "key")
         pubnub.env.each_key do |key|
           expect(key.class).to eq Symbol
         end
       end
 
       it "removes empty parameters" do
-        pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, publish_key: "", subscribe_key: "key")
+        pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, publish_key: "", subscribe_key: "key")
         expect(pubnub.env[:publish_key]).to eq(nil)
       end
 
       it "does not remove non-empty parameters" do
-        pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, publish_key: "", subscribe_key: "key")
+        pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, publish_key: "", subscribe_key: "key")
         expect(pubnub.env[:subscribe_key]).to eq("key")
       end
 
       context "validates" do
         context "parameter :origin" do
           it "must be valid" do
-            expect { Pubnub.new(uuid: Pubnub::UUID.generate, origin: 123, subscribe_key: "key") }.to raise_error(Pubnub::InitializationError)
+            expect { Pubnub.new(user_id: Pubnub::UUID.generate, origin: 123, subscribe_key: "key") }.to raise_error(Pubnub::InitializationError)
 
-            expect { Pubnub.new(uuid: Pubnub::UUID.generate, origin: {a: :b}, subscribe_key: "key") }.to raise_error(Pubnub::InitializationError)
+            expect { Pubnub.new(user_id: Pubnub::UUID.generate, origin: {a: :b}, subscribe_key: "key") }.to raise_error(Pubnub::InitializationError)
 
-            expect { Pubnub.new(uuid: Pubnub::UUID.generate, origin: nil, subscribe_key: "key") }.not_to raise_error
+            expect { Pubnub.new(user_id: Pubnub::UUID.generate, origin: nil, subscribe_key: "key") }.not_to raise_error
 
-            expect { Pubnub.new(uuid: Pubnub::UUID.generate, origin: "", subscribe_key: "key") }.not_to raise_error
+            expect { Pubnub.new(user_id: Pubnub::UUID.generate, origin: "", subscribe_key: "key") }.not_to raise_error
 
-            expect { Pubnub.new(uuid: Pubnub::UUID.generate, origin: "http://a.com", subscribe_key: "key") }.not_to raise_error
+            expect { Pubnub.new(user_id: Pubnub::UUID.generate, origin: "http://a.com", subscribe_key: "key") }.not_to raise_error
           end
         end
 
         context "parameter :subscribe_key" do
           it "is required" do
-            expect { Pubnub.new(uuid: Pubnub::UUID.generate, http_sync: true) }.to raise_error(Pubnub::InitializationError)
+            expect { Pubnub.new(user_id: Pubnub::UUID.generate, http_sync: true) }.to raise_error(Pubnub::InitializationError)
           end
 
           it "must be valid" do
-            expect { Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: 123) }.to raise_error(Pubnub::InitializationError)
+            expect { Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: 123) }.to raise_error(Pubnub::InitializationError)
 
-            expect { Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: []) }.to raise_error(Pubnub::InitializationError)
+            expect { Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: []) }.to raise_error(Pubnub::InitializationError)
 
-            expect { Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: {}) }.to raise_error(Pubnub::InitializationError)
+            expect { Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: {}) }.to raise_error(Pubnub::InitializationError)
 
-            expect { Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: "key") }.not_to raise_error
-            expect { Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: :key) }.not_to raise_error
+            expect { Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: "key") }.not_to raise_error
+            expect { Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: :key) }.not_to raise_error
           end
         end
 
         context "parameter :publish_key" do
           it "must be valid" do
             expect do
-              Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: "valid", publish_key: ["invalid"])
+              Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: "valid", publish_key: ["invalid"])
             end.to raise_error(Pubnub::InitializationError)
 
             expect do
-              Pubnub.new(uuid: Pubnub::UUID.generate, 
+              Pubnub.new(user_id: Pubnub::UUID.generate,
                 subscribe_key: "valid",
                 publish_key: {invalid: "yeah"},
               )
             end.to raise_error(Pubnub::InitializationError)
 
             expect do
-              Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: "valid", publish_key: ["invalid"])
+              Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: "valid", publish_key: ["invalid"])
             end.to raise_error(Pubnub::InitializationError)
 
             expect do
-              Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: "valid", publish_key: "key")
+              Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: "valid", publish_key: "key")
             end.not_to raise_error
 
             expect do
-              Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: "valid", publish_key: :key)
+              Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: "valid", publish_key: :key)
             end.not_to raise_error
           end
         end
@@ -132,7 +132,7 @@ describe Pubnub::Client do
   end
 
   context "timetoken manipulation" do
-    let(:pubnub_client) { Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: "demo") }
+    let(:pubnub_client) { Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: "demo") }
 
     context "#timetoken" do
       it "returns timetoken hold in env" do
@@ -150,7 +150,7 @@ describe Pubnub::Client do
   end
 
   context "callback listeners" do
-    let(:pubnub_client) { Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: "demo") }
+    let(:pubnub_client) { Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: "demo") }
 
     it "can be added" do
       callbacks = Pubnub::SubscribeCallback.new(
@@ -202,20 +202,20 @@ describe Pubnub::Client do
   end
 
   context "helper methods" do
-    let(:pubnub_client) { Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: "demo") }
+    let(:pubnub_client) { Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: "demo") }
 
     it "can change uuid while not subscribed" do
-      expect(pubnub_client.change_uuid("whatever")).to eq "whatever"
+      expect(pubnub_client.change_user_id("whatever")).to eq "whatever"
     end
 
     it "cannot change uuid when subscribed" do
       pubnub_client.subscribe(channel: :demo)
 
-      expect { pubnub_client.change_uuid("whatever") }.to raise_error(RuntimeError)
+      expect { pubnub_client.change_user_id("whatever") }.to raise_error(RuntimeError)
     end
 
     it "cannot change uuid to empty" do
-      expect { pubnub_client.change_uuid("") }.to raise_error(Pubnub::InitializationError)
+      expect { pubnub_client.change_user_id("") }.to raise_error(Pubnub::InitializationError)
     end
 
     it "can show what channels are subscribed" do
@@ -230,7 +230,7 @@ describe Pubnub::Client do
 
   context "connections" do
     it "are keep_alive by default" do
-      pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: :demo, publish_key: :demo)
+      pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: :demo, publish_key: :demo)
 
       VCR.use_cassette("lib/client/keep_alive_default", record: :once) do
         pubnub.subscribe(channel: :demo)
@@ -241,7 +241,7 @@ describe Pubnub::Client do
     end
 
     it "respect :disable_keep_alive" do
-      pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: :demo, publish_key: :demo, disable_keepalive: true)
+      pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: :demo, publish_key: :demo, disable_keepalive: true)
 
       VCR.use_cassette("lib/client/keep_alive_disabled", record: :once) do
         pubnub.subscribe(channel: :demo)
@@ -252,7 +252,7 @@ describe Pubnub::Client do
     end
 
     it "respect :disable_subscribe_keep_alive init parameter" do
-      pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: :demo, publish_key: :demo, disable_subscribe_keepalive: true)
+      pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: :demo, publish_key: :demo, disable_subscribe_keepalive: true)
 
       VCR.use_cassette("lib/client/keep_alive_disable_subscribe_keep_alive", record: :once) do
         pubnub.subscribe(channel: :demo)
@@ -266,7 +266,7 @@ describe Pubnub::Client do
     end
 
     it "respect :disable_non_subscribe_keep_alive init parameter" do
-      pubnub = Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: :demo, publish_key: :demo, disable_non_subscribe_keepalive: true)
+      pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: :demo, publish_key: :demo, disable_non_subscribe_keepalive: true)
 
       VCR.use_cassette("lib/client/keep_alive_disable_non_subscribe_keep_alive", record: :once) do
         pubnub.subscribe(channel: :demo)

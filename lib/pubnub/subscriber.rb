@@ -290,7 +290,7 @@ module Pubnub
     def get_config
       {
         tls: @app.env[:ssl],
-        uuid: @app.env[:uuid],
+        uuid: @app.user_id,
         auth_key: @app.env[:auth_key],
         origin: @app.current_origin
       }

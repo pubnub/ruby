@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe "Signatures" do
   around :each do |example|
@@ -13,7 +13,7 @@ describe "Signatures" do
       subscribe_key: "sub-a-mock-key",
       publish_key: "pub-a-mock-key",
       secret_key: "sec-a-mock-key",
-      uuid: "test",
+      user_id: "test",
     )
 
     VCR.use_cassette("lib/signatures/all-letters", record: :once) do
@@ -30,7 +30,7 @@ describe "Signatures" do
       subscribe_key: "sub-a-mock-key",
       publish_key: "pub-a-mock-key",
       secret_key: "sec-a-mock-key",
-      uuid: "test",
+      user_id: "test",
     )
 
     VCR.use_cassette("lib/signatures/wildcard", record: :once) do
@@ -48,7 +48,7 @@ describe "Signatures" do
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
 
       VCR.use_cassette("lib/signatures/special", record: :once) do
@@ -66,7 +66,7 @@ describe "Signatures" do
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
 
       VCR.use_cassette("lib/signatures/publish", record: :once) do
@@ -83,7 +83,7 @@ describe "Signatures" do
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
 
       VCR.use_cassette("lib/signatures/subscribe", record: :once) do
@@ -100,7 +100,7 @@ describe "Signatures" do
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
 
       VCR.use_cassette("lib/signatures/presence", record: :once) do
@@ -117,7 +117,7 @@ describe "Signatures" do
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
 
       VCR.use_cassette("lib/signatures/leave", record: :once) do
@@ -134,7 +134,7 @@ describe "Signatures" do
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
 
       VCR.use_cassette("lib/signatures/history", record: :once) do
@@ -151,7 +151,7 @@ describe "Signatures" do
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
 
       VCR.use_cassette("lib/signatures/here_now", record: :once) do
@@ -166,7 +166,7 @@ describe "Signatures" do
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
       pubnub.env[:no_telemetry] = true
 
@@ -216,7 +216,7 @@ describe "Signatures" do
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
 
       VCR.use_cassette("lib/signatures/heartbeat", record: :once) do
@@ -259,7 +259,7 @@ describe "Signatures" do
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
-        uuid: "test",
+        user_id: "test",
       )
 
       VCR.use_cassette("lib/signatures/where_now", record: :once) do

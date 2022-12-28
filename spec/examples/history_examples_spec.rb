@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe Pubnub::History do
   around :each do |example|
@@ -13,7 +13,7 @@ describe Pubnub::History do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
     )
 
@@ -40,7 +40,7 @@ describe Pubnub::History do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
       random_iv: false
@@ -65,7 +65,7 @@ describe Pubnub::History do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
       random_iv: false
@@ -90,7 +90,7 @@ describe Pubnub::History do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key",
       random_iv: false
@@ -115,7 +115,7 @@ describe Pubnub::History do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key"
     )
@@ -139,7 +139,7 @@ describe Pubnub::History do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key"
     )
@@ -163,7 +163,7 @@ describe Pubnub::History do
     @pubnub = Pubnub.new(
       publish_key: "pub-a-mock-key",
       subscribe_key: "sub-a-mock-key",
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one",
       cipher_key: "super-secret-cipher-key"
     )

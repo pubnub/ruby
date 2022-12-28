@@ -1,4 +1,4 @@
 # Toplevel Pubnub module.
 module Pubnub
-  VERSION = '5.0.0'.freeze
+  VERSION = '5.2.1'.freeze
 end

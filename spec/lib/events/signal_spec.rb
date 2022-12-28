@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe Pubnub::Signal do
   it_behaves_like "an event"
@@ -9,7 +9,7 @@ describe Pubnub::Signal do
         subscribe_key: "demo",
         publish_key: "demo",
         auth_key: "ruby-test-auth",
-        uuid: "ruby-test-uuid",
+        user_id: "ruby-test-uuid",
       )
     end
     it "works" do

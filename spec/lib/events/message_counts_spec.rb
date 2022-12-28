@@ -1,9 +1,9 @@
-require 'spec_helper'
+require 'helpers/spec_helper'
 require 'pry'
 
 describe Pubnub::Presence do
 
-  let(:client) {Pubnub.new(uuid: Pubnub::UUID.generate, subscribe_key: :key)}
+  let(:client) {Pubnub.new(user_id: Pubnub::UUID.generate, subscribe_key: :key)}
 
   around :each do |example|
     example.run_with_retry retry: 10
@@ -51,7 +51,7 @@ describe Pubnub::Presence do
         pubnub = Pubnub.new(
           publish_key: 'demo',
           subscribe_key: 'demo',
-          uuid: 'ruby-test-uuid-client-one',
+          user_id: 'ruby-test-uuid-client-one',
           auth_key: 'ruby-test-auth-client-one'
         )
         envelope = pubnub.message_counts(channel:['a','b','c','d'], channel_timetokens: 12123).value
@@ -66,7 +66,7 @@ describe Pubnub::Presence do
         pubnub = Pubnub.new(
           publish_key: 'demo',
           subscribe_key: 'demo',
-          uuid: 'ruby-test-uuid-client-one',
+          user_id: 'ruby-test-uuid-client-one',
           auth_key: 'ruby-test-auth-client-one'
         )
         envelope = pubnub.message_counts(channel:'a,b,c,d', channel_timetokens: 12123).value
@@ -81,7 +81,7 @@ describe Pubnub::Presence do
         pubnub = Pubnub.new(
           publish_key: 'demo',
           subscribe_key: 'demo',
-          uuid: 'ruby-test-uuid-client-one',
+          user_id: 'ruby-test-uuid-client-one',
           auth_key: 'ruby-test-auth-client-one'
         )
         envelope = pubnub.message_counts(channel:['a','b','c','d'], channel_timetokens: [1231231254, 1231231354, 1231231454, 1231231654]).value
@@ -96,7 +96,7 @@ describe Pubnub::Presence do
         pubnub = Pubnub.new(
           publish_key: 'demo',
           subscribe_key: 'demo',
-          uuid: 'ruby-test-uuid-client-one',
+          user_id: 'ruby-test-uuid-client-one',
           auth_key: 'ruby-test-auth-client-one'
         )
         envelope = pubnub.message_counts(channel:'a', channel_timetokens: 1231231254).value

@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe Pubnub::ChannelRegistration do
   around :each do |example|
@@ -11,13 +11,20 @@ describe Pubnub::ChannelRegistration do
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         auth_key: "ruby-test-auth",
-        uuid: "ruby-test-uuid",
+        user_id: "ruby-test-uuid",
       )
     end
 
     it "works with just channel specified" do
       VCR.use_cassette("examples/delete_messages_channel", record: :once) do
         envelope = pubnub.delete_messages(channel: :demo)
+        expect(envelope.value.status[:code]).to eq 200
+      end
+    end
+
+    it "works with channel which contains non-URL friendly characters" do
+      VCR.use_cassette("examples/delete_messages_channel_non_url_friendly_name", record: :once) do
+        envelope = pubnub.delete_messages(channel: 'demo@pubnub')
         expect(envelope.value.status[:code]).to eq 200
       end
     end

@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe "timeout" do
   context "in single event" do
@@ -7,7 +7,7 @@ describe "timeout" do
         subscribe_key: "sub-a-mock-key",
         publish_key: "pub-a-mock-key",
         auth_key: "ruby-test-auth",
-        uuid: "ruby-test-uuid",
+        user_id: "ruby-test-uuid",
       )
     end
     let(:envelope) { pubnub.time.value }

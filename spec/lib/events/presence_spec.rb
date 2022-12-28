@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe Pubnub::Presence do
   around :each do |example|
@@ -26,7 +26,7 @@ describe Pubnub::Presence do
             subscribe_key: "sub-a-mock-key",
             publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
-            uuid: "ruby-test-uuid",
+            user_id: "ruby-test-uuid",
           )
 
           @pubnub.add_listener(callback: @callbacks)
@@ -50,7 +50,7 @@ describe Pubnub::Presence do
             subscribe_key: "sub-a-mock-key",
             publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
-            uuid: "ruby-test-uuid",
+            user_id: "ruby-test-uuid",
           )
 
           @pubnub.add_listener(callback: @callbacks)
@@ -77,7 +77,7 @@ describe Pubnub::Presence do
             subscribe_key: "sub-a-mock-key",
             publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
-            uuid: "ruby-test-uuid",
+            user_id: "ruby-test-uuid",
           )
 
           @pubnub.presence(channel: :demo, http_sync: true)
@@ -95,7 +95,7 @@ describe Pubnub::Presence do
             subscribe_key: "sub-a-mock-key",
             publish_key: "pub-a-mock-key",
             auth_key: "ruby-test-auth",
-            uuid: "ruby-test-uuid",
+            user_id: "ruby-test-uuid",
           )
 
           @pubnub.presence(channel: :demo, http_sync: true)

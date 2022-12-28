@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe Pubnub::Grant do
   it_behaves_like "an event"
@@ -15,7 +15,7 @@ describe Pubnub::Grant do
         publish_key: "pub-a-mock-key",
         secret_key: "sec-a-mock-key",
         auth_key: "ruby-test-auth",
-        uuid: "ruby-test-uuid",
+        user_id: "ruby-test-uuid",
       )
     end
     let(:envelope) do

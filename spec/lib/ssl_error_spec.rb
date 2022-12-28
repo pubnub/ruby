@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe "Super admin mode" do
   around :each do |example|
@@ -12,7 +12,7 @@ describe "Super admin mode" do
       subscribe_key: "sub-a-mock-key",
       publish_key: "pub-a-mock-key",
       secret_key: "sec-a-mock-key",
-      uuid: "ruby-test",
+      user_id: "ruby-test",
       reconnect_interval: 0,
       ssl: true,
     )

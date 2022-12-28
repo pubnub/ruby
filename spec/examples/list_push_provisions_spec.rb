@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe Pubnub::ListPushProvisions do
   around :each do |example|
@@ -10,7 +10,7 @@ describe Pubnub::ListPushProvisions do
 
     @pubnub = Pubnub.new(
       subscribe_key: 'sub-a-mock-key',
-      uuid: "ruby-test-uuid-client-one",
+      user_id: "ruby-test-uuid-client-one",
       auth_key: "ruby-test-auth-client-one"
     )
 

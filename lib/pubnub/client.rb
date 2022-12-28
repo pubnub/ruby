@@ -31,6 +31,9 @@ require 'pubnub/client/paged_history'
 require 'pubnub/client/helpers'
 require 'pubnub/client/getters_setters'
 
+require 'pubnub/validators/get_message_actions'
+require 'pubnub/validators/add_message_action'
+require 'pubnub/validators/remove_message_action'
 require 'pubnub/validators/common_validator'
 require 'pubnub/validators/client'
 require 'pubnub/validators/audit'
@@ -111,7 +114,10 @@ module Pubnub
     #   <dd><b>optional.</b> Required to encrypt messages.</dd>
     #
     #   <dt>uuid</dt>
-    #   <dd><b>optional.</b> Sets given uuid as client uuid, does not generates random uuid on init as usually.</dd>
+    #   <dd><b>optional.</b> <b>Deprecated.</b> Sets given uuid as client uuid, does not generates random uuid on init as usually</dd>
+    #
+    #   <dt>user_id</dt>
+    #   <dd><b>required.</b> Sets given user_id as client user_id.</dd>
     #
     #   <dt>origin</dt>
     #   <dd><b>optional.</b> Specifies the fully qualified domain name of the PubNub origin.
@@ -155,7 +161,7 @@ module Pubnub
     #   publish_key: :demo,
     #   secret_key: :secret,
     #   cipher_key: :other_secret,
-    #   uuid: :mad_max,
+    #   user_id: :mad_max,
     #   origin: 'custom.pubnub.com',
     #   callback: ->(envelope) { puts envelope.message },
     #   connect_callback: ->(message) { puts message },
@@ -289,7 +295,7 @@ module Pubnub
 
     def sequence_number_for_publish!
       @env[:sequence_number_for_publish] += 1
-      @env[:sequence_number_for_publish] % 2**32
+      @env[:sequence_number_for_publish] % 2 ** 32
     end
 
     def apply_state(event)
@@ -379,6 +385,7 @@ module Pubnub
       Pubnub.logger = options[:logger] || Logger.new('pubnub.log')
       Concurrent.global_logger = Pubnub.logger
       @subscriber = Subscriber.new(self)
+      options[:user_id] = options[:uuid] if options[:user_id].nil?
       @env = options
     end
 
