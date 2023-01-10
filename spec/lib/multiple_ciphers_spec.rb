@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 describe "Using multiple cipher keys" do
   around :each do |example|

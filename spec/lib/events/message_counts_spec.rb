@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'helpers/spec_helper'
 require 'pry'
 
 describe Pubnub::Presence do

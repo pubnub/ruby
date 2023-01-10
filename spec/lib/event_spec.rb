@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'helpers/spec_helper'
 
 shared_examples "an event" do
   around :each do |example|

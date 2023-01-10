@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v1/message-actions/sub-a-mock-key/channel/chat?auth=ruby-test-auth&limit=100&pnsdk=PubNub-Ruby/5.1.2&start=16702324246781850&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 05 Dec 2022 12:18:58 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 05 Dec 2022 12:18:59 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '609'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "data": [{"messageTimetoken": "16701562382648731",
+        "type": "emotion", "uuid": "ruby-test-uuid", "value": "smile", "actionTimetoken":
+        "16701656660127890"}, {"messageTimetoken": "16701562382648730", "type": "emotion",
+        "uuid": "ruby-test-uuid", "value": "smile", "actionTimetoken": "16702313621383172"},
+        {"messageTimetoken": "15701562382648730", "type": "emotion", "uuid": "ruby-test-uuid",
+        "value": "smile", "actionTimetoken": "16702314425441700"}, {"messageTimetoken":
+        "10701562382648730", "type": "emotion", "uuid": "ruby-test-uuid", "value":
+        "smile", "actionTimetoken": "16702314831714510"}]}'
+  recorded_at: Mon, 05 Dec 2022 12:18:59 GMT
+recorded_with: VCR 6.0.0

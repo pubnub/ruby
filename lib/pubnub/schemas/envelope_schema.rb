@@ -69,7 +69,7 @@ module Pubnub
           required(:client_request).filled
           required(:server_response).filled
 
-          optional(:data).maybe(:hash?)
+          optional(:data)
         end
 
         rule(:operation, :data) do
