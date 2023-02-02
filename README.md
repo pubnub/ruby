@@ -39,7 +39,7 @@ You will need the publish and subscribe keys to authenticate your app. Get your 
 ```ruby
 callback = Pubnub::SubscribeCallback.new(
     message: ->(envelope) {
-        puts "MESSAGE: # {puts envelope.result[:data][:message]['msg']}"
+        puts "MESSAGE: #{puts envelope.result[:data][:message]['msg']}"
     },
     presence: ->(envelope) {
         puts "PRESENCE: #{envelope.result[:data]}"
