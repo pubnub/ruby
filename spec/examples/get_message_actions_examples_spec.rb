@@ -19,9 +19,43 @@ describe Pubnub::GetMessageActions do
     example.run_with_retry retry: 1
   end
 
+  it "should_not_crash_when_secret_key_is_set" do
+    VCR.use_cassette("examples/message_actions/get_000", record: :once) do
+      offset_from_start = 2
+      offset_from_end = 3
+      pubnub = Pubnub.new(
+        publish_key: 'pub-a-mock-key',
+        subscribe_key: 'sub-a-mock-key',
+        secret_key: 'sec-a-mock-key',
+        user_id: "ruby-test-uuid-client-one",
+        auth_key: "ruby-test-auth-client-one"
+      )
+
+      _publish_timetokens, action_timetokens = prepare_message_actions_test pubnub, 'get-chat0', 3, 8, VCR.current_cassette.recording?
+      envelope = nil
+
+      expect {
+        puts 'Call it!'
+        envelope = pubnub.get_message_actions(
+          channel: 'get-chat0',
+          start: action_timetokens[-offset_from_end],
+          end: action_timetokens[offset_from_start],
+          http_sync: true
+        )
+      }.not_to raise_error
+
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:operation]).to eq(:get_message_actions)
+      expect(envelope.status[:category]).to eq(:ack)
+    end
+  end
+
   it "001_channel___get-chat1___start___nil___end___nil____limit___nil___http_sync___true___callback___nil__" do
     VCR.use_cassette("examples/message_actions/get_001", record: :once) do
-      _publish_timetokens, action_timetokens = prepare_message_actions_test 'get-chat1', 3, 8, VCR.current_cassette.recording?
+      _publish_timetokens, action_timetokens = prepare_message_actions_test @pubnub, 'get-chat1', 3, 8, VCR.current_cassette.recording?
       envelope = @pubnub.get_message_actions(channel: 'get-chat1', http_sync: true)
 
       expect(envelope.is_a?(Pubnub::Envelope)).to eq true
@@ -54,7 +88,7 @@ describe Pubnub::GetMessageActions do
     VCR.use_cassette("examples/message_actions/get_002", record: :once) do
       cassette_just_recorded = VCR.current_cassette.recording?
       cassette_path = VCR.current_cassette.file
-      _publish_timetokens, action_timetokens = prepare_message_actions_test 'get-chat2', 3, 8, VCR.current_cassette.recording?
+      _publish_timetokens, action_timetokens = prepare_message_actions_test @pubnub, 'get-chat2', 3, 8, VCR.current_cassette.recording?
       envelope = @pubnub.get_message_actions(channel: 'get-chat2', limit: maximum_number_of_actions, http_sync: true)
 
       expect(envelope.is_a?(Pubnub::Envelope)).to eq true
@@ -105,7 +139,7 @@ describe Pubnub::GetMessageActions do
   it "003_channel___get-chat3___start___valid___end___nil____limit___nil___http_sync___true___callback___block__" do
     VCR.use_cassette("examples/message_actions/get_003", record: :once) do
       offset_from_end = 3
-      _publish_timetokens, action_timetokens = prepare_message_actions_test 'get-chat3', 3, 8, VCR.current_cassette.recording?
+      _publish_timetokens, action_timetokens = prepare_message_actions_test @pubnub, 'get-chat3', 3, 8, VCR.current_cassette.recording?
       envelope = @pubnub.get_message_actions(
         channel: 'get-chat3',
         start: action_timetokens[-offset_from_end],
@@ -138,7 +172,7 @@ describe Pubnub::GetMessageActions do
   it "004_channel___get-chat4___start___nil___end___valid____limit___nil___http_sync___true___callback___lambda__" do
     VCR.use_cassette("examples/message_actions/get_004", record: :once) do
       offset_from_start = 2
-      _publish_timetokens, action_timetokens = prepare_message_actions_test 'get-chat4', 3, 8, VCR.current_cassette.recording?
+      _publish_timetokens, action_timetokens = prepare_message_actions_test @pubnub, 'get-chat4', 3, 8, VCR.current_cassette.recording?
       envelope = @pubnub.get_message_actions(
         channel: 'get-chat4',
         end: action_timetokens[offset_from_start],
@@ -172,7 +206,7 @@ describe Pubnub::GetMessageActions do
     VCR.use_cassette("examples/message_actions/get_005", record: :once) do
       offset_from_start = 2
       offset_from_end = 3
-      _publish_timetokens, action_timetokens = prepare_message_actions_test 'get-chat5', 3, 8, VCR.current_cassette.recording?
+      _publish_timetokens, action_timetokens = prepare_message_actions_test @pubnub, 'get-chat5', 3, 8, VCR.current_cassette.recording?
       envelope = @pubnub.get_message_actions(
         channel: 'get-chat5',
         start: action_timetokens[-offset_from_end],
@@ -204,7 +238,7 @@ describe Pubnub::GetMessageActions do
   it "006_channel___get-chat5___start___nil___end___nil____limit___6___http_sync___false___callback___block__" do
     VCR.use_cassette("examples/message_actions/get_006", record: :once) do
       maximum_number_of_actions = 6
-      _publish_timetokens, action_timetokens = prepare_message_actions_test 'get-chat6', 3, 12, VCR.current_cassette.recording?
+      _publish_timetokens, action_timetokens = prepare_message_actions_test @pubnub, 'get-chat6', 3, 12, VCR.current_cassette.recording?
       envelope = @pubnub.get_message_actions(channel: 'get-chat6', limit: maximum_number_of_actions, http_sync: false, &@callback)
       envelope = envelope.value
 
@@ -237,7 +271,7 @@ describe Pubnub::GetMessageActions do
     VCR.use_cassette("examples/message_actions/get_007", record: :once) do
       maximum_number_of_actions = 3
       offset_from_end = 7
-      _publish_timetokens, action_timetokens = prepare_message_actions_test 'get-chat7', 4, 14, VCR.current_cassette.recording?
+      _publish_timetokens, action_timetokens = prepare_message_actions_test @pubnub, 'get-chat7', 4, 14, VCR.current_cassette.recording?
       envelope = @pubnub.get_message_actions(
         channel: 'get-chat7',
         start: action_timetokens[-offset_from_end],
@@ -279,7 +313,7 @@ describe Pubnub::GetMessageActions do
     VCR.use_cassette("examples/message_actions/get_008", record: :once) do
       maximum_number_of_actions = 2
       offset_from_start = 8
-      _publish_timetokens, action_timetokens = prepare_message_actions_test 'get-chat8', 4, 14, VCR.current_cassette.recording?
+      _publish_timetokens, action_timetokens = prepare_message_actions_test @pubnub, 'get-chat8', 4, 14, VCR.current_cassette.recording?
       envelope = @pubnub.get_message_actions(
         channel: 'get-chat8',
         end: action_timetokens[offset_from_start],
@@ -319,7 +353,7 @@ describe Pubnub::GetMessageActions do
       maximum_number_of_actions = 5
       offset_from_start = 4
       offset_from_end = 3
-      _publish_timetokens, action_timetokens = prepare_message_actions_test 'get-chat9', 4, 16, VCR.current_cassette.recording?
+      _publish_timetokens, action_timetokens = prepare_message_actions_test @pubnub, 'get-chat9', 4, 16, VCR.current_cassette.recording?
       envelope = @pubnub.get_message_actions(
         channel: 'get-chat9',
         start: action_timetokens[-offset_from_end],
