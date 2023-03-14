@@ -1,3 +1,9 @@
+## v5.2.2
+March 14 2023
+
+#### Fixed
+- Fix issue which raised an exception when PubNub client has been configured with a secret key.
+
 ## v5.2.1
 December 13 2022
 

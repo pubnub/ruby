@@ -13,7 +13,7 @@ module Pubnub
 
     private
 
-    def parameters
+    def parameters(*_args)
       parameters = super
       parameters['start'] = @start unless @start.nil?
       parameters['end'] = @end unless @end.nil?

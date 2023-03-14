@@ -1,6 +1,11 @@
 ---
-version: "5.2.1"
+version: "5.2.2"
 changelog:
+  - date: 2023-03-14
+    version: v5.2.2
+    changes:
+      - type: bug
+        text: "Fix issue which raised an exception when PubNub client has been configured with a secret key."
   - date: 2022-12-13
     version: v5.2.1
     changes:
@@ -658,7 +663,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-5.2.1.gem
+            package-name: pubnub-5.2.2.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -763,8 +768,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-5.2.1.gem
-            location: https://github.com/pubnub/ruby/releases/download/v5.2.1/pubnub-5.2.1.gem
+            package-name: pubnub-5.2.2.gem
+            location: https://github.com/pubnub/ruby/releases/download/v5.2.2/pubnub-5.2.2.gem
             requires:
               - name: addressable
                 min-version: 2.0.0
