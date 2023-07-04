@@ -20,7 +20,7 @@ describe Pubnub::RemoveMessageAction do
 
   it "001_channel___remove-chat11___message_timetoken___valid___action_timetoken___valid___http_sync___true___callback___nil__" do
     VCR.use_cassette("examples/message_actions/remove_001", record: :once) do
-      publish_timetokens, action_timetokens = prepare_message_actions_test 'remove-chat11', 1, 3, VCR.current_cassette.recording?
+      publish_timetokens, action_timetokens = prepare_message_actions_test @pubnub, 'remove-chat11', 1, 3, VCR.current_cassette.recording?
       envelope = @pubnub.remove_message_action(
         channel: 'remove-chat11',
         message_timetoken: publish_timetokens[0],
@@ -51,7 +51,7 @@ describe Pubnub::RemoveMessageAction do
 
   it "002_channel___remove-chat21___message_timetoken___valid___action_timetoken___valid___http_sync___true___callback___block__" do
     VCR.use_cassette("examples/message_actions/remove_002", record: :once) do
-      publish_timetokens, action_timetokens = prepare_message_actions_test 'remove-chat21', 1, 3, VCR.current_cassette.recording?
+      publish_timetokens, action_timetokens = prepare_message_actions_test @pubnub, 'remove-chat21', 1, 3, VCR.current_cassette.recording?
       envelope = @pubnub.remove_message_action(
         channel: 'remove-chat21',
         message_timetoken: publish_timetokens[0],
@@ -84,7 +84,7 @@ describe Pubnub::RemoveMessageAction do
 
   it "003_channel___remove-chat31___message_timetoken___valid___action_timetoken___valid___http_sync___true___callback___lambda__" do
     VCR.use_cassette("examples/message_actions/remove_003", record: :once) do
-      publish_timetokens, action_timetokens = prepare_message_actions_test 'remove-chat31', 1, 3, VCR.current_cassette.recording?
+      publish_timetokens, action_timetokens = prepare_message_actions_test @pubnub, 'remove-chat31', 1, 3, VCR.current_cassette.recording?
       envelope = @pubnub.remove_message_action(
         channel: 'remove-chat31',
         message_timetoken: publish_timetokens[0],
@@ -114,7 +114,7 @@ describe Pubnub::RemoveMessageAction do
 
   it "004_channel___remove-chat41___message_timetoken___valid___action_timetoken___valid___http_sync___false___callback___nil__" do
     VCR.use_cassette("examples/message_actions/remove_004", record: :once) do
-      publish_timetokens, action_timetokens = prepare_message_actions_test 'remove-chat41', 1, 3, VCR.current_cassette.recording?
+      publish_timetokens, action_timetokens = prepare_message_actions_test @pubnub, 'remove-chat41', 1, 3, VCR.current_cassette.recording?
       envelope = @pubnub.remove_message_action(
         channel: 'remove-chat41',
         message_timetoken: publish_timetokens[0],
@@ -146,7 +146,7 @@ describe Pubnub::RemoveMessageAction do
 
   it "005_channel___remove-chat51___message_timetoken___valid___action_timetoken___valid___http_sync___false___callback___block__" do
     VCR.use_cassette("examples/message_actions/remove_005", record: :once) do
-      publish_timetokens, action_timetokens = prepare_message_actions_test 'remove-chat51', 1, 3, VCR.current_cassette.recording?
+      publish_timetokens, action_timetokens = prepare_message_actions_test @pubnub, 'remove-chat51', 1, 3, VCR.current_cassette.recording?
       envelope = @pubnub.remove_message_action(
         channel: 'remove-chat51',
         message_timetoken: publish_timetokens[0],
@@ -180,7 +180,7 @@ describe Pubnub::RemoveMessageAction do
 
   it "006_channel___remove-chat61___message_timetoken___valid___action_timetoken___valid___http_sync___false___callback___lambda__" do
     VCR.use_cassette("examples/message_actions/remove_006", record: :once) do
-      publish_timetokens, action_timetokens = prepare_message_actions_test 'remove-chat61', 1, 3, VCR.current_cassette.recording?
+      publish_timetokens, action_timetokens = prepare_message_actions_test @pubnub, 'remove-chat61', 1, 3, VCR.current_cassette.recording?
       envelope = @pubnub.remove_message_action(
         channel: 'remove-chat61',
         message_timetoken: publish_timetokens[0],
