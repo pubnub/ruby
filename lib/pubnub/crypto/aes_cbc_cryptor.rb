@@ -15,14 +15,18 @@ module Pubnub::Crypto
       cipher.iv = OpenSSL::Random.random_bytes BLOCK_SIZE
       encoded_message = cipher.update data
       encoded_message << cipher.final
+
+      Base64.strict_encode64(encoded_message)
     end
 
     def decrypt(data, iv)
+      undecoded_text = Base64.strict_decode64(data)
+
       cipher = OpenSSL::Cipher.new(@alg).decrypt
       cipher.key = @cipher_key
       cipher.iv = iv
 
-      decrypted = cipher.update data
+      decrypted = cipher.update undecoded_text
       decrypted << cipher.final
     end
   end
