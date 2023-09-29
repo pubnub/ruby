@@ -8,6 +8,11 @@ module Pubnub
 
     def initialize(options, app)
       @event = :subscribe
+
+      # Override crypto module if custom cipher key has been used.
+      random_iv = options.key?(:random_iv) ? options[:random_iv] : true
+      options[:crypto_module] = Crypto::CryptoModule.new_legacy(options[:cipher_key], random_iv) if options[:cipher_key]
+
       super
       app.apply_state(self)
     end

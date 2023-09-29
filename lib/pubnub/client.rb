@@ -1,12 +1,16 @@
+# frozen_string_literal: true
+
 require 'base64'
 
 require 'pubnub/error'
 require 'pubnub/uuid'
 require 'pubnub/formatter'
-require 'pubnub/crypto'
 require 'pubnub/constants'
 require 'pubnub/configuration'
 require 'pubnub/subscribe_callback'
+
+# require 'pubnub/crypto'
+require 'pubnub/modules/crypto/module'
 
 require 'pubnub/schemas/envelope_schema'
 
@@ -338,6 +342,14 @@ module Pubnub
 
     def set_token(token)
       @env[:token] = token
+    end
+
+    # Data processing crypto module.
+    #
+    # @return [Pubnub::Crypto::CryptoProvider, nil] Crypto module for data encryption and
+    #   decryption.
+    def crypto_module
+      @env[:crypto_module]
     end
 
     private

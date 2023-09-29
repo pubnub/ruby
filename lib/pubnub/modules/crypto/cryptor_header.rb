@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Pubnub
   module Crypto
     # Cryptor data header.
@@ -74,11 +72,11 @@ module Pubnub
 
       # Create cryptor header.
       #
-      # @param identifier [String, nil] Identifier of the cryptor which has been
-      #   used to encrypt data.
+      # @param identifier [String] Identifier of the cryptor which has been used
+      #   to encrypt data.
       # @param metadata [String, nil] Cryptor-defined information.
       def initialize(identifier = nil, metadata = nil)
-        @data = if identifier
+        @data = if identifier && identifier != '\x00\x00\x00\x00'
                   Versions::CryptorHeaderV1Data.new(
                     identifier.to_s,
                     metadata&.length || 0
@@ -134,6 +132,21 @@ module Pubnub
         header
       end
 
+      # Overall header size.
+      #
+      # Full header size which includes:
+      # * sentinel
+      # * version
+      # * cryptor identifier
+      # * cryptor data size
+      # * cryptor-defined fields size.
+      def length
+        # Legacy payload doesn't have header.
+        return 0 if @data.nil?
+
+        9 + (data_size < 255 ? 1 : 3)
+      end
+
       # Crypto header version Version module.
       #
       # @return [Integer] One of known versions from Version module.
@@ -187,7 +200,7 @@ module Pubnub
         cryptor_identifier = identifier
         if cryptor_identifier.nil? || cryptor_identifier.empty?
           raise ArgumentError, {
-            message: '\'identifier\' is required for encryption'
+            message: '\'identifier\' is missing or empty.'
           }
         end
 

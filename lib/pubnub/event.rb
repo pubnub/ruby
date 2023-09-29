@@ -170,7 +170,7 @@ module Pubnub
 
     def create_variables_from_options(options)
       variables = %w[channel channels message http_sync callback
-                     ssl cipher_key random_iv cryptor_module secret_key auth_key
+                     ssl cipher_key random_iv crypto_module secret_key auth_key
                      publish_key subscribe_key timetoken action_timetoken message_timetoken
                      open_timeout read_timeout idle_timeout heartbeat
                      group action read write delete manage ttl presence start
@@ -219,10 +219,10 @@ module Pubnub
 
     # Data processing crypto module.
     #
-    # @return [CryptoModule, nil] Crypto module for data encryption and
+    # @return [Pubnub::Crypto::CryptoProvider, nil] Crypto module for data encryption and
     #   decryption.
     def crypto_module
-      @app.env[:crypto_module]
+      @crypto_module
     end
 
     def error_message(parsed_response)

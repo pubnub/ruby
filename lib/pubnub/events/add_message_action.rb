@@ -13,8 +13,8 @@ module Pubnub
 
     def fire
       Pubnub.logger.debug('Pubnub::Add Message Action') { "Fired event #{self.class}" }
-      type_payload = { type: @type, value: @value}
-      body = Formatter.format_message(type_payload, '', false, false)
+      type_payload = { type: @type, value: @value }
+      body = Formatter.format_message(type_payload, nil, false)
 
       response = send_request(body, { "Content-Type": 'application/json' })
 

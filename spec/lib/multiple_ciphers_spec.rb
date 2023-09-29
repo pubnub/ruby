@@ -42,6 +42,8 @@ describe "Using multiple cipher keys" do
         http_sync: true,
       ).first
 
+      puts '---------------------------------------'
+
       expect(e0.result[:data][:message]).to eq "Some test message"
       expect(e1.result[:data][:message]).to eq "Another test message"
     end

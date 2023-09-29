@@ -45,6 +45,7 @@ module Pubnub
       # with encrypted <i>data</i> and <i>metadata</i>.
       #
       # The identifier <b>must</b> be 4 bytes long.
+      #
       # @return [String] Unique cryptor identifier.
       def identifier
         raise NotImplementedError, 'Subclass should provide "identifier" method implementation.'

@@ -10,6 +10,11 @@ module Pubnub
     def initialize(options, app)
       @event = :publish
       @telemetry_name = :l_pub
+
+      # Override crypto module if custom cipher key has been used.
+      random_iv = options.key?(:random_iv) ? options[:random_iv] : true
+      options[:crypto_module] = Crypto::CryptoModule.new_legacy(options[:cipher_key], random_iv) if options[:cipher_key]
+
       super
       @sequence_number = sequence_number!
       @origination_time_token = @app.generate_ortt
@@ -25,9 +30,8 @@ module Pubnub
 
     def fire
       Pubnub.logger.debug('Pubnub::Publish') { "Fired event #{self.class}" }
-
       if @compressed
-        compressed_body = Formatter.format_message(@message, @cipher_key, @random_iv, false)
+        compressed_body = Formatter.format_message(@message, @crypto_module, false)
         response = send_request(compressed_body)
       else
         response = send_request
@@ -72,7 +76,7 @@ module Pubnub
         '0',
         Formatter.format_channel(@channel, true),
         '0',
-        Formatter.format_message(@message, @cipher_key, @random_iv)
+        Formatter.format_message(@message, @crypto_module)
       ]
 
       rpath.pop if @compressed
