@@ -43,7 +43,7 @@ module Pubnub
         data = message.reject { |k, _v| k == :payload }
         cipher_key = compute_cipher_key(data)
         random_iv = compute_random_iv(data)
-        crypto = Pubnub::Cryptor.new(cipher_key, random_iv)
+        crypto = Pubnub::Crypto.new(cipher_key, random_iv)
         JSON.parse(crypto.decrypt(message[:payload]), quirks_mode: true)
       rescue StandardError, UnknownCryptorError
         message[:payload]

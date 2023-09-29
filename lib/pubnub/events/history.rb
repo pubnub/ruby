@@ -82,7 +82,7 @@ module Pubnub
       if (@cipher_key || @app.env[:cipher_key] || @cipher_key_selector || @app.env[:cipher_key_selector]) && messages
         cipher_key = compute_cipher_key(parsed_response)
         random_iv = compute_random_iv(parsed_response)
-        crypto = Cryptor.new(cipher_key, random_iv)
+        crypto = Crypto.new(cipher_key, random_iv)
         messages = messages.map { |message| decrypt_history(message, crypto) }
       end
 
