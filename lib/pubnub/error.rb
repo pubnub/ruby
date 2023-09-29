@@ -51,4 +51,7 @@ module Pubnub
 
   class ResponseError < Error
   end
+
+  class UnknownCryptorError < Error
+  end
 end

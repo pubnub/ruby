@@ -1,7 +1,7 @@
 # Toplevel Pubnub module.
 module Pubnub
   # Internal Crypto class used for message encryption and decryption
-  class Crypto
+  class Cryptor
     def initialize(cipher_key, use_random_iv)
       @alg = 'AES-256-CBC'
       sha256_key = Digest::SHA256.hexdigest(cipher_key.to_s)

@@ -42,9 +42,9 @@ module Pubnub
       end
 
       # Transforms message to json and encode it
-      def format_message(message, cipher_key = "", use_random_iv = false, uri_escape = true)
+      def format_message(message, cipher_key = '', use_random_iv = false, uri_escape = true)
         if cipher_key && !cipher_key.empty?
-          pc = Pubnub::Crypto.new(cipher_key, use_random_iv)
+          pc = Pubnub::Cryptor.new(cipher_key, use_random_iv)
           message = pc.encrypt(message).to_json
           message = Addressable::URI.escape(message) if uri_escape
         else
@@ -53,6 +53,26 @@ module Pubnub
         end
         message
       end
+
+      # TODO: Uncomment code below when cryptor implementations will be added.
+      # Transforms message to json and encode it.
+      #
+      # @param message [Hash, String, Integer, Boolean] Message data which
+      #   should be formatted.
+      # @param crypto [Crypto::CryptoProvider, nil] Crypto which should be used to
+      #   encrypt message data.
+      # @param uri_escape [Boolean, nil] Whether formatted message should escape
+      #   to be used as part of URI or not.
+      # @return [String, nil] Formatted message data.
+      # def format_message(message, crypto = nil, uri_escape = true)
+      #   json_message = message.to_json
+      #   json_message = crypto&.encrypt(json_message) || '' unless crypto.nil?
+      #   if uri_escape
+      #     json_message = Formatter.encode(json_message) if crypto.nil?
+      #     json_message = Addressable::URI.escape(json_message).to_s unless crypto.nil?
+      #   end
+      #   json_message
+      # end
 
       # Quite lazy way, but good enough for current usage
       def classify_method(method)
@@ -100,7 +120,7 @@ module Pubnub
       # Parses string to JSON
       def parse_json(string)
         [JSON.parse(string), nil]
-      rescue JSON::ParserError => _error
+      rescue JSON::ParserError => _e
         [nil, JSON::ParserError]
       end
 

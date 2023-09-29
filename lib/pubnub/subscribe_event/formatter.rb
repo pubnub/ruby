@@ -33,13 +33,19 @@ module Pubnub
       end
 
       def decipher_payload(message)
+        # TODO: Uncomment code below when cryptor implementations will be added.
+        # return message[:payload] if message[:channel].end_with?('-pnpres') || crypto_module.nil?
+        #
+        # crypto = crypto_module
+        # JSON.parse(crypto.decrypt(message[:payload]), quirks_mode: true)
+
         return message[:payload] if message[:channel].end_with?('-pnpres') || (@app.env[:cipher_key].nil? && @cipher_key.nil? && @cipher_key_selector.nil? && @env[:cipher_key_selector].nil?)
         data = message.reject { |k, _v| k == :payload }
         cipher_key = compute_cipher_key(data)
         random_iv = compute_random_iv(data)
-        crypto = Pubnub::Crypto.new(cipher_key, random_iv)
+        crypto = Pubnub::Cryptor.new(cipher_key, random_iv)
         JSON.parse(crypto.decrypt(message[:payload]), quirks_mode: true)
-      rescue StandardError
+      rescue StandardError, UnknownCryptorError
         message[:payload]
       end
 
@@ -51,7 +57,8 @@ module Pubnub
         # STATUS
         envelopes = if messages.empty?
                       [plain_envelope(req_res_objects, timetoken)]
-                    else # RESULT
+                    else
+                      # RESULT
                       messages.map do |message|
                         encrypted_envelope(req_res_objects, message, timetoken)
                       end

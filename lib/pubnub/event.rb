@@ -113,12 +113,12 @@ module Pubnub
     def operation_http_method
       case @event
       when Pubnub::Constants::OPERATION_DELETE, Pubnub::Constants::OPERATION_REMOVE_MESSAGE_ACTION,
-           Pubnub::Constants::OPERATION_REMOVE_CHANNEL_METADATA, Pubnub::Constants::OPERATION_REMOVE_UUID_METADATA,
-           Pubnub::Constants::OPERATION_REVOKE_TOKEN
+        Pubnub::Constants::OPERATION_REMOVE_CHANNEL_METADATA, Pubnub::Constants::OPERATION_REMOVE_UUID_METADATA,
+        Pubnub::Constants::OPERATION_REVOKE_TOKEN
         'delete'
       when Pubnub::Constants::OPERATION_SET_UUID_METADATA, Pubnub::Constants::OPERATION_SET_CHANNEL_METADATA,
-           Pubnub::Constants::OPERATION_SET_CHANNEL_MEMBERS, Pubnub::Constants::OPERATION_SET_MEMBERSHIPS,
-           Pubnub::Constants::OPERATION_REMOVE_CHANNEL_MEMBERS, Pubnub::Constants::OPERATION_REMOVE_MEMBERSHIPS
+        Pubnub::Constants::OPERATION_SET_CHANNEL_MEMBERS, Pubnub::Constants::OPERATION_SET_MEMBERSHIPS,
+        Pubnub::Constants::OPERATION_REMOVE_CHANNEL_MEMBERS, Pubnub::Constants::OPERATION_REMOVE_MEMBERSHIPS
         'patch'
       when Pubnub::Constants::OPERATION_ADD_MESSAGE_ACTION
         'post'
@@ -170,7 +170,7 @@ module Pubnub
 
     def create_variables_from_options(options)
       variables = %w[channel channels message http_sync callback
-                     ssl cipher_key random_iv secret_key auth_key
+                     ssl cipher_key random_iv cryptor_module secret_key auth_key
                      publish_key subscribe_key timetoken action_timetoken message_timetoken
                      open_timeout read_timeout idle_timeout heartbeat
                      group action read write delete manage ttl presence start
@@ -215,6 +215,14 @@ module Pubnub
       ck = @compute_random_iv || @random_iv || @app.env[:random_iv_selector] || @app.env[:random_iv].to_s
       return ck unless ck.respond_to?(:call)
       ck.call(data)
+    end
+
+    # Data processing crypto module.
+    #
+    # @return [CryptoModule, nil] Crypto module for data encryption and
+    #   decryption.
+    def crypto_module
+      @app.env[:crypto_module]
     end
 
     def error_message(parsed_response)
