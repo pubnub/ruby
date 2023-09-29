@@ -402,9 +402,9 @@ module Pubnub
     def setup_crypto_module
       random_iv = @env[:random_iv]
       key = @env[:cipher_key]
-      
+
       # Create crypto module if it is not specified
-      @env[:crypto_module] = CryptoModule.new_legacy(key, random_iv) if key && @env[:crypto_module].nil?
+      @env[:crypto_module] = Crypto::CryptoModule.new_legacy(key, random_iv) if key && @env[:crypto_module].nil?
     end
 
     def prepare_env
