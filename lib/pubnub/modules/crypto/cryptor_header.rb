@@ -113,7 +113,7 @@ module Pubnub
         _, version, identifier, data_size = data.unpack('A4 C A4 C')
 
         # Check whether version is within known range.
-        if version > CryptorHeader.current_version
+        if version > current_version
           raise UnknownCryptorError, {
             message: 'Decrypting data created by unknown cryptor.'
           }
@@ -127,7 +127,7 @@ module Pubnub
         header = CryptorHeader.new
         header.send(
           :update_header_data,
-          CryptorHeader.create_header_data(version.to_i, identifier.to_s, data_size.to_i)
+          create_header_data(version.to_i, identifier.to_s, data_size.to_i)
         )
         header
       end

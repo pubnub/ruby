@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     pubnub (5.2.2)
-      addressable (>= 2.8.0)
+      addressable (>= 2.0.0)
       concurrent-ruby (~> 1.1.5)
       concurrent-ruby-edge (~> 0.5.0)
       dry-validation (~> 1.0)
@@ -89,12 +89,10 @@ GEM
       dry-schema (>= 1.12, < 2)
       zeitwerk (~> 2.6)
     ffi (1.16.2)
-    ffi (1.16.2-java)
     hashdiff (1.0.1)
     httpclient (2.8.3)
     interception (0.5)
     json (2.6.3)
-    json (2.6.3-java)
     language_server-protocol (3.17.0.3)
     method_source (1.0.0)
     mini_mime (1.1.5)
@@ -106,10 +104,6 @@ GEM
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    pry (0.14.2-java)
-      coderay (~> 1.1)
-      method_source (~> 1.0)
-      spoon (~> 0.0)
     pry-rescue (1.5.2)
       interception (>= 0.5)
       pry (>= 0.12.0)
@@ -118,7 +112,6 @@ GEM
       pry (~> 0.13)
     public_suffix (5.0.3)
     racc (1.7.1)
-    racc (1.7.1-java)
     rainbow (3.1.1)
     regexp_parser (2.8.1)
     rexml (3.2.6)
@@ -159,8 +152,6 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
-    spoon (0.0.6)
-      ffi
     sys-uname (1.2.3)
       ffi (~> 1.1)
     timers (4.3.5)
@@ -173,8 +164,7 @@ GEM
     zeitwerk (2.6.12)
 
 PLATFORMS
-  java
-  ruby
+  arm64-darwin-21
 
 DEPENDENCIES
   awesome_print
@@ -194,4 +184,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   2.1.4
+   2.4.6

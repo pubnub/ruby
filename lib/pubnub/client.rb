@@ -9,7 +9,6 @@ require 'pubnub/constants'
 require 'pubnub/configuration'
 require 'pubnub/subscribe_callback'
 
-# require 'pubnub/crypto'
 require 'pubnub/modules/crypto/module'
 
 require 'pubnub/schemas/envelope_schema'

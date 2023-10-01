@@ -19,6 +19,7 @@ module Pubnub
       def initialize(cipher_key)
         @cipher_key = Digest::SHA256.digest(cipher_key)
         @alg = 'AES-256-CBC'
+        super()
       end
 
       def identifier
@@ -35,16 +36,17 @@ module Pubnub
         encoded_message << cipher.final
         Crypto::EncryptedData.new(encoded_message, iv)
       rescue StandardError => e
-        Pubnub.error('Pubnub') { "ENCRYPTION ERROR: #{e}" }
+        puts "Pubnub :: ENCRYPTION ERROR: #{e}"
         nil
       end
 
       def decrypt(data)
+        # OpenSSL can't work with empty data.
+        return '' unless data.data.length.positive?
+
         if data.metadata.length != BLOCK_SIZE
-          Pubnub.error('Pubnub') do
-            "DECRYPTION ERROR: Unexpected initialization vector length:
+          puts "Pubnub :: DECRYPTION ERROR: Unexpected initialization vector length:
 #{data.metadata.length} bytes (#{BLOCK_SIZE} bytes is expected)"
-          end
           return nil
         end
 
@@ -55,7 +57,7 @@ module Pubnub
         decrypted = cipher.update data.data
         decrypted << cipher.final
       rescue StandardError => e
-        Pubnub.error('Pubnub') { "DECRYPTION ERROR: #{e}" }
+        puts "Pubnub :: DECRYPTION ERROR: #{e}"
         nil
       end
     end

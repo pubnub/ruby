@@ -254,5 +254,3 @@ end
 Then('the error detail message is not empty') do
   expect(parse_error_body(@global_state[:last_call_res])["error"]["message"].empty?).to eq false
 end
-
-

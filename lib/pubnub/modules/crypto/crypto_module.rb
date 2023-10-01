@@ -25,7 +25,7 @@ module Pubnub
           }
         end
 
-        CryptoModule.new AesCbcCryptor.new(cipher_key), [LegacyCryptor.new(cipher_key, use_random_iv)], cipher_key, use_random_iv
+        CryptoModule.new AesCbcCryptor.new(cipher_key), [LegacyCryptor.new(cipher_key, use_random_iv)]
       end
 
       # Legacy AES-CBC cryptor based module.
@@ -48,7 +48,7 @@ module Pubnub
           }
         end
 
-        CryptoModule.new LegacyCryptor.new(cipher_key, use_random_iv), [AesCbcCryptor.new(cipher_key)], cipher_key, use_random_iv
+        CryptoModule.new LegacyCryptor.new(cipher_key, use_random_iv), [AesCbcCryptor.new(cipher_key)]
       end
 
       # Create crypto module.
@@ -57,20 +57,18 @@ module Pubnub
       #   data.
       # @param cryptors [Array<Cryptor>, nil] Additional cryptors which will be
       #   used to decrypt data encrypted by previously used cryptors.
-      def initialize(default, cryptors, key = nil, random = true)
+      def initialize(default, cryptors)
         if default.nil?
           raise ArgumentError, {
             message: '\'default\' cryptor required for data encryption.'
           }
         end
 
-        @___cipher_key = key
-        @___use_random_iv = random
-
         @default = default
         @cryptors = cryptors&.each_with_object({}) do |value, hash|
           hash[value.identifier] = value
         end || {}
+        super()
       end
 
       def encrypt(data)
@@ -85,20 +83,22 @@ module Pubnub
 
       def decrypt(data)
         header = Crypto::CryptorHeader.parse(data)
-        cryptor_identifier = header&.identifier || '\x00\x00\x00\x00'
+        return nil if header.nil?
+
+        cryptor_identifier = header.identifier || '\x00\x00\x00\x00'
         cryptor = cryptor cryptor_identifier
 
         # Check whether there is a cryptor to decrypt data or not.
         if cryptor.nil?
-          identifier = header&.identifier || 'UNKN'
+          identifier = header.identifier || 'UNKN'
           raise UnknownCryptorError, {
             message: "Decrypting data created by unknown cryptor. Please make sure to register
 #{identifier} or update SDK."
           }
         end
 
-        encrypted_data = data[(header&.length || 0)..-1]
-        metadata = metadata encrypted_data, (header&.data_size || 0)
+        encrypted_data = data[header.length..-1]
+        metadata = metadata encrypted_data, header.data_size
 
         # Check whether there is still some data for processing or not.
         return nil if encrypted_data.nil? || encrypted_data.empty?
