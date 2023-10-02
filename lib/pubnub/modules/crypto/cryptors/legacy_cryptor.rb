@@ -32,6 +32,11 @@ module Pubnub
       end
 
       def encrypt(data)
+        if data.nil? || data.empty?
+          puts 'Pubnub :: ENCRYPTION ERROR: Empty data for encryption'
+          nil
+        end
+
         iv = @iv || OpenSSL::Random.random_bytes(BLOCK_SIZE)
         cipher = OpenSSL::Cipher.new(@alg).encrypt
         cipher.key = @cipher_key
@@ -48,18 +53,20 @@ module Pubnub
       end
 
       def decrypt(data)
-        # OpenSSL can't work with empty data.
-        return '' unless data.data.length.positive?
-
         encrypted_data = data.data
-        iv = if @iv.nil?
+        iv = if @iv.nil? && encrypted_data.length >= BLOCK_SIZE
                encrypted_data.slice!(0..(BLOCK_SIZE - 1)) if encrypted_data.length >= BLOCK_SIZE
              else
                @iv
              end
         if iv.length != BLOCK_SIZE
-          puts "DECRYPTION ERROR: Unexpected initialization vector length: #{data.metadata.length} bytes (#{BLOCK_SIZE} bytes is expected)"
+          puts "Pubnub :: DECRYPTION ERROR: Unexpected initialization vector length: #{data.metadata.length} bytes (#{BLOCK_SIZE} bytes is expected)"
           return nil
+        end
+
+        unless encrypted_data.length.positive?
+          puts 'Pubnub :: DECRYPTION ERROR: Empty data for decryption'
+          nil
         end
 
         cipher = OpenSSL::Cipher.new(@alg).decrypt

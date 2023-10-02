@@ -82,6 +82,11 @@ module Pubnub
       end
 
       def decrypt(data)
+        unless data.length.positive?
+          puts 'Pubnub :: DECRYPTION ERROR: Empty data for decryption'
+          nil
+        end
+
         header = Crypto::CryptorHeader.parse(data)
         return nil if header.nil?
 
