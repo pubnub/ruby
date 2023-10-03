@@ -41,19 +41,6 @@ module Pubnub
         end
       end
 
-      # Transforms message to json and encode it
-      # def format_message(message, cipher_key = '', use_random_iv = false, uri_escape = true)
-      #   if cipher_key && !cipher_key.empty?
-      #     pc = Pubnub::Crypto.new(cipher_key, use_random_iv)
-      #     message = pc.encrypt(message).to_json
-      #     message = Addressable::URI.escape(message) if uri_escape
-      #   else
-      #     message = message.to_json
-      #     message = Formatter.encode(message) if uri_escape
-      #   end
-      #   message
-      # end
-
       # TODO: Uncomment code below when cryptor implementations will be added.
       # Transforms message to json and encode it.
       #
