@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+#
 require 'pubnub'
 
 Given(/^Crypto module with '([^']*)' cryptor$/) do |cryptor_id|
@@ -22,11 +23,16 @@ Then(/^with '(random|constant|-)' vector$/) do |use_random_iv|
   @use_random_iv = use_random_iv != 'constant'
 end
 
-When(/^I encrypt '([^']*)' file as '([^']*)'$/) do |file_name, type|
+When(/^I encrypt '([^']*)' file as '([^']*)'$/) do |file_name, _|
   @source_file_name = file_name
   @source_file_content = File.binread "sdk-specifications/features/encryption/assets/#{file_name}"
   @encrypted_content = crypto_module.encrypt @source_file_content
-  expect(@encrypted_content).not_to eq nil
+  if file_name.include? 'empty'
+    @encrypt_status = 'encryption error' if @encrypted_content.nil? && @encrypt_status.nil?
+    @encrypt_status = 'success' if !@encrypted_content.nil? && @encrypt_status.nil?
+  else
+    expect(@encrypted_content).not_to eq nil
+  end
 end
 
 When(/^I decrypt '([^']*)' file$/) do |file_name|
@@ -68,8 +74,8 @@ Then('Successfully decrypt an encrypted file with legacy code') do
 end
 
 Then(/^I receive '([^']*)'$/) do |outcome|
-  expect(@decrypt_status).not_to eq nil
-  expect(@decrypt_status).to eq outcome
+  expect(@encrypt_status || @decrypt_status).not_to eq nil
+  expect(@encrypt_status || @decrypt_status).to eq outcome
 end
 
 # Crypto module

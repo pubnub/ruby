@@ -29,7 +29,7 @@ module Pubnub
       def encrypt(data)
         if data.nil? || data.empty?
           puts 'Pubnub :: ENCRYPTION ERROR: Empty data for encryption'
-          nil
+          return nil
         end
 
         iv = OpenSSL::Random.random_bytes BLOCK_SIZE

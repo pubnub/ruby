@@ -34,7 +34,7 @@ module Pubnub
       def encrypt(data)
         if data.nil? || data.empty?
           puts 'Pubnub :: ENCRYPTION ERROR: Empty data for encryption'
-          nil
+          return nil
         end
 
         iv = @iv || OpenSSL::Random.random_bytes(BLOCK_SIZE)
@@ -66,7 +66,7 @@ module Pubnub
 
         unless encrypted_data.length.positive?
           puts 'Pubnub :: DECRYPTION ERROR: Empty data for decryption'
-          nil
+          return nil
         end
 
         cipher = OpenSSL::Cipher.new(@alg).decrypt
