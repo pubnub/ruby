@@ -1,6 +1,13 @@
 ---
-version: "5.2.2"
+version: "5.3.0"
 changelog:
+  - date: 2023-10-16
+    version: v5.3.0
+    changes:
+      - type: feature
+        text: "Add crypto module that allows to configure SDK to encrypt and decrypt messages."
+      - type: bug
+        text: "Improved security of crypto implementation by adding enhanced AES-CBC cryptor."
   - date: 2023-03-14
     version: v5.2.2
     changes:
@@ -663,7 +670,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-5.2.2.gem
+            package-name: pubnub-5.3.0.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -768,8 +775,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-5.2.2.gem
-            location: https://github.com/pubnub/ruby/releases/download/v5.2.2/pubnub-5.2.2.gem
+            package-name: pubnub-5.3.0.gem
+            location: https://github.com/pubnub/ruby/releases/download/v5.3.0/pubnub-5.3.0.gem
             requires:
               - name: addressable
                 min-version: 2.0.0
