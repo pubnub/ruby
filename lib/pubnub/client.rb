@@ -1,12 +1,15 @@
+# frozen_string_literal: true
+
 require 'base64'
 
 require 'pubnub/error'
 require 'pubnub/uuid'
 require 'pubnub/formatter'
-require 'pubnub/crypto'
 require 'pubnub/constants'
 require 'pubnub/configuration'
 require 'pubnub/subscribe_callback'
+
+require 'pubnub/modules/crypto/module'
 
 require 'pubnub/schemas/envelope_schema'
 
@@ -183,6 +186,7 @@ module Pubnub
       clean_env
       prepare_env
       validate! @env
+      setup_crypto_module
       @telemetry = Telemetry.new
       Pubnub.logger.debug('Pubnub::Client') do
         "Created new Pubnub::Client instance. Version: #{Pubnub::VERSION}"
@@ -339,6 +343,14 @@ module Pubnub
       @env[:token] = token
     end
 
+    # Data processing crypto module.
+    #
+    # @return [Pubnub::Crypto::CryptoProvider, nil] Crypto module for data encryption and
+    #   decryption.
+    def crypto_module
+      @env[:crypto_module]
+    end
+
     private
 
     def create_state_pools(event)
@@ -386,7 +398,24 @@ module Pubnub
       Concurrent.global_logger = Pubnub.logger
       @subscriber = Subscriber.new(self)
       options[:user_id] = options[:uuid] if options[:user_id].nil?
+
+      if options[:cipher_key] && options[:crypto_module]
+        puts 'It is expected that only cipherKey or cryptoModule will be configured ' \
+               'at once. PubNub client will use the configured cryptoModule.'
+      end
+
       @env = options
+    end
+
+    # Complete crypto module configuration
+    # Create crypto module if it is required by user (specified
+    # <i>cipher_key</i> and not <i>crypto_module</i>).
+    def setup_crypto_module
+      random_iv = @env[:random_iv]
+      key = @env[:cipher_key]
+
+      # Create crypto module if it is not specified
+      @env[:crypto_module] = Crypto::CryptoModule.new_legacy(key, random_iv) if key && @env[:crypto_module].nil?
     end
 
     def prepare_env

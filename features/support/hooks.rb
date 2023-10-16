@@ -8,7 +8,6 @@ Before do |scenario|
   @pn_configuration = {}
 
   when_mock_server_used {
-    puts "Using mock"
     expect(ENV['SERVER_HOST']).not_to be_nil
     expect(ENV['SERVER_PORT']).not_to be_nil
     @pn_configuration = {

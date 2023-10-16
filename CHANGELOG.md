@@ -1,3 +1,12 @@
+## v5.3.0
+October 16 2023
+
+#### Added
+- Add crypto module that allows to configure SDK to encrypt and decrypt messages.
+
+#### Fixed
+- Improved security of crypto implementation by adding enhanced AES-CBC cryptor.
+
 ## v5.2.2
 March 14 2023
 

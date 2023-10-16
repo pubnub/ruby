@@ -28,7 +28,7 @@ module Pubnub
     def fire
       Pubnub.logger.debug('Pubnub::SetUuidMetadata') { "Fired event #{self.class}" }
 
-      body = Formatter.format_message(@metadata, "", @random_iv, false)
+      body = Formatter.format_message(@metadata, nil, false)
       response = send_request(body)
 
       envelopes = fire_callbacks(handle(response, uri))
@@ -61,7 +61,7 @@ module Pubnub
     def valid_envelope(parsed_response, req_res_objects)
       data = parsed_response['data']
       metadata = Hash.new
-      data.each{ |k,v| metadata[k.to_sym] = v }
+      data.each { |k, v| metadata[k.to_sym] = v }
       metadata[:updated] = Date._parse(metadata[:updated]) unless metadata[:updated].nil?
 
       Pubnub::Envelope.new(

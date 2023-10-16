@@ -8,6 +8,11 @@ module Pubnub
     def initialize(options, app)
       @event = :history
       @telemetry_name = :l_hist
+
+      # Override crypto module if custom cipher key has been used.
+      random_iv = options.key?(:random_iv) ? options[:random_iv] : true
+      options[:crypto_module] = Crypto::CryptoModule.new_legacy(options[:cipher_key], random_iv) if options[:cipher_key]
+
       super
     end
 
@@ -63,23 +68,30 @@ module Pubnub
 
     def decrypt_history(message, crypto)
       if @include_token || @include_meta
-        message['message'] = JSON.parse(crypto.decrypt(message['message']), quirks_mode: true)
+        encrypted_message = Base64.decode64(message['message'])
+        message['message'] = JSON.parse(crypto.decrypt(encrypted_message), quirks_mode: true)
 
         message
       else
-        JSON.parse(crypto.decrypt(message), quirks_mode: true)
+        encrypted_message = Base64.decode64(message)
+        JSON.parse(crypto.decrypt(encrypted_message), quirks_mode: true)
       end
     end
 
     def valid_envelope(parsed_response, req_res_objects)
       messages = parsed_response[0]
 
-      if (@cipher_key || @app.env[:cipher_key] || @cipher_key_selector || @app.env[:cipher_key_selector]) && messages
-        cipher_key = compute_cipher_key(parsed_response)
-        random_iv = compute_random_iv(parsed_response)
-        crypto = Crypto.new(cipher_key, random_iv)
+      # TODO: Uncomment code below when cryptor implementations will be added.
+      if crypto_module && messages
+        crypto = crypto_module
         messages = messages.map { |message| decrypt_history(message, crypto) }
       end
+      # if (@cipher_key || @app.env[:cipher_key] || @cipher_key_selector || @app.env[:cipher_key_selector]) && messages
+      #   cipher_key = compute_cipher_key(parsed_response)
+      #   random_iv = compute_random_iv(parsed_response)
+      #   crypto = Crypto.new(cipher_key, random_iv)
+      #   messages = messages.map { |message| decrypt_history(message, crypto) }
+      # end
 
       start = parsed_response[1]
       finish = parsed_response[2]

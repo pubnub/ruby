@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pubnub (5.2.2)
+    pubnub (5.3.0)
       addressable (>= 2.0.0)
       concurrent-ruby (~> 1.1.5)
       concurrent-ruby-edge (~> 0.5.0)
@@ -100,8 +100,8 @@ GEM
       dry-equalizer (~> 0.2)
       dry-initializer (~> 3.0)
       dry-schema (~> 1.5)
-    ffi (1.13.1)
-    ffi (1.13.1-java)
+    ffi (1.16.2)
+    ffi (1.16.2-java)
     hashdiff (1.0.1)
     httpclient (2.8.3)
     interception (0.5)
@@ -115,10 +115,10 @@ GEM
     parallel (1.19.2)
     parser (2.7.1.4)
       ast (~> 2.4.1)
-    pry (0.13.1)
+    pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    pry (0.13.1-java)
+    pry (0.14.2-java)
       coderay (~> 1.1)
       method_source (~> 1.0)
       spoon (~> 0.0)
@@ -187,7 +187,7 @@ DEPENDENCIES
   awesome_print
   codacy-coverage
   cucumber
-  pry
+  pry (>= 0.14.2)
   pry-rescue
   pry-stack_explorer
   pubnub!

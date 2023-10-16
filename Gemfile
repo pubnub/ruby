@@ -17,7 +17,7 @@ end
 
 group :development, :test do
   gem 'awesome_print'
-  gem 'pry'
+  gem 'pry', '>= 0.14.2'
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
 end

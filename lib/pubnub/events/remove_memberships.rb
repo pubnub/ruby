@@ -42,7 +42,7 @@ module Pubnub
         { channel: { id: membership } }
       end
 
-      body = Formatter.format_message({ delete: memberships }, "", @random_iv, false)
+      body = Formatter.format_message({ delete: memberships }, nil, false)
       response = send_request(body)
 
       envelopes = fire_callbacks(handle(response, uri))
@@ -83,11 +83,11 @@ module Pubnub
     def valid_envelope(parsed_response, req_res_objects)
       memberships = parsed_response['data'].map { |uuid_membership|
         membership = Hash.new
-        uuid_membership.each{ |k,v| membership[k.to_sym] = v }
+        uuid_membership.each { |k, v| membership[k.to_sym] = v }
 
         unless membership[:channel].nil?
           channel_metadata = Hash.new
-          membership[:channel].each{ |k,v| channel_metadata[k.to_sym] = v }
+          membership[:channel].each { |k, v| channel_metadata[k.to_sym] = v }
           channel_metadata[:updated] = Date._parse(channel_metadata[:updated]) unless channel_metadata[:updated].nil?
           membership[:channel] = channel_metadata
         end

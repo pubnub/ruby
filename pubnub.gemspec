@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.email = ['support@pubnub.com']
   spec.summary = 'PubNub Official Ruby gem.'
   spec.description = 'Ruby anywhere in the world in 250ms with PubNub!'
-  spec.homepage = 'http://github.com/pubnub/ruby'
-  spec.license = 'MIT'
+  spec.homepage = 'https://github.com/pubnub/ruby'
+  spec.licenses = %w[MIT LicenseRef-LICENSE]
 
   spec.files = `git ls-files -z`.split("\x0").grep_v(/^(test|spec|fixtures)/)
   spec.executables = spec.files.grep(%r{^bin\/}) { |f| File.basename(f) }

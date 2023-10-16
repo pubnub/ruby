@@ -34,7 +34,7 @@ module Pubnub
           patterns: prepare_permissions(:pattern, @channels, @channel_groups, @uuids, @spaces_permissions, @users_permissions)
         }.select { |_, v| v }
       }
-      body = Formatter.format_message(raw_body, "", false, false)
+      body = Formatter.format_message(raw_body, nil, false)
       response = send_request(body, { "Content-Type": "application/json" })
 
       envelopes = fire_callbacks(handle(response, uri))
