@@ -1,6 +1,11 @@
 ---
-version: "5.3.0"
+version: "5.3.1"
 changelog:
+  - date: 2023-11-03
+    version: v5.3.1
+    changes:
+      - type: improvement
+        text: "Update license information."
   - date: 2023-10-16
     version: v5.3.0
     changes:
@@ -670,7 +675,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-5.3.0.gem
+            package-name: pubnub-5.3.1.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -775,8 +780,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-5.3.0.gem
-            location: https://github.com/pubnub/ruby/releases/download/v5.3.0/pubnub-5.3.0.gem
+            package-name: pubnub-5.3.1.gem
+            location: https://github.com/pubnub/ruby/releases/download/v5.3.1/pubnub-5.3.1.gem
             requires:
               - name: addressable
                 min-version: 2.0.0
