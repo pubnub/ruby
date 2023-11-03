@@ -1,3 +1,9 @@
+## v5.3.1
+November 03 2023
+
+#### Modified
+- Update license information.
+
 ## v5.3.0
 October 16 2023
 
