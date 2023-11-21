@@ -1,8 +1,6 @@
 # PubNub Ruby SDK
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b744287bb0324e2883f95525b12cf19f)](https://www.codacy.com/app/blazeroot/ruby?utm_source=github.com&utm_medium=referral&utm_content=pubnub/ruby&utm_campaign=badger)
-[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/b744287bb0324e2883f95525b12cf19f)](https://www.codacy.com/app/blazeroot/ruby?utm_source=github.com&utm_medium=referral&utm_content=pubnub/ruby&utm_campaign=Badge_Coverage)
-[![Build Status](https://travis-ci.org/pubnub/ruby.svg?branch=master)](https://travis-ci.org/pubnub/ruby)
+![Tests Status](https://github.com/pubnub/ruby/actions/workflows/run-tests.yml/badge.svg)
 
 This is the official PubNub Ruby SDK repository.
 
