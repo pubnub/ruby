@@ -41,7 +41,6 @@ module Pubnub
         end
       end
 
-      # TODO: Uncomment code below when cryptor implementations will be added.
       # Transforms message to json and encode it.
       #
       # @param message [Hash, String, Integer, Boolean] Message data which

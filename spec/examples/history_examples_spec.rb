@@ -20,6 +20,81 @@ describe Pubnub::History do
     example.run_with_retry retry: 10
   end
 
+  it "fetch_encrypted_and_decrypt_with_same_key" do
+    VCR.use_cassette("examples/history/crypto_1", :record => :none) do
+      client = Pubnub.new(
+        publish_key: "pub-a-mock-key",
+        subscribe_key: "sub-a-mock-key",
+        user_id: "ruby-test-uuid-client-one",
+        cipher_key: "enigma",
+        random_iv: false
+      )
+
+      client.publish(channel: 'crypto_channel_11', message: 'Hello world', http_sync: true)
+      envelope = client.history(channel: 'crypto_channel_11', include_meta: true, http_sync: true)
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:history)
+      expect(envelope.result[:data]).to eq({ :messages => [{ "message" => "Hello world", "meta" => "" }], :end => 17006907088868199, :start => 17006907088868199 })
+      expect(envelope.result[:data][:messages][0]['decrypt_error']).to be_nil
+    end
+  end
+
+  it "fetch_encrypted_and_decrypt_with_different_key" do
+    VCR.use_cassette("examples/history/crypto_2", :record => :none) do
+      client = Pubnub.new(
+        publish_key: "pub-a-mock-key",
+        subscribe_key: "sub-a-mock-key",
+        user_id: "ruby-test-uuid-client-one",
+        cipher_key: "enigma",
+        random_iv: false
+      )
+
+      client.publish(channel: 'crypto_channel_12', message: 'Hello world', http_sync: true)
+      envelope = client.history(channel: 'crypto_channel_12', include_meta: true, cipher_key: "some-key", http_sync: true)
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:history)
+      expect(envelope.result[:data]).to eq({
+                                             :messages => [{
+                                                             "decrypt_error" => true,
+                                                             "message" => "8vAFZgup2Ejp2Ny0d1iFlA==", "meta" => ""
+                                                           }], :end => 17007550047732566, :start => 17007548460124155 })
+      expect(envelope.result[:data][:messages][0]['decrypt_error']).not_to be_nil
+      expect(envelope.result[:data][:messages][0]['decrypt_error']).to eq true
+    end
+  end
+
+  it "fetch_decrypted_and_decrypt_with_some_key" do
+    VCR.use_cassette("examples/history/crypto_3", :record => :none) do
+      client = Pubnub.new(
+        publish_key: "demo-36",
+        subscribe_key: "demo-36",
+        user_id: "ruby-test-uuid-client-one"
+      )
+      client.publish(channel: 'crypto_channel_13', message: 'Hello world', http_sync: true)
+
+      client = Pubnub.new(
+        publish_key: "pub-a-mock-key",
+        subscribe_key: "sub-a-mock-key",
+        user_id: "ruby-test-uuid-client-one",
+        cipher_key: "enigma",
+        random_iv: false
+      )
+      envelope = client.history(channel: 'crypto_channel_13', include_meta: true, http_sync: true)
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:history)
+      expect(envelope.result[:data]).to eq({
+                                             :messages => [{
+                                                             "decrypt_error" => true,
+                                                             "message" => "Hello world", "meta" => ""
+                                                           }], :end => 17007555072405073, :start => 17007554539617347 })
+      expect(envelope.result[:data][:messages][0]['decrypt_error']).not_to be_nil
+      expect(envelope.result[:data][:messages][0]['decrypt_error']).to eq false
+    end
+  end
+
   it "__channel___demo___count__10___start__nil___end__nil___reverse__false___http_sync__true___callback__nil___include_meta__true_" do
     VCR.use_cassette("examples/history/100", :record => :none) do
       envelope = @pubnub.history(channel: :rubytest, include_meta: true, http_sync: true)
@@ -28,11 +103,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"message" => {"message"=>"text"}, "meta" => {"metaKey"=>"metaValue"}, "timetoken" => 15965666789169854}], :end => 15965666789169854, :start => 15965666789169854})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "message" => { "message" => "text" }, "meta" => { "metaKey" => "metaValue" }, "timetoken" => 15965666789169854 }], :end => 15965666789169854, :start => 15965666789169854 })
     end
   end
 
@@ -53,11 +128,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [100], :end => 16148147101366576, :start => 16148147101366576})
+      expect(envelope.result[:data]).to eq({ :messages => [100], :end => 16148147101366576, :start => 16148147101366576 })
     end
   end
 
@@ -78,11 +153,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"message" => 100, "meta" => "", "timetoken" => 16148149695171741}], :end => 16148149695171741, :start => 16148149695171741})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "message" => 100, "meta" => "", "timetoken" => 16148149695171741 }], :end => 16148149695171741, :start => 16148149695171741 })
     end
   end
 
@@ -103,11 +178,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"message" => 100, "timetoken" => 16148151241848372}], :end => 16148151241848372, :start => 16148151241848372})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "message" => 100, "timetoken" => 16148151241848372 }], :end => 16148151241848372, :start => 16148151241848372 })
     end
   end
 
@@ -127,11 +202,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [100], :end => 16148153795208310, :start => 16148153795208310})
+      expect(envelope.result[:data]).to eq({ :messages => [100], :end => 16148153795208310, :start => 16148153795208310 })
     end
   end
 
@@ -151,11 +226,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"message" => 100, "meta" => "", "timetoken" => 16148154562721969}], :end => 16148154562721969, :start => 16148154562721969})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "message" => 100, "meta" => "", "timetoken" => 16148154562721969 }], :end => 16148154562721969, :start => 16148154562721969 })
     end
   end
 
@@ -175,11 +250,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"message" => 100, "timetoken" => 16148155532212500}], :end => 16148155532212500, :start => 16148155532212500})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "message" => 100, "timetoken" => 16148155532212500 }], :end => 16148155532212500, :start => 16148155532212500 })
     end
   end
 
@@ -191,11 +266,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -207,11 +282,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -223,11 +298,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -240,11 +315,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -257,11 +332,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -274,11 +349,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -290,11 +365,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -306,11 +381,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -322,11 +397,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -339,11 +414,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -356,11 +431,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -373,11 +448,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -389,11 +464,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -405,11 +480,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -421,11 +496,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -438,11 +513,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -455,11 +530,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -472,11 +547,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -488,11 +563,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -504,11 +579,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -520,11 +595,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -537,11 +612,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -554,11 +629,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -571,11 +646,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -587,11 +662,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -603,11 +678,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -619,11 +694,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -636,11 +711,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -653,11 +728,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -670,11 +745,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -686,11 +761,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -702,11 +777,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -718,11 +793,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -735,11 +810,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -752,11 +827,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -769,11 +844,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -785,11 +860,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -801,11 +876,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -817,11 +892,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -834,11 +909,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -851,11 +926,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -868,11 +943,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -884,11 +959,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -900,11 +975,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -916,11 +991,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -933,11 +1008,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -950,11 +1025,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -967,11 +1042,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -983,11 +1058,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -999,11 +1074,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1015,11 +1090,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1032,11 +1107,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1049,11 +1124,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1066,11 +1141,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1082,11 +1157,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1098,11 +1173,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1114,11 +1189,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1131,11 +1206,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1148,11 +1223,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1165,11 +1240,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1181,11 +1256,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1197,11 +1272,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1213,11 +1288,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1230,11 +1305,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1247,11 +1322,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1264,11 +1339,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1280,11 +1355,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1296,11 +1371,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1312,11 +1387,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1329,11 +1404,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1346,11 +1421,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1363,11 +1438,11 @@ describe Pubnub::History do
 
       expect(envelope.status[:code]).to eq(200)
       expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:history)
-      expect(envelope.result[:data]).to eq({:messages => [{"text" => "Enter Message Here"}], :end => 14641838216911695, :start => 14641838216911695})
+      expect(envelope.result[:data]).to eq({ :messages => [{ "text" => "Enter Message Here" }], :end => 14641838216911695, :start => 14641838216911695 })
     end
   end
 
@@ -1387,8 +1462,8 @@ describe Pubnub::History do
         expect(envelope.result[:operation]).to eq(:history)
       end
 
-      expect(envelopes[0].result[:data]).to eq({:messages => [{"text" => "Test message #9"}, {"text" => "Test message #10"}], :end => 16376216052005483, :start => 16376216012185785})
-      expect(envelopes[1].result[:data]).to eq({:messages => [{"text" => "Test message #7"}, {"text" => "Test message #8"}], :end => 16376215974611464, :start => 16376215943848282})
+      expect(envelopes[0].result[:data]).to eq({ :messages => [{ "text" => "Test message #9" }, { "text" => "Test message #10" }], :end => 16376216052005483, :start => 16376216012185785 })
+      expect(envelopes[1].result[:data]).to eq({ :messages => [{ "text" => "Test message #7" }, { "text" => "Test message #8" }], :end => 16376215974611464, :start => 16376215943848282 })
     end
   end
 
@@ -1409,8 +1484,8 @@ describe Pubnub::History do
         expect(envelope.result[:operation]).to eq(:history)
       end
 
-      expect(envelopes[0].result[:data]).to eq({:messages => [{"text" => "Test message #9"}, {"text" => "Test message #10"}], :end => 16376216052005483, :start => 16376216012185785})
-      expect(envelopes[1].result[:data]).to eq({:messages => [{"text" => "Test message #7"}, {"text" => "Test message #8"}], :end => 16376215974611464, :start => 16376215943848282})
+      expect(envelopes[0].result[:data]).to eq({ :messages => [{ "text" => "Test message #9" }, { "text" => "Test message #10" }], :end => 16376216052005483, :start => 16376216012185785 })
+      expect(envelopes[1].result[:data]).to eq({ :messages => [{ "text" => "Test message #7" }, { "text" => "Test message #8" }], :end => 16376215974611464, :start => 16376215943848282 })
     end
   end
 
@@ -1432,8 +1507,8 @@ describe Pubnub::History do
         expect(envelope.result[:operation]).to eq(:history)
       end
 
-      expect(envelopes[0].result[:data]).to eq({:messages => [{"text" => "Test message #2"}, {"text" => "Test message #3"}], :end => 16376215835141820, :start => 16376215812842130})
-      expect(envelopes[1].result[:data]).to eq({:messages => [{"text" => "Test message #1"}], :end => 16376215769471824, :start => 16376215769471824})
+      expect(envelopes[0].result[:data]).to eq({ :messages => [{ "text" => "Test message #2" }, { "text" => "Test message #3" }], :end => 16376215835141820, :start => 16376215812842130 })
+      expect(envelopes[1].result[:data]).to eq({ :messages => [{ "text" => "Test message #1" }], :end => 16376215769471824, :start => 16376215769471824 })
     end
   end
 
@@ -1455,8 +1530,8 @@ describe Pubnub::History do
         expect(envelope.result[:operation]).to eq(:history)
       end
 
-      expect(envelopes[0].result[:data]).to eq({:messages => [{"text" => "Test message #8"}, {"text" => "Test message #9"}, {"text" => "Test message #10"}], :end => 16376216052005483, :start => 16376215974611464})
-      expect(envelopes[1].result[:data]).to eq({:messages => [{"text" => "Test message #5"}, {"text" => "Test message #6"}, {"text" => "Test message #7"}], :end => 16376215943848282, :start => 16376215880582193})
+      expect(envelopes[0].result[:data]).to eq({ :messages => [{ "text" => "Test message #8" }, { "text" => "Test message #9" }, { "text" => "Test message #10" }], :end => 16376216052005483, :start => 16376215974611464 })
+      expect(envelopes[1].result[:data]).to eq({ :messages => [{ "text" => "Test message #5" }, { "text" => "Test message #6" }, { "text" => "Test message #7" }], :end => 16376215943848282, :start => 16376215880582193 })
     end
   end
 
@@ -1476,13 +1551,13 @@ describe Pubnub::History do
       expect(envelope.result[:operation]).to eq(:history)
       expect(envelope.result[:data]).to eq({
                                              :messages => [
-                                               {"message" => {"text" => "Test message #1"}, "timetoken" => 16376215769471824},
-                                               {"message" => {"text" => "Test message #2"}, "timetoken" => 16376215812842130},
-                                               {"message" => {"text" => "Test message #3"}, "timetoken" => 16376215835141820},
-                                               {"message" => {"text" => "Test message #4"}, "timetoken" => 16376215858523321},
-                                               {"message" => {"text" => "Test message #5"}, "timetoken" => 16376215880582193},
-                                               {"message" => {"text" => "Test message #6"}, "timetoken" => 16376215916206736},
-                                               {"message" => {"text" => "Test message #7"}, "timetoken" => 16376215943848282}
+                                               { "message" => { "text" => "Test message #1" }, "timetoken" => 16376215769471824 },
+                                               { "message" => { "text" => "Test message #2" }, "timetoken" => 16376215812842130 },
+                                               { "message" => { "text" => "Test message #3" }, "timetoken" => 16376215835141820 },
+                                               { "message" => { "text" => "Test message #4" }, "timetoken" => 16376215858523321 },
+                                               { "message" => { "text" => "Test message #5" }, "timetoken" => 16376215880582193 },
+                                               { "message" => { "text" => "Test message #6" }, "timetoken" => 16376215916206736 },
+                                               { "message" => { "text" => "Test message #7" }, "timetoken" => 16376215943848282 }
                                              ],
                                              :end => 16376215943848282, :start => 16376215769471824
                                            })
@@ -1505,13 +1580,13 @@ describe Pubnub::History do
       expect(envelope.result[:operation]).to eq(:history)
       expect(envelope.result[:data]).to eq({
                                              :messages => [
-                                               {"message" => {"text" => "Test message #4"}, "timetoken" => 16376215858523321},
-                                               {"message" => {"text" => "Test message #5"}, "timetoken" => 16376215880582193},
-                                               {"message" => {"text" => "Test message #6"}, "timetoken" => 16376215916206736},
-                                               {"message" => {"text" => "Test message #7"}, "timetoken" => 16376215943848282},
-                                               {"message" => {"text" => "Test message #8"}, "timetoken" => 16376215974611464},
-                                               {"message" => {"text" => "Test message #9"}, "timetoken" => 16376216012185785},
-                                               {"message" => {"text" => "Test message #10"}, "timetoken" => 16376216052005483}
+                                               { "message" => { "text" => "Test message #4" }, "timetoken" => 16376215858523321 },
+                                               { "message" => { "text" => "Test message #5" }, "timetoken" => 16376215880582193 },
+                                               { "message" => { "text" => "Test message #6" }, "timetoken" => 16376215916206736 },
+                                               { "message" => { "text" => "Test message #7" }, "timetoken" => 16376215943848282 },
+                                               { "message" => { "text" => "Test message #8" }, "timetoken" => 16376215974611464 },
+                                               { "message" => { "text" => "Test message #9" }, "timetoken" => 16376216012185785 },
+                                               { "message" => { "text" => "Test message #10" }, "timetoken" => 16376216052005483 }
                                              ],
                                              :end => 16376216052005483, :start => 16376215858523321
                                            })
@@ -1534,16 +1609,16 @@ describe Pubnub::History do
       expect(envelope.result[:operation]).to eq(:history)
       expect(envelope.result[:data]).to eq({
                                              :messages => [
-                                               {"message" => {"text" => "Test message #1"}, "timetoken" => 16377095731901577},
-                                               {"message" => {"text" => "Test message #2"}, "timetoken" => 16377095753435756},
-                                               {"message" => {"text" => "Test message #3"}, "timetoken" => 16377095776142785},
-                                               {"message" => {"text" => "Test message #4"}, "timetoken" => 16377095796303676},
-                                               {"message" => {"text" => "Test message #5"}, "timetoken" => 16377095818104733},
-                                               {"message" => {"text" => "Test message #6"}, "timetoken" => 16377095850534863},
-                                               {"message" => {"text" => "Test message #7"}, "timetoken" => 16377095883609014},
-                                               {"message" => {"text" => "Test message #8"}, "timetoken" => 16377095912474163},
-                                               {"message" => {"text" => "Test message #9"}, "timetoken" => 16377095941299801},
-                                               {"message" => {"text" => "Test message #10"}, "timetoken" => 16377095974621056}
+                                               { "message" => { "text" => "Test message #1" }, "timetoken" => 16377095731901577 },
+                                               { "message" => { "text" => "Test message #2" }, "timetoken" => 16377095753435756 },
+                                               { "message" => { "text" => "Test message #3" }, "timetoken" => 16377095776142785 },
+                                               { "message" => { "text" => "Test message #4" }, "timetoken" => 16377095796303676 },
+                                               { "message" => { "text" => "Test message #5" }, "timetoken" => 16377095818104733 },
+                                               { "message" => { "text" => "Test message #6" }, "timetoken" => 16377095850534863 },
+                                               { "message" => { "text" => "Test message #7" }, "timetoken" => 16377095883609014 },
+                                               { "message" => { "text" => "Test message #8" }, "timetoken" => 16377095912474163 },
+                                               { "message" => { "text" => "Test message #9" }, "timetoken" => 16377095941299801 },
+                                               { "message" => { "text" => "Test message #10" }, "timetoken" => 16377095974621056 }
                                              ],
                                              :end => 16377095974621056, :start => 16377095731901577
                                            })

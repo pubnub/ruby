@@ -1,0 +1,81 @@
+---
+http_interactions:
+  - request:
+      method: get
+      uri: http://ps.pndsn.com/publish/pub-a-mock-key/sub-a-mock-key/0/crypto_channel_13/0/%22Hello%20world%22?ortt=%7B%22t%22:17007555068916190%7D&pnsdk=PubNub-Ruby/5.3.1&seqn=1&uuid=ruby-test-uuid-client-one
+      body:
+        encoding: UTF-8
+        string: ''
+      headers:
+        User-Agent:
+          - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+        Accept:
+          - "*/*"
+        Date:
+          - Thu, 23 Nov 2023 16:05:06 GMT
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Date:
+          - Thu, 23 Nov 2023 16:05:07 GMT
+        Content-Type:
+          - text/javascript; charset="UTF-8"
+        Content-Length:
+          - '30'
+        Connection:
+          - keep-alive
+        Cache-Control:
+          - no-cache
+        Access-Control-Allow-Origin:
+          - "*"
+        Access-Control-Allow-Methods:
+          - GET
+      body:
+        encoding: UTF-8
+        string: '[1,"Sent","17007555072405073"]'
+    recorded_at: Thu, 23 Nov 2023 16:05:07 GMT
+  - request:
+      method: get
+      uri: http://ps.pndsn.com/v2/history/sub-key/sub-a-mock-key/channel/crypto_channel_13?include_meta=true&pnsdk=PubNub-Ruby/5.3.1&uuid=ruby-test-uuid-client-one
+      body:
+        encoding: UTF-8
+        string: ''
+      headers:
+        User-Agent:
+          - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+        Accept:
+          - "*/*"
+        Date:
+          - Thu, 23 Nov 2023 16:05:07 GMT
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Date:
+          - Thu, 23 Nov 2023 16:05:07 GMT
+        Content-Type:
+          - text/javascript; charset="UTF-8"
+        Content-Length:
+          - '111'
+        Connection:
+          - keep-alive
+        Access-Control-Allow-Origin:
+          - "*"
+        Access-Control-Allow-Methods:
+          - GET, POST, DELETE, OPTIONS
+        Age:
+          - '0'
+        Server:
+          - Pubnub Storage
+        Cache-Control:
+          - no-cache
+        Accept-Ranges:
+          - bytes
+      body:
+        encoding: UTF-8
+        string: '[[{"message":"Hello world","meta":""}],17007554539617347,17007555072405073]'
+    recorded_at: Thu, 23 Nov 2023 16:05:07 GMT
+recorded_with: VCR 6.0.0
