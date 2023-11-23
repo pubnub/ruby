@@ -1,6 +1,11 @@
 ---
-version: "5.3.1"
+version: "5.3.2"
 changelog:
+  - date: 2023-11-23
+    version: v5.3.2
+    changes:
+      - type: improvement
+        text: "Return source event data when a client configured with crypto is unable to decrypt it (can be not encrypted data or encrypted with different options)."
   - date: 2023-11-03
     version: v5.3.1
     changes:
@@ -675,7 +680,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-5.3.1.gem
+            package-name: pubnub-5.3.2.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -780,8 +785,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-5.3.1.gem
-            location: https://github.com/pubnub/ruby/releases/download/v5.3.1/pubnub-5.3.1.gem
+            package-name: pubnub-5.3.2.gem
+            location: https://github.com/pubnub/ruby/releases/download/v5.3.2/pubnub-5.3.2.gem
             requires:
               - name: addressable
                 min-version: 2.0.0

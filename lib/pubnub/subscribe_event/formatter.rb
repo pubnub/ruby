@@ -33,10 +33,9 @@ module Pubnub
       end
 
       def decipher_payload(message)
-        # TODO: Uncomment code below when cryptor implementations will be added.
         return message[:payload] if message[:channel].end_with?('-pnpres') || crypto_module.nil?
 
-        encrypted_message = Base64.decode64(message[:payload])
+        encrypted_message = Base64.strict_decode64(message[:payload])
         JSON.parse(crypto_module.decrypt(encrypted_message), quirks_mode: true)
       rescue StandardError, UnknownCryptorError
         message[:payload]
