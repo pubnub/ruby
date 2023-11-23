@@ -68,8 +68,8 @@ describe Pubnub::History do
   it "fetch_decrypted_and_decrypt_with_some_key" do
     VCR.use_cassette("examples/history/crypto_3", :record => :none) do
       client = Pubnub.new(
-        publish_key: "demo-36",
-        subscribe_key: "demo-36",
+        publish_key: "pub-a-mock-key",
+        subscribe_key: "sub-a-mock-key",
         user_id: "ruby-test-uuid-client-one"
       )
       client.publish(channel: 'crypto_channel_13', message: 'Hello world', http_sync: true)
@@ -91,7 +91,7 @@ describe Pubnub::History do
                                                              "message" => "Hello world", "meta" => ""
                                                            }], :end => 17007555072405073, :start => 17007554539617347 })
       expect(envelope.result[:data][:messages][0]['decrypt_error']).not_to be_nil
-      expect(envelope.result[:data][:messages][0]['decrypt_error']).to eq false
+      expect(envelope.result[:data][:messages][0]['decrypt_error']).to eq true
     end
   end
 
