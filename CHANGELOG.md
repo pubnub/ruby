@@ -1,3 +1,9 @@
+## v5.3.2
+November 23 2023
+
+#### Modified
+- Return source event data when a client configured with crypto is unable to decrypt it (can be not encrypted data or encrypted with different options).
+
 ## v5.3.1
 November 03 2023
 
