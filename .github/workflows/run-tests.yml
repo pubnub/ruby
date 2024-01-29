@@ -15,10 +15,12 @@ jobs:
   tests:
     name: Integration and Unit tests
     runs-on: ubuntu-latest
+    env:
+      NO_COVERAGE: true
     strategy:
       fail-fast: true
       matrix:
-        ruby: [2.5.8, 2.6.6, 2.7.1]
+        ruby: [ 3.0.6, 3.1.4, 3.2.3 ]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -89,7 +91,7 @@ jobs:
   all-tests:
     name: Tests
     runs-on: ubuntu-latest
-    needs: [tests, acceptance-tests]
+    needs: [ tests, acceptance-tests ]
     steps:
       - name: Tests summary
         run: echo -e "\033[38;2;95;215;0m\033[1mAll tests successfully passed"

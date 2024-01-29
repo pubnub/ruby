@@ -1,3 +1,9 @@
+## v5.3.3
+January 29 2024
+
+#### Modified
+- Bump required version to the minimum officially supported Ruby version.
+
 ## v5.3.2
 November 23 2023
 
