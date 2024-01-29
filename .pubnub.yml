@@ -1,6 +1,11 @@
 ---
-version: "5.3.2"
+version: "5.3.3"
 changelog:
+  - date: 2024-01-29
+    version: v5.3.3
+    changes:
+      - type: improvement
+        text: "Bump required version to the minimum officially supported Ruby version."
   - date: 2023-11-23
     version: v5.3.2
     changes:
@@ -566,7 +571,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-5.3.2.gem
+            package-name: pubnub-5.3.3.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -671,8 +676,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-5.3.2.gem
-            location: https://github.com/pubnub/ruby/releases/download/v5.3.2/pubnub-5.3.2.gem
+            package-name: pubnub-5.3.3.gem
+            location: https://github.com/pubnub/ruby/releases/download/v5.3.3/pubnub-5.3.3.gem
             requires:
               - name: addressable
                 min-version: 2.0.0
