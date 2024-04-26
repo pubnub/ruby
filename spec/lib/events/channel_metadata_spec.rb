@@ -48,9 +48,9 @@ describe Pubnub::SetChannelMetadata do
       VCR.use_cassette("lib/events/get_all_channels_metadata_with_filter_and_secret", record: :once) do
         Pubnub::GetAllChannelsMetadata.any_instance.stub(:current_time).and_return "1714133102"
         pubnub = Pubnub.new(
-          :subscribe_key => ENV['SDK_PAM_SUB_KEY'] || 'sub-a-mock-key',
-          :publish_key => ENV['SDK_PAM_PUB_KEY'] || 'sub-a-mock-key',
-          :secret_key => ENV['SDK_PAM_SEC_KEY'] || 'sec-a-mock-key',
+          :subscribe_key => 'sub-a-mock-key', # ENV['SDK_PAM_SUB_KEY'],
+          :publish_key => 'sub-a-mock-key', # ENV['SDK_PAM_PUB_KEY'],
+          :secret_key => 'sec-a-mock-key', # ENV['SDK_PAM_SEC_KEY'],
           :user_id => "ruby-test-uuid",
         )
 
