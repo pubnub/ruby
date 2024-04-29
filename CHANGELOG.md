@@ -1,3 +1,9 @@
+## v5.3.4
+April 29 2024
+
+#### Fixed
+- Fix issue because of which client didn't encode App Context get all event `filter` query value.
+
 ## v5.3.3
 January 29 2024
 

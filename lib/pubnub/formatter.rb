@@ -118,10 +118,11 @@ module Pubnub
       def params_hash_to_url_params(hash)
         params = ''
         hash.sort_by { |k, _v| k.to_s }.to_h.each do |key, value|
-          if %w[meta ortt].include?(key.to_s)
-            encoded_value = URI.encode_www_form_component(value.to_json).gsub('+', '%20')
+          if %w[meta ortt filter].include?(key.to_s)
+            value_for_encoding = value.is_a?(String) ? value : value.to_json
+            encoded_value = URI.encode_www_form_component(value_for_encoding).gsub('+', '%20')
             params << "#{key}=#{encoded_value}&"
-          elsif %w[t state filter filter-expr].include?(key.to_s)
+          elsif %w[t state filter-expr].include?(key.to_s)
             params << "#{key}=#{value}&"
           else
             params << "#{key}=#{URI.encode_www_form_component(value).gsub('+', '%20')}&"

@@ -39,12 +39,13 @@ module Pubnub
 
       def variables_for_signature
         unsorted_params = parameters(true)
-        sorted_keys = unsorted_params.sort_by {|k, v| k.to_s}
+        sorted_keys = unsorted_params.sort_by { |k, v| k.to_s }
         sorted_keys.map do |k, v|
-          if %w[meta ortt].include?(k.to_s)
-            encoded_value = URI.encode_www_form_component(v.to_json).gsub('+', '%20')
+          if %w[meta ortt filter].include?(k.to_s)
+            value_for_encoding = v.is_a?(String) ? v : v.to_json
+            encoded_value = URI.encode_www_form_component(value_for_encoding).gsub('+', '%20')
             "#{k}=#{encoded_value}"
-          elsif %w[t state filter-expr sort filter].include?(k.to_s)
+          elsif %w[t state filter-expr sort].include?(k.to_s)
             "#{k}=#{v}"
           else
             "#{k}=#{URI.encode_www_form_component(v.to_s).gsub('+', '%20')}"
