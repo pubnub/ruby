@@ -26,11 +26,11 @@ jobs:
         if: failure()
         uses: ./.github/.release/actions/actions/utils/fast-jobs-failure
   all-validations:
-     name: Validations
+    name: Validations
     runs-on:
       group: Default Larger Runners
       labels: ubuntu-latest-m
-     needs: [pubnub-yml]
-     steps:
-       - name: Validations summary
-         run: echo -e "\033[38;2;95;215;0m\033[1mAll validations passed"
+    needs: [pubnub-yml]
+    steps:
+      - name: Validations summary
+        run: echo -e "\033[38;2;95;215;0m\033[1mAll validations passed"
