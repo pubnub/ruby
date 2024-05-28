@@ -20,8 +20,7 @@ jobs:
   tests:
     name: Integration and Unit tests
     runs-on:
-      group: Default Larger Runners
-      labels: ubuntu-latest-m
+      group: Default
     env:
       NO_COVERAGE: true
     strategy:
@@ -53,8 +52,7 @@ jobs:
   acceptance-tests:
     name: Acceptance tests
     runs-on:
-      group: Default Larger Runners
-      labels: ubuntu-latest-m
+      group: Default
     steps:
       - name: Checkout project
         uses: actions/checkout@v4
@@ -99,10 +97,9 @@ jobs:
         uses: ./.github/.release/actions/actions/utils/fast-jobs-failure
   all-tests:
     name: Tests
-    runs-on:
-      group: Default Larger Runners
-      labels: ubuntu-latest-m
     needs: [tests, acceptance-tests]
+    runs-on:
+      group: Default
     steps:
       - name: Tests summary
         run: echo -e "\033[38;2;95;215;0m\033[1mAll tests successfully passed"
