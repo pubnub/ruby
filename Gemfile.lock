@@ -3,8 +3,8 @@ PATH
   specs:
     pubnub (5.3.4)
       addressable (>= 2.0.0)
-      concurrent-ruby (~> 1.1.5)
-      concurrent-ruby-edge (~> 0.5.0)
+      concurrent-ruby (~> 1.1)
+      concurrent-ruby-edge (~> 0.5)
       dry-validation (~> 1.0)
       httpclient (~> 2.8, >= 2.8.3)
       json (>= 2.2.0, < 3)
