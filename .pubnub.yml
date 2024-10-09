@@ -1,6 +1,11 @@
 ---
-version: "5.3.4"
+version: "5.3.5"
 changelog:
+  - date: 2024-10-09
+    version: v5.3.5
+    changes:
+      - type: improvement
+        text: "Updated direct and transient dependency versions."
   - date: 2024-04-29
     version: v5.3.4
     changes:
@@ -576,7 +581,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-5.3.4.gem
+            package-name: pubnub-5.3.5.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -681,8 +686,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-5.3.4.gem
-            location: https://github.com/pubnub/ruby/releases/download/v5.3.4/pubnub-5.3.4.gem
+            package-name: pubnub-5.3.5.gem
+            location: https://github.com/pubnub/ruby/releases/download/v5.3.5/pubnub-5.3.5.gem
             requires:
               - name: addressable
                 min-version: 2.0.0
