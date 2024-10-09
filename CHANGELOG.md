@@ -1,3 +1,9 @@
+## v5.3.5
+October 09 2024
+
+#### Modified
+- Updated direct and transient dependency versions. Fixed the following issues reported by [@pboling](https://github.com/pboling): [#158](https://github.com/pubnub/ruby/issues/158).
+
 ## v5.3.4
 April 29 2024
 
