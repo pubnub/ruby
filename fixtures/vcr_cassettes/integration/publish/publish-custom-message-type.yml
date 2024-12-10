@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/publish/demo/demo/0/ruby_demo_channel/0/%7B%22text%22:%22sometext%22%7D?auth=demoish_authkey&custom_message_type=testing&ortt=%7B%22t%22:17337902170291830%7D&pnsdk=PubNub-Ruby/5.3.5&seqn=1&uuid=tester
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 10 Dec 2024 00:23:37 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 10 Dec 2024 00:23:37 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '30'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '[1,"Sent","17337902177643864"]'
+  recorded_at: Tue, 10 Dec 2024 00:23:37 GMT
+recorded_with: VCR 6.3.1

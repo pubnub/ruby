@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/signal/demo/demo/0/demo/0/%22whatever%22?auth=ruby-test-auth&custom_message_type=testing&ortt=%7B%22t%22:17337902836486940%7D&pnsdk=PubNub-Ruby/5.3.5&seqn=1&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 10 Dec 2024 00:24:43 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 10 Dec 2024 00:24:44 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '30'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '[1,"Sent","17337902842140422"]'
+  recorded_at: Tue, 10 Dec 2024 00:24:44 GMT
+recorded_with: VCR 6.3.1

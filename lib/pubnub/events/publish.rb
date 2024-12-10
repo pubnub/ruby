@@ -52,6 +52,7 @@ module Pubnub
       params = super
 
       empty_if_blank = {
+        custom_message_type: @custom_message_type,
         store: @store,
         meta: @meta,
         ttl: @ttl

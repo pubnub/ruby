@@ -26,6 +26,10 @@ module Pubnub
     def parameters(*_args)
       params = super
 
+      empty_if_blank = { custom_message_type: @custom_message_type }
+      empty_if_blank.delete_if { |_k, v| v.blank? }
+
+      params = params.merge(empty_if_blank)
       params = params.merge(seqn: @sequence_number,
                             ortt: { t: @origination_time_token })
       params

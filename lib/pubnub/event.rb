@@ -175,10 +175,11 @@ module Pubnub
                      open_timeout read_timeout idle_timeout heartbeat
                      group action read write delete manage ttl presence start
                      end count limit reverse presence_callback store skip_validate
-                     state channel_group channel_groups compressed meta customs include_token
-                     replicate with_presence cipher_key_selector include_meta join update get
-                     add remove push_token push_gateway environment topic authorized_uuid
-                     authorized_user_id token type value
+                     state channel_group channel_groups compressed meta customs custom_message_type
+                     include_token include_custom_message_type replicate with_presence
+                     cipher_key_selector include_meta join update get add remove push_token
+                     push_gateway environment topic authorized_uuid authorized_user_id token type
+                     value
                    ]
 
       options = options.each_with_object({}) { |option, obj| obj[option.first.to_sym] = option.last }

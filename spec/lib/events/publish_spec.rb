@@ -38,12 +38,12 @@ describe Pubnub::Publish do
 
   context "store, replicate" do
     before(:each) do
-      @pubnub = Pubnub.new(user_id: Pubnub::UUID.generate, 
-        :max_retries => 0,
-        :subscribe_key => :demo,
-        :publish_key => :demo,
-        :auth_key => :demoish_authkey,
-        :error_callback => @error_callback,
+      @pubnub = Pubnub.new(user_id: Pubnub::UUID.generate,
+                           :max_retries => 0,
+                           :subscribe_key => :demo,
+                           :publish_key => :demo,
+                           :auth_key => :demoish_authkey,
+                           :error_callback => @error_callback,
       )
 
       @pubnub.user_id = "tester"
@@ -52,7 +52,7 @@ describe Pubnub::Publish do
     it "works" do
       VCR.use_cassette("integration/publish/publish-store-replicate", record: :once) do
         future = @pubnub.publish(
-          message: {text: "sometext"},
+          message: { text: "sometext" },
           channel: "ruby_demo_channel",
           callback: @callback,
           store: false,
@@ -63,10 +63,23 @@ describe Pubnub::Publish do
       end
     end
 
+    it "works with custom message type" do
+      VCR.use_cassette("integration/publish/publish-custom-message-type", record: :once) do
+        future = @pubnub.publish(
+          message: { text: "sometext" },
+          channel: "ruby_demo_channel",
+          callback: @callback,
+          custom_message_type: "testing"
+        )
+
+        future.value
+      end
+    end
+
     it "works with fire method" do
       VCR.use_cassette("integration/publish/publish-store-replicate", record: :once) do
         future = @pubnub.fire(
-          message: {text: "sometext"},
+          message: { text: "sometext" },
           channel: "ruby_demo_channel",
         )
 
