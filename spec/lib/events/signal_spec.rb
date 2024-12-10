@@ -22,6 +22,17 @@ describe Pubnub::Signal do
         expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
       end
     end
+    it "works with custom message type" do
+      VCR.use_cassette("lib/events/signal-custom-message-type", record: :once) do
+        envelope = @pubnub.signal(
+          channel: :demo,
+          message: "whatever",
+          custom_message_type: "testing"
+        ).value
+
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+      end
+    end
 
     it "forms valid ErrorEnvelope on error" do
       VCR.use_cassette("lib/events/signal-error", record: :once) do

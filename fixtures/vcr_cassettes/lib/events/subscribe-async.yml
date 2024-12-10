@@ -1,77 +1,77 @@
 ---
 http_interactions:
-- request:
-    method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo/0?auth=ruby-test-auth&pnsdk=PubNub-Ruby/4.1.0&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid
-    body:
-      encoding: UTF-8
-      string: ''
-    headers:
-      User-Agent:
-      - HTTPClient/1.0 (2.8.0, ruby 2.0.0 (2015-04-13))
-      Accept:
-      - '*/*'
-      Date:
-      - Sun, 15 May 2016 12:20:38 GMT
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sun, 15 May 2016 12:20:38 GMT
-      Content-Type:
-      - text/javascript; charset="UTF-8"
-      Content-Length:
-      - '45'
-      Connection:
-      - keep-alive
-      Cache-Control:
-      - no-cache
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Allow-Methods:
-      - GET
-    body:
-      encoding: UTF-8
-      string: '{"t":{"t":"14633148136431810","r":12},"m":[]}'
-    http_version: 
-  recorded_at: Sun, 15 May 2016 12:20:38 GMT
-- request:
-    method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo/0?auth=ruby-test-auth&pnsdk=PubNub-Ruby/4.1.0&t=%7B%22r%22:12,%22t%22:%2214633148136431810%22%7D&uuid=ruby-test-uuid
-    body:
-      encoding: UTF-8
-      string: ''
-    headers:
-      User-Agent:
-      - HTTPClient/1.0 (2.8.0, ruby 2.0.0 (2015-04-13))
-      Accept:
-      - '*/*'
-      Date:
-      - Sun, 15 May 2016 12:20:38 GMT
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Sun, 15 May 2016 12:20:42 GMT
-      Content-Type:
-      - text/javascript; charset="UTF-8"
-      Content-Length:
-      - '196'
-      Connection:
-      - keep-alive
-      Cache-Control:
-      - no-cache
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Allow-Methods:
-      - GET
-    body:
-      encoding: UTF-8
-      string: '{"t":{"t":"14633148429749816","r":12},"m":[{"a":"5","f":0,"i":"Client-cg6b7","p":{"t":"14633148429651076","r":3},"k":"sub-a-mock-key","c":"demo","d":{"text":"ruby!"}}]}'
-    http_version: 
-  recorded_at: Sun, 15 May 2016 12:20:42 GMT
+  - request:
+      method: get
+      uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo/0?auth=ruby-test-auth&pnsdk=PubNub-Ruby/4.1.0&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid
+      body:
+        encoding: UTF-8
+        string: ''
+      headers:
+        User-Agent:
+          - HTTPClient/1.0 (2.8.0, ruby 2.0.0 (2015-04-13))
+        Accept:
+          - '*/*'
+        Date:
+          - Sun, 15 May 2016 12:20:38 GMT
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Date:
+          - Sun, 15 May 2016 12:20:38 GMT
+        Content-Type:
+          - text/javascript; charset="UTF-8"
+        Content-Length:
+          - '45'
+        Connection:
+          - keep-alive
+        Cache-Control:
+          - no-cache
+        Access-Control-Allow-Origin:
+          - '*'
+        Access-Control-Allow-Methods:
+          - GET
+      body:
+        encoding: UTF-8
+        string: '{"t":{"t":"14633148136431810","r":12},"m":[]}'
+      http_version:
+    recorded_at: Sun, 15 May 2016 12:20:38 GMT
+  - request:
+      method: get
+      uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo/0?auth=ruby-test-auth&pnsdk=PubNub-Ruby/4.1.0&t=%7B%22r%22:12,%22t%22:%2214633148136431810%22%7D&uuid=ruby-test-uuid
+      body:
+        encoding: UTF-8
+        string: ''
+      headers:
+        User-Agent:
+          - HTTPClient/1.0 (2.8.0, ruby 2.0.0 (2015-04-13))
+        Accept:
+          - '*/*'
+        Date:
+          - Sun, 15 May 2016 12:20:38 GMT
+    response:
+      status:
+        code: 200
+        message: OK
+      headers:
+        Date:
+          - Sun, 15 May 2016 12:20:42 GMT
+        Content-Type:
+          - text/javascript; charset="UTF-8"
+        Content-Length:
+          - '209'
+        Connection:
+          - keep-alive
+        Cache-Control:
+          - no-cache
+        Access-Control-Allow-Origin:
+          - '*'
+        Access-Control-Allow-Methods:
+          - GET
+      body:
+        encoding: UTF-8
+        string: '{"t":{"t":"14633148429749816","r":12},"m":[{"a":"5","f":0,"i":"Client-cg6b7","cmt":"test","p":{"t":"14633148429651076","r":3},"k":"sub-a-mock-key","c":"demo","d":{"text":"ruby!"}}]}'
+      http_version:
+    recorded_at: Sun, 15 May 2016 12:20:42 GMT
 recorded_with: VCR 3.0.1

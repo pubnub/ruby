@@ -122,6 +122,7 @@ module Pubnub
               message: decipher_payload(message),
               subscribed_channel: message[:subscription_match] || message[:channel],
               actual_channel: message[:channel],
+              custom_message_type: message[:custom_message_type],
               publish_time_object: message[:publish_timetoken],
               message_meta_data: message[:user_meta_data],
               presence_event: get_presence_event(message),
@@ -247,6 +248,7 @@ module Pubnub
             replication_map: m['r'],
             eat_after_reading: m['ear'],
             waypoint_list: m['w'],
+            custom_message_type: m['cmt'],
             origination_time_token: expand_timetoken(m['o']),
             publish_timetoken: expand_timetoken(m['p'])
           }

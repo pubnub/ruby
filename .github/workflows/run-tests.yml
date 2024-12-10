@@ -97,7 +97,7 @@ jobs:
         uses: ./.github/.release/actions/actions/utils/fast-jobs-failure
   all-tests:
     name: Tests
-    needs: [tests, acceptance-tests]
+    needs: [ tests, acceptance-tests ]
     runs-on:
       group: Default
     steps:
