@@ -20,7 +20,7 @@ jobs:
   tests:
     name: Integration and Unit tests
     runs-on:
-      group: Default
+      group: organization/Default
     env:
       NO_COVERAGE: true
     strategy:
@@ -52,7 +52,7 @@ jobs:
   acceptance-tests:
     name: Acceptance tests
     runs-on:
-      group: Default
+      group: organization/Default
     steps:
       - name: Checkout project
         uses: actions/checkout@v4
@@ -84,7 +84,7 @@ jobs:
           jrm ./main.xml "./main/**/*.xml" &&
           jrm ./beta.xml "./beta/**/*.xml"
       - name: Expose acceptance tests reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: acceptance-test-reports
@@ -99,7 +99,7 @@ jobs:
     name: Tests
     needs: [tests, acceptance-tests]
     runs-on:
-      group: Default
+      group: organization/Default
     steps:
       - name: Tests summary
         run: echo -e "\033[38;2;95;215;0m\033[1mAll tests successfully passed"
