@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/publish/pub-a-mock-key/sub-a-mock-key/0/crypto_channel_12/0/%228vAFZgup2Ejp2Ny0d1iFlA==%22?ortt=%7B%22t%22:17349962798849868%7D&pnsdk=PubNub-Ruby/5.3.5&seqn=1&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 23 Dec 2024 23:24:39 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 23 Dec 2024 23:24:40 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '30'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '[1,"Sent","17349962808689637"]'
+  recorded_at: Mon, 23 Dec 2024 23:24:40 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v3/history/sub-key/sub-a-mock-key/channel/crypto_channel_12?include_message_type=true&include_meta=true&include_uuid=true&pnsdk=PubNub-Ruby/5.3.5&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Mon, 23 Dec 2024 23:24:40 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 23 Dec 2024 23:24:41 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '225'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "error": false, "error_message": "", "channels": {"crypto_channel_12":[{"message_type":null,"message":"8vAFZgup2Ejp2Ny0d1iFlA==","timetoken":"17349962808689637","meta":"","uuid":"ruby-test-uuid-client-one"}]}}'
+  recorded_at: Mon, 23 Dec 2024 23:24:40 GMT
+recorded_with: VCR 6.3.1

@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v3/history/sub-key/sub-a-mock-key/channel/demo9?auth=ruby-test-auth-client-one&end=17358247130477499&include_message_type=true&include_uuid=true&max=5&pnsdk=PubNub-Ruby/5.3.5&start=17358247130477500&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 02 Jan 2025 13:39:34 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 02 Jan 2025 13:39:35 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '68'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Age:
+      - '0'
+      Cache-Control:
+      - no-cache
+      Accept-Ranges:
+      - bytes
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "error": false, "error_message": "", "channels": {}}'
+  recorded_at: Thu, 02 Jan 2025 13:39:35 GMT
+recorded_with: VCR 6.3.1

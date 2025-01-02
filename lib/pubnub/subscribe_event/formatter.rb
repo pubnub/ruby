@@ -60,6 +60,7 @@ module Pubnub
       end
 
       def plain_envelope(req_res_objects, timetoken)
+        operation = get_operation
         Pubnub::Envelope.new(
           event: @event,
           event_options: @given_options,
@@ -82,7 +83,7 @@ module Pubnub
           },
           result: {
             code: req_res_objects[:response].code,
-            operation: get_operation,
+            operation: operation,
             client_request: req_res_objects[:request],
             server_response: req_res_objects[:response],
 
@@ -92,6 +93,7 @@ module Pubnub
       end
 
       def encrypted_envelope(req_res_objects, message, timetoken)
+        operation = get_operation(message)
         Pubnub::Envelope.new(
           event: @event,
           event_options: @given_options,
@@ -114,7 +116,7 @@ module Pubnub
           },
           result: {
             code: req_res_objects[:response].code,
-            operation: get_operation(message),
+            operation: operation,
             client_request: req_res_objects[:request],
             server_response: req_res_objects[:response],
 
