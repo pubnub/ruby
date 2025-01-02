@@ -26,7 +26,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        ruby: [3.0.6, 3.1.4, 3.2.3]
+        ruby: [ 3.0.6, 3.1.4, 3.2.3 ]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -67,11 +67,15 @@ jobs:
         uses: ./.github/.release/actions/actions/mock-server
         with:
           token: ${{ secrets.GH_TOKEN }}
-      - name: Setup Ruby 3.0
+      - name: Setup Ruby 3.2.2
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0
+          ruby-version: 3.2.2
           bundler-cache: true
+      - name: Verify Ruby Version
+        run: ruby -v
+      - name: Check Ruby Version for Bundler
+        run: bundle exec ruby -v
       - name: Run acceptance tests (optional)
         run: bundle exec cucumber sdk-specifications/features/ -p mock -p run_beta -p report_beta -f pretty
         continue-on-error: true
