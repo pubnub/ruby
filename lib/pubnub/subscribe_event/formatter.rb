@@ -94,6 +94,19 @@ module Pubnub
 
       def encrypted_envelope(req_res_objects, message, timetoken)
         operation = get_operation(message)
+        data = {
+          message: decipher_payload(message),
+          subscribed_channel: message[:subscription_match] || message[:channel],
+          actual_channel: message[:channel],
+          publish_time_object: message[:publish_timetoken],
+          message_meta_data: message[:user_meta_data],
+          presence_event: get_presence_event(message),
+          presence: get_presence_data(message)
+        }
+        if !data[:actual_channel].end_with?('-pnpres') && (message[:type].nil? || [1, 4].include?(message[:type]))
+          data[:custom_message_type] = message[:custom_message_type]
+        end
+
         Pubnub::Envelope.new(
           event: @event,
           event_options: @given_options,
@@ -120,16 +133,7 @@ module Pubnub
             client_request: req_res_objects[:request],
             server_response: req_res_objects[:response],
 
-            data: {
-              message: decipher_payload(message),
-              subscribed_channel: message[:subscription_match] || message[:channel],
-              actual_channel: message[:channel],
-              custom_message_type: message[:custom_message_type],
-              publish_time_object: message[:publish_timetoken],
-              message_meta_data: message[:user_meta_data],
-              presence_event: get_presence_event(message),
-              presence: get_presence_data(message)
-            }
+            data: data
           }
         )
       end
@@ -145,10 +149,10 @@ module Pubnub
           Pubnub::Schemas::Envelope::StatusSchema.new.call status
         end
 
-        if (results_validation + statuses_validation).map(&:failure?).index(true)
-          Pubnub.logger.error('Pubnub::SubscribeEvent::Formatter') { 'Invalid formatted envelope.' }
-          raise Exception, 'Invalid formatted envelope.'
-        end
+        return unless (results_validation + statuses_validation).map(&:failure?).index(true)
+
+        Pubnub.logger.error('Pubnub::SubscribeEvent::Formatter') { 'Invalid formatted envelope.' }
+        raise Exception, 'Invalid formatted envelope.'
       end
 
       def format_envelopes(response, request)
@@ -219,6 +223,7 @@ module Pubnub
 
       def get_presence_data(message)
         return nil unless get_operation(message) == Pubnub::Constants::OPERATION_PRESENCE
+
         {
           uuid: message[:payload]['uuid'],
           timestamp: message[:payload]['timestamp'],
@@ -229,6 +234,7 @@ module Pubnub
 
       def get_presence_event(message)
         return nil unless get_operation(message) == Pubnub::Constants::OPERATION_PRESENCE
+
         message[:payload]['action']
       rescue StandardError
         nil
@@ -236,7 +242,7 @@ module Pubnub
 
       def expand_messages_keys(messages)
         messages.map do |m|
-          {
+          envelope = {
             shard: m['a'],
             channel: m['c'],
             subscription_match: m['b'],
@@ -250,15 +256,18 @@ module Pubnub
             replication_map: m['r'],
             eat_after_reading: m['ear'],
             waypoint_list: m['w'],
-            custom_message_type: m['cmt'],
             origination_time_token: expand_timetoken(m['o']),
             publish_timetoken: expand_timetoken(m['p'])
           }
+          envelope[:custom_message_type] = m['cmt'] if !m['c'].end_with?('-pnpres') && (envelope[:type].nil? || [1, 4].include?(envelope[:type]))
+
+          envelope
         end
       end
 
       def expand_timetoken(timetoken)
         return nil unless timetoken
+
         {
           timetoken: timetoken['t'],
           region_code: timetoken['r']
