@@ -4,7 +4,9 @@ January 07 2025
 #### Added
 - Add batch history support.
 - Add fetch messages with message reactions.
-- Add fetch messages (batch history) endpoint support to fetch history for multiple channels.           Add fetch messages with reactions support.           Add `include_custom_message_type` support for fetch messages endpoint.
+- Add fetch messages (batch history) endpoint support to fetch history for multiple channels.
+- Add fetch messages with reactions support.
+- Add `include_custom_message_type` support for fetch messages endpoint.
 - Add `custom_message_type` support for `publish` / `signal` and `subscribe` endpoints.
 
 ## v5.3.5
