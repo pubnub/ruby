@@ -1,85 +1,86 @@
 # frozen_string_literal: true
 
-require 'base64'
+require "base64"
 
-require 'pubnub/error'
-require 'pubnub/uuid'
-require 'pubnub/formatter'
-require 'pubnub/constants'
-require 'pubnub/configuration'
-require 'pubnub/subscribe_callback'
+require "pubnub/error"
+require "pubnub/uuid"
+require "pubnub/formatter"
+require "pubnub/constants"
+require "pubnub/configuration"
+require "pubnub/subscribe_callback"
 
-require 'pubnub/modules/crypto/module'
+require "pubnub/modules/crypto/module"
 
-require 'pubnub/schemas/envelope_schema'
+require "pubnub/schemas/envelope_schema"
 
-require 'pubnub/event'
-require 'pubnub/single_event'
-require 'pubnub/subscribe_event/callbacks'
-require 'pubnub/subscribe_event/formatter'
-require 'pubnub/subscribe_event/heartbeat'
-require 'pubnub/subscribe_event/adding'
-require 'pubnub/subscribe_event/removing'
-require 'pubnub/subscribe_event'
-require 'pubnub/pam'
-require 'pubnub/heart'
-require 'pubnub/subscriber'
-require 'pubnub/telemetry'
+require "pubnub/event"
+require "pubnub/single_event"
+require "pubnub/subscribe_event/callbacks"
+require "pubnub/subscribe_event/formatter"
+require "pubnub/subscribe_event/heartbeat"
+require "pubnub/subscribe_event/adding"
+require "pubnub/subscribe_event/removing"
+require "pubnub/subscribe_event"
+require "pubnub/pam"
+require "pubnub/heart"
+require "pubnub/subscriber"
+require "pubnub/telemetry"
 
-require 'pubnub/envelope'
-require 'pubnub/error_envelope'
+require "pubnub/envelope"
+require "pubnub/error_envelope"
 
-require 'pubnub/client/events'
-require 'pubnub/client/paged_history'
-require 'pubnub/client/helpers'
-require 'pubnub/client/getters_setters'
+require "pubnub/client/events"
+require "pubnub/client/paged_history"
+require "pubnub/client/helpers"
+require "pubnub/client/getters_setters"
 
-require 'pubnub/validators/get_message_actions'
-require 'pubnub/validators/add_message_action'
-require 'pubnub/validators/remove_message_action'
-require 'pubnub/validators/common_validator'
-require 'pubnub/validators/client'
-require 'pubnub/validators/audit'
-require 'pubnub/validators/channel_registration'
-require 'pubnub/validators/grant'
-require 'pubnub/validators/grant_token'
-require 'pubnub/validators/revoke_token'
-require 'pubnub/validators/heartbeat'
-require 'pubnub/validators/here_now'
-require 'pubnub/validators/history'
-require 'pubnub/validators/leave'
-require 'pubnub/validators/presence'
-require 'pubnub/validators/publish'
-require 'pubnub/validators/revoke'
-require 'pubnub/validators/set_state'
-require 'pubnub/validators/state'
-require 'pubnub/validators/subscribe'
-require 'pubnub/validators/time'
-require 'pubnub/validators/where_now'
-require 'pubnub/validators/delete'
-require 'pubnub/validators/message_counts'
-require 'pubnub/validators/add_channels_to_push'
-require 'pubnub/validators/list_push_provisions'
-require 'pubnub/validators/remove_channels_from_push'
-require 'pubnub/validators/remove_device_from_push'
-require 'pubnub/validators/signal'
-require 'pubnub/validators/set_uuid_metadata'
-require 'pubnub/validators/set_channel_metadata'
-require 'pubnub/validators/remove_uuid_metadata'
-require 'pubnub/validators/remove_channel_metadata'
-require 'pubnub/validators/get_uuid_metadata'
-require 'pubnub/validators/get_all_uuid_metadata'
-require 'pubnub/validators/get_channel_metadata'
-require 'pubnub/validators/get_all_channels_metadata'
-require 'pubnub/validators/get_channel_members'
-require 'pubnub/validators/get_memberships'
-require 'pubnub/validators/set_channel_members'
-require 'pubnub/validators/set_memberships'
-require 'pubnub/validators/remove_channel_members'
-require 'pubnub/validators/remove_memberships'
-require 'pubnub/cbor'
+require "pubnub/validators/get_message_actions"
+require "pubnub/validators/add_message_action"
+require "pubnub/validators/remove_message_action"
+require "pubnub/validators/common_validator"
+require "pubnub/validators/client"
+require "pubnub/validators/audit"
+require "pubnub/validators/channel_registration"
+require "pubnub/validators/grant"
+require "pubnub/validators/grant_token"
+require "pubnub/validators/revoke_token"
+require "pubnub/validators/heartbeat"
+require "pubnub/validators/here_now"
+require "pubnub/validators/history"
+require "pubnub/validators/fetch_messages"
+require "pubnub/validators/leave"
+require "pubnub/validators/presence"
+require "pubnub/validators/publish"
+require "pubnub/validators/revoke"
+require "pubnub/validators/set_state"
+require "pubnub/validators/state"
+require "pubnub/validators/subscribe"
+require "pubnub/validators/time"
+require "pubnub/validators/where_now"
+require "pubnub/validators/delete"
+require "pubnub/validators/message_counts"
+require "pubnub/validators/add_channels_to_push"
+require "pubnub/validators/list_push_provisions"
+require "pubnub/validators/remove_channels_from_push"
+require "pubnub/validators/remove_device_from_push"
+require "pubnub/validators/signal"
+require "pubnub/validators/set_uuid_metadata"
+require "pubnub/validators/set_channel_metadata"
+require "pubnub/validators/remove_uuid_metadata"
+require "pubnub/validators/remove_channel_metadata"
+require "pubnub/validators/get_uuid_metadata"
+require "pubnub/validators/get_all_uuid_metadata"
+require "pubnub/validators/get_channel_metadata"
+require "pubnub/validators/get_all_channels_metadata"
+require "pubnub/validators/get_channel_members"
+require "pubnub/validators/get_memberships"
+require "pubnub/validators/set_channel_members"
+require "pubnub/validators/set_memberships"
+require "pubnub/validators/remove_channel_members"
+require "pubnub/validators/remove_memberships"
+require "pubnub/cbor"
 
-Dir[File.join(File.dirname(__dir__), 'pubnub', 'events', '*.rb')].each do |file|
+Dir[File.join(File.dirname(__dir__), "pubnub", "events", "*.rb")].each do |file|
   require file
 end
 
@@ -188,7 +189,7 @@ module Pubnub
       validate! @env
       setup_crypto_module
       @telemetry = Telemetry.new
-      Pubnub.logger.debug('Pubnub::Client') do
+      Pubnub.logger.debug("Pubnub::Client") do
         "Created new Pubnub::Client instance. Version: #{Pubnub::VERSION}"
       end
     end
@@ -260,8 +261,8 @@ module Pubnub
     # created and returns it if created, otherwise creates it, assigns
     # it in @env and returns newly created dispatcher.
     def request_dispatcher(origin, event_type, sync)
-      Pubnub.logger.debug('Pubnub::Client') do
-        "Looking for requester for #{sync ? 'sync' : 'async'} #{event_type}"
+      Pubnub.logger.debug("Pubnub::Client") do
+        "Looking for requester for #{sync ? "sync" : "async"} #{event_type}"
       end
 
       if sync
@@ -289,21 +290,21 @@ module Pubnub
     # ==============
     # Terminates request dispatcher for given origin and event type. Usable while restarting subscription.
     def kill_request_dispatcher(origin, event_type)
-      Pubnub.logger.debug('Pubnub::Client') { 'Killing requester' }
+      Pubnub.logger.debug("Pubnub::Client") { "Killing requester" }
       # @env[:req_dispatchers_pool][origin][event_type].async.terminate
       @env[:req_dispatchers_pool][:async][origin][event_type].reset_all
       @env[:req_dispatchers_pool][:async][origin][event_type] = nil
-    rescue StandardError
-      Pubnub.logger.debug('Pubnub::Client') { 'There\'s no requester' }
+    rescue
+      Pubnub.logger.debug("Pubnub::Client") { "There's no requester" }
     end
 
     def sequence_number_for_publish!
       @env[:sequence_number_for_publish] += 1
-      @env[:sequence_number_for_publish] % 2 ** 32
+      @env[:sequence_number_for_publish] % 2**32
     end
 
     def apply_state(event)
-      Pubnub.logger.debug('Pubnub::Client') { 'Apply state' }
+      Pubnub.logger.debug("Pubnub::Client") { "Apply state" }
       create_state_pools(event)
 
       return unless event.state
@@ -361,11 +362,11 @@ module Pubnub
     end
 
     def setup_httpclient(event_type)
-      hc = if ENV['HTTP_PROXY']
-             HTTPClient.new(ENV['HTTP_PROXY'])
-           else
-             HTTPClient.new
-           end
+      hc = if ENV["HTTP_PROXY"]
+        HTTPClient.new(ENV["HTTP_PROXY"])
+      else
+        HTTPClient.new
+      end
 
       case event_type
       when :subscribe_event
@@ -394,14 +395,14 @@ module Pubnub
     end
 
     def setup_app(options)
-      Pubnub.logger = options[:logger] || Logger.new('pubnub.log')
+      Pubnub.logger = options[:logger] || Logger.new("pubnub.log")
       Concurrent.global_logger = Pubnub.logger
       @subscriber = Subscriber.new(self)
       options[:user_id] = options[:uuid] if options[:user_id].nil?
 
       if options[:cipher_key] && options[:crypto_module]
-        puts 'It is expected that only cipherKey or cryptoModule will be configured ' \
-               'at once. PubNub client will use the configured cryptoModule.'
+        puts "It is expected that only cipherKey or cryptoModule will be configured " \
+               "at once. PubNub client will use the configured cryptoModule."
       end
 
       @env = options

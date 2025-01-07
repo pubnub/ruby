@@ -65,14 +65,14 @@ module Pubnub
 
       begin
         @app.record_telemetry(@telemetry_name, telemetry_time_start, ::Time.now.to_f)
-      rescue StandardError => error
-        Pubnub.logger.warn('Pubnub::Event') { "Couldn't record telemetry because of #{error}\n#{error.backtrace.join("\n")}" }
+      rescue StandardError => e
+        Pubnub.logger.warn('Pubnub::Event') { "Couldn't record telemetry because of #{e}\n#{e.backtrace.join("\n")}" }
       end
 
       response
-    rescue StandardError => error
-      Pubnub.logger.error('Pubnub::Event') { error }
-      error
+    rescue StandardError => e
+      Pubnub.logger.error('Pubnub::Event') { e }
+      e
     end
 
     def uri(memo = true)
@@ -133,8 +133,8 @@ module Pubnub
 
     def secure_call(cb, arg)
       cb.call arg
-    rescue StandardError => error
-      Pubnub.logger.error('Pubnub::Event') { "Error while calling callback #{error.inspect}" }
+    rescue StandardError => e
+      Pubnub.logger.error('Pubnub::Event') { "Error while calling callback #{e.inspect}" }
     end
 
     def fire_callbacks(envelope)
@@ -150,7 +150,7 @@ module Pubnub
 
       token = @app.env[:token]
       empty_if_blank = {
-        auth: token ? token : @auth_key,
+        auth: token || @auth_key,
         uuid: @app.user_id,
         @telemetry_name => @current_telemetry
       }
@@ -169,21 +169,26 @@ module Pubnub
     end
 
     def create_variables_from_options(options)
-      variables = %w[channel channels message http_sync callback
-                     ssl cipher_key random_iv crypto_module secret_key auth_key
-                     publish_key subscribe_key timetoken action_timetoken message_timetoken
-                     open_timeout read_timeout idle_timeout heartbeat
-                     group action read write delete manage ttl presence start
-                     end count limit reverse presence_callback store skip_validate
-                     state channel_group channel_groups compressed meta customs include_token
-                     replicate with_presence cipher_key_selector include_meta join update get
-                     add remove push_token push_gateway environment topic authorized_uuid
-                     authorized_user_id token type value
-                   ]
+      variables = %w[channel channels message http_sync callback ssl cipher_key random_iv
+                     crypto_module secret_key auth_key publish_key subscribe_key timetoken
+                     action_timetoken message_timetoken open_timeout read_timeout idle_timeout
+                     heartbeat group action read write delete manage ttl presence start end count
+                     limit max reverse presence_callback store skip_validate state channel_group
+                     channel_groups compressed meta customs custom_message_type include_token
+                     include_custom_message_type include_message_actions include_message_type
+                     replicate with_presence cipher_key_selector include_meta include_uuid join
+                     update get add remove push_token push_gateway environment topic
+                     authorized_uuid authorized_user_id token type value]
 
       options = options.each_with_object({}) { |option, obj| obj[option.first.to_sym] = option.last }
 
-      variables.each { |variable| instance_variable_set('@' + variable, options[variable.to_sym]) unless variable.nil? }
+      # variables.each { |variable| instance_variable_set('@' + variable, options[variable.to_sym]) unless variable.nil? }
+      variables.each do |variable|
+        next if variable.nil?
+
+        ivar = "@#{variable}"
+        instance_variable_set(ivar, options[variable.to_sym]) unless instance_variable_defined?(ivar) && !instance_variable_get(ivar).nil?
+      end
 
       return if @event != :subscribe && @event != :presence
 
@@ -208,12 +213,14 @@ module Pubnub
     def compute_cipher_key(data)
       ck = @compute_cipher_key || @cipher_key || @app.env[:cipher_key_selector] || @app.env[:cipher_key].to_s
       return ck unless ck.respond_to?(:call)
+
       ck.call(data)
     end
 
     def compute_random_iv(data)
       ck = @compute_random_iv || @random_iv || @app.env[:random_iv_selector] || @app.env[:random_iv].to_s
       return ck unless ck.respond_to?(:call)
+
       ck.call(data)
     end
 
@@ -221,9 +228,7 @@ module Pubnub
     #
     # @return [Pubnub::Crypto::CryptoProvider, nil] Crypto module for data encryption and
     #   decryption.
-    def crypto_module
-      @crypto_module
-    end
+    attr_reader :crypto_module
 
     def error_message(parsed_response)
       parsed_response['message']
