@@ -1,6 +1,17 @@
 ---
-version: "5.3.5"
+version: "5.4.0"
 changelog:
+  - date: 2025-01-07
+    version: v5.4.0
+    changes:
+      - type: feature
+        text: "Add batch history support."
+      - type: feature
+        text: "Add fetch messages with message reactions."
+      - type: feature
+        text: "Add fetch messages (batch history) endpoint support to fetch history for multiple channels.           Add fetch messages with reactions support.           Add `include_custom_message_type` support for fetch messages endpoint."
+      - type: feature
+        text: "Add `custom_message_type` support for `publish` / `signal` and `subscribe` endpoints."
   - date: 2024-10-09
     version: v5.3.5
     changes:
@@ -581,7 +592,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-5.3.5.gem
+            package-name: pubnub-5.4.0.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -686,8 +697,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-5.3.5.gem
-            location: https://github.com/pubnub/ruby/releases/download/v5.3.5/pubnub-5.3.5.gem
+            package-name: pubnub-5.4.0.gem
+            location: https://github.com/pubnub/ruby/releases/download/v5.4.0/pubnub-5.4.0.gem
             requires:
               - name: addressable
                 min-version: 2.0.0
