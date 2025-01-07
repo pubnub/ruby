@@ -9,7 +9,11 @@ changelog:
       - type: feature
         text: "Add fetch messages with message reactions."
       - type: feature
-        text: "Add fetch messages (batch history) endpoint support to fetch history for multiple channels.           Add fetch messages with reactions support.           Add `include_custom_message_type` support for fetch messages endpoint."
+        text: "Add fetch messages (batch history) endpoint support to fetch history for multiple channels."
+      - type: feature
+        text: "Add fetch messages with reactions support."
+      - type: feature
+        text: "Add `include_custom_message_type` support for fetch messages endpoint."
       - type: feature
         text: "Add `custom_message_type` support for `publish` / `signal` and `subscribe` endpoints."
   - date: 2024-10-09
