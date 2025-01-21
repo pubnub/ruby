@@ -37,24 +37,28 @@ module Pubnub
       end
 
       def validate_metadata!
-        raise(
-          ArgumentError.new(object: self, message: ':metadata is required for set channel metadata event.'),
-          ':metadata is required for set channel metadata event.'
-        ) if @metadata.nil? || @metadata.empty?
+        if @metadata.nil? || @metadata.empty?
+          raise(
+            ArgumentError.new(object: self, message: ':metadata is required for set channel metadata event.'),
+            ':metadata is required for set channel metadata event.'
+          )
+        end
 
-        raise(
-          ArgumentError.new(object: self, message: ':metadata parameter for set channel metadata must be Hash.'),
-          ':metadata parameter for set channel metadata must be Hash.'
-        ) if @metadata.class != Hash
+        if @metadata.class != Hash
+          raise(
+            ArgumentError.new(object: self, message: ':metadata parameter for set channel metadata must be Hash.'),
+            ':metadata parameter for set channel metadata must be Hash.'
+          )
+        end
 
-        known_channel_metadata_fields = %w[name description custom updated eTag]
+        known_channel_metadata_fields = %w[name description type status custom]
 
         @metadata.each_key do |field_name|
-          unless known_channel_metadata_fields.include?(field_name.to_s)
-            message = "Unknown channel metadata key: '#{field_name}'. Only following keys allowed: #{known_channel_metadata_fields.join(", ")}"
+          next if known_channel_metadata_fields.include?(field_name.to_s)
 
-            raise(ArgumentError.new(object: self, message: message), message)
-          end
+          message = "Unknown channel metadata key: '#{field_name}'. Only following keys allowed: #{known_channel_metadata_fields.join(', ')}"
+
+          raise(ArgumentError.new(object: self, message: message), message)
         end
       end
     end

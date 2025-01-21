@@ -38,7 +38,7 @@ describe Pubnub::HereNow do
       expect(envelope.status[:operation]).to eq(:set_uuid_metadata)
       expect(envelope.status[:category]).to eq(:ack)
       expect(envelope.status[:client_request].path.split('/').last).to eq("ruby-test-uuid-client-one")
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
     end
   end
 
@@ -59,7 +59,7 @@ describe Pubnub::HereNow do
       expect(envelope.status[:operation]).to eq(:set_uuid_metadata)
       expect(envelope.status[:category]).to eq(:ack)
       expect(envelope.status[:client_request].path.split('/').last).to eq("bob")
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
     end
   end
 
@@ -84,7 +84,7 @@ describe Pubnub::HereNow do
       expect(envelope.status[:operation]).to eq(:set_uuid_metadata)
       expect(envelope.status[:category]).to eq(:ack)
       expect(envelope.status[:client_request].path.split('/').last).to eq("bob")
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
     end
   end
 
@@ -108,7 +108,30 @@ describe Pubnub::HereNow do
       expect(envelope.status[:operation]).to eq(:set_uuid_metadata)
       expect(envelope.status[:category]).to eq(:ack)
       expect(envelope.status[:client_request].path.split('/').last).to eq("bob")
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
+    end
+  end
+
+  it "__uuid__bob___metadata__name_magnum_type_admin_status_away__include__custom_type_status___http_sync__true_" do
+    VCR.use_cassette("examples/uuid_metadata/009", record: :once) do
+      envelope = @pubnub.set_uuid_metadata(
+        uuid: 'bob',
+        metadata: { name: 'magnum', type: :admin, status: :away },
+        include: { custom: true, type: true, status: true },
+        http_sync: true
+      )
+
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:operation]).to eq(:set_uuid_metadata)
+      expect(envelope.status[:category]).to eq(:ack)
+      expect(envelope.status[:client_request].query.include?('include=custom%2Cstatus%2Ctype')).to eq true
+      expect(envelope.status[:client_request].path.split('/').last).to eq("bob")
+      expect(envelope.result[:data][:type]).to eq("admin")
+      expect(envelope.result[:data][:status]).to eq("away")
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
     end
   end
 end

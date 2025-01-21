@@ -14,11 +14,24 @@ describe Pubnub::SetChannelMetadata do
     end
 
     it "set_channel_metadata_works" do
-      VCR.use_cassette("lib/events/set_channel_metadata", record: :once) do
+      VCR.use_cassette("lib/events/set_channel_metadata1", record: :once) do
         envelope = @pubnub.set_channel_metadata(
           channel: "rb_channel",
-          metadata: { name: "some_name", custom: { XXX: "YYYY" } },
-          include: { custom: true }
+          metadata: { name: "some_name", custom: { XXX: "YYYY" }, type: :event, status: :completed },
+          include: { custom: true },
+        ).value
+
+        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+      end
+    end
+
+    it "set_channel_metadata_works_with_included_status_type" do
+      VCR.use_cassette("lib/events/set_channel_metadata2", record: :once) do
+        envelope = @pubnub.set_channel_metadata(
+          channel: "rb_channel",
+          metadata: { name: "some_name", custom: { XXX: "YYYY" }, type: :event, status: :completed },
+          include: { custom: true, status: true, type: true },
         ).value
 
         expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
@@ -27,7 +40,7 @@ describe Pubnub::SetChannelMetadata do
     end
 
     it "get_channel_metadata_works" do
-      VCR.use_cassette("lib/events/get_channel_metadata", record: :once) do
+      VCR.use_cassette("lib/events/get_channel_metadata1", record: :once) do
         envelope = @pubnub.get_channel_metadata(channel: "rb_channel", include: { custom: true }).value
 
         expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
@@ -35,9 +48,27 @@ describe Pubnub::SetChannelMetadata do
       end
     end
 
+    it "get_channel_metadata_works_with_included_status_type" do
+      VCR.use_cassette("lib/events/get_channel_metadata2", record: :once) do
+        envelope = @pubnub.get_channel_metadata(channel: "rb_channel", include: { custom: true, status: true, type: true }).value
+
+        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+      end
+    end
+
     it "get_all_channels_metadata_works" do
-      VCR.use_cassette("lib/events/get_all_channels_metadata", record: :once) do
+      VCR.use_cassette("lib/events/get_all_channels_metadata1", record: :once) do
         envelope = @pubnub.get_all_channels_metadata(limit: 5, include: { custom: true }).value
+
+        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+      end
+    end
+
+    it "get_all_channels_metadata_works_with_included_status_type" do
+      VCR.use_cassette("lib/events/get_all_channels_metadata2", record: :once) do
+        envelope = @pubnub.get_all_channels_metadata(limit: 5, include: { custom: true, status: true, type: true }).value
 
         expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
         expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new

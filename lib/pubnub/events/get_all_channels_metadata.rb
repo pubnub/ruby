@@ -11,18 +11,22 @@ module Pubnub
       @event = current_operation
       @telemetry_name = :l_obj
       @limit = [options[:limit], 100].min unless options[:limit].nil?
-      @sort = options[:sort].join(",") if options[:sort] && !options[:sort].empty?
+      @sort = options[:sort].join(',') if options[:sort] && !options[:sort].empty?
       @filter = options[:filter] if options[:filter] && !options[:filter].empty?
       @start = options[:start] if options[:start] && !options[:start].empty?
       @end = options[:end] if options[:start] && !options[:end].empty?
 
+      @include = []
       if options[:include]
-        @include_count = [0, '0', false].include?(options[:include][:count]) ? "0" : "1" unless options[:include][:count].nil?
-        @include = "custom" unless [0, '0', false].include?(options[:include][:custom])
+        include = options[:include]
+        @include.push('type') unless include[:type].nil? || [0, '0', false].include?(include[:type])
+        @include.push('status') unless include[:status].nil? || [0, '0', false].include?(include[:status])
+        @include.push('custom') unless include[:custom].nil? || [0, '0', false].include?(include[:custom])
+        @include_count = [0, '0', false].include?(include[:count]) ? '0' : '1' unless include[:count].nil?
       end
 
       # Collections by default return number of available entries.
-      @include_count = "1" if @include_count.nil?
+      @include_count = '1' if @include_count.nil?
 
       super
     end
@@ -41,7 +45,7 @@ module Pubnub
       parameters[:start] = @start unless @start.nil?
       parameters[:end] = @end if @end && !@start
       parameters[:count] = @include_count unless @include_count.nil?
-      parameters[:include] = @include unless @include.to_s.empty?
+      parameters[:include] = @include.sort.join(',') unless @include.empty?
 
       parameters
     end
@@ -56,12 +60,12 @@ module Pubnub
     end
 
     def valid_envelope(parsed_response, req_res_objects)
-      channels_metadata = parsed_response['data'].map { |uuid_metadata|
-        metadata = Hash.new
-        uuid_metadata.each{ |k,v| metadata[k.to_sym] = v }
+      channels_metadata = parsed_response['data'].map do |uuid_metadata|
+        metadata = {}
+        uuid_metadata.each { |k, v| metadata[k.to_sym] = v }
         metadata[:updated] = Date._parse(metadata[:updated]) unless metadata[:updated].nil?
         metadata
-      }
+      end
 
       Pubnub::Envelope.new(
         event: @event,

@@ -38,6 +38,18 @@ describe Pubnub::SetUuidMetadata do
       end
     end
 
+    it "set_uuid_metadata_works_with_included_status_type" do
+      VCR.use_cassette("lib/events/set_uuid_metadata3", record: :once) do
+        envelope = @pubnub.set_uuid_metadata(
+          metadata: { name: "magnum", custom: { XXX: "YYYY" }, type: :admin, status: :active },
+          include: { custom: true, status: true, type: true },
+        ).value
+
+        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+      end
+    end
+
     it "get_uuid_metadata_works_1" do
       VCR.use_cassette("lib/events/get_uuid_metadata1", record: :once) do
         envelope = @pubnub.get_uuid_metadata(uuid: "mg", include: { custom: true }).value
@@ -56,9 +68,27 @@ describe Pubnub::SetUuidMetadata do
       end
     end
 
+    it "get_uuid_metadata_works_with_included_status_type" do
+      VCR.use_cassette("lib/events/get_uuid_metadata3", record: :once) do
+        envelope = @pubnub.get_uuid_metadata(include: { custom: true, status: true, type: true }).value
+
+        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+      end
+    end
+
     it "get_all_uuid_metadata_works" do
-      VCR.use_cassette("lib/events/get_all_uuid_metadata", record: :once) do
+      VCR.use_cassette("lib/events/get_all_uuid_metadata1", record: :once) do
         envelope = @pubnub.get_all_uuid_metadata(limit: 5, include: { custom: true }).value
+
+        expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
+        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
+      end
+    end
+
+    it "get_all_uuid_metadata_works_with_included_status_type" do
+      VCR.use_cassette("lib/events/get_all_uuid_metadata2", record: :once) do
+        envelope = @pubnub.get_all_uuid_metadata(limit: 5, include: { custom: true, status: true, type: true }).value
 
         expect(envelope.result).to satisfies_schema Pubnub::Schemas::Envelope::ResultSchema.new
         expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new

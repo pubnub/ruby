@@ -1,0 +1,111 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: http://ps.pndsn.com/v2/objects/sub-a-mock-key/channels/channel?auth=ruby-test-auth-client-one&include=custom&pnsdk=PubNub-Ruby/5.4.0&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: '{"name":"some_name","custom":{"public":true},"type":"lobby","status":"open"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 21 Jan 2025 10:51:02 GMT
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 21 Jan 2025 10:51:04 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '183'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"data":{"id":"channel","name":"some_name","description":null,"custom":{"public":true},"updated":"2025-01-21T10:46:24.088899Z","eTag":"d5ec4d7bdc94bc26720727fe45e6ea78"}}'
+  recorded_at: Tue, 21 Jan 2025 10:51:04 GMT
+- request:
+    method: patch
+    uri: http://ps.pndsn.com/v2/objects/sub-a-mock-key/uuids/bob?auth=ruby-test-auth-client-one&include=custom&l_obj=2.017&pnsdk=PubNub-Ruby/5.4.0&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: '{"name":"magnum","custom":{"announcer":true},"type":"admin","status":"away"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 21 Jan 2025 10:51:04 GMT
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 21 Jan 2025 10:51:05 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '209'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"data":{"id":"bob","name":"magnum","externalId":null,"profileUrl":null,"email":null,"custom":{"announcer":true},"updated":"2025-01-21T10:46:24.429565Z","eTag":"45708f3570743e16664a7ab2929d1d71"}}'
+  recorded_at: Tue, 21 Jan 2025 10:51:04 GMT
+- request:
+    method: patch
+    uri: http://ps.pndsn.com/v2/objects/sub-a-mock-key/channels/channel/uuids?auth=ruby-test-auth-client-one&count=1&include=custom,status,type,uuid,uuid.custom,uuid.status,uuid.type&l_obj=0.343&pnsdk=PubNub-Ruby/5.4.0&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: '{"set":[{"uuid":{"id":"bob"},"custom":{"can_write":true},"type":"info","status":"active"}]}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 21 Jan 2025 10:51:04 GMT
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 21 Jan 2025 10:51:05 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '403'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"data":[{"uuid":{"id":"bob","name":"magnum","externalId":null,"profileUrl":null,"email":null,"type":"admin","status":"away","custom":{"announcer":true},"updated":"2025-01-21T10:46:24.429565Z","eTag":"45708f3570743e16664a7ab2929d1d71"},"type":"info","status":"active","custom":{"can_write":true},"updated":"2025-01-21T10:51:05.330619Z","eTag":"AeqXm5OZjaPqtQE"}],"totalCount":1,"next":"MQ"}'
+  recorded_at: Tue, 21 Jan 2025 10:51:05 GMT
+recorded_with: VCR 6.3.1
