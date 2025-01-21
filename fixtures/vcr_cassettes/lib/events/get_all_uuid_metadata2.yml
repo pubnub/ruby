@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/objects/sub-a-mock-key/uuids?auth=ruby-test-auth&count=1&include=custom,status,type&limit=5&pnsdk=PubNub-Ruby/5.4.0&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 21 Jan 2025 07:37:33 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 21 Jan 2025 07:37:34 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1268'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"data":[{"id":"0aeRHzYcuser_8v02LnrL","name":"0aeRHzYcTest
+        User","externalId":null,"profileUrl":null,"email":null,"type":null,"status":null,"custom":null,"updated":"2024-12-12T13:27:41.021712Z","eTag":"14e7f477ded2b6e329d1880b82ad8fb4"},{"id":"0H1VkYHguser_gHBwxZUg","name":"0H1VkYHgTest
+        User","externalId":null,"profileUrl":null,"email":null,"type":null,"status":null,"custom":null,"updated":"2024-12-12T13:23:15.790547Z","eTag":"42984e2544d629e22936bba2b820f002"},{"id":"0Y5y5LOsuser_IGYtjjI3","name":"0Y5y5LOsTest
+        User","externalId":null,"profileUrl":null,"email":null,"type":null,"status":null,"custom":null,"updated":"2024-12-12T13:23:11.860968Z","eTag":"9d09332f2f5550a555d2e00209f3d9c6"},{"id":"1h0RWArquser_4O9vvG9W","name":"1h0RWArqTest
+        User","externalId":null,"profileUrl":null,"email":null,"type":null,"status":null,"custom":null,"updated":"2024-12-12T13:26:31.925826Z","eTag":"ec86c4fada9407d1fbf253662a6cfdc5"},{"id":"2aiuiG","name":"Marian
+        Salazar","externalId":"5445888223","profileUrl":"https://picsum.photos/100/200","email":"marian.salazar@pubnub.com","type":"admin","status":"deleted","custom":{"age":36,"city":"London"},"updated":"2025-01-03T16:24:20.549904Z","eTag":"6d50dccdbbc119aaf23af54a5bccf36a"}],"totalCount":1768,"next":"NQ"}'
+  recorded_at: Tue, 21 Jan 2025 07:37:34 GMT
+recorded_with: VCR 6.3.1

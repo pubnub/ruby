@@ -40,7 +40,7 @@ describe Pubnub::HereNow do
       expect(envelope.status[:operation]).to eq(:set_memberships)
       expect(envelope.status[:category]).to eq(:ack)
       expect(envelope.status[:client_request].path.split('/')[-2]).to eq("ruby-test-uuid-client-one")
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
     end
   end
 
@@ -63,7 +63,7 @@ describe Pubnub::HereNow do
       expect(envelope.status[:operation]).to eq(:set_memberships)
       expect(envelope.status[:category]).to eq(:ack)
       expect(envelope.status[:client_request].path.split('/')[-2]).to eq("bob")
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
     end
   end
 
@@ -90,7 +90,7 @@ describe Pubnub::HereNow do
       expect(envelope.status[:operation]).to eq(:set_memberships)
       expect(envelope.status[:category]).to eq(:ack)
       expect(envelope.status[:client_request].path.split('/')[-2]).to eq("bob")
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
     end
   end
 
@@ -116,7 +116,49 @@ describe Pubnub::HereNow do
       expect(envelope.status[:operation]).to eq(:set_memberships)
       expect(envelope.status[:category]).to eq(:ack)
       expect(envelope.status[:client_request].path.split('/')[-2]).to eq("bob")
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
+    end
+  end
+
+  it "__uuid__bob___channels__channel___include__custom_status_type_channel_channel_custom_channel_status_channel_type___http_sync__true_" do
+    VCR.use_cassette("examples/memberships/009", record: :once) do
+      @pubnub.set_channel_metadata(
+        channel: 'channel',
+        metadata: { name: 'some_name', custom: { public: true }, type: :lobby, status: :open },
+        http_sync: true
+      )
+      @pubnub.set_uuid_metadata(
+        uuid: 'bob',
+        metadata: { name: 'magnum', custom: { announcer: true }, type: :admin, status: :away },
+        http_sync: true
+      )
+
+      envelope = @pubnub.set_memberships(
+        uuid: 'bob',
+        channels: [{ channel: 'channel', custom: { read_only: false }, type: :system, status: :locked }],
+        include: {
+          custom: true,
+          type: true,
+          status: true,
+          channel_metadata: true,
+          channel_custom: true,
+          channel_type: true,
+          channel_status: true
+        },
+        http_sync: true
+      )
+
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:operation]).to eq(:set_memberships)
+      expect(envelope.status[:category]).to eq(:ack)
+      expect(envelope.status[:client_request].path.split('/')[-2]).to eq("bob")
+      expect(envelope.status[:client_request].query.include?("include=channel%2Cchannel.custom%2Cchannel.status%2Cchannel.type%2Ccustom%2Cstatus%2Ctype")).to eq true
+      expect(envelope.result[:data][:memberships][0][:type]).to eq("system")
+      expect(envelope.result[:data][:memberships][0][:status]).to eq("locked")
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
     end
   end
 end

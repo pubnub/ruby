@@ -12,12 +12,16 @@ module Pubnub
       @telemetry_name = :l_obj
       @channel = options[:channel]
 
+      @include = []
       if options[:include]
-        @include = "custom" unless [0, '0', false].include?(options[:include][:custom])
+        include = options[:include]
+        @include.push('type') unless include[:type].nil? || [0, '0', false].include?(include[:type])
+        @include.push('status') unless include[:status].nil? || [0, '0', false].include?(include[:status])
+        @include.push('custom') unless include[:custom].nil? || [0, '0', false].include?(include[:custom])
       end
 
       # Single entity creation should return it's 'custom' field by default.
-      @include = "custom" if @include.nil?
+      @include = ['custom'] if @include.empty?
       super
     end
 
@@ -29,7 +33,7 @@ module Pubnub
 
     def parameters(signature = false)
       parameters = super(signature)
-      parameters[:include] = @include
+      parameters[:include] = @include.sort.join(',') unless @include.empty?
 
       parameters
     end
@@ -46,8 +50,8 @@ module Pubnub
 
     def valid_envelope(parsed_response, req_res_objects)
       data = parsed_response['data']
-      metadata = Hash.new
-      data.each{ |k,v| metadata[k.to_sym] = v }
+      metadata = {}
+      data.each { |k, v| metadata[k.to_sym] = v }
       metadata[:updated] = Date._parse(metadata[:updated]) unless metadata[:updated].nil?
 
       Pubnub::Envelope.new(

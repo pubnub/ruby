@@ -38,7 +38,7 @@ describe Pubnub::HereNow do
       expect(envelope.status[:operation]).to eq(:set_channel_metadata)
       expect(envelope.status[:category]).to eq(:ack)
       expect(envelope.status[:client_request].path.split('/').last).to eq("channel")
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
     end
   end
 
@@ -63,7 +63,7 @@ describe Pubnub::HereNow do
       expect(envelope.status[:operation]).to eq(:set_channel_metadata)
       expect(envelope.status[:category]).to eq(:ack)
       expect(envelope.status[:client_request].path.split('/').last).to eq("channel")
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
     end
   end
 
@@ -87,7 +87,30 @@ describe Pubnub::HereNow do
       expect(envelope.status[:operation]).to eq(:set_channel_metadata)
       expect(envelope.status[:category]).to eq(:ack)
       expect(envelope.status[:client_request].path.split('/').last).to eq("channel")
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
+    end
+  end
+
+  it "__channel__channel___metadata__name_some_name_type_lobby_status_open___include__custom_type_status___http_sync__true_" do
+    VCR.use_cassette("examples/channel_metadata/007", record: :once) do
+      envelope = @pubnub.set_channel_metadata(
+        channel: 'channel',
+        metadata: { name: 'some_name', type: :lobby, status: :open },
+        include: { custom: true, type: true, status: true },
+        http_sync: true
+      )
+
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:operation]).to eq(:set_channel_metadata)
+      expect(envelope.status[:category]).to eq(:ack)
+      expect(envelope.status[:client_request].query.include?('include=custom%2Cstatus%2Ctype')).to eq true
+      expect(envelope.status[:client_request].path.split('/').last).to eq("channel")
+      expect(envelope.result[:data][:type]).to eq("lobby")
+      expect(envelope.result[:data][:status]).to eq("open")
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
     end
   end
 end

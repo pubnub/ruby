@@ -12,23 +12,26 @@ module Pubnub
       @telemetry_name = :l_obj
       @uuid = options[:uuid].nil? ? app.user_id : options[:uuid]
       @limit = [options[:limit], 100].min unless options[:limit].nil?
-      @sort = options[:sort].join(",") if options[:sort] && !options[:sort].empty?
+      @sort = options[:sort].join(',') if options[:sort] && !options[:sort].empty?
       @filter = options[:filter] if options[:filter] && !options[:filter].empty?
       @start = options[:start] if options[:start] && !options[:start].empty?
       @end = options[:end] if options[:start] && !options[:end].empty?
 
+      @include = []
       if options[:include]
         include = options[:include]
-        @include_count = [0, '0', false].include?(include[:count]) ? "0" : "1" unless include[:count].nil?
-        @include_custom = "custom" if !include[:custom].nil? && ![0, '0', false].include?(include[:custom])
-        @include_channel_metadata = "channel" if !include[:channel_metadata].nil? && ![0, '0', false].include?(include[:channel_metadata])
-        @include_channel_custom = "channel.custom" if !include[:channel_custom].nil? && ![0, '0', false].include?(include[:channel_custom])
-
-        @include = [@include_custom, @include_channel_metadata, @include_channel_custom].reject { |flag| flag.to_s.empty? }
+        @include.push('type') unless include[:type].nil? || [0, '0', false].include?(include[:type])
+        @include.push('status') unless include[:status].nil? || [0, '0', false].include?(include[:status])
+        @include.push('custom') unless include[:custom].nil? || [0, '0', false].include?(include[:custom])
+        @include.push('channel') unless include[:channel_metadata].nil? || [0, '0', false].include?(include[:channel_metadata])
+        @include.push('channel.type') unless include[:channel_type].nil? || [0, '0', false].include?(include[:channel_type])
+        @include.push('channel.status') unless include[:channel_status].nil? || [0, '0', false].include?(include[:channel_status])
+        @include.push('channel.custom') unless include[:channel_custom].nil? || [0, '0', false].include?(include[:channel_custom])
+        @include_count = [0, '0', false].include?(include[:count]) ? '0' : '1' unless include[:count].nil?
       end
 
       # Collections by default return number of available entries.
-      @include_count = "1" if @include_count.nil?
+      @include_count = '1' if @include_count.nil?
 
       super
     end
@@ -47,7 +50,7 @@ module Pubnub
       parameters[:start] = @start unless @start.nil?
       parameters[:end] = @end if @end && !@start
       parameters[:count] = @include_count unless @include_count.nil?
-      parameters[:include] = @include.sort.join(",") if @include && !@include.empty?
+      parameters[:include] = @include.sort.join(',') unless @include.empty?
 
       parameters
     end
@@ -64,20 +67,20 @@ module Pubnub
     end
 
     def valid_envelope(parsed_response, req_res_objects)
-      memberships = parsed_response['data'].map { |uuid_membership|
-        membership = Hash.new
-        uuid_membership.each{ |k,v| membership[k.to_sym] = v }
+      memberships = parsed_response['data'].map do |uuid_membership|
+        membership = {}
+        uuid_membership.each { |k, v| membership[k.to_sym] = v }
 
         unless membership[:channel].nil?
-          channel_metadata = Hash.new
-          membership[:channel].each{ |k,v| channel_metadata[k.to_sym] = v }
+          channel_metadata = {}
+          membership[:channel].each { |k, v| channel_metadata[k.to_sym] = v }
           channel_metadata[:updated] = Date._parse(channel_metadata[:updated]) unless channel_metadata[:updated].nil?
           membership[:channel] = channel_metadata
         end
         membership[:updated] = Date._parse(membership[:updated]) unless membership[:updated].nil?
 
         membership
-      }
+      end
 
       Pubnub::Envelope.new(
         event: @event,

@@ -12,25 +12,28 @@ module Pubnub
       @telemetry_name = :l_obj
       @channel = options[:channel]
       @limit = [options[:limit], 100].min unless options[:limit].nil?
-      @sort = options[:sort].join(",") if options[:sort] && !options[:sort].empty?
+      @sort = options[:sort].join(',') if options[:sort] && !options[:sort].empty?
       @filter = options[:filter] if options[:filter] && !options[:filter].empty?
       @start = options[:start] if options[:start] && !options[:start].empty?
       @end = options[:end] if options[:start] && !options[:end].empty?
 
+      @include = []
       if options[:include]
         include = options[:include]
-        @include_count = [0, '0', false].include?(include[:count]) ? "0" : "1" unless include[:count].nil?
-        @include_custom = "custom" if !include[:custom].nil? && ![0, '0', false].include?(include[:custom])
-        @include_uuid_metadata = "uuid" if !include[:uuid_metadata].nil? && ![0, '0', false].include?(include[:uuid_metadata])
-        @include_uuid_custom = "uuid.custom" if !include[:uuid_custom].nil? && ![0, '0', false].include?(include[:uuid_custom])
-
-        @include = [@include_custom, @include_uuid_metadata, @include_uuid_custom].reject { |flag| flag.to_s.empty? }
+        @include.push('type') unless include[:type].nil? || [0, '0', false].include?(include[:type])
+        @include.push('status') unless include[:status].nil? || [0, '0', false].include?(include[:status])
+        @include.push('custom') unless include[:custom].nil? || [0, '0', false].include?(include[:custom])
+        @include.push('uuid') unless include[:uuid_metadata].nil? || [0, '0', false].include?(include[:uuid_metadata])
+        @include.push('uuid.type') unless include[:uuid_type].nil? || [0, '0', false].include?(include[:uuid_type])
+        @include.push('uuid.status') unless include[:uuid_status].nil? || [0, '0', false].include?(include[:uuid_status])
+        @include.push('uuid.custom') unless include[:uuid_custom].nil? || [0, '0', false].include?(include[:uuid_custom])
+        @include_count = [0, '0', false].include?(include[:count]) ? '0' : '1' unless include[:count].nil?
       end
 
       @uuids = options[:uuids] if options[:uuids] && !options[:uuids].empty?
 
       # Collections by default return number of available entries.
-      @include_count = "1" if @include_count.nil?
+      @include_count = '1' if @include_count.nil?
 
       super
     end
@@ -41,6 +44,8 @@ module Pubnub
       members = @uuids.map do |member|
         member_object = { uuid: { id: member[:uuid] } }
         member_object[:custom] = member[:custom] if member[:custom] && !member[:custom].empty?
+        member_object[:type] = member[:type] if member[:type] && !member[:type].empty?
+        member_object[:status] = member[:status] if member[:status] && !member[:status].empty?
 
         member_object
       end
@@ -67,7 +72,7 @@ module Pubnub
       parameters[:start] = @start unless @start.nil?
       parameters[:end] = @end if @end && !@start
       parameters[:count] = @include_count unless @include_count.nil?
-      parameters[:include] = @include.sort.join(",") if @include && !@include.empty?
+      parameters[:include] = @include.sort.join(',') unless @include.empty?
 
       parameters
     end
@@ -84,12 +89,12 @@ module Pubnub
     end
 
     def valid_envelope(parsed_response, req_res_objects)
-      members = parsed_response['data'].map { |channel_member|
-        member = Hash.new
+      members = parsed_response['data'].map do |channel_member|
+        member = {}
         channel_member.each { |k, v| member[k.to_sym] = v }
 
         unless member[:uuid].nil?
-          uuid_metadata = Hash.new
+          uuid_metadata = {}
           member[:uuid].each { |k, v| uuid_metadata[k.to_sym] = v }
           uuid_metadata[:updated] = Date._parse(uuid_metadata[:updated]) unless uuid_metadata[:updated].nil?
           member[:uuid] = uuid_metadata
@@ -97,7 +102,7 @@ module Pubnub
         member[:updated] = Date._parse(member[:updated]) unless member[:updated].nil?
 
         member
-      }
+      end
 
       Pubnub::Envelope.new(
         event: @event,

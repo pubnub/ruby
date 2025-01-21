@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: http://ps.pndsn.com/v2/objects/sub-a-mock-key/uuids/ruby-test-uuid?auth=ruby-test-auth&include=custom,status,type&pnsdk=PubNub-Ruby/5.4.0&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: '{"name":"magnum","custom":{"XXX":"YYYY"},"type":"admin","status":"active"}'
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 21 Jan 2025 07:35:49 GMT
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 21 Jan 2025 07:35:49 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '249'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"data":{"id":"ruby-test-uuid","name":"magnum","externalId":null,"profileUrl":null,"email":null,"type":"admin","status":"active","custom":{"XXX":"YYYY"},"updated":"2025-01-21T07:35:49.731004Z","eTag":"5e793e98ebf25b2ed47ad51beed46e11"}}'
+  recorded_at: Tue, 21 Jan 2025 07:35:49 GMT
+recorded_with: VCR 6.3.1
