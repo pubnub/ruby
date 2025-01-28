@@ -1,0 +1,37 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/objects/sub-a-mock-key/channels?auth=ruby-test-auth&count=1&include=custom,status,type&limit=5&pnsdk=PubNub-Ruby/5.4.0&uuid=ruby-test-uuid
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 21 Jan 2025 07:32:27 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 21 Jan 2025 07:32:28 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1233'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"status":200,"data":[{"id":"00a8d2e0-c640-45b1-e6de-f61e6bd9a393","name":"00a8d2e0-c640-45b1-e6de-f61e6bd9a393","description":null,"type":"group","status":null,"custom":null,"updated":"2024-12-13T11:03:03.457996Z","eTag":"bf29eb2bef1baa47fd954ed7010cb51b"},{"id":"03d27c15-cda9-4dc7-e276-b4d8fa6f848e","name":"03d27c15-cda9-4dc7-e276-b4d8fa6f848e","description":null,"type":"group","status":null,"custom":null,"updated":"2024-12-16T09:08:54.231515Z","eTag":"feb44e840fbee7da1bbc87ef51f223ba"},{"id":"04e3083e-019a-4dae-be7f-d896291ab4d9","name":"04e3083e-019a-4dae-be7f-d896291ab4d9","description":null,"type":"group","status":null,"custom":null,"updated":"2024-12-19T12:06:37.313275Z","eTag":"ddf8929b455b800afbf69531fc56aad8"},{"id":"05b2d402-f904-499d-b9f3-8166fbcd66d4","name":"05b2d402-f904-499d-b9f3-8166fbcd66d4","description":null,"type":"group","status":null,"custom":null,"updated":"2024-12-19T11:30:43.21224Z","eTag":"005f87588abf8e67aeca30340310de7d"},{"id":"06d8f3b6-32ba-479c-8300-8d7dab0ea21b","name":"06d8f3b6-32ba-479c-8300-8d7dab0ea21b","description":null,"type":"group","status":null,"custom":null,"updated":"2024-12-18T18:42:16.967369Z","eTag":"5911a63be62caf69fd6aaec0f3e54212"}],"totalCount":21497,"next":"NQ"}'
+  recorded_at: Tue, 21 Jan 2025 07:32:27 GMT
+recorded_with: VCR 6.3.1
