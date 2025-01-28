@@ -1,3 +1,10 @@
+## v5.5.0
+January 28 2025
+
+#### Added
+- Add the ability to specify `type` and `status` fields for `channel metadata`, `uuid metadata`, `member`, and `membership`.
+- Add missing `include` options for App Context APIs: `custom`, `status`, `type`, `uuid_status`, `uuid_type`, `channel_status`, and `channel_type`.
+
 ## v5.4.0
 January 07 2025
 

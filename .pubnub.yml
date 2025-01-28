@@ -1,6 +1,13 @@
 ---
-version: "5.4.0"
+version: "5.5.0"
 changelog:
+  - date: 2025-01-28
+    version: v5.5.0
+    changes:
+      - type: feature
+        text: "Add the ability to specify `type` and `status` fields for `channel metadata`, `uuid metadata`, `member`, and `membership`."
+      - type: feature
+        text: "Add missing `include` options for App Context APIs: `custom`, `status`, `type`, `uuid_status`, `uuid_type`, `channel_status`, and `channel_type`."
   - date: 2025-01-07
     version: v5.4.0
     changes:
@@ -596,7 +603,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-5.4.0.gem
+            package-name: pubnub-5.5.0.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -701,8 +708,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-5.4.0.gem
-            location: https://github.com/pubnub/ruby/releases/download/v5.4.0/pubnub-5.4.0.gem
+            package-name: pubnub-5.5.0.gem
+            location: https://github.com/pubnub/ruby/releases/download/v5.5.0/pubnub-5.5.0.gem
             requires:
               - name: addressable
                 min-version: 2.0.0
