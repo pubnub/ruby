@@ -46,7 +46,7 @@ module Pubnub
       @include_message_actions ? Pubnub::Constants::OPERATION_FETCH_MESSAGES_WITH_ACTIONS : Pubnub::Constants::OPERATION_FETCH_MESSAGES
     end
 
-    def parameters(signature: false)
+    def parameters(signature = false)
       parameters = super(signature)
       parameters[:include_meta] = 'true' if @include_meta
       parameters[:include_uuid] = 'true' if @include_uuid

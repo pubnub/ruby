@@ -15,6 +15,7 @@ env:
   SDK_PAM_SEC_KEY: ${{ secrets.SDK_PAM_SEC_KEY }}
   SDK_SUB_KEY: ${{ secrets.SDK_SUB_KEY }}
   SDK_PUB_KEY: ${{ secrets.SDK_PUB_KEY }}
+  SDK_SEC_KEY: ${{ secrets.SDK_SEC_KEY }}
 
 jobs:
   tests:
