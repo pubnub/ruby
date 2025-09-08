@@ -13,6 +13,24 @@ describe Pubnub::FetchMessages do
       )
     end
 
+    it 'should not crash with secret key' do
+      pubnub_sec = Pubnub::Client.new(
+        subscribe_key: "sub-a-mock-key",
+        publish_key: "pub-a-mock-key",
+        secret_key: "sec-a-mock-key",
+        auth_key: "ruby-test-auth",
+        user_id: "ruby-test-uuid",
+        )
+      VCR.use_cassette("lib/events/fetch_messages_with_secret", record: :once) do
+        expect {
+          pubnub_sec.fetch_messages(
+            channels: %w[channel-1 channel-2],
+            :http_sync => true
+          )
+        }.to_not raise_error(ArgumentError)
+      end
+    end
+
     it 'works with channels list' do
       VCR.use_cassette("lib/events/fetch_messages", record: :once) do
         envelope = @pubnub.fetch_messages(
