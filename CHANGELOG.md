@@ -1,3 +1,9 @@
+## v5.5.1
+September 08 2025
+
+#### Fixed
+- Fix the issue introduced by RuboCop linter suggestion acceptance, which caused a wrong number of arguments error.
+
 ## v5.5.0
 January 28 2025
 

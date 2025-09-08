@@ -1,6 +1,11 @@
 ---
-version: "5.5.0"
+version: "5.5.1"
 changelog:
+  - date: 2025-09-08
+    version: v5.5.1
+    changes:
+      - type: bug
+        text: "Fix the issue introduced by RuboCop linter suggestion acceptance, which caused a wrong number of arguments error."
   - date: 2025-01-28
     version: v5.5.0
     changes:
@@ -603,7 +608,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-5.5.0.gem
+            package-name: pubnub-5.5.1.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -708,8 +713,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-5.5.0.gem
-            location: https://github.com/pubnub/ruby/releases/download/v5.5.0/pubnub-5.5.0.gem
+            package-name: pubnub-5.5.1.gem
+            location: https://github.com/pubnub/ruby/releases/download/v5.5.1/pubnub-5.5.1.gem
             requires:
               - name: addressable
                 min-version: 2.0.0
