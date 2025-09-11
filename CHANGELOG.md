@@ -1,3 +1,9 @@
+## v5.6.0
+September 11 2025
+
+#### Added
+- Add the `encode_channels` parameter for `fetch` to enable or disable channel names percent-encoding in response.
+
 ## v5.5.1
 September 08 2025
 

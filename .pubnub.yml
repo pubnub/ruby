@@ -1,6 +1,11 @@
 ---
-version: "5.5.1"
+version: "5.6.0"
 changelog:
+  - date: 2025-09-11
+    version: v5.6.0
+    changes:
+      - type: feature
+        text: "Add the `encode_channels` parameter for `fetch` to enable or disable channel names percent-encoding in response."
   - date: 2025-09-08
     version: v5.5.1
     changes:
@@ -608,7 +613,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-5.5.1.gem
+            package-name: pubnub-5.6.0.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -713,8 +718,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-5.5.1.gem
-            location: https://github.com/pubnub/ruby/releases/download/v5.5.1/pubnub-5.5.1.gem
+            package-name: pubnub-5.6.0.gem
+            location: https://github.com/pubnub/ruby/releases/download/v5.6.0/pubnub-5.6.0.gem
             requires:
               - name: addressable
                 min-version: 2.0.0

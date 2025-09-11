@@ -1,0 +1,80 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/publish/pub-a-mock-key/sub-a-mock-key/0/channel%7Cencoded::2/0/%22Hello%20test%20world%22?auth=ruby-test-auth-client-one&ortt=%7B%22t%22:17575842495785020%7D&pnsdk=PubNub-Ruby/5.5.1&seqn=1&ttl=10&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 11 Sep 2025 09:50:49 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 11 Sep 2025 09:50:50 GMT
+      Content-Type:
+      - text/javascript; charset=UTF-8
+      Content-Length:
+      - '30'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '[1,"Sent","17575842502404510"]'
+  recorded_at: Thu, 11 Sep 2025 09:50:49 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v3/history/sub-key/sub-a-mock-key/channel/channel%7Cencoded::2?auth=ruby-test-auth-client-one&encode_channels=false&include_message_type=true&include_uuid=true&max=5&pnsdk=PubNub-Ruby/5.5.1&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Thu, 11 Sep 2025 09:50:49 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 11 Sep 2025 09:50:50 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '208'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"status": 200, "error": false, "error_message": "", "channels": {"channel|encoded::2":[{"message":"Hello
+        test world","timetoken":"17575842502404510","message_type":null,"uuid":"ruby-test-uuid-client-one"}]}}'
+  recorded_at: Thu, 11 Sep 2025 09:50:50 GMT
+recorded_with: VCR 6.3.1
