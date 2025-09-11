@@ -178,7 +178,7 @@ module Pubnub
                      include_custom_message_type include_message_actions include_message_type
                      replicate with_presence cipher_key_selector include_meta include_uuid join
                      update get add remove push_token push_gateway environment topic
-                     authorized_uuid authorized_user_id token type status value]
+                     authorized_uuid authorized_user_id token type status value encode_channels]
 
       options = options.each_with_object({}) { |option, obj| obj[option.first.to_sym] = option.last }
 

@@ -13,6 +13,7 @@ module Pubnub
       @include_custom_message_type = options.fetch(:include_custom_message_type, false)
       @include_message_actions = options.fetch(:include_message_actions, false)
       @include_message_type = options.fetch(:include_message_type, true)
+      @encode_channels = options.fetch(:encode_channels, true)
       @include_uuid = options.fetch(:include_uuid, true)
       @include_meta = options.fetch(:include_meta, false)
       @start = options[:start] if options.key?(:start)
@@ -52,6 +53,7 @@ module Pubnub
       parameters[:include_uuid] = 'true' if @include_uuid
       parameters[:include_custom_message_type] = 'true' if @include_custom_message_type
       parameters[:include_message_type] = 'true' if @include_message_type
+      parameters[:encode_channels] = 'false' if !@encode_channels && !@include_message_actions
       parameters[:start] = @start unless @start.nil?
       parameters[:end] = @end unless @end.nil?
       parameters[:max] = @max unless @max.nil?

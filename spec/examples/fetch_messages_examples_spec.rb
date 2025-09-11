@@ -596,4 +596,60 @@ describe Pubnub::FetchMessages do
                                                ] } })
     end
   end
+
+  it "__channel__channel|encoded::1___max__5___http_sync__true___callback__nil_" do
+    VCR.use_cassette("examples/fetch_messages/encoded_channels", :record => :once) do
+      channel = "channel|encoded::1"
+      envelope = @pubnub.fetch_messages(channel: channel, max: 5, http_sync: true)
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:category]).to eq(:ack)
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:fetch_messages)
+      expect(envelope.result[:data]).to eq({
+                                             :channels => {
+                                               "channel%7Cencoded%3A%3A1" => [
+                                                 {
+                                                   "message_type" => nil,
+                                                   "message" => "Hello test world",
+                                                   "timetoken" => "17575837829949324",
+                                                   "uuid" => "ruby-test-uuid-client-one"
+                                                 }
+                                               ]
+                                             }
+                                           })
+    end
+  end
+
+  it "__channel__channel|encoded::2___max__5___encode_channels__false___http_sync__true___callback__nil_" do
+    VCR.use_cassette("examples/fetch_messages/not_encoded_channels", :record => :once) do
+      channel = "channel|encoded::2"
+      envelope = @pubnub.fetch_messages(channel: channel, max: 5, encode_channels: false, http_sync: true)
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:category]).to eq(:ack)
+      expect(envelope.status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:fetch_messages)
+      expect(envelope.result[:data]).to eq({
+                                             :channels => {
+                                               "channel|encoded::2" => [
+                                                 {
+                                                   "message_type" => nil,
+                                                   "message" => "Hello test world",
+                                                   "timetoken" => "17575842502404510",
+                                                   "uuid" => "ruby-test-uuid-client-one",
+                                                 }
+                                               ]
+                                             }
+                                           })
+    end
+  end
 end
