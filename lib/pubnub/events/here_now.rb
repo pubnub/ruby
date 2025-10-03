@@ -50,26 +50,56 @@ module Pubnub
     def parameters(*_args)
       parameters = super
       parameters['channel-group'] = @group.join(',') unless @group.blank?
+
+      if current_operation == Pubnub::Constants::OPERATION_HERE_NOW
+        @limit = if !@limit&.positive?
+                   Pubnub::Constants::MAXIMUM_HERE_NOW_COUNT
+                 else
+                   [Pubnub::Constants::MAXIMUM_HERE_NOW_COUNT, @limit].min
+                 end
+        @offset = 0 if @offset.nil?
+
+        parameters['limit'] = @limit
+        parameters['offset'] = @offset if @offset&.positive?
+      end
+
       parameters
     end
 
     def valid_envelope(parsed_response, req_res_objects)
+      occupancy = parsed_response['payload'] ? parsed_response['payload']['total_occupancy'] : parsed_response['occupancy']
+      limit_reached = false
+
+      result = {
+        code: req_res_objects[:response].code,
+        operation: get_operation,
+        client_request: req_res_objects[:request],
+        server_response: req_res_objects[:response],
+        data: {
+          uuids: parsed_response['uuids'],
+          occupancy: occupancy,
+          total_occupancy: (parsed_response['payload'] ? parsed_response['payload']['total_occupancy'] : nil),
+          total_channels: (parsed_response['payload'] ? parsed_response['payload']['total_channels'] : nil),
+          channels: (parsed_response['payload'] ? parsed_response['payload']['channels'] : nil)
+        }
+      }
+
+      if occupancy >= @limit
+        if !parsed_response.include?('payload')
+          limit_reached = result[:data][:uuids].length == @limit
+        else
+          result[:data][:channels].values.each do |channel|
+            limit_reached = channel['uuids'].length == @limit
+            break if limit_reached
+          end
+        end
+      end
+      result[:data][:nextOffset] = limit_reached ? @offset + @limit : nil
+
       Pubnub::Envelope.new(
         event: @event,
         event_options: @given_options,
-        result: {
-          code: req_res_objects[:response].code,
-          operation: get_operation,
-          client_request: req_res_objects[:request],
-          server_response: req_res_objects[:response],
-          data: {
-            uuids: parsed_response['uuids'],
-            occupancy: parsed_response['occupancy'],
-            total_occupancy: (parsed_response['payload'] ? parsed_response['payload']['total_occupancy'] : nil),
-            total_channels: (parsed_response['payload'] ? parsed_response['payload']['total_channels'] : nil),
-            channels: (parsed_response['payload'] ? parsed_response['payload']['channels'] : nil)
-          }
-        },
+        result: result,
         status: {
           code: req_res_objects[:response].code,
           client_request: req_res_objects[:request],

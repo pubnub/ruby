@@ -1,0 +1,111 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/presence/sub-key/demo/channel/test-channel-514,test-channel-56,test-channel-195?auth=ruby-test-auth-client-one&limit=3&pnsdk=PubNub-Ruby/5.6.0&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 03 Oct 2025 12:29:56 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 03 Oct 2025 12:29:57 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '354'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"message":"OK","payload":{"channels":{"test-channel-195":{"occupancy":1,"uuids":["web-user-704"]},"test-channel-514":{"occupancy":7,"uuids":["web-user-239","web-user-308","web-user-401"]},"test-channel-56":{"occupancy":4,"uuids":["web-user-281","web-user-849","web-user-771"]}},"total_channels":3,"total_occupancy":12},"service":"Presence","status":200}'
+  recorded_at: Fri, 03 Oct 2025 12:29:56 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/presence/sub-key/demo/channel/test-channel-514,test-channel-56,test-channel-195?auth=ruby-test-auth-client-one&l_pres=0.482&limit=3&offset=3&pnsdk=PubNub-Ruby/5.6.0&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 03 Oct 2025 12:29:56 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 03 Oct 2025 12:29:57 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '310'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"message":"OK","payload":{"channels":{"test-channel-195":{"occupancy":1,"uuids":[]},"test-channel-514":{"occupancy":7,"uuids":["web-user-322","web-user-605","web-user-598"]},"test-channel-56":{"occupancy":4,"uuids":["web-user-848"]}},"total_channels":3,"total_occupancy":12},"service":"Presence","status":200}'
+  recorded_at: Fri, 03 Oct 2025 12:29:56 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/presence/sub-key/demo/channel/test-channel-514,test-channel-56,test-channel-195?auth=ruby-test-auth-client-one&l_pres=0.051&limit=3&offset=6&pnsdk=PubNub-Ruby/5.6.0&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Fri, 03 Oct 2025 12:29:56 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 03 Oct 2025 12:29:57 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '266'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"message":"OK","payload":{"channels":{"test-channel-195":{"occupancy":1,"uuids":[]},"test-channel-514":{"occupancy":7,"uuids":["web-user-360"]},"test-channel-56":{"occupancy":4,"uuids":[]}},"total_channels":3,"total_occupancy":12},"service":"Presence","status":200}'
+  recorded_at: Fri, 03 Oct 2025 12:29:56 GMT
+recorded_with: VCR 6.3.1
