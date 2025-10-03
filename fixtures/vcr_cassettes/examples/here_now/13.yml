@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/presence/sub-key/sub-a-mock-key/channel/demo?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/4.1.0&uuid=ruby-test-uuid-client-one
+    uri: http://ps.pndsn.com/v2/presence/sub-key/sub-a-mock-key/channel/demo?auth=ruby-test-auth-client-one&limit=1000&pnsdk=PubNub-Ruby/4.1.0&uuid=ruby-test-uuid-client-one
     body:
       encoding: UTF-8
       string: ''

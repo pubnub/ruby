@@ -77,7 +77,7 @@ module Pubnub
         server_response: req_res_objects[:response],
         data: {
           uuids: parsed_response['uuids'],
-          occupancy: occupancy,
+          occupancy: parsed_response['occupancy'],
           total_occupancy: (parsed_response['payload'] ? parsed_response['payload']['total_occupancy'] : nil),
           total_channels: (parsed_response['payload'] ? parsed_response['payload']['total_channels'] : nil),
           channels: (parsed_response['payload'] ? parsed_response['payload']['channels'] : nil)
