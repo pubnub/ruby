@@ -67,39 +67,22 @@ module Pubnub
     end
 
     def valid_envelope(parsed_response, req_res_objects)
-      occupancy = parsed_response['payload'] ? parsed_response['payload']['total_occupancy'] : parsed_response['occupancy']
-      limit_reached = false
-
-      result = {
-        code: req_res_objects[:response].code,
-        operation: get_operation,
-        client_request: req_res_objects[:request],
-        server_response: req_res_objects[:response],
-        data: {
-          uuids: parsed_response['uuids'],
-          occupancy: parsed_response['occupancy'],
-          total_occupancy: (parsed_response['payload'] ? parsed_response['payload']['total_occupancy'] : nil),
-          total_channels: (parsed_response['payload'] ? parsed_response['payload']['total_channels'] : nil),
-          channels: (parsed_response['payload'] ? parsed_response['payload']['channels'] : nil)
-        }
-      }
-
-      if occupancy >= @limit
-        if !parsed_response.include?('payload')
-          limit_reached = result[:data][:uuids].length == @limit
-        else
-          result[:data][:channels].values.each do |channel|
-            limit_reached = channel['uuids'].length == @limit
-            break if limit_reached
-          end
-        end
-      end
-      result[:data][:nextOffset] = limit_reached ? @offset + @limit : nil
-
       Pubnub::Envelope.new(
         event: @event,
         event_options: @given_options,
-        result: result,
+        result: {
+          code: req_res_objects[:response].code,
+          operation: get_operation,
+          client_request: req_res_objects[:request],
+          server_response: req_res_objects[:response],
+          data: {
+            uuids: parsed_response['uuids'],
+            occupancy: parsed_response['occupancy'],
+            total_occupancy: (parsed_response['payload'] ? parsed_response['payload']['total_occupancy'] : nil),
+            total_channels: (parsed_response['payload'] ? parsed_response['payload']['total_channels'] : nil),
+            channels: (parsed_response['payload'] ? parsed_response['payload']['channels'] : nil)
+          }
+        },
         status: {
           code: req_res_objects[:response].code,
           client_request: req_res_objects[:request],

@@ -30,7 +30,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -46,7 +46,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -62,7 +62,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -79,7 +79,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -96,7 +96,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -113,7 +113,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -129,7 +129,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -145,7 +145,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -161,7 +161,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -178,7 +178,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -195,7 +195,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -212,7 +212,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -228,7 +228,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :nextOffset => nil, :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
+      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
     end
   end
 
@@ -244,7 +244,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :nextOffset => nil, :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
+      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
     end
   end
 
@@ -260,7 +260,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :nextOffset => nil, :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
+      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
     end
   end
 
@@ -277,7 +277,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :nextOffset => nil, :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
+      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
     end
   end
 
@@ -294,7 +294,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :nextOffset => nil, :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
+      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
     end
   end
 
@@ -311,7 +311,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :nextOffset => nil, :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
+      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
     end
   end
 
@@ -327,7 +327,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -343,7 +343,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -359,7 +359,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -376,7 +376,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -393,7 +393,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -410,7 +410,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -426,7 +426,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -442,7 +442,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -458,7 +458,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -475,7 +475,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -492,7 +492,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -509,7 +509,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => nil, :nextOffset => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
+      expect(envelope.result[:data]).to eq({:uuids => nil, :occupancy => nil, :total_occupancy => 1, :total_channels => 1, :channels => {"demo" => {"uuids" => ["ruby-test-uuid-client-one"], "occupancy" => 1}}})
     end
   end
 
@@ -525,7 +525,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :nextOffset => nil, :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
+      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
     end
   end
 
@@ -541,7 +541,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :nextOffset => nil, :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
+      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
     end
   end
 
@@ -557,7 +557,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :nextOffset => nil, :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
+      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
     end
   end
 
@@ -574,7 +574,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :nextOffset => nil, :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
+      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
     end
   end
 
@@ -591,7 +591,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :nextOffset => nil, :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
+      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
     end
   end
 
@@ -608,7 +608,7 @@ describe Pubnub::HereNow do
 
       expect(envelope.result[:code]).to eq(200)
       expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :nextOffset => nil, :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
+      expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
     end
   end
 
@@ -628,7 +628,6 @@ describe Pubnub::HereNow do
       expect(envelope.result[:operation]).to eq(:here_now)
       expect(envelope.result[:data]).to eq({
                                              :occupancy => 4,
-                                             :nextOffset => 2,
                                              :total_occupancy => nil,
                                              :total_channels => nil,
                                              :channels => nil,
@@ -653,7 +652,6 @@ describe Pubnub::HereNow do
       expect(envelope.result[:operation]).to eq(:here_now)
       expect(envelope.result[:data]).to eq({
                                              :occupancy => 4,
-                                             :nextOffset => nil,
                                              :total_occupancy => nil,
                                              :total_channels => nil,
                                              :channels => nil,
@@ -662,7 +660,7 @@ describe Pubnub::HereNow do
     end
   end
 
-  it "__channels_test_channel_514_test_channel_56_test_channel_195___group__nil___limit__3___offset__2_4___http_sync__true_" do
+  it "__channels_test_channel_514_test_channel_56_test_channel_195___group__nil___limit__3___offset__3_6___http_sync__true_" do
     VCR.use_cassette("examples/here_now/38", record: :once) do
       channels_list = %w[test-channel-514 test-channel-56 test-channel-195]
       # Fetching first page.
@@ -680,17 +678,15 @@ describe Pubnub::HereNow do
       expect(envelope.result[:operation]).to eq(:here_now)
       expect(envelope.result[:data]).to eq({
                                              :occupancy => nil,
-                                             :nextOffset => 3,
                                              :total_occupancy => 12,
                                              :total_channels => 3,
                                              :channels => envelope.result[:data][:channels],
                                              :uuids => nil
                                            })
-      offset = envelope.result[:data][:nextOffset]
       channels = envelope.result[:data][:channels]
 
       # Fetching next page
-      expect(offset).to eq(3)
+      offset = 3
       envelope = @pubnub.here_now(channels: channels_list, limit: 3, offset: offset, http_sync: true)
       expect(envelope.is_a?(Pubnub::Envelope)).to eq true
       expect(envelope.error?).to eq false
@@ -705,7 +701,6 @@ describe Pubnub::HereNow do
       expect(envelope.result[:operation]).to eq(:here_now)
       expect(envelope.result[:data]).to eq({
                                              :occupancy => nil,
-                                             :nextOffset => 6,
                                              :total_occupancy => 12,
                                              :total_channels => 3,
                                              :channels => envelope.result[:data][:channels],
@@ -716,12 +711,11 @@ describe Pubnub::HereNow do
           expect(envelope.result[:data][:channels][channel_name]['uuids']).not_to include(uuid)
         end
       end
-      offset = envelope.result[:data][:nextOffset]
       channels = envelope.result[:data][:channels]
 
 
       # Fetching last page
-      expect(offset).to eq(6)
+      offset = 6
       envelope = @pubnub.here_now(channels: channels_list, limit: 3, offset: offset, http_sync: true)
       expect(envelope.is_a?(Pubnub::Envelope)).to eq true
       expect(envelope.error?).to eq false
@@ -736,7 +730,6 @@ describe Pubnub::HereNow do
       expect(envelope.result[:operation]).to eq(:here_now)
       expect(envelope.result[:data]).to eq({
                                              :occupancy => nil,
-                                             :nextOffset => nil,
                                              :total_occupancy => 12,
                                              :total_channels => 3,
                                              :channels => envelope.result[:data][:channels],
