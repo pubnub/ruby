@@ -173,7 +173,7 @@ module Pubnub
                      crypto_module secret_key auth_key publish_key subscribe_key timetoken
                      action_timetoken message_timetoken open_timeout read_timeout idle_timeout
                      heartbeat group action read write delete manage ttl presence start end count
-                     limit max reverse presence_callback store skip_validate state channel_group
+                     offset limit max reverse presence_callback store skip_validate state channel_group
                      channel_groups compressed meta customs custom_message_type include_token
                      include_custom_message_type include_message_actions include_message_type
                      replicate with_presence cipher_key_selector include_meta include_uuid join

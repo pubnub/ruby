@@ -22,6 +22,7 @@ module Pubnub
     DEFAULT_USE_RANDOM_IV = true
     DEFAULT_SSL = false
     REQUEST_MESSAGE_COUNT_THRESHOLD = 0
+    MAXIMUM_HERE_NOW_COUNT = 1000
 
     # Envelope values
     # Errors

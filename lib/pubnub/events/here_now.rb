@@ -50,6 +50,19 @@ module Pubnub
     def parameters(*_args)
       parameters = super
       parameters['channel-group'] = @group.join(',') unless @group.blank?
+
+      if current_operation == Pubnub::Constants::OPERATION_HERE_NOW
+        @limit = if !@limit&.positive?
+                   Pubnub::Constants::MAXIMUM_HERE_NOW_COUNT
+                 else
+                   [Pubnub::Constants::MAXIMUM_HERE_NOW_COUNT, @limit].min
+                 end
+        @offset = 0 if @offset.nil?
+
+        parameters['limit'] = @limit
+        parameters['offset'] = @offset if @offset&.positive?
+      end
+
       parameters
     end
 

@@ -611,4 +611,135 @@ describe Pubnub::HereNow do
       expect(envelope.result[:data]).to eq({:uuids => ["ruby-test-uuid-client-one"], :occupancy => 1, :total_occupancy => nil, :total_channels => nil, :channels => nil})
     end
   end
+
+  it "__channel__here_now_test_channel___group__nil___limit__2___http_sync__true_" do
+    VCR.use_cassette("examples/here_now/36", record: :once) do
+      envelope = @pubnub.here_now(channel: "here-now-test-channel", limit: 2, http_sync: true)
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:category]).to eq(:ack)
+      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:client_request].query).to include("limit=2")
+      expect(envelope.status[:client_request].query).to_not include("offset=0")
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:here_now)
+      expect(envelope.result[:data]).to eq({
+                                             :occupancy => 4,
+                                             :total_occupancy => nil,
+                                             :total_channels => nil,
+                                             :channels => nil,
+                                             :uuids => envelope.result[:data][:uuids]
+                                           })
+    end
+  end
+
+  it "__channel__here_now_test_channel___group__nil___limit__10000___http_sync__true_" do
+    VCR.use_cassette("examples/here_now/37", record: :once) do
+      envelope = @pubnub.here_now(channel: "here-now-test-channel", limit: 10000, http_sync: true)
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:category]).to eq(:ack)
+      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:client_request].query).to include("limit=1000")
+      expect(envelope.status[:client_request].query).to_not include("offset=0")
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:here_now)
+      expect(envelope.result[:data]).to eq({
+                                             :occupancy => 4,
+                                             :total_occupancy => nil,
+                                             :total_channels => nil,
+                                             :channels => nil,
+                                             :uuids => envelope.result[:data][:uuids]
+                                           })
+    end
+  end
+
+  it "__channels_test_channel_514_test_channel_56_test_channel_195___group__nil___limit__3___offset__3_6___http_sync__true_" do
+    VCR.use_cassette("examples/here_now/38", record: :once) do
+      channels_list = %w[test-channel-514 test-channel-56 test-channel-195]
+      # Fetching first page.
+      envelope = @pubnub.here_now(channels: channels_list, limit: 3, http_sync: true)
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:category]).to eq(:ack)
+      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:client_request].query).to include("limit=3")
+      expect(envelope.status[:client_request].query).to_not include("offset=0")
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:here_now)
+      expect(envelope.result[:data]).to eq({
+                                             :occupancy => nil,
+                                             :total_occupancy => 12,
+                                             :total_channels => 3,
+                                             :channels => envelope.result[:data][:channels],
+                                             :uuids => nil
+                                           })
+      channels = envelope.result[:data][:channels]
+
+      # Fetching next page
+      offset = 3
+      envelope = @pubnub.here_now(channels: channels_list, limit: 3, offset: offset, http_sync: true)
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:category]).to eq(:ack)
+      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:client_request].query).to include("limit=3")
+      expect(envelope.status[:client_request].query).to include("offset=#{offset}")
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:here_now)
+      expect(envelope.result[:data]).to eq({
+                                             :occupancy => nil,
+                                             :total_occupancy => 12,
+                                             :total_channels => 3,
+                                             :channels => envelope.result[:data][:channels],
+                                             :uuids => nil
+                                           })
+      channels.each_pair do |channel_name, channel_data|
+        channel_data['uuids'].each do |uuid|
+          expect(envelope.result[:data][:channels][channel_name]['uuids']).not_to include(uuid)
+        end
+      end
+      channels = envelope.result[:data][:channels]
+
+
+      # Fetching last page
+      offset = 6
+      envelope = @pubnub.here_now(channels: channels_list, limit: 3, offset: offset, http_sync: true)
+      expect(envelope.is_a?(Pubnub::Envelope)).to eq true
+      expect(envelope.error?).to eq false
+
+      expect(envelope.status[:code]).to eq(200)
+      expect(envelope.status[:category]).to eq(:ack)
+      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
+      expect(envelope.status[:client_request].query).to include("limit=3")
+      expect(envelope.status[:client_request].query).to include("offset=#{offset}")
+
+      expect(envelope.result[:code]).to eq(200)
+      expect(envelope.result[:operation]).to eq(:here_now)
+      expect(envelope.result[:data]).to eq({
+                                             :occupancy => nil,
+                                             :total_occupancy => 12,
+                                             :total_channels => 3,
+                                             :channels => envelope.result[:data][:channels],
+                                             :uuids => nil
+                                           })
+      channels.each_pair do |channel_name, channel_data|
+        channel_data['uuids'].each do |uuid|
+          expect(envelope.result[:data][:channels][channel_name]['uuids']).not_to include(uuid)
+        end
+      end
+    end
+  end
 end
