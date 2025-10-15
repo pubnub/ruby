@@ -196,7 +196,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"type":"emotion_type_3","value":"surprised"}'
-    headers:`
+    headers:
       User-Agent:
       - HTTPClient/1.0 (2.8.3, ruby 3.0.0 (2020-12-25))
       Accept:
