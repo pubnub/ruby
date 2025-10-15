@@ -1,3 +1,9 @@
+## v6.0.0
+October 15 2025
+
+#### Added
+- BREAKING CHANGES: Add 'limit' and 'offset' parameters for 'here_now' for pagination support.
+
 ## v5.6.0
 September 11 2025
 
