@@ -39,7 +39,7 @@ http_interactions:
   recorded_at: Wed, 08 Jun 2016 15:44:45 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo0,demo1,demo.*/0?auth=ruby-test-auth-client-one&channel-group=demo&pnsdk=PubNub-Ruby/4.1.0beta1&tt=12&tt=14654006825168983&uuid=ruby-test-uuid-client-one
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo0,demo1,demo.*/0?auth=ruby-test-auth-client-one&channel-group=demo&pnsdk=PubNub-Ruby/4.1.0beta1&tr=12&tt=14654006825168983&uuid=ruby-test-uuid-client-one
     body:
       encoding: UTF-8
       string: ''
