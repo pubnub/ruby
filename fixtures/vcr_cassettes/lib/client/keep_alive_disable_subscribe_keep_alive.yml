@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/demo/demo/0?pnsdk=PubNub-Ruby/4.0.20&t=%7B%22r%22:0,%22t%22:0%7D&uuid=7e7fa6ca-023b-41f1-8153-97b81d27cca0
+    uri: http://ps.pndsn.com/v2/subscribe/demo/demo/0?pnsdk=PubNub-Ruby/4.0.20&uuid=7e7fa6ca-023b-41f1-8153-97b81d27cca0
     body:
       encoding: UTF-8
       string: ''
@@ -119,7 +119,7 @@ http_interactions:
   recorded_at: Thu, 13 Apr 2017 14:35:06 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/demo/demo/0?pnsdk=PubNub-Ruby/4.0.20&t=%7B%22r%22:12,%22t%22:%2214920940259937049%22%7D&uuid=7e7fa6ca-023b-41f1-8153-97b81d27cca0
+    uri: http://ps.pndsn.com/v2/subscribe/demo/demo/0?pnsdk=PubNub-Ruby/4.0.20&tr=12&tt=14920940259937049&uuid=7e7fa6ca-023b-41f1-8153-97b81d27cca0
     body:
       encoding: UTF-8
       string: ''

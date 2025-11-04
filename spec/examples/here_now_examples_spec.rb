@@ -640,23 +640,13 @@ describe Pubnub::HereNow do
     VCR.use_cassette("examples/here_now/37", record: :once) do
       envelope = @pubnub.here_now(channel: "here-now-test-channel", limit: 10000, http_sync: true)
       expect(envelope.is_a?(Pubnub::Envelope)).to eq true
-      expect(envelope.error?).to eq false
+      expect(envelope.error?).to eq true
 
-      expect(envelope.status[:code]).to eq(200)
-      expect(envelope.status[:category]).to eq(:ack)
-      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
-      expect(envelope.status[:client_request].query).to include("limit=1000")
+      expect(envelope.status[:code]).to eq(400)
+      expect(envelope.status[:operation]).to eq(:here_now)
+      expect(envelope.status[:category]).to eq(:error)
+      expect(envelope.status[:config]).to eq({:tls => false, :uuid => "ruby-test-uuid-client-one", auth_key: "ruby-test-auth-client-one", :origin => "ps.pndsn.com"})
       expect(envelope.status[:client_request].query).to_not include("offset=0")
-
-      expect(envelope.result[:code]).to eq(200)
-      expect(envelope.result[:operation]).to eq(:here_now)
-      expect(envelope.result[:data]).to eq({
-                                             :occupancy => 4,
-                                             :total_occupancy => nil,
-                                             :total_channels => nil,
-                                             :channels => nil,
-                                             :uuids => envelope.result[:data][:uuids]
-                                           })
     end
   end
 

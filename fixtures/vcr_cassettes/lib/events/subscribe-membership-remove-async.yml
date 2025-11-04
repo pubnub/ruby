@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/uuid_mg1/0?auth=ruby-test-auth&pnsdk=PubNub-Ruby/4.2.7&t=%7B%22r%22:0,%22t%22:0%7D&uuid=ruby-test-uuid
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/uuid_mg1/0?auth=ruby-test-auth&pnsdk=PubNub-Ruby/4.2.7&uuid=ruby-test-uuid
     body:
       encoding: UTF-8
       string: ''
@@ -38,7 +38,7 @@ http_interactions:
   recorded_at: Wed, 14 Oct 2020 22:57:29 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/uuid_mg1/0?auth=ruby-test-auth&pnsdk=PubNub-Ruby/4.2.7&t=%7B%22r%22:12,%22t%22:%2216027162473624594%22%7D&uuid=ruby-test-uuid
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/uuid_mg1/0?auth=ruby-test-auth&pnsdk=PubNub-Ruby/4.2.7&tr=12&tt=16027162473624594&uuid=ruby-test-uuid
     body:
       encoding: UTF-8
       string: ''

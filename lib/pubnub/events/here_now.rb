@@ -52,11 +52,7 @@ module Pubnub
       parameters['channel-group'] = @group.join(',') unless @group.blank?
 
       if current_operation == Pubnub::Constants::OPERATION_HERE_NOW
-        @limit = if !@limit&.positive?
-                   Pubnub::Constants::MAXIMUM_HERE_NOW_COUNT
-                 else
-                   [Pubnub::Constants::MAXIMUM_HERE_NOW_COUNT, @limit].min
-                 end
+        @limit = Pubnub::Constants::MAXIMUM_HERE_NOW_COUNT if @limit.nil?
         @offset = 0 if @offset.nil?
 
         parameters['limit'] = @limit

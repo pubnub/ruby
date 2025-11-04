@@ -32,7 +32,10 @@ module Pubnub
 
     def parameters(*_args)
       parameters = super
-      parameters[:state] = encode_state(@app.env[:state][@origin]) if @app.env[:state] && @app.env[:state][@origin]
+      if @app.env[:state] && @app.env[:state][@origin]
+        parameters[:state] = encode_state(@app.env[:state][@origin])
+        parameters.delete(:state) if parameters[:state] == '%7B%7D'
+      end
       parameters[:heartbeat] = @heartbeat
       parameters['channel-group'] = @group.join(',') unless @group.blank?
       parameters

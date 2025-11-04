@@ -1,4 +1,5 @@
 require 'helpers/spec_helper'
+require 'logger'
 
 describe Pubnub::Subscribe do
 
@@ -19570,6 +19571,76 @@ describe Pubnub::Subscribe do
           expect(@status_envelopes[0].status[:subscribed_channels]).to eq([])
           expect(@status_envelopes[0].status[:subscribed_channel_groups]).to eq(["demo"])
           expect(@status_envelopes[0].status[:config]).to eq({ :tls => false, :uuid => "ruby-test-uuid-client-one", :auth_key => "ruby-test-auth-client-one", :origin => "ps.pndsn.com" })
+          true
+        end
+      end
+    end
+  end
+
+  context 'unique channels and groups' do
+    let(:requested_uri) {
+      Array.new
+    }
+    let(:completed) {
+      false
+    }
+
+    let(:pubnub_unique_ch) {
+      Pubnub.new(
+        publish_key: "pub-a-mock-key",
+        subscribe_key: "sub-a-mock-key",
+        user_id: "ruby-test-uuid-client-one",
+        auth_key: "ruby-test-auth-client-one",
+        max_retries: 2,
+        reconnect_interval: 0,
+        heartbeat: 20,
+        logger: setup_logger
+      )
+    }
+    def setup_logger
+      logger = Logger.new(STDOUT)
+      logger.level = Logger::DEBUG
+
+      logger.formatter = proc do |severity, datetime, progname, msg|
+        requested_uri << msg if (msg.include? "Requested URI") && !completed
+        ""
+      end
+      logger
+    end
+
+    it "subscribe_and_heartbeat_has_only_unique_channels" do
+      completed = false
+      VCR.use_cassette("examples/subscribe/unique-channels", record: :once) do
+        @msg_envelopes = []
+        @presence_envelopes = []
+        @status_envelopes = []
+        callbacks = Pubnub::SubscribeCallback.new(
+          message: -> (envelope) { @msg_envelopes << envelope },
+          presence: -> (envelope) { @presence_envelopes << envelope },
+          status: -> (envelope) {
+            @status_envelopes << envelope
+            if @status_envelopes.length == 2 && !completed
+              pubnub_unique_ch.unsubscribe(channels: %w[demo-a demo-b])
+              completed = true
+            end
+          },
+        )
+
+        pubnub_unique_ch.add_listener(callback: callbacks)
+        pubnub_unique_ch.subscribe(channels: %w[demo-a], http_sync: false, callback: @callback)
+        sleep(1)
+        pubnub_unique_ch.subscribe(channels: %w[demo-a demo-b], http_sync: false, callback: @callback)
+        sleep(2)
+      end
+
+      eventually(timeout: 5) do
+        if completed
+          requested_uri.each do |line|
+            next unless line.include?('/v2/subscribe') || line.include?('/heartbeat')
+            channels = line[%r{/v2/(?:subscribe/[^/]+/|presence/[^/]+/channel/)([^/?]+)}, 1]
+                         &.split(',') || []
+            expect(channels.uniq).to eq(channels), "Duplicate channels found in URI: #{line}"
+          end
           true
         end
       end

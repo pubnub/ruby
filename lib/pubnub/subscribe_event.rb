@@ -143,7 +143,10 @@ module Pubnub
     end
 
     def add_timetoken_to_params(params)
-      params[:t] = encode_parameter(r: @app.region_code, t: @app.timetoken)
+      if @app.env[:timetoken]&.to_i&.positive?
+        params[:tt] = @app.timetoken
+        params[:tr] = @app.region_code
+      end
       params
     end
 
@@ -153,7 +156,7 @@ module Pubnub
     end
 
     def add_state_to_params(params)
-      params[:state] = encode_parameter(@app.env[:state][@origin][:channel].merge(@app.env[:state][@origin][:group])) unless @app.empty_state?
+      params[:state] = encode_parameter(@app.env[:state][@origin]) unless @app.empty_state?
       params
     end
   end
