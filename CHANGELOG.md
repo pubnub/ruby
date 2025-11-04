@@ -1,3 +1,13 @@
+## v6.0.1
+November 04 2025
+
+#### Fixed
+- Send proper object for `state` with the `heartbeat` request.
+
+#### Modified
+- Don't cap `limit` and let the server perform value validation.
+- Replace legacy timetoken query parameter with subscribe v2 parameters.
+
 ## v6.0.0
 October 15 2025
 

@@ -39,7 +39,7 @@ http_interactions:
   recorded_at: Fri, 31 Mar 2017 11:09:34 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-pnpres/0?pnsdk=PubNub-Ruby/4.0.19&t=%7B%22r%22:12,%22t%22:%2214909585651874910%22%7D&uuid=59d79c38-474c-4996-b2b3-59137b4bb6f7
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-pnpres/0?pnsdk=PubNub-Ruby/4.0.19&tr=12&tt=14909585651874910&uuid=59d79c38-474c-4996-b2b3-59137b4bb6f7
     body:
       encoding: UTF-8
       string: ''
@@ -77,7 +77,7 @@ http_interactions:
   recorded_at: Fri, 31 Mar 2017 11:09:35 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-pnpres/0?pnsdk=PubNub-Ruby/4.0.19&t=%7B%22r%22:12,%22t%22:%2214909585751739118%22%7D&uuid=59d79c38-474c-4996-b2b3-59137b4bb6f7
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-pnpres/0?pnsdk=PubNub-Ruby/4.0.19&tr=12&tt=14909585751739118&uuid=59d79c38-474c-4996-b2b3-59137b4bb6f7
     body:
       encoding: UTF-8
       string: ''
@@ -115,7 +115,7 @@ http_interactions:
   recorded_at: Fri, 31 Mar 2017 11:09:45 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-pnpres/0?pnsdk=PubNub-Ruby/4.0.19&t=%7B%22r%22:12,%22t%22:%2214909585851755112%22%7D&uuid=59d79c38-474c-4996-b2b3-59137b4bb6f7
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-pnpres/0?pnsdk=PubNub-Ruby/4.0.19&tr=12&tt=14909585851755112&uuid=59d79c38-474c-4996-b2b3-59137b4bb6f7
     body:
       encoding: UTF-8
       string: ''
@@ -153,7 +153,7 @@ http_interactions:
   recorded_at: Fri, 31 Mar 2017 11:09:55 GMT
 - request:
     method: get
-    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-pnpres/0?pnsdk=PubNub-Ruby/4.0.19&t=%7B%22r%22:12,%22t%22:%2214909585951648798%22%7D&uuid=59d79c38-474c-4996-b2b3-59137b4bb6f7
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-pnpres/0?pnsdk=PubNub-Ruby/4.0.19&tr=12&tt=14909585951648798&uuid=59d79c38-474c-4996-b2b3-59137b4bb6f7
     body:
       encoding: UTF-8
       string: ''

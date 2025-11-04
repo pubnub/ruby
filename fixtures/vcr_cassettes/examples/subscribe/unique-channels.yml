@@ -1,0 +1,187 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-a/0?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/6.0.0&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 04 Nov 2025 00:25:33 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 04 Nov 2025 00:25:35 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '45'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"17622159349166528","r":21},"m":[]}'
+  recorded_at: Tue, 04 Nov 2025 00:25:34 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/presence/sub-key/sub-a-mock-key/channel/demo-a/heartbeat?auth=ruby-test-auth-client-one&heartbeat=20&pnsdk=PubNub-Ruby/6.0.0&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 04 Nov 2025 00:25:34 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 04 Nov 2025 00:25:35 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '50'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"message":"OK","service":"Presence","status":200}'
+  recorded_at: Tue, 04 Nov 2025 00:25:34 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/subscribe/sub-a-mock-key/demo-a,demo-b/0?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/6.0.0&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 04 Nov 2025 00:25:34 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 04 Nov 2025 00:25:35 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '45'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"t":{"t":"17622159352005345","r":21},"m":[]}'
+  recorded_at: Tue, 04 Nov 2025 00:25:35 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/presence/sub-key/sub-a-mock-key/channel/demo-a,demo-b/heartbeat?auth=ruby-test-auth-client-one&heartbeat=20&pnsdk=PubNub-Ruby/6.0.0&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 04 Nov 2025 00:25:34 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 04 Nov 2025 00:25:35 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '50'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"message":"OK","service":"Presence","status":200}'
+  recorded_at: Tue, 04 Nov 2025 00:25:35 GMT
+- request:
+    method: get
+    uri: http://ps.pndsn.com/v2/presence/sub-key/sub-a-mock-key/channel/demo-a,demo-b/leave?auth=ruby-test-auth-client-one&pnsdk=PubNub-Ruby/6.0.0&uuid=ruby-test-uuid-client-one
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.8.3, ruby 3.2.2 (2023-03-30))
+      Accept:
+      - "*/*"
+      Date:
+      - Tue, 04 Nov 2025 00:25:35 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 04 Nov 2025 00:25:35 GMT
+      Content-Type:
+      - text/javascript; charset="UTF-8"
+      Content-Length:
+      - '67'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: '{"action":"leave","message":"OK","service":"Presence","status":200}'
+  recorded_at: Tue, 04 Nov 2025 00:25:35 GMT
+recorded_with: VCR 6.3.1

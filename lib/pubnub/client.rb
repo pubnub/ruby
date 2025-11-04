@@ -310,11 +310,11 @@ module Pubnub
       return unless event.state
 
       event.channel.each do |channel|
-        @env[:state][event.origin][:channel][channel] = event.state
+        @env[:state][event.origin][channel] = event.state
       end
 
       event.group.each do |group|
-        @env[:state][event.origin][:group][group] = event.state
+        @env[:state][event.origin][group] = event.state
       end
     end
 
@@ -357,8 +357,6 @@ module Pubnub
     def create_state_pools(event)
       @env[:state] ||= {}
       @env[:state][event.origin] ||= {}
-      @env[:state][event.origin][:channel] ||= {}
-      @env[:state][event.origin][:group] ||= {}
     end
 
     def setup_httpclient(event_type)

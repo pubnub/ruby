@@ -113,7 +113,7 @@ Most important part: `result[:data]`
   {:code=>200,
    :operation=>:subscribe,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v2/subscribe/demo/whatever/0?pnsdk=PubNub-Ruby%2F4.0.13&t=%7B%22r%22%3A12%2C%22t%22%3A%2214793085739462384%22%7D&uuid=37c5370b-6fca-4fcc-a7d1-f82f18596e88>,
+    #<URI::HTTP http://pubsub.pubnub.com/v2/subscribe/demo/whatever/0?pnsdk=PubNub-Ruby%2F4.0.13&tr=12&tt=14793085739462384&uuid=37c5370b-6fca-4fcc-a7d1-f82f18596e88>,
    :server_response=>
     #<HTTP::Message:0x0056126377b368
      @http_body=
@@ -147,7 +147,7 @@ Most important part: `result[:data]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x2b0931bbdf54 URI:http://pubsub.pubnub.com/v2/subscribe/demo/whatever/0?pnsdk=PubNub-Ruby%2F4.0.13&t=%7B%22r%22%3A12%2C%22t%22%3A%2214793085739462384%22%7D&uuid=37c5370b-6fca-4fcc-a7d1-f82f18596e88>,
+        #<Addressable::URI:0x2b0931bbdf54 URI:http://pubsub.pubnub.com/v2/subscribe/demo/whatever/0?pnsdk=PubNub-Ruby%2F4.0.13&tr=12&tt=14793085739462384&uuid=37c5370b-6fca-4fcc-a7d1-f82f18596e88>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
@@ -162,7 +162,7 @@ Most important part: `result[:data]`
  @status=
   {:code=>200,
    :client_request=>
-    #<URI::HTTP http://pubsub.pubnub.com/v2/subscribe/demo/whatever/0?pnsdk=PubNub-Ruby%2F4.0.13&t=%7B%22r%22%3A12%2C%22t%22%3A%2214793085739462384%22%7D&uuid=37c5370b-6fca-4fcc-a7d1-f82f18596e88>,
+    #<URI::HTTP http://pubsub.pubnub.com/v2/subscribe/demo/whatever/0?pnsdk=PubNub-Ruby%2F4.0.13&tr=12&tt=14793085739462384&uuid=37c5370b-6fca-4fcc-a7d1-f82f18596e88>,
    :server_response=>
     #<HTTP::Message:0x0056126377b368
      @http_body=
@@ -196,7 +196,7 @@ Most important part: `result[:data]`
        @request_method="GET",
        @request_query=nil,
        @request_uri=
-        #<Addressable::URI:0x2b0931bbdf54 URI:http://pubsub.pubnub.com/v2/subscribe/demo/whatever/0?pnsdk=PubNub-Ruby%2F4.0.13&t=%7B%22r%22%3A12%2C%22t%22%3A%2214793085739462384%22%7D&uuid=37c5370b-6fca-4fcc-a7d1-f82f18596e88>,
+        #<Addressable::URI:0x2b0931bbdf54 URI:http://pubsub.pubnub.com/v2/subscribe/demo/whatever/0?pnsdk=PubNub-Ruby%2F4.0.13&tr=12&tt=14793085739462384&uuid=37c5370b-6fca-4fcc-a7d1-f82f18596e88>,
        @status_code=200>,
      @peer_cert=nil,
      @previous=nil>,
