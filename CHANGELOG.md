@@ -2,8 +2,8 @@
 March 03 2026
 
 #### Modified
-- Add `.uniq` calls when building the URL path and channel-group query parameter to prevent duplicate channels and channel groups from leaking into HTTP requests.
-- Add `.uniq` calls when building the URL path and channel-group query parameter to prevent duplicate channels and channel groups from leaking into HTTP requests.
+- Add `.uniq` calls when building subscribe URL path and channel-group query parameter to prevent duplicate channels and channel groups from leaking into HTTP requests.
+- Add `.uniq` calls when building heartbeat URL path and channel-group query parameter to prevent duplicate channels and channel groups from leaking into HTTP requests.
 
 ## v6.0.1
 November 04 2025

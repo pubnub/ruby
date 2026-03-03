@@ -5,9 +5,9 @@ changelog:
     version: v6.0.2
     changes:
       - type: improvement
-        text: "Add `.uniq` calls when building the URL path and channel-group query parameter to prevent duplicate channels and channel groups from leaking into HTTP requests."
+        text: "Add `.uniq` calls when building subscribe URL path and channel-group query parameter to prevent duplicate channels and channel groups from leaking into HTTP requests."
       - type: improvement
-        text: "Add `.uniq` calls when building the URL path and channel-group query parameter to prevent duplicate channels and channel groups from leaking into HTTP requests."
+        text: "Add `.uniq` calls when building heartbeat URL path and channel-group query parameter to prevent duplicate channels and channel groups from leaking into HTTP requests."
   - date: 2025-11-04
     version: v6.0.1
     changes:
