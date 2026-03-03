@@ -42,6 +42,19 @@ describe Pubnub::Heartbeat do
       end
     end
 
+    it "sends unique channels and channel groups even when duplicates are provided" do
+      VCR.use_cassette("lib/events/heartbeat-unique", record: :once) do
+        envelope = @pubnub.heartbeat(
+          channel: ['demo', 'demo', 'demo-b'],
+          channel_group: ['grp-a', 'grp-a'],
+        ).value
+
+        expect(envelope.status[:client_request].to_s).to include('/channel/demo,demo-b/')
+        expect(envelope.status[:client_request].to_s).to include('channel-group=grp-a')
+        expect(envelope.status[:client_request].to_s).not_to include('channel-group=grp-a,grp-a')
+      end
+    end
+
     it "forms valid ErrorEnvelope on error" do
       VCR.use_cassette("lib/events/heartbeat-error", record: :once) do
         envelope = @pubnub.heartbeat(
