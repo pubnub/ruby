@@ -25,7 +25,7 @@ module Pubnub
         'sub-key',
         @subscribe_key,
         'channel',
-        Formatter.channels_for_url(@channel),
+        Formatter.channels_for_url(@channel.uniq),
         'heartbeat'
       ].join('/')
     end
@@ -37,7 +37,7 @@ module Pubnub
         parameters.delete(:state) if parameters[:state] == '%7B%7D'
       end
       parameters[:heartbeat] = @heartbeat
-      parameters['channel-group'] = @group.join(',') unless @group.blank?
+      parameters['channel-group'] = @group.uniq.join(',') unless @group.blank?
       parameters
     end
 

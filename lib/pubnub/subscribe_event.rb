@@ -124,7 +124,7 @@ module Pubnub
         'v2',
         'subscribe',
         @subscribe_key,
-        Pubnub::Formatter.channels_for_url(@channel + @wildcard_channel),
+        Pubnub::Formatter.channels_for_url((@channel + @wildcard_channel).uniq),
         0
       ].join('/').gsub(/\?/, '%3F')
     end
@@ -151,7 +151,7 @@ module Pubnub
     end
 
     def add_group_to_params(params)
-      params['channel-group'] = @group.join(',') unless @group.empty?
+      params['channel-group'] = @group.uniq.join(',') unless @group.empty?
       params
     end
 

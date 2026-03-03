@@ -1,6 +1,13 @@
 ---
-version: "6.0.1"
+version: "6.0.2"
 changelog:
+  - date: 2026-03-03
+    version: v6.0.2
+    changes:
+      - type: improvement
+        text: "Add `.uniq` calls when building subscribe URL path and channel-group query parameter to prevent duplicate channels and channel groups from leaking into HTTP requests."
+      - type: improvement
+        text: "Add `.uniq` calls when building heartbeat URL path and channel-group query parameter to prevent duplicate channels and channel groups from leaking into HTTP requests."
   - date: 2025-11-04
     version: v6.0.1
     changes:
@@ -627,7 +634,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-6.0.1.gem
+            package-name: pubnub-6.0.2.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -732,8 +739,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-6.0.1.gem
-            location: https://github.com/pubnub/ruby/releases/download/v6.0.1/pubnub-6.0.1.gem
+            package-name: pubnub-6.0.2.gem
+            location: https://github.com/pubnub/ruby/releases/download/v6.0.2/pubnub-6.0.2.gem
             requires:
               - name: addressable
                 min-version: 2.0.0
