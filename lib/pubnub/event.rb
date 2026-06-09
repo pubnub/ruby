@@ -63,6 +63,8 @@ module Pubnub
                    sender.delete(uri.to_s, header: header)
                  end
 
+      log_protocol(response)
+
       begin
         @app.record_telemetry(@telemetry_name, telemetry_time_start, ::Time.now.to_f)
       rescue StandardError => e
@@ -101,6 +103,13 @@ module Pubnub
     end
 
     private
+
+    def log_protocol(response)
+      return unless response.is_a?(Pubnub::HttpResponse)
+
+      protocol = "HTTP/#{response.http_version}"
+      Pubnub.logger.debug('Pubnub') { "PubNub request completed: operation=#{current_operation} protocol=#{protocol}" }
+    end
 
     def enable_format_channels?
       true
@@ -251,7 +260,7 @@ module Pubnub
       when JSON::ParserError
         error_category = Pubnub::Constants::STATUS_NON_JSON_RESPONSE
         code = req_res_objects[:response].code
-      when HTTPClient::TimeoutError
+      when HTTPX::TimeoutError
         error_category = Pubnub::Constants::STATUS_TIMEOUT
         code = 408
       when OpenSSL::SSL::SSLError

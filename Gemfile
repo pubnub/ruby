@@ -11,8 +11,8 @@ group :test do
   gem 'rubocop'
   gem 'standard'
   gem 'simplecov', '>= 0.21.2', require: false
-  gem 'vcr'
-  gem 'webmock'
+  gem 'vcr', '>= 6.4'
+  gem 'webmock', '>= 3.14'
   gem 'cucumber'
 end
 
