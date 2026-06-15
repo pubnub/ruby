@@ -251,7 +251,7 @@ module Pubnub
       when JSON::ParserError
         error_category = Pubnub::Constants::STATUS_NON_JSON_RESPONSE
         code = req_res_objects[:response].code
-      when HTTPClient::TimeoutError
+      when HTTPX::TimeoutError
         error_category = Pubnub::Constants::STATUS_TIMEOUT
         code = 408
       when OpenSSL::SSL::SSLError

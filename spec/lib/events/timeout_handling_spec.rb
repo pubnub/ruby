@@ -12,19 +12,13 @@ describe "timeout" do
     end
     let(:envelope) { pubnub.time.value }
 
-    [
-      HTTPClient::ConnectTimeoutError,
-      HTTPClient::ReceiveTimeoutError,
-      HTTPClient::SendTimeoutError,
-    ].each do |error_class|
-      it "forms valid ErrorEnvelope on #{error_class}" do
-        allow_any_instance_of(HTTPClient).to receive(:get).and_return error_class.new
+    it "forms valid ErrorEnvelope on HTTPX::TimeoutError" do
+      allow_any_instance_of(Pubnub::HttpDispatcher).to receive(:get).and_raise(HTTPX::TimeoutError.new(nil, "timeout"))
 
-        expect(envelope.is_a?(Pubnub::ErrorEnvelope)).to eq true
-        expect(envelope.status[:code]).to eq 408
-        expect(envelope.status[:category]).to eq Pubnub::Constants::STATUS_TIMEOUT
-        expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
-      end
+      expect(envelope.is_a?(Pubnub::ErrorEnvelope)).to eq true
+      expect(envelope.status[:code]).to eq 408
+      expect(envelope.status[:category]).to eq Pubnub::Constants::STATUS_TIMEOUT
+      expect(envelope.status).to satisfies_schema Pubnub::Schemas::Envelope::StatusSchema.new
     end
   end
 end

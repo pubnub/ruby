@@ -1,6 +1,19 @@
 ---
-version: "6.0.2"
+version: "6.1.0"
 changelog:
+  - date: 2026-06-15
+    version: v6.1.0
+    changes:
+      - type: feature
+        text: "Replace `httpclient` gem with `httpx`, enabling HTTP/2 support."
+      - type: feature
+        text: "Add `HttpDispatcher` and `HttpResponse` wrapper classes for a consistent internal API ."
+      - type: feature
+        text: "Update timeout, proxy, and keepalive configuration to use HTTPX equivalents."
+      - type: feature
+        text: "Update error handling to use `HTTPX::TimeoutError`."
+      - type: improvement
+        text: "Update specs and test dependencies accordingly."
   - date: 2026-03-03
     version: v6.0.2
     changes:
@@ -634,7 +647,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-6.0.2.gem
+            package-name: pubnub-6.1.0.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -739,8 +752,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-6.0.2.gem
-            location: https://github.com/pubnub/ruby/releases/download/v6.0.2/pubnub-6.0.2.gem
+            package-name: pubnub-6.1.0.gem
+            location: https://github.com/pubnub/ruby/releases/download/v6.1.0/pubnub-6.1.0.gem
             requires:
               - name: addressable
                 min-version: 2.0.0

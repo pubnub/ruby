@@ -278,5 +278,6 @@ describe Pubnub::Client do
         eventually { expect(pubnub.env[:req_dispatchers_pool][:async]["ps.pndsn.com"][:single_event].tcp_keepalive).to eq false }
       end
     end
+
   end
 end

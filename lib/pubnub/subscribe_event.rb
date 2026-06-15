@@ -69,6 +69,7 @@ module Pubnub
 
       begin
         req = request_dispatcher.get(uri.to_s)
+
         if retries > 0
           @app.subscriber.announce_status(announcement_type: Pubnub::Constants::RECONNECTED_ANNOUNCEMENT,
                                           event: @event,

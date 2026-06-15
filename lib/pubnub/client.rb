@@ -268,11 +268,11 @@ module Pubnub
       if sync
         @env[:req_dispatchers_pool][:sync][origin] ||= {}
         @env[:req_dispatchers_pool][:sync][origin][event_type] ||=
-          setup_httpclient(event_type)
+          setup_httpx_session(event_type)
       else
         @env[:req_dispatchers_pool][:async][origin] ||= {}
         @env[:req_dispatchers_pool][:async][origin][event_type] ||=
-          setup_httpclient(event_type)
+          setup_httpx_session(event_type)
       end
     end
 
@@ -359,33 +359,43 @@ module Pubnub
       @env[:state][event.origin] ||= {}
     end
 
-    def setup_httpclient(event_type)
-      hc = if ENV["HTTP_PROXY"]
-        HTTPClient.new(ENV["HTTP_PROXY"])
-      else
-        HTTPClient.new
+    def setup_httpx_session(event_type)
+      timeout_opts = case event_type
+        when :subscribe_event
+          {
+            connect_timeout: @env[:s_open_timeout],
+            write_timeout: @env[:s_send_timeout] || @env[:s_open_timeout],
+            read_timeout: @env[:s_read_timeout]
+          }
+        when :single_event
+          {
+            connect_timeout: @env[:open_timeout],
+            write_timeout: @env[:send_timeout] || @env[:open_timeout],
+            read_timeout: @env[:read_timeout]
+          }
+        end
+
+      keepalive_enabled = case event_type
+        when :subscribe_event
+          !(@env[:disable_keepalive] || @env[:disable_subscribe_keepalive])
+        when :single_event
+          !(@env[:disable_keepalive] || @env[:disable_non_subscribe_keepalive])
+        end
+
+      if keepalive_enabled
+        timeout_opts[:keep_alive_timeout] = @env[:idle_timeout]
       end
 
-      case event_type
-      when :subscribe_event
-        hc.connect_timeout = @env[:s_open_timeout]
-        hc.send_timeout = @env[:s_send_timeout]
-        hc.receive_timeout = @env[:s_read_timeout]
-        unless @env[:disable_keepalive] || @env[:disable_subscribe_keepalive]
-          hc.keep_alive_timeout = @env[:idle_timeout]
-          hc.tcp_keepalive = true
-        end
-      when :single_event
-        hc.connect_timeout = @env[:open_timeout]
-        hc.send_timeout = @env[:send_timeout]
-        hc.receive_timeout = @env[:read_timeout]
-        unless @env[:disable_keepalive] || @env[:disable_non_subscribe_keepalive]
-          hc.keep_alive_timeout = @env[:idle_timeout]
-          hc.tcp_keepalive = true
-        end
+      options = { timeout: timeout_opts }
+      httpx = HTTPX.plugin(:persistent)
+
+      if ENV["HTTP_PROXY"]
+        options[:proxy] = { uri: ENV["HTTP_PROXY"] }
+        httpx = httpx.plugin(:proxy)
       end
 
-      hc
+      session = httpx.with(**options)
+      HttpDispatcher.new(session, keepalive_enabled: keepalive_enabled)
     end
 
     def validate!(env)

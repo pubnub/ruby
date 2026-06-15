@@ -2,6 +2,7 @@ require "rubygems"
 require "rr"
 require "stringio"
 require "webmock/rspec"
+require "httpx/adapters/webmock"
 require "vcr"
 require "pry"
 require "spec_expectations"
@@ -67,6 +68,7 @@ RSpec.configure do |config|
   config.include AsyncHelper
   config.mock_framework = :rspec
   config.tty = true
+  config.filter_run_excluding integration: true
 
   logfile = File.open(File.expand_path("../../test.log", __FILE__), "a")
   logfile.sync = true
