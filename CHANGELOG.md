@@ -1,3 +1,15 @@
+## v6.1.0
+June 15 2026
+
+#### Added
+- Replace `httpclient` gem with `httpx`, enabling HTTP/2 support.
+- Add `HttpDispatcher` and `HttpResponse` wrapper classes for a consistent internal API .
+- Update timeout, proxy, and keepalive configuration to use HTTPX equivalents.
+- Update error handling to use `HTTPX::TimeoutError`.
+
+#### Modified
+- Update specs and test dependencies accordingly.
+
 ## v6.0.2
 March 03 2026
 
