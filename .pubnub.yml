@@ -1,6 +1,15 @@
 ---
-version: "6.1.0"
+version: "6.1.1"
 changelog:
+  - date: 2026-07-21
+    version: v6.1.1
+    changes:
+      - type: bug
+        text: "`Pubnub::Cbor` now enforces a recursion-depth cap, a per-container length cap, and a total input size cap. Malformed or attacker-crafted tokens reaching `Pubnub::Client#parse_token` raise `Pubnub::Cbor::DecodeError` instead of hanging the caller or triggering `SystemStackError`."
+      - type: bug
+        text: "`Pubnub::Constants::DEFAULT_SSL` flipped from `false` to `true`. Integrators must now opt out explicitly to send traffic in cleartext."
+      - type: bug
+        text: "The Requested URI debug entry in `Pubnub::Event#uri` now masks the `signature` and `pnsig` query parameter values."
   - date: 2026-06-15
     version: v6.1.0
     changes:
@@ -647,7 +656,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-6.1.0.gem
+            package-name: pubnub-6.1.1.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -752,8 +761,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-6.1.0.gem
-            location: https://github.com/pubnub/ruby/releases/download/v6.1.0/pubnub-6.1.0.gem
+            package-name: pubnub-6.1.1.gem
+            location: https://github.com/pubnub/ruby/releases/download/v6.1.1/pubnub-6.1.1.gem
             requires:
               - name: addressable
                 min-version: 2.0.0
