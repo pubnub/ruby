@@ -20,7 +20,7 @@ module Pubnub
     DEFAULT_TTL = 1440
     DEFAULT_REGION = '0'.freeze
     DEFAULT_USE_RANDOM_IV = true
-    DEFAULT_SSL = false
+    DEFAULT_SSL = true
     REQUEST_MESSAGE_COUNT_THRESHOLD = 0
     MAXIMUM_HERE_NOW_COUNT = 1000
 

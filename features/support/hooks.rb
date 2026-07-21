@@ -12,7 +12,7 @@ Before do |scenario|
     expect(ENV['SERVER_PORT']).not_to be_nil
     @pn_configuration = {
       origin: ENV['SERVER_HOST'] + ":" + ENV['SERVER_PORT'],
-      isSecure: false,
+      ssl: false,
     }
   }
 

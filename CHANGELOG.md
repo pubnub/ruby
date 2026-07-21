@@ -1,3 +1,11 @@
+## v6.1.1
+July 21 2026
+
+#### Fixed
+- `Pubnub::Cbor` now enforces a recursion-depth cap, a per-container length cap, and a total input size cap. Malformed or attacker-crafted tokens reaching `Pubnub::Client#parse_token` raise `Pubnub::Cbor::DecodeError` instead of hanging the caller or triggering `SystemStackError`.
+- `Pubnub::Constants::DEFAULT_SSL` flipped from `false` to `true`. Integrators must now opt out explicitly to send traffic in cleartext.
+- The Requested URI debug entry in `Pubnub::Event#uri` now masks the `signature` and `pnsig` query parameter values, per the SDK log practices ADR. `auth` and `token` remain visible at DEBUG since they are permitted URL parameters.
+
 ## v6.1.0
 June 15 2026
 

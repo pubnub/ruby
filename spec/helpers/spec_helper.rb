@@ -22,7 +22,10 @@ else
 end
 
 require "pubnub"
+
 Pubnub::Constants::DEFAULT_RECONNECT_INTERVAL = 0
+Pubnub::Constants::DEFAULT_SSL = false
+
 if ENV["CI"] == "true" && ENV['NO_COVERAGE'] != 'true'
   require "codacy-coverage"
   Codacy::Reporter.start

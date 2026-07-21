@@ -1,5 +1,10 @@
 module Pubnub
   class Cbor
+    class DecodeError < StandardError; end
+
+    MAX_DEPTH = 32
+    MAX_CONTAINER_LENGTH = 65_536
+    MAX_INPUT_SIZE = 1_048_576
 
     private
 
@@ -43,9 +48,14 @@ module Pubnub
       end
     end
 
+    def take_bytes(data, count)
+      raise DecodeError, "Truncated CBOR input" if data.size < count
+      data.shift(count)
+    end
+
     def decode_integer(data, additional)
       if ADDITIONAL_LENGTH_BYTES.member?(additional)
-        bytearray_to_i(data.shift(ADDITIONAL_LENGTH_BYTES[additional]))
+        bytearray_to_i(take_bytes(data, ADDITIONAL_LENGTH_BYTES[additional]))
       else
         additional
       end
@@ -55,7 +65,10 @@ module Pubnub
       if additional <= 23
         additional
       else
-        bytes = bytearray_to_i(data.shift(ADDITIONAL_LENGTH_BYTES[additional]))
+        raise DecodeError, "Invalid float additional value" unless ADDITIONAL_LENGTH_BYTES.member?(additional)
+
+        bytes = bytearray_to_i(take_bytes(data, ADDITIONAL_LENGTH_BYTES[additional]))
+        
         case (additional)
         when ADDITIONAL_LENGTH_1B
           bytes
@@ -98,44 +111,57 @@ module Pubnub
       result = []
 
       loop do
+        raise DecodeError, "Truncated CBOR input" if data.empty?
         byte = data.shift
         break if byte == INDEFINITE_BREAK
         result.append(byte)
-        break if data.empty?
       end
       result
     end
 
-    def compute_length(data, additional)
-      if ADDITIONAL_LENGTH_BYTES.member?(additional)
-        bytearray_to_i(data.shift(ADDITIONAL_LENGTH_BYTES[additional]))
-      else
-        additional
+    def compute_container_length(data, additional, min_element_bytes)
+      length = if ADDITIONAL_LENGTH_BYTES.member?(additional)
+                 bytearray_to_i(take_bytes(data, ADDITIONAL_LENGTH_BYTES[additional]))
+               else
+                 additional
+               end
+
+      if length > MAX_CONTAINER_LENGTH
+        raise DecodeError, "CBOR container length #{length} exceeds maximum #{MAX_CONTAINER_LENGTH}"
       end
+
+      if length * min_element_bytes > data.size
+        raise DecodeError, "CBOR container length #{length} exceeds remaining input"
+      end
+
+      length
     end
 
     def decode_string(data, additional)
       if additional == ADDITIONAL_TYPE_INDEFINITE
         indefinite_data(data).pack('C*').force_encoding('UTF-8')
       else
-        length = compute_length(data, additional)
-        data.shift(length).pack('C*').force_encoding('UTF-8')
+        length = compute_container_length(data, additional, 1)
+        take_bytes(data, length).pack('C*').force_encoding('UTF-8')
       end
     end
 
-    def decode_map(data, additional)
-      length = compute_length(data, additional)
+    def decode_map(data, additional, depth)
+      length = compute_container_length(data, additional, 2)
       result = Hash.new
-      (1..length).each { result.store(parse_data(data), parse_data(data)) }
+      length.times { result.store(parse_data(data, depth), parse_data(data, depth)) }
       result
     end
 
-    def decode_array(data, additional)
-      length = compute_length(data, additional)
-      (1..length).map { parse_data(data) }
+    def decode_array(data, additional, depth)
+      length = compute_container_length(data, additional, 1)
+      Array.new(length) { parse_data(data, depth) }
     end
 
-    def parse_data(data)
+    def parse_data(data, depth = 0)
+      raise DecodeError, "CBOR nesting depth exceeds #{MAX_DEPTH}" if depth > MAX_DEPTH
+      raise DecodeError, "Truncated CBOR input" if data.empty?
+
       byte = data.shift
 
       case (byte)
@@ -163,9 +189,9 @@ module Pubnub
         when TYPE_TEXT_STRING
           decode_string(data, additional)
         when TYPE_ARRAY
-          decode_array(data, additional)
+          decode_array(data, additional, depth + 1)
         when TYPE_HASHMAP
-          decode_map(data, additional)
+          decode_map(data, additional, depth + 1)
         else
           nil
         end
@@ -175,7 +201,11 @@ module Pubnub
     public
 
     def decode(value)
-      parse_data(value)
+      if value.size > MAX_INPUT_SIZE
+        raise DecodeError, "CBOR input size #{value.size} exceeds maximum #{MAX_INPUT_SIZE}"
+      end
+
+      parse_data(value.dup)
     end
   end
 

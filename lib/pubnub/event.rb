@@ -88,7 +88,7 @@ module Pubnub
       uri += path
       uri += '?' + Formatter.params_hash_to_url_params(parameters)
       uri += "&signature=#{sa_signature}" if sa_signature
-      Pubnub.logger.debug('Pubnub::Event') { "Requested URI: #{uri}" }
+      Pubnub.logger.debug('Pubnub::Event') { "Requested URI: #{uri.gsub(/([?&](?:signature|pnsig)=)[^&#]*/i, '\1***')}" }
       URI uri
     end
 
