@@ -1,3 +1,5 @@
+<img width="1920" height="600" alt="ruby-header" src="https://github.com/user-attachments/assets/ddf7134b-804c-48d6-aa74-cc67ee5aab94" />
+
 # PubNub Ruby SDK
 
 ![Tests Status](https://github.com/pubnub/ruby/actions/workflows/run-tests.yml/badge.svg)
