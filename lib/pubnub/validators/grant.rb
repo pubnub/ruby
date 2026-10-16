@@ -12,6 +12,7 @@ module Pubnub
         validate_keys!
         validate_ttl!
         validate_uuids!
+        validate_categories!
       end
 
       private
@@ -35,6 +36,27 @@ module Pubnub
           ArgumentError.new(object: self, message: ':ttl has to be kind of Integer for grant event.'),
           ':ttl has to be kind of Integer for grant event.'
         )
+      end
+
+      def validate_categories!
+        return if @categories.nil?
+
+        raise(
+          ArgumentError.new(object: self, message: ':categories has to be kind of String, Symbol or Array for grant event.'),
+          ':categories has to be kind of String, Symbol or Array for grant event.'
+        ) unless @categories.is_a?(Array)
+
+        raise(
+          ArgumentError.new(object: self, message: ':categories supports only channels and uuids for grant event.'),
+          ':categories supports only channels and uuids for grant event.'
+        ) unless (@categories - %w[channels uuids]).empty?
+
+        # Use the per-call option: PAM#initialize resets @auth_key to options[:auth_key], so a client-level
+        # auth_key is never sent as the grant target `auth`.
+        raise(
+          ArgumentError.new(object: self, message: ':auth_key is required for grant event on categories.'),
+          ':auth_key is required for grant event on categories.'
+        ) if @given_options[:auth_key].nil? || @given_options[:auth_key].to_s.empty?
       end
 
       def validate_uuids!
