@@ -58,12 +58,12 @@ received = Queue.new
 published = false
 
 callback = Pubnub::SubscribeCallback.new(
-  message: lambda do |envelope|
+  message: ->(envelope) do
     puts envelope.result[:data][:message]
     received << true
   end,
 
-  status: lambda do |envelope|
+  status: ->(envelope) do
     if !published && !envelope.error?
       published = true
 
