@@ -12,6 +12,7 @@ module Pubnub
       options[:channel_groups] = options[:channel_groups] || {}
       @spaces_permissions = options[:spaces_permissions] || {}
       @users_permissions = options[:users_permissions] || {}
+      @categories = options[:categories] || {}
       super
     end
 
@@ -31,7 +32,8 @@ module Pubnub
           meta: @meta,
           uuid: uuid,
           resources: prepare_permissions(:resource, @channels, @channel_groups, @uuids, @spaces_permissions, @users_permissions),
-          patterns: prepare_permissions(:pattern, @channels, @channel_groups, @uuids, @spaces_permissions, @users_permissions)
+          patterns: prepare_permissions(:pattern, @channels, @channel_groups, @uuids, @spaces_permissions, @users_permissions),
+          categories: prepare_categories(@categories)
         }.select { |_, v| v }
       }
       body = Formatter.format_message(raw_body, nil, false)
@@ -68,6 +70,12 @@ module Pubnub
       resources
         .select { |_, v| v.type == type }
         .to_h { |k, v| [k, v.calculate_bitmask] }
+    end
+
+    def prepare_categories(categories)
+      return nil if categories.empty?
+
+      categories.to_h { |k, v| [k.to_s, v.calculate_bitmask] }
     end
 
     def valid_envelope(parsed_response, req_res_objects)
@@ -144,6 +152,13 @@ module Pubnub
           get: get,
           update: update,
           join: join
+        )
+      end
+
+      def cat(get: false)
+        Permissions.new(
+          type: :category,
+          get: get
         )
       end
     end

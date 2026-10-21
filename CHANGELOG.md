@@ -1,3 +1,9 @@
+## v6.2.0
+October 21 2026
+
+#### Added
+- Add `categories` support to `grant` and `grant_token` for granting enumeration (`get`) permission on all `channels` and `uuids` metadata.
+
 ## v6.1.1
 July 21 2026
 
