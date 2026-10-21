@@ -12,6 +12,7 @@ module Pubnub
         validate_permissions!(@uuids, ":uuids")
         validate_permissions!(@channels, ":channels")
         validate_permissions!(@channel_groups, ":uuids")
+        validate_categories!
         validate_objects_entities_separation!
       end
 
@@ -45,6 +46,27 @@ module Pubnub
           ArgumentError.new(object: self, message: ":#{name} has to be kind of Hash for grant token event."),
           ":#{name} has to be kind of Hash for grant token event."
         ) unless arg.is_a?(Hash)
+      end
+
+      def validate_categories!
+        return if @categories.nil?
+
+        raise(
+          ArgumentError.new(object: self, message: ':categories has to be kind of Hash for grant token event.'),
+          ':categories has to be kind of Hash for grant token event.'
+        ) unless @categories.is_a?(Hash)
+
+        @categories.each do |key, value|
+          raise(
+            ArgumentError.new(object: self, message: ':categories supports only :channels and :uuids keys for grant token event.'),
+            ':categories supports only :channels and :uuids keys for grant token event.'
+          ) unless %w[channels uuids].include?(key.to_s)
+
+          raise(
+            ArgumentError.new(object: self, message: ':categories values have to be created with Pubnub::Permissions.cat for grant token event.'),
+            ':categories values have to be created with Pubnub::Permissions.cat for grant token event.'
+          ) unless value.is_a?(Pubnub::Permissions) && value.type == :category
+        end
       end
 
       def validate_objects_entities_separation!

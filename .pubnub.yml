@@ -1,6 +1,11 @@
 ---
-version: "6.1.1"
+version: "6.2.0"
 changelog:
+  - date: 2026-10-21
+    version: v6.2.0
+    changes:
+      - type: feature
+        text: "Add `categories` support to `grant` and `grant_token` for granting enumeration (`get`) permission on all `channels` and `uuids` metadata."
   - date: 2026-07-21
     version: v6.1.1
     changes:
@@ -656,7 +661,7 @@ sdks:
                     - x86-64
           - distribution-type: package
             distribution-repository: RubyGems
-            package-name: pubnub-6.1.1.gem
+            package-name: pubnub-6.2.0.gem
             location: https://rubygems.org/gems/pubnub
             requires:
               - name: addressable
@@ -761,8 +766,8 @@ sdks:
                     - x86-64
           - distribution-type: library
             distribution-repository: GitHub release
-            package-name: pubnub-6.1.1.gem
-            location: https://github.com/pubnub/ruby/releases/download/v6.1.1/pubnub-6.1.1.gem
+            package-name: pubnub-6.2.0.gem
+            location: https://github.com/pubnub/ruby/releases/download/v6.2.0/pubnub-6.2.0.gem
             requires:
               - name: addressable
                 min-version: 2.0.0
