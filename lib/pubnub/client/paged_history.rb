@@ -25,7 +25,7 @@ module Pubnub
         if options[:http_sync]
           sync_all_history_messages(channel, include_token, page_size, reverse, maximum, callback, start: start_tt, end: end_tt)
         else
-          async_all_history_messages(options)
+          async_all_history_messages(options.merge(callback: callback))
         end
       end
 
@@ -42,7 +42,7 @@ module Pubnub
         if options[:http_sync]
           sync_paged_history(channel, page, limit, include_token, callback, start: start_tt, end: end_tt)
         else
-          async_paged_history(options)
+          async_paged_history(options.merge(callback: callback))
         end
       end
 
