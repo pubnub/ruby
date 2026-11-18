@@ -1,6 +1,3 @@
-# Pre-existing offenses are recorded in .rubocop_todo.yml (generated with
-# `rubocop --auto-gen-config --exclude-limit 1000`) so the lint gate can be
-# enforced on new code without a large rewrite. Remove entries as they get fixed.
 inherit_from: .rubocop_todo.yml
 
 AllCops:
