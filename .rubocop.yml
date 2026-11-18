@@ -7,6 +7,7 @@ AllCops:
   Exclude:
     - 'spec/**/*'
     - 'examples/**/*'
+    - 'vendor/**/*'
     - 'lib/pubnub/crypto.rb'
     - 'lib/pubnub/format.rb'
 
