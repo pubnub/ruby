@@ -26,11 +26,6 @@ require "pubnub"
 Pubnub::Constants::DEFAULT_RECONNECT_INTERVAL = 0
 Pubnub::Constants::DEFAULT_SSL = false
 
-if ENV["CI"] == "true" && ENV['NO_COVERAGE'] != 'true'
-  require "codacy-coverage"
-  Codacy::Reporter.start
-end
-
 # AsyncHelper allows us to wait for async operations
 module AsyncHelper
   def eventually(options = {})
@@ -94,7 +89,6 @@ VCR.configure do |c|
   c.cassette_library_dir = "fixtures/vcr_cassettes"
   c.hook_into :webmock
   c.allow_http_connections_when_no_cassette = false
-  c.ignore_hosts "api.codacy.com"
   c.default_cassette_options = {
     match_requests_on: [:method, VCR.request_matchers.uri_without_param(*ignored_params)],
   }
