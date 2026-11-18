@@ -24,9 +24,23 @@ jobs:
       - name: Cancel workflow runs for commit on error
         if: failure()
         uses: ./.github/.release/actions/actions/utils/fast-jobs-failure
+  rubocop:
+    name: RuboCop
+    runs-on:
+      group: organization/Default
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.3
+          bundler-cache: true
+      - name: Run RuboCop
+        run: bundle exec rubocop
   all-validations:
     name: Validations
-    needs: [pubnub-yml]
+    needs: [pubnub-yml, rubocop]
     runs-on:
       group: organization/Default
     steps:
