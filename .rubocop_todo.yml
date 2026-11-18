@@ -16,9 +16,25 @@ Bundler/OrderedGems:
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
+# Configuration parameters: Severity, Include.
+# Include: **/*.gemspec
+Gemspec/DeprecatedAttributeAssignment:
+  Exclude:
+    - 'pubnub.gemspec'
+
+# Offense count: 1
+# This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: TreatCommentsAsGroupSeparators, ConsiderPunctuation, Include.
 # Include: **/*.gemspec
 Gemspec/OrderedDependencies:
+  Exclude:
+    - 'pubnub.gemspec'
+
+# Offense count: 1
+# This cop supports safe autocorrection (--autocorrect).
+# Configuration parameters: Severity, Include.
+# Include: **/*.gemspec
+Gemspec/RequireMFA:
   Exclude:
     - 'pubnub.gemspec'
 
@@ -110,6 +126,14 @@ Layout/HashAlignment:
   Exclude:
     - 'features/support/env.rb'
 
+# Offense count: 1
+# This cop supports safe autocorrection (--autocorrect).
+# Configuration parameters: EnforcedStyle, IndentationWidth.
+# SupportedStyles: aligned, indented
+Layout/LineEndStringConcatenationIndentation:
+  Exclude:
+    - 'lib/pubnub/client.rb'
+
 # Offense count: 4
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: Max, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, AllowedPatterns.
@@ -192,6 +216,20 @@ Layout/TrailingEmptyLines:
 Layout/TrailingWhitespace:
   Exclude:
     - 'lib/pubnub/cbor.rb'
+
+# Offense count: 6
+# This cop supports safe autocorrection (--autocorrect).
+Lint/AmbiguousOperatorPrecedence:
+  Exclude:
+    - 'lib/pubnub/cbor.rb'
+    - 'lib/pubnub/client.rb'
+
+# Offense count: 4
+# Configuration parameters: IgnoreLiteralBranches, IgnoreConstantBranches.
+Lint/DuplicateBranch:
+  Exclude:
+    - 'lib/pubnub/cbor.rb'
+    - 'lib/pubnub/formatter.rb'
 
 # Offense count: 2
 # Configuration parameters: AllowedParentClasses.
@@ -407,6 +445,15 @@ Style/BlockDelimiters:
     - 'lib/pubnub/events/remove_channel_members.rb'
     - 'lib/pubnub/events/remove_memberships.rb'
 
+# Offense count: 3
+# This cop supports unsafe autocorrection (--autocorrect-all).
+# Configuration parameters: AllowedReceivers.
+Style/CollectionCompact:
+  Exclude:
+    - 'lib/pubnub/events/grant.rb'
+    - 'lib/pubnub/events/here_now.rb'
+    - 'lib/pubnub/events/revoke.rb'
+
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
 Style/ColonMethodCall:
@@ -421,6 +468,11 @@ Style/ConditionalAssignment:
   Exclude:
     - 'lib/pubnub/cbor.rb'
     - 'lib/pubnub/events/grant_token.rb'
+
+# Offense count: 1
+Style/DocumentDynamicEvalDefinition:
+  Exclude:
+    - 'features/support/helper.rb'
 
 # Offense count: 4
 # Configuration parameters: AllowedConstants.
@@ -460,6 +512,14 @@ Style/EmptyLiteral:
 Style/EvalWithLocation:
   Exclude:
     - 'features/support/helper.rb'
+
+# Offense count: 18
+# This cop supports safe autocorrection (--autocorrect).
+# Configuration parameters: AllowedVars.
+Style/FetchEnvVar:
+  Exclude:
+    - 'features/step_definitions/access_steps.rb'
+    - 'features/support/hooks.rb'
 
 # Offense count: 1
 # This cop supports unsafe autocorrection (--autocorrect-all).
@@ -637,6 +697,14 @@ Style/IfUnlessModifier:
     - 'lib/pubnub/http_dispatcher.rb'
     - 'lib/pubnub/subscribe_event/callbacks.rb'
 
+# Offense count: 2
+# This cop supports unsafe autocorrection (--autocorrect-all).
+# Configuration parameters: AllowedMethods.
+# AllowedMethods: nonzero?
+Style/IfWithBooleanLiteralBranches:
+  Exclude:
+    - 'lib/pubnub/origin_manager.rb'
+
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowedMethods, AllowedPatterns.
@@ -667,6 +735,12 @@ Style/MultilineIfModifier:
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: literals, strict
 Style/MutableConstant:
+  Exclude:
+    - 'lib/pubnub/cbor.rb'
+
+# Offense count: 3
+# This cop supports safe autocorrection (--autocorrect).
+Style/NegatedIfElseCondition:
   Exclude:
     - 'lib/pubnub/cbor.rb'
 
@@ -758,6 +832,20 @@ Style/PreferredHashMethods:
   Exclude:
     - 'lib/pubnub/client.rb'
 
+# Offense count: 2
+# This cop supports safe autocorrection (--autocorrect).
+# Configuration parameters: .
+# SupportedStyles: same_as_string_literals, single_quotes, double_quotes
+Style/QuotedSymbols:
+  EnforcedStyle: double_quotes
+
+# Offense count: 1
+# This cop supports unsafe autocorrection (--autocorrect-all).
+# Configuration parameters: Methods.
+Style/RedundantArgument:
+  Exclude:
+    - 'lib/pubnub/events/revoke_token.rb'
+
 # Offense count: 3
 # This cop supports safe autocorrection (--autocorrect).
 Style/RedundantAssignment:
@@ -779,6 +867,13 @@ Style/RedundantParentheses:
     - 'lib/pubnub/cbor.rb'
     - 'lib/pubnub/event/formatter.rb'
     - 'lib/pubnub/validators/grant_token.rb'
+
+# Offense count: 3
+# This cop supports safe autocorrection (--autocorrect).
+Style/RedundantRegexpArgument:
+  Exclude:
+    - 'lib/pubnub/event/signature.rb'
+    - 'lib/pubnub/subscribe_event.rb'
 
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
@@ -803,6 +898,12 @@ Style/RedundantReturn:
 Style/RedundantSelf:
   Exclude:
     - 'lib/pubnub/client/events.rb'
+
+# Offense count: 1
+# This cop supports safe autocorrection (--autocorrect).
+Style/RedundantSelfAssignmentBranch:
+  Exclude:
+    - 'lib/pubnub/event.rb'
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
@@ -925,6 +1026,28 @@ Style/StringLiteralsInInterpolation:
     - 'lib/pubnub/client.rb'
     - 'lib/pubnub/validators/set_channel_members.rb'
     - 'lib/pubnub/validators/set_memberships.rb'
+
+# Offense count: 17
+# This cop supports safe autocorrection (--autocorrect).
+Style/SuperArguments:
+  Exclude:
+    - 'lib/pubnub/events/audit.rb'
+    - 'lib/pubnub/events/delete_messages.rb'
+    - 'lib/pubnub/events/fetch_messages.rb'
+    - 'lib/pubnub/events/get_all_channels_metadata.rb'
+    - 'lib/pubnub/events/get_all_uuid_metadata.rb'
+    - 'lib/pubnub/events/get_channel_members.rb'
+    - 'lib/pubnub/events/get_channel_metadata.rb'
+    - 'lib/pubnub/events/get_memberships.rb'
+    - 'lib/pubnub/events/get_uuid_metadata.rb'
+    - 'lib/pubnub/events/grant.rb'
+    - 'lib/pubnub/events/remove_channel_members.rb'
+    - 'lib/pubnub/events/remove_memberships.rb'
+    - 'lib/pubnub/events/revoke.rb'
+    - 'lib/pubnub/events/set_channel_members.rb'
+    - 'lib/pubnub/events/set_channel_metadata.rb'
+    - 'lib/pubnub/events/set_memberships.rb'
+    - 'lib/pubnub/events/set_uuid_metadata.rb'
 
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
