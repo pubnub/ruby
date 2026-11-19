@@ -80,7 +80,7 @@ module Pubnub
     def parse_timetokens(timetokens)
       timetokens ||= []
       if timetokens.is_a? String
-        timetokens = timetokens.split(/\s*,\s*/)
+        timetokens = timetokens.split(',').map(&:strip)
       elsif timetokens.is_a? Integer
         timetokens = [timetokens]
       end
