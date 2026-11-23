@@ -1,8 +1,13 @@
+inherit_from: .rubocop_todo.yml
+
 AllCops:
+  NewCops: enable
+  SuggestExtensions: false
   TargetRubyVersion: 3.0
   Exclude:
     - 'spec/**/*'
     - 'examples/**/*'
+    - 'vendor/**/*'
     - 'lib/pubnub/crypto.rb'
     - 'lib/pubnub/format.rb'
 
@@ -10,7 +15,7 @@ AllCops:
 Metrics/ClassLength:
   Max: 150
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 150
 
 Metrics/AbcSize:

@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gemspec
 
 group :test do
-  gem 'codacy-coverage', require: false
   gem 'rr'
   gem 'rspec'
   gem 'rspec-retry'
