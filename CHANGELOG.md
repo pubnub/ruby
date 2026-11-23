@@ -1,3 +1,9 @@
+## v6.2.1
+November 23 2026
+
+#### Fixed
+- Preserve block callbacks in async history methods. Fixed the following issues reported by [@pcbeingused333](https://github.com/pcbeingused333): [#182](https://github.com/pubnub/ruby/issues/182).
+
 ## v6.2.0
 October 21 2026
 
